@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="All rights reserved"
+[[mods]]
+modId="ordemparanormal"
+version="${file.jarVersion}"
+displayName="Ordem Paranormal"
+logoFile="ordemparanormal.png"
+credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e Lye por criar as texturas."
+authors="Aufa e Guga"
+description='''
+O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...
+'''
+[[dependencies.ordemparanormal]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.ordemparanormal]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.ordemparanormal]]
+    modId = "blueprint"
+    mandatory = true
+    versionRange = "[5.1.1,)"
+    ordering = "BEFORE"
+    side = "BOTH"
