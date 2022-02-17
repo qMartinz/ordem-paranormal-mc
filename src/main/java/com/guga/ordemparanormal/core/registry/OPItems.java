@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
-
+import com.teamabnormals.blueprint.common.item.BlueprintSpawnEggItem;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 
@@ -17,6 +17,8 @@ public final class OPItems {
 	// Registrar itens
 	public static final RegistryObject<Item> GRIMORIO_SANGUE = HELPER.createGSangue();
 	public static final RegistryObject<Item> GRIMORIO_ENERGIA = HELPER.createGEnergia();
+		// Ovos geradores
+	public static final RegistryObject<BlueprintSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem("zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7737617);
 	
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens

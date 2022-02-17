@@ -6,7 +6,6 @@ import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,11 +17,11 @@ public final class OPEntities {
 	
 	// Registrar entidades
 	public static final RegistryObject<EntityType<ZumbiSangue>> ZUMBI_SANGUE = HELPER.createLivingEntity(
-			"zumbi_sangue", ZumbiSangue::new, MobCategory.MONSTER, 1.0F, 1.0F);
+			"zumbi_sangue", ZumbiSangue::new, MobCategory.MONSTER, 0.5F, 2.1F);
 	
 	// Entidades
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
-		event.put(OPEntities.ZUMBI_SANGUE.get(), Monster.createMonsterAttributes().build());
+		event.put(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangue.createZumbiSangueAttributes().build());
 	}
 }

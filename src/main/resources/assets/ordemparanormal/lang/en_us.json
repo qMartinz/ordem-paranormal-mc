@@ -2,5 +2,9 @@
 	"itemGroup.ordemparanormal": "Paranormal Order: MC",
 	
 	"item.ordemparanormal.grimorio_sangue": "Blood Grimoire",
-	"item.ordemparanormal.grimorio_energia": "Energy Grimoire"
+	"item.ordemparanormal.grimorio_energia": "Energy Grimoire",
+	
+	"entity.ordemparanormal.zumbi_sangue" : "Blood Zombie",
+	
+	"item.ordemparanormal.zumbi_sangue_spawn_egg": "Blood Zombie Spawn Egg"
 }
