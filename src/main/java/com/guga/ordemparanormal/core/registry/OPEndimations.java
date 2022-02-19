@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 public final class OPEndimations {
 	// Animações
 	public static final PlayableEndimation ZUMBI_SANGUE_IDLE = register("zumbisangue/idle", 3, PlayableEndimation.LoopType.LOOP);
+	public static final PlayableEndimation ZUMBI_SANGUE_WALKING = register("zumbisangue/walking", 3, PlayableEndimation.LoopType.LOOP);
 	
 	// Tipos de Loop
 	private static PlayableEndimation register(String name, int duration, PlayableEndimation.LoopType loopType) {
