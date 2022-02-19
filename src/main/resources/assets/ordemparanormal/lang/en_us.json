@@ -1,10 +1,12 @@
 {
 	"itemGroup.ordemparanormal": "Paranormal Order: MC",
 	
-	"item.ordemparanormal.grimorio_sangue": "Blood Grimoire",
-	"item.ordemparanormal.grimorio_energia": "Energy Grimoire",
+	"item.ordemparanormal.grimorio_sangue": "Blood grimoire",
+	"item.ordemparanormal.grimorio_energia": "Energy grimoire",
 	
-	"entity.ordemparanormal.zumbi_sangue" : "Blood Zombie",
+	"entity.ordemparanormal.zumbi_sangue" : "Blood zombie",
+	"entity.ordemparanormal.aberrado" : "Aberrant",
 	
-	"item.ordemparanormal.zumbi_sangue_spawn_egg": "Blood Zombie Spawn Egg"
+	"item.ordemparanormal.zumbi_sangue_spawn_egg": "Blood zombie spawn egg",
+	"item.ordemparanormal.aberrado_spawn_egg": "Aberrant spawn egg"
 }

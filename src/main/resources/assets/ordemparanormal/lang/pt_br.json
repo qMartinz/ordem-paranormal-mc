@@ -1,10 +1,12 @@
 {
 	"itemGroup.ordemparanormal": "Ordem Paranormal: MC",
 	
-	"item.ordemparanormal.grimorio_sangue": "Grimório de Sangue",
-	"item.ordemparanormal.grimorio_energia": "Grimório de Energia",
+	"item.ordemparanormal.grimorio_sangue": "Grimório de sangue",
+	"item.ordemparanormal.grimorio_energia": "Grimório de energia",
 	
-	"entity.ordemparanormal.zumbi_sangue" : "Zumbi de Sangue",
+	"entity.ordemparanormal.zumbi_sangue" : "Zumbi de sangue",
+	"entity.ordemparanormal.aberrado" : "Aberrado",
 	
-	"item.ordemparanormal.zumbi_sangue_spawn_egg": "Ovo Gerador de Zumbi de Sangue"
+	"item.ordemparanormal.zumbi_sangue_spawn_egg": "Ovo gerador de zumbi de sangue",
+	"item.ordemparanormal.aberrado_spawn_egg": "Ovo gerador de Aberrado"
 }

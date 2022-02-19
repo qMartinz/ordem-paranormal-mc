@@ -18,11 +18,11 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class ZumbiSangue extends Monster implements Endimatable {
+public class Aberrado extends Monster implements Endimatable {
 	@OnlyIn(Dist.CLIENT)
 	public TimedEndimation die = new TimedEndimation(5, 0);
 	
-	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
+	public Aberrado(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 		this.die.setDecrementing(true);
 	}
@@ -72,12 +72,12 @@ public class ZumbiSangue extends Monster implements Endimatable {
 	}
 	
 	// Atributos
-	public static AttributeSupplier.Builder createZumbiSangueAttributes() {
+	public static AttributeSupplier.Builder createAberradoAttributes() {
 	      return Monster.createMonsterAttributes()
-	    		  .add(Attributes.MAX_HEALTH, 22.0D)
+	    		  .add(Attributes.MAX_HEALTH, 40.0D)
 	    		  .add(Attributes.ARMOR, 3.0D)
-	    		  .add(Attributes.ATTACK_DAMAGE, 7.0D)
-	    		  .add(Attributes.MOVEMENT_SPEED, 0.24F)
-	    		  .add(Attributes.FOLLOW_RANGE, 40.0D);
+	    		  .add(Attributes.ATTACK_DAMAGE, 15.0D)
+	    		  .add(Attributes.MOVEMENT_SPEED, 0.22F)
+	    		  .add(Attributes.FOLLOW_RANGE, 15.0D);
 	   }
 }

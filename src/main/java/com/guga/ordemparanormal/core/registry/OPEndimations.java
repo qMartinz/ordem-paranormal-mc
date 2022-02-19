@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class OPEndimations {
 	// Animações
-	public static final PlayableEndimation ZUMBI_SANGUE_IDLE = register("zumbisangue/idle", 3, PlayableEndimation.LoopType.LOOP);
 	public static final PlayableEndimation ZUMBI_SANGUE_WALKING = register("zumbisangue/walking", 3, PlayableEndimation.LoopType.LOOP);
 	
 	// Tipos de Loop
