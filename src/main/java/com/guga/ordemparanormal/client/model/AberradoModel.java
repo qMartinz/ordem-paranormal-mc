@@ -1,9 +1,13 @@
 package com.guga.ordemparanormal.client.model;
 
+import java.util.function.Supplier;
+
 import com.guga.ordemparanormal.common.entity.Aberrado;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.teamabnormals.blueprint.core.Blueprint;
+import com.teamabnormals.blueprint.core.endimator.Endimation;
 import com.teamabnormals.blueprint.core.endimator.Endimator;
 
 import net.minecraft.client.model.EntityModel;
@@ -20,6 +24,10 @@ import net.minecraft.resources.ResourceLocation;
 public class AberradoModel<E extends Aberrado> extends EntityModel<E> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
 			new ResourceLocation(OrdemParanormal.MOD_ID, "aberrado"), "main");
+	
+	// Animação de caminhada
+	private static final Supplier<Endimation> WALKING = () -> Blueprint.ENDIMATION_LOADER.getEndimation(
+			new ResourceLocation(OrdemParanormal.MOD_ID, "aberrado/walking"));
 	
 	private final ModelPart torso;
 	private final Endimator endimator;
@@ -120,11 +128,24 @@ public class AberradoModel<E extends Aberrado> extends EntityModel<E> {
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
+	
+	// Calcular tempo de caminhada
+		private static float computeWalkTime(float limbSwing, float length) {
+			float period = length * 5.0F;
+			return (((limbSwing + period) % period) / period) * length;
+		}
 
+	// Animar
 	@Override
 	public void setupAnim(E entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
 			float headPitch) {
-
+		assert WALKING.get() != null;
+		float length = WALKING.get().getLength();
+		float adjustedLimbSwingAmount = 4.0F * limbSwingAmount / length;
+		if (adjustedLimbSwingAmount > 1.0F) {
+			adjustedLimbSwingAmount = 1.0F;
+		}
+		this.endimator.apply(WALKING.get(), computeWalkTime(limbSwing, length), adjustedLimbSwingAmount, Endimator.ResetMode.ALL);
 	}
 
 	// Renderizar
