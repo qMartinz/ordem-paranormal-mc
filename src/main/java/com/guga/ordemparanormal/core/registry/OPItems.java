@@ -20,6 +20,8 @@ public final class OPItems {
 		// Ovos geradores
 	public static final RegistryObject<BlueprintSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
 			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7737617);
+	public static final RegistryObject<BlueprintSpawnEggItem> BESTIAL_OVO = HELPER.createSpawnEggItem(
+			"zumbi_bestial", OPEntities.BESTIAL::get, 7999247, 13875596);
 	public static final RegistryObject<BlueprintSpawnEggItem> ABERRADO_OVO = HELPER.createSpawnEggItem(
 			"aberrado", OPEntities.ABERRADO::get, 1126172, 8920604);
 	
