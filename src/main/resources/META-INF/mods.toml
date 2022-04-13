@@ -7,7 +7,7 @@ version="${file.jarVersion}"
 displayName="Ordem Paranormal"
 logoFile="ordemparanormal.png"
 credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e Lye por criar as texturas."
-authors="Aufa e Guga"
+authors="Guga"
 description='''
 O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...
 '''
