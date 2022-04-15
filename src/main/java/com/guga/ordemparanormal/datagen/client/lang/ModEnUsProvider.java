@@ -32,6 +32,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPEntities.ABERRADO.get(), "Aberrant");
 		add(OPEntities.BESTIAL.get(), "Bestial Blood zombie");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Blood zombie");
+		add(OPEntities.VILLAGER_CORPO.get(), "Villager corpse");
 	}
 
 }

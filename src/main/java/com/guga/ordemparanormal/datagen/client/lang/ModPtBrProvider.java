@@ -31,6 +31,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPEntities.ABERRADO.get(), "Aberrado");
 		add(OPEntities.BESTIAL.get(), "Zumbi de Sangue bestial");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Zumbi de Sangue");
+		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeão");
 	}
 
 }
