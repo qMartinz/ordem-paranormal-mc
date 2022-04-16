@@ -13,6 +13,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		super(gen, OrdemParanormal.MOD_ID, "pt_br");
 	}
 
+	// Adicionar traduções em PT-BR
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens

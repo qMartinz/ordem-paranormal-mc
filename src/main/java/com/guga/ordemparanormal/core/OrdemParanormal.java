@@ -58,7 +58,7 @@ public class OrdemParanormal {
 		bus.addListener(this::dataSetup);
 	}
 	
-	
+	// Registrar renderizadores
 	@OnlyIn(Dist.CLIENT)
 	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
@@ -71,8 +71,8 @@ public class OrdemParanormal {
 		DataGenerator generator = event.getGenerator();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 		
+		// Geração de Data do Cliente
 		if (event.includeClient()) {
-			// Geração de Data do Cliente
 			generator.addProvider(new ModItemModelProvider(generator, helper));
 			generator.addProvider(new ModPtBrProvider(generator));
 			generator.addProvider(new ModEnUsProvider(generator));

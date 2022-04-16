@@ -16,6 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		super(generator, OrdemParanormal.MOD_ID, helper);
 	}
 	
+	// Método para gerar modelo de item
 	protected void oneLayerItem(Item item, ResourceLocation texture) {
 		ResourceLocation itemTexture = new ResourceLocation(texture.getNamespace(), "item/" + texture.getPath());
 		if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
@@ -34,6 +35,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/template_spawn_egg")));
 	}
 
+	// Registrar modelos de itens
 	@Override
 	protected void registerModels() {
 		// Ovos

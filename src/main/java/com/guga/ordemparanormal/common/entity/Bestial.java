@@ -1,7 +1,5 @@
 package com.guga.ordemparanormal.common.entity;
 
-import com.teamabnormals.blueprint.core.endimator.Endimatable;
-
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -18,7 +16,7 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-public class Bestial extends ZumbiSangue implements Endimatable {
+public class Bestial extends ZumbiSangue {
 
 	public Bestial(EntityType<? extends ZumbiSangue> type, Level level) {
 		super(type, level);

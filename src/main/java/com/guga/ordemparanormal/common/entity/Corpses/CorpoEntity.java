@@ -4,9 +4,6 @@ import com.guga.ordemparanormal.common.entity.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -15,7 +12,6 @@ import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.level.Level;
 
 public abstract class CorpoEntity extends AmbientCreature{
-	public static final EntityDataAccessor<Byte> DATA_CLIENT_FLAGS = SynchedEntityData.defineId(CorpoEntity.class, EntityDataSerializers.BYTE);
 	protected int exposure;
 
 	public CorpoEntity(EntityType<? extends AmbientCreature> type, Level level) {
@@ -47,16 +43,16 @@ public abstract class CorpoEntity extends AmbientCreature{
 	public void aiStep() {
 		super.aiStep();
 		if (this.isAlive()) {
-	         int i = this.getExposure();
-	         if (i < 800) {
-	            ++i;
-	            this.setExposure(i);
-	         } else if (i > 800) {
-	            --i;
-	            this.setExposure(i);
-	         }
-	      }
-	}
+				int i = this.getExposure();
+		        if (i < 800) {
+		           ++i;
+		           this.setExposure(i);
+		           } else if (i > 800) {
+		           --i;
+		           this.setExposure(i);
+		           }
+		        }
+		}
 	
 	public LivingEntity transform() {
 		if (this.isAlive()) {

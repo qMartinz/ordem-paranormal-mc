@@ -154,6 +154,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 				return (((limbSwing + period) % period) / period) * length;
 			}
 
+	// Animar
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
 			float headPitch) {
@@ -166,6 +167,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 		this.endimator.apply(WALKING.get(), computeWalkTime(limbSwing, length), adjustedLimbSwingAmount, Endimator.ResetMode.ALL);
 	}
 
+	// Renderizar
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay,
 			float red, float green, float blue, float alpha) {

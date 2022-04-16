@@ -1,0 +1,81 @@
+{
+	"length": 4,
+	"parts": {
+		"root": {
+			"rotation": [
+				{
+					"time": 0,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1,
+					"transform": [32.5, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
+					"transform": [-57.5, -40, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 3,
+					"transform": [40.19263, 6.40865, 65.43131],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 4,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				}
+			],
+			"position": [
+				{
+					"time": 0,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1,
+					"transform": [0, -2, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 3,
+					"transform": [0, 2, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 4,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				}
+			]
+		}
+	}
+}

@@ -3,8 +3,6 @@ package com.guga.ordemparanormal.common.entity;
 import javax.annotation.Nullable;
 
 import com.guga.ordemparanormal.core.registry.OPEntities;
-import com.teamabnormals.blueprint.core.endimator.Endimatable;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
@@ -28,7 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 
-public class ZumbiSangue extends Monster implements Endimatable {
+public class ZumbiSangue extends Monster {
 	protected int paranormalExp;
 
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {

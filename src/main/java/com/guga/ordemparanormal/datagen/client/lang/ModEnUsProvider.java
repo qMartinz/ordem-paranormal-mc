@@ -11,9 +11,9 @@ public class ModEnUsProvider extends LanguageProvider{
 
 	public ModEnUsProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
-		// TODO Auto-generated constructor stub
 	}
 
+	// Adicionar traduções em EN-US
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens
