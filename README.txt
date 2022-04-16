@@ -4,8 +4,8 @@ No futuro, serão adicionados rituais, muitas criaturas entre outras coisas rela
 
 ============================================================================================================
 
-Mod feito por: Guga e Aufa
-Créditos: Aufa e Lye por ajudarem com as texturas.
+Mod feito por: Time OP Mod
+Créditos: Aufa, Lye e Babako por ajudarem com as texturas.
 
 Twitter: @ParanormalMod
 Discord: https://discord.gg/mcxGbQbjkT
