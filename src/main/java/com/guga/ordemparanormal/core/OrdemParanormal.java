@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.core;
 
 import com.guga.ordemparanormal.client.renderer.AberradoRenderer;
 import com.guga.ordemparanormal.client.renderer.BestialRenderer;
+import com.guga.ordemparanormal.client.renderer.NevoaRenderer;
 import com.guga.ordemparanormal.client.renderer.VillagerCorpoRenderer;
 import com.guga.ordemparanormal.client.renderer.ZumbiSangueRenderer;
 import com.guga.ordemparanormal.core.registry.OPEntities;
@@ -65,6 +66,7 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.ABERRADO.get(), AberradoRenderer::new);
 		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
+		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 	}
 	
 	private void dataSetup(GatherDataEvent event) {

@@ -2,10 +2,12 @@ package com.guga.ordemparanormal.client.events;
 
 import com.guga.ordemparanormal.client.model.AberradoModel;
 import com.guga.ordemparanormal.client.model.BestialModel;
+import com.guga.ordemparanormal.client.model.NevoaModel;
 import com.guga.ordemparanormal.client.model.VillagerCorpoModel;
 import com.guga.ordemparanormal.client.model.ZumbiSangueModel;
 import com.guga.ordemparanormal.client.renderer.AberradoRenderer;
 import com.guga.ordemparanormal.client.renderer.BestialRenderer;
+import com.guga.ordemparanormal.client.renderer.NevoaRenderer;
 import com.guga.ordemparanormal.client.renderer.VillagerCorpoRenderer;
 import com.guga.ordemparanormal.client.renderer.ZumbiSangueRenderer;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -28,6 +30,7 @@ public final class ClientModEvents {
 		event.registerLayerDefinition(AberradoModel.LAYER_LOCATION, AberradoModel::createBodyLayer);
 		event.registerLayerDefinition(BestialModel.LAYER_LOCATION, BestialModel::createBodyLayer);
 		event.registerLayerDefinition(VillagerCorpoModel.LAYER_LOCATION, VillagerCorpoModel::createBodyLayer);
+		event.registerLayerDefinition(NevoaModel.LAYER_LOCATION, NevoaModel::createBodyLayer);
 	}
 	
 	// Registrar renderizador
@@ -37,5 +40,6 @@ public final class ClientModEvents {
 		event.registerEntityRenderer(OPEntities.ABERRADO.get(), AberradoRenderer::new);
 		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
+		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 	}
 }
