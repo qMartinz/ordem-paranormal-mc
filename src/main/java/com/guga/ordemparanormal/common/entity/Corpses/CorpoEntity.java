@@ -1,9 +1,15 @@
 package com.guga.ordemparanormal.common.entity.Corpses;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -13,6 +19,8 @@ import net.minecraft.world.level.Level;
 
 public abstract class CorpoEntity extends AmbientCreature{
 	protected int exposure;
+	@Nullable
+	public Nevoa nearestNevoa;
 
 	public CorpoEntity(EntityType<? extends AmbientCreature> type, Level level) {
 		super(type, level);
@@ -40,19 +48,29 @@ public abstract class CorpoEntity extends AmbientCreature{
 	      this.setExposure(data.getInt("Exposure"));
 	   }
 	
+	private boolean checkNevoa() {
+		List<Nevoa> list = this.level.getEntitiesOfClass(Nevoa.class, this.getBoundingBox().inflate(5D, 5D, 5D), EntitySelector.ENTITY_STILL_ALIVE);
+		if (list.isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+	
 	public void aiStep() {
 		super.aiStep();
 		if (this.isAlive()) {
+			if (this.checkNevoa()) {
 				int i = this.getExposure();
-		        if (i < 800) {
-		           ++i;
-		           this.setExposure(i);
-		           } else if (i > 800) {
-		           --i;
-		           this.setExposure(i);
-		           }
-		        }
+				if (i < 800) {
+					++i;
+					this.setExposure(i);
+				} else if (i > 800) {
+					--i;
+					this.setExposure(i);
+				}
+			}
 		}
+	}
 	
 	public LivingEntity transform() {
 		if (this.isAlive()) {
