@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.entity;
+package com.guga.ordemparanormal.common.entity.zumbissangue;
 
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
@@ -88,7 +88,7 @@ public class Bestial extends ZumbiSangue {
 	//Atributos
 		public static AttributeSupplier.Builder createBestialAttributes() {
 			return ZumbiSangue.createZumbiSangueAttributes()
-					.add(Attributes.MOVEMENT_SPEED, 0.29F)
+					.add(Attributes.MOVEMENT_SPEED, 0.4F)
 					.add(Attributes.ATTACK_DAMAGE, 10.0D)
 					.add(Attributes.ARMOR, 5.0D);
 		}

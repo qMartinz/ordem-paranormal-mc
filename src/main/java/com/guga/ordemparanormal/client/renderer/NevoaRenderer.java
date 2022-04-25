@@ -13,12 +13,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class NevoaRenderer extends EntityRenderer<Nevoa>{
-	private final NevoaModel model;
+	private final NevoaModel<Nevoa> model;
 	private static final ResourceLocation TEXTURE = OrdemParanormal.REGISTRY_HELPER.prefix("textures/entity/nevoa.png");
 	
 	public NevoaRenderer(EntityRendererProvider.Context context) {
 	      super(context);
-	      this.model = new NevoaModel(NevoaModel.createBodyLayer().bakeRoot());
+	      this.model = new NevoaModel<Nevoa>(NevoaModel.createBodyLayer().bakeRoot());
 	   }
 	
 	public void render(Nevoa entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource source, int packedLightIn) {

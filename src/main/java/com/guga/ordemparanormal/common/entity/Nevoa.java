@@ -1,5 +1,8 @@
 package com.guga.ordemparanormal.common.entity;
 
+import java.util.List;
+
+import com.guga.ordemparanormal.common.entity.Corpses.CorpoEntity;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 
 import net.minecraft.nbt.CompoundTag;
@@ -8,20 +11,23 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.PlayMessages;
 
 public class Nevoa extends Entity {
-	private static final EntityDataAccessor<Float> DATA_RADIUS = SynchedEntityData.defineId(AreaEffectCloud.class, EntityDataSerializers.FLOAT);
+	private static final EntityDataAccessor<Integer> DATA_RADIUS = SynchedEntityData.defineId(Nevoa.class,
+			EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Integer> DATA_INTENSITY = SynchedEntityData.defineId(Nevoa.class,
+			EntityDataSerializers.INT);
 
 	public Nevoa(EntityType<? extends Nevoa> type, Level level) {
 		super(type, level);
 	}
-	
+
 	public Nevoa(Level level, double x, double y, double z) {
 		this(OPEntities.NEVOA.get(), level);
 		this.setPos(x, y, z);
@@ -30,34 +36,72 @@ public class Nevoa extends Entity {
 		this.yo = y;
 		this.zo = z;
 	}
-	
+
 	public Nevoa(PlayMessages.SpawnEntity spawnEntity, Level level) {
 		this(OPEntities.NEVOA.get(), level);
 	}
-
-	@Override
+	
 	protected void defineSynchedData() {
-		this.getEntityData().define(DATA_RADIUS, 2.0F);
+		this.getEntityData().define(DATA_RADIUS, 7);
+		this.getEntityData().define(DATA_INTENSITY, 1);
 	}
-	
-	public void setRadius(float size) {
-	      if (!this.level.isClientSide) {
-	         this.getEntityData().set(DATA_RADIUS, size);
-	      }
-	   }
-	
-	public float getRadius() {
-	      return this.getEntityData().get(DATA_RADIUS);
-	   }
+
+	public void setRadius(int size) {
+		if (!this.level.isClientSide) {
+			if (this.getEntityData().get(DATA_RADIUS) < 45) {
+				this.getEntityData().set(DATA_RADIUS, size);
+			} else {
+				this.getEntityData().set(DATA_RADIUS, 45);
+			}
+		}
+	}
+
+	public void setIntensity(int intensity) {
+		if (this.getEntityData().get(DATA_INTENSITY) < 5) {
+			this.getEntityData().set(DATA_INTENSITY, intensity);
+		} else {
+			this.getEntityData().set(DATA_INTENSITY, 5);
+		}
+	}
+
+	public double getRadius() {
+		return this.getEntityData().get(DATA_RADIUS).doubleValue();
+	}
+
+	public int getIntensity() {
+		return this.getEntityData().get(DATA_INTENSITY);
+	}
+
+	public void tick() {
+		super.tick();
+		if (this.tickCount % 5 == 0) {
+			double radius = this.getRadius();
+			System.out.print(this.getRadius());
+			List<CorpoEntity> list = this.level.getEntitiesOfClass(CorpoEntity.class,
+					this.getBoundingBox().inflate(radius, radius, radius), EntitySelector.ENTITY_STILL_ALIVE);
+			if (!list.isEmpty()) {
+				for (CorpoEntity corpo : list) {
+					if (corpo.isAlive()) {
+						int i = corpo.getExposure();
+						if (i < 150) {
+							corpo.setExposure(i+this.getIntensity());
+						}
+					}
+				}
+			}
+		}
+	}
 
 	@Override
 	protected void readAdditionalSaveData(CompoundTag data) {
-		this.setRadius(data.getFloat("Radius"));
+		this.setRadius(data.getInt("Radius"));
+		this.setIntensity(data.getInt("Intensity"));
 	}
 
 	@Override
 	protected void addAdditionalSaveData(CompoundTag data) {
-		data.putFloat("Radius", this.getRadius());
+		data.putDouble("Radius", this.getRadius());
+		data.putInt("Intensity", this.getIntensity());
 	}
 
 	@Override

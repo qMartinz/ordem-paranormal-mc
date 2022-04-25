@@ -3,10 +3,7 @@ package com.guga.ordemparanormal.client.model;
 
 import java.util.function.Supplier;
 
-// Exported for Minecraft version 1.17 with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
-import com.guga.ordemparanormal.common.entity.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

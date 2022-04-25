@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.client.renderer;
 
 import com.guga.ordemparanormal.client.model.BestialModel;
-import com.guga.ordemparanormal.common.entity.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

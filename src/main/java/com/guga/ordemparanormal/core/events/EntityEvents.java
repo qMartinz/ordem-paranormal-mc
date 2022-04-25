@@ -1,9 +1,14 @@
 package com.guga.ordemparanormal.core.events;
 
+import java.util.List;
+
+import com.guga.ordemparanormal.common.entity.Nevoa;
+import com.guga.ordemparanormal.common.entity.Corpses.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.Corpses.VillagerCorpo;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -23,6 +28,26 @@ public class EntityEvents {
 			
 			corpo.copyPosition(entity);
 			level.addFreshEntity(corpo);
+			List<CorpoEntity> list1 = corpo.level.getEntitiesOfClass(CorpoEntity.class,
+					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
+			if (list1.size() >= 3) {
+				List<Nevoa> list2 = corpo.level.getEntitiesOfClass(Nevoa.class, 
+					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
+				if (list2.isEmpty()) {
+					Nevoa nevoa = OPEntities.NEVOA.get().create(corpo.level);
+					nevoa.copyPosition(corpo);
+					level.addFreshEntity(nevoa);
+					nevoa.setIntensity(1);
+					nevoa.setRadius(10);
+				} else {
+					for (Nevoa nevoa : list2) {
+						int i = nevoa.getIntensity();
+						int r = (int)nevoa.getRadius();
+						nevoa.setIntensity(i + (list1.size()/5));
+						nevoa.setRadius(r+5);
+					}
+				}
+			}
 		}
 	}
 }

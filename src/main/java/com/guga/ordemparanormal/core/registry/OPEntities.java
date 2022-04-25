@@ -1,10 +1,10 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.common.entity.Aberrado;
-import com.guga.ordemparanormal.common.entity.Bestial;
 import com.guga.ordemparanormal.common.entity.Nevoa;
-import com.guga.ordemparanormal.common.entity.ZumbiSangue;
 import com.guga.ordemparanormal.common.entity.Corpses.VillagerCorpo;
+import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 
@@ -28,7 +28,8 @@ public final class OPEntities {
 			"zumbi_bestial", Bestial::new, MobCategory.MONSTER, 1.8F, 1.3F);
 	public static final RegistryObject<EntityType<VillagerCorpo>> VILLAGER_CORPO = HELPER.createLivingEntity(
 			"villager_corpo", VillagerCorpo::new, MobCategory.AMBIENT, 1.8F, 0.3F);
-	public static final RegistryObject<EntityType<Nevoa>> NEVOA = HELPER.createEntity("nevoa", Nevoa::new, Nevoa::new, MobCategory.AMBIENT, 1F, 1F);
+	public static final RegistryObject<EntityType<Nevoa>> NEVOA = HELPER.createEntity(
+			"nevoa", Nevoa::new, Nevoa::new, MobCategory.AMBIENT, 1F, 1F);
 	
 	// Registrar Atributos
 	@SubscribeEvent

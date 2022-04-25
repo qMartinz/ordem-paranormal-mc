@@ -2,7 +2,7 @@ package com.guga.ordemparanormal.client.model;
 
 import java.util.function.Supplier;
 
-import com.guga.ordemparanormal.common.entity.ZumbiSangue;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
