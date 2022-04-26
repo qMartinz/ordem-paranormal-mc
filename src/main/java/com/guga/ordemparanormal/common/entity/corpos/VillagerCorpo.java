@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.entity.Corpses;
+package com.guga.ordemparanormal.common.entity.corpos;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;

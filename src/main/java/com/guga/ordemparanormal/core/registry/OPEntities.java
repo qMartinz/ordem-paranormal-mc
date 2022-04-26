@@ -2,7 +2,7 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.common.entity.Aberrado;
 import com.guga.ordemparanormal.common.entity.Nevoa;
-import com.guga.ordemparanormal.common.entity.Corpses.VillagerCorpo;
+import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;

@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.client.model;
 
-import com.guga.ordemparanormal.common.entity.Corpses.VillagerCorpo;
+import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
