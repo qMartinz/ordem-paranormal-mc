@@ -27,7 +27,7 @@ public final class OPEntities {
 	public static final RegistryObject<EntityType<Bestial>> BESTIAL = HELPER.createLivingEntity(
 			"zumbi_bestial", Bestial::new, MobCategory.MONSTER, 1.8F, 1.3F);
 	public static final RegistryObject<EntityType<VillagerCorpo>> VILLAGER_CORPO = HELPER.createLivingEntity(
-			"villager_corpo", VillagerCorpo::new, MobCategory.AMBIENT, 1.8F, 0.3F);
+			"villager_corpo", VillagerCorpo::new, MobCategory.AMBIENT, 1.4F, 0.2F);
 	public static final RegistryObject<EntityType<Nevoa>> NEVOA = HELPER.createEntity(
 			"nevoa", Nevoa::new, Nevoa::new, MobCategory.AMBIENT, 1F, 1F);
 	

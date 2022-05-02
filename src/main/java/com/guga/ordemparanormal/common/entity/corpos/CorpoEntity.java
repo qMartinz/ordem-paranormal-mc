@@ -18,11 +18,12 @@ public abstract class CorpoEntity extends AmbientCreature{
 		super(type, level);
 	}
 	
-	// Transformar em criatura
+	// Pega a "exposição" do corpo
 	public int getExposure() {
 		return this.exposure;
 	}
 	
+	// Seta a "exposição" do corpo para então transformá-lo em um zumbi quando atingir exposição maior que 149
 	public void setExposure(int exp) {
 		this.exposure = exp;
 		if (exp > 149) {
@@ -40,6 +41,7 @@ public abstract class CorpoEntity extends AmbientCreature{
 	      this.setExposure(data.getInt("Exposure"));
 	   }
 	
+	// Transforma o corpo em um zumbi de sangue
 	public LivingEntity transform() {
 		if (this.isAlive()) {
 			ZumbiSangue zumbi = OPEntities.ZUMBI_SANGUE.get().create(this.level);

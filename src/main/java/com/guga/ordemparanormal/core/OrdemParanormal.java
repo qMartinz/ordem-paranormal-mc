@@ -7,6 +7,7 @@ import com.guga.ordemparanormal.client.renderer.VillagerCorpoRenderer;
 import com.guga.ordemparanormal.client.renderer.ZumbiSangueRenderer;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPItems;
+import com.guga.ordemparanormal.core.registry.OPParticles;
 import com.guga.ordemparanormal.datagen.client.ModItemModelProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModEnUsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModPtBrProvider;
@@ -49,6 +50,7 @@ public class OrdemParanormal {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		
 		REGISTRY_HELPER.register(bus);
+		OPParticles.PARTICLE_TYPES.register(bus);
 		
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.addListener(this::rendererSetup);
