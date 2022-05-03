@@ -13,7 +13,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
 	}
 
-	// Adicionar traduções em EN-US
+	// Adicionar traduï¿½ï¿½es em EN-US
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens
@@ -22,6 +22,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Itens
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
 		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
+		add(OPItems.RITUAL_DESCARNAR.get(), "Rip flesh ritual");
 		
 		// Ovos
 		add(OPItems.ABERRADO_OVO.get(), "Aberrant spawn egg");

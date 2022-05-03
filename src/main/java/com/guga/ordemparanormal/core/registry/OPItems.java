@@ -17,6 +17,7 @@ public final class OPItems {
 	// Registrar itens
 	public static final RegistryObject<Item> GRIMORIO_SANGUE = HELPER.createGSangue();
 	public static final RegistryObject<Item> GRIMORIO_ENERGIA = HELPER.createGEnergia();
+	public static final RegistryObject<Item> RITUAL_DESCARNAR = HELPER.createRDescarnar();
 		// Ovos geradores
 	public static final RegistryObject<BlueprintSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
 			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7737617);
@@ -38,5 +39,9 @@ public final class OPItems {
 		private RegistryObject<Item> createGEnergia() {
 			return this.deferredRegister.register("grimorio_energia", () -> new Item(new 
 					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS))); }
+		private RegistryObject<Item> createRDescarnar(){
+			return this.deferredRegister.register("ritual_descarnar", () -> new Item(new
+					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS)));
+		}
 	}	
 }

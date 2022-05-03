@@ -13,15 +13,16 @@ public class ModPtBrProvider extends LanguageProvider{
 		super(gen, OrdemParanormal.MOD_ID, "pt_br");
 	}
 
-	// Adicionar traduções em PT-BR
+	// Adicionar traduï¿½ï¿½es em PT-BR
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens
 		add("itemGroup.ordemparanormal", "Ordem Paranormal: MC");
 		
 		// Itens
-		add(OPItems.GRIMORIO_ENERGIA.get(), "Grimório de Energia");
-		add(OPItems.GRIMORIO_SANGUE.get(), "Grimório de Sangue");
+		add(OPItems.GRIMORIO_ENERGIA.get(), "Grimï¿½rio de Energia");
+		add(OPItems.GRIMORIO_SANGUE.get(), "Grimï¿½rio de Sangue");
+		add(OPItems.RITUAL_DESCARNAR.get(), "Ritual de descarnar");
 		
 		// Ovos
 		add(OPItems.ABERRADO_OVO.get(), "Ovo gerador de aberrado");
@@ -32,7 +33,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPEntities.ABERRADO.get(), "Aberrado");
 		add(OPEntities.BESTIAL.get(), "Zumbi de Sangue bestial");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Zumbi de Sangue");
-		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeão");
+		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeï¿½o");
 	}
 
 }

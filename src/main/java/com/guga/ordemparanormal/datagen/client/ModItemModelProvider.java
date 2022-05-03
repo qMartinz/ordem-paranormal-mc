@@ -16,7 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		super(generator, OrdemParanormal.MOD_ID, helper);
 	}
 	
-	// Método para gerar modelo de item
+	// Mï¿½todo para gerar modelo de item
 	protected void oneLayerItem(Item item, ResourceLocation texture) {
 		ResourceLocation itemTexture = new ResourceLocation(texture.getNamespace(), "item/" + texture.getPath());
 		if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
@@ -46,6 +46,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		// Itens
 		oneLayerItem(OPItems.GRIMORIO_ENERGIA.get());
 		oneLayerItem(OPItems.GRIMORIO_SANGUE.get());
+		oneLayerItem(OPItems.RITUAL_DESCARNAR.get());
 	}
 
 }
