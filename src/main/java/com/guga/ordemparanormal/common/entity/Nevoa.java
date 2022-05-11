@@ -19,7 +19,6 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.PlayMessages;
@@ -101,26 +100,21 @@ public class Nevoa extends Entity {
 		Random random = new Random();
 		double radius = this.getRadius();
 		AABB area = this.getBoundingBox().inflate(radius, radius, radius);
-
-		for (int i = 1; i <= this.getIntensity(); i++) {
-			double randomX = (double) random.nextDouble(area.maxX - area.minX) + area.minX;
-			double yPos = this.getY();
-			double randomZ = (double) random.nextDouble(area.maxZ - area.minZ) + area.minZ;
-			BlockPos blockpos = new BlockPos(randomX, yPos, randomZ);
-			BlockState blockstate = this.level.getBlockState(blockpos);
-			for (yPos = this.getY(); !blockstate.isAir();) {
-				yPos++;
-			}
-			if (blockstate.isAir()) {
-				this.level.addParticle(OPParticles.NEVOA_PARTICLE.get(), randomX, yPos, randomZ, 0.0D,
-						(double) Math.random() * (0.20D - 0.05D) + 0.05D, 0.0D);
+		for (int i = 1; i <= Math.pow(this.getIntensity(), 3) + radius - (5 * this.getIntensity()); i++) {
+			double randX = random.nextDouble(area.maxX - area.minX) + area.minX;
+			double randZ = random.nextDouble(area.maxZ - area.minZ) + area.minZ;
+			double randY = random.nextDouble(area.maxY - area.minY) + area.minY;
+			Vec3 randomPos = new Vec3(randX, randY, randZ);
+			BlockPos block = new BlockPos(randomPos);
+			if (!this.level.getBlockState(block.below()).isAir() && this.level.getBlockState(block).isAir()) {
+				this.level.addParticle(OPParticles.NEVOA_PARTICLE.get(), randX, randY, randZ, 0D, 0D, 0D);
 			}
 		}
 	}
 
 	public void tick() {
 		super.tick();
-		spawnNevoaParticles();
+		this.spawnNevoaParticles();
 		if (this.tickCount % 5 == 0) {
 			double radius = this.getRadius();
 			List<CorpoEntity> list = this.level.getEntitiesOfClass(CorpoEntity.class,

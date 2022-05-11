@@ -4,8 +4,10 @@
   "entity.ordemparanormal.zumbi_bestial": "Bestial Blood zombie",
   "entity.ordemparanormal.zumbi_sangue": "Blood zombie",
   "item.ordemparanormal.aberrado_spawn_egg": "Aberrant spawn egg",
+  "item.ordemparanormal.cinzas": "Ashes",
   "item.ordemparanormal.grimorio_energia": "Energy grimoire",
   "item.ordemparanormal.grimorio_sangue": "Blood grimoire",
+  "item.ordemparanormal.orgao": "Organ",
   "item.ordemparanormal.zumbi_bestial_spawn_egg": "Bestial Blood zombie spawn egg",
   "item.ordemparanormal.zumbi_sangue_spawn_egg": "Blood zombie spawn egg",
   "itemGroup.ordemparanormal": "Paranormal Order: MC"

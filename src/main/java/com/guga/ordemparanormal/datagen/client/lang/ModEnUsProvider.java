@@ -22,6 +22,8 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Itens
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
 		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
+		add(OPItems.ORGAO.get(), "Organ");
+		add(OPItems.CINZAS.get(), "Ashes");
 		
 		// Ovos
 		add(OPItems.ABERRADO_OVO.get(), "Aberrant spawn egg");

@@ -1,5 +1,7 @@
 package com.guga.ordemparanormal.client.particles;
 
+import java.util.Random;
+
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
@@ -11,6 +13,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class NevoaParticle extends TextureSheetParticle {
+	private double xRand;
+	private double zRand;
 
 	protected NevoaParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, SpriteSet spriteSet,
 			double xd, double yd, double zd) {
@@ -20,23 +24,41 @@ public class NevoaParticle extends TextureSheetParticle {
 		this.xd = xd;
 		this.yd = yd;
 		this.zd = zd;
-		this.quadSize *= 1.0F;
-		this.lifetime = 20;
+		this.quadSize = 3.0F;
+		this.lifetime = 100;
+		this.alpha = 0.0F;
 		this.setSpriteFromAge(spriteSet);
 
 		this.rCol = 1f;
 		this.gCol = 1f;
 		this.bCol = 1f;
+		Random random = new Random();
+		double max = 0.05D;
+		double min = -0.05D;
+		xRand = random.nextDouble(max - min) + min;
+		zRand = random.nextDouble(max - min) + min;
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
-		fadeOut();
-	}
-
-	private void fadeOut() {
-		this.alpha = (-(1 / (float) lifetime) * age + 1);
+		
+		if (Math.abs(xRand) > Math.abs(zRand)) {
+			zRand = 0;
+		} else {
+			xRand = 0;
+		}
+		this.move(xRand, 0.0D, zRand);
+		
+		if (this.age - 30 <= 0 && this.alpha < 1.0F) {
+			this.alpha += 0.015F;
+		} else if (this.age++ < this.lifetime && !(this.alpha <= 0.0F)) {
+	         if (this.age >= this.lifetime - 60 && this.alpha > 0.001F) {
+	            this.alpha -= 0.015F;
+	         }
+	      } else {
+	         this.remove();
+	      }
 	}
 
 	@Override

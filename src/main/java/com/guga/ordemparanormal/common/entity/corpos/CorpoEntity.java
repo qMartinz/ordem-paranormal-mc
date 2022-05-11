@@ -4,8 +4,10 @@ import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ambient.AmbientCreature;
@@ -16,6 +18,20 @@ public abstract class CorpoEntity extends AmbientCreature{
 
 	public CorpoEntity(EntityType<? extends AmbientCreature> type, Level level) {
 		super(type, level);
+	}
+	
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return SoundEvents.DOLPHIN_EAT;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() {
+		if (this.isOnFire()) {
+			return SoundEvents.GENERIC_EXTINGUISH_FIRE;
+		} else {
+		return SoundEvents.TURTLE_EGG_BREAK;
+		}
 	}
 	
 	// Pega a "exposição" do corpo
@@ -42,18 +58,17 @@ public abstract class CorpoEntity extends AmbientCreature{
 	   }
 	
 	// Transforma o corpo em um zumbi de sangue
-	public LivingEntity transform() {
+	public void transform() {
 		if (this.isAlive()) {
 			ZumbiSangue zumbi = OPEntities.ZUMBI_SANGUE.get().create(this.level);
-			zumbi.moveTo(this.getX(), this.getY(), this.getZ());
+			zumbi.copyPosition(this);
+			zumbi.setYRot(this.getYRot());
 			
 			zumbi.setHealth(zumbi.getMaxHealth());
 			this.level.addFreshEntity(zumbi);
-			this.discard();
 			
-			return zumbi;
+			this.discard();
 		}
-		return this;
 	}
 	
 	// Atributos

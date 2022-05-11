@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.datagen.client.ModItemModelProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModEnUsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModPtBrProvider;
+import com.guga.ordemparanormal.datagen.server.ModLootTableProvider;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -27,5 +28,9 @@ public class OPDataGeneration {
 			generator.addProvider(new ModEnUsProvider(generator));
 		}
 		
+		if (event.includeServer()) {
+			// Geração de Data do Server
+			generator.addProvider(new ModLootTableProvider(generator));
+		}	
 	}
 }

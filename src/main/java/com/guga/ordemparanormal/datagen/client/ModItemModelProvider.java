@@ -46,6 +46,8 @@ public class ModItemModelProvider extends ItemModelProvider{
 		// Itens
 		oneLayerItem(OPItems.GRIMORIO_ENERGIA.get());
 		oneLayerItem(OPItems.GRIMORIO_SANGUE.get());
+		oneLayerItem(OPItems.ORGAO.get());
+		oneLayerItem(OPItems.CINZAS.get());
 	}
 
 }
