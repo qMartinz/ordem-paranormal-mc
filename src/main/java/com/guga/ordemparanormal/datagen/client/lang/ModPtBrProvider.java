@@ -24,6 +24,9 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPItems.GRIMORIO_SANGUE.get(), "Grimório de Sangue");
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
+		add(OPItems.GRIMORIO_ENERGIA.get(), "Grimório de Energia");
+		add(OPItems.GRIMORIO_SANGUE.get(), "Grimório de Sangue");
+		add(OPItems.RITUAL_DESCARNAR.get(), "Ritual de descarnar");
 		
 		// Ovos
 		add(OPItems.ABERRADO_OVO.get(), "Ovo gerador de aberrado");
