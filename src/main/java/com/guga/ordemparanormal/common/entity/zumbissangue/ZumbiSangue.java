@@ -1,8 +1,10 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
+import com.guga.ordemparanormal.common.capabilities.NexModel;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -101,8 +103,19 @@ public class ZumbiSangue extends Monster {
 
 	// Atributos
 	public static AttributeSupplier.Builder createZumbiSangueAttributes() {
-		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 22.0D).add(Attributes.ARMOR, 3.0D)
-				.add(Attributes.ATTACK_DAMAGE, 9.0D).add(Attributes.MOVEMENT_SPEED, 0.35F)
-				.add(Attributes.FOLLOW_RANGE, 40.0D);
+		return Monster.createMonsterAttributes().add(Attributes.FOLLOW_RANGE, 40.0D)
+				.add(Attributes.MAX_HEALTH, 22.0D)
+				.add(Attributes.MOVEMENT_SPEED, 0.35F)
+				.add(Attributes.ATTACK_DAMAGE, 9.0D)
+				.add(Attributes.ARMOR, 3.0D);
+	}
+
+	// Exposição paranormal concedido ao jogador
+	public void die(DamageSource source){
+		super.die(source);
+		if (this.getLastHurtByMob() instanceof Player){
+			Player player = (Player) this.getLastHurtByMob();
+			NexModel.get(player).increaseXP(5D);
+		}
 	}
 }

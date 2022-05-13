@@ -1,6 +1,8 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
+import com.guga.ordemparanormal.common.capabilities.NexModel;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -35,61 +37,21 @@ public class Bestial extends ZumbiSangue {
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, true));
 		}
 		
-		// Comportamento de invocação
-		protected boolean shouldDespawnInPeaceful() {
-			return true;
-		}
-
-		public void checkDespawn() {
-			if (this.level.getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
-				this.discard();
-			} else if (!this.isPersistenceRequired() && !this.requiresCustomPersistence()) {
-				Entity entity = this.level.getNearestPlayer(this, -1.0D);
-				net.minecraftforge.eventbus.api.Event.Result result = net.minecraftforge.event.ForgeEventFactory
-						.canEntityDespawn(this);
-				if (result == net.minecraftforge.eventbus.api.Event.Result.DENY) {
-					noActionTime = 0;
-					entity = null;
-				} else if (result == net.minecraftforge.eventbus.api.Event.Result.ALLOW) {
-					this.discard();
-					entity = null;
-				}
-				if (entity != null) {
-					double d0 = entity.distanceToSqr(this);
-					int i = this.getType().getCategory().getDespawnDistance();
-					int j = i * i;
-					if (d0 > (double) j && this.removeWhenFarAway(d0)) {
-						this.discard();
-					}
-
-					int k = this.getType().getCategory().getNoDespawnDistance();
-					int l = k * k;
-					if (this.noActionTime > 600 && this.random.nextInt(800) == 0 && d0 > (double) l
-							&& this.removeWhenFarAway(d0)) {
-						this.discard();
-					} else if (d0 < (double) l) {
-						this.noActionTime = 0;
-					}
-				}
-
-			} else {
-				this.noActionTime = 0;
-			}
-		}
-
-		public boolean isPersistenceRequired() {
-			return true;
-		}
-
-		public boolean removeWhenFarAway(double distance) {
-			return true;
-		}
-		
 	//Atributos
 		public static AttributeSupplier.Builder createBestialAttributes() {
 			return ZumbiSangue.createZumbiSangueAttributes()
+					.add(Attributes.MAX_HEALTH, 30.0D)
 					.add(Attributes.MOVEMENT_SPEED, 0.4F)
 					.add(Attributes.ATTACK_DAMAGE, 10.0D)
 					.add(Attributes.ARMOR, 5.0D);
 		}
+
+	// Exposição paranormal concedido ao jogador
+	public void die(DamageSource source){
+		super.die(source);
+		if (this.getLastHurtByMob() instanceof Player){
+			Player player = (Player) this.getLastHurtByMob();
+			NexModel.get(player).increaseXP(12D);
+		}
+	}
 }

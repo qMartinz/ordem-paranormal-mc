@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.core.events;
+package com.guga.ordemparanormal.common.events;
 
 import java.util.List;
 

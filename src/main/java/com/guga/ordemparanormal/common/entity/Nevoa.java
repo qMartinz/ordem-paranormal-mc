@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.common.entity;
 import java.util.List;
 import java.util.Random;
 
+import com.guga.ordemparanormal.common.capabilities.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
@@ -18,6 +19,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -137,6 +140,8 @@ public class Nevoa extends Entity {
 				List<Monster> list2 = this.level.getEntitiesOfClass(Monster.class,
 						this.getBoundingBox().inflate(radius, radius, radius),
 						EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+				List<Zombie> list3 = this.level.getEntitiesOfClass(Zombie.class,
+						this.getBoundingBox().inflate(radius, radius, radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 				// Checa se tem alguma criatura que gere medo dentro da névoa, se não, remove a
 				// névoa após um tempo
 				if (list2.isEmpty()) {
@@ -148,6 +153,12 @@ public class Nevoa extends Entity {
 				} else {
 					int l = this.getLife();
 					this.setLife(l + 1);
+				}
+			}
+			List<Player> players = this.level.getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+			if (!players.isEmpty()){
+				for (Player player : players){
+					if (NexModel.get(player).nexLevel == 0) NexModel.get(player).setNexLevel(1);
 				}
 			}
 		}
