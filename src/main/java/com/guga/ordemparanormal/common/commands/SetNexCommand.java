@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.commands;
 
-import com.guga.ordemparanormal.common.capabilities.NexModel;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.network.SyncNex;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;

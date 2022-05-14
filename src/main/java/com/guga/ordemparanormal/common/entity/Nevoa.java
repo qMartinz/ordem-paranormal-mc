@@ -3,8 +3,11 @@ package com.guga.ordemparanormal.common.entity;
 import java.util.List;
 import java.util.Random;
 
-import com.guga.ordemparanormal.common.capabilities.NexModel;
+import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
+import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
 
@@ -15,10 +18,9 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -54,7 +56,7 @@ public class Nevoa extends Entity {
 	protected void defineSynchedData() {
 		this.getEntityData().define(DATA_RADIUS, 7);
 		this.getEntityData().define(DATA_INTENSITY, 1);
-		this.getEntityData().define(DATA_LIFE, 60);
+		this.getEntityData().define(DATA_LIFE, 80);
 	}
 
 	// Setters, para setar certos atributos da névoa
@@ -78,8 +80,8 @@ public class Nevoa extends Entity {
 	}
 
 	public void setLife(int life) {
-		if (life > 60) {
-			this.getEntityData().set(DATA_LIFE, 60);
+		if (life > 80) {
+			this.getEntityData().set(DATA_LIFE, 80);
 		} else {
 			this.getEntityData().set(DATA_LIFE, life);
 		}
@@ -118,52 +120,92 @@ public class Nevoa extends Entity {
 	public void tick() {
 		super.tick();
 		this.spawnNevoaParticles();
-		if (this.tickCount % 5 == 0) {
+
+		if (this.tickCount % 5 == 0){
 			double radius = this.getRadius();
-			List<CorpoEntity> list = this.level.getEntitiesOfClass(CorpoEntity.class,
-					this.getBoundingBox().inflate(radius, radius, radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-			// Se tiver um corpo dentro da nevoa, transforma em um zumbi de sangue
-			if (!list.isEmpty()) {
-				// Mantém a névoa ali caso tenha um corpo
+			List<CorpoEntity> corpos = this.level.getEntitiesOfClass(CorpoEntity.class,
+					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+			List<Monster> monstros = this.level.getEntitiesOfClass(Monster.class,
+					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+
+			// Manter a névoa se houver corpos ou monstros dentro e aumentar exposição dos tais.
+			if (!corpos.isEmpty() || !monstros.isEmpty()) {
 				int l = this.getLife();
 				++l;
 				this.setLife(l);
-				for (CorpoEntity corpo : list) {
-					if (corpo.isAlive()) {
-						int i = corpo.getExposure();
-						if (i < 150) {
-							corpo.setExposure(i + this.getIntensity());
+
+				for (CorpoEntity corpo : corpos) {
+					if (corpo.isAlive() && !ExpModel.get(corpo).isMaxExp()) {
+						float i = ExpModel.get(corpo).getExposure();
+						ExpModel.get(corpo).setExposure(i + (float) this.getIntensity() / 2);
+					} else if (corpo.isAlive() && ExpModel.get(corpo).isMaxExp()) {
+						transform(corpo, OPEntities.ZUMBI_SANGUE.get());
+					}
+				}
+
+				for (Monster monstro : monstros) {
+					ExpModel expModel = ExpModel.get(monstro);
+
+					if (monstro instanceof ZumbiSangue) {
+						float exp = expModel.getExposure();
+						expModel.setExposure(exp + (((float) this.getIntensity() - 3)/8));
+						if (expModel.isMaxExp()) {
+							transform(monstro, OPEntities.BESTIAL.get());
+						}
+					}
+
+					if (monstro instanceof Zombie) {
+						float exp = expModel.getExposure();
+						expModel.setExposure(exp + (float) this.getIntensity() / 2);
+						if (expModel.isMaxExp()) {
+							transform(monstro, OPEntities.ZUMBI_SANGUE.get());
 						}
 					}
 				}
 			} else {
-				List<Monster> list2 = this.level.getEntitiesOfClass(Monster.class,
-						this.getBoundingBox().inflate(radius, radius, radius),
-						EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-				List<Zombie> list3 = this.level.getEntitiesOfClass(Zombie.class,
-						this.getBoundingBox().inflate(radius, radius, radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-				// Checa se tem alguma criatura que gere medo dentro da névoa, se não, remove a
-				// névoa após um tempo
-				if (list2.isEmpty()) {
-					int l = this.getLife();
-					this.setLife(l - 1);
-					if (l <= 0) {
-						this.kill();
-					}
-				} else {
-					int l = this.getLife();
-					this.setLife(l + 1);
-				}
+				// Remove a névoa por não haver nada que traga medo suficiente para mantê-la lá.
+				int l = this.getLife();
+				--l;
+				this.setLife(l);
 			}
-			List<Player> players = this.level.getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-			if (!players.isEmpty()){
-				for (Player player : players){
+
+			// Instantaneamente converter players com 0% dentro da névoa em 1%.
+			List<Player> players = this.level.getEntitiesOfClass(Player.class,
+					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+			if (!players.isEmpty()) {
+				for (Player player : players) {
 					if (NexModel.get(player).nexLevel == 0) NexModel.get(player).setNexLevel(1);
 				}
 			}
 		}
 	}
 
+	public void transform(Mob entityIn, EntityType type) {
+		if (entityIn.isAlive()) {
+			Mob entityOut = (Mob) type.create(this.level);
+			entityOut.copyPosition(entityIn);
+			entityOut.setYRot(entityIn.getYRot());
+			entityOut.setXRot(entityIn.getXRot());
+
+			if (entityIn.hasCustomName()) {
+				entityOut.setCustomName(entityIn.getCustomName());
+				entityOut.setCustomNameVisible(entityIn.isCustomNameVisible());
+			}
+
+			if (entityIn.isLeashed()) {
+				entityOut.setLeashedTo(entityIn.getLeashHolder(), true);
+				entityIn.dropLeash(true, false);
+			}
+
+			if (entityIn.getVehicle() != null) {
+				entityOut.startRiding(entityIn.getVehicle());
+			}
+
+			entityOut.setHealth(entityOut.getMaxHealth());
+			entityIn.level.addFreshEntity(entityOut);
+			entityIn.discard();
+		}
+	}
 	@Override
 	protected void readAdditionalSaveData(CompoundTag data) {
 		this.setRadius(data.getInt("Radius"));

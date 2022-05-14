@@ -2,15 +2,25 @@ package com.guga.ordemparanormal.common.events;
 
 import java.util.List;
 
+import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
+import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +42,7 @@ public class EntityEvents {
 			corpo.copyPosition(entity);
 			level.addFreshEntity(corpo);
 			corpo.setYRot(entity.getYRot());
+			corpo.setXRot(entity.getXRot());
 			List<CorpoEntity> list1 = corpo.level.getEntitiesOfClass(CorpoEntity.class,
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
 			List<Nevoa> list2 = corpo.level.getEntitiesOfClass(Nevoa.class,
@@ -68,5 +79,22 @@ public class EntityEvents {
 			}
 		}
 		
+	}
+
+
+	// Adicionar Capabilities para entidades
+
+	@SubscribeEvent
+	public static void onRegisterCapabilites(RegisterCapabilitiesEvent event){
+		event.register(ExpModel.class);
+	}
+	@SubscribeEvent
+	public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event){
+		if (event.getObject() instanceof LivingEntity){
+			ExpModel expModel = new ExpModel();
+			ExpProvider provider = new ExpProvider(expModel);
+
+			event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "cap_exp"), provider);
+		}
 	}
 }

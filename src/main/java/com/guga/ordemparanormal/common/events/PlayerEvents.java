@@ -1,23 +1,19 @@
 package com.guga.ordemparanormal.common.events;
 
-import com.guga.ordemparanormal.common.capabilities.NexCapability;
-import com.guga.ordemparanormal.common.capabilities.NexModel;
-import com.guga.ordemparanormal.common.capabilities.NexProvider;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexProvider;
 import com.guga.ordemparanormal.common.commands.NexCommands;
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.common.network.SyncNex;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

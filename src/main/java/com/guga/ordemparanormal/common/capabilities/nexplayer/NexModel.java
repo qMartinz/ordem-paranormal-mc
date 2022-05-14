@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.capabilities;
+package com.guga.ordemparanormal.common.capabilities.nexplayer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;

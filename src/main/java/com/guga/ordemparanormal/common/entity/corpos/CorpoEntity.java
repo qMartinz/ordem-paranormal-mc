@@ -14,8 +14,6 @@ import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.level.Level;
 
 public abstract class CorpoEntity extends AmbientCreature{
-	protected int exposure;
-
 	public CorpoEntity(EntityType<? extends AmbientCreature> type, Level level) {
 		super(type, level);
 	}
@@ -31,41 +29,6 @@ public abstract class CorpoEntity extends AmbientCreature{
 			return SoundEvents.GENERIC_EXTINGUISH_FIRE;
 		} else {
 		return SoundEvents.TURTLE_EGG_BREAK;
-		}
-	}
-	
-	// Pega a "exposição" do corpo
-	public int getExposure() {
-		return this.exposure;
-	}
-	
-	// Seta a "exposição" do corpo para então transformá-lo em um zumbi quando atingir exposição maior que 149
-	public void setExposure(int exp) {
-		this.exposure = exp;
-		if (this.exposure > 149) {
-			this.transform();
-		}
-	}
-	
-	public void addAdditionalSaveData(CompoundTag data) {
-		super.addAdditionalSaveData(data);
-		data.putInt("Exposure", this.getExposure());
-	}
-	
-	public void readAdditionalSaveData(CompoundTag data) {
-	      super.readAdditionalSaveData(data);
-	      this.setExposure(data.getInt("Exposure"));
-	   }
-	
-	// Transforma o corpo em um zumbi de sangue
-	public void transform() {
-		if (this.isAlive()) {
-			ZumbiSangue zumbi = OPEntities.ZUMBI_SANGUE.get().create(this.level);
-			this.level.addFreshEntity(zumbi);
-			zumbi.copyPosition(this);
-			zumbi.setYRot(this.getYRot());
-			zumbi.setHealth(zumbi.getMaxHealth());
-			this.discard();
 		}
 	}
 	

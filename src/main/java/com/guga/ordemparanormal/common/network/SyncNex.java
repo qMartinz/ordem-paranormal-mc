@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.network;
 
-import com.guga.ordemparanormal.common.capabilities.NexModel;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;

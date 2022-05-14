@@ -1,9 +1,7 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
-import com.guga.ordemparanormal.common.capabilities.NexModel;
-import net.minecraft.world.Difficulty;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;

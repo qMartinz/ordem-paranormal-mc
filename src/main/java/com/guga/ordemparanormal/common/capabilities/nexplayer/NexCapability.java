@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.capabilities;
+package com.guga.ordemparanormal.common.capabilities.nexplayer;
 
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;

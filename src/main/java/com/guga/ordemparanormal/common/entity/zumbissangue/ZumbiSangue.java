@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
-import com.guga.ordemparanormal.common.capabilities.NexModel;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -21,8 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public class ZumbiSangue extends Monster {
-	protected int paranormalExp;
-
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 	}
@@ -38,42 +36,7 @@ public class ZumbiSangue extends Monster {
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, true));
 	}
-
-
-	// Transformação em Bestial
-	public int getParanormalExp() {
-		return this.paranormalExp;
-	}
-	
-	public void setParanormalExp(int exp) {
-		int i = this.paranormalExp;
-		this.paranormalExp = exp;
-		if (i > 4) {
-			this.growUp();
-		}
-	}
-	
-	public void killed(ServerLevel level, LivingEntity entity) {
-		super.killed(level, entity);
-		int i = this.getParanormalExp();
-		i += 1;
-		if (i < 0) {
-			i = 0;
-		}
-		this.setParanormalExp(i);
-	}
-	
-	public void addAdditionalSaveData(CompoundTag data) {
-	      super.addAdditionalSaveData(data);
-	      data.putInt("ParanormalExp", this.getParanormalExp());
-	   }
-	
-	public void readAdditionalSaveData(CompoundTag data) {
-	      super.readAdditionalSaveData(data);
-	      this.setParanormalExp(data.getInt("ParanormalExp"));
-	   }
-	
-	public Monster growUp() {
+	public Monster transform() {
 		if (this.isAlive()) {
 			Bestial bestial = OPEntities.BESTIAL.get().create(this.level);
 			bestial.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), this.getXRot());
