@@ -1,9 +1,5 @@
 package com.guga.ordemparanormal.common.entity.corpos;
 
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
-import com.guga.ordemparanormal.core.registry.OPEntities;
-
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;

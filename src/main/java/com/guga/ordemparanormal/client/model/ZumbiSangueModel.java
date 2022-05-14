@@ -34,7 +34,7 @@ public class ZumbiSangueModel<E extends ZumbiSangue> extends EntityModel<E> {
 	// Criar modelo
 	public ZumbiSangueModel(ModelPart root) {
 		this.torso = root.getChild("torso");
-		this.endimator = Endimator.shortCompile(root);
+		this.endimator = Endimator.compile(root);
 	}
 
 	// Definição de todas as partes do modelo

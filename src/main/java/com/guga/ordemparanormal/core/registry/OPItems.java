@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.teamabnormals.blueprint.common.item.BlueprintSpawnEggItem;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 
@@ -10,6 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -25,12 +25,10 @@ public final class OPItems {
 	public static final RegistryObject<Item> RITUAL_DESCARNAR = HELPER.createRDescarnar();
 	
 		// Ovos geradores
-	public static final RegistryObject<BlueprintSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
+	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
 			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7737617);
-	public static final RegistryObject<BlueprintSpawnEggItem> BESTIAL_OVO = HELPER.createSpawnEggItem(
+	public static final RegistryObject<ForgeSpawnEggItem> BESTIAL_OVO = HELPER.createSpawnEggItem(
 			"zumbi_bestial", OPEntities.BESTIAL::get, 7999247, 13875596);
-	public static final RegistryObject<BlueprintSpawnEggItem> ABERRADO_OVO = HELPER.createSpawnEggItem(
-			"aberrado", OPEntities.ABERRADO::get, 1126172, 8920604);
 
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens

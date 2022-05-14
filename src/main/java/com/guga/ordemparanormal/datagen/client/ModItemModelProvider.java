@@ -23,7 +23,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 			getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/generated")))
 				.texture("layer0", itemTexture);
 		} else {
-			System.out.println("Texture for " + item.getRegistryName().toString() + " not present at " + itemTexture.toString());
+			System.out.println("Texture for " + item.getRegistryName().toString() + " not present at " + itemTexture);
 		}
 	}
 	
@@ -39,7 +39,6 @@ public class ModItemModelProvider extends ItemModelProvider{
 	@Override
 	protected void registerModels() {
 		// Ovos
-		spawnEggItem(OPItems.ABERRADO_OVO.get());
 		spawnEggItem(OPItems.BESTIAL_OVO.get());
 		spawnEggItem(OPItems.ZUMBI_SANGUE_OVO.get());
 		

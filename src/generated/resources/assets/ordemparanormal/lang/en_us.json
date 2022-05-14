@@ -11,5 +11,6 @@
   "item.ordemparanormal.ritual_descarnar": "Rip flesh ritual",
   "item.ordemparanormal.zumbi_bestial_spawn_egg": "Bestial Blood zombie spawn egg",
   "item.ordemparanormal.zumbi_sangue_spawn_egg": "Blood zombie spawn egg",
-  "itemGroup.ordemparanormal": "Paranormal Order: MC"
+  "itemGroup.ordemparanormal": "Paranormal Order: MC",
+  "sounds.ordemparanormal.zumbi_sangue.growl": "Blood zombie growls"
 }

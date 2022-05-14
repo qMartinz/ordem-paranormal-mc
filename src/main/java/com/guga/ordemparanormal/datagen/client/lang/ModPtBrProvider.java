@@ -29,12 +29,10 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPItems.RITUAL_DESCARNAR.get(), "Ritual de descarnar");
 		
 		// Ovos
-		add(OPItems.ABERRADO_OVO.get(), "Ovo gerador de aberrado");
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
 		add(OPItems.ZUMBI_SANGUE_OVO.get(), "Ovo gerador de zumbi de Sangue");
 		
 		// Entidades
-		add(OPEntities.ABERRADO.get(), "Aberrado");
 		add(OPEntities.BESTIAL.get(), "Zumbi de Sangue bestial");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Zumbi de Sangue");
 		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeão");

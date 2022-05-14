@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[40,)"
 license="All rights reserved"
 [[mods]]
 modId="ordemparanormal"
@@ -14,18 +14,18 @@ O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria s
 [[dependencies.ordemparanormal]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.ordemparanormal]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.19)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.ordemparanormal]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[5.1.1,)"
+    versionRange = "[5.3.2,)"
     ordering = "BEFORE"
     side = "BOTH"

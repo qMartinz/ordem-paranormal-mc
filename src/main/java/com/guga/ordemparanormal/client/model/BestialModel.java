@@ -36,7 +36,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 	// Criar modelo
 	public BestialModel(ModelPart root) {
 		this.torso = root.getChild("torso");
-		this.endimator = Endimator.shortCompile(root);
+		this.endimator = Endimator.compile(root);
 
 	}
 

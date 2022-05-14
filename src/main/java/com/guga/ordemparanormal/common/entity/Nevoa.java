@@ -1,16 +1,11 @@
 package com.guga.ordemparanormal.common.entity;
 
-import java.util.List;
-import java.util.Random;
-
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
-import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -18,15 +13,19 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.PlayMessages;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Random;
 
 public class Nevoa extends Entity {
 	private static final EntityDataAccessor<Integer> DATA_RADIUS = SynchedEntityData.defineId(Nevoa.class,
@@ -72,19 +71,11 @@ public class Nevoa extends Entity {
 	}
 
 	public void setIntensity(int intensity) {
-		if (intensity > 5) {
-			this.getEntityData().set(DATA_INTENSITY, 5);
-		} else {
-			this.getEntityData().set(DATA_INTENSITY, intensity);
-		}
+		this.getEntityData().set(DATA_INTENSITY, Math.min(intensity, 5));
 	}
 
 	public void setLife(int life) {
-		if (life > 80) {
-			this.getEntityData().set(DATA_LIFE, 80);
-		} else {
-			this.getEntityData().set(DATA_LIFE, life);
-		}
+		this.getEntityData().set(DATA_LIFE, Math.min(life, 80));
 	}
 
 	// Getters, para pegar certos atributos da névoa
@@ -129,8 +120,8 @@ public class Nevoa extends Entity {
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 
 			// Manter a névoa se houver corpos ou monstros dentro e aumentar exposição dos tais.
+			int l = this.getLife();
 			if (!corpos.isEmpty() || !monstros.isEmpty()) {
-				int l = this.getLife();
 				++l;
 				this.setLife(l);
 
@@ -140,6 +131,8 @@ public class Nevoa extends Entity {
 						ExpModel.get(corpo).setExposure(i + (float) this.getIntensity() / 2);
 					} else if (corpo.isAlive() && ExpModel.get(corpo).isMaxExp()) {
 						transform(corpo, OPEntities.ZUMBI_SANGUE.get());
+						corpo.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
+						corpo.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
 					}
 				}
 
@@ -159,12 +152,14 @@ public class Nevoa extends Entity {
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()) {
 							transform(monstro, OPEntities.ZUMBI_SANGUE.get());
+							monstro.playSound(SoundEvents.ZOMBIE_DEATH, 0.2F, 0.7F);
+							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
+							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
 						}
 					}
 				}
 			} else {
 				// Remove a névoa por não haver nada que traga medo suficiente para mantê-la lá.
-				int l = this.getLife();
 				--l;
 				this.setLife(l);
 			}
@@ -180,12 +175,11 @@ public class Nevoa extends Entity {
 		}
 	}
 
-	public void transform(Mob entityIn, EntityType type) {
+	public void transform(Mob entityIn, EntityType<? extends LivingEntity> type) {
 		if (entityIn.isAlive()) {
 			Mob entityOut = (Mob) type.create(this.level);
-			entityOut.copyPosition(entityIn);
-			entityOut.setYRot(entityIn.getYRot());
-			entityOut.setXRot(entityIn.getXRot());
+			assert entityOut != null;
+			entityOut.moveTo(entityIn.getX(), entityIn.getY(), entityIn.getZ(), entityIn.getYRot(), entityIn.getXRot());
 
 			if (entityIn.hasCustomName()) {
 				entityOut.setCustomName(entityIn.getCustomName());
@@ -221,7 +215,7 @@ public class Nevoa extends Entity {
 	}
 
 	@Override
-	public Packet<?> getAddEntityPacket() {
+	public @NotNull Packet<?> getAddEntityPacket() {
 		return new ClientboundAddEntityPacket(this);
 	}
 

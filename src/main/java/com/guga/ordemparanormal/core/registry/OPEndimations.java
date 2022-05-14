@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class OPEndimations {
 	// Animações
-	public static final PlayableEndimation CORACAO_FLUTUANDO = register("coracaonevoa/flutuando", 4, PlayableEndimation.LoopType.LOOP);
+
 	
 	// Tipos de Loop
 	private static PlayableEndimation register(String name, int duration, PlayableEndimation.LoopType loopType) {

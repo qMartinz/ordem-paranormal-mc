@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
@@ -19,8 +18,6 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,10 +36,8 @@ public class EntityEvents {
 			AbstractVillager entity = (AbstractVillager) event.getEntity();
 			VillagerCorpo corpo = OPEntities.VILLAGER_CORPO.get().create(entity.level);
 
-			corpo.copyPosition(entity);
+			corpo.moveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
 			level.addFreshEntity(corpo);
-			corpo.setYRot(entity.getYRot());
-			corpo.setXRot(entity.getXRot());
 			List<CorpoEntity> list1 = corpo.level.getEntitiesOfClass(CorpoEntity.class,
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
 			List<Nevoa> list2 = corpo.level.getEntitiesOfClass(Nevoa.class,
@@ -51,11 +46,10 @@ public class EntityEvents {
 			if (list1.size() >= 3 && list2.isEmpty()) {
 				Nevoa nevoa = OPEntities.NEVOA.get().create(corpo.level);
 				nevoa.copyPosition(corpo);
-				level.addFreshEntity(nevoa);
 				nevoa.setIntensity(1);
 				nevoa.setRadius(10);
-				// Checa se já há uma névoa por perto e fortalece ela no lugar de criar uma
-				// névoa nova
+				level.addFreshEntity(nevoa);
+				// Checa se já há uma névoa por perto e fortalece ela no lugar de criar uma névoa nova
 			} else if (list1.size() >= 3 && !list2.isEmpty()) {
 				for (Nevoa nevoaExistente : list2) {
 					int i = nevoaExistente.getIntensity();

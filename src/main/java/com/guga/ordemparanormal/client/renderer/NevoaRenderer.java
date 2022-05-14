@@ -23,7 +23,7 @@ public class NevoaRenderer extends EntityRenderer<Nevoa>{
 	
 	public void render(Nevoa entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource source, int packedLightIn) {
 		poseStack.pushPose();
-		poseStack.translate(0.0D, (double)0.1F, 0.0D);
+		poseStack.translate(0.0D, 0.1F, 0.0D);
 		poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
 		VertexConsumer vertexConsumer = source.getBuffer(this.model.renderType(this.getTextureLocation(entity)));
 		this.model.renderToBuffer(poseStack, vertexConsumer, packedLightIn, packedLightIn, packedLightIn, entityYaw, partialTicks, packedLightIn);

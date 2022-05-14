@@ -11,5 +11,6 @@
   "item.ordemparanormal.ritual_descarnar": "Ritual de descarnar",
   "item.ordemparanormal.zumbi_bestial_spawn_egg": "Ovo gerador de zumbi de Sangue bestial",
   "item.ordemparanormal.zumbi_sangue_spawn_egg": "Ovo gerador de zumbi de Sangue",
-  "itemGroup.ordemparanormal": "Ordem Paranormal: MC"
+  "itemGroup.ordemparanormal": "Ordem Paranormal: MC",
+  "sounds.ordemparanormal.zumbi_sangue.growl": "Zumbi de sangue rosna"
 }

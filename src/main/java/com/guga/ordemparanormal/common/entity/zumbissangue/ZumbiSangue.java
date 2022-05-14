@@ -1,12 +1,11 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
-import com.guga.ordemparanormal.core.registry.OPEntities;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
+import com.guga.ordemparanormal.core.registry.OPSounds;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -36,32 +35,13 @@ public class ZumbiSangue extends Monster {
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, true));
 	}
-	public Monster transform() {
-		if (this.isAlive()) {
-			Bestial bestial = OPEntities.BESTIAL.get().create(this.level);
-			bestial.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), this.getXRot());
-
-			if (this.hasCustomName()) {
-				bestial.setCustomName(this.getCustomName());
-				bestial.setCustomNameVisible(this.isCustomNameVisible());
-			}
-
-			if (this.isLeashed()) {
-				bestial.setLeashedTo(this.getLeashHolder(), true);
-				this.dropLeash(true, false);
-			}
-
-			if (this.getVehicle() != null) {
-				bestial.startRiding(this.getVehicle());
-			}
-
-			bestial.setHealth(bestial.getMaxHealth());
-			this.level.addFreshEntity(bestial);
-			this.discard();
-
-			return bestial;
-		}
-		return this;
+	@Override
+	protected SoundEvent getHurtSound(DamageSource p_33034_) {
+		return SoundEvents.DOLPHIN_EAT;
+	}
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return OPSounds.ZUMBI_SANGUE_GROWL.get();
 	}
 
 	// Atributos
@@ -73,11 +53,10 @@ public class ZumbiSangue extends Monster {
 				.add(Attributes.ARMOR, 3.0D);
 	}
 
-	// Exposição paranormal concedido ao jogador
+	// Exposição paranormal concedida ao jogador
 	public void die(DamageSource source){
 		super.die(source);
-		if (this.getLastHurtByMob() instanceof Player){
-			Player player = (Player) this.getLastHurtByMob();
+		if (this.getLastHurtByMob() instanceof Player player){
 			NexModel.get(player).increaseXP(5D);
 		}
 	}

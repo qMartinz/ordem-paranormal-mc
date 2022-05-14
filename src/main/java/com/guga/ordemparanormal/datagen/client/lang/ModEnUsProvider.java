@@ -27,12 +27,10 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPItems.RITUAL_DESCARNAR.get(), "Rip flesh ritual");
 		
 		// Ovos
-		add(OPItems.ABERRADO_OVO.get(), "Aberrant spawn egg");
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
 		add(OPItems.ZUMBI_SANGUE_OVO.get(), "Blood zombie spawn egg");
 		
 		// Entidades
-		add(OPEntities.ABERRADO.get(), "Aberrant");
 		add(OPEntities.BESTIAL.get(), "Bestial Blood zombie");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Blood zombie");
 		add(OPEntities.VILLAGER_CORPO.get(), "Villager corpse");
