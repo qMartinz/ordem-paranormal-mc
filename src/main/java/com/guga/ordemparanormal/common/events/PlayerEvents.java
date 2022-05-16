@@ -1,6 +1,5 @@
 package com.guga.ordemparanormal.common.events;
 
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexProvider;
 import com.guga.ordemparanormal.common.commands.NexCommands;
@@ -44,9 +43,12 @@ public class PlayerEvents {
 
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event){
-        NexModel.get(event.getPlayer()).nexLevel = NexModel.get(event.getOriginal()).nexLevel;
-        NexModel.get(event.getPlayer()).nexXP = NexModel.get(event.getOriginal()).nexXP;
-        event.getOriginal().getCapability(NexCapability.INSTANCE).invalidate();
+        if (event.isWasDeath()){
+            event.getOriginal().reviveCaps();
+            NexModel.get(event.getPlayer()).nexLevel = NexModel.get(event.getOriginal()).nexLevel;
+            NexModel.get(event.getPlayer()).nexXP = NexModel.get(event.getOriginal()).nexXP;
+            event.getOriginal().invalidateCaps();
+        }
     }
 
     @SubscribeEvent

@@ -5,5 +5,5 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 
 public class ExpCapability {
-    public static Capability<ExpModel> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<ExpModel> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
 }

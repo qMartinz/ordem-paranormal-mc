@@ -18,7 +18,7 @@ public class NevoaRenderer extends EntityRenderer<Nevoa>{
 	
 	public NevoaRenderer(EntityRendererProvider.Context context) {
 	      super(context);
-	      this.model = new NevoaModel<Nevoa>(NevoaModel.createBodyLayer().bakeRoot());
+	      this.model = new NevoaModel<>(NevoaModel.createBodyLayer().bakeRoot());
 	   }
 	
 	public void render(Nevoa entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource source, int packedLightIn) {

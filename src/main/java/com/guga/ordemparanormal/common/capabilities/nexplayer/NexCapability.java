@@ -5,5 +5,5 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 
 public class NexCapability {
-    public static Capability<NexModel> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<NexModel> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
 }

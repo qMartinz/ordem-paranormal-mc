@@ -6,7 +6,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 public class ExpModel implements INBTSerializable<CompoundTag> {
     public float exposure;
-    public float maxExposure = 100.0F;
+    public final float maxExposure = 100.0F;
     public float getExposure(){ return exposure; }
     public void setExposure(float level){ exposure = level; }
 

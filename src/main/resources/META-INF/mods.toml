@@ -8,9 +8,7 @@ displayName="Ordem Paranormal"
 logoFile="ordemparanormal.png"
 credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e Lye por criar as texturas."
 authors="Guga"
-description='''
-O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...
-'''
+description='''O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...'''
 [[dependencies.ordemparanormal]]
     modId="forge"
     mandatory=true

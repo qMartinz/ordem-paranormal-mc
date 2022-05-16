@@ -41,9 +41,7 @@ public class OrdemParanormal {
 	public static final String MOD_ID = "ordemparanormal";
 
 	public static SimpleChannel network;
-	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> {
-		helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper));
-	});
+	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
 	
 	// Abas do modo criativo
 	public static final CreativeModeTab OP_ITENS = new CreativeModeTab(MOD_ID) {		
@@ -61,9 +59,7 @@ public class OrdemParanormal {
 		REGISTRY_HELPER.register(bus);
 		OPParticles.PARTICLE_TYPES.register(bus);
 		
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			bus.addListener(this::rendererSetup);
-		});
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 		
 		MinecraftForge.EVENT_BUS.register(this);
 
@@ -71,22 +67,20 @@ public class OrdemParanormal {
 		bus.addListener(this::dataSetup);
 	}
 
+	// Registrar renderizadores
+	@OnlyIn(Dist.CLIENT)
+	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
+		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
+		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
+		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
+		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
+	}
 	private void commonSetup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			network = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, "network"), () -> "1.0", s -> true, s -> true);
 			network.registerMessage(0, SyncNex.class, SyncNex::encode, SyncNex::new, SyncNex::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
 		});
 	}
-	
-	// Registrar renderizadores
-	@OnlyIn(Dist.CLIENT)
-	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
-		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
-		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
-		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
-	}
-	
 	private void dataSetup(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		ExistingFileHelper helper = event.getExistingFileHelper();

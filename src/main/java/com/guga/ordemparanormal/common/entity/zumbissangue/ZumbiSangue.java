@@ -18,6 +18,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class ZumbiSangue extends Monster {
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
@@ -35,14 +36,6 @@ public class ZumbiSangue extends Monster {
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, true));
 	}
-	@Override
-	protected SoundEvent getHurtSound(DamageSource p_33034_) {
-		return SoundEvents.DOLPHIN_EAT;
-	}
-	@Override
-	protected SoundEvent getAmbientSound() {
-		return OPSounds.ZUMBI_SANGUE_GROWL.get();
-	}
 
 	// Atributos
 	public static AttributeSupplier.Builder createZumbiSangueAttributes() {
@@ -51,6 +44,15 @@ public class ZumbiSangue extends Monster {
 				.add(Attributes.MOVEMENT_SPEED, 0.35F)
 				.add(Attributes.ATTACK_DAMAGE, 9.0D)
 				.add(Attributes.ARMOR, 3.0D);
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(@NotNull DamageSource source) {
+		return SoundEvents.DOLPHIN_EAT;
+	}
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return OPSounds.ZUMBI_SANGUE_GROWL.get();
 	}
 
 	// Exposição paranormal concedida ao jogador

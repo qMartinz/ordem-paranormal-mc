@@ -12,13 +12,13 @@ public class VillagerCorpoRenderer extends MobRenderer<VillagerCorpo, VillagerCo
 	private static final ResourceLocation TEXTURE = OrdemParanormal.REGISTRY_HELPER.prefix("textures/entity/villager_corpo.png");
 
 	// Renderizar modelo
-		public VillagerCorpoRenderer(EntityRendererProvider.Context context) {
-			super(context, new VillagerCorpoModel<>(context.bakeLayer(VillagerCorpoModel.LAYER_LOCATION)), 0.3F);
-		}
+	public VillagerCorpoRenderer(EntityRendererProvider.Context context) {
+		super(context, new VillagerCorpoModel<>(), 0.3F);
+	}
 		
 	// Textura
-		@Override
-		public ResourceLocation getTextureLocation(VillagerCorpo entity) {
-			return TEXTURE;
-		}
+	@Override
+	public ResourceLocation getTextureLocation(VillagerCorpo entity) {
+		return TEXTURE;
+	}
 }

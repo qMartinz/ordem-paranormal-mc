@@ -1,5 +1,4 @@
 package com.guga.ordemparanormal.client.model;
-// Made with Blockbench 4.1.5
 
 import java.util.function.Supplier;
 
@@ -27,17 +26,15 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 			new ResourceLocation(OrdemParanormal.MOD_ID, "zumbi_bestial"), "main");
 	
 	// Animação de caminhada
-		private static final Supplier<Endimation> WALKING = () -> Blueprint.ENDIMATION_LOADER.getEndimation(
-				new ResourceLocation(OrdemParanormal.MOD_ID, "bestial/walking"));
+	private static final Supplier<Endimation> WALKING = () -> Blueprint.ENDIMATION_LOADER.getEndimation(
+			new ResourceLocation(OrdemParanormal.MOD_ID, "bestial/walking"));
 
 	private final ModelPart torso;
 	private final Endimator endimator;
 
 	// Criar modelo
-	public BestialModel(ModelPart root) {
-		this.torso = root.getChild("torso");
-		this.endimator = Endimator.compile(root);
-
+	public BestialModel() {
+		this.endimator = Endimator.compile(this.torso = createBodyLayer().bakeRoot());
 	}
 
 	// Definição de todas as partes do modelo
@@ -146,10 +143,10 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 	}
 	
 	// Calcular tempo de caminhada
-			private static float computeWalkTime(float limbSwing, float length) {
-				float period = length * 5.0F;
-				return (((limbSwing + period) % period) / period) * length;
-			}
+	private static float computeWalkTime(float limbSwing, float length) {
+		float period = length * 5.0F;
+		return (((limbSwing + period) % period) / period) * length;
+	}
 
 	// Animar
 	@Override

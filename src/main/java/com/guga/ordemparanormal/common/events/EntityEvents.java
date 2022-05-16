@@ -15,6 +15,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -32,8 +33,7 @@ public class EntityEvents {
 		LevelAccessor level = event.getEntity().level;
 		
 		// Checa se um villager morreu e cria um corpo no seu lugar
-		if (event.getEntity() instanceof AbstractVillager) {
-			AbstractVillager entity = (AbstractVillager) event.getEntity();
+		if (event.getEntity() instanceof AbstractVillager entity) {
 			VillagerCorpo corpo = OPEntities.VILLAGER_CORPO.get().create(entity.level);
 
 			corpo.moveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
@@ -50,7 +50,7 @@ public class EntityEvents {
 				nevoa.setRadius(10);
 				level.addFreshEntity(nevoa);
 				// Checa se já há uma névoa por perto e fortalece ela no lugar de criar uma névoa nova
-			} else if (list1.size() >= 3 && !list2.isEmpty()) {
+			} else if (list1.size() >= 3) {
 				for (Nevoa nevoaExistente : list2) {
 					int i = nevoaExistente.getIntensity();
 					int r = (int) nevoaExistente.getRadius();
@@ -84,7 +84,7 @@ public class EntityEvents {
 	}
 	@SubscribeEvent
 	public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event){
-		if (event.getObject() instanceof LivingEntity){
+		if (event.getObject() instanceof LivingEntity && !(event.getObject() instanceof Player)){
 			ExpModel expModel = new ExpModel();
 			ExpProvider provider = new ExpProvider(expModel);
 

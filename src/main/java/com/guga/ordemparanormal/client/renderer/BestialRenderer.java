@@ -12,7 +12,7 @@ public final class BestialRenderer extends MobRenderer<Bestial, BestialModel<Bes
 	
 	// Renderizar modelo
 	public BestialRenderer(EntityRendererProvider.Context context) {
-		super(context, new BestialModel<>(context.bakeLayer(BestialModel.LAYER_LOCATION)), 1.0F);
+		super(context, new BestialModel<>(), 1.0F);
 	}
 	
 	// Textura

@@ -8,7 +8,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 public class NexModel implements INBTSerializable<CompoundTag> {
     public int nexLevel;
     public double nexXP;
-    public int maxNex = 99;
+    public final int maxNex = 99;
 
     public int getNexLevel(){ return nexLevel; }
     public void setNexLevel(int level){ nexLevel = level; }
@@ -52,7 +52,6 @@ public class NexModel implements INBTSerializable<CompoundTag> {
                 new IllegalArgumentException("Player does not have a NeX Model!")
         );
     }
-
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();

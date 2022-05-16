@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.20'
     implementation fg.deobf("com.teamabnormals:blueprint:1.18.2-5.3.2")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

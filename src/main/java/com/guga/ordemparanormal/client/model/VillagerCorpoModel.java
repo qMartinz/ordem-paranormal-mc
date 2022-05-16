@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
+import com.teamabnormals.blueprint.core.endimator.Endimator;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -23,8 +24,8 @@ public class VillagerCorpoModel<T extends VillagerCorpo> extends EntityModel<T> 
 	private final ModelPart body;
 
 	// Criar modelo
-	public VillagerCorpoModel(ModelPart root) {
-		this.body = root.getChild("body");
+	public VillagerCorpoModel() {
+		Endimator endimator = Endimator.compile(this.body = createBodyLayer().bakeRoot());
 	}
 
 	// Definir partes do modelo

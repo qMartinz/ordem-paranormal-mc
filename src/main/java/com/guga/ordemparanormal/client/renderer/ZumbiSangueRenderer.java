@@ -9,12 +9,12 @@ import net.minecraft.resources.ResourceLocation;
 
 public final class ZumbiSangueRenderer extends MobRenderer<ZumbiSangue, ZumbiSangueModel<ZumbiSangue>> {
 	private static final ResourceLocation TEXTURE = OrdemParanormal.REGISTRY_HELPER.prefix("textures/entity/zumbi_sangue.png");
-	
+
 	// Renderizar modelo
 	public ZumbiSangueRenderer(EntityRendererProvider.Context context) {
-		super(context, new ZumbiSangueModel<>(context.bakeLayer(ZumbiSangueModel.LAYER_LOCATION)), 0.3F);
+		super(context, new ZumbiSangueModel<>(), 0.6F);
 	}
-	
+
 	// Textura
 	@Override
 	public ResourceLocation getTextureLocation(ZumbiSangue entity) {
