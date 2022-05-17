@@ -36,6 +36,7 @@ minecraft {
             property 'mixin.env.remapRefMap', 'true'
 			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 			arg "-mixin.config=ordemparanormal.mixin.json"
+            jvmArgs "-Xmx4096m", "-Xms4096m"
             mods {
                 ordemparanormal {
                     source sourceSets.main

@@ -51,29 +51,22 @@ public class OrdemParanormal {
 			return new ItemStack(OPItems.GRIMORIO_SANGUE.get());
 		}
 	};
-		
+
 	public OrdemParanormal() {
 		// Event Bus para registrar coisas do mod
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		
+
 		REGISTRY_HELPER.register(bus);
 		OPParticles.PARTICLE_TYPES.register(bus);
-		
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
-		
+
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+			bus.addListener(this::rendererSetup);
+		});
+
 		MinecraftForge.EVENT_BUS.register(this);
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::dataSetup);
-	}
-
-	// Registrar renderizadores
-	@OnlyIn(Dist.CLIENT)
-	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
-		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
-		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
-		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 	}
 	private void commonSetup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
@@ -84,13 +77,19 @@ public class OrdemParanormal {
 	private void dataSetup(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		ExistingFileHelper helper = event.getExistingFileHelper();
-		
+
 		// Geração de Data do Cliente
 		if (event.includeClient()) {
 			generator.addProvider(new ModItemModelProvider(generator, helper));
 			generator.addProvider(new ModPtBrProvider(generator));
 			generator.addProvider(new ModEnUsProvider(generator));
 		}
-		
+	}
+	@OnlyIn(Dist.CLIENT)
+	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
+		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
+		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
+		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
+		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 	}
 }
