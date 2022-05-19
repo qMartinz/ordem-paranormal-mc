@@ -38,7 +38,6 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 	}
 
 	// Definição de todas as partes do modelo
-	@SuppressWarnings("unused")
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
@@ -65,7 +64,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 						new CubeDeformation(0.0F)),
 				PartPose.offsetAndRotation(-5.3765F, -0.3039F, -8.8597F, 0.2565F, -0.5322F, 0.1905F));
 
-		PartDefinition rightforearm = rightarm.addOrReplaceChild("rightforearm",
+		rightarm.addOrReplaceChild("rightforearm",
 				CubeListBuilder.create().texOffs(16, 44).addBox(-2.0853F, 0.0881F, -2.0792F, 4.0F, 9.0F, 4.0F,
 						new CubeDeformation(0.0F)),
 				PartPose.offsetAndRotation(-1.0F, 6.5497F, 0.3557F, -0.8801F, -0.1382F, 0.1069F));
@@ -75,7 +74,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 						.addBox(-0.4147F, -1.337F, -1.7564F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false),
 				PartPose.offsetAndRotation(5.5999F, -0.3039F, -8.8597F, 0.2565F, 0.5322F, -0.1905F));
 
-		PartDefinition leftforearm = leftarm.addOrReplaceChild("leftforearm",
+		leftarm.addOrReplaceChild("leftforearm",
 				CubeListBuilder.create().texOffs(16, 44).mirror()
 						.addBox(-1.9147F, 0.0881F, -2.0792F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false),
 				PartPose.offsetAndRotation(1.5F, 6.5497F, 0.3557F, -0.8801F, 0.1382F, -0.1069F));

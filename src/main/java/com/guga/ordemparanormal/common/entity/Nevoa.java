@@ -15,6 +15,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
@@ -213,7 +215,6 @@ public class Nevoa extends Entity {
 		data.putInt("Intensity", this.getIntensity());
 		data.putInt("Life", this.getLife());
 	}
-
 	@Override
 	public @NotNull Packet<?> getAddEntityPacket() {
 		return new ClientboundAddEntityPacket(this);

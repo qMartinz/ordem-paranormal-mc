@@ -26,7 +26,7 @@ public final class OPEntities {
 	public static final RegistryObject<EntityType<VillagerCorpo>> VILLAGER_CORPO = HELPER.createLivingEntity(
 			"villager_corpo", VillagerCorpo::new, MobCategory.AMBIENT, 1.2F, 0.2F);
 	public static final RegistryObject<EntityType<Nevoa>> NEVOA = HELPER.createEntity(
-			"nevoa", Nevoa::new, Nevoa::new, MobCategory.AMBIENT, 0F, 0F);
+			"nevoa", Nevoa::new, Nevoa::new, MobCategory.MISC, 0F, 0F);
 	
 	// Registrar Atributos
 	@SubscribeEvent

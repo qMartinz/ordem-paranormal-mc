@@ -13,6 +13,7 @@ public final class ZumbiSangueRenderer extends MobRenderer<ZumbiSangue, ZumbiSan
 	// Renderizar modelo
 	public ZumbiSangueRenderer(EntityRendererProvider.Context context) {
 		super(context, new ZumbiSangueModel<>(), 0.6F);
+		System.out.println("ZdS Renderer called!");
 	}
 
 	// Textura

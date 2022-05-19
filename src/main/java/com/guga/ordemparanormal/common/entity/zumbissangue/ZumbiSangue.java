@@ -1,7 +1,11 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
+import com.guga.ordemparanormal.core.registry.OPEndimations;
 import com.guga.ordemparanormal.core.registry.OPSounds;
+import com.teamabnormals.blueprint.core.endimator.Endimatable;
+import com.teamabnormals.blueprint.core.endimator.effects.EndimationEffectHandler;
+import com.teamabnormals.blueprint.core.util.NetworkUtil;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -18,9 +22,11 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-public class ZumbiSangue extends Monster {
+public class ZumbiSangue extends Monster implements Endimatable {
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 	}
@@ -35,6 +41,11 @@ public class ZumbiSangue extends Monster {
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, true));
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
 	}
 
 	// Atributos
@@ -56,7 +67,7 @@ public class ZumbiSangue extends Monster {
 	}
 
 	// Exposição paranormal concedida ao jogador
-	public void die(DamageSource source){
+	public void die(@NotNull DamageSource source){
 		super.die(source);
 		if (this.getLastHurtByMob() instanceof Player player){
 			NexModel.get(player).increaseXP(5D);

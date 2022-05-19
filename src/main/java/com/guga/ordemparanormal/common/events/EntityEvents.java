@@ -75,9 +75,7 @@ public class EntityEvents {
 		
 	}
 
-
 	// Adicionar Capabilities para entidades
-
 	@SubscribeEvent
 	public static void onRegisterCapabilites(RegisterCapabilitiesEvent event){
 		event.register(ExpModel.class);
