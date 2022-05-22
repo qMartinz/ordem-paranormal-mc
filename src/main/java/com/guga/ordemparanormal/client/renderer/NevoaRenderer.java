@@ -4,14 +4,10 @@ import com.guga.ordemparanormal.client.model.NevoaModel;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 
 public final class NevoaRenderer extends EntityRenderer<Nevoa>{
 	private final NevoaModel<Nevoa> model;

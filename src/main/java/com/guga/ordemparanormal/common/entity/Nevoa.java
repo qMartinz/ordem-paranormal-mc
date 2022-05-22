@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.common.entity;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
+import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
@@ -15,9 +16,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -36,11 +36,9 @@ public class Nevoa extends Entity {
 			EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DATA_LIFE = SynchedEntityData.defineId(Nevoa.class,
 			EntityDataSerializers.INT);
-
 	public Nevoa(EntityType<? extends Nevoa> type, Level level) {
 		super(type, level);
 	}
-
 	public Nevoa(Level level, double x, double y, double z) {
 		this(OPEntities.NEVOA.get(), level);
 		this.setPos(x, y, z);
@@ -49,11 +47,9 @@ public class Nevoa extends Entity {
 		this.yo = y;
 		this.zo = z;
 	}
-
 	public Nevoa(PlayMessages.SpawnEntity spawnEntity, Level level) {
 		this(OPEntities.NEVOA.get(), level);
 	}
-
 	protected void defineSynchedData() {
 		this.getEntityData().define(DATA_RADIUS, 7);
 		this.getEntityData().define(DATA_INTENSITY, 1);
@@ -61,7 +57,6 @@ public class Nevoa extends Entity {
 	}
 
 	// Setters, para setar certos atributos da névoa
-
 	public void setRadius(int size) {
 		if (!this.level.isClientSide) {
 			if (this.getEntityData().get(DATA_RADIUS) < 45) {
@@ -71,7 +66,6 @@ public class Nevoa extends Entity {
 			}
 		}
 	}
-
 	public void setIntensity(int intensity) {
 		this.getEntityData().set(DATA_INTENSITY, Math.min(intensity, 5));
 	}
@@ -81,19 +75,15 @@ public class Nevoa extends Entity {
 	}
 
 	// Getters, para pegar certos atributos da névoa
-
 	public double getRadius() {
 		return this.getEntityData().get(DATA_RADIUS).doubleValue();
 	}
-
 	public int getIntensity() {
 		return this.getEntityData().get(DATA_INTENSITY);
 	}
-
 	public int getLife() {
 		return this.getEntityData().get(DATA_LIFE);
 	}
-
 	private void spawnNevoaParticles() {
 		Random random = new Random();
 		double radius = this.getRadius();
@@ -132,7 +122,12 @@ public class Nevoa extends Entity {
 						float i = ExpModel.get(corpo).getExposure();
 						ExpModel.get(corpo).setExposure(i + (float) this.getIntensity() / 2);
 					} else if (corpo.isAlive() && ExpModel.get(corpo).isMaxExp()) {
-						transform(corpo, OPEntities.ZUMBI_SANGUE.get());
+						EntityType[] zumbiSangue = new EntityType[]{
+								OPEntities.ZUMBI_SANGUE.get(),
+								OPEntities.ZUMBI_SECO.get(),
+								OPEntities.ZUMBI_ESPINHENTO.get()
+						};
+						transform(corpo, zumbiSangue[random.nextInt(zumbiSangue.length)]);
 						corpo.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
 						corpo.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
 					}
@@ -141,9 +136,9 @@ public class Nevoa extends Entity {
 				for (Monster monstro : monstros) {
 					ExpModel expModel = ExpModel.get(monstro);
 
-					if (monstro instanceof ZumbiSangue) {
+					if (monstro instanceof ZumbiSangue && !(monstro instanceof Bestial)) {
 						float exp = expModel.getExposure();
-						expModel.setExposure(exp + (((float) this.getIntensity() - 3)/8));
+						expModel.setExposure(exp + (random.nextFloat(((float) this.getIntensity() - 3)/8)));
 						if (expModel.isMaxExp()) {
 							transform(monstro, OPEntities.BESTIAL.get());
 						}
@@ -155,6 +150,17 @@ public class Nevoa extends Entity {
 						if (expModel.isMaxExp()) {
 							transform(monstro, OPEntities.ZUMBI_SANGUE.get());
 							monstro.playSound(SoundEvents.ZOMBIE_DEATH, 0.2F, 0.7F);
+							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
+							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
+						}
+					}
+
+					if (monstro instanceof Skeleton){
+						float exp = expModel.getExposure();
+						expModel.setExposure(exp + (float) this.getIntensity() / 2);
+						if (expModel.isMaxExp()){
+							transform(monstro, OPEntities.ZUMBI_SECO.get());
+							monstro.playSound(SoundEvents.SKELETON_DEATH, 0.2F, 0.7F);
 							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
 							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
 						}
@@ -171,13 +177,13 @@ public class Nevoa extends Entity {
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {
 				for (Player player : players) {
-					if (NexModel.get(player).nexLevel == 0) NexModel.get(player).setNexLevel(1);
+					if (NexModel.get(player).nexLevel == 0) NexModel.get(player).giveNexXP(10);
 				}
 			}
 		}
 	}
 
-	public void transform(Mob entityIn, EntityType<? extends LivingEntity> type) {
+	public LivingEntity transform(Mob entityIn, EntityType<? extends LivingEntity> type) {
 		if (entityIn.isAlive()) {
 			Mob entityOut = (Mob) type.create(this.level);
 			assert entityOut != null;
@@ -200,7 +206,9 @@ public class Nevoa extends Entity {
 			entityOut.setHealth(entityOut.getMaxHealth());
 			entityIn.level.addFreshEntity(entityOut);
 			entityIn.discard();
+			return entityOut;
 		}
+		return entityIn;
 	}
 	@Override
 	protected void readAdditionalSaveData(CompoundTag data) {

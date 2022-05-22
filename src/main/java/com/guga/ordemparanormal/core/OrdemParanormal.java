@@ -1,9 +1,7 @@
 package com.guga.ordemparanormal.core;
 
-import com.guga.ordemparanormal.client.renderer.BestialRenderer;
-import com.guga.ordemparanormal.client.renderer.NevoaRenderer;
-import com.guga.ordemparanormal.client.renderer.VillagerCorpoRenderer;
-import com.guga.ordemparanormal.client.renderer.ZumbiSangueRenderer;
+import com.guga.ordemparanormal.client.renderer.*;
+import com.guga.ordemparanormal.client.ui.NexOverlay;
 import com.guga.ordemparanormal.common.network.SyncNex;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPItems;
@@ -12,7 +10,6 @@ import com.guga.ordemparanormal.datagen.client.ModItemModelProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModEnUsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModPtBrProvider;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -25,6 +22,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
@@ -66,7 +64,7 @@ public class OrdemParanormal {
 		MinecraftForge.EVENT_BUS.register(this);
 
 		bus.addListener(this::commonSetup);
-		bus.addListener(this::dataSetup);
+		bus.addListener(this::clientSetup);
 	}
 	private void commonSetup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
@@ -74,23 +72,17 @@ public class OrdemParanormal {
 			network.registerMessage(0, SyncNex.class, SyncNex::encode, SyncNex::new, SyncNex::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
 		});
 	}
-	private void dataSetup(GatherDataEvent event) {
-		DataGenerator generator = event.getGenerator();
-		ExistingFileHelper helper = event.getExistingFileHelper();
-
-		// Geração de Data do Cliente
-		if (event.includeClient()) {
-			generator.addProvider(new ModItemModelProvider(generator, helper));
-			generator.addProvider(new ModPtBrProvider(generator));
-			generator.addProvider(new ModEnUsProvider(generator));
-		}
-	}
 	@OnlyIn(Dist.CLIENT)
 	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
 		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
+		event.registerEntityRenderer(OPEntities.ZUMBI_SECO.get(), ZumbiSecoRenderer::new);
+		event.registerEntityRenderer(OPEntities.ZUMBI_ESPINHENTO.get(), ZumbiEspinhentoRenderer::new);
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
-		System.out.println("Renderers registered!");
+	}
+
+	private void clientSetup(final FMLClientSetupEvent event){
+		MinecraftForge.EVENT_BUS.register(new NexOverlay());
 	}
 }

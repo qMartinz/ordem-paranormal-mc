@@ -1,16 +1,21 @@
 {
-  "entity.ordemparanormal.aberrado": "Aberrado",
-  "entity.ordemparanormal.villager_corpo": "Corpo de Alde\u00E3o",
+  "entity.ordemparanormal.villager_corpo": "Corpo de Aldeão",
   "entity.ordemparanormal.zumbi_bestial": "Zumbi de Sangue bestial",
+  "entity.ordemparanormal.zumbi_espinhento": "Zumbi de Sangue espinhento",
   "entity.ordemparanormal.zumbi_sangue": "Zumbi de Sangue",
-  "item.ordemparanormal.aberrado_spawn_egg": "Ovo gerador de aberrado",
+  "entity.ordemparanormal.zumbi_seco": "Zumbi de Sangue seco",
   "item.ordemparanormal.cinzas": "Cinzas",
-  "item.ordemparanormal.grimorio_energia": "Grim\u00F3rio de Energia",
-  "item.ordemparanormal.grimorio_sangue": "Grim\u00F3rio de Sangue",
-  "item.ordemparanormal.orgao": "\u00D3rg\u00E3o",
+  "item.ordemparanormal.grimorio_energia": "Grimório de Energia",
+  "item.ordemparanormal.grimorio_sangue": "Grimório de Sangue",
+  "item.ordemparanormal.orgao": "Órgão",
   "item.ordemparanormal.ritual_descarnar": "Ritual de descarnar",
   "item.ordemparanormal.zumbi_bestial_spawn_egg": "Ovo gerador de zumbi de Sangue bestial",
+  "item.ordemparanormal.zumbi_espinhento_spawn_egg": "Ovo gerador de zumbi de Sangue espinhento",
   "item.ordemparanormal.zumbi_sangue_spawn_egg": "Ovo gerador de zumbi de Sangue",
+  "item.ordemparanormal.zumbi_seco_spawn_egg": "Ovo gerador de zumbi de Sangue seco",
   "itemGroup.ordemparanormal": "Ordem Paranormal: MC",
-  "sounds.ordemparanormal.zumbi_sangue.growl": "Zumbi de sangue rosna"
+  "nex.abbreviation": "NeX",
+  "nex.title": "Exposição Paranormal",
+  "sounds.ordemparanormal.zumbi_bestial.growl": "Grunhido de zumbi de Sangue bestial",
+  "sounds.ordemparanormal.zumbi_sangue.growl": "Grunhido de zumbi de Sangue"
 }

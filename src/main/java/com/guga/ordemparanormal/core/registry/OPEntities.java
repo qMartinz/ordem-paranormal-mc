@@ -3,10 +3,11 @@ package com.guga.ordemparanormal.core.registry;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSeco;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
-
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -23,6 +24,11 @@ public final class OPEntities {
 			"zumbi_sangue", ZumbiSangue::new, MobCategory.MONSTER, 0.6F, 1.6F);
 	public static final RegistryObject<EntityType<Bestial>> BESTIAL = HELPER.createLivingEntity(
 			"zumbi_bestial", Bestial::new, MobCategory.MONSTER, 1.8F, 1.3F);
+	public static final RegistryObject<EntityType<ZumbiSeco>> ZUMBI_SECO = HELPER.createLivingEntity(
+			"zumbi_seco", ZumbiSeco::new, MobCategory.MONSTER, 0.6F, 1.6F);
+
+	public static final RegistryObject<EntityType<ZumbiEspinhento>> ZUMBI_ESPINHENTO = HELPER.createLivingEntity(
+			"zumbi_espinhento", ZumbiEspinhento::new, MobCategory.MONSTER, 0.6F, 1.6F);
 	public static final RegistryObject<EntityType<VillagerCorpo>> VILLAGER_CORPO = HELPER.createLivingEntity(
 			"villager_corpo", VillagerCorpo::new, MobCategory.AMBIENT, 1.2F, 0.2F);
 	public static final RegistryObject<EntityType<Nevoa>> NEVOA = HELPER.createEntity(
@@ -33,6 +39,8 @@ public final class OPEntities {
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
 		event.put(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangue.createZumbiSangueAttributes().build());
 		event.put(OPEntities.BESTIAL.get(), Bestial.createBestialAttributes().build());
+		event.put(OPEntities.ZUMBI_SECO.get(), ZumbiSeco.createZumbiSecoAttributes().build());
+		event.put(OPEntities.ZUMBI_ESPINHENTO.get(), ZumbiEspinhento.createZumbiEspinhentoAttributes().build());
 		event.put(OPEntities.VILLAGER_CORPO.get(), VillagerCorpo.createCorpseAttributes().build());
 	}
 }

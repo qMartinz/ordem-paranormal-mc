@@ -1,11 +1,8 @@
 package com.guga.ordemparanormal.common.events;
 
-import java.util.Random;
-
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPItems;
-
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -13,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+
+import java.util.Random;
 
 @EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class LootEvents {

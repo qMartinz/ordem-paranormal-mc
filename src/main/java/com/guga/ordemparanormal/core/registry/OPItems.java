@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.core.registry;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -26,10 +25,14 @@ public final class OPItems {
 	
 		// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
-			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7737617);
+			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7999247);
 	public static final RegistryObject<ForgeSpawnEggItem> BESTIAL_OVO = HELPER.createSpawnEggItem(
 			"zumbi_bestial", OPEntities.BESTIAL::get, 7999247, 13875596);
+	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SECO_OVO = HELPER.createSpawnEggItem(
+			"zumbi_seco", OPEntities.ZUMBI_SECO::get, 7999247, 2428687);
 
+	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_ESPINHENTO_OVO = HELPER.createSpawnEggItem(
+			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens
 		public Helper(RegistryHelper parent) {

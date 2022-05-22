@@ -16,7 +16,11 @@ public abstract class CorpoEntity extends AmbientCreature{
 	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
-		return SoundEvents.DOLPHIN_EAT;
+		if (source != DamageSource.IN_WALL) {
+			return SoundEvents.DOLPHIN_EAT;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override

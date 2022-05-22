@@ -8,7 +8,6 @@ import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;

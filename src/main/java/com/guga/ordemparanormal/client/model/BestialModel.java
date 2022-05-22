@@ -1,7 +1,5 @@
 package com.guga.ordemparanormal.client.model;
 
-import java.util.function.Supplier;
-
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -9,17 +7,14 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.teamabnormals.blueprint.core.Blueprint;
 import com.teamabnormals.blueprint.core.endimator.Endimation;
 import com.teamabnormals.blueprint.core.endimator.Endimator;
-
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.function.Supplier;
 
 public class BestialModel<T extends Bestial> extends EntityModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(

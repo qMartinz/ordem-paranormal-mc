@@ -21,7 +21,6 @@ public class SyncNex {
     public SyncNex(FriendlyByteBuf buffer){
         nexModel = buffer.readNbt();
     }
-
     public void encode(FriendlyByteBuf buffer){
         buffer.writeNbt(nexModel);
     }

@@ -1,6 +1,8 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
+import com.guga.ordemparanormal.core.registry.OPSounds;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -44,11 +46,16 @@ public class Bestial extends ZumbiSangue {
 				.add(Attributes.ARMOR, 5.0D);
 	}
 
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return OPSounds.ZUMBI_BESTIAL_GROWL.get();
+	}
+
 	// Exposição paranormal concedido ao jogador
 	public void die(DamageSource source){
 		super.die(source);
 		if (this.getLastHurtByMob() instanceof Player player){
-			NexModel.get(player).increaseXP(12D);
+			NexModel.get(player).giveNexXP(12D);
 		}
 	}
 }

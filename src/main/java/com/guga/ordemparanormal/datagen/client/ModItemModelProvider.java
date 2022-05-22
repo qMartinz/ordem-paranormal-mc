@@ -2,7 +2,6 @@ package com.guga.ordemparanormal.datagen.client;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPItems;
-
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -41,6 +40,8 @@ public class ModItemModelProvider extends ItemModelProvider{
 		// Ovos
 		spawnEggItem(OPItems.BESTIAL_OVO.get());
 		spawnEggItem(OPItems.ZUMBI_SANGUE_OVO.get());
+		spawnEggItem(OPItems.ZUMBI_SECO_OVO.get());
+		spawnEggItem(OPItems.ZUMBI_ESPINHENTO_OVO.get());
 		
 		// Itens
 		oneLayerItem(OPItems.GRIMORIO_ENERGIA.get());

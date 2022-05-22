@@ -1,6 +1,10 @@
 {
+  "zumbi_bestial.growl": {
+    "sounds": [
+      "ordemparanormal:zumbi_bestial.growl"
+    ]
+  },
   "zumbi_sangue.growl": {
-    "subtitle": "sounds.ordemparanormal.zumbi_sangue.growl",
     "sounds": [
       "ordemparanormal:zumbi_sangue.growl"
     ]

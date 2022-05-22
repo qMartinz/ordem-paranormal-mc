@@ -1,16 +1,21 @@
 {
-  "entity.ordemparanormal.aberrado": "Aberrant",
   "entity.ordemparanormal.villager_corpo": "Villager corpse",
   "entity.ordemparanormal.zumbi_bestial": "Bestial Blood zombie",
+  "entity.ordemparanormal.zumbi_espinhento": "Spiky Blood zombie",
   "entity.ordemparanormal.zumbi_sangue": "Blood zombie",
-  "item.ordemparanormal.aberrado_spawn_egg": "Aberrant spawn egg",
+  "entity.ordemparanormal.zumbi_seco": "Skeletal Blood zombie",
   "item.ordemparanormal.cinzas": "Ashes",
   "item.ordemparanormal.grimorio_energia": "Energy grimoire",
   "item.ordemparanormal.grimorio_sangue": "Blood grimoire",
   "item.ordemparanormal.orgao": "Organ",
   "item.ordemparanormal.ritual_descarnar": "Rip flesh ritual",
   "item.ordemparanormal.zumbi_bestial_spawn_egg": "Bestial Blood zombie spawn egg",
+  "item.ordemparanormal.zumbi_espinhento_spawn_egg": "Spiky Blood zombie spawn egg",
   "item.ordemparanormal.zumbi_sangue_spawn_egg": "Blood zombie spawn egg",
+  "item.ordemparanormal.zumbi_seco_spawn_egg": "Skeletal Blood zombie spawn egg",
   "itemGroup.ordemparanormal": "Paranormal Order: MC",
-  "sounds.ordemparanormal.zumbi_sangue.growl": "Blood zombie growls"
+  "nex.abbreviation": "PeX",
+  "nex.title": "Paranormal Exposure",
+  "sounds.ordemparanormal.zumbi_bestial.growl": "Bestial Blood zombie growl",
+  "sounds.ordemparanormal.zumbi_sangue.growl": "Blood zombie growl"
 }

@@ -1,7 +1,5 @@
 package com.guga.ordemparanormal.common.events;
 
-import java.util.List;
-
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
@@ -23,6 +21,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class EntityEvents {

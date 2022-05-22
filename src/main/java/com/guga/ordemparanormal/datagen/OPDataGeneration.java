@@ -2,10 +2,10 @@ package com.guga.ordemparanormal.datagen;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.datagen.client.ModItemModelProvider;
+import com.guga.ordemparanormal.datagen.client.ModSoundDefinitionsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModEnUsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModPtBrProvider;
 import com.guga.ordemparanormal.datagen.server.ModLootTableProvider;
-
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,6 +24,7 @@ public class OPDataGeneration {
 		if (event.includeClient()) {
 			// Geração de Data do Cliente
 			generator.addProvider(new ModItemModelProvider(generator, helper));
+			generator.addProvider(new ModSoundDefinitionsProvider(generator, helper));
 			generator.addProvider(new ModPtBrProvider(generator));
 			generator.addProvider(new ModEnUsProvider(generator));
 		}

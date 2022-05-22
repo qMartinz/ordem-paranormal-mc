@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.client.renderer;
 import com.guga.ordemparanormal.client.model.VillagerCorpoModel;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

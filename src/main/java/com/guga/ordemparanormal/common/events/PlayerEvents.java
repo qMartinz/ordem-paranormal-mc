@@ -34,7 +34,7 @@ public class PlayerEvents {
     @SubscribeEvent
     public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event){
         if (event.getObject() instanceof Player){
-            NexModel nexModel = new NexModel();
+            NexModel nexModel = new NexModel((Player) event.getObject());
             NexProvider provider = new NexProvider(nexModel);
 
             event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "cap_nex"), provider);
