@@ -22,7 +22,13 @@ public class ResetNexCommand implements Command<CommandSourceStack> {
     public int run(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
 
-        NexModel.get(player).setNexLevel(0);
+        NexModel.get(player).nexLevel = 0;
+        NexModel.get(player).nexXP = 0;
+        NexModel.get(player).abilityPoints = 0;
+        NexModel.get(player).attributes[0] = 0;
+        NexModel.get(player).attributes[1] = 0;
+        NexModel.get(player).attributes[2] = 0;
+        NexModel.get(player).syncAttributeMods();
         SyncNex.send(player);
 
         return 1;

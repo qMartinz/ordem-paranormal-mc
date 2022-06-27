@@ -13,11 +13,9 @@ import java.util.function.Supplier;
 
 public class SyncNex {
     private final CompoundTag nexModel;
-
     public SyncNex(CompoundTag nexModel) {
         this.nexModel = nexModel;
     }
-
     public SyncNex(FriendlyByteBuf buffer){
         nexModel = buffer.readNbt();
     }

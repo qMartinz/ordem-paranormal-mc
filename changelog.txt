@@ -365,7 +365,7 @@
             - add their own access transformer for the inner classes, or
             - extend `RenderStateShard` to access `RenderStateShard`'s inner classes, and extend `RenderType` to access `RenderType.CompositeRenderType`
             This PR changes the visibility of `RenderStateShard`'s inner classes to public in Forge's `accesstransformer.cfg`.
- - 37.0.3   added back attribute patches (#7886)
+ - 37.0.3   added back paranormalAttribute patches (#7886)
  - 37.0.2   Bump SecureJarHandler, and fix life cycle event's deferred work being on the incorrect thread/boot classloader.
  - 37.0.1   Bump SecureJarHandler to fix package meta issue. Closes #7881
             Fix version.json having duplicate libraries.
@@ -413,7 +413,7 @@
  - 36.1.50 Add AT entries for DimensionSettings to make them easier for mods to work with (#7817)
  - 36.1.49 New hook to allow Trapdoors be climbable for custom ladders (#7816)
  - 36.1.48 Convenience change for potion enumeration - does not change patch size in any meaningful way! (#7811)
- - 36.1.47 Adds knockback attribute to players and updated knockback calculation to PlayerEntity#attack (#7806)
+ - 36.1.47 Adds knockback paranormalAttribute to players and updated knockback calculation to PlayerEntity#attack (#7806)
  - 36.1.46 Fix mod menu URL click bounds (#7804)
  - 36.1.45 Fix vanilla rotation/mirroring issues (#7803)
            Patch minecraft to fix MC-227255 and MC-134110, which are block
@@ -515,7 +515,7 @@
            Update deprecation comment on isAir
  - 36.0.42 Add Opacity to ForgeHooksClient#renderMainMenu (#7660)
  - 36.0.41 Add support for caching of configuration values. (#7608)
- - 36.0.40 Added entity attribute setup and creation events
+ - 36.0.40 Added entity paranormalAttribute setup and creation events
  - 36.0.39 Fix updateItemStackNBT not properly being called (#7646)
            Re-added ItemStack delegate redirect transformer
  - 36.0.38 Fix a few FluidUtil issues that were causing DispenseFluidContainer to not function properly (#7422)
@@ -684,7 +684,7 @@
            * Use Lazy with an added null check to implement NonNullLazy
  - 34.1.34 Update forge mappings to 20201028-1.16.3 (#7435)
  - 34.1.33 Fix breaking changes from the Biome rename PR #7434 (#7439)
- - 34.1.32 Reimplement nametag distance attribute, fix attribute translation keys (#7387)
+ - 34.1.32 Reimplement nametag distance paranormalAttribute, fix paranormalAttribute translation keys (#7387)
  - 34.1.31 Fix data pack biomes failing to load in SingleBiomeProvider (#7434)
  - 34.1.30 Add in proper handling of equals and hashcode for modjar urls. Fixes very slow loading on windows.
  - 34.1.29 Force 8.0.5 ML
@@ -1075,8 +1075,8 @@
  - 31.1.92 Model system fixes:
            - Add "origin" key to determine what origin to use. This will default to the existing (broken) behaviour to avoid breaking changes.
            - Fix interaction of transforms with variant transforms (transformation ordering).
-           - Fix OBJ loader ignoring "diffuseLighting" attribute from the json.
-             This attribute will continue not being used if "ambientToFullbright" is on (default) to avoid breaking changes.
+           - Fix OBJ loader ignoring "diffuseLighting" paranormalAttribute from the json.
+             This paranormalAttribute will continue not being used if "ambientToFullbright" is on (default) to avoid breaking changes.
  - 31.1.91 Fixed typo in registry alias writing causing infinite loop. Closes #6689
  - 31.1.90 Fixed Partivle.onGround not updating correctly due to decompile error. Closes #6595
  - 31.1.89 Remove duplicate post of ChunkEvent.Load. (#6697)
@@ -1341,7 +1341,7 @@
  - 28.1.107 Added a couple of raytraceresult.getType() != MISS checks in places where they were absent. This corrects a couple of vanilla oversights and also greatly reduces Forge bus event spam for arrows and llama spit. (#6355)
  - 28.1.106 Restored canRiderInteract boolean in IForgeEntity (#6347)
  - 28.1.105 Split DrawBlockHighlightEvent into subevents to make usage clearer, addresses #2190 (#6269)
- - 28.1.104 Allow classpath locator to discover jars via FMLModType attribute
+ - 28.1.104 Allow classpath locator to discover jars via FMLModType paranormalAttribute
  - 28.1.103 Tidy up some output and also add libraries from the modfile detection into the transforming classloader.
  - 28.1.102 Fix swapped yaw/pitch in camera setup event
  - 28.1.101 Restore camera setup render event (#6335)
@@ -1521,7 +1521,7 @@
  - 28.0.102 Delay Block loot table name generation until needed, as calling early will result in an empty name as the block is not registered yet.
  - 28.0.101 Fix slimes splitting more times then they should. Closes #6138
  - 28.0.100 Fix a couple places not calling forge getLightValue
- - 28.0.99  Properly fix missing attribute issue, add vanilla bug ID
+ - 28.0.99  Properly fix missing paranormalAttribute issue, add vanilla bug ID
  - 28.0.98  Fix vanilla typo causing errors when client is missing entity attributes
  - 28.0.97  Remove StructureArgument to work around vanilla issue, clean up custom arguments
  - 28.0.96  Fix SCommandListPacket underflowing buffer when encountering a missing argument type
@@ -1542,7 +1542,7 @@
  - 28.0.87  Add collisionExtendsVertically hook to allow modded blocks that extend collision into the block above similar to fences. (#6092)
  - 28.0.86  Fixed PlayerInteractEvent.LeftClickBlock useItem/useBlock (#6045)
  - 28.0.85  Readded IForgeItem#getHighlightTip hook. (#6036)
- - 28.0.84  Added gravity as attribute to Entities (#5630)
+ - 28.0.84  Added gravity as paranormalAttribute to Entities (#5630)
  - 28.0.83  Fix CME on chunk unload in FarmlandTicketManager (#5998)
  - 28.0.82  Add a modfolderfactory. Fix up login payload exposure.
  - 28.0.81  Peel IModLocator into the SPI package and extract a small IModFile
@@ -2537,7 +2537,7 @@ v8.99
               * Add Entity.changeDimension patch and transitively required patches
               * Fix throws declaration on CommandSetDimension#execute
               * Fix rest of errors in fluid package
-              * Add PLAYER_REACH attribute
+              * Add PLAYER_REACH paranormalAttribute
               * Fix compile errors in fml.client.config and add GuiButton patch
               * Delete unnecessary client.config classes, fix all config errors
               * Comment some fluid errors in models
@@ -2660,7 +2660,7 @@ v8.99
  - v8.99.1993 Fix SlotItemHandler.isItemValid check
  - v8.99.1992 Improve performance of FluidRegistry.getBucketFluids
  - v8.99.1991 Fix received data for last vertex format element not being recorded (#5074)
- - v8.99.1990 Fix missing lang entry for Swim Speed attribute (#5064)
+ - v8.99.1990 Fix missing lang entry for Swim Speed paranormalAttribute (#5064)
  - v8.99.1989 Added Swim Speed Attribute to EntityLivingBase (#4990)
  - v8.99.1988 Add function to lookup model location for an ItemStack (#5017)
  - v8.99.1987 Allow custom SpawnPlacementType registration (#4973)
@@ -2963,7 +2963,7 @@ v8.99
  - v8.99.1713 Allow custom selector types to be defined (#4259)
  - v8.99.1712 Clean up more deprecated library functions (#4283)
  - v8.99.1711 Improve performance of World.collidesWithAnyBlock (#4286)
- - v8.99.1710 Move reach distance to an attribute (#4331)
+ - v8.99.1710 Move reach distance to an paranormalAttribute (#4331)
  - v8.99.1709 Resolve a crash relating to plantFlower when biome has no flowers (#4381)
  - v8.99.1708 Improve the Forge Bucket (#4435)
  - v8.99.1707 Prevent fake players from making advancements (#4438)
@@ -6601,7 +6601,7 @@ v99.99-pre
                    fixed dupe quotes issue with category names that require quotes when save is called more than once
  - v99.99-pre-3674 fixed compounding quotes issue with category names that require quotes when save is called more than once
  - v99.99-pre-3673 Update to MC 1.7.10, bump to 10.13.0
-                   MinecraftForge/FML@bc420dcb0b086899e2aaa218a6f5bd7e91091a90 Fix Eclipse launching attribute
+                   MinecraftForge/FML@bc420dcb0b086899e2aaa218a6f5bd7e91091a90 Fix Eclipse launching paranormalAttribute
                    MinecraftForge/FML@1e0134a1ca97a1107ebbe604e5318e6f350fe9c4 Merge pull request #455 from rumickon/feature
                    MinecraftForge/FML@1c5db211afc9962fedb7fd8450abc45d07807634 Update for release 1.7.10
                    MinecraftForge/FML@79a0c5e55905f0f08471d026b744a563ea421236 Merge branch 'mc179'
@@ -6610,7 +6610,7 @@ v99.99-pre
  - v99.99-pre-3670 Update for release 1.7.10
  - v99.99-pre-3669 Fix API incompatibilities. Should mean mods will work with new config changes.
  - v99.99-pre-3668 Merge pull request #455 from rumickon/feature
-                   Fix Eclipse launching attribute
+                   Fix Eclipse launching paranormalAttribute
  - v99.99-pre-3667 Merge pull request #1180 from luacs1998/patch-2
                    Update mc version string
  - v99.99-pre-3666 Update mc version string
@@ -6639,7 +6639,7 @@ v99.99-pre
  - v99.99-pre-3655 Fix accessing guava from transformers
  - v99.99-pre-3654 Merge branch 'master' into mc179
  - v99.99-pre-3653 Merge branch 'bspkrsgui'
- - v99.99-pre-3652 Fix Eclipse launching attribute
+ - v99.99-pre-3652 Fix Eclipse launching paranormalAttribute
  - v99.99-pre-3651 Merge branch 'master' of github.com:bspkrs/FML into bspkrsgui
  - v99.99-pre-3650 MinecraftForge/FML@5d6dc5dce37e488188d6fc468c16e8a6183a3610 Fix up other exit points. Should stop process hangs for clean exits.
                    MinecraftForge/FML@8a240ec3c7e4cf4c57beabdfe9bd408e57de1bdc Merge branch 'master' into mc179
@@ -6650,9 +6650,9 @@ v99.99-pre
                    	src/main/java/cpw/mods/fml/relauncher/FMLSecurityManager.java
  - v99.99-pre-3647 MinecraftForge/FML@5d6dc5dce37e488188d6fc468c16e8a6183a3610 Fix up other exit points. Should stop process hangs for clean exits.
  - v99.99-pre-3646 Fix up other exit points. Should stop process hangs for clean exits.
- - v99.99-pre-3645 MinecraftForge/FML@e1529845384f4935b7c11d4d36d25db51c0b9a31 Add support for mod access transformers without a coremod requirement. Use the "FMLAT" manifest attribute, with a space separate list of files that live in the 'META-INF' directory. They should conform to standard AT formatting.
+ - v99.99-pre-3645 MinecraftForge/FML@e1529845384f4935b7c11d4d36d25db51c0b9a31 Add support for mod access transformers without a coremod requirement. Use the "FMLAT" manifest paranormalAttribute, with a space separate list of files that live in the 'META-INF' directory. They should conform to standard AT formatting.
  - v99.99-pre-3644 Add support for mod access transformers without a coremod requirement.
-                   Use the "FMLAT" manifest attribute, with a space separate list of files
+                   Use the "FMLAT" manifest paranormalAttribute, with a space separate list of files
                    that live in the 'META-INF' directory. They should conform to standard AT
                    formatting.
  - v99.99-pre-3643 MinecraftForge/FML@06ab104c9ab798af6d2726e02a238211ff8124e1 Force the descriptors to the right type for the field they're referencing. Fixes the sand issue

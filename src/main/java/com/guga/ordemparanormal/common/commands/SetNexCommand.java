@@ -4,7 +4,6 @@ import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.network.SyncNex;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.LongArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -23,6 +22,7 @@ public class SetNexCommand implements Command<CommandSourceStack> {
         int level = IntegerArgumentType.getInteger(context, "level");
 
         NexModel.get(player).setNexLevel(level);
+        SyncNex.send(player);
 
         return 1;
     }

@@ -5,6 +5,8 @@ import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
+import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +14,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
@@ -58,6 +61,10 @@ public class EntityEvents {
 					nevoaExistente.setRadius(r + 5);
 				}
 			}
+		}
+
+		if (event.getSource().getEntity() instanceof ZumbiSangue zumbissangue && !(event.getSource().getEntity() instanceof Bestial)){
+			ExpModel.get(zumbissangue).setExposure(ExpModel.get(zumbissangue).getExposure() + 20);
 		}
 	}
 

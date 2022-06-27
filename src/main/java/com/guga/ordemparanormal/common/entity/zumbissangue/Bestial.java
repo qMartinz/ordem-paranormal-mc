@@ -22,6 +22,7 @@ public class Bestial extends ZumbiSangue {
 
 	public Bestial(EntityType<? extends ZumbiSangue> type, Level level) {
 		super(type, level);
+		this.rewardedXP = 30d;
 	}
 	
 	// AI e comportamento
@@ -49,13 +50,5 @@ public class Bestial extends ZumbiSangue {
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return OPSounds.ZUMBI_BESTIAL_GROWL.get();
-	}
-
-	// Exposição paranormal concedido ao jogador
-	public void die(DamageSource source){
-		super.die(source);
-		if (this.getLastHurtByMob() instanceof Player player){
-			NexModel.get(player).giveNexXP(12D);
-		}
 	}
 }

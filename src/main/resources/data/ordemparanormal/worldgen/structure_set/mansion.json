@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "ordemparanormal:mansion",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1493755070,
+
+    "spacing": 30,
+
+    "separation": 10,
+
+    "type": "minecraft:random_spread"
+  }
+}

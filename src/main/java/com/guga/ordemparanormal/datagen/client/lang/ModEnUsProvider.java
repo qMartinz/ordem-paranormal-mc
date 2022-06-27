@@ -19,8 +19,8 @@ public class ModEnUsProvider extends LanguageProvider{
 		add("itemGroup.ordemparanormal", "Paranormal Order: MC");
 
 		// Sons
-		add("sounds.ordemparanormal.zumbi_sangue.growl", "Blood zombie growl");
-		add("sounds.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
+		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Blood zombie growl");
+		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
 		
 		// Itens
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
@@ -42,9 +42,24 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPEntities.ZUMBI_SECO.get(), "Skeletal Blood zombie");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Spiky Blood zombie");
 
+		// Atributos paranormais
+		add("op_attribute.strength", "Strength");
+		add("op_attribute.vigor", "Vigor");
+		add("op_attribute.will", "Will");
+
+		// Atalhos de Teclado
+		add("key.nex_screen", "Show Paranormal Attributes");
+
+		// Livros dentro do jogo
+		add("mansion_books.record_495", "Blood brother Lairon came back from his expedition... He said that he found a portal in the supposed \"Order's\" plains. We recreated it and watched it closely. We will never listen to Lairon again. Damned bastard! At least we got resources from that.");
+		add("mansion_books.record_001.page_1", "Day 1: \nJerome told me this place is safe for my habitation. The first guest told me something horrible... When I was returning from the forest, a fog appeared. It wasn't in my weather predictions... \nHe had a big bite on the leg, and didn't want to talk about it...");
+		add("mansion_books.record_001.page_2", "Day 2: \nWHAT THE FUCK IS THAT?!");
+
 		// Outros
 		add("nex.title", "Paranormal Exposure");
 		add("nex.abbreviation", "PeX");
+		add("nex.ability_points", "Ability Points");
+		add("nex.lvlup_notif", "Você sente algo te chamando...");
 	}
 
 }

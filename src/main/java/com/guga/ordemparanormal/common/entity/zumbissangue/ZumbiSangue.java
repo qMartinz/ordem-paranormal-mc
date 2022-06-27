@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
+import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.teamabnormals.blueprint.core.endimator.Endimatable;
 import net.minecraft.sounds.SoundEvent;
@@ -21,9 +22,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class ZumbiSangue extends Monster implements Endimatable {
+public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
-		super(type, level);
+		super(type, level, 15d);
 	}
 
 	// AI e comportamento
@@ -46,7 +47,6 @@ public class ZumbiSangue extends Monster implements Endimatable {
 				.add(Attributes.ATTACK_DAMAGE, 9.0D)
 				.add(Attributes.ARMOR, 3.0D);
 	}
-
 	@Override
 	protected SoundEvent getHurtSound(@NotNull DamageSource source) {
 		return SoundEvents.DOLPHIN_EAT;
@@ -54,13 +54,5 @@ public class ZumbiSangue extends Monster implements Endimatable {
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return OPSounds.ZUMBI_SANGUE_GROWL.get();
-	}
-
-	// Exposição paranormal concedida ao jogador
-	public void die(@NotNull DamageSource source){
-		super.die(source);
-		if (this.getLastHurtByMob() instanceof Player player){
-			NexModel.get(player).giveNexXP(5D);
-		}
 	}
 }

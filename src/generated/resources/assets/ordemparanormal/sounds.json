@@ -1,12 +1,19 @@
 {
   "zumbi_bestial.growl": {
+    "subtitle": "subtitles.ordemparanormal.zumbi_bestial.growl",
     "sounds": [
       "ordemparanormal:zumbi_bestial.growl"
     ]
   },
   "zumbi_sangue.growl": {
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.growl",
     "sounds": [
       "ordemparanormal:zumbi_sangue.growl"
+    ]
+  },
+  "nex_lvl_up": {
+    "sounds": [
+      "ordemparanormal:nex_lvl_up"
     ]
   }
 }

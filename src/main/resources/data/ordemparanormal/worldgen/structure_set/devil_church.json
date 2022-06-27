@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "ordemparanormal:devil_church",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1594756080,
+
+    "spacing": 20,
+
+    "separation": 8,
+
+    "type": "minecraft:random_spread"
+  }
+}

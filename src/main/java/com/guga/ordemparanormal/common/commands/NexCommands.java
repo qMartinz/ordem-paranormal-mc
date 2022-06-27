@@ -13,8 +13,8 @@ public class NexCommands {
                         .requires(source -> source.hasPermission(2))
                         .then(Commands.argument("player", EntityArgument.player())
                                 .then(SetNexCommand.register())
-                                .then(GetNexCommand.register())
-                                .then(ResetNexCommand.register()))
+                                .then(ResetNexCommand.register())
+                                .then(AddPointsCommand.register()))
         );
     }
 }

@@ -1,9 +1,7 @@
 package com.guga.ordemparanormal.client.renderer;
 
 import com.guga.ordemparanormal.client.model.ZumbiEspinhentoModel;
-import com.guga.ordemparanormal.client.model.ZumbiSecoModel;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSeco;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

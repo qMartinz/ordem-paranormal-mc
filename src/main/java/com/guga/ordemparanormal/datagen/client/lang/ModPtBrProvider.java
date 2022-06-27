@@ -19,8 +19,8 @@ public class ModPtBrProvider extends LanguageProvider{
 		add("itemGroup.ordemparanormal", "Ordem Paranormal: MC");
 
 		// Sons
-		add("sounds.ordemparanormal.zumbi_sangue.growl", "Grunhido de zumbi de Sangue");
-		add("sounds.ordemparanormal.zumbi_bestial.growl", "Grunhido de zumbi de Sangue bestial");
+		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Grunhido de zumbi de Sangue");
+		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Grunhido de zumbi de Sangue bestial");
 		
 		// Itens
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Grimório de Energia");
@@ -42,9 +42,24 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPEntities.ZUMBI_SECO.get(), "Zumbi de Sangue seco");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
 
+		// Atributos paranormais
+		add("op_attribute.strength", "Força");
+		add("op_attribute.vigor", "Vigor");
+		add("op_attribute.will", "Presença");
+
+		// Atalhos de Teclado
+		add("key.nex_screen", "Mostrar Atributos Paranormais");
+
+		// Livros dentro do jogo
+		add("mansion_books.record_495", "O irmão de Sangue, Lairon, voltou de sua expedição... Ele disse que encontrou um portal nas planícies da suposta \"Ordem\". Nós o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lá.");
+		add("mansion_books.record_001.page_1", "Dia 1: \nJerome me disse que o local é seguro para uma habitação. O primeiro hóspede me contou algo terrível... Uma névoa surgiu quando eu estava voltando da floresta, aquilo não estava na minha previsão do tempo... \nEle estava com uma mordida imensa na perna e se recusou a falar sobre ela...");
+		add("mansion_books.record_001.page_2", "Dia 2: \nQUE PORRA É ESSA?!");
+
 		// Outros
 		add("nex.title", "Exposição Paranormal");
 		add("nex.abbreviation", "NeX");
+		add("nex.ability_points", "Pontos de Habilidade");
+		add("nex.lvlup_notif", "Você sente algo te chamando...");
 	}
 
 }

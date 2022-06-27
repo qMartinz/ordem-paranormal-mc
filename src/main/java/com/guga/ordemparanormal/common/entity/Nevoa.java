@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.entity;
 
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
+import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
@@ -136,14 +137,6 @@ public class Nevoa extends Entity {
 				for (Monster monstro : monstros) {
 					ExpModel expModel = ExpModel.get(monstro);
 
-					if (monstro instanceof ZumbiSangue && !(monstro instanceof Bestial)) {
-						float exp = expModel.getExposure();
-						expModel.setExposure(exp + (random.nextFloat(((float) this.getIntensity() - 3)/8)));
-						if (expModel.isMaxExp()) {
-							transform(monstro, OPEntities.BESTIAL.get());
-						}
-					}
-
 					if (monstro instanceof Zombie) {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
@@ -177,7 +170,7 @@ public class Nevoa extends Entity {
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {
 				for (Player player : players) {
-					if (NexModel.get(player).nexLevel == 0) NexModel.get(player).giveNexXP(10);
+					if (NexModel.get(player).nexLevel == 0 && player.getCapability(NexCapability.INSTANCE).isPresent()) NexModel.get(player).giveNexXP(10);
 				}
 			}
 		}
