@@ -1,5 +1,7 @@
 package com.guga.ordemparanormal.datagen.client.lang;
 
+import com.guga.ordemparanormal.api.ritual.ParanormalElement;
+import com.guga.ordemparanormal.common.ritual.SkinningRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPItems;
@@ -27,7 +29,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPItems.GRIMORIO_SANGUE.get(), "Grimório de Sangue");
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
-		add(OPItems.RITUAL_DESCARNAR.get(), "Ritual de descarnar");
+		add(OPItems.RITUAL_DESCARNAR.get(), "Livro com símbolo");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
@@ -42,24 +44,34 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPEntities.ZUMBI_SECO.get(), "Zumbi de Sangue seco");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
 
+		// Elementos
+		add(ParanormalElement.BLOOD.getTranslationKey(), "Sangue");
+		add(ParanormalElement.DEATH.getTranslationKey(), "Morte");
+		add(ParanormalElement.KNOWLEDGE.getTranslationKey(), "Conhecimento");
+		add(ParanormalElement.ENERGY.getTranslationKey(), "Energia");
+		add(ParanormalElement.FEAR.getTranslationKey(), "Medo");
+
 		// Atributos paranormais
-		add("op_attribute.strength", "Força");
-		add("op_attribute.vigor", "Vigor");
-		add("op_attribute.will", "Presença");
+		add("ordemparanormal.op_attribute.strength", "Força");
+		add("ordemparanormal.op_attribute.vigor", "Vigor");
+		add("ordemparanormal.op_attribute.will", "Presença");
+
+		// Rituais
+		add(new SkinningRitual().getTranslationKey(), "Descarnar");
 
 		// Atalhos de Teclado
-		add("key.nex_screen", "Mostrar Atributos Paranormais");
+		add("ordemparanormal.key_category", "Mod Ordem Paranormal");
+		add("ordemparanormal.key.nex_screen", "Mostrar Atributos Paranormais");
 
 		// Livros dentro do jogo
-		add("mansion_books.record_495", "O irmão de Sangue, Lairon, voltou de sua expedição... Ele disse que encontrou um portal nas planícies da suposta \"Ordem\". Nós o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lá.");
-		add("mansion_books.record_001.page_1", "Dia 1: \nJerome me disse que o local é seguro para uma habitação. O primeiro hóspede me contou algo terrível... Uma névoa surgiu quando eu estava voltando da floresta, aquilo não estava na minha previsão do tempo... \nEle estava com uma mordida imensa na perna e se recusou a falar sobre ela...");
-		add("mansion_books.record_001.page_2", "Dia 2: \nQUE PORRA É ESSA?!");
+		add("ordemparanormal.mansion_books.record_495", "O irmão de Sangue, Lairon, voltou de sua expedição... Ele disse que encontrou um portal nas planícies da suposta \"Ordem\". Nós o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lá.");
+		add("ordemparanormal.mansion_books.record_001.page_1", "Dia 1: \nJerome me disse que o local é seguro para uma habitação. O primeiro hóspede me contou algo terrível... Uma névoa surgiu quando eu estava voltando da floresta, aquilo não estava na minha previsão do tempo... \nEle estava com uma mordida imensa na perna e se recusou a falar sobre ela...");
+		add("ordemparanormal.mansion_books.record_001.page_2", "Dia 2: \nQUE PORRA É ESSA?!");
 
 		// Outros
-		add("nex.title", "Exposição Paranormal");
-		add("nex.abbreviation", "NeX");
-		add("nex.ability_points", "Pontos de Habilidade");
-		add("nex.lvlup_notif", "Você sente algo te chamando...");
+		add("ordemparanormal.nex.title", "Exposição Paranormal");
+		add("ordemparanormal.nex.abbreviation", "NeX");
+		add("ordemparanormal.nex.ability_points", "Pontos de Habilidade");
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
+import com.guga.ordemparanormal.common.item.RitualItem;
+import com.guga.ordemparanormal.common.ritual.SkinningRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
@@ -21,7 +23,7 @@ public final class OPItems {
 	public static final RegistryObject<Item> GRIMORIO_ENERGIA = HELPER.createGEnergia();
 	public static final RegistryObject<Item> ORGAO = HELPER.createOrgao();
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
-	public static final RegistryObject<Item> RITUAL_DESCARNAR = HELPER.createRDescarnar();
+	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRDescarnar();
 	
 		// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
@@ -66,9 +68,9 @@ public final class OPItems {
 									.tab(OrdemParanormal.OP_ITENS).fireResistant()));
 		}
 		
-		private RegistryObject<Item> createRDescarnar(){
-			return this.deferredRegister.register("ritual_descarnar", () -> new Item(new
-					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS)));
+		private RegistryObject<RitualItem> createRDescarnar(){
+			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(new
+					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS), new SkinningRitual()));
 		}
 	}	
 }

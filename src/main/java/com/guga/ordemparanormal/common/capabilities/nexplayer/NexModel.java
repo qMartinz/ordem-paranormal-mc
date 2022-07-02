@@ -1,12 +1,15 @@
 package com.guga.ordemparanormal.common.capabilities.nexplayer;
 
+import com.guga.ordemparanormal.api.ritual.AbstractRitual;
 import com.guga.ordemparanormal.client.NexOverlay;
-import com.guga.ordemparanormal.common.abilities.ParanormalAttribute;
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.common.network.SyncNex;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -15,22 +18,24 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.network.PacketDistributor;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
-
-import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
 public class NexModel implements INBTSerializable<CompoundTag> {
     private final Player player;
     private final Minecraft minecraft = Minecraft.getInstance();
-    public int nexLevel;
-    public double nexXP;
-    public final int maxNex = 99;
-    public int abilityPoints;
-    public double maxEffortPoints = 4;
-    public double curEffortPoints = 4;
+    protected int nexLevel;
+    protected double nexXP;
+    protected final int maxNex = 99;
+    protected int abilityPoints;
+    protected double maxEffortPoints = 4;
+    protected double curEffortPoints = 4;
     public int[] attributes = new int[]{0, 0, 0};
     private static final UUID damageBonusModUUID = UUID.randomUUID();
     private static final UUID healthBonusModUUID = UUID.randomUUID();
+    public List<String> rituals = new ArrayList<String>();
+
     public NexModel(@Nonnull Player player) {
         this.player = player;
     }
@@ -59,6 +64,10 @@ public class NexModel implements INBTSerializable<CompoundTag> {
     }
     public boolean isMaxNex(){ return this.nexLevel == this.maxNex; }
     public double getNexXp(){ return this.nexXP; }
+    public void setNexXp(double xp){
+        nexXP = xp;
+        onDataUpdated();
+    }
     public void giveNexXP(double amount){
         int oldLevel = this.getNexLevel();
         this.nexXP += amount;
@@ -86,6 +95,7 @@ public class NexModel implements INBTSerializable<CompoundTag> {
     }
     public void setCurEffortPoints(double amount){
         this.curEffortPoints = Math.min(maxEffortPoints, Math.max(amount, 0));
+        onDataUpdated();
     }
     public void setMaxEffortPoints(double amount){
         this.maxEffortPoints = Math.max(amount, 0);
@@ -138,6 +148,20 @@ public class NexModel implements INBTSerializable<CompoundTag> {
         //Will
         setMaxEffortPoints(4 + attributes[ParanormalAttribute.WILL.index]);
     }
+    public void addRitual(AbstractRitual ritual){
+        rituals.add(ritual.getName());
+        onDataUpdated();
+    }
+    public void removeRitual(AbstractRitual ritual){
+        rituals.remove(ritual.getName());
+        onDataUpdated();
+    }
+    public int getRitualListSize(){
+        return rituals.size();
+    }
+    public boolean hasRitual(AbstractRitual ritual){
+        return rituals.contains(ritual.getName());
+    }
     public static NexModel get(Player player){
         return player.getCapability(NexCapability.INSTANCE).orElseThrow(() ->
                 new IllegalArgumentException("Player " + player.getName().getContents() + " does not have a NeX Model.")
@@ -151,6 +175,8 @@ public class NexModel implements INBTSerializable<CompoundTag> {
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
+        ListTag nbtList = new ListTag();
+
         nbt.putInt("nex_level", this.nexLevel);
         nbt.putDouble("nex_xp", this.nexXP);
         nbt.putInt("ability_points", this.abilityPoints);
@@ -161,6 +187,13 @@ public class NexModel implements INBTSerializable<CompoundTag> {
 
         nbt.putDouble("max_effort", this.maxEffortPoints);
         nbt.putDouble("current_effort", this.curEffortPoints);
+
+        CompoundTag tag = new CompoundTag();
+        for (int i = 0; i < rituals.size(); i++) {
+            tag.putString("ritual_known_" + i, rituals.get(i));
+            nbtList.add(tag);
+        }
+        nbt.put("rituals", tag);
 
         return nbt;
     }
@@ -176,6 +209,11 @@ public class NexModel implements INBTSerializable<CompoundTag> {
 
         this.maxEffortPoints = nbt.getDouble("max_effort");
         this.curEffortPoints = nbt.getDouble("current_effort");
+
+        CompoundTag tag = nbt.getCompound("rituals");
+        for (int i = 0; i < rituals.size(); i++) {
+            rituals.set(i, tag.getString("ritual_known_" + i));
+        }
     }
 
     public void onDataUpdated() {

@@ -3,13 +3,9 @@ package com.guga.ordemparanormal.core;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.NexOverlay;
 import com.guga.ordemparanormal.client.renderer.*;
-import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.common.network.RequestAttrIncrease;
 import com.guga.ordemparanormal.common.network.SyncNex;
-import com.guga.ordemparanormal.core.registry.OPEntities;
-import com.guga.ordemparanormal.core.registry.OPItems;
-import com.guga.ordemparanormal.core.registry.OPParticles;
-import com.guga.ordemparanormal.core.registry.OPStructures;
+import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -57,10 +53,9 @@ public class OrdemParanormal {
 		REGISTRY_HELPER.register(bus);
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.register(bus);
+		OPEffects.register(bus);
 
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			bus.addListener(this::rendererSetup);
-		});
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 
 		MinecraftForge.EVENT_BUS.register(this);
 

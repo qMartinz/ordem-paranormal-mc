@@ -3,15 +3,12 @@ package com.guga.ordemparanormal.client;
 import com.guga.ordemparanormal.client.screen.NexScreen;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.guga.ordemparanormal.util.MathUtils;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.TickEvent;
@@ -29,7 +26,7 @@ public class NexOverlay extends GuiComponent {
 
         if (minecraft.player.getCapability(NexCapability.INSTANCE).isPresent() && event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             NexModel nexModel = NexModel.get(minecraft.player);
-            if (!(minecraft.screen instanceof NexScreen)) {
+            if (!(minecraft.screen instanceof NexScreen) && !minecraft.player.isCreative()) {
                 String s = nexModel.getNexLevel() + "%";
 
                 minecraft.font.drawShadow(poseStack, s, width - (minecraft.font.width(s) + 96), height - (minecraft.font.lineHeight + 2), FastColor.ARGB32.color(255, 255, 255, 255));

@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.network;
 
-import com.guga.ordemparanormal.common.abilities.ParanormalAttribute;
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.network.FriendlyByteBuf;
@@ -28,13 +28,12 @@ public class RequestAttrIncrease {
             NexModel model = NexModel.get(player);
             ParanormalAttribute attr = ParanormalAttribute.values()[this.attribute];
 
-            if (model.abilityPoints > 0){
+            if (model.getAbilityPoints() > 0){
                 model.increaseAttribute(attr);
                 model.setAbilityPoints(model.getAbilityPoints() - 1);
 
                 SyncNex.send(player);
             }
-            System.out.println("increased " + attr.name + " into " + model.getAttribute(attr));
         });
 
         context.get().setPacketHandled(true);

@@ -23,5 +23,7 @@ public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
         add(OPSounds.ZUMBI_BESTIAL_GROWL, soundDefinition("zumbi_bestial.growl").subtitle("subtitles.ordemparanormal.zumbi_bestial.growl"));
         add(OPSounds.ZUMBI_SANGUE_GROWL, soundDefinition("zumbi_sangue.growl").subtitle("subtitles.ordemparanormal.zumbi_sangue.growl"));
         add(OPSounds.NEX_LEVEL_UP, soundDefinition("nex_lvl_up"));
+        add(OPSounds.RITUAL_LEARNED, soundDefinition("ritual_learned"));
+
     }
 }

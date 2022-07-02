@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.abilities;
+package com.guga.ordemparanormal.api.attributes;
 public enum ParanormalAttribute {
     STRENGTH(0, "op_attribute.strength"),
     VIGOR(1, "op_attribute.vigor"),

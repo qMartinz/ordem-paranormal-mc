@@ -1,9 +1,9 @@
-package com.guga.ordemparanormal.common.abilities.type;
+package com.guga.ordemparanormal.api.ability;
 
 import net.minecraft.world.entity.player.Player;
 
 public abstract class PlayerAbility {
-    private int cost;
+    private final int cost;
     public PlayerAbility(int cost){
         this.cost = cost;
     }

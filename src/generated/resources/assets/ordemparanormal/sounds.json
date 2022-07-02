@@ -15,5 +15,10 @@
     "sounds": [
       "ordemparanormal:nex_lvl_up"
     ]
+  },
+  "ritual_learned": {
+    "sounds": [
+      "ordemparanormal:ritual_learned"
+    ]
   }
 }

@@ -21,7 +21,6 @@ public final class OPParticles {
 
 	public static final RegistryObject<SimpleParticleType> NEVOA_PARTICLE = PARTICLE_TYPES.register("nevoa_particle",
 			() -> new SimpleParticleType(true));
-
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleTypes(ParticleFactoryRegisterEvent event) {
 		ParticleEngine manager = Minecraft.getInstance().particleEngine;

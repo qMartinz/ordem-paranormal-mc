@@ -4,8 +4,6 @@ import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
-import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
 import net.minecraft.core.BlockPos;
@@ -170,7 +168,7 @@ public class Nevoa extends Entity {
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {
 				for (Player player : players) {
-					if (NexModel.get(player).nexLevel == 0 && player.getCapability(NexCapability.INSTANCE).isPresent()) NexModel.get(player).giveNexXP(10);
+					if (NexModel.get(player).getNexLevel() == 0 && player.getCapability(NexCapability.INSTANCE).isPresent()) NexModel.get(player).giveNexXP(10);
 				}
 			}
 		}

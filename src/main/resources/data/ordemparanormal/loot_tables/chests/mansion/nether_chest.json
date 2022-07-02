@@ -89,7 +89,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{pages:[\"{\\\"translate\\\":\\\"mansion_books.record_495\\\"}\"],title:\"#495\",author:\"???\"}"
+              "tag": "{pages:[\"{\\\"translate\\\":\\\"ordemparanormal.mansion_books.record_495\\\"}\"],title:\"#495\",author:\"???\"}"
             }
           ]
         }

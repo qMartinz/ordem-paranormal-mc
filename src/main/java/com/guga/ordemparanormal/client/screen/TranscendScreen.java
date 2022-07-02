@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.TextComponent;
@@ -12,9 +13,9 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 
-public class NexScreen extends Screen {
+public class TranscendScreen extends Screen {
     public static final ResourceLocation RESOURCES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/nexgui.png");
-    public NexScreen() {
+    public TranscendScreen() {
         super(TextComponent.EMPTY);
     }
 
@@ -36,11 +37,22 @@ public class NexScreen extends Screen {
             String label;
 
             font.draw(stack, nex, width/2f - font.width(nex)/2f, 5, FastColor.ARGB32.color(255, 255, 255, 255));
+            RenderSystem.enableBlend();
+            RenderSystem.defaultBlendFunc();
+            RenderSystem.disableDepthTest();
+            RenderSystem.depthMask(false);
+            RenderSystem.setShaderTexture(0, RESOURCES);
+            RenderSystem.setShaderColor(1f, 1f, 1f, 0.4f);
+            blit(stack, width/2 - 55/2, 5 - 63/2, 0, 0, 55, 63);
+            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+            RenderSystem.enableDepthTest();
+            RenderSystem.depthMask(true);
+            RenderSystem.disableBlend();
 
             points = String.valueOf(nexModel.getAbilityPoints());
             label = new TranslatableComponent("ordemparanormal.nex.ability_points").getString();
-            font.draw(stack, label, width/2f - font.width(label)/2f, height - (5 + font.lineHeight), FastColor.ARGB32.color(255, 200, 200, 255));
-            font.draw(stack, points, width/2f - font.width(points)/2f, height - (8 + font.lineHeight * 2), FastColor.ARGB32.color(255, 200, 200, 255));
+            font.draw(stack, label, (width - font.width(label)) / 2f, height - (5 + font.lineHeight), FastColor.ARGB32.color(255, 200, 200, 255));
+            font.draw(stack, points, (width - font.width(points)) / 2f, height - (8 + font.lineHeight * 2), FastColor.ARGB32.color(255, 200, 200, 255));
         }
         super.render(stack, mouseX, mouseY, partialTicks);
     }

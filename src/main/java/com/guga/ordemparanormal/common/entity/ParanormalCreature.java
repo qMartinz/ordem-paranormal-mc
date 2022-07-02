@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.entity;
 
+import com.guga.ordemparanormal.api.ritual.ParanormalElement;
 import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -9,9 +10,14 @@ import net.minecraft.world.level.Level;
 
 public class ParanormalCreature extends Monster {
     protected double rewardedXP;
-    protected ParanormalCreature(EntityType<? extends Monster> type, Level level, double rewardedXP) {
+    protected ParanormalElement element;
+    protected ParanormalCreature(EntityType<? extends Monster> type, Level level, double rewardedXP, ParanormalElement element) {
         super(type, level);
         this.rewardedXP = rewardedXP;
+        this.element = element;
+    }
+    public ParanormalElement getMainElement() {
+        return this.element;
     }
     @Override
     public void die(DamageSource source){
