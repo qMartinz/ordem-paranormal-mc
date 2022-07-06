@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.common.item.RitualItem;
-import com.guga.ordemparanormal.common.ritual.SkinningRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
@@ -13,7 +12,6 @@ import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
-
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class OPItems {
 	private static final Helper HELPER = OrdemParanormal.REGISTRY_HELPER.getItemSubHelper();
@@ -70,7 +68,7 @@ public final class OPItems {
 		
 		private RegistryObject<RitualItem> createRDescarnar(){
 			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(new
-					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS), new SkinningRitual()));
+					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS), OPAPI.SKINNING));
 		}
 	}	
 }

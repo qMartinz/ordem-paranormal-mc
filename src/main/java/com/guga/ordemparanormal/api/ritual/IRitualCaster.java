@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.api.ritual;
 
-import com.guga.ordemparanormal.util.RitualUtils;
+import com.guga.ordemparanormal.api.util.RitualUtils;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;

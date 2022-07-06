@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.util;
+package com.guga.ordemparanormal.api.util;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;

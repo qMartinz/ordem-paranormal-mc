@@ -1,8 +1,8 @@
 package com.guga.ordemparanormal.common.worldgen.structures;
 
+import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.GenerationStep;

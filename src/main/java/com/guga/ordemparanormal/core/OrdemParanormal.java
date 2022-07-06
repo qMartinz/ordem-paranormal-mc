@@ -3,11 +3,12 @@ package com.guga.ordemparanormal.core;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.NexOverlay;
 import com.guga.ordemparanormal.client.renderer.*;
-import com.guga.ordemparanormal.common.network.RequestAttrIncrease;
-import com.guga.ordemparanormal.common.network.SyncNex;
+import com.guga.ordemparanormal.core.network.ClientProxy;
+import com.guga.ordemparanormal.core.network.IProxy;
+import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,23 +19,17 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.Optional;
 
 @Mod(OrdemParanormal.MOD_ID)
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OrdemParanormal {
 	public static final String MOD_ID = "ordemparanormal";
+	public static IProxy proxy = DistExecutor.runForDist(()-> ClientProxy::new, () -> ServerProxy::new);
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static SimpleChannel network;
 	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
 	
 	// Abas do modo criativo
@@ -50,6 +45,8 @@ public class OrdemParanormal {
 		// Event Bus para registrar coisas do mod
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+		Messages.register();
+		OPAPI.setup();
 		REGISTRY_HELPER.register(bus);
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.register(bus);
@@ -59,15 +56,7 @@ public class OrdemParanormal {
 
 		MinecraftForge.EVENT_BUS.register(this);
 
-		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
-	}
-	private void commonSetup(final FMLCommonSetupEvent event) {
-		event.enqueueWork(() -> {
-			network = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, "network"), () -> "1.0", s -> true, s -> true);
-			network.registerMessage(0, SyncNex.class, SyncNex::encode, SyncNex::new, SyncNex::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-			network.registerMessage(1, RequestAttrIncrease.class, RequestAttrIncrease::encode, RequestAttrIncrease::new, RequestAttrIncrease::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-		});
 	}
 	@OnlyIn(Dist.CLIENT)
 	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {

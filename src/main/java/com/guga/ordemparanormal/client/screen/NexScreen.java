@@ -1,9 +1,8 @@
 package com.guga.ordemparanormal.client.screen;
 
-import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,22 +25,21 @@ public class NexScreen extends Screen {
     }
     @Override
     public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
-
         renderBackground(stack);
 
-        if(minecraft.player.getCapability(NexCapability.INSTANCE).isPresent()) {
-            NexModel nexModel = NexModel.get(minecraft.player);
-            String nex = nexModel.getNexLevel() + "%";
+        minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            String nex = playerNex.getNexPercent() + "%";
             String points;
             String label;
 
             font.draw(stack, nex, width/2f - font.width(nex)/2f, 5, FastColor.ARGB32.color(255, 255, 255, 255));
 
-            points = String.valueOf(nexModel.getAbilityPoints());
+            points = String.valueOf(playerNex.getAbilityPoints());
             label = new TranslatableComponent("ordemparanormal.nex.ability_points").getString();
             font.draw(stack, label, width/2f - font.width(label)/2f, height - (5 + font.lineHeight), FastColor.ARGB32.color(255, 200, 200, 255));
             font.draw(stack, points, width/2f - font.width(points)/2f, height - (8 + font.lineHeight * 2), FastColor.ARGB32.color(255, 200, 200, 255));
-        }
+        });
+
         super.render(stack, mouseX, mouseY, partialTicks);
     }
     @Override

@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
-import com.guga.ordemparanormal.common.worldgen.structures.Mansion;
 import com.guga.ordemparanormal.common.worldgen.structures.DevilChurch;
+import com.guga.ordemparanormal.common.worldgen.structures.Mansion;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.eventbus.api.IEventBus;

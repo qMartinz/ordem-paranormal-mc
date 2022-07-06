@@ -1,12 +1,13 @@
 package com.guga.ordemparanormal.common.block;
 
+import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.ritual.AbstractRitual;
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.registry.OPSounds;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -14,7 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
@@ -70,18 +72,22 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
-        if (stack.getItem() instanceof RitualItem item) {
+        IPlayerCap abilities = pPlayer.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        PlayerNex nex = pPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        if (abilities == null || nex == null) return InteractionResult.PASS;
+
+        if (stack.getItem() instanceof RitualItem item && nex.getNexPercent() >= item.getRitual().getNexRequired() && !abilities.knowsRitual(item.getRitual()) /*&& !stack.getOrCreateTag().getBoolean("ritualLearned")*/){
             AbstractRitual ritual = item.getRitual();
-            if (NexModel.get(pPlayer).getNexLevel() >= ritual.getNexRequired() && !NexModel.get(pPlayer).hasRitual(item.ritual) && !stack.getOrCreateTag().getBoolean("ritualLearned")){
+            if (!pPlayer.level.isClientSide) {
                 CompoundTag tag = new CompoundTag();
                 tag.putBoolean("ritualLearned", true);
                 stack.setTag(tag);
-                pPlayer.playSound(OPSounds.RITUAL_LEARNED.get(), 1f, 1f);
-                NexModel.get(pPlayer).addRitual(ritual);
-                return InteractionResult.CONSUME;
+                abilities.learnRitual(ritual);
+                if (pPlayer instanceof ServerPlayer serverPlayer) CapEvents.syncPlayerAbilities(serverPlayer);
             } else {
-                return InteractionResult.PASS;
+                pPlayer.level.playLocalSound(pPos.getX(), pPos.getY(), pPos.getZ(), OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 1f, 1f, false);
             }
+            return InteractionResult.CONSUME;
         } else {
             return InteractionResult.PASS;
         }

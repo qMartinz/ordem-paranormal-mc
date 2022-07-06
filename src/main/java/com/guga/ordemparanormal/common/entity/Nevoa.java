@@ -1,8 +1,7 @@
 package com.guga.ordemparanormal.common.entity;
 
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexCapability;
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
@@ -168,7 +167,9 @@ public class Nevoa extends Entity {
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {
 				for (Player player : players) {
-					if (NexModel.get(player).getNexLevel() == 0 && player.getCapability(NexCapability.INSTANCE).isPresent()) NexModel.get(player).giveNexXP(10);
+					if (player.getCapability(PlayerNexProvider.PLAYER_NEX).resolve().get().getNexPercent() == 0) player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+						playerNex.addNexXp(10);
+					});
 				}
 			}
 		}

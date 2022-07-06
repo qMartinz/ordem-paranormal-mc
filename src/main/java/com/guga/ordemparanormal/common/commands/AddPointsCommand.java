@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.common.commands;
 
-import com.guga.ordemparanormal.common.capabilities.nexplayer.NexModel;
-import com.guga.ordemparanormal.common.network.SyncNex;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -22,8 +21,9 @@ public class AddPointsCommand implements Command<CommandSourceStack> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        NexModel.get(player).setAbilityPoints(NexModel.get().getAbilityPoints() + amount);
-        SyncNex.send(player);
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAbilityPoints(playerNex.getAbilityPoints() + amount);
+        });
 
         return 1;
     }
