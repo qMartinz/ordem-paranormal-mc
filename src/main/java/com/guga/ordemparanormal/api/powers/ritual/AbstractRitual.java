@@ -96,7 +96,7 @@ public abstract class AbstractRitual{
                     } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                         onUseEntity((EntityHitResult) rayTraceResult, world, caster);
                     } else {
-                        onUseSelf(world, caster);
+                        onUseSelf(rayTraceResult, world, caster);
                     }
                 } else {
                     if (playernex.getCurrentEffort() >= getEffortCost()) {
@@ -108,7 +108,7 @@ public abstract class AbstractRitual{
                             } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                                 onUseEntity((EntityHitResult) rayTraceResult, world, caster);
                             } else {
-                                onUseSelf(world, caster);
+                                onUseSelf(rayTraceResult, world, caster);
                             }
                             caster.getOffhandItem().shrink(1);
                         } else if (getIngredient() == null) {
