@@ -29,22 +29,22 @@ public class CapManager extends SavedData {
             counter = 10;
             level.players().forEach(player -> {
                 if (player instanceof ServerPlayer serverPlayer){
-                    PlayerNex nex = serverPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+                    INexCap nex = serverPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
                     if (nex == null) return;
 
                     if (nex.getCurrentEffort() != nex.getMaxEffort() && serverPlayer.getFoodData().getFoodLevel() >= 20){
                         nex.setCurrentEffort(nex.getCurrentEffort() + 0.1D);
                         serverPlayer.getFoodData().addExhaustion(0.5f);
-                        Messages.sendToPlayer(new SyncNexToClient(nex.saveNBTData()), serverPlayer);
+                        Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     } else {
-                        Messages.sendToPlayer(new SyncNexToClient(nex.saveNBTData()), serverPlayer);
+                        Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     }
                     nex.syncAttributeMods(serverPlayer);
                 } else if (player instanceof  LocalPlayer localPlayer){
-                    PlayerNex nex = localPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+                    INexCap nex = localPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
                     if (nex == null) return;
 
-                    Messages.sendToServer(new SyncNexToServer(nex.saveNBTData()));
+                    Messages.sendToServer(new SyncNexToServer(nex.serializeNBT()));
                 }
             });
         }

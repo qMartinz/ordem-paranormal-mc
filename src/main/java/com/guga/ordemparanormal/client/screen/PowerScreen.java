@@ -12,6 +12,7 @@ import com.guga.ordemparanormal.client.PowerIcon;
 import com.guga.ordemparanormal.client.screen.buttons.InvisibleButton;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.client.screen.buttons.SlotButton;
+import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.registry.OPAPI;
@@ -132,7 +133,7 @@ public class PowerScreen extends Screen {
         minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
                 minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerPowers -> {
                     String value = playerNex.getNexPercent() + "%";
-                    String label = new TranslatableComponent("ordemparanormal.nex.power_points").getString();
+                    String label = CommonComponents.POWER_POINTS.getString();
 
                     font.draw(stack, value, width/2f - font.width(value)/2f, screenY - 2 - font.lineHeight, FastColor.ARGB32.color(255, 255, 255, 255));
 
@@ -180,12 +181,12 @@ public class PowerScreen extends Screen {
                 minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerPowers -> {
                     List<Component> description = powerButton.getPower().getDescription();
                     if (powerButton.getPower().isActivePower()) {
-                        description.add(new TranslatableComponent("ordemparanormal.power.active").withStyle(ChatFormatting.GRAY));
+                        description.add(CommonComponents.ACTIVE_POWER.plainCopy().withStyle(ChatFormatting.GRAY));
                     } else {
-                        description.add(new TranslatableComponent("ordemparanormal.power.passive").withStyle(ChatFormatting.GRAY));
+                        description.add(CommonComponents.PASSIVE_POWER.plainCopy().withStyle(ChatFormatting.GRAY));
                     }
                     if (playerPowers.hasPower(powerButton.getPower())){
-                        description.add(new TranslatableComponent("ordemparanormal.power.owned").withStyle(ChatFormatting.WHITE));
+                        description.add(CommonComponents.OWNED_POWER.plainCopy().withStyle(ChatFormatting.WHITE));
                     }
 
                     if (powerButton.isMouseOver(pMouseX, pMouseY))
@@ -201,9 +202,9 @@ public class PowerScreen extends Screen {
                         PlayerPower power = playerPowers.getPower(index);
                         List<Component> description = power.getDescription();
                         if (power.isActivePower()) {
-                            description.add(new TranslatableComponent("ordemparanormal.power.active").withStyle(ChatFormatting.GRAY));
+                            description.add(CommonComponents.ACTIVE_POWER.plainCopy().withStyle(ChatFormatting.GRAY));
                         } else {
-                            description.add(new TranslatableComponent("ordemparanormal.power.passive").withStyle(ChatFormatting.GRAY));
+                            description.add(CommonComponents.PASSIVE_POWER.plainCopy().withStyle(ChatFormatting.GRAY));
                         }
 
                         if (button.isMouseOver(pMouseX, pMouseY) && power != PlayerPower.EMPTY)

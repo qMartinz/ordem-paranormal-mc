@@ -16,6 +16,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +28,8 @@ import org.apache.logging.log4j.Logger;
 public class OrdemParanormal {
 	public static final String MOD_ID = "ordemparanormal";
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
+	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper ->
+			helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
 	public static final CreativeModeTab OP_TAB = new CreativeModeTab(MOD_ID) {
 		@Override
 		public ItemStack makeIcon() {
@@ -50,7 +53,6 @@ public class OrdemParanormal {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		Messages.register();
-		OPAPI.setup();
 		REGISTRY_HELPER.register(bus);
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.register(bus);
@@ -61,6 +63,10 @@ public class OrdemParanormal {
 		MinecraftForge.EVENT_BUS.register(this);
 
 		bus.addListener(this::clientSetup);
+		bus.addListener(this::commonSetup);
+	}
+	public void commonSetup(final FMLCommonSetupEvent event){
+		OPAPI.setup();
 	}
 	@OnlyIn(Dist.CLIENT)
 	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
@@ -71,7 +77,6 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 	}
-
 	private void clientSetup(final FMLClientSetupEvent event){
 		MinecraftForge.EVENT_BUS.register(new NexOverlay());
 		MinecraftForge.EVENT_BUS.register(new Keybind());

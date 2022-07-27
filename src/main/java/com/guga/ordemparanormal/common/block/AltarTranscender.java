@@ -78,7 +78,7 @@ public class AltarTranscender extends Block {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
         IPowerCap abilities = pPlayer.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
-        PlayerNex nex = pPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        INexCap nex = pPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
 
         if (nex != null && abilities != null){
             if (stack.getItem() instanceof RitualItem item){

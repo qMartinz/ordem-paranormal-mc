@@ -15,7 +15,7 @@ public class PowerEvents {
         if (event.getEntityLiving() instanceof Player player){
             player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
                 for (PlayerPower power : playerAbilities.getPowers()){
-                    power.tick(player);
+                    if (!power.isActivePower()) power.tick(player);
                 }
             });
         }

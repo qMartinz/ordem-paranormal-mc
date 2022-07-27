@@ -22,7 +22,7 @@ public class SyncNexToServer {
         context.get().enqueueWork(() -> {
            if (context.get().getSender() == null) return;
            context.get().getSender().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> {
-               nex.loadNBTData(tag);
+               nex.deserializeNBT(tag);
            });
         });
         context.get().setPacketHandled(true);

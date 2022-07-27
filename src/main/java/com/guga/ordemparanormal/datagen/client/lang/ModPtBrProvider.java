@@ -68,6 +68,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(ParanormalElement.FEAR.getTranslationKey(), "Medo");
 
 		// Atributos paranormais
+		add("ordemparanormal.nex.attribute_points", "Pontos de Atributo");
 		add(ParanormalAttribute.STRENGTH.name, "Força");
 		add(ParanormalAttribute.VIGOR.name, "Vigor");
 		add(ParanormalAttribute.PRESENCE.name, "Presença");
@@ -86,12 +87,14 @@ public class ModPtBrProvider extends LanguageProvider{
 
 		// Rituais
 		add("ordemparanormal.rituals", "Rituais");
+		add("ordemparanormal.ritual.ingredient", "Ingrediente");
 		add(OPAPI.SKINNING.getTranslationKey(), "Ritual de descarnar");
 		addDescription(OPAPI.SKINNING.getTranslationKey(),
 				"Descarna o alvo, causando dano de Sangue contínuo.",
 				"Gasta 2 pontos de esforço.");
 
-		// Abilidades
+		// Poderes
+		add("ordemparanormal.nex.power_points", "Pontos de Poder");
 		add("ordemparanormal.power.owned", "Poder adquirido");
 		add("ordemparanormal.power.active", "Poder ativo");
 		add("ordemparanormal.power.passive", "Poder passivo");
@@ -145,8 +148,6 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Outros
 		add("ordemparanormal.nex.title", "Exposição Paranormal");
 		add("ordemparanormal.nex.abbreviation", "NeX");
-		add("ordemparanormal.nex.attribute_points", "Pontos de Atributo");
-		add("ordemparanormal.nex.power_points", "Pontos de Poder");
 		add("ordemparanormal.health_points", "PV");
 		add("ordemparanormal.effort_points", "PE");
 	}

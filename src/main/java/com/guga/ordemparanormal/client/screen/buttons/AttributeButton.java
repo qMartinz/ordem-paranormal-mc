@@ -32,7 +32,7 @@ public class AttributeButton extends AbstractButton {
 
         int color = 0x38494f;
 
-        String text = new TranslatableComponent(attribute.name).getString();
+        String text = attribute.getDisplayName().getString();
         minecraft.font.drawShadow(stack, text, x + 58 - minecraft.font.width(text)/2f, y + 8 - minecraft.font.lineHeight/2f, color);
 
         int level = player.getCapability(PlayerNexProvider.PLAYER_NEX).map(cap -> cap.getAttribute(this.attribute)).orElseThrow();
@@ -46,7 +46,7 @@ public class AttributeButton extends AbstractButton {
             if (playerNex.getAttributePoints() > 0){
                 playerNex.setAttribute(attribute, playerNex.getAttribute(attribute) + 1);
                 playerNex.setAttributePoints(playerNex.getAttributePoints() - 1);
-                Messages.sendToServer(new SyncNexToServer(playerNex.saveNBTData()));
+                Messages.sendToServer(new SyncNexToServer(playerNex.serializeNBT()));
             }
         });
     }

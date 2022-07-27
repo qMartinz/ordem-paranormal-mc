@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.api.powers.ritual;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.powers.ParanormalElement;
+import com.guga.ordemparanormal.common.CommonComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -56,6 +57,8 @@ public abstract class AbstractRitual{
         }
         Component title = getDisplayName().plainCopy().withStyle(formatting);
         lines.add(title);
+        lines.add(CommonComponents.INGREDIENT.plainCopy().append(": ")
+                .append(getIngredient().getName(getIngredient().getDefaultInstance())).withStyle(ChatFormatting.GRAY));
         lines.add(TextComponent.EMPTY);
         for (int i = 1; i < 3; i++){
             lines.add(new TranslatableComponent(this.getTranslationKey() + ".description.line_" + i).withStyle(ChatFormatting.GRAY));
@@ -64,45 +67,95 @@ public abstract class AbstractRitual{
     }
     public int getTier() { return tier; }
     public int getNexRequired(){
-        switch (tier){
-            case 1:
-                return 1;
-            case 2:
-                return 5;
-            case 3:
-                return 10;
-            case 4:
-                return 15;
-            default:
-                return 0;
-        }
+        return switch (tier) {
+            case 1 -> 1;
+            case 2 -> 5;
+            case 3 -> 10;
+            case 4 -> 15;
+            default -> 0;
+        };
     }
     public int getEffortCost() { return effortCost; }
+    public Item getIngredient() {
+        return ingredient;
+    }
+    /**
+     * Chamado quando o ritual é utilizado
+     *
+     * @param rayTraceResult o que foi atingido
+     * @param world o level em que o ritual foi utilizado
+     * @param caster a entidade que utilizou o ritual
+     */
     public void onUse(HitResult rayTraceResult, Level world, @Nullable LivingEntity caster){
         if (caster instanceof Player player){
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playernex -> {
                 if (player.isCreative()){
+                    // ritual é usado no criativo
                     if (rayTraceResult instanceof BlockHitResult blockHitResult) {
                         onUseBlock((BlockHitResult) rayTraceResult, world, caster);
                     } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                         onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                    } else {
+                        onUseSelf(world, caster);
                     }
                 } else {
-                    if (playernex.getCurrentEffort() >= effortCost) {
-                        playernex.setCurrentEffort(playernex.getCurrentEffort() - effortCost);
-                        if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                            onUseBlock((BlockHitResult) rayTraceResult, world, caster);
-                        } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                            onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                    if (playernex.getCurrentEffort() >= getEffortCost()) {
+                        if (getIngredient() != null && caster.getOffhandItem().getItem() == getIngredient()) {
+                            // ritual que necessita de ingrediente é usado
+                            playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
+                            if (rayTraceResult instanceof BlockHitResult blockHitResult) {
+                                onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                            } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
+                                onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                            } else {
+                                onUseSelf(world, caster);
+                            }
+                            caster.getOffhandItem().shrink(1);
+                        } else if (getIngredient() == null) {
+                            // ritual que não necessita de ingrediente é usado
+                            playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
+                            if (rayTraceResult instanceof BlockHitResult blockHitResult) {
+                                onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                            } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
+                                onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                            } else {
+                                onUseSelf(rayTraceResult, world, caster);
+                            }
+                        } else {
+                            // se o player não tiver ingrediente suficiente
+                            player.level.playSound(null, player.blockPosition(), SoundEvents.BEE_POLLINATE, SoundSource.PLAYERS, 1f, 1f);
                         }
-                        System.out.println("Ritual used");
                     } else {
+                        // se o player não tiver ponto de esforço suficiente
                         player.level.playSound(null, player.blockPosition(), SoundEvents.BEE_POLLINATE, SoundSource.PLAYERS, 1f, 1f);
                     }
                 }
             });
         }
     }
+
+    /**
+     * Chamado quando o ritual é utilizado em uma entidade como alvo
+     *
+     * @param rayTraceResult a entidade que foi atingido
+     * @param world o level em que o ritual foi utilizado
+     * @param caster a entidade que utilizou o ritual
+     */
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, @Nullable LivingEntity caster){}
+    /**
+     * Chamado quando o ritual é utilizado em um bloco como alvo
+     *
+     * @param rayTraceResult o bloco que foi atingido
+     * @param world o level em que o ritual foi utilizado
+     * @param caster a entidade que utilizou o ritual
+     */
     public void onUseBlock(BlockHitResult rayTraceResult, Level world, @Nullable LivingEntity caster){}
+
+    /**
+     * Chamado quando o ritual não possui alvo específico (não é uma entidade ou um bloco)
+     *
+     * @param world o level em que o ritual foi utilizado
+     * @param caster a entidade que utilizou o ritual
+     */
+    public void onUseSelf(HitResult rayTraceResult, Level world, @Nullable LivingEntity caster){}
 }

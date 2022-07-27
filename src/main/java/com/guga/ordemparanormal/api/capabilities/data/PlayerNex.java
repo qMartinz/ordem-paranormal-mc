@@ -9,11 +9,11 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.UUID;
 
-public class PlayerNex {
+public class PlayerNex implements INexCap{
     private int nex;
     private double nexXp;
     private int attributePoints;
-    private int abilityPoints;
+    private int powerPoints;
     private double maxEffort = 4;
     private double currentEffort;
     private int[] attributes = new int[]{0, 0, 0};
@@ -48,13 +48,13 @@ public class PlayerNex {
             if ((nex - 1) % 2 == 0) attPointsGained++;
             if ((nex - 1) % 2 == 0) ritualSlotsGained++;
             if (nex % 2 == 0) abilityPointsGained++;
-            if (nex == 20) abilityPoints++;
+            if (nex == 20) powerPoints++;
             if (nex == 1) ritualSlotsGained += 2;
         }
 
         attributePoints += attPointsGained;
         ritualSlots += ritualSlotsGained;
-        abilityPoints += abilityPointsGained;
+        powerPoints += abilityPointsGained;
 
         if (attPointsGained > 0 || abilityPointsGained > 0) NexOverlay.showLvLUpNotification();
     }
@@ -65,10 +65,10 @@ public class PlayerNex {
         this.attributePoints = attributePoints;
     }
     public int getPowerPoints() {
-        return abilityPoints;
+        return powerPoints;
     }
-    public void setAbilityPoints(int abilityPoints) {
-        this.abilityPoints = abilityPoints;
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
     }
     public double getMaxEffort() {
         return maxEffort;
@@ -94,6 +94,12 @@ public class PlayerNex {
     public void setAttribute(ParanormalAttribute paranormalAttribute, int level) {
         attributes[paranormalAttribute.index] = level;
     }
+
+    /**
+     * Sincroniza os modificadores de atributo dados pelos atributos paranormais
+     *
+     * @param player o jogador que deseja sincronizar
+     */
     public void syncAttributeMods(Player player){
         //Strength
         // Modificador de dano
@@ -123,22 +129,28 @@ public class PlayerNex {
     public int getRitualSlots() {
         return ritualSlots;
     }
-    public void copyFrom(PlayerNex source){
-        nex = source.nex;
-        nexXp = source.nexXp;
-        attributePoints = source.attributePoints;
-        abilityPoints = source.abilityPoints;
-        maxEffort = source.maxEffort;
-        currentEffort = source.currentEffort;
-        attributes = source.attributes;
-        ritualSlots = source.ritualSlots;
+
+    /**
+     * Copia os dados de outra capability e os aplica para essa
+     *
+     * @param source a capability que você deseja extrair os dados
+     */
+    public void copyFrom(INexCap source){
+        nex = source.getNex();
+        nexXp = source.getNexXp();
+        attributePoints = source.getAttributePoints();
+        powerPoints = source.getPowerPoints();
+        maxEffort = source.getMaxEffort();
+        currentEffort = source.getCurrentEffort();
+        attributes = source.getAttributes();
+        ritualSlots = source.getRitualSlots();
     }
-    public CompoundTag saveNBTData(){
+    public CompoundTag serializeNBT(){
         CompoundTag nbt = new CompoundTag();
         nbt.putInt("nex_percent", nex);
         nbt.putDouble("nex_xp", nexXp);
         nbt.putInt("attribute_points", attributePoints);
-        nbt.putInt("ability_points", abilityPoints);
+        nbt.putInt("ability_points", powerPoints);
 
         CompoundTag effortTag = new CompoundTag();
         effortTag.putDouble("max_effort", maxEffort);
@@ -155,11 +167,11 @@ public class PlayerNex {
 
         return nbt;
     }
-    public void loadNBTData(CompoundTag nbt){
+    public void deserializeNBT(CompoundTag nbt){
         nex = nbt.getInt("nex_percent");
         nexXp = nbt.getDouble("nex_xp");
         attributePoints = nbt.getInt("attribute_points");
-        abilityPoints = nbt.getInt("ability_points");
+        powerPoints = nbt.getInt("ability_points");
 
         CompoundTag effortTag = nbt.getCompound("effort");
         maxEffort = effortTag.getDouble("max_effort");

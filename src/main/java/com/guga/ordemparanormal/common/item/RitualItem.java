@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.powers.ritual.IRitualCaster;
 import com.guga.ordemparanormal.api.powers.ritual.RitualCaster;
 import com.guga.ordemparanormal.api.util.PowerUtils;
+import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -69,9 +70,9 @@ public class RitualItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if (pStack.getOrCreateTag().getBoolean("ritualLearned")){
-            pTooltipComponents.add(new TranslatableComponent("ordemparanormal.ritual_item.ritual_learned"));
+            pTooltipComponents.add(CommonComponents.RITUAL_LEARNED);
         } else {
-            pTooltipComponents.add(new TranslatableComponent("ordemparanormal.ritual_item.ritual_unknown"));
+            pTooltipComponents.add(CommonComponents.RITUAL_UNKNOWN);
         }
     }
 

@@ -1,10 +1,8 @@
 package com.guga.ordemparanormal.common.commands;
 
-import com.guga.ordemparanormal.api.capabilities.data.CapEvents;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.capabilities.network.SyncPowers;
-import com.guga.ordemparanormal.api.powers.power.PlayerPower;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -13,6 +11,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.HashMap;
@@ -33,7 +32,7 @@ public class ResetNexCommand implements Command<CommandSourceStack> {
             playerNex.setNex(0);
             playerNex.setNexXp(0);
             playerNex.setAttributePoints(0);
-            playerNex.setAbilityPoints(0);
+            playerNex.setPowerPoints(0);
             playerNex.setAttributes(new int[]{0, 0, 0});
             playerNex.setRitualSlots(0);
         });

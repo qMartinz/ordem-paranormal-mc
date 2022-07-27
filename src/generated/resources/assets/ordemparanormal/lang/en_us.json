@@ -79,6 +79,7 @@
   "ordemparanormal.power.active": "Active power",
   "ordemparanormal.power.owned": "Power acquired",
   "ordemparanormal.power.passive": "Passive power",
+  "ordemparanormal.ritual.ingredient": "Ingredient",
   "ordemparanormal.ritual.skinning": "Skinning ritual",
   "ordemparanormal.ritual.skinning.description.line_1": "Skins the target, dealing continuous Blood damage.",
   "ordemparanormal.ritual.skinning.description.line_2": "Consumes 2 effort points.",

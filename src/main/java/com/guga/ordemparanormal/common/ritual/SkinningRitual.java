@@ -1,12 +1,13 @@
 package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNex;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.powers.ElementDamage;
 import com.guga.ordemparanormal.api.powers.ParanormalElement;
+import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
+import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -22,14 +23,14 @@ import org.jetbrains.annotations.Nullable;
 
 public class SkinningRitual extends AbstractRitual {
     public SkinningRitual() {
-        super("skinning", ParanormalElement.BLOOD, 1, 2, null);
+        super("skinning", ParanormalElement.BLOOD, 1, 2, OPItems.ORGAO.get());
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, @Nullable LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         float presence = 0;
         if (caster instanceof Player player) {
-            PlayerNex nexCap = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+            INexCap nexCap = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
             if (nexCap == null) return;
             presence = nexCap.getAttribute(ParanormalAttribute.PRESENCE);
         }

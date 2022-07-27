@@ -1,9 +1,6 @@
 package com.guga.ordemparanormal.client.screen.buttons;
 
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNex;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
+import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
 import com.guga.ordemparanormal.api.capabilities.network.UpdatePowers;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
@@ -30,7 +27,7 @@ public class PowerButton extends AbstractButton {
     }
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
-        PlayerNex playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        INexCap playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
         IPowerCap playerPowers = minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
         if (playerNex == null || playerPowers == null) return;
 
@@ -81,7 +78,7 @@ public class PowerButton extends AbstractButton {
 
     @Override
     public void onPress() {
-        PlayerNex playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        INexCap playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
         IPowerCap playerPowers = minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
         if (playerNex == null || playerPowers == null) return;
         boolean powerRequirement = playerPowers.hasPower(power.getPowerRequirement()) || power.getPowerRequirement() == PlayerPower.EMPTY;
@@ -91,10 +88,10 @@ public class PowerButton extends AbstractButton {
                 playerNex.getAttributes()[2] >= power.getAttributesRequired()[2] &&
                 powerRequirement;
         if (available && requirements && playerNex.getPowerPoints() > 0 && !playerPowers.hasPower(power)){
-            playerNex.setAbilityPoints(playerNex.getPowerPoints() - 1);
+            playerNex.setPowerPoints(playerNex.getPowerPoints() - 1);
             playerPowers.addPower(power);
             Messages.sendToServer(new UpdatePowers(playerPowers.serializeNBT()));
-            Messages.sendToServer(new SyncNexToServer(playerNex.saveNBTData()));
+            Messages.sendToServer(new SyncNexToServer(playerNex.serializeNBT()));
         }
     }
     @Override

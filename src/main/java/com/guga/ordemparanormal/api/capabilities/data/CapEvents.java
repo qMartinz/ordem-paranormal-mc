@@ -65,7 +65,7 @@ public class CapEvents {
             syncPlayerPowers(event.getPlayer());
         }
         if (!event.isEndConquered()){
-            PlayerNex nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+            INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
             if (nex == null) return;
             nex.setCurrentEffort(nex.getMaxEffort());
         }

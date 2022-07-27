@@ -17,6 +17,14 @@ public class ElementDamage {
     public static DamageSource ritualDamage(LivingEntity caster, ParanormalElement element){
         return new EntityDamageSource(element.getEquivalentDamage().getMsgId(), caster);
     }
+
+    /**
+     * Checa se a entidade especificada é resistente ao dano elemental especificado
+     *
+     * @param entity a entidade que você deseja checar
+     * @param damage tipo de dano, se não for dano elemental esse método sempre retornará falso
+     * @return verdadeiro se ela é resistente ao dano, falso se não é
+     */
     public static boolean isEntityResistant(LivingEntity entity, DamageSource damage){
         List<EntityType<?>> nonOrganicEntities = List.of(new EntityType<?>[]{EntityType.IRON_GOLEM, EntityType.SNOW_GOLEM, EntityType.SHULKER, EntityType.GUARDIAN, EntityType.ELDER_GUARDIAN});
         if (entity instanceof ParanormalCreature creature){
@@ -41,6 +49,14 @@ public class ElementDamage {
             return damage == BLOOD_DAMAGE && nonOrganicEntities.contains(entity.getType());
         }
     }
+
+    /**
+     * Checa se a entidade especificada é fraca ao dano elemental especificado
+     *
+     * @param entity a entidade que você deseja checar
+     * @param damage tipo de dano, se não for dano elemental esse método sempre retornará falso
+     * @return verdadeiro se ela é fraca ao dano, falso se ela não é
+     */
     public static boolean isEntityWeakTo(LivingEntity entity, DamageSource damage){
         List<EntityType<?>> nonOrganicEntities = List.of(new EntityType<?>[]{EntityType.IRON_GOLEM, EntityType.SNOW_GOLEM, EntityType.SHULKER, EntityType.GUARDIAN, EntityType.ELDER_GUARDIAN});
         if (entity instanceof ParanormalCreature creature){

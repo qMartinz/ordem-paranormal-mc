@@ -68,6 +68,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(ParanormalElement.FEAR.getTranslationKey(), "Fear");
 
 		// Atributos paranormais
+		add("ordemparanormal.nex.attribute_points", "Attribute Points");
 		add(ParanormalAttribute.STRENGTH.name, "Strength");
 		add(ParanormalAttribute.VIGOR.name, "Vigor");
 		add(ParanormalAttribute.PRESENCE.name, "Presence");
@@ -86,13 +87,14 @@ public class ModEnUsProvider extends LanguageProvider{
 
 		// Rituais
 		add("ordemparanormal.rituals", "Rituals");
-
+		add("ordemparanormal.ritual.ingredient", "Ingredient");
 		add(OPAPI.SKINNING.getTranslationKey(), "Skinning ritual");
 		addDescription(OPAPI.SKINNING.getTranslationKey(),
 				"Skins the target, dealing continuous Blood damage.",
 				"Consumes 2 effort points.");
 
-		// Abilidades
+		// Poderes
+		add("ordemparanormal.nex.power_points", "Power Points");
 		add("ordemparanormal.power.owned", "Power acquired");
 		add("ordemparanormal.power.active", "Active power");
 		add("ordemparanormal.power.passive", "Passive power");
@@ -146,8 +148,6 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Outros
 		add("ordemparanormal.nex.title", "Paranormal Exposure");
 		add("ordemparanormal.nex.abbreviation", "PeX");
-		add("ordemparanormal.nex.attribute_points", "Attribute Points");
-		add("ordemparanormal.nex.power_points", "Power Points");
 		add("ordemparanormal.health_points", "HP");
 		add("ordemparanormal.effort_points", "EP");
 	}

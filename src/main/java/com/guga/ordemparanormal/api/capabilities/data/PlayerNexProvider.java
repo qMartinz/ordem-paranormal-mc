@@ -15,37 +15,22 @@ import org.jetbrains.annotations.Nullable;
 
 public class PlayerNexProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
     public static final ResourceLocation IDENTIFIER = new ResourceLocation(OrdemParanormal.MOD_ID, "player_nex");
-    public static Capability<PlayerNex> PLAYER_NEX = CapabilityManager.get(new CapabilityToken<>(){});
-    private PlayerNex playerNex = null;
-    private final LazyOptional<PlayerNex> opt = LazyOptional.of(this::createPlayerNex);
-    @NotNull
-    private PlayerNex createPlayerNex(){
-        if (playerNex == null){
-            playerNex = new PlayerNex();
-        }
-        return playerNex;
-    }
+    private final INexCap backend = new PlayerNex();
+    private final LazyOptional<INexCap> optionalData = LazyOptional.of(() -> backend);
+    public static Capability<INexCap> PLAYER_NEX = CapabilityManager.get(new CapabilityToken<>(){});
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return getCapability(cap);
-    }
-    @NotNull
-    @Override
-    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        if (cap == PLAYER_NEX){
-            return opt.cast();
-        }
-        return LazyOptional.empty();
+        return PLAYER_NEX.orEmpty(cap, this.optionalData);
     }
 
     @Override
     public CompoundTag serializeNBT() {
-        return createPlayerNex().saveNBTData();
+        return this.backend.serializeNBT();
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        createPlayerNex().loadNBTData(nbt);
+        this.backend.deserializeNBT(nbt);
     }
 }

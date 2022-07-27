@@ -74,6 +74,12 @@ public class PlayerPower {
         }
         return lines;
     }
+
+    /**
+     * Chamado quando o poder (caso seja um poder ativo) é utilizado
+     *
+     * @param player o jogador que utilizou o poder
+     */
     public void use(Player player) {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
             if (cap.getCurrentEffort() < this.getEffortCost()) return;
@@ -81,6 +87,12 @@ public class PlayerPower {
             System.out.println(getDisplayName().getString() + " power used!");
         });
     }
+
+    /**
+     * Chamado quando o poder (caso não seja um poder ativo, ou seja, é um poder passivo) é utilizado
+     *
+     * @param player o jogador que possui o poder
+     */
     public void tick(Player player){
     }
 }

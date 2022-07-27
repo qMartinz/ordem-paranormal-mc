@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.client.screen.widgets.SelectedRitual;
+import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -81,7 +82,7 @@ public class NexScreen extends Screen {
         minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
             minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
                 String value = playerNex.getNexPercent() + "%";
-                String label = new TranslatableComponent("ordemparanormal.nex.attribute_points").getString();
+                String label = CommonComponents.ATTRIBUTE_POINTS.getString();
 
                 font.draw(stack, value, width/2f - font.width(value)/2f, screenY - 2 - font.lineHeight, FastColor.ARGB32.color(255, 255, 255, 255));
 
@@ -89,15 +90,15 @@ public class NexScreen extends Screen {
                 font.draw(stack, label, width/2f - font.width(label)/2f, screenY + screenHeight + 2, FastColor.ARGB32.color(255, 200, 200, 255));
                 font.draw(stack, value, width/2f - font.width(value)/2f, screenY + screenHeight + 4 + font.lineHeight, FastColor.ARGB32.color(255, 200, 200, 255));
 
-                label = new TranslatableComponent("ordemparanormal.rituals").append(":").getString();
+                label = CommonComponents.RITUALS.plainCopy().append(":").getString();
                 value = playerAbilities.getKnownRituals().size() + "/" + playerNex.getRitualSlots();
                 font.drawShadow(stack, label, screenX + 101, screenY + 64, color);
                 font.drawShadow(stack, value, screenX + 166 - font.width(value), screenY + 64, color);
 
-                label = new TranslatableComponent("ordemparanormal.health_points").append(": ").getString();
+                label = CommonComponents.HEALTH_POINTS.plainCopy().append(": ").getString();
                 value = (int)minecraft.player.getHealth() + "/" + (int)minecraft.player.getMaxHealth();
                 font.drawShadow(stack, label + value, screenX + 48 - font.width(label + value)/2f, screenY + 112, color);
-                label = new TranslatableComponent("ordemparanormal.effort_points").append(": ").getString();
+                label = CommonComponents.EFFORT_POINTS.plainCopy().append(": ").getString();
                 value = (int)playerNex.getCurrentEffort() + "/" + (int)playerNex.getMaxEffort();
                 font.drawShadow(stack, label + value, screenX + 48 - font.width(label + value)/2f, screenY + 137 - font.lineHeight, color);
             });
@@ -105,11 +106,7 @@ public class NexScreen extends Screen {
         super.render(stack, mouseX, mouseY, partialTicks);
         for (Widget widget : this.renderables){
             if (widget instanceof AttributeButton attButton){
-                List<Component> lines = new ArrayList<>();
-                for (int i = 1; i < 4; i++){
-                    lines.add(new TranslatableComponent(attButton.attribute.name + ".description.line_" + i));
-                    if (i == 1) lines.add(TextComponent.EMPTY);
-                }
+                List<Component> lines = attButton.attribute.getDescription();
                 if (attButton.isMouseOver(mouseX, mouseY)) renderComponentTooltip(stack,
                         lines,
                         mouseX, mouseY);
