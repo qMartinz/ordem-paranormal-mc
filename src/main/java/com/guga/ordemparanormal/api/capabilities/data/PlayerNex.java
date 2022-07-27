@@ -10,19 +10,24 @@ import net.minecraft.world.entity.player.Player;
 import java.util.UUID;
 
 public class PlayerNex {
-    private int nexPercent;
+    private int nex;
     private double nexXp;
+    private int attributePoints;
     private int abilityPoints;
     private double maxEffort = 4;
     private double currentEffort;
     private int[] attributes = new int[]{0, 0, 0};
+    private int ritualSlots;
     private final UUID damageBonusModUUID = UUID.randomUUID();
     private final UUID healthBonusModUUID = UUID.randomUUID();
-    public int getNexPercent() {
-        return nexPercent;
+    public int getNex() {
+        return nex;
     }
-    public void setNexPercent(int nexPercent) {
-        this.nexPercent = nexPercent;
+    public void setNex(int nex) {
+        this.nex = nex;
+    }
+    public int getNexPercent() {
+        return getNex() == 20 ? 99 : getNex()*5;
     }
     public double getNexXp() {
         return nexXp;
@@ -31,23 +36,35 @@ public class PlayerNex {
         this.nexXp = nexXp;
     }
     public void addNexXp(double amount){
-        int oldLevel = this.getNexPercent();
+        int oldLevel = this.getNex();
         this.nexXp += amount;
-        int pointsGained = 0;
+        int attPointsGained = 0;
+        int ritualSlotsGained = 0;
+        int abilityPointsGained = 0;
 
-        while (this.nexXp >= (this.nexPercent + 1) * 10){
-            this.nexXp -= (this.nexPercent + 1) * 10;
-            this.nexPercent++;
-            if (nexPercent % 5 == 0) pointsGained++;
+        while (this.nexXp >= (this.nex + 1) * 50 && this.nex < 20){
+            this.nexXp -= (this.nex + 1) * 50;
+            this.nex++;
+            if ((nex - 1) % 2 == 0) attPointsGained++;
+            if ((nex - 1) % 2 == 0) ritualSlotsGained++;
+            if (nex % 2 == 0) abilityPointsGained++;
+            if (nex == 20) abilityPoints++;
+            if (nex == 1) ritualSlotsGained += 2;
         }
 
-        if (nexPercent == 99) pointsGained++;
+        attributePoints += attPointsGained;
+        ritualSlots += ritualSlotsGained;
+        abilityPoints += abilityPointsGained;
 
-        abilityPoints += pointsGained;
-
-        if (pointsGained > 0) NexOverlay.showLvLUpNotification();
+        if (attPointsGained > 0 || abilityPointsGained > 0) NexOverlay.showLvLUpNotification();
     }
-    public int getAbilityPoints() {
+    public int getAttributePoints() {
+        return attributePoints;
+    }
+    public void setAttributePoints(int attributePoints) {
+        this.attributePoints = attributePoints;
+    }
+    public int getPowerPoints() {
         return abilityPoints;
     }
     public void setAbilityPoints(int abilityPoints) {
@@ -97,20 +114,30 @@ public class PlayerNex {
         }
 
         //Will
-        setMaxEffort(4 + attributes[ParanormalAttribute.WILL.index]);
+        setMaxEffort(4 + attributes[ParanormalAttribute.PRESENCE.index]);
+    }
+
+    public void setRitualSlots(int ritualSlots) {
+        this.ritualSlots = ritualSlots;
+    }
+    public int getRitualSlots() {
+        return ritualSlots;
     }
     public void copyFrom(PlayerNex source){
-        nexPercent = source.nexPercent;
+        nex = source.nex;
         nexXp = source.nexXp;
+        attributePoints = source.attributePoints;
         abilityPoints = source.abilityPoints;
         maxEffort = source.maxEffort;
         currentEffort = source.currentEffort;
         attributes = source.attributes;
+        ritualSlots = source.ritualSlots;
     }
     public CompoundTag saveNBTData(){
         CompoundTag nbt = new CompoundTag();
-        nbt.putInt("nex_percent", nexPercent);
+        nbt.putInt("nex_percent", nex);
         nbt.putDouble("nex_xp", nexXp);
+        nbt.putInt("attribute_points", attributePoints);
         nbt.putInt("ability_points", abilityPoints);
 
         CompoundTag effortTag = new CompoundTag();
@@ -121,14 +148,17 @@ public class PlayerNex {
         CompoundTag attributeTag = new CompoundTag();
         attributeTag.putInt("strength", attributes[0]);
         attributeTag.putInt("vigor", attributes[1]);
-        attributeTag.putInt("will", attributes[2]);
+        attributeTag.putInt("presence", attributes[2]);
         nbt.put("paranormal_attributes", attributeTag);
+
+        nbt.putInt("ritual_slots", ritualSlots);
 
         return nbt;
     }
     public void loadNBTData(CompoundTag nbt){
-        nexPercent = nbt.getInt("nex_percent");
+        nex = nbt.getInt("nex_percent");
         nexXp = nbt.getDouble("nex_xp");
+        attributePoints = nbt.getInt("attribute_points");
         abilityPoints = nbt.getInt("ability_points");
 
         CompoundTag effortTag = nbt.getCompound("effort");
@@ -138,6 +168,8 @@ public class PlayerNex {
         CompoundTag attributeTag = nbt.getCompound("paranormal_attributes");
         attributes[0] = attributeTag.getInt("strength");
         attributes[1] = attributeTag.getInt("vigor");
-        attributes[2] = attributeTag.getInt("will");
+        attributes[2] = attributeTag.getInt("presence");
+
+        ritualSlots = nbt.getInt("ritual_slots");
     }
 }

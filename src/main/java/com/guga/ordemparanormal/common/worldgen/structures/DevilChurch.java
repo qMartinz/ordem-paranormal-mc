@@ -1,6 +1,5 @@
 package com.guga.ordemparanormal.common.worldgen.structures;
 
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -15,7 +14,6 @@ import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import org.apache.logging.log4j.Level;
 
 import java.util.Optional;
 
@@ -45,10 +43,6 @@ public class DevilChurch extends StructureFeature<JigsawConfiguration> {
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
-
-        if(structurePiecesGenerator.isPresent()) {
-            OrdemParanormal.LOGGER.log(Level.DEBUG, "Devil's church at {}", blockpos);
-        }
 
         return structurePiecesGenerator;
     }

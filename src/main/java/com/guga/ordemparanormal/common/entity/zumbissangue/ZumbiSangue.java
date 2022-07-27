@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
-import com.guga.ordemparanormal.api.ritual.ParanormalElement;
+import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.teamabnormals.blueprint.core.endimator.Endimatable;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
-		super(type, level, 15, ParanormalElement.BLOOD);
+		super(type, level, 50, ParanormalElement.BLOOD);
 	}
 
 	// AI e comportamento

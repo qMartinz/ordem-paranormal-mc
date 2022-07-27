@@ -13,6 +13,6 @@ public final class OPSounds {
     // Registrar sons
     public static final RegistryObject<SoundEvent> ZUMBI_SANGUE_GROWL = HELPER.createSoundEvent("zumbi_sangue.growl");
     public static final RegistryObject<SoundEvent> ZUMBI_BESTIAL_GROWL = HELPER.createSoundEvent("zumbi_bestial.growl");
-    public static final RegistryObject<SoundEvent> NEX_LEVEL_UP = HELPER.createSoundEvent("nex_lvl_up");
     public static final RegistryObject<SoundEvent> RITUAL_LEARNED = HELPER.createSoundEvent("ritual_learned");
+    public static final RegistryObject<SoundEvent> RITUAL_FORGOTTEN = HELPER.createSoundEvent("ritual_forgotten");
 }

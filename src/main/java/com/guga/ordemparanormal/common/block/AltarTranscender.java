@@ -1,12 +1,12 @@
 package com.guga.ordemparanormal.common.block;
 
 import com.guga.ordemparanormal.api.capabilities.data.*;
-import com.guga.ordemparanormal.api.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,9 +16,12 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -26,7 +29,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class AltarTranscender extends HorizontalDirectionalBlock {
+public class AltarTranscender extends Block {
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final VoxelShape NORTH = Shapes.or(
             Block.box(2, 0, 2.0100752375298914, 14, 2, 14.010075237529891),
             Block.box(3, 2, 3.0100752375298914, 13, 3, 13.010075237529891),
@@ -47,8 +51,8 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
             Block.box(3.0100752375298914, 2, 3, 13.010075237529891, 3, 13),
             Block.box(4.010075237529891, 3, 4, 12.010075237529891, 12, 12),
             Block.box(2.4896610595177275, 9.876189780110156, 2.5, 13.489661059517728, 13.876189780110156, 13.5));
-    public AltarTranscender(Properties properties) {
-        super(properties);
+    public AltarTranscender() {
+        super(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE));
     }
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder){
@@ -70,26 +74,40 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
     }
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (pLevel.isClientSide) super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
-        IPlayerCap abilities = pPlayer.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        IPowerCap abilities = pPlayer.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
         PlayerNex nex = pPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-        if (abilities == null || nex == null) return InteractionResult.PASS;
 
-        if (stack.getItem() instanceof RitualItem item && nex.getNexPercent() >= item.getRitual().getNexRequired() && !abilities.knowsRitual(item.getRitual()) /*&& !stack.getOrCreateTag().getBoolean("ritualLearned")*/){
-            AbstractRitual ritual = item.getRitual();
-            if (!pPlayer.level.isClientSide) {
-                CompoundTag tag = new CompoundTag();
-                tag.putBoolean("ritualLearned", true);
-                stack.setTag(tag);
-                abilities.learnRitual(ritual);
-                if (pPlayer instanceof ServerPlayer serverPlayer) CapEvents.syncPlayerAbilities(serverPlayer);
-            } else {
-                pPlayer.level.playLocalSound(pPos.getX(), pPos.getY(), pPos.getZ(), OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 1f, 1f, false);
+        if (nex != null && abilities != null){
+            if (stack.getItem() instanceof RitualItem item){
+                AbstractRitual ritual = item.getRitual();
+                if (!abilities.knowsRitual(ritual)){
+                    if (nex.getNex() >= item.getRitual().getNexRequired() && abilities.getKnownRituals().size() < nex.getRitualSlots() /*&& !stack.getOrCreateTag().getBoolean("ritualLearned")*/) {
+                        CompoundTag tag = new CompoundTag();
+                        tag.putBoolean("ritualLearned", true);
+                        stack.setTag(tag);
+                        abilities.learnRitual(ritual);
+                        CapEvents.syncPlayerPowers(pPlayer);
+                        pLevel.playSound(null, pPos, OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 0.5f, 1f);
+                        pLevel.playSound(null, pPos, SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
+                        return InteractionResult.CONSUME;
+                    }
+                } else {
+                    if (stack.getOrCreateTag().getBoolean("ritualLearned")){
+                        CompoundTag tag = new CompoundTag();
+                        tag.putBoolean("ritualLearned", false);
+                        stack.setTag(tag);
+                    }
+                    abilities.forgetRitual(ritual);
+                    CapEvents.syncPlayerPowers(pPlayer);
+                    pLevel.playSound(null, pPos, OPSounds.RITUAL_FORGOTTEN.get(), SoundSource.BLOCKS, 0.5f, 1f);
+                    pLevel.playSound(null, pPos, SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
+                    return InteractionResult.CONSUME;
+                }
             }
-            return InteractionResult.CONSUME;
-        } else {
-            return InteractionResult.PASS;
         }
+        return InteractionResult.PASS;
     }
 }

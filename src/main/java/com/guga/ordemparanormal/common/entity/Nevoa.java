@@ -161,13 +161,16 @@ public class Nevoa extends Entity {
 				--l;
 				this.setLife(l);
 			}
+			if (this.getLife() < 1){
+				this.discard();
+			}
 
 			// Instantaneamente converter players com 0% dentro da névoa em 1%.
 			List<Player> players = this.level.getEntitiesOfClass(Player.class,
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {
 				for (Player player : players) {
-					if (player.getCapability(PlayerNexProvider.PLAYER_NEX).resolve().get().getNexPercent() == 0) player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+					if (player.getCapability(PlayerNexProvider.PLAYER_NEX).resolve().get().getNex() == 0) player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
 						playerNex.addNexXp(10);
 					});
 				}

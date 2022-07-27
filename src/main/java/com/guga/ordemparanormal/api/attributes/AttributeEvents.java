@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class AttributeEvents {
-    private static int effortTickTimer;
     @SubscribeEvent
     public static void breakSpeedBonus(PlayerEvent.BreakSpeed event){
         // Aumenta velocidade de mineração

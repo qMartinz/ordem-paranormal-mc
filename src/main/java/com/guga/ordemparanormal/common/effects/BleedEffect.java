@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.effects;
 
-import com.guga.ordemparanormal.api.ritual.ElementDamage;
+import com.guga.ordemparanormal.api.powers.ElementDamage;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;

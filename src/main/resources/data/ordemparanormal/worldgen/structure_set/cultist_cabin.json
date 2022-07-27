@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "ordemparanormal:cultist_cabin",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 13914160,
+
+    "spacing": 20,
+
+    "separation": 8,
+
+    "type": "minecraft:random_spread"
+  }
+}

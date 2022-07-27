@@ -3,10 +3,7 @@ package com.guga.ordemparanormal.core;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.NexOverlay;
 import com.guga.ordemparanormal.client.renderer.*;
-import com.guga.ordemparanormal.core.network.ClientProxy;
-import com.guga.ordemparanormal.core.network.IProxy;
 import com.guga.ordemparanormal.core.network.Messages;
-import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
@@ -28,19 +25,26 @@ import org.apache.logging.log4j.Logger;
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OrdemParanormal {
 	public static final String MOD_ID = "ordemparanormal";
-	public static IProxy proxy = DistExecutor.runForDist(()-> ClientProxy::new, () -> ServerProxy::new);
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
-	
-	// Abas do modo criativo
-	public static final CreativeModeTab OP_ITENS = new CreativeModeTab(MOD_ID) {		
+	public static final CreativeModeTab OP_TAB = new CreativeModeTab(MOD_ID) {
 		@Override
-		@OnlyIn(Dist.CLIENT)
 		public ItemStack makeIcon() {
-			return new ItemStack(OPItems.GRIMORIO_SANGUE.get());
+			return OPItems.GRIMORIO_SANGUE.get().getDefaultInstance();
 		}
 	};
-
+	public static final CreativeModeTab RITUALS_TAB = new CreativeModeTab(MOD_ID + ".rituals") {
+		@Override
+		public ItemStack makeIcon() {
+			return OPItems.RITUAL_DESCARNAR.get().getDefaultInstance();
+		}
+	};
+	public static final CreativeModeTab MOBS_TAB = new CreativeModeTab(MOD_ID + ".mobs") {
+		@Override
+		public ItemStack makeIcon() {
+			return OPItems.ZUMBI_SANGUE_OVO.get().getDefaultInstance();
+		}
+	};
 	public OrdemParanormal() {
 		// Event Bus para registrar coisas do mod
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

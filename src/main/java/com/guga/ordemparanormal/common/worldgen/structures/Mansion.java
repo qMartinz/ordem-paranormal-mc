@@ -49,10 +49,6 @@ public class Mansion extends StructureFeature<JigsawConfiguration> {
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
 
-        if(structurePiecesGenerator.isPresent()) {
-            OrdemParanormal.LOGGER.log(Level.DEBUG, "Mansion's church at {}", blockpos);
-        }
-
         return structurePiecesGenerator;
     }
 }

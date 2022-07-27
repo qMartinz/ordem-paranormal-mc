@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.datagen.client;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPBlocks;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -25,11 +26,13 @@ public class ModItemModelProvider extends ItemModelProvider{
 			System.out.println("Texture for " + item.getRegistryName().toString() + " not present at " + itemTexture);
 		}
 	}
-	
 	protected void oneLayerItem(Item item) {
 		oneLayerItem(item, item.getRegistryName());
 	}
-	
+	protected void simpleBlockItem(Item item){
+		getBuilder(item.getRegistryName().toString())
+				.parent(getExistingFile(modLoc("block/" + item.getRegistryName().getPath())));
+	}
 	protected void spawnEggItem(Item item) {
 		getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/template_spawn_egg")));
 	}
@@ -49,6 +52,9 @@ public class ModItemModelProvider extends ItemModelProvider{
 		oneLayerItem(OPItems.ORGAO.get());
 		oneLayerItem(OPItems.CINZAS.get());
 		oneLayerItem(OPItems.RITUAL_DESCARNAR.get());
+
+		// Blocos
+		simpleBlockItem(OPBlocks.ALTAR_TRANSCENDER.get().asItem());
 	}
 
 }

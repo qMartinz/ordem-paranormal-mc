@@ -17,7 +17,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class OPEntities {
-	private static final EntitySubRegistryHelper HELPER = OrdemParanormal.REGISTRY_HELPER.getEntitySubHelper();
+	public static final EntitySubRegistryHelper HELPER = OrdemParanormal.REGISTRY_HELPER.getEntitySubHelper();
 	
 	// Registrar entidades
 	public static final RegistryObject<EntityType<ZumbiSangue>> ZUMBI_SANGUE = HELPER.createLivingEntity(

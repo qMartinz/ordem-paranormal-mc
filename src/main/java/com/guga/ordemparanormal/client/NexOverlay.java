@@ -3,18 +3,19 @@ package com.guga.ordemparanormal.client;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.client.screen.NexScreen;
-import com.guga.ordemparanormal.core.registry.OPSounds;
+import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class NexOverlay extends GuiComponent {
+    public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/overlay.png");
     private static int showLvlUpTicks = 0;
     @SubscribeEvent
     public void onRenderOverlay(RenderGameOverlayEvent.Post event){
@@ -41,28 +42,18 @@ public class NexOverlay extends GuiComponent {
                     RenderSystem.depthMask(false);
                     RenderSystem.defaultBlendFunc();
 
-                    RenderSystem.setShaderTexture(0, NexScreen.RESOURCES);
-                    blit(poseStack, width - 95, height - 7, 58, 24, 92, 5);
+                    RenderSystem.setShaderTexture(0, TEXTURES);
+                    blit(poseStack, width - 95, height - 9, 3, 24, 92, 5);
 
-                    int nextLvlXP = (playerNex.getNexPercent() + 1) * 10;
-                    int barsFilled = (playerNex.getNexPercent() % 5) * 18;
-                    int total = (int) (barsFilled + (playerNex.getNexXp() / nextLvlXP)*18);
-                    blit(poseStack, width - 95, height - 7, 58, 29, total, 5);
+                    int nextLvlXP = (playerNex.getNex() + 1) * 50;
+                    int barFilled = (int) ((playerNex.getNexXp()/nextLvlXP)*90);
+                    blit(poseStack, width - 95, height - 9, 3, 29, barFilled, 5);
 
-                    RenderSystem.depthMask(true);
-                    RenderSystem.enableDepthTest();
-                    RenderSystem.disableBlend();
-                }
-
-                if (showLvlUpTicks > 0) {
-                    RenderSystem.enableBlend();
-                    RenderSystem.disableDepthTest();
-                    RenderSystem.depthMask(false);
-                    RenderSystem.defaultBlendFunc();
-                    RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100)/100f);
-                    RenderSystem.setShaderTexture(0, NexScreen.RESOURCES);
-                    blit(poseStack, width - 98, height - 24, 55, 0, 98, 24);
-                    RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+                    if (showLvlUpTicks > 0) {
+                        RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100)/100f);
+                        blit(poseStack, width - 98, height - 26, 0, 0, 98, 24);
+                        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+                    }
                     RenderSystem.depthMask(true);
                     RenderSystem.enableDepthTest();
                     RenderSystem.disableBlend();
@@ -74,11 +65,9 @@ public class NexOverlay extends GuiComponent {
     public void onClientTick(TickEvent.ClientTickEvent event){
         if (showLvlUpTicks > 0) showLvlUpTicks--;
     }
-
     public static void showLvLUpNotification(){
         Minecraft minecraft = Minecraft.getInstance();
 
         showLvlUpTicks = 200;
-        minecraft.player.level.playLocalSound(minecraft.player.getX(), minecraft.player.getY(), minecraft.player.getZ(), OPSounds.RITUAL_LEARNED.get(), SoundSource.AMBIENT, 1f, 1f, false);
     }
 }

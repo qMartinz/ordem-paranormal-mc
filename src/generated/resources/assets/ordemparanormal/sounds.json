@@ -11,14 +11,14 @@
       "ordemparanormal:zumbi_sangue.growl"
     ]
   },
-  "nex_lvl_up": {
-    "sounds": [
-      "ordemparanormal:nex_lvl_up"
-    ]
-  },
   "ritual_learned": {
     "sounds": [
       "ordemparanormal:ritual_learned"
+    ]
+  },
+  "ritual_forgotten": {
+    "sounds": [
+      "ordemparanormal:ritual_forgotten"
     ]
   }
 }

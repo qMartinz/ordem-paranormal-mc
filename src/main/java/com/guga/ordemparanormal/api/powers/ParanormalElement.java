@@ -1,0 +1,45 @@
+package com.guga.ordemparanormal.api.powers;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.damagesource.DamageSource;
+
+import javax.annotation.Nonnull;
+
+public enum ParanormalElement implements StringRepresentable {
+    BLOOD("blood", ElementDamage.BLOOD_DAMAGE),
+    KNOWLEDGE("knowledge", ElementDamage.KNOWLEDGE_DAMAGE),
+    ENERGY("energy", ElementDamage.ENERGY_DAMAGE),
+    DEATH("death", ElementDamage.DEATH_DAMAGE),
+    FEAR("fear", ElementDamage.FEAR_DAMAGE),
+    NONE("none", DamageSource.GENERIC);
+    private final String name;
+    private final DamageSource equivalentDamage;
+    ParanormalElement(String name, DamageSource equivalentDamage) {
+        this.name = name;
+        this.equivalentDamage = equivalentDamage;
+    }
+    public DamageSource getEquivalentDamage() {
+        return equivalentDamage;
+    }
+    @Nonnull
+    @Override
+    public String getSerializedName() {
+        return this.name;
+    }
+    public String getTranslationKey(){
+        return "ordemparanormal.element." + getSerializedName();
+    }
+    public Component getDisplayName() {
+        return new TranslatableComponent(getTranslationKey());
+    }
+    public static ParanormalElement byName(String name) {
+        for (ParanormalElement paranormalElement : values()) {
+            if (paranormalElement.name.equals(name)) {
+                return paranormalElement;
+            }
+        }
+        return NONE;
+    }
+}

@@ -6,12 +6,18 @@ import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Supplier;
+
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class OPItems {
 	private static final Helper HELPER = OrdemParanormal.REGISTRY_HELPER.getItemSubHelper();
@@ -35,6 +41,11 @@ public final class OPItems {
 			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens
+
+		@Override
+		public RegistryObject<ForgeSpawnEggItem> createSpawnEggItem(String entityName, Supplier<EntityType<? extends Mob>> supplier, int primaryColor, int secondaryColor){
+			return this.deferredRegister.register(entityName + "_spawn_egg", () -> new ForgeSpawnEggItem(supplier, primaryColor, secondaryColor, new Item.Properties().tab(OrdemParanormal.MOBS_TAB)));
+		}
 		public Helper(RegistryHelper parent) {
 			super(parent, parent.getItemSubHelper().getDeferredRegister());
 		}
@@ -42,19 +53,19 @@ public final class OPItems {
 		// Itens
 		private RegistryObject<Item> createGSangue() {
 			return this.deferredRegister.register("grimorio_sangue", () -> new Item(
-					new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS)));
+					new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB)));
 		}
 
 		private RegistryObject<Item> createGEnergia() {
 			return this.deferredRegister.register("grimorio_energia", () -> new Item(
-					new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS)));
+					new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB)));
 		}
 
 		private RegistryObject<Item> createOrgao() {
 			return this.deferredRegister
 					.register("orgao",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
-									.tab(OrdemParanormal.OP_ITENS)
+									.tab(OrdemParanormal.OP_TAB)
 									.food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F)
 											.effect(() -> new MobEffectInstance(MobEffects.HUNGER, 800), 1F).build())));
 		}
@@ -63,12 +74,11 @@ public final class OPItems {
 			return this.deferredRegister
 					.register("cinzas",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
-									.tab(OrdemParanormal.OP_ITENS).fireResistant()));
+									.tab(OrdemParanormal.OP_TAB).fireResistant()));
 		}
 		
 		private RegistryObject<RitualItem> createRDescarnar(){
-			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(new
-					Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_ITENS), OPAPI.SKINNING));
+			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(OPAPI.SKINNING));
 		}
 	}	
 }

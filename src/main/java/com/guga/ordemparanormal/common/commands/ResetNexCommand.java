@@ -1,8 +1,10 @@
 package com.guga.ordemparanormal.common.commands;
 
 import com.guga.ordemparanormal.api.capabilities.data.CapEvents;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.capabilities.network.SyncPowers;
+import com.guga.ordemparanormal.api.powers.power.PlayerPower;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -13,6 +15,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.server.level.ServerPlayer;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class ResetNexCommand implements Command<CommandSourceStack> {
@@ -27,15 +30,18 @@ public class ResetNexCommand implements Command<CommandSourceStack> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
 
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-            playerNex.setNexPercent(0);
+            playerNex.setNex(0);
             playerNex.setNexXp(0);
+            playerNex.setAttributePoints(0);
             playerNex.setAbilityPoints(0);
             playerNex.setAttributes(new int[]{0, 0, 0});
+            playerNex.setRitualSlots(0);
         });
-        player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities -> {
+        player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
             playerAbilities.setKnownRituals(new HashSet<>());
-            playerAbilities.setAbilities(new HashSet<>());
-            CapEvents.syncPlayerAbilities(player);
+            playerAbilities.setPowers(new HashSet<>());
+            playerAbilities.setActivePowers(new HashMap<>());
+            Messages.sendToPlayer(new SyncPowers(playerAbilities.serializeNBT()), player);
         });
 
         return 1;

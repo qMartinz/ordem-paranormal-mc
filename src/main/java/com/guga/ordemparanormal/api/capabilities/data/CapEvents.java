@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
-import com.guga.ordemparanormal.api.capabilities.network.SyncAbilities;
+import com.guga.ordemparanormal.api.capabilities.network.SyncPowers;
+import com.guga.ordemparanormal.api.powers.power.PlayerPower;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import net.minecraft.nbt.CompoundTag;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,15 +25,15 @@ public class CapEvents {
                 event.addCapability(PlayerNexProvider.IDENTIFIER, new PlayerNexProvider());
             }
 
-            if (!player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).isPresent()){
-                event.addCapability(PlayerAbilitiesProvider.IDENTIFIER, new PlayerAbilitiesProvider());
+            if (!player.getCapability(PlayerPowersProvider.PLAYER_POWERS).isPresent()){
+                event.addCapability(PlayerPowersProvider.IDENTIFIER, new PlayerPowersProvider());
             }
         }
     }
     @SubscribeEvent
     public static void onRegisterCapabilites(RegisterCapabilitiesEvent event){
         event.register(PlayerNex.class);
-        event.register(PlayerAbilities.class);
+        event.register(PlayerPowers.class);
     }
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event){
@@ -41,28 +43,28 @@ public class CapEvents {
             newNex.copyFrom(oldNex);
         }));
 
-        oldPlayer.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(oldAbilities ->{
-            if (event.getPlayer() instanceof ServerPlayer player){
-                IPlayerCap newAbilities = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
-                CompoundTag tag = oldAbilities.serializeNBT();
-                newAbilities.deserializeNBT(tag);
-                syncPlayerAbilities(player);
+        oldPlayer.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(oldPowers ->{
+            IPowerCap newPowers = event.getPlayer().getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(new PlayerPowers());
+            CompoundTag tag = oldPowers.serializeNBT();
+            newPowers.deserializeNBT(tag);
+            if (event.getPlayer() instanceof ServerPlayer){
+                syncPlayerPowers(event.getPlayer());
             }
         });
         event.getOriginal().invalidateCaps();
     }
     @SubscribeEvent
     public static void onPlayerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        if(event.getPlayer() instanceof ServerPlayer player){
-            syncPlayerAbilities(player);
+        if (event.getPlayer() instanceof ServerPlayer){
+            syncPlayerPowers(event.getPlayer());
         }
     }
     @SubscribeEvent
     public static void respawnEvent(PlayerEvent.PlayerRespawnEvent event) {
-        if(event.getPlayer() instanceof ServerPlayer player) {
-            syncPlayerAbilities(player);
+        if (event.getPlayer() instanceof ServerPlayer){
+            syncPlayerPowers(event.getPlayer());
         }
-        if (event.isEndConquered()){
+        if (!event.isEndConquered()){
             PlayerNex nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
             if (nex == null) return;
             nex.setCurrentEffort(nex.getMaxEffort());
@@ -71,19 +73,19 @@ public class CapEvents {
     @SubscribeEvent
     public static void onPlayerStartTrackingEvent(PlayerEvent.StartTracking event) {
         if (event.getTarget() instanceof Player && event.getPlayer() instanceof ServerPlayer player) {
-            syncPlayerAbilities(player);
+            syncPlayerPowers(player);
         }
     }
     @SubscribeEvent
     public static void onPlayerDimChangedEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getPlayer() instanceof ServerPlayer player) {
-            syncPlayerAbilities(player);
+        if (event.getPlayer() instanceof ServerPlayer) {
+            syncPlayerPowers(event.getPlayer());
         }
     }
-    public static void syncPlayerAbilities(ServerPlayer player){
-        IPlayerCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
+    public static void syncPlayerPowers(Player player){
+        IPowerCap cap = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(new PlayerPowers());
         CompoundTag tag = cap.serializeNBT();
-        Messages.sendToPlayer(new SyncAbilities(tag), player);
+        Messages.sendToPlayer(new SyncPowers(tag), player);
     }
     @SubscribeEvent
     public static void onWorldTick(TickEvent.WorldTickEvent event){
