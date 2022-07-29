@@ -6,7 +6,8 @@ import com.guga.ordemparanormal.core.registry.OPAPI;
 import net.minecraft.resources.ResourceLocation;
 
 public enum RitualSymbol {
-    SKINNING(OPAPI.SKINNING, 0, 0, 62, 62, new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/rituals.png"));
+    SKINNING(OPAPI.SKINNING, 0, 0, 62, 62, new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/rituals.png")),
+    DECAY(OPAPI.DECAY, 62, 0, 62, 62, SKINNING.textureLoc);
     private final AbstractRitual ritual;
     private final int x;
     private final int y;
