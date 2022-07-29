@@ -28,12 +28,9 @@ public final class OPItems {
 	public static final RegistryObject<Item> GRIMORIO_ENERGIA = HELPER.createGEnergia();
 	public static final RegistryObject<Item> ORGAO = HELPER.createOrgao();
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
-
-	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRDescarnar();
-	public static final RegistryObject<RitualItem> RITUAL_DECADENCIA = HELPER.createRDecadencia();
 	
-	// Ovos geradores
+		// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
 			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7999247);
 	public static final RegistryObject<ForgeSpawnEggItem> BESTIAL_OVO = HELPER.createSpawnEggItem(
@@ -80,11 +77,9 @@ public final class OPItems {
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
 		}
+		
 		private RegistryObject<RitualItem> createRDescarnar(){
 			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(OPAPI.SKINNING));
-		}
-		private RegistryObject<RitualItem> createRDecadencia(){
-			return this.deferredRegister.register("ritual_decadencia", () -> new RitualItem(OPAPI.DECAY));
 		}
 	}	
 }

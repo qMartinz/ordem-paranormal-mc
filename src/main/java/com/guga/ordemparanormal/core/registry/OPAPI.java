@@ -11,12 +11,10 @@ import com.guga.ordemparanormal.common.power.death.TestPower3;
 import com.guga.ordemparanormal.common.power.energy.TestPower6;
 import com.guga.ordemparanormal.common.power.knowledge.TestPower4;
 import com.guga.ordemparanormal.common.power.knowledge.TestPower8;
-import com.guga.ordemparanormal.common.ritual.DecayRitual;
 import com.guga.ordemparanormal.common.ritual.SkinningRitual;
 
 public class OPAPI {
     public static final AbstractRitual SKINNING = new SkinningRitual();
-    public static final AbstractRitual DECAY = new DecayRitual();
     public static final PlayerPower TEST_POWER = new TestPower();
     public static final PlayerPower TEST_POWER_2 = new TestPower2();
     public static final PlayerPower TEST_POWER_3 = new TestPower3();
@@ -27,7 +25,6 @@ public class OPAPI {
     public static final PlayerPower TEST_POWER_8 = new TestPower8();
     public static void setup(){
         registerRitual(SKINNING);
-        registerRitual(DECAY);
         registerPower(TEST_POWER);
         registerPower(TEST_POWER_2);
         registerPower(TEST_POWER_3);
