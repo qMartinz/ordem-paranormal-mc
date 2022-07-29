@@ -23,9 +23,6 @@ public class BleedEffect extends MobEffect {
             float amount = ElementDamage.isEntityWeakTo(entity, ElementDamage.BLOOD_DAMAGE) ? 2f : 1f;
             entity.hurt(ElementDamage.BLOOD_DAMAGE, amount);
             entity.level.playSound(null, entity.blockPosition(), SoundEvents.BEEHIVE_DRIP, SoundSource.AMBIENT, 1f, 1f);
-            double d0 = (double) (this.getColor() >> 16 & 255) / 255.0D;
-            double d1 = (double) (this.getColor() >> 8 & 255) / 255.0D;
-            double d2 = (double) (this.getColor() >> 0 & 255) / 255.0D;
             ServerLevel level = (ServerLevel) entity.level;
             int i = 5 * amplifier;
             level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()), entity.getRandomX(0.5D), entity.getRandomY(), entity.getRandomZ(0.5D), i, 0, 0, 0, 1d);

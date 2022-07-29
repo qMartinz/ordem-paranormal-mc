@@ -44,8 +44,11 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPItems.GRIMORIO_SANGUE.get(), "Grimório de Sangue");
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
-		add(OPItems.RITUAL_DESCARNAR.get(), "Livro com símbolo");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de Transcendência");
+
+		// Itens de Rituais
+		add(OPItems.RITUAL_DESCARNAR.get(), "Livro com símbolo");
+		add(OPItems.RITUAL_DECADENCIA.get(), "Caveira com símbolo");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
@@ -91,6 +94,10 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPAPI.SKINNING.getTranslationKey(), "Ritual de descarnar");
 		addDescription(OPAPI.SKINNING.getTranslationKey(),
 				"Descarna o alvo, causando dano de Sangue contínuo.",
+				"Gasta 2 pontos de esforço.");
+		add(OPAPI.DECAY.getTranslationKey(), "Ritual de decadência");
+		addDescription(OPAPI.DECAY.getTranslationKey(),
+				"Apodrece o alvo, causando dano de Morte contínuo.",
 				"Gasta 2 pontos de esforço.");
 
 		// Poderes
