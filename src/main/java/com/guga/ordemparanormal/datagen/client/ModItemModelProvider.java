@@ -51,7 +51,10 @@ public class ModItemModelProvider extends ItemModelProvider{
 		oneLayerItem(OPItems.GRIMORIO_SANGUE.get());
 		oneLayerItem(OPItems.ORGAO.get());
 		oneLayerItem(OPItems.CINZAS.get());
+
+		// Itens de Rituais
 		oneLayerItem(OPItems.RITUAL_DESCARNAR.get());
+		oneLayerItem(OPItems.RITUAL_DECADENCIA.get());
 
 		// Blocos
 		simpleBlockItem(OPBlocks.ALTAR_TRANSCENDER.get().asItem());

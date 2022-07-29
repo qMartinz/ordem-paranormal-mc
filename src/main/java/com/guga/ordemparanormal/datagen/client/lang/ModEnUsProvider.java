@@ -44,8 +44,11 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
-		add(OPItems.RITUAL_DESCARNAR.get(), "Book with symbol");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence Altar");
+
+		// Itens de Rituais
+		add(OPItems.RITUAL_DESCARNAR.get(), "Book with symbol");
+		add(OPItems.RITUAL_DECADENCIA.get(), "Skull with symbol");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
@@ -91,6 +94,10 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPAPI.SKINNING.getTranslationKey(), "Skinning ritual");
 		addDescription(OPAPI.SKINNING.getTranslationKey(),
 				"Skins the target, dealing continuous Blood damage.",
+				"Consumes 2 effort points.");
+		add(OPAPI.DECAY.getTranslationKey(), "Decay ritual");
+		addDescription(OPAPI.DECAY.getTranslationKey(),
+				"Decays the target, dealing continuous Death damage.",
 				"Consumes 2 effort points.");
 
 		// Poderes
