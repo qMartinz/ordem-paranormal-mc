@@ -49,6 +49,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Book with symbol");
 		add(OPItems.RITUAL_DECADENCIA.get(), "Skull with symbol");
+		add(OPItems.RITUAL_CICATRIZACAO.get(), "Crystal with spiral");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
@@ -98,6 +99,10 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPAPI.DECAY.getTranslationKey(), "Decay ritual");
 		addDescription(OPAPI.DECAY.getTranslationKey(),
 				"Decays the target, dealing continuous Death damage.",
+				"Consumes 2 effort points.");
+		add(OPAPI.CICATRIZATION.getTranslationKey(), "Cicatrization ritual");
+		addDescription(OPAPI.CICATRIZATION.getTranslationKey(),
+				"Heals the injuries of your target or yourself.",
 				"Consumes 2 effort points.");
 
 		// Poderes

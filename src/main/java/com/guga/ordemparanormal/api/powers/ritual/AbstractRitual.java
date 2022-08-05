@@ -5,7 +5,6 @@ import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.common.CommonComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
@@ -13,7 +12,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -28,12 +26,16 @@ public abstract class AbstractRitual{
     private final ParanormalElement element;
     private final int tier;
     private final int effortCost;
+    private final boolean hasEntityTarget;
+    private final double range;
     private final Item ingredient;
-    public AbstractRitual(String id, ParanormalElement element, int tier, int effortCost, @Nullable Item ingredient) {
+    public AbstractRitual(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, @Nullable Item ingredient) {
         this.id = id;
         this.element = element;
         this.tier = Math.max(1, Math.min(4, tier));
         this.effortCost = effortCost;
+        this.hasEntityTarget = hasEntityTarget;
+        this.range = range;
         this.ingredient = ingredient;
     }
     public String getId() { return id; }
@@ -42,6 +44,9 @@ public abstract class AbstractRitual{
     }
     public Component getDisplayName(){
         return new TranslatableComponent(getTranslationKey());
+    }
+    public ParanormalElement getElement() {
+        return element;
     }
     public List<Component> getDescription(){
         List<Component> lines = new ArrayList<>();
@@ -76,6 +81,14 @@ public abstract class AbstractRitual{
         };
     }
     public int getEffortCost() { return effortCost; }
+
+    public boolean hasEntityTarget() {
+        return hasEntityTarget;
+    }
+
+    public double getRange() {
+        return range;
+    }
     public Item getIngredient() {
         return ingredient;
     }
@@ -86,17 +99,21 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUse(HitResult rayTraceResult, Level world, @Nullable LivingEntity caster){
+    public void onUse(@Nullable HitResult rayTraceResult, Level world, @Nullable LivingEntity caster){
         if (caster instanceof Player player){
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playernex -> {
                 if (player.isCreative()){
                     // ritual é usado no criativo
                     if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                        onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                        if (hasEntityTarget()){
+                            onUseSelf(world, caster);
+                        } else {
+                            onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                        }
                     } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                         onUseEntity((EntityHitResult) rayTraceResult, world, caster);
                     } else {
-                        onUseSelf(rayTraceResult, world, caster);
+                        onUseSelf(world, caster);
                     }
                 } else {
                     if (playernex.getCurrentEffort() >= getEffortCost()) {
@@ -104,22 +121,30 @@ public abstract class AbstractRitual{
                             // ritual que necessita de ingrediente é usado
                             playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
                             if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                                onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                                if (hasEntityTarget()){
+                                    onUseSelf(world, caster);
+                                } else {
+                                    onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                                }
                             } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                                 onUseEntity((EntityHitResult) rayTraceResult, world, caster);
                             } else {
-                                onUseSelf(rayTraceResult, world, caster);
+                                onUseSelf(world, caster);
                             }
                             caster.getOffhandItem().shrink(1);
                         } else if (getIngredient() == null) {
                             // ritual que não necessita de ingrediente é usado
                             playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
                             if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                                onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                                if (hasEntityTarget()){
+                                    onUseSelf(world, caster);
+                                } else {
+                                    onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                                }
                             } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                                 onUseEntity((EntityHitResult) rayTraceResult, world, caster);
                             } else {
-                                onUseSelf(rayTraceResult, world, caster);
+                                onUseSelf(world, caster);
                             }
                         } else {
                             // se o player não tiver ingrediente suficiente
@@ -141,7 +166,7 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, @Nullable LivingEntity caster){}
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster){}
     /**
      * Chamado quando o ritual é utilizado em um bloco como alvo
      *
@@ -149,7 +174,7 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseBlock(BlockHitResult rayTraceResult, Level world, @Nullable LivingEntity caster){}
+    public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster){}
 
     /**
      * Chamado quando o ritual não possui alvo específico (não é uma entidade ou um bloco)
@@ -157,5 +182,5 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseSelf(HitResult rayTraceResult, Level world, @Nullable LivingEntity caster){}
+    public void onUseSelf(Level world, LivingEntity caster){}
 }

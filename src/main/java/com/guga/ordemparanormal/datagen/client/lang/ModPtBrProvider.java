@@ -49,6 +49,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Livro com símbolo");
 		add(OPItems.RITUAL_DECADENCIA.get(), "Caveira com símbolo");
+		add(OPItems.RITUAL_CICATRIZACAO.get(), "Cristal com espiral");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
@@ -98,6 +99,10 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPAPI.DECAY.getTranslationKey(), "Ritual de decadência");
 		addDescription(OPAPI.DECAY.getTranslationKey(),
 				"Apodrece o alvo, causando dano de Morte contínuo.",
+				"Gasta 2 pontos de esforço.");
+		add(OPAPI.CICATRIZATION.getTranslationKey(), "Ritual de cicatrização");
+		addDescription(OPAPI.CICATRIZATION.getTranslationKey(),
+				"Cicatriza as feridas do alvo ou de você mesmo.",
 				"Gasta 2 pontos de esforço.");
 
 		// Poderes

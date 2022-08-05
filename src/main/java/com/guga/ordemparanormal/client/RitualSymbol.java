@@ -7,7 +7,10 @@ import net.minecraft.resources.ResourceLocation;
 
 public enum RitualSymbol {
     SKINNING(OPAPI.SKINNING, 0, 0, 62, 62, new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/rituals.png")),
-    DECAY(OPAPI.DECAY, 62, 0, 62, 62, SKINNING.textureLoc);
+    DECAY(OPAPI.DECAY, 62, 0, 62, 62, SKINNING.textureLoc),
+    BlOOD_ARMOR(OPAPI.BLOOD_ARMOR, 124, 0, 64, 64, SKINNING.textureLoc),
+    CONSUME_LIFEFORCE(OPAPI.CONSUME_LIFEFORCE, 188, 0, 64, 64, SKINNING.textureLoc),
+    CICATRIZATION(OPAPI.CICATRIZATION, 0, 62, 64, 64, SKINNING.textureLoc);
     private final AbstractRitual ritual;
     private final int x;
     private final int y;

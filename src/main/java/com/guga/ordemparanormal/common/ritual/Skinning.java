@@ -21,9 +21,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class SkinningRitual extends AbstractRitual {
-    public SkinningRitual() {
-        super("skinning", ParanormalElement.BLOOD, 1, 2, OPItems.ORGAO.get());
+public class Skinning extends AbstractRitual {
+    public Skinning() {
+        super("skinning", ParanormalElement.BLOOD, 1, 2, true, 5D, OPItems.ORGAO.get());
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, @Nullable LivingEntity caster) {

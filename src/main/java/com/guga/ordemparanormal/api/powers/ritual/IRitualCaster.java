@@ -15,9 +15,9 @@ public interface IRitualCaster {
     AbstractRitual getRitual();
     @Nonnull
     AbstractRitual getRitual(int slot);
-    @Nonnull int getMaxSlots();
-    @Nonnull int getCurrentSlot();
-    @Nonnull void setCurrentSlot(int slot);
+    int getMaxSlots();
+    int getCurrentSlot();
+    void setCurrentSlot(int slot);
     default void setNextSlot(){
         int slot = getCurrentSlot() + 1;
         if(slot < 1) slot = getMaxSlots();
@@ -35,7 +35,7 @@ public interface IRitualCaster {
         return caster.getRitual();
     }
     default InteractionResultHolder<ItemStack> castRitual(Level world, Player player, ItemStack stack, @Nonnull AbstractRitual ritual){
-        HitResult result = PowerUtils.rayTrace(player, 5, 0, false);
+        HitResult result = PowerUtils.rayTrace(player, ritual.getRange(), 0, false);
         if (!world.isClientSide) {
             ritual.onUse(result, world, player);
             return InteractionResultHolder.consume(stack);

@@ -8,7 +8,6 @@ import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPItems;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -17,13 +16,12 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class DecayRitual extends AbstractRitual {
-    public DecayRitual() {
-        super("decay", ParanormalElement.DEATH, 1, 2, OPItems.CINZAS.get());
+public class Decay extends AbstractRitual {
+    public Decay() {
+        super("decay", ParanormalElement.DEATH, 1, 2, true, 5D, OPItems.CINZAS.get());
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, @Nullable LivingEntity caster) {
