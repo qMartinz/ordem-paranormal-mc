@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
+import com.guga.ordemparanormal.api.capabilities.network.SyncEffects;
 import com.guga.ordemparanormal.api.capabilities.network.SyncNexToClient;
 import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
 import com.guga.ordemparanormal.core.network.Messages;
@@ -30,7 +31,8 @@ public class CapManager extends SavedData {
             level.players().forEach(player -> {
                 if (player instanceof ServerPlayer serverPlayer){
                     INexCap nex = serverPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-                    if (nex == null) return;
+                    IEffectsCap effects = serverPlayer.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
+                    if (nex == null || effects == null) return;
 
                     if (nex.getCurrentEffort() != nex.getMaxEffort() && serverPlayer.getFoodData().getFoodLevel() >= 20){
                         nex.setCurrentEffort(nex.getCurrentEffort() + 0.1D);
@@ -40,6 +42,8 @@ public class CapManager extends SavedData {
                         Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     }
                     nex.syncAttributeMods(serverPlayer);
+
+                    Messages.sendToPlayer(new SyncEffects(effects.serializeNBT()), serverPlayer);
                 } else if (player instanceof  LocalPlayer localPlayer){
                     INexCap nex = localPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
                     if (nex == null) return;

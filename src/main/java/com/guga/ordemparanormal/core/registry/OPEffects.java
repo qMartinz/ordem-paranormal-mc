@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.core.registry;
 import com.guga.ordemparanormal.common.effects.BleedEffect;
 import com.guga.ordemparanormal.common.effects.BloodArmorEffect;
 import com.guga.ordemparanormal.common.effects.DecayEffect;
+import com.guga.ordemparanormal.common.effects.LifeAbsorptionEffect;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -24,6 +25,8 @@ public final class OPEffects {
     public static final RegistryObject<MobEffect> BLOOD_ARMOR_EFFECT = MOB_EFFECTS.register("blood_armor_effect",
             () -> new BloodArmorEffect(MobEffectCategory.BENEFICIAL, 0x34080B)
                     .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, UUID.randomUUID().toString(), 0.0D, AttributeModifier.Operation.ADDITION));
+    public static final RegistryObject<MobEffect> LIFE_ABSORPTION_EFFECT = MOB_EFFECTS.register("life_absorption",
+            () -> new LifeAbsorptionEffect(MobEffectCategory.BENEFICIAL, 0x241819));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }

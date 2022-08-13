@@ -1,9 +1,6 @@
 package com.guga.ordemparanormal.core.network;
 
-import com.guga.ordemparanormal.api.capabilities.network.SyncPowers;
-import com.guga.ordemparanormal.api.capabilities.network.SyncNexToClient;
-import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
-import com.guga.ordemparanormal.api.capabilities.network.UpdatePowers;
+import com.guga.ordemparanormal.api.capabilities.network.*;
 import com.guga.ordemparanormal.api.powers.power.network.PowerPackets;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.resources.ResourceLocation;
@@ -57,6 +54,11 @@ public class Messages {
                 .decoder(PowerPackets.RequestPowerUse::new)
                 .encoder(PowerPackets.RequestPowerUse::toBytes)
                 .consumer(PowerPackets.RequestPowerUse::handle)
+                .add();
+        net.messageBuilder(SyncEffects.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(SyncEffects::new)
+                .encoder(SyncEffects::toBytes)
+                .consumer(SyncEffects::handle)
                 .add();
     }
 

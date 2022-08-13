@@ -8,6 +8,7 @@ import com.guga.ordemparanormal.api.powers.ritual.RitualCaster;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -71,6 +72,19 @@ public class RitualItem extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if (pStack.getOrCreateTag().getBoolean("ritualLearned")){
             pTooltipComponents.add(CommonComponents.RITUAL_LEARNED);
+
+            ChatFormatting formatting = ChatFormatting.WHITE;
+            switch (ritual.getElement()){
+                case BLOOD -> formatting = ChatFormatting.DARK_RED;
+                case KNOWLEDGE -> formatting = ChatFormatting.GOLD;
+                case ENERGY -> formatting = ChatFormatting.DARK_PURPLE;
+                case DEATH -> formatting = ChatFormatting.DARK_GRAY;
+                case FEAR -> formatting = ChatFormatting.WHITE;
+                case NONE -> formatting = ChatFormatting.GRAY;
+            }
+
+            Component ritual = this.getRitual().getDisplayName().plainCopy().withStyle(formatting);
+            pTooltipComponents.add(CommonComponents.CURSED_WITH.plainCopy().append(ritual));
         } else {
             pTooltipComponents.add(CommonComponents.RITUAL_UNKNOWN);
         }

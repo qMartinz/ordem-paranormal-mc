@@ -3,10 +3,7 @@ package com.guga.ordemparanormal.datagen.client.lang;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPAPI;
-import com.guga.ordemparanormal.core.registry.OPBlocks;
-import com.guga.ordemparanormal.core.registry.OPEntities;
-import com.guga.ordemparanormal.core.registry.OPItems;
+import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -38,8 +35,9 @@ public class ModEnUsProvider extends LanguageProvider{
 		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
 		
 		// Itens
-		add("ordemparanormal.ritual_item.ritual_learned", "§8Just an item with a strange symbol.");
-		add("ordemparanormal.ritual_item.ritual_unknown", "§8Seems to emanate a strange presence...");
+		add("ordemparanormal.ritual_item.ritual_learned", "§7Just an item with a strange symbol.");
+		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
+		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with ");
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
 		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
 		add(OPItems.ORGAO.get(), "Organ");
@@ -50,6 +48,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPItems.RITUAL_DESCARNAR.get(), "Book with symbol");
 		add(OPItems.RITUAL_DECADENCIA.get(), "Skull with symbol");
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Crystal with spiral");
+		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Paper with symbol");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
@@ -104,6 +103,10 @@ public class ModEnUsProvider extends LanguageProvider{
 		addDescription(OPAPI.CICATRIZATION.getTranslationKey(),
 				"Heals the injuries of your target or yourself.",
 				"Consumes 2 effort points.");
+		add(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(), "Consume lifeforce ritual");
+		addDescription(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(),
+				"Consumes life around you, giving temporary health points.",
+				"Consumes 3 effort points.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -142,6 +145,11 @@ public class ModEnUsProvider extends LanguageProvider{
 		addDescription(OPAPI.TEST_POWER_8.getTranslationKey(),
 				"Test line 1",
 				"Test line 2");
+
+		// Efeitos
+		add(OPEffects.BLEED.get(), "Bleeding");
+		add(OPEffects.DECAY.get(), "Decaying");
+		add(OPEffects.LIFE_ABSORPTION_EFFECT.get(), "Life Absorbed");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");

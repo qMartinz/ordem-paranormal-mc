@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.core;
 
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.NexOverlay;
+import com.guga.ordemparanormal.client.RitualOverlay;
 import com.guga.ordemparanormal.client.renderer.*;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.registry.*;
@@ -11,6 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.gui.ForgeIngameGui;
+import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -80,5 +83,7 @@ public class OrdemParanormal {
 	private void clientSetup(final FMLClientSetupEvent event){
 		MinecraftForge.EVENT_BUS.register(new NexOverlay());
 		MinecraftForge.EVENT_BUS.register(new Keybind());
+
+		OverlayRegistry.registerOverlayAbove(ForgeIngameGui.PLAYER_HEALTH_ELEMENT, "Death Health", RitualOverlay.HUD_DEATH_HEARTS);
 	}
 }

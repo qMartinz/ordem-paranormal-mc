@@ -13,15 +13,15 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PlayerNexProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static final ResourceLocation IDENTIFIER = new ResourceLocation(OrdemParanormal.MOD_ID, "player_nex");
-    private final INexCap backend = new PlayerNex();
-    private final LazyOptional<INexCap> optionalData = LazyOptional.of(() -> backend);
-    public static Capability<INexCap> PLAYER_NEX = CapabilityManager.get(new CapabilityToken<>(){});
+public class ParanormalEffectsProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
+    public static final ResourceLocation IDENTIFIER = new ResourceLocation(OrdemParanormal.MOD_ID, "paranormal_effects");
+    private final IEffectsCap backend = new ParanormalEffects();
+    private final LazyOptional<IEffectsCap> optionalData = LazyOptional.of(() -> backend);
+    public static Capability<IEffectsCap> PARANORMAL_EFFECTS = CapabilityManager.get(new CapabilityToken<>(){});
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return PLAYER_NEX.orEmpty(cap, this.optionalData);
+        return PARANORMAL_EFFECTS.orEmpty(cap, this.optionalData);
     }
     @Override
     public CompoundTag serializeNBT() {
