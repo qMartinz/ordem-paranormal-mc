@@ -1,7 +1,9 @@
 package com.guga.ordemparanormal.common.effects;
 
 import com.guga.ordemparanormal.api.powers.ElementDamage;
+import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -24,8 +26,12 @@ public class DecayEffect extends MobEffect {
             entity.hurt(ElementDamage.DEATH_DAMAGE, amount);
             entity.level.playSound(null, entity.blockPosition(), SoundEvents.WITHER_SKELETON_AMBIENT, SoundSource.AMBIENT, 1f, 1f);
 
-            int i = 5 * amplifier;
-            if (entity.level instanceof ServerLevel level) level.sendParticles(ParticleTypes.ASH, entity.getRandomX(0.5D), entity.getRandomY(), entity.getRandomZ(0.5D), i, 0, 0, 0, 1d);
+            int i = 5 + amplifier * 2;
+            if (entity.level instanceof ServerLevel level)
+                level.sendParticles(
+                        new DustParticleOptions(new Vector3f(0.25f, 0.25f, 0.25f), 0.7f),
+                        entity.getX(), entity.getEyeY(), entity.getZ(),
+                        i, 0.4d, 0.4d, 0.4d, 0d);
         }
     }
     @Override

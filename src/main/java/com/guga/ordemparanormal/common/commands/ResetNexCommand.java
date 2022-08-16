@@ -35,6 +35,7 @@ public class ResetNexCommand implements Command<CommandSourceStack> {
             playerNex.setPowerPoints(0);
             playerNex.setAttributes(new int[]{0, 0, 0});
             playerNex.setRitualSlots(0);
+            playerNex.setCurrentEffort(playerNex.getMaxEffort());
         });
         player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
             playerAbilities.setKnownRituals(new HashSet<>());

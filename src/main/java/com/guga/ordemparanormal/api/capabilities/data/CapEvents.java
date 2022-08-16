@@ -117,9 +117,10 @@ public class CapEvents {
         IEffectsCap effects = event.getEntity().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
         if (effects == null) return;
 
-        float newAmount = Math.max(event.getAmount() - effects.getDeathHealthPoints(), 0);
-        effects.setDeathHealthPoints(effects.getDeathHealthPoints() - (int) Math.min(effects.getDeathHealthPoints(), event.getAmount()));
+        float bloodArmorApplied = Math.max(event.getAmount() - effects.getBloodArmorPoints()/2f, 0);
+        float deathHealthApplied = Math.max(bloodArmorApplied - effects.getDeathHealthPoints(), 0);
+        effects.setDeathHealthPoints(effects.getDeathHealthPoints() - (int) Math.min(effects.getDeathHealthPoints(), bloodArmorApplied));
 
-        event.setAmount(newAmount);
+        event.setAmount(deathHealthApplied);
     }
 }

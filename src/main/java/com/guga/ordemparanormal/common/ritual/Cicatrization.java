@@ -8,11 +8,15 @@ import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.core.registry.OPItems;
+import com.mojang.math.Vector3f;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,9 +38,9 @@ public class Cicatrization extends AbstractRitual {
 
         ServerLevel level = (ServerLevel) world;
         level.sendParticles(
-                ParticleTypes.ASH,
+                new DustParticleOptions(new Vector3f(0.25f, 0.25f, 0.25f), 0.7f),
                 caster.getX(), caster.getEyeY(), caster.getZ(),
-                10, 0, 0, 0, 0d);
+                20, 0.4d, 0.4d, 0.4d, 0d);
     }
 
     @Override

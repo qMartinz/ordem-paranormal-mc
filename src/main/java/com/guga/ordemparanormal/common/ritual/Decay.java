@@ -8,6 +8,8 @@ import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPItems;
+import com.mojang.math.Vector3f;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -42,17 +44,17 @@ public class Decay extends AbstractRitual {
         target.level.playSound(null, target.blockPosition(), SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.PLAYERS, 2f, 1f);
         
         ServerLevel level = (ServerLevel) world;
-        
+
         level.sendParticles(
-                ParticleTypes.ASH,
-                target.getX(), target.getEyeY(), target.getZ(), 
-                10, 0, 0, 0, 0d);
+                new DustParticleOptions(new Vector3f(0.25f, 0.25f, 0.25f), 0.7f),
+                caster.getX(), caster.getEyeY(), caster.getZ(),
+                20, 0.4d, 0.4d, 0.4d, 0d);
         
         level.sendParticles(ParticleTypes.CRIT, 
                 target.getX(), target.getEyeY(), target.getX(), 
                 4, 0, 0, 0, 0d);
         
-        MobEffectInstance effect = new MobEffectInstance(OPEffects.DECAY.get(), 100, 1, false, false);
+        MobEffectInstance effect = new MobEffectInstance(OPEffects.DECAY.get(), 100, (int) (1 + presence/2f), false, false);
         target.addEffect(effect, caster);
     }
 }

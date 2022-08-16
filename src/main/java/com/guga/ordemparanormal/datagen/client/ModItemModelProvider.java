@@ -57,6 +57,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		oneLayerItem(OPItems.RITUAL_DECADENCIA.get());
 		oneLayerItem(OPItems.RITUAL_CICATRIZACAO.get());
 		oneLayerItem(OPItems.RITUAL_CONSUMIR_MANANCIAL.get());
+		oneLayerItem(OPItems.RITUAL_ARMADURA_SANGUE.get());
 
 		// Blocos
 		simpleBlockItem(OPBlocks.ALTAR_TRANSCENDER.get().asItem());

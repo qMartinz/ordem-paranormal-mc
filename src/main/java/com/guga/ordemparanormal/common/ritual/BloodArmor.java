@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 
 public class BloodArmor extends AbstractRitual {
     public BloodArmor() {
-        super("blood_armor", ParanormalElement.BLOOD, 1, 2, false, 0, OPItems.ORGAO.get());
+        super("blood_armor", ParanormalElement.BLOOD, 1, 3, true, 0, OPItems.ORGAO.get());
     }
 
     @Override
@@ -31,13 +31,15 @@ public class BloodArmor extends AbstractRitual {
             presence = nexCap.getAttribute(ParanormalAttribute.PRESENCE);
         }
 
-        MobEffectInstance resistance = new MobEffectInstance(OPEffects.BLOOD_ARMOR_EFFECT.get(), 300, (int) Mth.clamp(presence/2, 1, 5));
+        MobEffectInstance resistance = new MobEffectInstance(OPEffects.SKIN_REINFORCED.get(), 1800,
+                (int) Mth.clamp(presence/2, 1, 5),
+                false, false);
         caster.addEffect(resistance);
 
         ServerLevel level = (ServerLevel) world;
         level.sendParticles(
                 new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                 caster.getX(), caster.getEyeY(), caster.getZ(),
-                10, 0, 0, 0, 0d);
+                10, 0, 0.3d, 0, 0d);
     }
 }

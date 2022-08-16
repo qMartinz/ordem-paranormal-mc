@@ -37,7 +37,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Itens
 		add("ordemparanormal.ritual_item.ritual_learned", "§7Just an item with a strange symbol.");
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
-		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with ");
+		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual");
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
 		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
 		add(OPItems.ORGAO.get(), "Organ");
@@ -49,6 +49,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPItems.RITUAL_DECADENCIA.get(), "Skull with symbol");
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Crystal with spiral");
 		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Paper with symbol");
+		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Rusty helmet");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
@@ -91,21 +92,25 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Rituais
 		add("ordemparanormal.rituals", "Rituals");
 		add("ordemparanormal.ritual.ingredient", "Ingredient");
-		add(OPAPI.SKINNING.getTranslationKey(), "Skinning ritual");
+		add(OPAPI.SKINNING.getTranslationKey(), "Skinning");
 		addDescription(OPAPI.SKINNING.getTranslationKey(),
 				"Skins the target, dealing continuous Blood damage.",
 				"Consumes 2 effort points.");
-		add(OPAPI.DECAY.getTranslationKey(), "Decay ritual");
+		add(OPAPI.DECAY.getTranslationKey(), "Decay");
 		addDescription(OPAPI.DECAY.getTranslationKey(),
 				"Decays the target, dealing continuous Death damage.",
 				"Consumes 2 effort points.");
-		add(OPAPI.CICATRIZATION.getTranslationKey(), "Cicatrization ritual");
+		add(OPAPI.CICATRIZATION.getTranslationKey(), "Cicatrization");
 		addDescription(OPAPI.CICATRIZATION.getTranslationKey(),
 				"Heals the injuries of your target or yourself.",
 				"Consumes 2 effort points.");
-		add(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(), "Consume lifeforce ritual");
+		add(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(), "Consume Lifeforce");
 		addDescription(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(),
-				"Consumes life around you, giving temporary health points.",
+				"Consumes life around you, fortifying your health.",
+				"Consumes 3 effort points.");
+		add(OPAPI.BLOOD_ARMOR.getTranslationKey(), "Blood Armor");
+		addDescription(OPAPI.BLOOD_ARMOR.getTranslationKey(),
+				"Uses your blood to harden your skin, serving as armor.",
 				"Consumes 3 effort points.");
 
 		// Poderes
@@ -149,7 +154,8 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Bleeding");
 		add(OPEffects.DECAY.get(), "Decaying");
-		add(OPEffects.LIFE_ABSORPTION_EFFECT.get(), "Life Absorbed");
+		add(OPEffects.LIFE_ABSORBED.get(), "Life Absorbed");
+		add(OPEffects.SKIN_REINFORCED.get(), "Skin Reinforced");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");

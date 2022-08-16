@@ -54,7 +54,7 @@ public class Skinning extends AbstractRitual {
                 target.getX(), target.getEyeY(), target.getX(), 
                 4, 0, 0, 0, 0d);
         
-        MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 100, 1, false, false);
+        MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 100, (int) (1 + presence/2f), false, false);
         target.addEffect(effect, caster);
     }
 }

@@ -34,6 +34,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_DECADENCIA = HELPER.createRDecadencia();
 	public static final RegistryObject<RitualItem> RITUAL_CICATRIZACAO = HELPER.createRCicatrizacao();
 	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRConsumirManancial();
+	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRArmaduraSangue();
 	
 	// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
@@ -93,6 +94,9 @@ public final class OPItems {
 		}
 		private RegistryObject<RitualItem> createRConsumirManancial(){
 			return this.deferredRegister.register("ritual_consumir_manancial", () -> new RitualItem(OPAPI.CONSUME_LIFEFORCE));
+		}
+		private RegistryObject<RitualItem> createRArmaduraSangue(){
+			return this.deferredRegister.register("ritual_armadura_sangue", () -> new RitualItem(OPAPI.BLOOD_ARMOR));
 		}
 	}	
 }

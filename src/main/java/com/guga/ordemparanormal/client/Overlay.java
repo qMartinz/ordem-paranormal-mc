@@ -22,6 +22,74 @@ import java.util.Random;
 public class Overlay {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/overlay.png");
     private static int showLvlUpTicks = 0;
+    public static final IIngameOverlay HUD_NEX = (gui, poseStack, partialTicks, width, height) -> {
+        Minecraft minecraft = Minecraft.getInstance();
+        Player player = minecraft.player;
+        if (!minecraft.options.hideGui && gui.shouldDrawSurvivalElements()) {
+            player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+                RenderSystem.enableBlend();
+                RenderSystem.disableDepthTest();
+                RenderSystem.depthMask(false);
+                RenderSystem.defaultBlendFunc();
+                RenderSystem.setShaderTexture(0, TEXTURES);
+
+                gui.blit(poseStack, width - 95, height - 9, 3, 24, 92, 5);
+
+                int nextLvlXP = (playerNex.getNex() + 1) * 50;
+                int barFilled = (int) ((playerNex.getNexXp() / nextLvlXP) * 90);
+                gui.blit(poseStack, width - 95, height - 9, 3, 29, barFilled, 5);
+
+                String s = playerNex.getNexPercent() + "%";
+                gui.getFont().drawShadow(poseStack, s, width - (gui.getFont().width(s) + 96), height - (gui.getFont().lineHeight + 2), FastColor.ARGB32.color(255, 255, 255, 255));
+
+                if (showLvlUpTicks > 0) {
+                    RenderSystem.setShaderTexture(0, TEXTURES);
+                    RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
+                    gui.blit(poseStack, width - 98, height - 26, 0, 0, 98, 24);
+                    RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+                }
+
+                RenderSystem.depthMask(true);
+                RenderSystem.enableDepthTest();
+                RenderSystem.disableBlend();
+            });
+        }
+    };
+    public static final IIngameOverlay HUD_EFFORT = (gui, poseStack, partialTicks, width, height) -> {
+        Minecraft minecraft = Minecraft.getInstance();
+        Player player = minecraft.player;
+        if (!minecraft.options.hideGui && gui.shouldDrawSurvivalElements()) {
+            player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
+                int amount = (int) cap.getCurrentEffort();
+                int max = (int) cap.getMaxEffort();
+
+                int x = width / 2 + 91;
+                int y = height - gui.right_height;
+                int i3 = Mth.ceil(max / 10.0F);
+                int j2 = Math.max(10 - (i3 - 2), 3);
+
+                for (int i = 0; i < max; i++){
+                    int j1 = i / 10;
+                    int k1 = i % 10;
+                    int l1 = x - k1 * 8 - 10;
+                    int i2 = y - j1 * j2;
+
+                    RenderSystem.setShaderTexture(0, TEXTURES);
+                    gui.blit(poseStack, l1, i2, 125, 0, 9, 9);
+                }
+
+                for (int i = amount - 1; i >= 0; --i) {
+                    int j1 = i / 10;
+                    int k1 = i % 10;
+                    int l1 = x - k1 * 8 - 10;
+                    int i2 = y - j1 * j2;
+
+                    RenderSystem.setShaderTexture(0, TEXTURES);
+                    gui.blit(poseStack, l1, i2, 116, 0, 9, 9);
+                }
+            });
+        }
+    };
     public static final IIngameOverlay HUD_DEATH_HEARTS = (gui, poseStack, partialTicks, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
@@ -59,69 +127,24 @@ public class Overlay {
             });
         }
     };
-    public static final IIngameOverlay HUD_NEX = (gui, poseStack, partialTicks, width, height) -> {
+    public static final IIngameOverlay HUD_BLOOD_ARMOR = (gui, poseStack, partialTick, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (!minecraft.options.hideGui && gui.shouldDrawSurvivalElements()) {
-            player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-                RenderSystem.enableBlend();
-                RenderSystem.disableDepthTest();
-                RenderSystem.depthMask(false);
-                RenderSystem.defaultBlendFunc();
-                RenderSystem.setShaderTexture(0, TEXTURES);
+            player.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> {
+                int left = width / 2 - 91;
+                int top = height - gui.left_height + 10;
 
-                gui.blit(poseStack, width - 95, height - 9, 3, 24, 92, 5);
-
-                int nextLvlXP = (playerNex.getNex() + 1) * 50;
-                int barFilled = (int) ((playerNex.getNexXp() / nextLvlXP) * 90);
-                gui.blit(poseStack, width - 95, height - 9, 3, 29, barFilled, 5);
-
-                String s = playerNex.getNexPercent() + "%";
-                gui.getFont().drawShadow(poseStack, s, width - (gui.getFont().width(s) + 96), height - (gui.getFont().lineHeight + 2), FastColor.ARGB32.color(255, 255, 255, 255));
-
-                if (showLvlUpTicks > 0) {
-                    RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
-                    gui.blit(poseStack, width - 98, height - 26, 0, 0, 98, 24);
-                    RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-                }
-
-                RenderSystem.depthMask(true);
-                RenderSystem.enableDepthTest();
-                RenderSystem.disableBlend();
-            });
-        }
-    };
-    public static final IIngameOverlay HUD_EFFORT = (gui, poseStack, partialTicks, width, height) -> {
-        Minecraft minecraft = Minecraft.getInstance();
-        Player player = minecraft.player;
-        if (!minecraft.options.hideGui && gui.shouldDrawSurvivalElements()) {
-            player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
-                int amount = (int) cap.getCurrentEffort();
-                int max = (int) cap.getMaxEffort();
-
-                int x = width / 2 - 45;
-                int y = 5;
-                int i3 = Mth.ceil(max / 10.0F);
-                int j2 = Math.max(10 - (i3 - 2), 3);
-
-                for (int i = 0; i < max; i++){
-                    int j1 = i / 10;
-                    int k1 = i % 10;
-                    int l1 = x + k1 * 9;
-                    int i2 = y + j1 * j2;
-
+                int level = effects.getBloodArmorPoints();
+                for (int i = 1; level > 0 && i < 20; i += 2)
+                {
                     RenderSystem.setShaderTexture(0, TEXTURES);
-                    gui.blit(poseStack, l1, i2, 125, 0, 9, 9);
-                }
-
-                for (int i = amount - 1; i >= 0; --i) {
-                    int j1 = i / 10;
-                    int k1 = i % 10;
-                    int l1 = x + k1 * 9;
-                    int i2 = y + j1 * j2;
-
-                    RenderSystem.setShaderTexture(0, TEXTURES);
-                    gui.blit(poseStack, l1, i2, 116, 0, 9, 9);
+                    if (i < level) {
+                        gui.blit(poseStack, left, top, 98, 9, 9, 9);
+                    } else if (i == level) {
+                        gui.blit(poseStack, left, top, 107, 9, 9, 9);
+                    }
+                    left += 8;
                 }
             });
         }
@@ -134,8 +157,9 @@ public class Overlay {
         showLvlUpTicks = 200;
     }
     public static void registerOverlays(){
-        OverlayRegistry.registerOverlayAbove(ForgeIngameGui.PLAYER_HEALTH_ELEMENT, "Death Health", Overlay.HUD_DEATH_HEARTS);
-        OverlayRegistry.registerOverlayAbove(ForgeIngameGui.PLAYER_HEALTH_ELEMENT, "Effort Points", Overlay.HUD_EFFORT);
         OverlayRegistry.registerOverlayTop("NEX", Overlay.HUD_NEX);
+        OverlayRegistry.registerOverlayAbove(ForgeIngameGui.FOOD_LEVEL_ELEMENT, "Effort Points", Overlay.HUD_EFFORT);
+        OverlayRegistry.registerOverlayAbove(ForgeIngameGui.PLAYER_HEALTH_ELEMENT, "Death Health", Overlay.HUD_DEATH_HEARTS);
+        OverlayRegistry.registerOverlayAbove(ForgeIngameGui.ARMOR_LEVEL_ELEMENT, "Blood Armor", Overlay.HUD_BLOOD_ARMOR);
     }
 }

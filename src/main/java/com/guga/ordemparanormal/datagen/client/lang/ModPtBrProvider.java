@@ -49,6 +49,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPItems.RITUAL_DECADENCIA.get(), "Caveira com símbolo");
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Cristal com espiral");
 		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Papél com símbolo");
+		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Capacete enferrujado");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
@@ -91,21 +92,25 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Rituais
 		add("ordemparanormal.rituals", "Rituais");
 		add("ordemparanormal.ritual.ingredient", "Ingrediente");
-		add(OPAPI.SKINNING.getTranslationKey(), "Ritual de descarnar");
+		add(OPAPI.SKINNING.getTranslationKey(), "Descarnar");
 		addDescription(OPAPI.SKINNING.getTranslationKey(),
 				"Descarna o alvo, causando dano de Sangue contínuo.",
 				"Gasta 2 pontos de esforço.");
-		add(OPAPI.DECAY.getTranslationKey(), "Ritual de decadência");
+		add(OPAPI.DECAY.getTranslationKey(), "Decadência");
 		addDescription(OPAPI.DECAY.getTranslationKey(),
 				"Apodrece o alvo, causando dano de Morte contínuo.",
 				"Gasta 2 pontos de esforço.");
-		add(OPAPI.CICATRIZATION.getTranslationKey(), "Ritual de cicatrização");
+		add(OPAPI.CICATRIZATION.getTranslationKey(), "Cicatrização");
 		addDescription(OPAPI.CICATRIZATION.getTranslationKey(),
 				"Cicatriza as feridas do alvo ou de você mesmo.",
 				"Gasta 2 pontos de esforço.");
-		add(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(), "Ritual de consumir manancial");
+		add(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(), "Consumir Manancial");
 		addDescription(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(),
-				"Consome a vida ao redor, ganhando pontos de vida temporários.",
+				"Consome a vida ao redor, fortificando sua vida.",
+				"Gasta 3 pontos de esforço.");
+		add(OPAPI.BLOOD_ARMOR.getTranslationKey(), "Armadura de Sangue");
+		addDescription(OPAPI.BLOOD_ARMOR.getTranslationKey(),
+				"Usa seu sangue para endurecer sua pele, servindo como armadura.",
 				"Gasta 3 pontos de esforço.");
 
 		// Poderes
@@ -149,7 +154,8 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Sangrando");
 		add(OPEffects.DECAY.get(), "Apodrecendo");
-		add(OPEffects.LIFE_ABSORPTION_EFFECT.get(), "Vida Absorvida");
+		add(OPEffects.LIFE_ABSORBED.get(), "Vida Absorvida");
+		add(OPEffects.SKIN_REINFORCED.get(), "Pele Reforçada");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");
