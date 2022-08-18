@@ -65,9 +65,11 @@ public abstract class AbstractRitual{
         lines.add(CommonComponents.INGREDIENT.plainCopy().append(": ")
                 .append(getIngredient().getName(getIngredient().getDefaultInstance())).withStyle(ChatFormatting.GRAY));
         lines.add(TextComponent.EMPTY);
-        for (int i = 1; i < 3; i++){
-            lines.add(new TranslatableComponent(this.getTranslationKey() + ".description.line_" + i).withStyle(ChatFormatting.GRAY));
-        }
+
+        lines.add(new TranslatableComponent(this.getTranslationKey() + ".description").withStyle(ChatFormatting.GRAY));
+        lines.add(CommonComponents.CONSUMES.plainCopy().append(" " + this.effortCost + " " + CommonComponents.EFFORT_POINTS_FULL_NAME.getString())
+                .withStyle(ChatFormatting.GRAY));
+
         return lines;
     }
     public int getTier() { return tier; }

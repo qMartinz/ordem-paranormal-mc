@@ -14,11 +14,11 @@ import com.guga.ordemparanormal.common.power.knowledge.TestPower8;
 import com.guga.ordemparanormal.common.ritual.*;
 
 public class OPAPI {
-    public static final AbstractRitual SKINNING = new Skinning();
-    public static final AbstractRitual DECAY = new Decay();
-    public static final AbstractRitual CONSUME_LIFEFORCE = new ConsumeLifeforce();
-    public static final AbstractRitual BLOOD_ARMOR = new BloodArmor();
-    public static final AbstractRitual CICATRIZATION = new Cicatrization();
+    public static final AbstractRitual DESCARNAR = new Descarnar();
+    public static final AbstractRitual DECADENCIA = new Decadencia();
+    public static final AbstractRitual CONSUMIR_MANANCIAL = new ConsumirManancial();
+    public static final AbstractRitual ARMADURA_SANGUE = new ArmaduraSangue();
+    public static final AbstractRitual CICATRIZACAO = new Cicatrizacao();
     public static final PlayerPower TEST_POWER = new TestPower();
     public static final PlayerPower TEST_POWER_2 = new TestPower2();
     public static final PlayerPower TEST_POWER_3 = new TestPower3();
@@ -28,11 +28,11 @@ public class OPAPI {
     public static final PlayerPower TEST_POWER_7 = new TestPower7();
     public static final PlayerPower TEST_POWER_8 = new TestPower8();
     public static void setup(){
-        registerRitual(SKINNING);
-        registerRitual(DECAY);
-        registerRitual(CONSUME_LIFEFORCE);
-        registerRitual(BLOOD_ARMOR);
-        registerRitual(CICATRIZATION);
+        registerRitual(DESCARNAR);
+        registerRitual(DECADENCIA);
+        registerRitual(CONSUMIR_MANANCIAL);
+        registerRitual(ARMADURA_SANGUE);
+        registerRitual(CICATRIZACAO);
         registerPower(TEST_POWER);
         registerPower(TEST_POWER_2);
         registerPower(TEST_POWER_3);

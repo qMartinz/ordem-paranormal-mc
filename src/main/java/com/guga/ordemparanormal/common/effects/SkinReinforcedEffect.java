@@ -10,7 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.level.block.Blocks;
 
-public class SkinReinforcedEffect extends MobEffect {
+public class SkinReinforcedEffect extends RitualEffect {
     public SkinReinforcedEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
     }

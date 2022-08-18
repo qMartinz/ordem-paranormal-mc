@@ -21,9 +21,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class Skinning extends AbstractRitual {
-    public Skinning() {
-        super("skinning", ParanormalElement.BLOOD, 1, 2, true, 5D, OPItems.ORGAO.get());
+public class Descarnar extends AbstractRitual {
+    public Descarnar() {
+        super("descarnar", ParanormalElement.BLOOD, 1, 2, true, 5D, OPItems.ORGAO.get());
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, @Nullable LivingEntity caster) {
@@ -36,9 +36,9 @@ public class Skinning extends AbstractRitual {
         }
         
         float amount = 
-                ElementDamage.isEntityWeakTo(target, ElementDamage.BLOOD_DAMAGE) ? 10f + presence*2f :
-                        ElementDamage.isEntityResistant(target, ElementDamage.BLOOD_DAMAGE) ? 2.5f + presence/2f : 
-                                5f + presence;
+                ElementDamage.isEntityWeakTo(target, ElementDamage.BLOOD_DAMAGE) ? 8f + presence*2f :
+                        ElementDamage.isEntityResistant(target, ElementDamage.BLOOD_DAMAGE) ? 2f + presence/2f :
+                                4f + presence;
         
         target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.BLOOD), amount);
         target.level.playSound(null, target.blockPosition(), SoundEvents.DOLPHIN_EAT, SoundSource.PLAYERS, 2f, 1f);

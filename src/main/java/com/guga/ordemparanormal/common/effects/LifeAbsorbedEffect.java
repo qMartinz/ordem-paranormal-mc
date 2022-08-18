@@ -10,7 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.level.block.Blocks;
 
-public class LifeAbsorbedEffect extends MobEffect {
+public class LifeAbsorbedEffect extends RitualEffect {
     public LifeAbsorbedEffect(MobEffectCategory p_19414_, int p_19415_) {
         super(p_19414_, p_19415_);
     }

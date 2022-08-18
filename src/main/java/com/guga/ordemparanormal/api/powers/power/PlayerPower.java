@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.powers.power;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.common.CommonComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -69,9 +70,14 @@ public class PlayerPower {
         Component title = getDisplayName().plainCopy().withStyle(formatting);
         lines.add(title);
         lines.add(TextComponent.EMPTY);
-        for (int i = 1; i < 3; i++){
-            lines.add(new TranslatableComponent(this.getTranslationKey() + ".description.line_" + i).withStyle(ChatFormatting.GRAY));
+
+        lines.add(new TranslatableComponent(this.getTranslationKey() + ".description.line_1").withStyle(ChatFormatting.GRAY));
+        lines.add(new TranslatableComponent(this.getTranslationKey() + ".description.line_2").withStyle(ChatFormatting.GRAY));
+        if (this.isActivePower) {
+            lines.add(CommonComponents.CONSUMES.plainCopy().append(" " + this.effortCost + " " + CommonComponents.EFFORT_POINTS_FULL_NAME.getString())
+                    .withStyle(ChatFormatting.GRAY));
         }
+
         return lines;
     }
 

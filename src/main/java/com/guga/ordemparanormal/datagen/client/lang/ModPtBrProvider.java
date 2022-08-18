@@ -2,6 +2,8 @@ package com.guga.ordemparanormal.datagen.client.lang;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.powers.ParanormalElement;
+import com.guga.ordemparanormal.api.powers.power.PlayerPower;
+import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
@@ -20,6 +22,15 @@ public class ModPtBrProvider extends LanguageProvider{
 	private void addDescription(String key, String line1, String line2){
 		add(key + ".description.line_1", line1);
 		add(key + ".description.line_2", line2);
+	}
+	private void addRitual(AbstractRitual ritual, String name, String description){
+		add(ritual.getTranslationKey(), name);
+		add(ritual.getTranslationKey() + ".description", description);
+	}
+	private void addPower(PlayerPower power, String name, String description1, String description2){
+		add(power.getTranslationKey(), name);
+		add(power.getTranslationKey() + ".description.line_1", description1);
+		add(power.getTranslationKey() + ".description.line_2", description2);
 	}
 
 	// Adicionar traduções em PT-BR
@@ -92,68 +103,63 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Rituais
 		add("ordemparanormal.rituals", "Rituais");
 		add("ordemparanormal.ritual.ingredient", "Ingrediente");
-		add(OPAPI.SKINNING.getTranslationKey(), "Descarnar");
-		addDescription(OPAPI.SKINNING.getTranslationKey(),
-				"Descarna o alvo, causando dano de Sangue contínuo.",
-				"Gasta 2 pontos de esforço.");
-		add(OPAPI.DECAY.getTranslationKey(), "Decadência");
-		addDescription(OPAPI.DECAY.getTranslationKey(),
-				"Apodrece o alvo, causando dano de Morte contínuo.",
-				"Gasta 2 pontos de esforço.");
-		add(OPAPI.CICATRIZATION.getTranslationKey(), "Cicatrização");
-		addDescription(OPAPI.CICATRIZATION.getTranslationKey(),
-				"Cicatriza as feridas do alvo ou de você mesmo.",
-				"Gasta 2 pontos de esforço.");
-		add(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(), "Consumir Manancial");
-		addDescription(OPAPI.CONSUME_LIFEFORCE.getTranslationKey(),
-				"Consome a vida ao redor, fortificando sua vida.",
-				"Gasta 3 pontos de esforço.");
-		add(OPAPI.BLOOD_ARMOR.getTranslationKey(), "Armadura de Sangue");
-		addDescription(OPAPI.BLOOD_ARMOR.getTranslationKey(),
-				"Usa seu sangue para endurecer sua pele, servindo como armadura.",
-				"Gasta 3 pontos de esforço.");
+		add("ordemparanormal.ritual.consumes", "Consome");
+
+		addRitual(OPAPI.DESCARNAR, "Descarnar",
+				"Descarna o alvo, causando dano de Sangue contínuo.");
+
+		addRitual(OPAPI.DECADENCIA, "Decadência",
+				"Apodrece o alvo, causando dano de Morte e o enfraquecendo.");
+
+		addRitual(OPAPI.CICATRIZACAO, "Cicatrização",
+				"Cicatriza as feridas do alvo ou de você mesmo.");
+
+		addRitual(OPAPI.CONSUMIR_MANANCIAL, "Consumir Manancial",
+				"Consome a vida ao redor, fortificando sua vida.");
+
+		addRitual(OPAPI.ARMADURA_SANGUE, "Armadura de Sangue",
+				"Usa seu sangue para endurecer sua pele, servindo como armadura.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
 		add("ordemparanormal.power.owned", "Poder adquirido");
 		add("ordemparanormal.power.active", "Poder ativo");
 		add("ordemparanormal.power.passive", "Poder passivo");
-		add(OPAPI.TEST_POWER.getTranslationKey(), "Test 1");
-		addDescription(OPAPI.TEST_POWER.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER, "Test 1",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_2.getTranslationKey(), "Test 2");
-		addDescription(OPAPI.TEST_POWER_2.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_2, "Test 2",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_3.getTranslationKey(), "Test 3");
-		addDescription(OPAPI.TEST_POWER_3.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_3, "Test 3",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_4.getTranslationKey(), "Test 4");
-		addDescription(OPAPI.TEST_POWER_4.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_4, "Test 4",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_5.getTranslationKey(), "Test 5");
-		addDescription(OPAPI.TEST_POWER_5.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_5,"Test 5",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_6.getTranslationKey(), "Test 6");
-		addDescription(OPAPI.TEST_POWER_6.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_6,"Test 6",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_7.getTranslationKey(), "Test 7");
-		addDescription(OPAPI.TEST_POWER_7.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_7,"Test 7",
 				"Test line 1",
 				"Test line 2");
-		add(OPAPI.TEST_POWER_8.getTranslationKey(), "Test 8");
-		addDescription(OPAPI.TEST_POWER_8.getTranslationKey(),
+
+		addPower(OPAPI.TEST_POWER_8,"Test 8",
 				"Test line 1",
 				"Test line 2");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Sangrando");
-		add(OPEffects.DECAY.get(), "Apodrecendo");
 		add(OPEffects.LIFE_ABSORBED.get(), "Vida Absorvida");
 		add(OPEffects.SKIN_REINFORCED.get(), "Pele Reforçada");
 
@@ -176,6 +182,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add("ordemparanormal.nex.abbreviation", "NeX");
 		add("ordemparanormal.health_points", "PV");
 		add("ordemparanormal.effort_points", "PE");
+		add("ordemparanormal.effort_points.full_name", "Pontos de Esforço");
 	}
 
 }

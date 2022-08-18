@@ -6,11 +6,11 @@ import com.guga.ordemparanormal.core.registry.OPAPI;
 import net.minecraft.resources.ResourceLocation;
 
 public enum RitualSymbol {
-    SKINNING(OPAPI.SKINNING, 0, 0, 62, 62, new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/rituals.png")),
-    DECAY(OPAPI.DECAY, 62, 0, 62, 62, SKINNING.textureLoc),
-    BlOOD_ARMOR(OPAPI.BLOOD_ARMOR, 124, 0, 64, 64, SKINNING.textureLoc),
-    CONSUME_LIFEFORCE(OPAPI.CONSUME_LIFEFORCE, 188, 0, 64, 64, SKINNING.textureLoc),
-    CICATRIZATION(OPAPI.CICATRIZATION, 0, 62, 64, 64, SKINNING.textureLoc);
+    DESCARNAR(OPAPI.DESCARNAR, 0, 0, 62, 62, new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/rituals.png")),
+    DECADENCIA(OPAPI.DECADENCIA, 62, 0, 62, 62, DESCARNAR.textureLoc),
+    ARMADURA_SANGUE(OPAPI.ARMADURA_SANGUE, 124, 0, 64, 64, DESCARNAR.textureLoc),
+    CONSUMIR_MANANCIAL(OPAPI.CONSUMIR_MANANCIAL, 188, 0, 64, 64, DESCARNAR.textureLoc),
+    CICATRIZACAO(OPAPI.CICATRIZACAO, 0, 62, 64, 64, DESCARNAR.textureLoc);
     private final AbstractRitual ritual;
     private final int x;
     private final int y;

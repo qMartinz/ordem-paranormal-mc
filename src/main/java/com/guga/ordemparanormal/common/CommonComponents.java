@@ -24,6 +24,8 @@ public class CommonComponents {
     public static final Component RITUAL_LEARNED = new TranslatableComponent("ordemparanormal.ritual_item.ritual_learned");
     public static final Component RITUAL_UNKNOWN = new TranslatableComponent("ordemparanormal.ritual_item.ritual_unknown");
     public static final Component CURSED_WITH = new TranslatableComponent("ordemparanormal.ritual_item.cursed_with");
+    public static final Component CONSUMES = new TranslatableComponent("ordemparanormal.ritual.consumes");
+    public static final Component EFFORT_POINTS_FULL_NAME = new TranslatableComponent("ordemparanormal.effort_points.full_name");
     public static Component joinLines(Component... pLines) {
         return joinLines(Arrays.asList(pLines));
     }

@@ -9,11 +9,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -84,19 +82,19 @@ public final class OPItems {
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
 		}
 		private RegistryObject<RitualItem> createRDescarnar(){
-			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(OPAPI.SKINNING));
+			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(OPAPI.DESCARNAR));
 		}
 		private RegistryObject<RitualItem> createRDecadencia(){
-			return this.deferredRegister.register("ritual_decadencia", () -> new RitualItem(OPAPI.DECAY));
+			return this.deferredRegister.register("ritual_decadencia", () -> new RitualItem(OPAPI.DECADENCIA));
 		}
 		private RegistryObject<RitualItem> createRCicatrizacao(){
-			return this.deferredRegister.register("ritual_cicatrizacao", () -> new RitualItem(OPAPI.CICATRIZATION));
+			return this.deferredRegister.register("ritual_cicatrizacao", () -> new RitualItem(OPAPI.CICATRIZACAO));
 		}
 		private RegistryObject<RitualItem> createRConsumirManancial(){
-			return this.deferredRegister.register("ritual_consumir_manancial", () -> new RitualItem(OPAPI.CONSUME_LIFEFORCE));
+			return this.deferredRegister.register("ritual_consumir_manancial", () -> new RitualItem(OPAPI.CONSUMIR_MANANCIAL));
 		}
 		private RegistryObject<RitualItem> createRArmaduraSangue(){
-			return this.deferredRegister.register("ritual_armadura_sangue", () -> new RitualItem(OPAPI.BLOOD_ARMOR));
+			return this.deferredRegister.register("ritual_armadura_sangue", () -> new RitualItem(OPAPI.ARMADURA_SANGUE));
 		}
 	}	
 }

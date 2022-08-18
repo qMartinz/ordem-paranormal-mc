@@ -9,20 +9,18 @@ import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.mojang.math.Vector3f;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class Cicatrization extends AbstractRitual {
-    public Cicatrization() {
-        super("cicatrization", ParanormalElement.DEATH, 1, 2, true, 3.5D, OPItems.CINZAS.get());
+public class Cicatrizacao extends AbstractRitual {
+    public Cicatrizacao() {
+        super("cicatrizacao", ParanormalElement.DEATH, 1, 2, true, 3.5D, OPItems.CINZAS.get());
     }
     @Override
     public void onUseSelf(Level world, @Nullable LivingEntity caster) {

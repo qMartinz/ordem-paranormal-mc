@@ -11,7 +11,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.Blocks;
 
-public class BleedEffect extends MobEffect {
+public class BleedEffect extends RitualEffect {
     public BleedEffect(MobEffectCategory effectCategory, int color) {
         super(effectCategory, color);
     }
@@ -20,16 +20,16 @@ public class BleedEffect extends MobEffect {
         if (ElementDamage.isEntityResistant(entity, ElementDamage.BLOOD_DAMAGE)){
             entity.removeEffect(this);
         } else {
-            float amount = ElementDamage.isEntityWeakTo(entity, ElementDamage.BLOOD_DAMAGE) ? 2f : 1f;
+            float amount = ElementDamage.isEntityWeakTo(entity, ElementDamage.BLOOD_DAMAGE) ? 4f + amplifier*2f :
+                    ElementDamage.isEntityResistant(entity, ElementDamage.BLOOD_DAMAGE) ? 1f + amplifier/2f : 2f + amplifier;
             entity.hurt(ElementDamage.BLOOD_DAMAGE, amount);
             entity.level.playSound(null, entity.blockPosition(), SoundEvents.BEEHIVE_DRIP, SoundSource.AMBIENT, 1f, 1f);
 
-            int i = 5 + amplifier * 2;
             if (entity.level instanceof ServerLevel level)
                 level.sendParticles(
                         new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                         entity.getX(), entity.getEyeY(), entity.getZ(),
-                        i, 0, 0.3d, 0, 0d);
+                        (int) amount, 0, 0.3d, 0, 0d);
         }
     }
     @Override
