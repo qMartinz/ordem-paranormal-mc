@@ -1,10 +1,10 @@
 package com.guga.ordemparanormal.common.ritual;
 
+import com.guga.ordemparanormal.api.ElementDamage;
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.powers.ElementDamage;
-import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.mojang.math.Vector3f;

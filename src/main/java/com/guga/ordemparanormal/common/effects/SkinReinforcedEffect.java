@@ -4,7 +4,7 @@ import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -26,7 +26,7 @@ public class SkinReinforcedEffect extends RitualEffect {
     }
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        int i = 5 + amplifier * 2;
+        int i = Mth.clamp(amplifier/2, 1, 5);
         if (entity.level instanceof ServerLevel level)
             level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     entity.getX(), entity.getY(), entity.getZ(),

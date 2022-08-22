@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.api.capabilities.network;
 
 import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;

@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.api.powers;
+package com.guga.ordemparanormal.api;
 
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import net.minecraft.world.damagesource.DamageSource;

@@ -16,7 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		super(generator, OrdemParanormal.MOD_ID, helper);
 	}
 	
-	// M�todo para gerar modelo de item
+	// Método para gerar modelo de item
 	protected void oneLayerItem(Item item, ResourceLocation texture) {
 		ResourceLocation itemTexture = new ResourceLocation(texture.getNamespace(), "item/" + texture.getPath());
 		if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {

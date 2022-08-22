@@ -1,8 +1,8 @@
 package com.guga.ordemparanormal.client.screen;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.client.screen.widgets.SelectedRitual;
 import com.guga.ordemparanormal.common.CommonComponents;
@@ -14,11 +14,9 @@ import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NexScreen extends Screen {

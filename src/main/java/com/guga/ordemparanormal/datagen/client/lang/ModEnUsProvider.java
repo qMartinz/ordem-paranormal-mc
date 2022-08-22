@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.datagen.client.lang;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;

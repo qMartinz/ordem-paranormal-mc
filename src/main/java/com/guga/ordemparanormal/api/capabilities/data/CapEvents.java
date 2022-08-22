@@ -5,14 +5,11 @@ import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class CapEvents {
     @SubscribeEvent
-    public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event){
+    public static void onEntityAttachCapabilities(AttachCapabilitiesEvent<Entity> event){
         if (event.getObject() instanceof Player player){
             if (!player.getCapability(PlayerNexProvider.PLAYER_NEX).isPresent()){
                 event.addCapability(PlayerNexProvider.IDENTIFIER, new PlayerNexProvider());

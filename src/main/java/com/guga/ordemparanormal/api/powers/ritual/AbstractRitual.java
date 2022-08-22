@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.api.powers.ritual;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.powers.ParanormalElement;
 import com.guga.ordemparanormal.common.CommonComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -62,8 +62,10 @@ public abstract class AbstractRitual{
         }
         Component title = getDisplayName().plainCopy().withStyle(formatting);
         lines.add(title);
-        lines.add(CommonComponents.INGREDIENT.plainCopy().append(": ")
+
+        if (getIngredient() != null) lines.add(CommonComponents.INGREDIENT.plainCopy().append(": ")
                 .append(getIngredient().getName(getIngredient().getDefaultInstance())).withStyle(ChatFormatting.GRAY));
+
         lines.add(TextComponent.EMPTY);
 
         lines.add(new TranslatableComponent(this.getTranslationKey() + ".description").withStyle(ChatFormatting.GRAY));
@@ -83,11 +85,9 @@ public abstract class AbstractRitual{
         };
     }
     public int getEffortCost() { return effortCost; }
-
     public boolean hasEntityTarget() {
         return hasEntityTarget;
     }
-
     public double getRange() {
         return range;
     }
@@ -110,10 +110,10 @@ public abstract class AbstractRitual{
                         if (hasEntityTarget()){
                             onUseSelf(world, caster);
                         } else {
-                            onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                            onUseBlock(blockHitResult, world, caster);
                         }
                     } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                        onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                        onUseEntity(entityHitResult, world, caster);
                     } else {
                         onUseSelf(world, caster);
                     }
@@ -126,10 +126,10 @@ public abstract class AbstractRitual{
                                 if (hasEntityTarget()){
                                     onUseSelf(world, caster);
                                 } else {
-                                    onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                                    onUseBlock(blockHitResult, world, caster);
                                 }
                             } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                                onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                                onUseEntity(entityHitResult, world, caster);
                             } else {
                                 onUseSelf(world, caster);
                             }
@@ -141,10 +141,10 @@ public abstract class AbstractRitual{
                                 if (hasEntityTarget()){
                                     onUseSelf(world, caster);
                                 } else {
-                                    onUseBlock((BlockHitResult) rayTraceResult, world, caster);
+                                    onUseBlock(blockHitResult, world, caster);
                                 }
                             } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                                onUseEntity((EntityHitResult) rayTraceResult, world, caster);
+                                onUseEntity(entityHitResult, world, caster);
                             } else {
                                 onUseSelf(world, caster);
                             }

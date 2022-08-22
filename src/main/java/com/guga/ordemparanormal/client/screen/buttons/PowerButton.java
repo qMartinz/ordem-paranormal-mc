@@ -1,6 +1,9 @@
 package com.guga.ordemparanormal.client.screen.buttons;
 
-import com.guga.ordemparanormal.api.capabilities.data.*;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
 import com.guga.ordemparanormal.api.capabilities.network.UpdatePowers;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;

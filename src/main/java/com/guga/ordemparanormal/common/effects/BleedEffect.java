@@ -1,12 +1,11 @@
 package com.guga.ordemparanormal.common.effects;
 
-import com.guga.ordemparanormal.api.powers.ElementDamage;
+import com.guga.ordemparanormal.api.ElementDamage;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.Blocks;

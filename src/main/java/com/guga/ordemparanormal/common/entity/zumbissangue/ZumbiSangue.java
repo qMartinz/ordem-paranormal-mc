@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.entity.zumbissangue;
 
-import com.guga.ordemparanormal.api.powers.ParanormalElement;
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.teamabnormals.blueprint.core.endimator.Endimatable;

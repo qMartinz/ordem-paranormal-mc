@@ -1,8 +1,6 @@
 package com.guga.ordemparanormal.api.powers.ritual;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
-import com.guga.ordemparanormal.api.powers.ritual.IRitualCaster;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;

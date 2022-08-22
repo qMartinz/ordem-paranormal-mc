@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.common.power.blood;
 
-import com.guga.ordemparanormal.api.powers.power.PowerType;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
+import com.guga.ordemparanormal.api.powers.power.PowerType;
 
 public class TestPower extends PlayerPower {
     public TestPower() {
