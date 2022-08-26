@@ -14,7 +14,7 @@ import com.guga.ordemparanormal.client.screen.buttons.SlotButton;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
-import com.guga.ordemparanormal.core.registry.OPAPI;
+import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
@@ -84,10 +84,10 @@ public class PowerScreen extends Screen {
             }
         });
 
-        Collection<PlayerPower> bloodPowerTree = createPowerTree(OPAPI.TEST_POWER);
-        Collection<PlayerPower> energyPowerTree = createPowerTree(OPAPI.TEST_POWER_2);
-        Collection<PlayerPower> deathPowerTree = createPowerTree(OPAPI.TEST_POWER_3);
-        Collection<PlayerPower> knowledgePowerTree = createPowerTree(OPAPI.TEST_POWER_4);
+        Collection<PlayerPower> bloodPowerTree = createPowerTree(OPPowers.TEST_POWER);
+        Collection<PlayerPower> energyPowerTree = createPowerTree(OPPowers.TEST_POWER_2);
+        Collection<PlayerPower> deathPowerTree = createPowerTree(OPPowers.TEST_POWER_3);
+        Collection<PlayerPower> knowledgePowerTree = createPowerTree(OPPowers.TEST_POWER_4);
 
         for (int i = 0; i < bloodPowerTree.size(); i++){
             addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+67, bloodPowerTree.stream().toList().get(i), transcending));

@@ -33,7 +33,9 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_CICATRIZACAO = HELPER.createRCicatrizacao();
 	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRConsumirManancial();
 	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRArmaduraSangue();
-	
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRArmaAtroz();
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRArmaVeloz();
+
 	// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
 			"zumbi_sangue", OPEntities.ZUMBI_SANGUE::get, 3670016, 7999247);
@@ -82,19 +84,25 @@ public final class OPItems {
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
 		}
 		private RegistryObject<RitualItem> createRDescarnar(){
-			return this.deferredRegister.register("ritual_descarnar", () -> new RitualItem(OPAPI.DESCARNAR));
+			return this.deferredRegister.register("livro_amaldicoado", () -> new RitualItem(OPRituals.DESCARNAR));
 		}
 		private RegistryObject<RitualItem> createRDecadencia(){
-			return this.deferredRegister.register("ritual_decadencia", () -> new RitualItem(OPAPI.DECADENCIA));
+			return this.deferredRegister.register("cranio_simbolo", () -> new RitualItem(OPRituals.DECADENCIA));
 		}
 		private RegistryObject<RitualItem> createRCicatrizacao(){
-			return this.deferredRegister.register("ritual_cicatrizacao", () -> new RitualItem(OPAPI.CICATRIZACAO));
+			return this.deferredRegister.register("cristal_espiral", () -> new RitualItem(OPRituals.CICATRIZACAO));
 		}
 		private RegistryObject<RitualItem> createRConsumirManancial(){
-			return this.deferredRegister.register("ritual_consumir_manancial", () -> new RitualItem(OPAPI.CONSUMIR_MANANCIAL));
+			return this.deferredRegister.register("papel_amaldicoado", () -> new RitualItem(OPRituals.CONSUMIR_MANANCIAL));
 		}
 		private RegistryObject<RitualItem> createRArmaduraSangue(){
-			return this.deferredRegister.register("ritual_armadura_sangue", () -> new RitualItem(OPAPI.ARMADURA_SANGUE));
+			return this.deferredRegister.register("capacete_enferrujado", () -> new RitualItem(OPRituals.ARMADURA_SANGUE));
 		}
-	}	
+		private RegistryObject<RitualItem> createRArmaAtroz(){
+			return this.deferredRegister.register("ritual_arma_atroz", () -> new RitualItem(OPRituals.ARMA_ATROZ));
+		}
+		private RegistryObject<RitualItem> createRArmaVeloz(){
+			return this.deferredRegister.register("ritual_arma_veloz", () -> new RitualItem(OPRituals.ARMA_VELOZ));
+		}
+	}
 }

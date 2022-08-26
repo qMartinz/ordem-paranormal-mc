@@ -3,6 +3,9 @@ package com.guga.ordemparanormal.common.entity;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSeco;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
 import net.minecraft.core.BlockPos;
@@ -24,8 +27,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.PlayMessages;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Nevoa extends Entity {
 	private static final EntityDataAccessor<Integer> DATA_RADIUS = SynchedEntityData.defineId(Nevoa.class,
@@ -120,12 +122,12 @@ public class Nevoa extends Entity {
 						float i = ExpModel.get(corpo).getExposure();
 						ExpModel.get(corpo).setExposure(i + (float) this.getIntensity() / 2);
 					} else if (corpo.isAlive() && ExpModel.get(corpo).isMaxExp()) {
-						EntityType[] zumbiSangue = new EntityType[]{
-								OPEntities.ZUMBI_SANGUE.get(),
-								OPEntities.ZUMBI_SECO.get(),
-								OPEntities.ZUMBI_ESPINHENTO.get()
-						};
-						transform(corpo, zumbiSangue[random.nextInt(zumbiSangue.length)]);
+						List<Mob> zumbis = new ArrayList<>();
+						zumbis.add(new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), corpo.level));
+						zumbis.add(new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), corpo.level));
+						zumbis.add(new ZumbiEspinhento(OPEntities.ZUMBI_ESPINHENTO.get(), corpo.level));
+
+						transform(corpo, zumbis.get(random.nextInt(zumbis.size()) - 1));
 						corpo.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
 						corpo.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
 					}
@@ -138,7 +140,7 @@ public class Nevoa extends Entity {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()) {
-							transform(monstro, OPEntities.ZUMBI_SANGUE.get());
+							transform(monstro, new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), monstro.level));
 							monstro.playSound(SoundEvents.ZOMBIE_DEATH, 0.2F, 0.7F);
 							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
 							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
@@ -149,7 +151,7 @@ public class Nevoa extends Entity {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()){
-							transform(monstro, OPEntities.ZUMBI_SECO.get());
+							transform(monstro, new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), monstro.level));
 							monstro.playSound(SoundEvents.SKELETON_DEATH, 0.2F, 0.7F);
 							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
 							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
@@ -170,18 +172,16 @@ public class Nevoa extends Entity {
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {
 				for (Player player : players) {
-					if (player.getCapability(PlayerNexProvider.PLAYER_NEX).resolve().get().getNex() == 0) player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-						playerNex.addNexXp(10);
+					player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+						if (playerNex.getNex() == 0) playerNex.addNexXp(10);
 					});
 				}
 			}
 		}
 	}
 
-	public LivingEntity transform(Mob entityIn, EntityType<? extends LivingEntity> type) {
+	public LivingEntity transform(Mob entityIn, Mob entityOut) {
 		if (entityIn.isAlive()) {
-			Mob entityOut = (Mob) type.create(this.level);
-			assert entityOut != null;
 			entityOut.moveTo(entityIn.getX(), entityIn.getY(), entityIn.getZ(), entityIn.getYRot(), entityIn.getXRot());
 
 			if (entityIn.hasCustomName()) {

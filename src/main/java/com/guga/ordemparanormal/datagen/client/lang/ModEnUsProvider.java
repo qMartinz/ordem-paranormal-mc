@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.datagen.client.lang;
 
+import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
@@ -56,10 +57,10 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence Altar");
 
 		// Itens de Rituais
-		add(OPItems.RITUAL_DESCARNAR.get(), "Book with symbol");
+		add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");
 		add(OPItems.RITUAL_DECADENCIA.get(), "Skull with symbol");
-		add(OPItems.RITUAL_CICATRIZACAO.get(), "Crystal with spiral");
-		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Paper with symbol");
+		add(OPItems.RITUAL_CICATRIZACAO.get(), "Spiral crystal");
+		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Cursed papers");
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Rusty helmet");
 		
 		// Ovos
@@ -81,6 +82,10 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(ParanormalElement.KNOWLEDGE.getTranslationKey(), "Knowledge");
 		add(ParanormalElement.ENERGY.getTranslationKey(), "Energy");
 		add(ParanormalElement.FEAR.getTranslationKey(), "Fear");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.BLOOD), "Blood damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.DEATH), "Death damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGY), "Energy damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.FEAR), "Fear damage");
 
 		// Atributos paranormais
 		add("ordemparanormal.nex.attribute_points", "Attribute Points");
@@ -97,7 +102,7 @@ public class ModEnUsProvider extends LanguageProvider{
 				"§8Increases your maximum health.");
 		addDescription(ParanormalAttribute.PRESENCE.name,
 				"§9Presence §rdetermines how powerful the Paranormal has made you.",
-				"§8Increases the damage of your rituals.",
+				"§8Increases the power of your rituals.",
 				"§8Increases your maximum effort.");
 
 		// Rituais
@@ -105,20 +110,20 @@ public class ModEnUsProvider extends LanguageProvider{
 		add("ordemparanormal.ritual.ingredient", "Ingredient");
 		add("ordemparanormal.ritual.consumes", "Consumes");
 
-		addRitual(OPAPI.DESCARNAR, "Skinning",
+		addRitual(OPRituals.DESCARNAR, "Skinning",
 				"Skins the target, dealing continuous blood damage.");
-
-		addRitual(OPAPI.DECADENCIA, "Decay",
+		addRitual(OPRituals.DECADENCIA, "Decay",
 				"Decays the target, dealing death damage and weakening them.");
-
-		addRitual(OPAPI.CICATRIZACAO, "Cicatrization",
+		addRitual(OPRituals.CICATRIZACAO, "Cicatrization",
 				"Heals the your wounds or your target's.");
-
-		addRitual(OPAPI.CONSUMIR_MANANCIAL, "Consume Lifeforce",
+		addRitual(OPRituals.CONSUMIR_MANANCIAL, "Consume Lifeforce",
 				"Consumes the surrounding life, fortifying yours.");
-
-		addRitual(OPAPI.ARMADURA_SANGUE, "Blood Armor",
+		addRitual(OPRituals.ARMADURA_SANGUE, "Blood Armor",
 				"Uses your blood to harden your skin, serving as armor.");
+		addRitual(OPRituals.ARMA_ATROZ, "Atrocious Weapon",
+				"Makes the weapon you're holding more dangerous.");
+		addRitual(OPRituals.ARMA_VELOZ, "Arma Veloz",
+				"Makes the weapon you're holding more swift.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -126,37 +131,41 @@ public class ModEnUsProvider extends LanguageProvider{
 		add("ordemparanormal.power.active", "Active power");
 		add("ordemparanormal.power.passive", "Passive power");
 
-		addPower(OPAPI.TEST_POWER, "Test 1",
+		addPower(OPPowers.TEST_POWER, "Test 1",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_2, "Test 2",
+		addPower(OPPowers.TEST_POWER_2, "Test 2",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_3, "Test 3",
+		addPower(OPPowers.TEST_POWER_3, "Test 3",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_4, "Test 4",
+		addPower(OPPowers.TEST_POWER_4, "Test 4",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_5,"Test 5",
+		addPower(OPPowers.TEST_POWER_5,"Test 5",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_6,"Test 6",
+		addPower(OPPowers.TEST_POWER_6,"Test 6",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_7,"Test 7",
+		addPower(OPPowers.TEST_POWER_7,"Test 7",
 				"Test line 1",
 				"Test line 2");
 
-		addPower(OPAPI.TEST_POWER_8,"Test 8",
+		addPower(OPPowers.TEST_POWER_8,"Test 8",
 				"Test line 1",
 				"Test line 2");
+
+		// Maldições
+		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
+		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Bleeding");

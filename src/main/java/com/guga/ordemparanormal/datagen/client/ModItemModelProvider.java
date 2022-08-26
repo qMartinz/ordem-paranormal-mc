@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -28,6 +29,40 @@ public class ModItemModelProvider extends ItemModelProvider{
 	}
 	protected void oneLayerItem(Item item) {
 		oneLayerItem(item, item.getRegistryName());
+	}
+	protected void oneLayerHandHeldItem(Item item, ResourceLocation texture) {
+		ResourceLocation itemTexture = new ResourceLocation(texture.getNamespace(), "item/" + texture.getPath());
+		if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
+			getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/handheld")))
+					.texture("layer0", itemTexture);
+		} else {
+			System.out.println("Texture for " + item.getRegistryName().toString() + " not present at " + itemTexture);
+		}
+	}
+	protected void oneLayerHandHeldItem(Item item) {
+		oneLayerItem(item, item.getRegistryName());
+	}
+	protected void multipleLayerItem(Item item, ResourceLocation... textures){
+		for (int i = 0; i < textures.length; i++) {
+			ResourceLocation itemTexture = new ResourceLocation(textures[i].getNamespace(), "item/" + textures[i].getPath());
+			if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
+				getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/generated")))
+						.texture("layer" + i, itemTexture);
+			} else {
+				System.out.println("Texture " + i + " for " + item.getRegistryName().toString() + " not present at " + itemTexture);
+			}
+		}
+	}
+	protected void multipleLayerHandHeldItem(Item item, ResourceLocation... textures){
+		for (int i = 0; i < textures.length; i++) {
+			ResourceLocation itemTexture = new ResourceLocation(textures[i].getNamespace(), "item/" + textures[i].getPath());
+			if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
+				getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/handheld")))
+						.texture("layer" + i, itemTexture);
+			} else {
+				System.out.println("Texture " + i + " for " + item.getRegistryName().toString() + " not present at " + itemTexture);
+			}
+		}
 	}
 	protected void simpleBlockItem(Item item){
 		getBuilder(item.getRegistryName().toString())
@@ -58,6 +93,8 @@ public class ModItemModelProvider extends ItemModelProvider{
 		oneLayerItem(OPItems.RITUAL_CICATRIZACAO.get());
 		oneLayerItem(OPItems.RITUAL_CONSUMIR_MANANCIAL.get());
 		oneLayerItem(OPItems.RITUAL_ARMADURA_SANGUE.get());
+		oneLayerItem(OPItems.RITUAL_ARMA_ATROZ.get());
+		oneLayerItem(OPItems.RITUAL_ARMA_VELOZ.get());
 
 		// Blocos
 		simpleBlockItem(OPBlocks.ALTAR_TRANSCENDER.get().asItem());

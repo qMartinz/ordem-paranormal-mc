@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/netherite_sword"
+  },
+  "overrides": [
+    { "predicate": { "ordemparanormal:curses": 1 }, "model": "ordemparanormal:item/cursed_netherite_swords/blood" },
+    { "predicate": { "ordemparanormal:curses": 2 }, "model": "ordemparanormal:item/cursed_netherite_swords/death" },
+    { "predicate": { "ordemparanormal:curses": 3 }, "model": "ordemparanormal:item/cursed_netherite_swords/knowledge" },
+    { "predicate": { "ordemparanormal:curses": 4 }, "model": "ordemparanormal:item/cursed_netherite_swords/energy" },
+    { "predicate": { "ordemparanormal:curses": 5 }, "model": "ordemparanormal:item/cursed_netherite_swords/blood_energy" },
+    { "predicate": { "ordemparanormal:curses": 6 }, "model": "ordemparanormal:item/cursed_netherite_swords/death_knowledge" }
+  ]
+}

@@ -12,7 +12,7 @@ import static com.guga.ordemparanormal.api.ElementDamage.ENERGY_DAMAGE;
 public enum ParanormalElement implements StringRepresentable {
     BLOOD("blood", ElementDamage.BLOOD_DAMAGE),
     KNOWLEDGE("knowledge", ElementDamage.KNOWLEDGE_DAMAGE),
-    ENERGY("energy", ENERGY_DAMAGE),
+    ENERGY("energy", ElementDamage.ENERGY_DAMAGE),
     DEATH("death", ElementDamage.DEATH_DAMAGE),
     FEAR("fear", ElementDamage.FEAR_DAMAGE),
     NONE("none", DamageSource.GENERIC);

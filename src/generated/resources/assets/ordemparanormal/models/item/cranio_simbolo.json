@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ordemparanormal:item/ritual_cicatrizacao"
+    "layer0": "ordemparanormal:item/cranio_simbolo"
   }
 }

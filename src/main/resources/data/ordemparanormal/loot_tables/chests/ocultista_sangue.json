@@ -27,7 +27,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ordemparanormal:ritual_descarnar",
+          "name": "ordemparanormal:livro_amaldicoado",
           "functions": [
             {
               "function": "minecraft:set_count",

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ordemparanormal:item/ritual_armadura_sangue"
+    "layer0": "ordemparanormal:item/cristal_espiral"
   }
 }

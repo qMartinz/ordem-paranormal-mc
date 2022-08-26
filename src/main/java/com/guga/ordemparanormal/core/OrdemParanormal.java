@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.core;
 
+import com.guga.ordemparanormal.api.curses.CursedItemProperties;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
@@ -65,7 +66,9 @@ public class OrdemParanormal {
 		bus.addListener(this::commonSetup);
 	}
 	public void commonSetup(final FMLCommonSetupEvent event){
-		OPAPI.setup();
+		OPCurses.setup();
+		OPRituals.setup();
+		OPPowers.setup();
 	}
 	@OnlyIn(Dist.CLIENT)
 	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
@@ -81,5 +84,7 @@ public class OrdemParanormal {
 		MinecraftForge.EVENT_BUS.register(new Keybind());
 
 		Overlay.registerOverlays();
+
+		event.enqueueWork(CursedItemProperties::register);
 	}
 }

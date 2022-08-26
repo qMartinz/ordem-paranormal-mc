@@ -2,18 +2,18 @@ package com.guga.ordemparanormal.client;
 
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPAPI;
+import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.resources.ResourceLocation;
 
 public enum PowerIcon {
-    TEST1(OPAPI.TEST_POWER, 80, 153),
-    TEST2(OPAPI.TEST_POWER_2, 92, 153),
-    TEST3(OPAPI.TEST_POWER_3, 104, 153),
-    TEST4(OPAPI.TEST_POWER_4, 116, 153),
-    TEST5(OPAPI.TEST_POWER_5, 80, 153),
-    TEST6(OPAPI.TEST_POWER_6, 92, 153),
-    TEST7(OPAPI.TEST_POWER_7, 104, 153),
-    TEST8(OPAPI.TEST_POWER_8, 116, 153);
+    TEST1(OPPowers.TEST_POWER, 80, 153),
+    TEST2(OPPowers.TEST_POWER_2, 92, 153),
+    TEST3(OPPowers.TEST_POWER_3, 104, 153),
+    TEST4(OPPowers.TEST_POWER_4, 116, 153),
+    TEST5(OPPowers.TEST_POWER_5, 80, 153),
+    TEST6(OPPowers.TEST_POWER_6, 92, 153),
+    TEST7(OPPowers.TEST_POWER_7, 104, 153),
+    TEST8(OPPowers.TEST_POWER_8, 116, 153);
     private final PlayerPower ability;
     private final int x;
     private final int y;

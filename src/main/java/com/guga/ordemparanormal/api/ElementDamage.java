@@ -1,6 +1,8 @@
 package com.guga.ordemparanormal.api;
 
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -80,5 +82,11 @@ public class ElementDamage {
         } else {
             return damage == DEATH_DAMAGE && !nonOrganicEntities.contains(entity.getType());
         }
+    }
+    public static String elementDmgTranslationKey(ParanormalElement element){
+        return element.getTranslationKey() + ".damageType";
+    }
+    public static Component elementDmgTypeName(ParanormalElement element){
+        return new TranslatableComponent(elementDmgTranslationKey(element));
     }
 }
