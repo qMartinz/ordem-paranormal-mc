@@ -75,12 +75,11 @@ public abstract class AbstractRitual{
         return lines;
     }
     public int getTier() { return tier; }
-    public int getNexRequired(){
+    public int getPresenceRequired(){
         return switch (tier) {
-            case 1 -> 1;
-            case 2 -> 5;
-            case 3 -> 10;
-            case 4 -> 15;
+            case 2 -> 2;
+            case 3 -> 4;
+            case 4 -> 8;
             default -> 0;
         };
     }
@@ -101,7 +100,7 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUse(@Nullable HitResult rayTraceResult, Level world, @Nullable LivingEntity caster){
+    public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster){
         if (caster instanceof Player player){
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playernex -> {
                 if (player.isCreative()){

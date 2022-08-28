@@ -16,12 +16,12 @@ public class SkinReinforcedEffect extends RitualEffect {
     }
     @Override
     public void addAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setBloodArmorPoints(effects.getBloodArmorPoints() + (pAmplifier + 1)));
+        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setBloodArmorPoints(effects.getBloodArmorPoints() + (pAmplifier + 3)));
         super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
     @Override
     public void removeAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setBloodArmorPoints(effects.getBloodArmorPoints() - (pAmplifier + 1)));
+        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setBloodArmorPoints(effects.getBloodArmorPoints() - (pAmplifier + 3)));
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
     @Override

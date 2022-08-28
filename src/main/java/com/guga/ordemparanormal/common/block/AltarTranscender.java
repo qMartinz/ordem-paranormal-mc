@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.block;
 
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.item.RitualItem;
@@ -82,7 +83,9 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
             if (stack.getItem() instanceof RitualItem item){
                 AbstractRitual ritual = item.getRitual();
                 if (!abilities.knowsRitual(ritual)){
-                    if (nex.getNex() >= item.getRitual().getNexRequired() && abilities.getKnownRituals().size() < nex.getRitualSlots() /*&& !stack.getOrCreateTag().getBoolean("ritualLearned")*/) {
+                    if (nex.getAttribute(ParanormalAttribute.PRESENCE) >= item.getRitual().getPresenceRequired() &&
+                            abilities.getKnownRituals().size() < nex.getRitualSlots() &&
+                            !stack.getOrCreateTag().getBoolean("ritualLearned")) {
                         CompoundTag tag = new CompoundTag();
                         tag.putBoolean("ritualLearned", true);
                         stack.setTag(tag);

@@ -102,7 +102,7 @@ public class ModPtBrProvider extends LanguageProvider{
 				"§8Aumenta a sua vida máxima.");
 		addDescription(ParanormalAttribute.PRESENCE.name,
 				"§9Presença §rdetermina o quão poderoso o Paranormal te tornou.",
-				"§8Aumenta o poder de seus rituais.",
+				"§8Permite o uso de rituais mais poderosos.",
 				"§8Aumenta o seu esforço máximo.");
 
 		// Rituais
@@ -113,7 +113,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		addRitual(OPRituals.DESCARNAR, "Descarnar",
 				"Descarna o alvo, causando dano de Sangue contínuo.");
 		addRitual(OPRituals.DECADENCIA, "Decadência",
-				"Apodrece o alvo, causando dano de Morte e o enfraquecendo.");
+				"Imbui sua arma com espirais que tornam o seu próximo ataque mais poderoso.");
 		addRitual(OPRituals.CICATRIZACAO, "Cicatrização",
 				"Cicatriza as feridas do alvo ou de você mesmo.");
 		addRitual(OPRituals.CONSUMIR_MANANCIAL, "Consumir Manancial",
@@ -166,6 +166,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");
 		add(OPCurses.VELOZ.getTranslationKey(), "Veloz");
+		add(OPCurses.DECADENTE.getTranslationKey(), "Decadente");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Sangrando");

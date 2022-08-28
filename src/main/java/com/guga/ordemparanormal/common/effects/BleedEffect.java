@@ -19,8 +19,7 @@ public class BleedEffect extends RitualEffect {
         if (ElementDamage.isEntityResistant(entity, ElementDamage.BLOOD_DAMAGE)){
             entity.removeEffect(this);
         } else {
-            float amount = ElementDamage.isEntityWeakTo(entity, ElementDamage.BLOOD_DAMAGE) ? 4f + amplifier*2f :
-                    ElementDamage.isEntityResistant(entity, ElementDamage.BLOOD_DAMAGE) ? 1f + amplifier/2f : 2f + amplifier;
+            float amount = 2f * amplifier;
             entity.hurt(ElementDamage.BLOOD_DAMAGE, amount);
             entity.level.playSound(null, entity.blockPosition(), SoundEvents.BEEHIVE_DRIP, SoundSource.AMBIENT, 1f, 1f);
 

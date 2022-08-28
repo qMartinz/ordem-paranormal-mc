@@ -9,7 +9,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CurseHelper {
     public static CompoundTag storeCurse(String pId) {
@@ -72,6 +74,11 @@ public class CurseHelper {
     public static void addCurse(ItemStack pStack, AbstractCurse pCurse){
         Collection<AbstractCurse> curses = CurseHelper.getCurses(pStack);
         curses.add(pCurse);
+        CurseHelper.setCurses(curses, pStack);
+    }
+    public static void removeCurse(ItemStack pStack, AbstractCurse pCurse){
+        Collection<AbstractCurse> curses = CurseHelper.getCurses(pStack);
+        curses.remove(pCurse);
         CurseHelper.setCurses(curses, pStack);
     }
     public static void doPostAttackEffects(LivingEntity pAttacker, Entity pTarget){

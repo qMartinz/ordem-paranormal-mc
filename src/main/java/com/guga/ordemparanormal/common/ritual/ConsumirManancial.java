@@ -1,44 +1,29 @@
 package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.capabilities.data.INexCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 public class ConsumirManancial extends AbstractRitual {
     public ConsumirManancial() {
         super("consumir_manancial", ParanormalElement.DEATH, 1, 3, true, 0D, OPItems.CINZAS.get());
     }
     @Override
-    public void onUseSelf(Level world, @Nullable LivingEntity caster) {
-        float presence = 0;
-        if (caster instanceof Player player) {
-            INexCap nexCap = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-            if (nexCap == null) return;
-            presence = nexCap.getAttribute(ParanormalAttribute.PRESENCE);
-
-            MobEffectInstance effect = new MobEffectInstance(OPEffects.LIFE_ABSORBED.get(), 1800,
-                    (int) Mth.clamp(presence/2, 1, 5),
-                    false, false);
-            player.addEffect(effect);
-        }
+    public void onUseSelf(Level world, LivingEntity caster) {
+        MobEffectInstance effect = new MobEffectInstance(OPEffects.LIFE_ABSORBED.get(), 1800, 1, false, false);
+        caster.addEffect(effect);
 
         ServerLevel level = (ServerLevel) world;
         level.sendParticles(
                 new DustParticleOptions(new Vector3f(0.25f, 0.25f, 0.25f), 0.7f),
                 caster.getX(), caster.getEyeY(), caster.getZ(),
-                20, 0.4d, 0.4d, 0.4d, 0d);
+                10, 0.4d, 0.4d, 0.4d, 0d);
     }
 }

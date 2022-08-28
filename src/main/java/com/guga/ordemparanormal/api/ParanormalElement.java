@@ -7,8 +7,6 @@ import net.minecraft.world.damagesource.DamageSource;
 
 import javax.annotation.Nonnull;
 
-import static com.guga.ordemparanormal.api.ElementDamage.ENERGY_DAMAGE;
-
 public enum ParanormalElement implements StringRepresentable {
     BLOOD("blood", ElementDamage.BLOOD_DAMAGE),
     KNOWLEDGE("knowledge", ElementDamage.KNOWLEDGE_DAMAGE),

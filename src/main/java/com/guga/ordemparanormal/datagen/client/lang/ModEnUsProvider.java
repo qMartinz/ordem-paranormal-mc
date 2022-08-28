@@ -102,7 +102,7 @@ public class ModEnUsProvider extends LanguageProvider{
 				"§8Increases your maximum health.");
 		addDescription(ParanormalAttribute.PRESENCE.name,
 				"§9Presence §rdetermines how powerful the Paranormal has made you.",
-				"§8Increases the power of your rituals.",
+				"§8Allows the use of more powerful rituals.",
 				"§8Increases your maximum effort.");
 
 		// Rituais
@@ -113,7 +113,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		addRitual(OPRituals.DESCARNAR, "Skinning",
 				"Skins the target, dealing continuous blood damage.");
 		addRitual(OPRituals.DECADENCIA, "Decay",
-				"Decays the target, dealing death damage and weakening them.");
+				"Imbues your weapon with spirals that make your next attack more powerful.");
 		addRitual(OPRituals.CICATRIZACAO, "Cicatrization",
 				"Heals the your wounds or your target's.");
 		addRitual(OPRituals.CONSUMIR_MANANCIAL, "Consume Lifeforce",
@@ -166,6 +166,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
 		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
+		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Bleeding");
