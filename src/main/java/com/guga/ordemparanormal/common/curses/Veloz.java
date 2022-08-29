@@ -18,7 +18,7 @@ public class Veloz extends AbstractCurse {
     }
     @Override
     public int getMaxTicks() {
-        return 700;
+        return 200;
     }
     @Override
     public Map<AttributeModifier, Attribute> getAttributeModifiers() {

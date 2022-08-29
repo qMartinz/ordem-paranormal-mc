@@ -24,8 +24,7 @@ public class Descarnar extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         
-        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.BLOOD), 5f);
-        target.level.playSound(null, target.blockPosition(), SoundEvents.DOLPHIN_EAT, SoundSource.PLAYERS, 2f, 1f);
+        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.BLOOD), 4f);
         
         ServerLevel level = (ServerLevel) world;
         

@@ -94,6 +94,7 @@ public class ModItemModelProvider extends ItemModelProvider{
 		oneLayerItem(OPItems.RITUAL_ARMADURA_SANGUE.get());
 		oneLayerItem(OPItems.RITUAL_ARMA_ATROZ.get());
 		oneLayerItem(OPItems.RITUAL_ARMA_VELOZ.get());
+		oneLayerItem(OPItems.RITUAL_AMALDICOAR_ARMA.get());
 
 		// Blocos
 		simpleBlockItem(OPBlocks.ALTAR_TRANSCENDER.get().asItem());

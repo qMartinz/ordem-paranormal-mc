@@ -31,10 +31,8 @@ public class SelectedRitual extends AbstractWidget {
                 RenderSystem.disableDepthTest();
                 RenderSystem.depthMask(false);
                 RenderSystem.defaultBlendFunc();
-                RenderSystem.setShaderColor(1f, 1f, 1f, 0.7f);
                 RenderSystem.setShaderTexture(0, currentRitual.getTextureLoc());
                 blit(stack, x + width/2 - currentRitual.getWidth()/2, y + height/2 - currentRitual.getHeight()/2, currentRitual.getX(), currentRitual.getY(), currentRitual.getWidth(), currentRitual.getHeight());
-                RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
                 RenderSystem.depthMask(true);
                 RenderSystem.enableDepthTest();
                 RenderSystem.disableBlend();

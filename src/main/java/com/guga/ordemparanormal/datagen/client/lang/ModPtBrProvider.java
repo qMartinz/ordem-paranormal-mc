@@ -85,6 +85,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.BLOOD), "Dano de Sangue");
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.DEATH), "Dano de Morte");
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGY), "Dano de Energia");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.KNOWLEDGE), "Dano de Conhecimento");
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.FEAR), "Dano de Medo");
 
 		// Atributos paranormais
@@ -113,7 +114,7 @@ public class ModPtBrProvider extends LanguageProvider{
 		addRitual(OPRituals.DESCARNAR, "Descarnar",
 				"Descarna o alvo, causando dano de Sangue contínuo.");
 		addRitual(OPRituals.DECADENCIA, "Decadência",
-				"Imbui sua arma com espirais que tornam o seu próximo ataque mais poderoso.");
+				"Imbui seu próximo ataque com espirais que inflingem apodrecimento.");
 		addRitual(OPRituals.CICATRIZACAO, "Cicatrização",
 				"Cicatriza as feridas do alvo ou de você mesmo.");
 		addRitual(OPRituals.CONSUMIR_MANANCIAL, "Consumir Manancial",
@@ -124,6 +125,8 @@ public class ModPtBrProvider extends LanguageProvider{
 				"Torna a arma que você está segurando mais perigosa.");
 		addRitual(OPRituals.ARMA_VELOZ, "Arma Veloz",
 				"Torna a arma que você está segurando mais rápida.");
+		addRitual(OPRituals.AMALDICOAR_ARMA, "Amaldiçoar Arma",
+				"Amaldiçoa a arma que você está segurando com sigilos de conhecimento.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
@@ -167,11 +170,13 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");
 		add(OPCurses.VELOZ.getTranslationKey(), "Veloz");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decadente");
+		add(OPCurses.AMALDICOAR_ARMA.getTranslationKey(), "Amaldiçoada");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Sangrando");
 		add(OPEffects.LIFE_ABSORBED.get(), "Vida Absorvida");
 		add(OPEffects.SKIN_REINFORCED.get(), "Pele Reforçada");
+		add(OPEffects.DECAY.get(), "Apodrecimento");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");

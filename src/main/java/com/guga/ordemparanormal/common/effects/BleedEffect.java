@@ -21,13 +21,12 @@ public class BleedEffect extends RitualEffect {
         } else {
             float amount = 2f * amplifier;
             entity.hurt(ElementDamage.BLOOD_DAMAGE, amount);
-            entity.level.playSound(null, entity.blockPosition(), SoundEvents.BEEHIVE_DRIP, SoundSource.AMBIENT, 1f, 1f);
 
             if (entity.level instanceof ServerLevel level)
                 level.sendParticles(
                         new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                         entity.getX(), entity.getEyeY(), entity.getZ(),
-                        (int) amount, 0, 0.3d, 0, 0d);
+                        (int) amount*2, 0, 0, 0, 0);
         }
     }
     @Override

@@ -85,6 +85,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.BLOOD), "Blood damage");
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.DEATH), "Death damage");
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGY), "Energy damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.KNOWLEDGE), "Knowledge damage");
 		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.FEAR), "Fear damage");
 
 		// Atributos paranormais
@@ -113,7 +114,7 @@ public class ModEnUsProvider extends LanguageProvider{
 		addRitual(OPRituals.DESCARNAR, "Skinning",
 				"Skins the target, dealing continuous blood damage.");
 		addRitual(OPRituals.DECADENCIA, "Decay",
-				"Imbues your weapon with spirals that make your next attack more powerful.");
+				"Imbues your next attack with spirals inflict decay.");
 		addRitual(OPRituals.CICATRIZACAO, "Cicatrization",
 				"Heals the your wounds or your target's.");
 		addRitual(OPRituals.CONSUMIR_MANANCIAL, "Consume Lifeforce",
@@ -122,8 +123,10 @@ public class ModEnUsProvider extends LanguageProvider{
 				"Uses your blood to harden your skin, serving as armor.");
 		addRitual(OPRituals.ARMA_ATROZ, "Atrocious Weapon",
 				"Makes the weapon you're holding more dangerous.");
-		addRitual(OPRituals.ARMA_VELOZ, "Arma Veloz",
+		addRitual(OPRituals.ARMA_VELOZ, "Nimble Weapon",
 				"Makes the weapon you're holding more swift.");
+		addRitual(OPRituals.AMALDICOAR_ARMA, "Curse Weapon",
+				"Curses the weapon you're holding with knowledge sigils.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -167,11 +170,13 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
 		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
+		add(OPCurses.AMALDICOAR_ARMA.getTranslationKey(), "Cursed");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Bleeding");
 		add(OPEffects.LIFE_ABSORBED.get(), "Life Absorbed");
 		add(OPEffects.SKIN_REINFORCED.get(), "Skin Reinforced");
+		add(OPEffects.DECAY.get(), "Decay");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");

@@ -34,11 +34,9 @@ public class PowerScreen extends Screen {
     private static final ResourceLocation TEXTURE = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/powerscreen.png");
     private final int screenWidth = 230;
     private final int screenHeight = 153;
-    private boolean transcending;
     private int selectedSlot = 0;
-    protected PowerScreen(boolean transcending) {
+    protected PowerScreen() {
         super(TextComponent.EMPTY);
-        this.transcending = transcending;
     }
     @Override
     protected void init() {
@@ -46,7 +44,7 @@ public class PowerScreen extends Screen {
         int screenY = (this.height/2) - (this.screenHeight/2);
 
         addWidget(new Button(screenX - 15, screenY + 19, 18, 20, TextComponent.EMPTY, b -> {
-            minecraft.setScreen(new NexScreen(transcending));
+            minecraft.setScreen(new NexScreen(true));
         }));
 
         for (int i = 0; i < 5; i++){
@@ -90,19 +88,19 @@ public class PowerScreen extends Screen {
         Collection<PlayerPower> knowledgePowerTree = createPowerTree(OPPowers.TEST_POWER_4);
 
         for (int i = 0; i < bloodPowerTree.size(); i++){
-            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+67, bloodPowerTree.stream().toList().get(i), transcending));
+            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+67, bloodPowerTree.stream().toList().get(i)));
         }
 
         for (int i = 0; i < energyPowerTree.size(); i++){
-            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+88, energyPowerTree.stream().toList().get(i), transcending));
+            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+88, energyPowerTree.stream().toList().get(i)));
         }
 
         for (int i = 0; i < deathPowerTree.size(); i++){
-            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+109, deathPowerTree.stream().toList().get(i), transcending));
+            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+109, deathPowerTree.stream().toList().get(i)));
         }
 
         for (int i = 0; i < knowledgePowerTree.size(); i++){
-            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+130, knowledgePowerTree.stream().toList().get(i), transcending));
+            addRenderableWidget(new PowerButton(screenX+30 + (22*i), screenY+130, knowledgePowerTree.stream().toList().get(i)));
         }
 
     }

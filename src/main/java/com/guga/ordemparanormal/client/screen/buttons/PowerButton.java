@@ -21,12 +21,10 @@ import net.minecraft.network.chat.TextComponent;
 
 public class PowerButton extends AbstractButton {
     private final PlayerPower power;
-    private final boolean available;
     private final Minecraft minecraft = Minecraft.getInstance();
-    public PowerButton(int x, int y, PlayerPower power, boolean available) {
+    public PowerButton(int x, int y, PlayerPower power) {
         super(x, y, 16, 16, TextComponent.EMPTY);
         this.power = power;
-        this.available = available;
     }
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
@@ -50,7 +48,6 @@ public class PowerButton extends AbstractButton {
         if (!requirements) alpha -= 0.5f;
         if (!playerPowers.hasPower(power.getPowerRequirement().getPowerRequirement()) &&
                 power.getPowerRequirement().getPowerRequirement() != PlayerPower.EMPTY) visible = false;
-        if (!available) alpha -= 0.35f;
 
         if (this.visible) {
             RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
@@ -90,7 +87,7 @@ public class PowerButton extends AbstractButton {
                 playerNex.getAttributes()[1] >= power.getAttributesRequired()[1] &&
                 playerNex.getAttributes()[2] >= power.getAttributesRequired()[2] &&
                 powerRequirement;
-        if (available && requirements && playerNex.getPowerPoints() > 0 && !playerPowers.hasPower(power)){
+        if (requirements && playerNex.getPowerPoints() > 0 && !playerPowers.hasPower(power)){
             playerNex.setPowerPoints(playerNex.getPowerPoints() - 1);
             playerPowers.addPower(power);
             Messages.sendToServer(new UpdatePowers(playerPowers.serializeNBT()));

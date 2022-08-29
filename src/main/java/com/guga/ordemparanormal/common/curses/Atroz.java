@@ -16,11 +16,11 @@ public class Atroz extends AbstractCurse {
     }
     @Override
     public int getMaxTicks() {
-        return 700;
+        return 200;
     }
     @Override
     public int getDamageBonus() {
-        return 3;
+        return 2;
     }
     @Override
     public void doPostAttack(LivingEntity pAttacker, Entity pTarget) {

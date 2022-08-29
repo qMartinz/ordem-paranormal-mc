@@ -12,7 +12,8 @@ public enum RitualSymbol {
     CONSUMIR_MANANCIAL(OPRituals.CONSUMIR_MANANCIAL, 188, 0, 64, 64, DESCARNAR.textureLoc),
     CICATRIZACAO(OPRituals.CICATRIZACAO, 0, 62, 64, 64, DESCARNAR.textureLoc),
     ARMA_ATROZ(OPRituals.ARMA_ATROZ, 0, 0, 62, 62, DESCARNAR.textureLoc),
-    ARMA_VELOZ(OPRituals.ARMA_VELOZ, 0, 0, 62, 62, DESCARNAR.textureLoc);
+    ARMA_VELOZ(OPRituals.ARMA_VELOZ, 0, 0, 62, 62, DESCARNAR.textureLoc),
+    AMALDICOAR_ARMA(OPRituals.AMALDICOAR_ARMA, 0, 0, 62, 62, DESCARNAR.textureLoc);
     private final AbstractRitual ritual;
     private final int x;
     private final int y;

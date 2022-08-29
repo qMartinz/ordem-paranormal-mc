@@ -13,6 +13,7 @@ public class OPRituals {
     public static final AbstractRitual CICATRIZACAO = new Cicatrizacao();
     public static final AbstractRitual ARMA_ATROZ = new ArmaAtroz();
     public static final AbstractRitual ARMA_VELOZ = new ArmaVeloz();
+    public static final AbstractRitual AMALDICOAR_ARMA = new AmaldicoarArma();
 
     /**
      * Registra os rituais
@@ -25,6 +26,7 @@ public class OPRituals {
         registerRitual(CICATRIZACAO);
         registerRitual(ARMA_ATROZ);
         registerRitual(ARMA_VELOZ);
+        registerRitual(AMALDICOAR_ARMA);
     }
     public static void registerRitual(AbstractRitual ritual){
         OrdemParanormalAPI.getInstance().registerRitual(ritual.getId(), ritual);

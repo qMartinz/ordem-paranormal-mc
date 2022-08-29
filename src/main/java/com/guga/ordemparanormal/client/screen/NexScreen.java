@@ -21,8 +21,8 @@ import java.util.List;
 
 public class NexScreen extends Screen {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/nexscreen.png");
-    private final int screenWidth = 171;
-    private final int screenHeight = 145;
+    private final int screenWidth = 256;
+    private final int screenHeight = 112;
     public final boolean transcending;
     public NexScreen(boolean transcending) {
         super(TextComponent.EMPTY);
@@ -32,26 +32,23 @@ public class NexScreen extends Screen {
     protected void init(){
         int screenX = (this.width/2) - (this.screenWidth /2);
         int screenY = (this.height/2) - (this.screenHeight/2);
-        addRenderableWidget(new AttributeButton(screenX + 5, screenY + 5, ParanormalAttribute.STRENGTH));
-        addRenderableWidget(new AttributeButton(screenX + 5, screenY + 40, ParanormalAttribute.VIGOR));
-        addRenderableWidget(new AttributeButton(screenX + 5, screenY + 75, ParanormalAttribute.PRESENCE));
-        SelectedRitual ritualWidget = new SelectedRitual(screenX + 101, screenY + 75);
+        addRenderableWidget(new AttributeButton(screenX + 22, screenY + 13, ParanormalAttribute.STRENGTH));
+        addRenderableWidget(new AttributeButton(screenX + 76, screenY + 13, ParanormalAttribute.VIGOR));
+        addRenderableWidget(new AttributeButton(screenX + 131, screenY + 13, ParanormalAttribute.PRESENCE));
+        SelectedRitual ritualWidget = new SelectedRitual(screenX + 177, screenY + 15);
         addRenderableWidget(ritualWidget);
-        addWidget(new Button(screenX + 92, screenY + 98, 8, 8, TextComponent.EMPTY, b -> {
+        addWidget(new Button(screenX + 175, screenY + 81, 8, 8, TextComponent.EMPTY, b -> {
             minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
                 ritualWidget.setRitualIndex(ritualWidget.getRitualIndex() - 1 >= 0 ? ritualWidget.getRitualIndex() - 1 : playerAbilities.getKnownRituals().size() - 1);
             });
         }));
-        addWidget(new Button(screenX + 92, screenY + 108, 8, 8, TextComponent.EMPTY, b -> {
+        addWidget(new Button(screenX + 235, screenY + 81, 8, 8, TextComponent.EMPTY, b -> {
             minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
                 ritualWidget.setRitualIndex(playerAbilities.getKnownRituals().size() - 1 >= ritualWidget.getRitualIndex() + 1 ? ritualWidget.getRitualIndex() + 1 : 0);
             });
         }));
-        addWidget(new Button(screenX - 15, screenY + 5, 18, 20, TextComponent.EMPTY, b -> {
-            minecraft.setScreen(new PowerScreen(transcending));
-        }));
-        if (transcending) addWidget(new Button(screenX - 15, screenY + 28, 18, 20, TextComponent.EMPTY, b -> {
-
+        if (this.transcending) addWidget(new Button(screenX + 119, screenY + 92, 20, 20, TextComponent.EMPTY, b -> {
+            minecraft.setScreen(new PowerScreen());
         }));
     }
     @Override
@@ -68,37 +65,29 @@ public class NexScreen extends Screen {
         RenderSystem.setShaderTexture(0, TEXTURES);
 
         RenderSystem.setShaderColor(1f, 1f, 1f, 0.6f);
-        if (transcending) blit(stack, screenX - 15/2 - 55/2, screenY + 10 - 63/2, 0, 177, 55, 63);
+        if (transcending) blit(stack, screenX + 101, screenY + 72, 0, 112, 55, 63);
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
 
-        blit(stack, screenX, screenY, 0, 0, 171, 145);
+        blit(stack, screenX, screenY, 0, 0, this.screenWidth, this.screenHeight);
 
-        blit(stack, screenX - 15, screenY + 5, 96, 145, 18, 20);
+        if (transcending) blit(stack, screenX + 123, screenY + 94, 54, 112, 10, 15);
 
-        int color = 0x38494f;
+        blit(stack, screenX + 175, screenY + 81, 96, 175, 8, 7);
+        blit(stack, screenX + 235, screenY + 81, 96, 182, 8, 7);
 
         minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
             minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
                 String value = playerNex.getNexPercent() + "%";
                 String label = CommonComponents.ATTRIBUTE_POINTS.getString();
 
-                font.draw(stack, value, width/2f - font.width(value)/2f, screenY - 2 - font.lineHeight, FastColor.ARGB32.color(255, 255, 255, 255));
+                font.draw(stack, value, width + 45 - font.width(value)/2f, screenY + 81 - font.lineHeight, 0xFFFFFF);
 
                 value = String.valueOf(playerNex.getAttributePoints());
-                font.draw(stack, label, width/2f - font.width(label)/2f, screenY + screenHeight + 2, FastColor.ARGB32.color(255, 200, 200, 255));
-                font.draw(stack, value, width/2f - font.width(value)/2f, screenY + screenHeight + 4 + font.lineHeight, FastColor.ARGB32.color(255, 200, 200, 255));
+                font.draw(stack, label, width/2f - font.width(label)/2f, screenY - 2 - font.lineHeight*2, 0xFFFFFF);
+                font.draw(stack, value, width/2f - font.width(value)/2f, screenY - 1 - font.lineHeight, 0xFFFFFF);
 
-                label = CommonComponents.RITUALS.plainCopy().append(":").getString();
                 value = playerAbilities.getKnownRituals().size() + "/" + playerNex.getRitualSlots();
-                font.drawShadow(stack, label, screenX + 101, screenY + 64, color);
-                font.drawShadow(stack, value, screenX + 166 - font.width(value), screenY + 64, color);
-
-                label = CommonComponents.HEALTH_POINTS.plainCopy().append(": ").getString();
-                value = (int)minecraft.player.getHealth() + "/" + (int)minecraft.player.getMaxHealth();
-                font.drawShadow(stack, label + value, screenX + 48 - font.width(label + value)/2f, screenY + 112, color);
-                label = CommonComponents.EFFORT_POINTS.plainCopy().append(": ").getString();
-                value = (int)playerNex.getCurrentEffort() + "/" + (int)playerNex.getMaxEffort();
-                font.drawShadow(stack, label + value, screenX + 48 - font.width(label + value)/2f, screenY + 137 - font.lineHeight, color);
+                font.drawShadow(stack, value, screenX + 183 + 26 - font.width(value)/2f, screenY + 80, 0xFFFFFF);
             });
         });
         super.render(stack, mouseX, mouseY, partialTicks);

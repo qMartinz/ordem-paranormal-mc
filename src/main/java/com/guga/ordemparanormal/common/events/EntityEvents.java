@@ -1,8 +1,10 @@
 package com.guga.ordemparanormal.common.events;
 
+import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
+import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
@@ -77,6 +79,13 @@ public class EntityEvents {
 					|| event.getSource() == DamageSource.FALL) {
 				event.setCanceled(true);
 			}
+		}
+
+		// Aumenta ou diminui o dano para certos danos elementais
+		if (event.getEntity() instanceof LivingEntity entity && ElementDamage.isEntityResistant(entity, event.getSource())){
+			event.setAmount(event.getAmount() / 2);
+		} else if (event.getEntity() instanceof LivingEntity entity && ElementDamage.isEntityWeakTo(entity, event.getSource())){
+			event.setAmount(event.getAmount() * 2);
 		}
 		
 	}

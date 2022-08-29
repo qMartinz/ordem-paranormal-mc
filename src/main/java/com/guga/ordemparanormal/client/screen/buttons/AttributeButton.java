@@ -27,17 +27,15 @@ public class AttributeButton extends AbstractButton {
         RenderSystem.setShaderTexture(0, NexScreen.TEXTURES);
 
         int u = 32 * this.attribute.index;
-        blit(stack, x, y, u, 145, width, height);
+        blit(stack, x, y, u, 175, width, height);
 
-        int color = 0x38494f;
-
-        String text = attribute.getDisplayName().getString();
-        minecraft.font.drawShadow(stack, text, x + 58 - minecraft.font.width(text)/2f, y + 8 - minecraft.font.lineHeight/2f, color);
+        int color = 0xFFFFFF;
 
         int level = player.getCapability(PlayerNexProvider.PLAYER_NEX).map(cap -> cap.getAttribute(this.attribute)).orElseThrow();
-        minecraft.font.drawShadow(stack, Integer.toString(level), x + 58 - minecraft.font.width(Integer.toString(level))/2f, y + 16, color);
-        if (isMouseOver(mouseX, mouseY)){
-        }
+        minecraft.font.drawShadow(stack, Integer.toString(level), x + 16 - minecraft.font.width(Integer.toString(level))/2f, y + height + 1 + minecraft.font.lineHeight, color);
+
+        String text = attribute.getDisplayName().getString();
+        minecraft.font.drawShadow(stack, text, x + 16 - minecraft.font.width(text)/2f, y + height + 2 + minecraft.font.lineHeight*2, color);
     }
     @Override
     public void onPress() {

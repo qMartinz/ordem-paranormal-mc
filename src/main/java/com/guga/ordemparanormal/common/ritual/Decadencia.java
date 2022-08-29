@@ -24,7 +24,6 @@ public class Decadencia extends AbstractRitual {
             caster.level.playSound(null, caster.blockPosition(), SoundEvents.BEE_POLLINATE, SoundSource.PLAYERS, 1f, 1f);
         }
     }
-
     @Override
     public void onUseSelf(Level world, LivingEntity caster) {
         CurseHelper.addCurse(caster.getOffhandItem(), OPCurses.DECADENTE);
