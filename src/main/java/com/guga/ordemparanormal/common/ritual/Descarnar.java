@@ -25,17 +25,17 @@ public class Descarnar extends AbstractRitual {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         
         target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.BLOOD), 4f);
-        
-        ServerLevel level = (ServerLevel) world;
-        
-        level.sendParticles(
-                new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()), 
-                target.getX(), target.getEyeY(), target.getZ(), 
-                5, 0, 0, 0, 0d);
-        
-        level.sendParticles(ParticleTypes.CRIT, 
-                target.getX(), target.getEyeY(), target.getX(), 
-                3, 0, 0, 0, 0d);
+
+        if(world instanceof ServerLevel level) {
+            level.sendParticles(
+                    new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
+                    target.getX(), target.getEyeY(), target.getZ(),
+                    5, 0, 0, 0, 0d);
+
+            level.sendParticles(ParticleTypes.CRIT,
+                    target.getX(), target.getEyeY(), target.getX(),
+                    3, 0, 0, 0, 0d);
+        }
         
         MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 100, 1, false, false);
         target.addEffect(effect, caster);

@@ -18,7 +18,7 @@ import java.util.Map;
 public abstract class AbstractCurse {
     protected final String id;
     private final EquipmentSlot[] slots;
-    private final ParanormalElement element;
+    public final ParanormalElement element;
     public final CurseCategory category;
     public final boolean temporary;
 

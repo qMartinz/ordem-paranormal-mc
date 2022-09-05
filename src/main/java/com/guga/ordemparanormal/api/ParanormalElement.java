@@ -8,17 +8,19 @@ import net.minecraft.world.damagesource.DamageSource;
 import javax.annotation.Nonnull;
 
 public enum ParanormalElement implements StringRepresentable {
-    BLOOD("blood", ElementDamage.BLOOD_DAMAGE),
-    KNOWLEDGE("knowledge", ElementDamage.KNOWLEDGE_DAMAGE),
-    ENERGY("energy", ElementDamage.ENERGY_DAMAGE),
-    DEATH("death", ElementDamage.DEATH_DAMAGE),
-    FEAR("fear", ElementDamage.FEAR_DAMAGE),
-    NONE("none", DamageSource.GENERIC);
+    FEAR("fear", ElementDamage.FEAR_DAMAGE, 0),
+    BLOOD("blood", ElementDamage.BLOOD_DAMAGE, 1),
+    KNOWLEDGE("knowledge", ElementDamage.KNOWLEDGE_DAMAGE, 2),
+    DEATH("death", ElementDamage.DEATH_DAMAGE, 3),
+    ENERGY("energy", ElementDamage.ENERGY_DAMAGE, 4),
+    NONE("none", DamageSource.GENERIC, 5);
     private final String name;
     private final DamageSource equivalentDamage;
-    ParanormalElement(String name, DamageSource equivalentDamage) {
+    public final int index;
+    ParanormalElement(String name, DamageSource equivalentDamage, int index) {
         this.name = name;
         this.equivalentDamage = equivalentDamage;
+        this.index = index;
     }
     public DamageSource getEquivalentDamage() {
         return equivalentDamage;

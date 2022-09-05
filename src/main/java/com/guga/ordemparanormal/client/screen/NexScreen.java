@@ -4,6 +4,8 @@ import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
+import com.guga.ordemparanormal.client.screen.powerscreen.BloodPowerScreen;
+import com.guga.ordemparanormal.client.screen.powerscreen.PowerScreen;
 import com.guga.ordemparanormal.client.screen.widgets.SelectedRitual;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -12,10 +14,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FastColor;
 
 import java.util.List;
 
@@ -48,7 +50,7 @@ public class NexScreen extends Screen {
             });
         }));
         if (this.transcending) addWidget(new Button(screenX + 119, screenY + 92, 20, 20, TextComponent.EMPTY, b -> {
-            minecraft.setScreen(new PowerScreen());
+            minecraft.setScreen(new BloodPowerScreen());
         }));
     }
     @Override

@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class CurseEvents {
@@ -31,7 +32,7 @@ public class CurseEvents {
     }
     @SubscribeEvent
     public static void onRenderTooltips(ItemTooltipEvent event){
-        if (!CurseHelper.getCurses(event.getItemStack()).isEmpty()){
+        if (!CurseHelper.getCurses(event.getItemStack()).isEmpty() && CurseHelper.getCurses(event.getItemStack()).stream().noneMatch(Objects::isNull)){
             List<Component> components = new ArrayList<>();
 
             CurseHelper.getCurses(event.getItemStack()).forEach(curse -> {
@@ -49,7 +50,7 @@ public class CurseEvents {
     }
     @SubscribeEvent
     public static void onCalculateAttributes(ItemAttributeModifierEvent event){
-        if (!CurseHelper.getCurses(event.getItemStack()).isEmpty()){
+        if (!CurseHelper.getCurses(event.getItemStack()).isEmpty() && CurseHelper.getCurses(event.getItemStack()).stream().noneMatch(Objects::isNull)){
             for (AbstractCurse curse : CurseHelper.getCurses(event.getItemStack())){
                 curse.getAttributeModifiers().forEach((modifier, attribute) -> {
                     if (Arrays.stream(curse.getSlots()).anyMatch(slot -> slot == event.getSlotType())) event.addModifier(attribute, modifier);

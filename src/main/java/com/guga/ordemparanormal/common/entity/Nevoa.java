@@ -129,7 +129,7 @@ public class Nevoa extends Entity {
 						zumbis.add(new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), corpo.level));
 						zumbis.add(new ZumbiEspinhento(OPEntities.ZUMBI_ESPINHENTO.get(), corpo.level));
 
-						transform(corpo, zumbis.get(random.nextInt(zumbis.size()) - 1));
+						transform(corpo, zumbis.get(random.nextInt(zumbis.size() - 1)));
 						corpo.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
 						corpo.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
 					}

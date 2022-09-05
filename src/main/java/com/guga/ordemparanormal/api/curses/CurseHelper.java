@@ -84,8 +84,10 @@ public class CurseHelper {
     public static void doPostAttackEffects(LivingEntity pAttacker, Entity pTarget){
         if (pAttacker != null) {
             for (AbstractCurse curse : getCurses(pAttacker.getMainHandItem())) {
-                curse.doPostAttack(pAttacker, pTarget);
-                pTarget.hurt(curse.getElement().getEquivalentDamage(), curse.getDamageBonus());
+                if (curse != null) {
+                    curse.doPostAttack(pAttacker, pTarget);
+                    pTarget.hurt(curse.getElement().getEquivalentDamage(), curse.getDamageBonus());
+                }
             }
         }
     }
@@ -93,8 +95,10 @@ public class CurseHelper {
         if (pTarget != null) {
             for (ItemStack item : pTarget.getAllSlots()) {
                 for (AbstractCurse curse : getCurses(item)) {
-                    curse.doPostHurt(pTarget, pAttacker);
-                    pTarget.heal(Math.min(curse.getDamageProtection(source), pAmount));
+                    if (curse != null) {
+                        curse.doPostHurt(pTarget, pAttacker);
+                        pTarget.heal(Math.min(curse.getDamageProtection(source), pAmount));
+                    }
                 }
             }
         }
@@ -103,7 +107,7 @@ public class CurseHelper {
         if (pUser != null) {
             for (ItemStack item : pUser.getAllSlots()) {
                 for (AbstractCurse curse : getCurses(item)) {
-                    curse.doTick(pUser);
+                    if (curse != null) curse.doTick(pUser);
                 }
             }
         }
@@ -112,15 +116,17 @@ public class CurseHelper {
         if (pUser != null) {
             for (ItemStack item : pUser.getAllSlots()) {
                 for (AbstractCurse curse : getCurses(item)) {
-                    if (curse.isTemporary()) {
-                        int newTicks = getCurseTag(item, curse.getId()).getInt("ticks") - 1;
-                        CurseHelper.setTicks(getCurseTag(item, curse.getId()), newTicks);
-                        item.setPopTime(0);
-                    }
-                    if (getCurseTag(item, curse.getId()).getInt("ticks") <= 0) {
-                        Collection<AbstractCurse> curses = CurseHelper.getCurses(item);
-                        curses.remove(curse);
-                        CurseHelper.setCurses(curses, item);
+                    if (curse != null) {
+                        if (curse.isTemporary()) {
+                            int newTicks = getCurseTag(item, curse.getId()).getInt("ticks") - 1;
+                            CurseHelper.setTicks(getCurseTag(item, curse.getId()), newTicks);
+                            item.setPopTime(0);
+                        }
+                        if (getCurseTag(item, curse.getId()).getInt("ticks") <= 0) {
+                            Collection<AbstractCurse> curses = CurseHelper.getCurses(item);
+                            curses.remove(curse);
+                            CurseHelper.setCurses(curses, item);
+                        }
                     }
                 }
             }
