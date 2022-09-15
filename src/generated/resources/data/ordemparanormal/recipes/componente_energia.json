@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Z Y",
+    "SXS",
+    "LLL"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:soul_torch"
+    },
+    "Y": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "Z": {
+      "item": "minecraft:raw_copper"
+    },
+    "S": {
+      "tag": "forge:string"
+    },
+    "L": {
+      "tag": "forge:leather"
+    }
+  },
+  "result": {
+    "item": "ordemparanormal:componente_energia"
+  }
+}

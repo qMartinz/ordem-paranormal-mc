@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "ordemparanormal:componente_sangue"
+    ]
+  },
+  "criteria": {
+    "has_organ": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ordemparanormal:orgao"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "ordemparanormal:componente_sangue"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_organ",
+      "has_the_recipe"
+    ]
+  ]
+}

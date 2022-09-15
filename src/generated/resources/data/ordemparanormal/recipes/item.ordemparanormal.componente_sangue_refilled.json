@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ordemparanormal:componente_vazio"
+    },
+    {
+      "item": "ordemparanormal:orgao"
+    },
+    {
+      "tag": "ordemparanormal:raw_meats"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "result": {
+    "item": "ordemparanormal:componente_sangue"
+  }
+}

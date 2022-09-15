@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ordemparanormal:componente_vazio"
+    },
+    {
+      "item": "minecraft:glowstone"
+    },
+    {
+      "item": "minecraft:raw_gold"
+    },
+    {
+      "tag": "forge:glass"
+    }
+  ],
+  "result": {
+    "item": "ordemparanormal:componente_conhecimento"
+  }
+}

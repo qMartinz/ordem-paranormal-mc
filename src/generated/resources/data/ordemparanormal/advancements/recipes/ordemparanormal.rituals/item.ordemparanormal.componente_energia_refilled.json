@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "ordemparanormal:item.ordemparanormal.componente_energia_refilled"
+    ]
+  },
+  "criteria": {
+    "has_empty_component": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ordemparanormal:componente_vazio"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "ordemparanormal:item.ordemparanormal.componente_energia_refilled"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_empty_component",
+      "has_the_recipe"
+    ]
+  ]
+}

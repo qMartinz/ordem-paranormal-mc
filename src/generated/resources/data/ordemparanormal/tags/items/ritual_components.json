@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ordemparanormal:componente_conhecimento",
+    "ordemparanormal:componente_energia",
+    "ordemparanormal:componente_morte",
+    "ordemparanormal:componente_sangue"
+  ]
+}

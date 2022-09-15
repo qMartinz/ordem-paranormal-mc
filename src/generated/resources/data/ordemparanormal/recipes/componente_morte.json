@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Z Y",
+    "SXS",
+    "LLL"
+  ],
+  "key": {
+    "X": {
+      "item": "ordemparanormal:cinzas"
+    },
+    "Y": {
+      "item": "minecraft:bone"
+    },
+    "Z": {
+      "tag": "forge:sand"
+    },
+    "S": {
+      "tag": "forge:string"
+    },
+    "L": {
+      "tag": "forge:leather"
+    }
+  },
+  "result": {
+    "item": "ordemparanormal:componente_morte"
+  }
+}

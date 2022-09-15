@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Z Y",
+    "SXS",
+    "LLL"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:glowstone"
+    },
+    "Y": {
+      "item": "minecraft:raw_gold"
+    },
+    "Z": {
+      "tag": "forge:glass"
+    },
+    "S": {
+      "tag": "forge:string"
+    },
+    "L": {
+      "tag": "forge:leather"
+    }
+  },
+  "result": {
+    "item": "ordemparanormal:componente_conhecimento"
+  }
+}

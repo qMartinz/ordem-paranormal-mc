@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Z Y",
+    "SXS",
+    "LLL"
+  ],
+  "key": {
+    "X": {
+      "item": "ordemparanormal:orgao"
+    },
+    "Y": {
+      "tag": "ordemparanormal:raw_meats"
+    },
+    "Z": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "S": {
+      "tag": "forge:string"
+    },
+    "L": {
+      "tag": "forge:leather"
+    }
+  },
+  "result": {
+    "item": "ordemparanormal:componente_sangue"
+  }
+}

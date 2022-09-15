@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "ordemparanormal:componente_morte"
+    ]
+  },
+  "criteria": {
+    "has_ashes": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ordemparanormal:cinzas"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "ordemparanormal:componente_morte"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ashes",
+      "has_the_recipe"
+    ]
+  ]
+}
