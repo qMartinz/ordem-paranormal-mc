@@ -1,16 +1,17 @@
 package com.guga.ordemparanormal.api.powers.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.CommonComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PlayerPower {
     public static final PlayerPower EMPTY = new PlayerPower("", false, ParanormalElement.NONE, 0, null, 0, new int[]{});
@@ -62,11 +63,11 @@ public class PlayerPower {
 
         ChatFormatting formatting = ChatFormatting.WHITE;
         switch (element){
-            case BLOOD -> formatting = ChatFormatting.DARK_RED;
-            case KNOWLEDGE -> formatting = ChatFormatting.GOLD;
-            case ENERGY -> formatting = ChatFormatting.DARK_PURPLE;
-            case DEATH -> formatting = ChatFormatting.DARK_GRAY;
-            case FEAR -> formatting = ChatFormatting.WHITE;
+            case SANGUE -> formatting = ChatFormatting.DARK_RED;
+            case CONHECIMENTO -> formatting = ChatFormatting.GOLD;
+            case ENERGIA -> formatting = ChatFormatting.DARK_PURPLE;
+            case MORTE -> formatting = ChatFormatting.DARK_GRAY;
+            case MEDO -> formatting = ChatFormatting.WHITE;
             case NONE -> formatting = ChatFormatting.GRAY;
         }
         Component title = getDisplayName().plainCopy().withStyle(formatting);
@@ -78,6 +79,29 @@ public class PlayerPower {
         if (this.isActivePower) {
             lines.add(CommonComponents.CONSUMES.plainCopy().append(" " + this.effortCost + " " + CommonComponents.EFFORT_POINTS_FULL_NAME.getString())
                     .withStyle(ChatFormatting.GRAY));
+        }
+        if (powerRequirement != null || !Arrays.equals(attributesRequired, new int[]{0, 0, 0}) || nexRequired != 0) {
+            List<MutableComponent> requisites = new ArrayList<>();
+
+            if (powerRequirement != null) requisites.add(powerRequirement.getDisplayName().plainCopy());
+
+            if (nexRequired != 0) requisites.add(CommonComponents.NEX_ABBREVIATION.plainCopy().append(" " + this.nexRequired*5 + "%"));
+
+            if (attributesRequired[ParanormalAttribute.STRENGTH.index] != 0)
+                requisites.add(ParanormalAttribute.STRENGTH.getDisplayName().plainCopy().append(" " + attributesRequired[ParanormalAttribute.STRENGTH.index]));
+
+            if (attributesRequired[ParanormalAttribute.VIGOR.index] != 0)
+                requisites.add(ParanormalAttribute.VIGOR.getDisplayName().plainCopy().append(" " + attributesRequired[ParanormalAttribute.VIGOR.index]));
+
+            if (attributesRequired[ParanormalAttribute.PRESENCE.index] != 0)
+                requisites.add(ParanormalAttribute.PRESENCE.getDisplayName().plainCopy().append(" " + attributesRequired[ParanormalAttribute.PRESENCE.index]));
+
+            Iterator<MutableComponent> iterator = requisites.iterator();
+            MutableComponent requisitesComponent = CommonComponents.REQUISITES.plainCopy().append(": ").append(iterator.next());
+            iterator.forEachRemaining(req -> requisitesComponent.append(", " + req.getString()));
+
+            lines.add(TextComponent.EMPTY);
+            lines.add(requisitesComponent.withStyle(ChatFormatting.GRAY));
         }
 
         return lines;

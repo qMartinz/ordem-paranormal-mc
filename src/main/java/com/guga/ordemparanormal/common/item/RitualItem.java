@@ -77,11 +77,11 @@ public class RitualItem extends Item {
 
             ChatFormatting formatting = ChatFormatting.WHITE;
             switch (ritual.getElement()){
-                case BLOOD -> formatting = ChatFormatting.DARK_RED;
-                case KNOWLEDGE -> formatting = ChatFormatting.GOLD;
-                case ENERGY -> formatting = ChatFormatting.DARK_PURPLE;
-                case DEATH -> formatting = ChatFormatting.DARK_GRAY;
-                case FEAR -> formatting = ChatFormatting.WHITE;
+                case SANGUE -> formatting = ChatFormatting.DARK_RED;
+                case CONHECIMENTO -> formatting = ChatFormatting.GOLD;
+                case ENERGIA -> formatting = ChatFormatting.DARK_PURPLE;
+                case MORTE -> formatting = ChatFormatting.DARK_GRAY;
+                case MEDO -> formatting = ChatFormatting.WHITE;
                 case NONE -> formatting = ChatFormatting.GRAY;
             }
 

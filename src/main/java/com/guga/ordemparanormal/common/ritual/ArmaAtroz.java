@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ArmaAtroz extends AbstractRitual {
     public ArmaAtroz() {
-        super("arma_atroz", ParanormalElement.BLOOD, 1, 2, true, 0, null);
+        super("arma_atroz", ParanormalElement.SANGUE, 1, 2, true, 0, false);
     }
     @Override
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster) {

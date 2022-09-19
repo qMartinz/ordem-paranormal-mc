@@ -1,14 +1,14 @@
 package com.guga.ordemparanormal.client.screen.widgets;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
-import com.guga.ordemparanormal.api.util.PowerUtils;
-import com.guga.ordemparanormal.client.RitualSymbol;
+import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
 
 public class SelectedRitual extends AbstractWidget {
     private int ritualIndex = 0;
@@ -24,18 +24,21 @@ public class SelectedRitual extends AbstractWidget {
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
         Minecraft minecraft = Minecraft.getInstance();
-        minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
-            if (!playerAbilities.getKnownRituals().isEmpty()){
-                RitualSymbol currentRitual = PowerUtils.getSymbol(playerAbilities.getKnownRituals().stream().toList().get(ritualIndex));
-                RenderSystem.enableBlend();
-                RenderSystem.disableDepthTest();
-                RenderSystem.depthMask(false);
-                RenderSystem.defaultBlendFunc();
-                RenderSystem.setShaderTexture(0, currentRitual.getTextureLoc());
-                blit(stack, x + width/2 - currentRitual.getWidth()/2, y + height/2 - currentRitual.getHeight()/2, currentRitual.getX(), currentRitual.getY(), currentRitual.getWidth(), currentRitual.getHeight());
-                RenderSystem.depthMask(true);
-                RenderSystem.enableDepthTest();
-                RenderSystem.disableBlend();
+        minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(abilities -> {
+            if (!abilities.getKnownRituals().isEmpty()){
+                ResourceLocation symbol = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/ritual_symbol/" + abilities.getKnownRituals().stream().toList().get(ritualIndex).getId() + ".png");
+
+                if (minecraft.getResourceManager().hasResource(symbol)) {
+                    RenderSystem.enableBlend();
+                    RenderSystem.disableDepthTest();
+                    RenderSystem.depthMask(false);
+                    RenderSystem.defaultBlendFunc();
+                    RenderSystem.setShaderTexture(0, symbol);
+                    blit(stack, x + width/2 - 32, y + height/2 - 32, 0, 0, 64, 64, 64, 64);
+                    RenderSystem.depthMask(true);
+                    RenderSystem.enableDepthTest();
+                    RenderSystem.disableBlend();
+                }
             }
         });
     }

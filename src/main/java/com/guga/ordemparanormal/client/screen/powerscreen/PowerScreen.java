@@ -1,6 +1,5 @@
 package com.guga.ordemparanormal.client.screen.powerscreen;
 
-import com.google.common.collect.Lists;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
@@ -16,11 +15,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PowerScreen extends Screen {
     public static final ResourceLocation TEXTURE = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/powerscreen.png");
     public final List<PowerButton> powerIcons = new ArrayList<>();
+    private final Map<PowerButton, Integer> iconsX = new HashMap<>();
+    private final Map<PowerButton, Integer> iconsY = new HashMap<>();
     public final ParanormalElement element;
     public double xOffset;
     public double yOffset;
@@ -33,7 +36,11 @@ public class PowerScreen extends Screen {
         int tabWidth = this.width - 41;
 
         this.initContents();
-        powerIcons.forEach(this::addWidget);
+
+        powerIcons.forEach(button -> iconsX.put(button, button.x));
+        powerIcons.forEach(button -> iconsY.put(button, button.y));
+        powerIcons.forEach(this::addRenderableWidget);
+
         this.addWidget(new Button(37, (int) (this.height/2f - 7/2f), 7, 7, TextComponent.EMPTY, button -> {
             if (xOffset < -350) xOffset = 0;
         }));
@@ -47,18 +54,10 @@ public class PowerScreen extends Screen {
             if (yOffset > 200) yOffset = 0;
         }));
 
-        this.addWidget(new Button(2, 9, 32, 32, TextComponent.EMPTY, button -> {
-            minecraft.setScreen(new BloodPowerScreen());
-        }));
-        this.addWidget(new Button(2, 43, 32, 32, TextComponent.EMPTY, button -> {
-            minecraft.setScreen(new DeathPowerScreen());
-        }));
-        this.addWidget(new Button(2, 77, 32, 32, TextComponent.EMPTY, button -> {
-            minecraft.setScreen(new EnergyPowerScreen());
-        }));
-        this.addWidget(new Button(2, 111, 32, 32, TextComponent.EMPTY, button -> {
-            minecraft.setScreen(new KnowledgePowerScreen());
-        }));
+        this.addWidget(new Button(2, 9, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new BloodPowerScreen())));
+        this.addWidget(new Button(2, 43, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new DeathPowerScreen())));
+        this.addWidget(new Button(2, 77, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new EnergyPowerScreen())));
+        this.addWidget(new Button(2, 111, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new KnowledgePowerScreen())));
     }
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
@@ -75,16 +74,16 @@ public class PowerScreen extends Screen {
         if (yOffset < -200) blit(stack, (int) (tabWidth/2f - 7/2f) + 37, 6, 0, 7, 7, 7);
         if (yOffset > 200) blit(stack, (int) (tabWidth/2f - 7/2f) + 37, this.height - 13, 7, 0, 7, 7);
 
-        if (this.element == ParanormalElement.BLOOD) {
+        if (this.element == ParanormalElement.SANGUE) {
             blit(stack, 2, 9, 14, 32, 32, 32);
         } else { blit(stack, 2, 9, 14, 0, 32, 32); }
-        if (this.element == ParanormalElement.DEATH) {
+        if (this.element == ParanormalElement.MORTE) {
             blit(stack, 2, 43, 46, 32, 32, 32);
         } else { blit(stack, 2, 43, 46, 0, 32, 32); }
-        if (this.element == ParanormalElement.ENERGY) {
+        if (this.element == ParanormalElement.ENERGIA) {
             blit(stack, 2, 77, 78, 32, 32, 32);
         } else { blit(stack, 2, 77, 78, 0, 32, 32); }
-        if (this.element == ParanormalElement.KNOWLEDGE) {
+        if (this.element == ParanormalElement.CONHECIMENTO) {
             blit(stack, 2, 111, 110, 32, 32, 32);
         } else { blit(stack, 2, 111, 110, 0, 32, 32); }
 
@@ -122,38 +121,18 @@ public class PowerScreen extends Screen {
 
         return super.mouseDragged(pMouseX, pMouseY, pButton, pDragX, pDragY);
     }
+    @Override
+    public void tick() {
+        iconsX.forEach((button, x) -> button.x = (int) (x + xOffset));
+        iconsY.forEach((button, y) -> button.y = (int) (y + yOffset));
+    }
+
     public PowerButton addPowerIcon(PowerButton icon){
         this.powerIcons.add(icon);
         return icon;
     }
     public void initContents(){}
-    public void renderContents(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick){
-        for (PowerButton icon : powerIcons){
-            if (powerIcons.stream().anyMatch(button -> button.getPower() == icon.getPower())) {
-                for (PowerButton requisite : powerIcons){
-                    if (icon.y > requisite.y && requisite.x == icon.x) {
-                        this.vLine(stack, (int) (icon.x + icon.getWidth() / 2f),
-                                icon.y + icon.getHeight(), requisite.y - 1,
-                                0xbf782c);
-                    } if (icon.y < requisite.y && requisite.x == icon.x) {
-                        this.vLine(stack, (int) (icon.x + icon.getWidth() / 2f),
-                                icon.y - 1, requisite.y + requisite.getHeight(),
-                                0xbf782c);
-                    } else if (icon.y == requisite.y && requisite.x > icon.x) {
-                        this.hLine(stack, icon.x - 1, requisite.x + requisite.getWidth(),
-                                icon.y + icon.getHeight() / 2,
-                                0xbf782c);
-                    } else if (icon.y == requisite.y && requisite.x < icon.x) {
-                        this.hLine(stack, icon.x + icon.getWidth(), requisite.x - 1,
-                                icon.y + icon.getHeight() / 2,
-                                0xbf782c);
-                    }
-                }
-            }
-        }
-        powerIcons.forEach(icon -> icon.render(stack, pMouseX, pMouseY, pPartialTick, xOffset, yOffset));
-
-    }
+    public void renderContents(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick){}
     @Override
     public boolean isPauseScreen()
     {

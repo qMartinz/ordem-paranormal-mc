@@ -11,10 +11,9 @@ public class RitualEffect extends MobEffect {
     public RitualEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
     }
-
     @Override
     public List<ItemStack> getCurativeItems() {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> ret = new ArrayList<>();
         return ret;
     }
 }

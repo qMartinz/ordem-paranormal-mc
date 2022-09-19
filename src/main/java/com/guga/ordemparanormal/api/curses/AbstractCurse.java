@@ -56,11 +56,11 @@ public abstract class AbstractCurse {
     public Component getDisplayName() {
         MutableComponent name = new TranslatableComponent(getTranslationKey());
         switch (element){
-            case BLOOD -> name.withStyle(ChatFormatting.DARK_RED);
-            case KNOWLEDGE -> name.withStyle(ChatFormatting.GOLD);
-            case ENERGY -> name.withStyle(ChatFormatting.DARK_PURPLE);
-            case DEATH -> name.withStyle(ChatFormatting.DARK_GRAY);
-            case FEAR -> name.withStyle(ChatFormatting.WHITE);
+            case SANGUE -> name.withStyle(ChatFormatting.DARK_RED);
+            case CONHECIMENTO -> name.withStyle(ChatFormatting.GOLD);
+            case ENERGIA -> name.withStyle(ChatFormatting.DARK_PURPLE);
+            case MORTE -> name.withStyle(ChatFormatting.DARK_GRAY);
+            case MEDO -> name.withStyle(ChatFormatting.WHITE);
             case NONE -> name.withStyle(ChatFormatting.GRAY);
         }
 

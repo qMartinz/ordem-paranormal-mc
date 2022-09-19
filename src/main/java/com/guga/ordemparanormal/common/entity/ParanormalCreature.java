@@ -23,9 +23,7 @@ public class ParanormalCreature extends Monster {
     public void die(DamageSource source){
         super.die(source);
         if (source.getEntity() instanceof Player player){
-            player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-                playerNex.addNexXp(rewardedXP);
-            });
+            player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> playerNex.addNexXp(rewardedXP));
         }
     }
 }

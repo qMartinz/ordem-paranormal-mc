@@ -4,6 +4,6 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 
 public class DeathPowerScreen extends PowerScreen{
     public DeathPowerScreen() {
-        super(ParanormalElement.DEATH);
+        super(ParanormalElement.MORTE);
     }
 }

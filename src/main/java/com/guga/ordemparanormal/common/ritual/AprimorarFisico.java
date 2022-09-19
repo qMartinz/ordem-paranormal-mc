@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.common.ritual;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
-import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;

@@ -11,13 +11,13 @@ import net.minecraft.world.entity.LivingEntity;
 import java.util.List;
 
 public class ElementDamage {
-    public static final DamageSource BLOOD_DAMAGE = new DamageSource("paranormalBlood").bypassArmor().setMagic();
-    public static final DamageSource DEATH_DAMAGE = new DamageSource("paranomalDeath").bypassArmor().setMagic();
-    public static final DamageSource ENERGY_DAMAGE = new DamageSource("paranormalEnergy").bypassArmor().setMagic();
-    public static final DamageSource KNOWLEDGE_DAMAGE = new DamageSource("paranormalKnowledge").bypassArmor().setMagic();
-    public static final DamageSource FEAR_DAMAGE = new DamageSource("paranormalFear").bypassArmor().setMagic();
+    public static final DamageSource DANO_SANGUE = new DamageSource("paranormalBlood").bypassArmor().setMagic();
+    public static final DamageSource DANO_MORTE = new DamageSource("paranomalDeath").bypassArmor().setMagic();
+    public static final DamageSource DANO_ENERGIA = new DamageSource("paranormalEnergy").bypassArmor().setMagic();
+    public static final DamageSource DANO_CONHECIMENTO = new DamageSource("paranormalKnowledge").bypassArmor().setMagic();
+    public static final DamageSource DANO_MEDO = new DamageSource("paranormalFear").bypassArmor().setMagic();
     public static DamageSource ritualDamage(LivingEntity caster, ParanormalElement element){
-        return new EntityDamageSource(element.getEquivalentDamage().getMsgId(), caster);
+        return new EntityDamageSource(element.getDamage().getMsgId(), caster);
     }
 
     /**
@@ -31,24 +31,24 @@ public class ElementDamage {
         List<EntityType<?>> nonOrganicEntities = List.of(new EntityType<?>[]{EntityType.IRON_GOLEM, EntityType.SNOW_GOLEM, EntityType.SHULKER, EntityType.GUARDIAN, EntityType.ELDER_GUARDIAN});
         if (entity instanceof ParanormalCreature creature){
             switch (creature.getMainElement()){
-                case BLOOD -> {
-                    return damage == BLOOD_DAMAGE;
+                case SANGUE -> {
+                    return damage == DANO_SANGUE;
                 }
-                case DEATH -> {
-                    return damage == DEATH_DAMAGE;
+                case MORTE -> {
+                    return damage == DANO_MORTE;
                 }
-                case ENERGY -> {
-                    return damage == ENERGY_DAMAGE;
+                case ENERGIA -> {
+                    return damage == DANO_ENERGIA;
                 }
-                case KNOWLEDGE -> {
-                    return damage == KNOWLEDGE_DAMAGE;
+                case CONHECIMENTO -> {
+                    return damage == DANO_CONHECIMENTO;
                 }
                 default -> {
                     return false;
                 }
             }
         } else {
-            return damage == BLOOD_DAMAGE && nonOrganicEntities.contains(entity.getType());
+            return damage == DANO_SANGUE && nonOrganicEntities.contains(entity.getType());
         }
     }
 
@@ -63,24 +63,24 @@ public class ElementDamage {
         List<EntityType<?>> nonOrganicEntities = List.of(new EntityType<?>[]{EntityType.IRON_GOLEM, EntityType.SNOW_GOLEM, EntityType.SHULKER, EntityType.GUARDIAN, EntityType.ELDER_GUARDIAN});
         if (entity instanceof ParanormalCreature creature){
             switch (creature.getMainElement()){
-                case BLOOD -> {
-                    return damage == DEATH_DAMAGE;
+                case SANGUE -> {
+                    return damage == DANO_MORTE;
                 }
-                case DEATH -> {
-                    return damage == ENERGY_DAMAGE;
+                case MORTE -> {
+                    return damage == DANO_ENERGIA;
                 }
-                case ENERGY -> {
-                    return damage == KNOWLEDGE_DAMAGE;
+                case ENERGIA -> {
+                    return damage == DANO_CONHECIMENTO;
                 }
-                case KNOWLEDGE -> {
-                    return damage == BLOOD_DAMAGE;
+                case CONHECIMENTO -> {
+                    return damage == DANO_SANGUE;
                 }
                 default -> {
                     return false;
                 }
             }
         } else {
-            return damage == DEATH_DAMAGE && !nonOrganicEntities.contains(entity.getType());
+            return damage == DANO_MORTE && !nonOrganicEntities.contains(entity.getType());
         }
     }
     public static String elementDmgTranslationKey(ParanormalElement element){

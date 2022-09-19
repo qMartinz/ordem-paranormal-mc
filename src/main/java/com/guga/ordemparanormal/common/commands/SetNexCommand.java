@@ -20,9 +20,7 @@ public class SetNexCommand implements Command<CommandSourceStack> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int percent = IntegerArgumentType.getInteger(context, "percent");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-            playerNex.setNex(percent);
-        });
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> playerNex.setNex(percent));
 
         return 1;
     }

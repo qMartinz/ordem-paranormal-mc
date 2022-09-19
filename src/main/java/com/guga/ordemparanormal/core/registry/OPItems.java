@@ -1,5 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
@@ -19,7 +21,7 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class OPItems {
-	private static final Helper HELPER = OrdemParanormal.REGISTRY_HELPER.getItemSubHelper();
+	public static final Helper HELPER = OrdemParanormal.REGISTRY_HELPER.getItemSubHelper();
 
 	// Registrar itens
 	public static final RegistryObject<Item> GRIMORIO_SANGUE = HELPER.createGSangue();
@@ -36,6 +38,14 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRArmaAtroz();
 	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRArmaVeloz();
 	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER.createRAmaldicoarArma();
+	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRHemofagia();
+
+	// Componentes ritualisticos
+	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER.createComponenteRitualistico(ParanormalElement.SANGUE);
+	public static final RegistryObject<RitualComponent> COMPONENTE_ENERGIA = HELPER.createComponenteRitualistico(ParanormalElement.ENERGIA);
+	public static final RegistryObject<RitualComponent> COMPONENTE_MORTE = HELPER.createComponenteRitualistico(ParanormalElement.MORTE);
+	public static final RegistryObject<RitualComponent> COMPONENTE_CONHECIMENTO = HELPER.createComponenteRitualistico(ParanormalElement.CONHECIMENTO);
+	public static final RegistryObject<RitualComponent> COMPONENTE_VAZIO = HELPER.createComponenteRitualistico(ParanormalElement.NONE);
 
 	// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
@@ -107,6 +117,12 @@ public final class OPItems {
 		}
 		private RegistryObject<RitualItem> createRAmaldicoarArma(){
 			return this.deferredRegister.register("ritual_amaldicoar_arma", () -> new RitualItem(OPRituals.AMALDICOAR_ARMA));
+		}
+		private RegistryObject<RitualItem> createRHemofagia(){
+			return this.deferredRegister.register("ritual_hemofagia", () -> new RitualItem(OPRituals.HEMOFAGIA));
+		}
+		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento){
+			return this.deferredRegister.register("componente_" + elemento.getSerializedName(), () -> new RitualComponent(elemento));
 		}
 	}
 }

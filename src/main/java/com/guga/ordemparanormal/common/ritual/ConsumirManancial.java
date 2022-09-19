@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.common.ritual;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
-import com.guga.ordemparanormal.core.registry.OPItems;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -13,7 +12,7 @@ import net.minecraft.world.level.Level;
 
 public class ConsumirManancial extends AbstractRitual {
     public ConsumirManancial() {
-        super("consumir_manancial", ParanormalElement.DEATH, 1, 3, true, 0D, OPItems.CINZAS.get());
+        super("consumir_manancial", ParanormalElement.MORTE, 1, 3, true, 0D, true);
     }
     @Override
     public void onUseSelf(Level world, LivingEntity caster) {

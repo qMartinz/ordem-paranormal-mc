@@ -21,9 +21,7 @@ public class PowerPackets {
         public void handle(Supplier<NetworkEvent.Context> context){
             context.get().enqueueWork(() -> {
                 if (context.get().getSender() == null) return;
-                context.get().getSender().getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(cap -> {
-                    cap.getActivePower(slot).use(context.get().getSender());
-                });
+                context.get().getSender().getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(cap -> cap.getActivePower(slot).use(context.get().getSender()));
             });
             context.get().setPacketHandled(true);
         }

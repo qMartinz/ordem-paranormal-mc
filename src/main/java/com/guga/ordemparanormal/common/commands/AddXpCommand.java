@@ -21,9 +21,7 @@ public class AddXpCommand implements Command<CommandSourceStack> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-            playerNex.addNexXp(amount);
-        });
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> playerNex.addNexXp(amount));
 
         return 1;
     }

@@ -6,18 +6,20 @@ import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
 import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class Overlay {
+public class Overlay extends GuiComponent {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/overlay.png");
     private static int showLvlUpTicks = 0;
     public static final IIngameOverlay HUD_NEX = (gui, poseStack, partialTicks, width, height) -> {
@@ -25,10 +27,6 @@ public class Overlay {
         Player player = minecraft.player;
         if (!minecraft.options.hideGui && gui.shouldDrawSurvivalElements()) {
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-                RenderSystem.enableBlend();
-                RenderSystem.disableDepthTest();
-                RenderSystem.depthMask(false);
-                RenderSystem.defaultBlendFunc();
                 RenderSystem.setShaderTexture(0, TEXTURES);
 
                 gui.blit(poseStack, width - 95, height - 9, 3, 24, 92, 5);
@@ -39,17 +37,6 @@ public class Overlay {
 
                 String s = playerNex.getNexPercent() + "%";
                 gui.getFont().drawShadow(poseStack, s, width - (gui.getFont().width(s) + 96), height - (gui.getFont().lineHeight + 2), FastColor.ARGB32.color(255, 255, 255, 255));
-
-                if (showLvlUpTicks > 0) {
-                    RenderSystem.setShaderTexture(0, TEXTURES);
-                    RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
-                    gui.blit(poseStack, width - 98, height - 26, 0, 0, 98, 24);
-                    RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-                }
-
-                RenderSystem.depthMask(true);
-                RenderSystem.enableDepthTest();
-                RenderSystem.disableBlend();
             });
         }
     };
@@ -147,6 +134,26 @@ public class Overlay {
             });
         }
     };
+    @SubscribeEvent
+    public void onRenderOverlay(RenderGameOverlayEvent.Post event){
+        if (showLvlUpTicks > 0) {
+            RenderSystem.enableBlend();
+            RenderSystem.disableDepthTest();
+            RenderSystem.depthMask(false);
+            RenderSystem.defaultBlendFunc();
+
+            RenderSystem.setShaderTexture(0, TEXTURES);
+            RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
+
+            blit(event.getMatrixStack(), event.getWindow().getGuiScaledWidth() - 98, event.getWindow().getGuiScaledHeight() - 26, 0, 0, 98, 24);
+
+            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+
+            RenderSystem.depthMask(true);
+            RenderSystem.enableDepthTest();
+            RenderSystem.disableBlend();
+        }
+    }
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event){
         if (showLvlUpTicks > 0) showLvlUpTicks--;

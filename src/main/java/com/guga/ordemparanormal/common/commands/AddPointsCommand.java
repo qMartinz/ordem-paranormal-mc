@@ -21,9 +21,7 @@ public class AddPointsCommand implements Command<CommandSourceStack> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-            playerNex.setAttributePoints(playerNex.getAttributePoints() + amount);
-        });
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> playerNex.setAttributePoints(playerNex.getAttributePoints() + amount));
 
         return 1;
     }

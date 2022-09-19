@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ArmaVeloz extends AbstractRitual {
     public ArmaVeloz() {
-        super("arma_veloz", ParanormalElement.ENERGY, 1, 2, true, 0, null);
+        super("arma_veloz", ParanormalElement.ENERGIA, 1, 2, true, 0, false);
     }
     @Override
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster) {

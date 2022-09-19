@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 
 public class Atroz extends AbstractCurse {
     public Atroz() {
-        super("atroz", ParanormalElement.BLOOD, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
+        super("atroz", ParanormalElement.SANGUE, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
     }
     @Override
     public int getMaxTicks() {

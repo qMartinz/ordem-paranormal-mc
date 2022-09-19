@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class AmaldicoarArma extends AbstractRitual {
     public AmaldicoarArma() {
-        super("amaldicoar_arma", ParanormalElement.KNOWLEDGE, 1, 2, true, 0, null);
+        super("amaldicoar_arma", ParanormalElement.CONHECIMENTO, 1, 2, true, 0, false);
     }
     @Override
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster) {

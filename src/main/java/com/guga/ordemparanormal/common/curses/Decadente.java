@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class Decadente extends AbstractCurse {
     public Decadente() {
-        super("decadente", ParanormalElement.DEATH, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
+        super("decadente", ParanormalElement.MORTE, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
     }
     @Override
     public int getMaxTicks() {

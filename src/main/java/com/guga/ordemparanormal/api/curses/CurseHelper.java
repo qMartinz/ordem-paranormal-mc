@@ -86,7 +86,7 @@ public class CurseHelper {
             for (AbstractCurse curse : getCurses(pAttacker.getMainHandItem())) {
                 if (curse != null) {
                     curse.doPostAttack(pAttacker, pTarget);
-                    pTarget.hurt(curse.getElement().getEquivalentDamage(), curse.getDamageBonus());
+                    pTarget.hurt(curse.getElement().getDamage(), curse.getDamageBonus());
                 }
             }
         }

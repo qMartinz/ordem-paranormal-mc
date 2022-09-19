@@ -62,6 +62,13 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Cristal espiral");
 		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Papél amaldiçoado");
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Capacete enferrujado");
+
+		// Componentes Ritualisticos
+		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
+		add(OPItems.COMPONENTE_SANGUE.get(), "Ingredientes ritualisticos de Sangue");
+		add(OPItems.COMPONENTE_ENERGIA.get(), "Ingredientes ritualisticos de Energia");
+		add(OPItems.COMPONENTE_MORTE.get(), "Ingredientes ritualisticos de Morte");
+		add(OPItems.COMPONENTE_CONHECIMENTO.get(), "Ingredientes ritualisticos de Conhecimento");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
@@ -77,16 +84,16 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
 
 		// Elementos
-		add(ParanormalElement.BLOOD.getTranslationKey(), "Sangue");
-		add(ParanormalElement.DEATH.getTranslationKey(), "Morte");
-		add(ParanormalElement.KNOWLEDGE.getTranslationKey(), "Conhecimento");
-		add(ParanormalElement.ENERGY.getTranslationKey(), "Energia");
-		add(ParanormalElement.FEAR.getTranslationKey(), "Medo");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.BLOOD), "Dano de Sangue");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.DEATH), "Dano de Morte");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGY), "Dano de Energia");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.KNOWLEDGE), "Dano de Conhecimento");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.FEAR), "Dano de Medo");
+		add(ParanormalElement.SANGUE.getTranslationKey(), "Sangue");
+		add(ParanormalElement.MORTE.getTranslationKey(), "Morte");
+		add(ParanormalElement.CONHECIMENTO.getTranslationKey(), "Conhecimento");
+		add(ParanormalElement.ENERGIA.getTranslationKey(), "Energia");
+		add(ParanormalElement.MEDO.getTranslationKey(), "Medo");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.SANGUE), "Dano de Sangue");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.MORTE), "Dano de Morte");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGIA), "Dano de Energia");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.CONHECIMENTO), "Dano de Conhecimento");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.MEDO), "Dano de Medo");
 
 		// Atributos paranormais
 		add("ordemparanormal.nex.attribute_points", "Pontos de Atributo");
@@ -127,42 +134,17 @@ public class ModPtBrProvider extends LanguageProvider{
 				"Torna a arma que você está segurando mais rápida.");
 		addRitual(OPRituals.AMALDICOAR_ARMA, "Amaldiçoar Arma",
 				"Amaldiçoa a arma que você está segurando com sigilos de conhecimento.");
+		addRitual(OPRituals.HEMOFAGIA, "Hemofagia",
+				"Suga o sangue de seu alvo, transferindo a vitalidade dele para você.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
 		add("ordemparanormal.power.owned", "Poder adquirido");
 		add("ordemparanormal.power.active", "Poder ativo");
 		add("ordemparanormal.power.passive", "Poder passivo");
+		add("ordemparanormal.power.requisites", "Requisítos");
 
 		addPower(OPPowers.TEST_POWER, "Test 1",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_2, "Test 2",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_3, "Test 3",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_4, "Test 4",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_5,"Test 5",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_6,"Test 6",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_7,"Test 7",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_8,"Test 8",
 				"Test line 1",
 				"Test line 2");
 

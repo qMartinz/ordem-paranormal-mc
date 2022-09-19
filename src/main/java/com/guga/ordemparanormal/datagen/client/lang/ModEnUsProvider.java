@@ -62,6 +62,13 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Spiral crystal");
 		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Cursed papers");
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Rusty helmet");
+
+		// Componentes Ritualisticos
+		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
+		add(OPItems.COMPONENTE_SANGUE.get(), "Blood ritualistic ingredients");
+		add(OPItems.COMPONENTE_ENERGIA.get(), "Energy ritualistic ingredients");
+		add(OPItems.COMPONENTE_MORTE.get(), "Death ritualistic ingredients");
+		add(OPItems.COMPONENTE_CONHECIMENTO.get(), "Knowledge ritualistic ingredients");
 		
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
@@ -77,16 +84,16 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Spiky Blood zombie");
 
 		// Elementos
-		add(ParanormalElement.BLOOD.getTranslationKey(), "Blood");
-		add(ParanormalElement.DEATH.getTranslationKey(), "Death");
-		add(ParanormalElement.KNOWLEDGE.getTranslationKey(), "Knowledge");
-		add(ParanormalElement.ENERGY.getTranslationKey(), "Energy");
-		add(ParanormalElement.FEAR.getTranslationKey(), "Fear");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.BLOOD), "Blood damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.DEATH), "Death damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGY), "Energy damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.KNOWLEDGE), "Knowledge damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.FEAR), "Fear damage");
+		add(ParanormalElement.SANGUE.getTranslationKey(), "Blood");
+		add(ParanormalElement.MORTE.getTranslationKey(), "Death");
+		add(ParanormalElement.CONHECIMENTO.getTranslationKey(), "Knowledge");
+		add(ParanormalElement.ENERGIA.getTranslationKey(), "Energy");
+		add(ParanormalElement.MEDO.getTranslationKey(), "Fear");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.SANGUE), "Blood damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.MORTE), "Death damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGIA), "Energy damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.CONHECIMENTO), "Knowledge damage");
+		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.MEDO), "Fear damage");
 
 		// Atributos paranormais
 		add("ordemparanormal.nex.attribute_points", "Attribute Points");
@@ -127,42 +134,17 @@ public class ModEnUsProvider extends LanguageProvider{
 				"Makes the weapon you're holding more swift.");
 		addRitual(OPRituals.AMALDICOAR_ARMA, "Curse Weapon",
 				"Curses the weapon you're holding with knowledge sigils.");
+		addRitual(OPRituals.HEMOFAGIA, "Hematophagy",
+				"Sucks the target's blood, transfering their vitality to you.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
 		add("ordemparanormal.power.owned", "Power acquired");
 		add("ordemparanormal.power.active", "Active power");
 		add("ordemparanormal.power.passive", "Passive power");
+		add("ordemparanormal.power.requisites", "Requisites");
 
 		addPower(OPPowers.TEST_POWER, "Test 1",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_2, "Test 2",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_3, "Test 3",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_4, "Test 4",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_5,"Test 5",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_6,"Test 6",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_7,"Test 7",
-				"Test line 1",
-				"Test line 2");
-
-		addPower(OPPowers.TEST_POWER_8,"Test 8",
 				"Test line 1",
 				"Test line 2");
 

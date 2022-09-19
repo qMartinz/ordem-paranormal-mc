@@ -22,9 +22,7 @@ public class SyncNexToClient {
     public void handle(Supplier<NetworkEvent.Context> context){
         context.get().enqueueWork(() -> {
            if (Minecraft.getInstance().player == null) return;
-           Minecraft.getInstance().player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> {
-               nex.deserializeNBT(tag);
-           });
+           Minecraft.getInstance().player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> nex.deserializeNBT(tag));
         });
         context.get().setPacketHandled(true);
     }

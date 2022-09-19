@@ -8,22 +8,27 @@ import net.minecraft.world.damagesource.DamageSource;
 import javax.annotation.Nonnull;
 
 public enum ParanormalElement implements StringRepresentable {
-    FEAR("fear", ElementDamage.FEAR_DAMAGE, 0),
-    BLOOD("blood", ElementDamage.BLOOD_DAMAGE, 1),
-    KNOWLEDGE("knowledge", ElementDamage.KNOWLEDGE_DAMAGE, 2),
-    DEATH("death", ElementDamage.DEATH_DAMAGE, 3),
-    ENERGY("energy", ElementDamage.ENERGY_DAMAGE, 4),
-    NONE("none", DamageSource.GENERIC, 5);
+    MEDO("medo", 0),
+    SANGUE("sangue", 1),
+    CONHECIMENTO("conhecimento", 2),
+    MORTE("morte", 3),
+    ENERGIA("energia", 4),
+    NONE("vazio", 5);
     private final String name;
-    private final DamageSource equivalentDamage;
     public final int index;
-    ParanormalElement(String name, DamageSource equivalentDamage, int index) {
+    ParanormalElement(String name, int index) {
         this.name = name;
-        this.equivalentDamage = equivalentDamage;
         this.index = index;
     }
-    public DamageSource getEquivalentDamage() {
-        return equivalentDamage;
+    public DamageSource getDamage() {
+        return switch (this){
+            case MEDO -> ElementDamage.DANO_MEDO;
+            case SANGUE -> ElementDamage.DANO_SANGUE;
+            case CONHECIMENTO -> ElementDamage.DANO_CONHECIMENTO;
+            case MORTE -> ElementDamage.DANO_MORTE;
+            case ENERGIA -> ElementDamage.DANO_ENERGIA;
+            case NONE -> DamageSource.GENERIC;
+        };
     }
     @Nonnull
     @Override
@@ -49,17 +54,17 @@ public enum ParanormalElement implements StringRepresentable {
 
         if (!other.equals(this)) {
             switch (other) {
-                case BLOOD -> {
-                    if (this.equals(DEATH) || this.equals(KNOWLEDGE)) result = false;
+                case SANGUE -> {
+                    if (this.equals(MORTE) || this.equals(CONHECIMENTO)) result = false;
                 }
-                case DEATH -> {
-                    if (this.equals(ENERGY) || this.equals(BLOOD)) result = false;
+                case MORTE -> {
+                    if (this.equals(ENERGIA) || this.equals(SANGUE)) result = false;
                 }
-                case KNOWLEDGE -> {
-                    if (this.equals(BLOOD) || this.equals(ENERGY)) result = false;
+                case CONHECIMENTO -> {
+                    if (this.equals(SANGUE) || this.equals(ENERGIA)) result = false;
                 }
-                case ENERGY -> {
-                    if (this.equals(KNOWLEDGE) || this.equals(DEATH)) result = false;
+                case ENERGIA -> {
+                    if (this.equals(CONHECIMENTO) || this.equals(MORTE)) result = false;
                 }
                 default -> result = true;
             }

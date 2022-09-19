@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.common.ritual;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
-import com.guga.ordemparanormal.core.registry.OPItems;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -14,7 +13,7 @@ import net.minecraft.world.phys.EntityHitResult;
 
 public class Cicatrizacao extends AbstractRitual {
     public Cicatrizacao() {
-        super("cicatrizacao", ParanormalElement.DEATH, 1, 2, true, 3.5D, OPItems.CINZAS.get());
+        super("cicatrizacao", ParanormalElement.MORTE, 1, 2, true, 3.5D, true);
     }
     @Override
     public void onUseSelf(Level world, LivingEntity caster) {
@@ -31,7 +30,7 @@ public class Cicatrizacao extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         if (target instanceof ParanormalCreature paranormalCreature) {
-            if (paranormalCreature.getMainElement() != ParanormalElement.BLOOD){
+            if (paranormalCreature.getMainElement() != ParanormalElement.SANGUE){
                 paranormalCreature.heal(6);
             }
         } else {

@@ -22,9 +22,7 @@ public class SyncEffects {
     public void handle(Supplier<NetworkEvent.Context> context){
         context.get().enqueueWork(() -> {
            if (Minecraft.getInstance().player == null) return;
-           Minecraft.getInstance().player.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> {
-               effects.deserializeNBT(tag);
-           });
+           Minecraft.getInstance().player.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.deserializeNBT(tag));
         });
         context.get().setPacketHandled(true);
     }

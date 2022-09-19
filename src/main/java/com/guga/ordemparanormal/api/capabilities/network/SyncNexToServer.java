@@ -21,9 +21,7 @@ public class SyncNexToServer {
     public void handle(Supplier<NetworkEvent.Context> context){
         context.get().enqueueWork(() -> {
            if (context.get().getSender() == null) return;
-           context.get().getSender().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> {
-               nex.deserializeNBT(tag);
-           });
+           context.get().getSender().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> nex.deserializeNBT(tag));
         });
         context.get().setPacketHandled(true);
     }

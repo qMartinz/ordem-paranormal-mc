@@ -84,8 +84,8 @@ public class PlayerPowers implements IPowerCap {
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
 
-        NBTUtil.writeStrings(tag, "ritual", rituals.stream().map(s -> s.getId()).collect(Collectors.toList()));
-        NBTUtil.writeStrings(tag, "power", powers.stream().map(s -> s.getId()).collect(Collectors.toList()));
+        NBTUtil.writeStrings(tag, "ritual", rituals.stream().map(AbstractRitual::getId).collect(Collectors.toList()));
+        NBTUtil.writeStrings(tag, "power", powers.stream().map(PlayerPower::getId).collect(Collectors.toList()));
 
         for (int i = 0; i < 5; i++){
             if (activePowers.containsKey(i)) {

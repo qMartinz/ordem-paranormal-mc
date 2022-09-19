@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Decadencia extends AbstractRitual {
     public Decadencia() {
-        super("decadencia", ParanormalElement.DEATH, 1, 2, true, 0, null);
+        super("decadencia", ParanormalElement.MORTE, 1, 2, true, 0, false);
     }
     @Override
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster) {

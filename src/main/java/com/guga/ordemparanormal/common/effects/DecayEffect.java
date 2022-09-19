@@ -2,15 +2,10 @@ package com.guga.ordemparanormal.common.effects;
 
 import com.guga.ordemparanormal.api.ElementDamage;
 import com.mojang.math.Vector3f;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.Random;
 
@@ -21,11 +16,11 @@ public class DecayEffect extends RitualEffect {
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         Random random = new Random();
-        if (ElementDamage.isEntityResistant(entity, ElementDamage.DEATH_DAMAGE)){
+        if (ElementDamage.isEntityResistant(entity, ElementDamage.DANO_MORTE)){
             entity.removeEffect(this);
         } else {
             float amount = 2f * amplifier;
-            entity.hurt(ElementDamage.DEATH_DAMAGE, amount);
+            entity.hurt(ElementDamage.DANO_MORTE, amount);
 
             if (entity.level instanceof ServerLevel level)
                 level.sendParticles(

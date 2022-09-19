@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.common.ritual;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
-import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -14,9 +13,8 @@ import net.minecraft.world.level.block.Blocks;
 
 public class ArmaduraSangue extends AbstractRitual {
     public ArmaduraSangue() {
-        super("armadura_sangue", ParanormalElement.BLOOD, 1, 3, true, 0, OPItems.ORGAO.get());
+        super("armadura_sangue", ParanormalElement.SANGUE, 1, 3, true, 0, true);
     }
-
     @Override
     public void onUseSelf(Level world, LivingEntity caster) {
         MobEffectInstance resistance = new MobEffectInstance(OPEffects.SKIN_REINFORCED.get(), 1800, 1, false, false);

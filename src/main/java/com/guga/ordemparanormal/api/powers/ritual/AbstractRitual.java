@@ -3,15 +3,16 @@ package com.guga.ordemparanormal.api.powers.ritual;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.CommonComponents;
+import com.guga.ordemparanormal.common.item.RitualComponent;
+import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -28,15 +29,15 @@ public abstract class AbstractRitual{
     private final int effortCost;
     private final boolean hasEntityTarget;
     private final double range;
-    private final Item ingredient;
-    public AbstractRitual(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, @Nullable Item ingredient) {
+    private final boolean mustHoldIngredient;
+    public AbstractRitual(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         this.id = id;
         this.element = element;
         this.tier = Math.max(1, Math.min(4, tier));
         this.effortCost = effortCost;
         this.hasEntityTarget = hasEntityTarget;
         this.range = range;
-        this.ingredient = ingredient;
+        this.mustHoldIngredient = mustHoldIngredient;
     }
     public String getId() { return id; }
     public String getTranslationKey(){
@@ -53,18 +54,15 @@ public abstract class AbstractRitual{
 
         ChatFormatting formatting = ChatFormatting.WHITE;
         switch (element){
-            case BLOOD -> formatting = ChatFormatting.DARK_RED;
-            case KNOWLEDGE -> formatting = ChatFormatting.GOLD;
-            case ENERGY -> formatting = ChatFormatting.DARK_PURPLE;
-            case DEATH -> formatting = ChatFormatting.DARK_GRAY;
-            case FEAR -> formatting = ChatFormatting.WHITE;
+            case SANGUE -> formatting = ChatFormatting.DARK_RED;
+            case CONHECIMENTO -> formatting = ChatFormatting.GOLD;
+            case ENERGIA -> formatting = ChatFormatting.DARK_PURPLE;
+            case MORTE -> formatting = ChatFormatting.DARK_GRAY;
+            case MEDO -> formatting = ChatFormatting.WHITE;
             case NONE -> formatting = ChatFormatting.GRAY;
         }
         Component title = getDisplayName().plainCopy().withStyle(formatting);
         lines.add(title);
-
-        if (getIngredient() != null) lines.add(CommonComponents.INGREDIENT.plainCopy().append(": ")
-                .append(getIngredient().getName(getIngredient().getDefaultInstance())).withStyle(ChatFormatting.GRAY));
 
         lines.add(TextComponent.EMPTY);
 
@@ -90,9 +88,13 @@ public abstract class AbstractRitual{
     public double getRange() {
         return range;
     }
-    public Item getIngredient() {
-        return ingredient;
+    public boolean hasIngredient() {
+        return element != ParanormalElement.MEDO && element != ParanormalElement.NONE;
     }
+    public boolean mustHoldIngredient() {
+        return mustHoldIngredient;
+    }
+
     /**
      * Chamado quando o ritual é utilizado
      *
@@ -103,8 +105,45 @@ public abstract class AbstractRitual{
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster){
         if (caster instanceof Player player){
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playernex -> {
-                if (player.isCreative()){
-                    // ritual é usado no criativo
+                boolean canCast = player.isCreative();
+
+                if (!player.isCreative() && playernex.getCurrentEffort() >= getEffortCost()){
+                    if (hasIngredient()){
+                        if (mustHoldIngredient()){
+                            if (player.getOffhandItem().getItem() instanceof RitualComponent component &&
+                                component.element == this.element) canCast = true;
+                        } else {
+                            if (player.getInventory().items.stream().anyMatch(stack ->
+                                    stack.getItem() instanceof RitualComponent component &&
+                                    component.element == this.element)) canCast = true;
+                        }
+                    } else {
+                        canCast = true;
+                    }
+                }
+
+                if (canCast){
+                    if (!player.isCreative()){
+                        playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
+                        if (hasIngredient()){
+                            ItemStack ingredient = mustHoldIngredient() ? player.getOffhandItem() :
+                                    player.getInventory().items.stream().filter(stack -> stack.getItem() instanceof RitualComponent comp &&
+                                            comp.element == element).findFirst().get();
+
+                            if (ingredient.getDamageValue() + 1 >= ingredient.getMaxDamage()){
+                                if (mustHoldIngredient) {
+                                    player.getOffhandItem().shrink(1);
+                                    player.setItemSlot(EquipmentSlot.OFFHAND, OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
+                                } else {
+                                    player.getInventory().setItem(player.getInventory().items.indexOf(ingredient),
+                                            OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
+                                }
+                            } else {
+                                ingredient.setDamageValue(ingredient.getDamageValue() + 1);
+                            }
+                        }
+                    }
+
                     if (rayTraceResult instanceof BlockHitResult blockHitResult) {
                         if (hasEntityTarget()){
                             onUseSelf(world, caster);
@@ -115,45 +154,6 @@ public abstract class AbstractRitual{
                         onUseEntity(entityHitResult, world, caster);
                     } else {
                         onUseSelf(world, caster);
-                    }
-                } else {
-                    if (playernex.getCurrentEffort() >= getEffortCost()) {
-                        if (getIngredient() != null && caster.getOffhandItem().getItem() == getIngredient()) {
-                            // ritual que necessita de ingrediente é usado
-                            playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
-                            if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                                if (hasEntityTarget()){
-                                    onUseSelf(world, caster);
-                                } else {
-                                    onUseBlock(blockHitResult, world, caster);
-                                }
-                            } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                                onUseEntity(entityHitResult, world, caster);
-                            } else {
-                                onUseSelf(world, caster);
-                            }
-                            caster.getOffhandItem().shrink(1);
-                        } else if (getIngredient() == null) {
-                            // ritual que não necessita de ingrediente é usado
-                            playernex.setCurrentEffort(playernex.getCurrentEffort() - getEffortCost());
-                            if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                                if (hasEntityTarget()){
-                                    onUseSelf(world, caster);
-                                } else {
-                                    onUseBlock(blockHitResult, world, caster);
-                                }
-                            } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                                onUseEntity(entityHitResult, world, caster);
-                            } else {
-                                onUseSelf(world, caster);
-                            }
-                        } else {
-                            // se o player não tiver ingrediente suficiente
-                            player.level.playSound(null, player.blockPosition(), SoundEvents.BEE_POLLINATE, SoundSource.PLAYERS, 1f, 1f);
-                        }
-                    } else {
-                        // se o player não tiver ponto de esforço suficiente
-                        player.level.playSound(null, player.blockPosition(), SoundEvents.BEE_POLLINATE, SoundSource.PLAYERS, 1f, 1f);
                     }
                 }
             });
