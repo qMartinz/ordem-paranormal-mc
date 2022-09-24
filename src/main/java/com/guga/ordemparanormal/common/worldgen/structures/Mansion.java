@@ -44,9 +44,6 @@ public class Mansion extends StructureFeature<JigsawConfiguration> {
 
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
 
-        Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
-                JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
-
-        return structurePiecesGenerator;
+        return JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
     }
 }

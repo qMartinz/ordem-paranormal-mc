@@ -45,9 +45,6 @@ public class CultistCabin extends StructureFeature<JigsawConfiguration> {
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
         blockpos.above();
 
-        Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
-                JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
-
-        return structurePiecesGenerator;
+        return JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
     }
 }

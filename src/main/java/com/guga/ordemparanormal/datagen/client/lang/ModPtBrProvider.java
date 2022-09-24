@@ -144,9 +144,24 @@ public class ModPtBrProvider extends LanguageProvider{
 		add("ordemparanormal.power.passive", "Poder passivo");
 		add("ordemparanormal.power.requisites", "Requisítos");
 
-		addPower(OPPowers.TEST_POWER, "Test 1",
-				"Test line 1",
-				"Test line 2");
+		addPower(OPPowers.AFINIDADE_SANGUE, "Afinidade com Sangue",
+				"Parte de você se torna parte do paranormal, te conectando a entidade de Sangue.",
+				"Descarta a necessidade de ingredientes de Sangue e te torna resistente a efeitos de Sangue, mas te torna fraco a efeitos de Morte.");
+		addPower(OPPowers.SANGUE_FERRO, "Sangue de Ferro",
+				"Suas veias são banhadas pelo paranormal, te tornando mais resistente.",
+				"Fornece 2 corações extras de vida.");
+		addPower(OPPowers.SANGUE_FERRO_2, "Sangue de Ferro II",
+				"Seu sangue e completamente irrigado pelo ódio e violência, te tornando extremamente resistente.",
+				"Fornece 3 corações extras de vida.");
+		addPower(OPPowers.AFINIDADE_ENERGIA, "Afinidade com Energia",
+				"Parte de você se torna parte do paranormal, te conectando a entidade de Energia.",
+				"Descarta a necessidade de ingredientes de Energia e te torna resistente a efeitos de Energia, mas te torna fraco a efeitos de Conhecimento.");
+		addPower(OPPowers.AFINIDADE_MORTE, "Afinidade com Morte",
+				"Parte de você se torna parte do paranormal, te conectando a entidade de Morte.",
+				"Descarta a necessidade de ingredientes de Morte e te torna resistente a efeitos de Morte, mas te torna fraco a efeitos de Energia.");
+		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
+				"Parte de você se torna parte do paranormal, te conectando a entidade de Conhecimento.",
+				"Descarta a necessidade de ingredientes de Conhecimento e te torna resistente a efeitos de Conhecimento, mas te torna fraco a efeitos de Sangue.");
 
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");

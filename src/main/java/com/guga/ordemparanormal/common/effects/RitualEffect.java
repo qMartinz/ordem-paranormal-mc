@@ -13,7 +13,6 @@ public class RitualEffect extends MobEffect {
     }
     @Override
     public List<ItemStack> getCurativeItems() {
-        ArrayList<ItemStack> ret = new ArrayList<>();
-        return ret;
+        return new ArrayList<>();
     }
 }

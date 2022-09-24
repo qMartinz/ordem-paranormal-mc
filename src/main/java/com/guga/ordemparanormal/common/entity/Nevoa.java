@@ -169,7 +169,7 @@ public class Nevoa extends Entity {
 				this.discard();
 			}
 
-			// Instantaneamente converter players com 0% dentro da névoa em 1%.
+			// Instantaneamente adiciona 10XP para players com 0% dentro da névoa
 			List<Player> players = this.level.getEntitiesOfClass(Player.class,
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {

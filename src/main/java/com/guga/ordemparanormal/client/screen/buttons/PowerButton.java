@@ -7,9 +7,12 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
 import com.guga.ordemparanormal.api.capabilities.network.UpdatePowers;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
+import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.client.screen.powerscreen.PowerScreen;
+import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -38,33 +41,38 @@ public class PowerButton extends AbstractButton {
         RenderSystem.disableDepthTest();
 
         float alpha = 1f;
-        visible = true;
-        boolean powerRequirement = playerPowers.hasPower(power.getPowerRequirement()) || power.getPowerRequirement() == PlayerPower.EMPTY;
+        boolean powerRequirement = power.getPowerRequirements().stream().allMatch(playerPowers::hasPower) || power.getPowerRequirements().isEmpty();
         boolean requirements = playerNex.getNex() >= power.getNexRequired() &&
                 playerNex.getAttributes()[0] >= power.getAttributesRequired()[0] &&
                 playerNex.getAttributes()[1] >= power.getAttributesRequired()[1] &&
                 playerNex.getAttributes()[2] >= power.getAttributesRequired()[2] &&
                 powerRequirement;
+        if (power instanceof Afinidade && playerPowers.getPowers().stream().anyMatch(p -> p instanceof Afinidade && p != power)) requirements = false;
         if (!requirements) alpha -= 0.5f;
-        if (!playerPowers.hasPower(power.getPowerRequirement().getPowerRequirement()) &&
-                power.getPowerRequirement().getPowerRequirement() != PlayerPower.EMPTY) visible = false;
 
-        if (this.visible) {
-            RenderSystem.setShaderTexture(0, PowerScreen.TEXTURE);
-            if (playerPowers.hasPower(power)) blit(stack, x - 5, y - 5, 0, 104, 30, 30);
-
-            RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
-
-            blit(stack, x, y, 20 * power.getElement().index, power.isActivePower() ? 84 : 64, 20, 20);
-
-            ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + this.power.getId() + ".png");
-            if (minecraft.getResourceManager().hasResource(icon)) {
-                RenderSystem.setShaderTexture(0, icon);
-                blit(stack, x + 2, y + 2, 0, 0, 16, 16, 16, 16);
-            }
-
-            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+        RenderSystem.setShaderTexture(0, PowerScreen.TEXTURE);
+        if (playerPowers.hasPower(power)) {
+            blit(stack, x - 5, y - 5, 0, 104, 30, 30);
+            if (power instanceof Afinidade) blit(stack, (x + width/2) - 23, (y + height/2) - 24, 30, 104, 46, 44);
         }
+
+        RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
+
+        blit(stack, x, y, 20 * power.getElement().index, power.isActivePower() ? 84 : 64, 20, 20);
+
+        ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + this.power.getId() + ".png");
+        if (minecraft.getResourceManager().hasResource(icon)) {
+            RenderSystem.setShaderTexture(0, icon);
+            blit(stack, x + 2, y + 2, 0, 0, 16, 16, 16, 16);
+        }
+
+        if (!playerPowers.hasPower(power) && power instanceof Afinidade && playerNex.getNex() >= 10 && playerPowers.getPowers().stream().noneMatch(p -> p instanceof Afinidade && p != power)){
+            RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate((int) ((System.currentTimeMillis()/10)%200), 1, 100)/100f);
+            RenderSystem.setShaderTexture(0, PowerScreen.TEXTURE);
+            blit(stack, (x + width/2) - 23, (y + height/2) - 24, 30, 104, 46, 44);
+        }
+
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
 
         RenderSystem.enableDepthTest();
         RenderSystem.depthMask(true);
@@ -73,22 +81,18 @@ public class PowerButton extends AbstractButton {
     public PlayerPower getPower() {
         return power;
     }
-
-    @Override
-    public void playDownSound(SoundManager pHandler) {
-        if (this.visible) super.playDownSound(pHandler);
-    }
     @Override
     public void onPress() {
         INexCap playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
         IPowerCap playerPowers = minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
         if (playerNex == null || playerPowers == null) return;
-        boolean powerRequirement = playerPowers.hasPower(power.getPowerRequirement()) || power.getPowerRequirement() == PlayerPower.EMPTY;
+        boolean powerRequirement = power.getPowerRequirements().stream().allMatch(playerPowers::hasPower) || power.getPowerRequirements().isEmpty();
         boolean requirements = playerNex.getNex() >= power.getNexRequired() &&
                 playerNex.getAttributes()[0] >= power.getAttributesRequired()[0] &&
                 playerNex.getAttributes()[1] >= power.getAttributesRequired()[1] &&
                 playerNex.getAttributes()[2] >= power.getAttributesRequired()[2] &&
                 powerRequirement;
+        if (power instanceof Afinidade && playerPowers.getPowers().stream().anyMatch(p -> p instanceof Afinidade)) requirements = false;
         if (requirements && playerNex.getPowerPoints() > 0 && !playerPowers.hasPower(power)){
             playerNex.setPowerPoints(playerNex.getPowerPoints() - 1);
             playerPowers.addPower(power);

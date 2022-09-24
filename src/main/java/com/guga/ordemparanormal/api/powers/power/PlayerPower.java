@@ -14,21 +14,21 @@ import net.minecraft.world.entity.player.Player;
 import java.util.*;
 
 public class PlayerPower {
-    public static final PlayerPower EMPTY = new PlayerPower("", false, ParanormalElement.NONE, 0, null, 0, new int[]{});
+    public static final PlayerPower EMPTY = new PlayerPower("", false, ParanormalElement.NONE, 0, 0, new int[]{});
     private final String id;
     private final boolean isActivePower;
     private final ParanormalElement element;
     private final int effortCost;
-    private final PlayerPower powerRequirement;
+    private final Set<PlayerPower> powerRequirements;
     private final int nexRequired;
     private final int[] attributesRequired;
     public int tick;
-    public PlayerPower(String id, boolean isActivePower, ParanormalElement element, int effortCost, PlayerPower powerRequirement, int nexRequired, int[] attributesRequired){
+    public PlayerPower(String id, boolean isActivePower, ParanormalElement element, int effortCost, int nexRequired, int[] attributesRequired, PlayerPower... powerRequirements){
         this.id = id;
         this.isActivePower = isActivePower;
         this.element = element;
         this.effortCost = effortCost;
-        this.powerRequirement = powerRequirement;
+        this.powerRequirements = new HashSet<>(List.of(powerRequirements));
         this.nexRequired = nexRequired;
         this.attributesRequired = attributesRequired;
     }
@@ -44,9 +44,8 @@ public class PlayerPower {
     public int getEffortCost(){
         return this.effortCost;
     }
-    public PlayerPower getPowerRequirement() {
-        if (powerRequirement != null) return powerRequirement;
-        return EMPTY;
+    public Collection<PlayerPower> getPowerRequirements() {
+        return powerRequirements;
     }
     public int getNexRequired() {
         return nexRequired;
@@ -80,10 +79,10 @@ public class PlayerPower {
             lines.add(CommonComponents.CONSUMES.plainCopy().append(" " + this.effortCost + " " + CommonComponents.EFFORT_POINTS_FULL_NAME.getString())
                     .withStyle(ChatFormatting.GRAY));
         }
-        if (powerRequirement != null || !Arrays.equals(attributesRequired, new int[]{0, 0, 0}) || nexRequired != 0) {
+        if (!powerRequirements.isEmpty() || !Arrays.equals(attributesRequired, new int[]{0, 0, 0}) || nexRequired != 0) {
             List<MutableComponent> requisites = new ArrayList<>();
 
-            if (powerRequirement != null) requisites.add(powerRequirement.getDisplayName().plainCopy());
+            if (!powerRequirements.isEmpty()) powerRequirements.forEach(req -> requisites.add(req.getDisplayName().plainCopy()));
 
             if (nexRequired != 0) requisites.add(CommonComponents.NEX_ABBREVIATION.plainCopy().append(" " + this.nexRequired*5 + "%"));
 

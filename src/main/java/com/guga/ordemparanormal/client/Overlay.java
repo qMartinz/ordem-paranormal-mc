@@ -25,7 +25,7 @@ public class Overlay extends GuiComponent {
     public static final IIngameOverlay HUD_NEX = (gui, poseStack, partialTicks, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
-        if (!minecraft.options.hideGui && gui.shouldDrawSurvivalElements()) {
+        if (!minecraft.options.hideGui) {
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
                 RenderSystem.setShaderTexture(0, TEXTURES);
 
@@ -136,22 +136,24 @@ public class Overlay extends GuiComponent {
     };
     @SubscribeEvent
     public void onRenderOverlay(RenderGameOverlayEvent.Post event){
-        if (showLvlUpTicks > 0) {
-            RenderSystem.enableBlend();
-            RenderSystem.disableDepthTest();
-            RenderSystem.depthMask(false);
-            RenderSystem.defaultBlendFunc();
+        if (event.getType() == RenderGameOverlayEvent.ElementType.LAYER) {
+            if (showLvlUpTicks > 0 && !Minecraft.getInstance().options.hideGui) {
+                RenderSystem.enableBlend();
+                RenderSystem.disableDepthTest();
+                RenderSystem.depthMask(false);
+                RenderSystem.defaultBlendFunc();
 
-            RenderSystem.setShaderTexture(0, TEXTURES);
-            RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
+                RenderSystem.setShaderTexture(0, TEXTURES);
+                RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
 
-            blit(event.getMatrixStack(), event.getWindow().getGuiScaledWidth() - 98, event.getWindow().getGuiScaledHeight() - 26, 0, 0, 98, 24);
+                blit(event.getMatrixStack(), event.getWindow().getGuiScaledWidth() - 98, event.getWindow().getGuiScaledHeight() - 26, 0, 0, 98, 24);
 
-            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+                RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
 
-            RenderSystem.depthMask(true);
-            RenderSystem.enableDepthTest();
-            RenderSystem.disableBlend();
+                RenderSystem.depthMask(true);
+                RenderSystem.enableDepthTest();
+                RenderSystem.disableBlend();
+            }
         }
     }
     @SubscribeEvent

@@ -14,7 +14,7 @@ public enum ParanormalElement implements StringRepresentable {
     MORTE("morte", 3),
     ENERGIA("energia", 4),
     NONE("vazio", 5);
-    private final String name;
+    public final String name;
     public final int index;
     ParanormalElement(String name, int index) {
         this.name = name;

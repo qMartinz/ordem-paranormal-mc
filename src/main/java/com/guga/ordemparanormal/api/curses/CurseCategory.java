@@ -78,9 +78,9 @@ public enum CurseCategory implements net.minecraftforge.common.IExtensibleEnum {
 
     private java.util.function.Predicate<Item> delegate;
 
-    private CurseCategory() {}
+    CurseCategory() {}
 
-    private CurseCategory(java.util.function.Predicate<Item> delegate) {
+    CurseCategory(java.util.function.Predicate<Item> delegate) {
         this.delegate = delegate;
     }
 

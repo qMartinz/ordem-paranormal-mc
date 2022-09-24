@@ -74,7 +74,7 @@ public class PlayerNex implements INexCap{
         return maxEffort;
     }
     public void setMaxEffort(double maxEffort) {
-        this.maxEffort = Math.max(maxEffort, 1);;
+        this.maxEffort = Math.max(maxEffort, 1);
     }
     public double getCurrentEffort() {
         return currentEffort;

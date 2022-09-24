@@ -4,9 +4,11 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.common.CommonComponents;
+import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -35,6 +37,7 @@ public class PowerScreen extends Screen {
     protected void init() {
         int tabWidth = this.width - 41;
 
+        powerIcons.clear();
         this.initContents();
 
         powerIcons.forEach(button -> iconsX.put(button, button.x));
@@ -59,12 +62,64 @@ public class PowerScreen extends Screen {
         this.addWidget(new Button(2, 77, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new EnergyPowerScreen())));
         this.addWidget(new Button(2, 111, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new KnowledgePowerScreen())));
     }
+
+    @Override
+    public void resize(Minecraft pMinecraft, int pWidth, int pHeight) {
+        super.resize(pMinecraft, pWidth, pHeight);
+    }
+
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
         int tabWidth = this.width - 41;
         fill(stack,0,0,this.width,this.height,0xFF341c27);
 
         this.renderContents(stack, pMouseX, pMouseY, pPartialTick);
+        for (PowerButton icon : powerIcons) {
+            int reqSize = icon.getPower().getPowerRequirements().size();
+
+            for (PowerButton icon2 : powerIcons){
+                if (icon.getPower().getPowerRequirements().contains(icon2.getPower()) && !(icon2.getPower() instanceof Afinidade)){
+                    int xd = icon.x - icon2.x;
+                    int yd = icon.y - icon2.y;
+                    boolean diagonal = Math.abs(xd) > 0 && Math.abs(yd) > 0;
+                    boolean horizontal = Math.abs(xd) > 0 & Math.abs(yd) == 0;
+                    boolean vertical = Math.abs(xd) == 0 & Math.abs(yd) > 0;
+
+                    if (diagonal){
+                        int minX = icon.x + icon.getWidth()/2;
+                        int maxX = icon2.x + icon2.getWidth()/2;
+                        int minY = icon.y;
+                        int midY = icon.y - yd/2;
+                        int maxY = icon2.y;
+
+                        if (yd < 0) {
+                            minY += icon.getHeight();
+                            midY -= icon2.getHeight()/2;
+                        }
+                        if (yd > 0) {
+                            maxY += icon2.getHeight();
+                            midY += icon2.getHeight()/2;
+                        }
+
+                        fill(stack, minX - 1, minY, minX + 1, midY, 0xFFbf782c);
+                        fill(stack, minX - 1, midY - 1, maxX + 1, midY + 1, 0xFFbf782c);
+                        fill(stack, maxX - 1, midY, maxX + 1, maxY, 0xFFbf782c);
+                    } else {
+                        int minX = vertical ? (icon.x + icon.getWidth()/2) - 1 : icon.x;
+                        int minY = horizontal ? (icon.y + icon.getHeight()/2) - 1 : icon.y;
+                        int maxX = vertical ? minX + 2 : icon2.x;
+                        int maxY = horizontal ? minY + 2 : icon2.y;
+
+                        if (xd > 0 && horizontal) maxX += icon.getWidth();
+                        if (yd > 0 && vertical) maxY += icon.getHeight();
+                        if (xd < 0 && horizontal) minX += icon2.getWidth();
+                        if (yd < 0 && vertical) minY += icon2.getHeight();
+
+                        fill(stack, minX, minY, maxX, maxY, 0xFFbf782c);
+                    }
+                }
+            }
+        }
         super.render(stack, pMouseX, pMouseY, pPartialTick);
 
         drawBorder(stack);
@@ -114,10 +169,13 @@ public class PowerScreen extends Screen {
     }
     @Override
     public boolean mouseDragged(double pMouseX, double pMouseY, int pButton, double pDragX, double pDragY) {
-        this.xOffset += pDragX;
-        this.yOffset += pDragY;
-        this.xOffset = Mth.clamp(xOffset, -850, 850);
-        this.yOffset = Mth.clamp(yOffset, -850, 850);
+        if (pMouseX > 36 && pMouseX < this.width - 5 &&
+            pMouseY > 5 && pMouseY < this.height - 5){
+            this.xOffset += pDragX;
+            this.yOffset += pDragY;
+            this.xOffset = Mth.clamp(xOffset, -850, 850);
+            this.yOffset = Mth.clamp(yOffset, -850, 850);
+        }
 
         return super.mouseDragged(pMouseX, pMouseY, pButton, pDragX, pDragY);
     }
@@ -126,7 +184,6 @@ public class PowerScreen extends Screen {
         iconsX.forEach((button, x) -> button.x = (int) (x + xOffset));
         iconsY.forEach((button, y) -> button.y = (int) (y + yOffset));
     }
-
     public PowerButton addPowerIcon(PowerButton icon){
         this.powerIcons.add(icon);
         return icon;

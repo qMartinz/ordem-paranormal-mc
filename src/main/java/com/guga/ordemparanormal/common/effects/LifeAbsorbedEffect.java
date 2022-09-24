@@ -16,12 +16,12 @@ public class LifeAbsorbedEffect extends RitualEffect {
     }
     @Override
     public void addAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints((int) (effects.getDeathHealthPoints() + Math.min(4 * pAmplifier, pLivingEntity.getMaxHealth()))));
+        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints(effects.getDeathHealthPoints() + 6*pAmplifier));
         super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
     @Override
     public void removeAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints((int) (effects.getDeathHealthPoints() - Math.min(4 * pAmplifier, pLivingEntity.getMaxHealth()))));
+        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints(effects.getDeathHealthPoints() - 6*pAmplifier));
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
     @Override
