@@ -35,11 +35,11 @@ public class CapManager extends SavedData {
                     if (nex == null || effects == null) return;
 
                     if (nex.getCurrentEffort() != nex.getMaxEffort() && serverPlayer.getFoodData().getFoodLevel() >= 20){
-                        nex.setCurrentEffort(nex.getCurrentEffort() + 0.3D);
-                        serverPlayer.getFoodData().addExhaustion(0.5f);
+                        nex.setCurrentEffort(nex.getCurrentEffort() + 0.15D);
+                        serverPlayer.getFoodData().addExhaustion(0.3f);
                         Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     } else {
-                        nex.setCurrentEffort(nex.getCurrentEffort() + 0.1D);
+                        nex.setCurrentEffort(nex.getCurrentEffort() + 0.05D);
                         Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     }
                     nex.syncAttributeMods(serverPlayer);

@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.api.powers.power.network.PowerPackets;
 import com.guga.ordemparanormal.client.screen.NexScreen;
+import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.block.AltarTranscender;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class Keybind {
     private static final String MOD_CATEGORY = "ordemparanormal.key_category";
-    private final KeyMapping nexScreenKey = new KeyMapping("ordemparanormal.key.nex_screen", KeyConflictContext.IN_GAME, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, MOD_CATEGORY);
+    private final KeyMapping nexScreenKey = new KeyMapping("ordemparanormal.key.nex_screen", KeyConflictContext.UNIVERSAL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, MOD_CATEGORY);
     public final List<KeyMapping> usePowerList = new LinkedList<>();
     public Keybind(){
         ClientRegistry.registerKeyBinding(nexScreenKey);
@@ -55,11 +56,15 @@ public class Keybind {
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event){
         Minecraft minecraft = Minecraft.getInstance();
-        if (nexScreenKey.consumeClick() && minecraft.screen == null){
+        if (nexScreenKey.consumeClick()){
             HitResult block =  minecraft.player.pick(minecraft.player.isCreative() ? 5D : 4.5D, 0.0F, false);
             BlockPos blockpos = ((BlockHitResult)block).getBlockPos();
             BlockState blockstate = minecraft.player.level.getBlockState(blockpos);
-            minecraft.setScreen(new NexScreen(block.getType() == HitResult.Type.BLOCK && blockstate.getBlock() instanceof AltarTranscender));
+            if (minecraft.screen == null){
+                minecraft.setScreen(new NexScreen(block.getType() == HitResult.Type.BLOCK && blockstate.getBlock() instanceof AltarTranscender));
+            } else if (minecraft.screen instanceof NexScreen || minecraft.screen instanceof PowerScreen){
+                minecraft.setScreen(null);
+            }
         }
 
         for (int i = 0; i < usePowerList.size(); i++){

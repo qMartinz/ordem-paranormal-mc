@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.api.capabilities.data;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.client.Overlay;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -80,7 +81,7 @@ public class PlayerNex implements INexCap{
         return currentEffort;
     }
     public void setCurrentEffort(double currentEffort) {
-        this.currentEffort = Math.min(maxEffort, Math.max(currentEffort, 0));
+        this.currentEffort = Mth.clamp(currentEffort, 0, maxEffort);
     }
     public int[] getAttributes() {
         return attributes;

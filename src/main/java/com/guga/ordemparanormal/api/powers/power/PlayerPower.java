@@ -74,7 +74,7 @@ public class PlayerPower {
         return true;
     }
     /**
-     * Chamado quando o poder (caso seja um poder ativo) é utilizado.
+     * Chamado quando o poder ativo é utilizado.
      * Lembre-se de utilizar o método super antes das funcionalidades adicionais, para que os PE sejam contabilizados.
      *
      * @param player o jogador que utilizou o poder
@@ -87,11 +87,21 @@ public class PlayerPower {
     }
 
     /**
-     * Chamado quando o poder (caso não seja um poder ativo, ou seja, é um poder passivo) é utilizado
+     * Chamado a cada tick
      *
      * @param player o jogador que possui o poder
      */
     public void tick(Player player){}
+    /**
+     * Chamado quando o usuário ataca
+     *
+     * @param player o jogador que possui o poder
+     */
     public void attack(Player player, LivingEntity target){}
+    /**
+     * Chamado quando o usuário sofre dano
+     *
+     * @param player o jogador que possui o poder
+     */
     public void hurt(Player player, LivingEntity attacker, float amount){}
 }

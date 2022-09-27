@@ -153,6 +153,18 @@ public class ModPtBrProvider extends LanguageProvider{
 				"O seu Sangue endurece e cobre suas mãos. Ao utilizar esse poder, seus próximos ataques com seus punhos causará dano extra.");
 		addPower(OPPowers.PUNHO_ENRAIVECIDO_2, "Punho Enraivecido II",
 				"O seu Sangue endurece e cobre suas mãos permanentemente. Todos os seus ataques com seus punhos causarão dano extra.");
+		addPower(OPPowers.SANGUE_VIVO, "Sangue Vivo",
+				"Seu sangue sempre flui violentamente, te curando mais rapidamente quando ferido.");
+		addPower(OPPowers.SANGUE_VISCERAL, "Sangue Visceral",
+				"A dor desperta sentimentos que você nunca soube que existiam. Você causa mais dano quando ferido.");
+		addPower(OPPowers.ADRENALINA, "Adrenalina",
+				"Seu corpo é anormalmente cheio de adrenalina, te tornando mais ágil quando ferido.");
+		addPower(OPPowers.ADRENALINA_2, "Adrenalina II",
+				"Seu corpo todo é capaz de produz grandes doses de adrenalina, te tornando ainda mais ágil quando ferido.");
+		addPower(OPPowers.FLAGELO, "Flagelo",
+				"Você troca a sua própria dor por poder, recebendo 2 pontos de esforço mas perdendo 4 corações de vida.");
+		addPower(OPPowers.ABSORVER_AGONIA, "Absorver Agonia",
+				"Você absorve a agonia daqueles em dor. Toda vez que ataca, há uma chance de que você recupere até 2 corações e meio de vida.");
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Afinidade com Energia",
 				"Você se conecta à entidade de Energia, descartando a necessidade de ingredientes de Energia e te tornando resistente a efeitos de Energia, mas você se torna fraco a efeitos de Conhecimento.");

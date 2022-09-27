@@ -17,7 +17,7 @@ public class SangueFerro2 extends PlayerPower {
     @Override
     public void tick(Player player) {
         if (!player.getAttribute(Attributes.MAX_HEALTH).hasModifier(MODIFIER)){
-            player.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(MODIFIER);
+            player.getAttribute(Attributes.MAX_HEALTH).addTransientModifier(MODIFIER);
         }
     }
 }

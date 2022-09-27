@@ -244,7 +244,7 @@ public class PowerScreen extends Screen {
             int x = this.width - width - 10;
             int y = 10;
 
-            if (power.isActivePower()) height += 12;
+            if (power.isActivePower() && power.getEffortCost() > 0) height += 12;
 
             fill(stack, x, y, x + width, y + height, 0xFF602c2c);
             fill(stack, x - 1, y - 3, x, y + height + 3, 0xFFde9e41);
@@ -259,7 +259,7 @@ public class PowerScreen extends Screen {
                 font.draw(stack, splitLines.get(i).getString(), x + 4, y + 17 + font.lineHeight * i, 0xFFFFFF);
             }
 
-            if (power.isActivePower()) {
+            if (power.isActivePower() && power.getEffortCost() > 0) {
                 RenderSystem.setShaderTexture(0, TEXTURE);
                 blit(stack, x + width / 2 - (font.width(String.valueOf(power.getEffortCost())) + 9) / 2, y + height - 9,
                         100, 64, 9, 9);

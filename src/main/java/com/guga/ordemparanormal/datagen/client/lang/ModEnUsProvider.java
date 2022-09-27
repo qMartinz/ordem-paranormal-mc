@@ -153,6 +153,18 @@ public class ModEnUsProvider extends LanguageProvider{
 				"Your blood hardens on your hand. When using this power, your next attacks using your fists will deal extra damage.");
 		addPower(OPPowers.PUNHO_ENRAIVECIDO_2, "Enraged Fist II",
 				"Your blood hardens permanently on your hands. All your attacks with your fists will deal extra damage.");
+		addPower(OPPowers.SANGUE_VIVO, "Living Blood",
+				"Your blood is always flowing violently, healing you faster when hurt.");
+		addPower(OPPowers.SANGUE_VISCERAL, "Visceral Blood",
+				"Pain awakens feelings inside you that you never thought existed. You deal more damage when hurt");
+		addPower(OPPowers.ADRENALINA, "Adrenaline",
+				"Your body is abnormally filled with adrenaline during dangerous situations, making you more agile.");
+		addPower(OPPowers.ADRENALINA_2, "Adrenaline II",
+				"Your entire body is able to produce high doses of adrenaline, making you even more agile when hurt.");
+		addPower(OPPowers.FLAGELO, "Scourge",
+				"You exchange your own pain for power, receiving 2 effort points but losing 4 hearts of health.");
+		addPower(OPPowers.ABSORVER_AGONIA, "Absorb Agony",
+				"You absorb the agony of those in pain. Everytime you attack, there's a chance you may heal up to 2 and a half hearts of health.");
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Affinity with Energy",
 				"You're connected with the entity of Energy, discarding the need for Energy ingredients and making you resistant to Energy effects, but also weak to Knowledge effects.");
