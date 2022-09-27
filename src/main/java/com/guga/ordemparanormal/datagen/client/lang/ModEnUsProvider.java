@@ -28,10 +28,9 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
 	}
-	private void addPower(PlayerPower power, String name, String description1, String description2){
+	private void addPower(PlayerPower power, String name, String description){
 		add(power.getTranslationKey(), name);
-		add(power.getTranslationKey() + ".description.line_1", description1);
-		add(power.getTranslationKey() + ".description.line_2", description2);
+		add(power.getTranslationKey() + ".description", description);
 	}
 
 	// Adicionar traduções em EN-US
@@ -145,23 +144,22 @@ public class ModEnUsProvider extends LanguageProvider{
 		add("ordemparanormal.power.requisites", "Requisites");
 
 		addPower(OPPowers.AFINIDADE_SANGUE, "Affinity with Blood",
-				"Part of you becomes part of the paranormal, connecting you with the entity of Blood.",
-				"Discards the need for Blood ingredients and makes you resistant to Blood effects, but also weak to Death effects.");
+				"You're connected with the entity of Blood, discarding the need for Blood ingredients and making you resistant to Blood effects, but also weak to Death effects.");
 		addPower(OPPowers.SANGUE_FERRO, "Iron Blood",
-				"Your veins are bathed by the paranormal, making you more resistant.",
-				"Provides 2 extra health hearts.");
+				"Your veins are bathed by the paranormal, making you more resistant, providing 2 extra health hearts.");
 		addPower(OPPowers.SANGUE_FERRO_2, "Iron Blood II",
-				"Your blood is completely flooded with hate and violence, making you extremely resistant.",
-				"Provides 3 extra health hearts.");
+				"Your blood is completely flooded with hate and violence, providing 3 extra health hearts.");
+		addPower(OPPowers.PUNHO_ENRAIVECIDO, "Enraged Fist",
+				"Your blood hardens on your hand. When using this power, your next attacks using your fists will deal extra damage.");
+		addPower(OPPowers.PUNHO_ENRAIVECIDO_2, "Enraged Fist II",
+				"Your blood hardens permanently on your hands. All your attacks with your fists will deal extra damage.");
+
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Affinity with Energy",
-				"Part of you becomes part of the paranormal, connecting you with the entity of Energy.",
-				"Discards the need for Energy ingredients and makes you resistant to Energy effects, but also weak to Knowledge effects.");
+				"You're connected with the entity of Energy, discarding the need for Energy ingredients and making you resistant to Energy effects, but also weak to Knowledge effects.");
 		addPower(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
-				"Part of you becomes part of the paranormal, connecting you with the entity of Death.",
-				"Discards the need for Death ingredients and makes you resistant to Death effects, but also weak to Energy effects.");
+				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
-				"Part of you becomes part of the paranormal, connecting you with the entity of Knowledge.",
-				"Discards the need for Knowledge ingredients and makes you resistant to Knowledge effects, but also weak to Blood effects.");
+				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
 
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");

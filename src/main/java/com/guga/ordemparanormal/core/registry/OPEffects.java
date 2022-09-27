@@ -21,6 +21,8 @@ public final class OPEffects {
             () -> new DecayEffect(MobEffectCategory.HARMFUL, 0x121212));
     public static final RegistryObject<MobEffect> ENHANCED_PHYSIQUE = MOB_EFFECTS.register("enhanced_physique",
             () -> new EnhancedPhysiqueEffect(MobEffectCategory.BENEFICIAL, 0x720000));
+    public static final RegistryObject<MobEffect> ENRAGED_FIST = MOB_EFFECTS.register("enraged_fist",
+            () -> new EnragedFistEffect(MobEffectCategory.BENEFICIAL, 0x720000));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }

@@ -18,8 +18,10 @@ public class Hemofagia extends AbstractRitual {
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
-        
-        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.SANGUE), 6f);
+
+        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.SANGUE),
+                ElementDamage.isEntityResistant(target, ElementDamage.DANO_SANGUE) ? 3f :
+                        ElementDamage.isEntityWeakTo(target, ElementDamage.DANO_SANGUE) ? 12f : 6f);
         caster.heal(5);
 
         if(world instanceof ServerLevel level) {

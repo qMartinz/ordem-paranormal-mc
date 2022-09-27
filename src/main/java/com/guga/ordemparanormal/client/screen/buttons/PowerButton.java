@@ -8,19 +8,18 @@ import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
 import com.guga.ordemparanormal.api.capabilities.network.UpdatePowers;
 import com.guga.ordemparanormal.api.powers.power.PlayerPower;
 import com.guga.ordemparanormal.api.util.MathUtils;
-import com.guga.ordemparanormal.client.screen.powerscreen.PowerScreen;
+import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
-import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 
 public class PowerButton extends AbstractButton {
     private final PlayerPower power;
@@ -86,6 +85,7 @@ public class PowerButton extends AbstractButton {
         INexCap playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
         IPowerCap playerPowers = minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
         if (playerNex == null || playerPowers == null) return;
+
         boolean powerRequirement = power.getPowerRequirements().stream().allMatch(playerPowers::hasPower) || power.getPowerRequirements().isEmpty();
         boolean requirements = playerNex.getNex() >= power.getNexRequired() &&
                 playerNex.getAttributes()[0] >= power.getAttributesRequired()[0] &&
@@ -96,9 +96,17 @@ public class PowerButton extends AbstractButton {
         if (requirements && playerNex.getPowerPoints() > 0 && !playerPowers.hasPower(power)){
             playerNex.setPowerPoints(playerNex.getPowerPoints() - 1);
             playerPowers.addPower(power);
-            Messages.sendToServer(new UpdatePowers(playerPowers.serializeNBT()));
-            Messages.sendToServer(new SyncNexToServer(playerNex.serializeNBT()));
         }
+
+        if (playerPowers.hasPower(this.power) && this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){
+            if (pScreen.selectedSlot < 6) {
+                playerPowers.setActivePower(this.power, pScreen.selectedSlot);
+                pScreen.selectedSlot = 6;
+            }
+        }
+
+        Messages.sendToServer(new UpdatePowers(playerPowers.serializeNBT()));
+        Messages.sendToServer(new SyncNexToServer(playerNex.serializeNBT()));
     }
     @Override
     public void updateNarration(NarrationElementOutput pNarrationElementOutput) {

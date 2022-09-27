@@ -4,12 +4,16 @@ import com.guga.ordemparanormal.api.ElementDamage;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class DecayEffect extends RitualEffect {
+public class DecayEffect extends MobEffect {
     public DecayEffect(MobEffectCategory effectCategory, int color) {
         super(effectCategory, color);
     }
@@ -39,5 +43,9 @@ public class DecayEffect extends RitualEffect {
         } else {
             return true;
         }
+    }
+    @Override
+    public List<ItemStack> getCurativeItems() {
+        return new ArrayList<>();
     }
 }

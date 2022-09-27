@@ -7,8 +7,8 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RitualEffect extends MobEffect {
-    public RitualEffect(MobEffectCategory p_19451_, int p_19452_) {
+public class EnragedFistEffect extends MobEffect {
+    public EnragedFistEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
     }
     @Override

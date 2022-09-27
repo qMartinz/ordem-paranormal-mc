@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.api;
 
 import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowers;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.common.power.Afinidade;

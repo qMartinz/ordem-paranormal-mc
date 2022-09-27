@@ -4,11 +4,16 @@ import com.guga.ordemparanormal.api.ElementDamage;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 
-public class BleedEffect extends RitualEffect {
+import java.util.ArrayList;
+import java.util.List;
+
+public class BleedEffect extends MobEffect {
     public BleedEffect(MobEffectCategory effectCategory, int color) {
         super(effectCategory, color);
     }
@@ -35,5 +40,9 @@ public class BleedEffect extends RitualEffect {
         } else {
             return true;
         }
+    }
+    @Override
+    public List<ItemStack> getCurativeItems() {
+        return new ArrayList<>();
     }
 }

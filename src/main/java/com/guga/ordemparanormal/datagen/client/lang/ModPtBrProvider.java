@@ -28,10 +28,9 @@ public class ModPtBrProvider extends LanguageProvider{
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
 	}
-	private void addPower(PlayerPower power, String name, String description1, String description2){
+	private void addPower(PlayerPower power, String name, String description){
 		add(power.getTranslationKey(), name);
-		add(power.getTranslationKey() + ".description.line_1", description1);
-		add(power.getTranslationKey() + ".description.line_2", description2);
+		add(power.getTranslationKey() + ".description", description);
 	}
 
 	// Adicionar traduções em PT-BR
@@ -145,23 +144,22 @@ public class ModPtBrProvider extends LanguageProvider{
 		add("ordemparanormal.power.requisites", "Requisítos");
 
 		addPower(OPPowers.AFINIDADE_SANGUE, "Afinidade com Sangue",
-				"Parte de você se torna parte do paranormal, te conectando a entidade de Sangue.",
-				"Descarta a necessidade de ingredientes de Sangue e te torna resistente a efeitos de Sangue, mas te torna fraco a efeitos de Morte.");
+				"Você se conecta à entidade de Sangue, descartando a necessidade de ingredientes de Sangue e te tornando resistente a efeitos de Sangue, mas você se torna fraco a efeitos de Morte.");
 		addPower(OPPowers.SANGUE_FERRO, "Sangue de Ferro",
-				"Suas veias são banhadas pelo paranormal, te tornando mais resistente.",
-				"Fornece 2 corações extras de vida.");
+				"Suas veias são banhadas pelo paranormal, te fornecendo 2 corações extras de vida.");
 		addPower(OPPowers.SANGUE_FERRO_2, "Sangue de Ferro II",
-				"Seu sangue e completamente irrigado pelo ódio e violência, te tornando extremamente resistente.",
-				"Fornece 3 corações extras de vida.");
+				"Seu sangue é completamente irrigado pelo ódio e violência, te fornecendo 3 corações extras de vida.");
+		addPower(OPPowers.PUNHO_ENRAIVECIDO, "Punho Enraivecido",
+				"O seu Sangue endurece e cobre suas mãos. Ao utilizar esse poder, seus próximos ataques com seus punhos causará dano extra.");
+		addPower(OPPowers.PUNHO_ENRAIVECIDO_2, "Punho Enraivecido II",
+				"O seu Sangue endurece e cobre suas mãos permanentemente. Todos os seus ataques com seus punhos causarão dano extra.");
+
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Afinidade com Energia",
-				"Parte de você se torna parte do paranormal, te conectando a entidade de Energia.",
-				"Descarta a necessidade de ingredientes de Energia e te torna resistente a efeitos de Energia, mas te torna fraco a efeitos de Conhecimento.");
+				"Você se conecta à entidade de Energia, descartando a necessidade de ingredientes de Energia e te tornando resistente a efeitos de Energia, mas você se torna fraco a efeitos de Conhecimento.");
 		addPower(OPPowers.AFINIDADE_MORTE, "Afinidade com Morte",
-				"Parte de você se torna parte do paranormal, te conectando a entidade de Morte.",
-				"Descarta a necessidade de ingredientes de Morte e te torna resistente a efeitos de Morte, mas te torna fraco a efeitos de Energia.");
+				"Você se conecta à entidade de Morte, descartando a necessidade de ingredientes de Morte e te tornando resistente a efeitos de Morte, mas você se torna fraco a efeitos de Energia.");
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
-				"Parte de você se torna parte do paranormal, te conectando a entidade de Conhecimento.",
-				"Descarta a necessidade de ingredientes de Conhecimento e te torna resistente a efeitos de Conhecimento, mas te torna fraco a efeitos de Sangue.");
+				"Você se conecta à entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas você se torna fraco a efeitos de Sangue.");
 
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");

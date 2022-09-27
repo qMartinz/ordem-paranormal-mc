@@ -1,10 +1,11 @@
 package com.guga.ordemparanormal.client.screen.powerscreen;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 
-public class KnowledgePowerScreen extends PowerScreen{
+public class KnowledgePowerScreen extends PowerScreen {
     public KnowledgePowerScreen() {
         super(ParanormalElement.CONHECIMENTO);
     }

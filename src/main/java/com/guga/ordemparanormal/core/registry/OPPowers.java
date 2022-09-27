@@ -15,8 +15,8 @@ public class OPPowers {
     public static final PlayerPower AFINIDADE_CONHECIMENTO = new Afinidade(ParanormalElement.CONHECIMENTO);
     public static final PlayerPower SANGUE_FERRO = new SangueFerro();
     public static final PlayerPower SANGUE_FERRO_2 = new SangueFerro2();
-    public static final PlayerPower SANGUE_FERRO_3 = new SangueFerro3();
-    public static final PlayerPower SANGUE_FERRO_4 = new SangueFerro4();
+    public static final PlayerPower PUNHO_ENRAIVECIDO = new PunhoEnraivecido();
+    public static final PlayerPower PUNHO_ENRAIVECIDO_2 = new PunhoEnraivecido2();
 
     /**
      * Registra os poderes
@@ -29,8 +29,8 @@ public class OPPowers {
 
         registerPower(SANGUE_FERRO);
         registerPower(SANGUE_FERRO_2);
-        registerPower(SANGUE_FERRO_3);
-        registerPower(SANGUE_FERRO_4);
+        registerPower(PUNHO_ENRAIVECIDO);
+        registerPower(PUNHO_ENRAIVECIDO_2);
     }
     public static void registerPower(PlayerPower power){
         OrdemParanormalAPI.getInstance().registerPower(power.getId(), power);

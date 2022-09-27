@@ -21,7 +21,9 @@ public class Descarnar extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         
-        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.SANGUE), 4f);
+        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.SANGUE),
+                ElementDamage.isEntityResistant(target, ElementDamage.DANO_SANGUE) ? 2f :
+                        ElementDamage.isEntityWeakTo(target, ElementDamage.DANO_SANGUE) ? 8f : 4f);
 
         if(world instanceof ServerLevel level) {
             level.sendParticles(

@@ -1,10 +1,13 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
+import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.api.capabilities.network.SyncPowers;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -14,6 +17,9 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class CapEvents {
@@ -110,7 +116,16 @@ public class CapEvents {
         IEffectsCap effects = event.getEntity().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
         if (effects == null) return;
 
-        float bloodArmorApplied = Math.max(event.getAmount() - effects.getBloodArmorPoints()/2f, 0);
+        List<DamageSource> unAppliableDamage = new ArrayList<>();
+        unAppliableDamage.add(DamageSource.FREEZE);
+        unAppliableDamage.add(DamageSource.DROWN);
+        unAppliableDamage.add(DamageSource.WITHER);
+        unAppliableDamage.add(DamageSource.STARVE);
+        unAppliableDamage.add(DamageSource.OUT_OF_WORLD);
+        unAppliableDamage.add(ElementDamage.DANO_MORTE);
+        unAppliableDamage.add(ElementDamage.DANO_MEDO);
+
+        float bloodArmorApplied = !unAppliableDamage.contains(event.getSource()) ? Math.max(event.getAmount() - effects.getBloodArmorPoints()/2f, 1) : event.getAmount();
         float deathHealthApplied = Math.max(bloodArmorApplied - effects.getDeathHealthPoints(), 0);
         effects.setDeathHealthPoints(effects.getDeathHealthPoints() - (int) Math.min(effects.getDeathHealthPoints(), bloodArmorApplied));
 
