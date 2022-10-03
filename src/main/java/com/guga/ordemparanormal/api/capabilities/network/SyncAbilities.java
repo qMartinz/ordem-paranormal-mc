@@ -1,8 +1,8 @@
 package com.guga.ordemparanormal.api.capabilities.network;
 
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowers;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilities;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -25,7 +25,7 @@ public class SyncPowers {
     public void handle(Supplier<NetworkEvent.Context> ctx){
         ctx.get().enqueueWork(()->{
             Player player = Minecraft.getInstance().player;
-            IPowerCap cap = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(new PlayerPowers());
+            IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_POWERS).orElse(new PlayerAbilities());
 
             if(cap != null){
                 cap.deserializeNBT(tag);
