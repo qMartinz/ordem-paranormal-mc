@@ -19,9 +19,14 @@ public class BloodPowerScreen extends PowerScreen {
         addPowerIcon(new PowerButton(tabWidth/2 - 73, height/2 - 10, OPPowers.PUNHO_ENRAIVECIDO_2));
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 + 40, OPPowers.ADRENALINA));
         addPowerIcon(new PowerButton(tabWidth/2 - 23, height/2 + 40, OPPowers.SANGUE_VISCERAL));
+        addPowerIcon(new PowerButton(tabWidth/2 - 23, height/2 + 90, OPPowers.VAMPIRISMO));
+        addPowerIcon(new PowerButton(tabWidth/2 - 73, height/2 + 90, OPPowers.VAMPIRISMO_2));
         addPowerIcon(new PowerButton(tabWidth/2 + 77, height/2 + 40, OPPowers.SANGUE_VIVO));
+        addPowerIcon(new PowerButton(tabWidth/2 + 77, height/2 + 90, OPPowers.DIETA_ADAPTADA));
+        addPowerIcon(new PowerButton(tabWidth/2 + 127, height/2 + 90, OPPowers.DIETA_ADAPTADA_2));
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 + 90, OPPowers.ADRENALINA_2));
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 60, OPPowers.FLAGELO));
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 110, OPPowers.ABSORVER_AGONIA));
+        addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 160, OPPowers.MEDO_TANGIVEL));
     }
 }

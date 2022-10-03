@@ -37,13 +37,13 @@ public class CapManager extends SavedData {
                     if (nex.getCurrentEffort() != nex.getMaxEffort() && serverPlayer.getFoodData().getFoodLevel() >= 20){
                         nex.setCurrentEffort(nex.getCurrentEffort() + 0.15D);
                         serverPlayer.getFoodData().addExhaustion(0.3f);
-                        Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     } else {
                         nex.setCurrentEffort(nex.getCurrentEffort() + 0.05D);
-                        Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     }
                     nex.syncAttributeMods(serverPlayer);
+                    if (nex.getPowerCooldown() > 0) nex.setPowerCooldown(nex.getPowerCooldown() - 1);
 
+                    Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     Messages.sendToPlayer(new SyncEffects(effects.serializeNBT()), serverPlayer);
                 } else if (player instanceof  LocalPlayer localPlayer){
                     INexCap nex = localPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);

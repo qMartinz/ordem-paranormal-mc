@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.api;
 
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import net.minecraft.network.chat.Component;
@@ -36,7 +36,7 @@ public class ElementDamage {
         if (entity instanceof ParanormalCreature creature){
             return damage == creature.getMainElement().getDamage();
         } else if(entity instanceof Player player) {
-            IPowerCap cap = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+            IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
             if (cap == null) return false;
             return cap.getPowers().stream().anyMatch(p -> p instanceof Afinidade && p.getElement().getDamage() == damage);
         } else {
@@ -72,7 +72,7 @@ public class ElementDamage {
                 }
             }
         } else if(entity instanceof Player player) {
-            IPowerCap cap = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+            IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
             if (cap == null) return false;
             if (cap.getPowers().stream().anyMatch(p -> p instanceof Afinidade)){
                 ParanormalElement affElement = cap.getPowers().stream().filter(p -> p instanceof Afinidade).findFirst().get().getElement();

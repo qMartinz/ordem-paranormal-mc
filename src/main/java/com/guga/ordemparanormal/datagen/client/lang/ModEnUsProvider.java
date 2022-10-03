@@ -3,8 +3,8 @@ package com.guga.ordemparanormal.datagen.client.lang;
 import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.powers.power.PlayerPower;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
@@ -165,11 +165,18 @@ public class ModEnUsProvider extends LanguageProvider{
 				"You exchange your own pain for power, receiving 2 effort points but losing 4 hearts of health.");
 		addPower(OPPowers.ABSORVER_AGONIA, "Absorb Agony",
 				"You absorb the agony of those in pain. Everytime you attack, there's a chance you may heal up to 2 and a half hearts of health.");
+		addPower(OPPowers.DIETA_ADAPTADA, "Adapted Diet",
+				"Your body adapted to absorb things that once brought you negative effects.");
+		addPower(OPPowers.DIETA_ADAPTADA_2, "Adapted Diet II",
+				"Your body benefits from consuming grotesque and unhealthy things, giving you positive effects from eating them.");
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Affinity with Energy",
 				"You're connected with the entity of Energy, discarding the need for Energy ingredients and making you resistant to Energy effects, but also weak to Knowledge effects.");
 		addPower(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
 				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
+		addPower(OPPowers.POTENCIAL_APRIMORADO, "Improved Potential",
+				"Você consegue passar dos seus limites, se esforçando mais do que o normal, ganhando 2 pontos de esforço.");
+
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
 

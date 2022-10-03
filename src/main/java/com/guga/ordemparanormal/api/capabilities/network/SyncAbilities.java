@@ -11,21 +11,21 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class SyncPowers {
+public class SyncAbilities {
     public CompoundTag tag;
-    public SyncPowers(FriendlyByteBuf buf){
+    public SyncAbilities(FriendlyByteBuf buf){
         tag = buf.readNbt();
     }
     public void toBytes(FriendlyByteBuf buf){
         buf.writeNbt(tag);
     }
-    public SyncPowers(CompoundTag playerAbilities){
+    public SyncAbilities(CompoundTag playerAbilities){
         this.tag = playerAbilities;
     }
     public void handle(Supplier<NetworkEvent.Context> ctx){
         ctx.get().enqueueWork(()->{
             Player player = Minecraft.getInstance().player;
-            IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_POWERS).orElse(new PlayerAbilities());
+            IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
 
             if(cap != null){
                 cap.deserializeNBT(tag);

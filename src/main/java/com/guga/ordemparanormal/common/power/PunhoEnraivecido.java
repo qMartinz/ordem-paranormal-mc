@@ -1,9 +1,9 @@
 package com.guga.ordemparanormal.common.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
-import com.guga.ordemparanormal.api.powers.power.PlayerPower;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -15,22 +15,20 @@ public class PunhoEnraivecido extends PlayerPower {
     }
     @Override
     public boolean canEquip(Player player) {
-        IPowerCap cap = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+        IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
         if (cap == null) return false;
 
         return !cap.hasPower(OPPowers.PUNHO_ENRAIVECIDO_2);
     }
     @Override
     public boolean canUse(Player player) {
-        IPowerCap cap = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+        IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
         if (cap == null) return false;
 
-        return !cap.hasPower(OPPowers.PUNHO_ENRAIVECIDO_2);
+        return super.canUse(player) && !cap.hasPower(OPPowers.PUNHO_ENRAIVECIDO_2);
     }
     @Override
-    public void use(Player player) {
-        super.use(player);
-        if (!player.hasEffect(OPEffects.ENRAGED_FIST.get()))
-            player.addEffect(new MobEffectInstance(OPEffects.ENRAGED_FIST.get(), 1200, 0, false, false));
+    public void onUse(Player player) {
+        player.addEffect(new MobEffectInstance(OPEffects.ENRAGED_FIST.get(), 1200, 0, false, false));
     }
 }

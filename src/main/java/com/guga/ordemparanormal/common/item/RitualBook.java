@@ -1,9 +1,9 @@
 package com.guga.ordemparanormal.common.item;
 
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
-import com.guga.ordemparanormal.api.powers.ritual.IRitualCaster;
-import com.guga.ordemparanormal.api.powers.ritual.RitualCaster;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.abilities.ritual.IRitualCaster;
+import com.guga.ordemparanormal.api.abilities.ritual.RitualCaster;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.nbt.CompoundTag;
@@ -32,7 +32,7 @@ public class RitualBook extends Item {
             int i = this.getUseDuration(stack) - pTimeLeft;
             if (i < 0) return;
 
-            IPowerCap abilities = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+            IAbilitiesCap abilities = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
             if (abilities == null) return;
         }
     }

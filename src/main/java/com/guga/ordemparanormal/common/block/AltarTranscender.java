@@ -2,7 +2,7 @@ package com.guga.ordemparanormal.common.block;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.*;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.core.BlockPos;
@@ -76,7 +76,7 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
         if (pLevel.isClientSide) super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
-        IPowerCap abilities = pPlayer.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+        IAbilitiesCap abilities = pPlayer.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
         INexCap nex = pPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
 
         if (nex != null && abilities != null){

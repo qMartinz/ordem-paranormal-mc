@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;

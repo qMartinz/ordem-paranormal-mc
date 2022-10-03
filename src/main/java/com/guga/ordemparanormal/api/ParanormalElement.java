@@ -1,7 +1,10 @@
 package com.guga.ordemparanormal.api;
 
+import com.guga.ordemparanormal.core.registry.OPSounds;
+import com.mojang.math.Vector3f;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.damagesource.DamageSource;
 
@@ -28,6 +31,15 @@ public enum ParanormalElement implements StringRepresentable {
             case MORTE -> ElementDamage.DANO_MORTE;
             case ENERGIA -> ElementDamage.DANO_ENERGIA;
             case NONE -> DamageSource.GENERIC;
+        };
+    }
+    public Vector3f getParticleVec3fColor(){
+        return switch (this){
+            case MEDO, NONE -> new Vector3f(1f, 1f, 1f);
+            case SANGUE -> new Vector3f(0.9f, 0f, 0f);
+            case CONHECIMENTO -> new Vector3f(1f, 0.9f, 0f);
+            case MORTE -> new Vector3f(0f, 0f, 0f);
+            case ENERGIA -> new Vector3f(0.7f, 0.1f, 1f);
         };
     }
     @Nonnull

@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.ritual.*;
 
 public class OPRituals {
@@ -15,6 +15,7 @@ public class OPRituals {
     public static final AbstractRitual ARMA_VELOZ = new ArmaVeloz();
     public static final AbstractRitual AMALDICOAR_ARMA = new AmaldicoarArma();
     public static final AbstractRitual HEMOFAGIA = new Hemofagia();
+    public static final AbstractRitual MEDO_TANGIVEL = new MedoTangivel();
 
     /**
      * Registra os rituais
@@ -29,6 +30,7 @@ public class OPRituals {
         registerRitual(ARMA_VELOZ);
         registerRitual(AMALDICOAR_ARMA);
         registerRitual(HEMOFAGIA);
+        registerRitual(MEDO_TANGIVEL);
     }
     public static void registerRitual(AbstractRitual ritual){
         OrdemParanormalAPI.getInstance().registerRitual(ritual.getId(), ritual);

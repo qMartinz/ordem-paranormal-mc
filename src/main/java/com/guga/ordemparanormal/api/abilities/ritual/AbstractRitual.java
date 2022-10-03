@@ -1,18 +1,25 @@
-package com.guga.ordemparanormal.api.powers.ritual;
+package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.registry.OPItems;
+import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +44,7 @@ public abstract class AbstractRitual{
     public AbstractRitual(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         this.id = id;
         this.element = element;
-        this.tier = Math.max(1, Math.min(4, tier));
+        this.tier = Mth.clamp(tier, 1, 4);
         this.effortCost = effortCost;
         this.hasEntityTarget = hasEntityTarget;
         this.range = range;
@@ -109,11 +116,11 @@ public abstract class AbstractRitual{
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster){
         if (caster instanceof Player player){
             INexCap nex = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-            IPowerCap pow = player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
-            if (nex == null || pow == null) return;
+            IAbilitiesCap abi = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+            if (nex == null || abi == null) return;
 
             boolean canCast = player.isCreative();
-            boolean useIngredient = hasIngredient() && pow.getPowers().stream().noneMatch(p -> p instanceof Afinidade && p.getElement() == element);
+            boolean useIngredient = hasIngredient() && abi.getPowers().stream().noneMatch(p -> p instanceof Afinidade && p.getElement() == element);
 
             if (!player.isCreative() && nex.getCurrentEffort() >= getEffortCost()){
                 if (useIngredient){
@@ -145,24 +152,54 @@ public abstract class AbstractRitual{
                                         OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
                             }
                         } else ingredient.setDamageValue(ingredient.getDamageValue() + 1);
+
+                        if (ingredient.getItem() instanceof RitualComponent comp && comp.getUsedSound() != null) {
+                            player.level.playSound(null, player.getX(), player.getY(), player.getZ(), comp.getUsedSound(), SoundSource.PLAYERS, 1f, 1f);
+                        }
                     }
                 }
 
                 if (rayTraceResult instanceof BlockHitResult blockHitResult) {
                     if (hasEntityTarget()){
                         onUseSelf(world, caster);
+                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                     } else {
                         onUseBlock(blockHitResult, world, caster);
+                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                     }
                 } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                     onUseEntity(entityHitResult, world, caster);
+                    if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
                 } else {
                     onUseSelf(world, caster);
+                    if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                 }
+
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), OPSounds.RITUAL_USED.get(), SoundSource.PLAYERS, 1f, 1f);
             }
         }
     }
+    private void usedParticles(ServerLevel level, LivingEntity caster, @Nullable Entity entityTarget){
+        for (int i = 0; i < 360; i++){
+            if (i % 20 == 0){
+                for (int i2 = 1; i2 < 4; i2++){
+                    level.sendParticles(new DustParticleOptions(this.element.getParticleVec3fColor(), 0.7f),
+                            caster.getX() + Math.cos(i) * i2/4d, caster.getY() + 0.1d, caster.getZ() + Math.sin(i) * i2/4d,
+                            0, 0d, 0d, 0d, 1d);
+                }
 
+                level.sendParticles(ParticleTypes.INSTANT_EFFECT,
+                        caster.getX() + Math.cos(i) * 0.3d, caster.getY() + 0.2d, caster.getZ() + Math.sin(i) * 0.3d,
+                        0, 0d, 0d, 0d, 1d);
+            }
+        }
+
+        if (entityTarget != null) {
+            level.sendParticles(new DustParticleOptions(this.element.getParticleVec3fColor(), 0.7f),
+                    entityTarget.getX(), entityTarget.getY() + entityTarget.getEyeHeight() / 2d, entityTarget.getZ(),
+                    5, 0.3d, 0.3d, 0.3d, 1d);
+        }
+    }
     /**
      * Chamado quando o ritual é utilizado em uma entidade como alvo
      *

@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.client;
 
-import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -49,7 +49,7 @@ public class Overlay extends GuiComponent {
                 int max = (int) cap.getMaxEffort();
 
                 int x = width / 2 + 91;
-                int y = height - gui.right_height + (minecraft.player.isUnderWater() ? 9 : 0);
+                int y = height - gui.right_height - (minecraft.player.isUnderWater() ? 9 : 0);
                 int i3 = Mth.ceil(max / 10.0F);
                 int j2 = Math.max(10 - (i3 - 2), 3);
 
@@ -134,10 +134,53 @@ public class Overlay extends GuiComponent {
             });
         }
     };
+    public static final IIngameOverlay ACTIVE_POWERS = (gui, poseStack, partialTicks, width, height) -> {
+        Minecraft minecraft = Minecraft.getInstance();
+        Player player = minecraft.player;
+
+        IAbilitiesCap abilities = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        INexCap nex = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        if (abilities != null && nex != null && !minecraft.options.hideGui){
+            int x = 4;
+            int y = height - 34;
+            for (int i = 0; i < 5; i++){
+                PlayerPower power = abilities.getActivePower(i);
+
+                if (power != PlayerPower.EMPTY) {
+                    RenderSystem.enableBlend();
+                    RenderSystem.disableDepthTest();
+                    RenderSystem.depthMask(false);
+                    RenderSystem.defaultBlendFunc();
+
+                    RenderSystem.setShaderTexture(0, TEXTURES);
+                    if (nex.getPowerCooldown() > 0) RenderSystem.setShaderColor(0.9f, 0.9f, 0.9f, 0.5f);
+
+                    gui.blit(poseStack, x, y, 0, 74, 30, 30);
+                    gui.blit(poseStack, x + 5, y + 5, 20 * power.getElement().index, power.isActivePower() ? 54 : 34, 20, 20);
+
+                    ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + power.getId() + ".png");
+                    if (minecraft.getResourceManager().hasResource(icon)) {
+                        RenderSystem.setShaderTexture(0, icon);
+                        blit(poseStack, x + 7, y + 7, 0, 0, 16, 16, 16, 16);
+                    }
+
+                    gui.getFont().draw(poseStack, String.valueOf(i+1), x + 5, y + 27 - minecraft.font.lineHeight, 0xFFFFFF);
+
+                    x += 32;
+
+                    RenderSystem.depthMask(true);
+                    RenderSystem.enableDepthTest();
+                    RenderSystem.disableBlend();
+                }
+            }
+        }
+    };
     @SubscribeEvent
     public void onRenderOverlay(RenderGameOverlayEvent.Post event){
-        if (event.getType() == RenderGameOverlayEvent.ElementType.LAYER) {
-            if (showLvlUpTicks > 0 && !Minecraft.getInstance().options.hideGui) {
+        Minecraft minecraft = Minecraft.getInstance();
+
+        if(!minecraft.options.hideGui){
+            if (showLvlUpTicks > 0) {
                 RenderSystem.enableBlend();
                 RenderSystem.disableDepthTest();
                 RenderSystem.depthMask(false);
@@ -165,6 +208,7 @@ public class Overlay extends GuiComponent {
     }
     public static void registerOverlays(){
         OverlayRegistry.registerOverlayTop("NEX", Overlay.HUD_NEX);
+        OverlayRegistry.registerOverlayTop("Active Powers", Overlay.ACTIVE_POWERS);
         OverlayRegistry.registerOverlayAbove(ForgeIngameGui.FOOD_LEVEL_ELEMENT, "Effort Points", Overlay.HUD_EFFORT);
         OverlayRegistry.registerOverlayAbove(ForgeIngameGui.PLAYER_HEALTH_ELEMENT, "Death Health", Overlay.HUD_DEATH_HEARTS);
         OverlayRegistry.registerOverlayAbove(ForgeIngameGui.ARMOR_LEVEL_ELEMENT, "Blood Armor", Overlay.HUD_BLOOD_ARMOR);

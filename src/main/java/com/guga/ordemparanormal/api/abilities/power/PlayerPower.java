@@ -1,11 +1,15 @@
-package com.guga.ordemparanormal.api.powers.power;
+package com.guga.ordemparanormal.api.abilities.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.common.CommonComponents;
+import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
+import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.*;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -74,34 +78,68 @@ public class PlayerPower {
         return true;
     }
     /**
+     * Chamado quando o poder é adicionado ao jogador por um {@link PowerButton}
+     *
+     * @param player o jogador que adquiriu o poder
+     */
+    public void onAdded(Player player){}
+    public void use(Player player) {
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
+            if (cap.getCurrentEffort() >= this.getEffortCost() && canUse(player) && cap.getPowerCooldown() == 0) {
+                cap.setCurrentEffort(cap.getCurrentEffort() - this.getEffortCost());
+
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), this.getSound(), SoundSource.PLAYERS, 1f, 1f);
+                if (player.level instanceof ServerLevel level) usedParticles(level, player);
+
+                cap.setPowerCooldown(15);
+                onUse(player);
+            }
+        });
+    }
+    public SoundEvent getSound(){
+        return switch (this.element){
+            case MEDO, NONE -> OPSounds.FEAR_POWER_USED.get();
+            case SANGUE -> OPSounds.BLOOD_POWER_USED.get();
+            case CONHECIMENTO -> OPSounds.KNOWLEDGE_POWER_USED.get();
+            case MORTE -> OPSounds.DEATH_POWER_USED.get();
+            case ENERGIA -> OPSounds.ENERGY_POWER_USED.get();
+        };
+    }
+    private void usedParticles(ServerLevel level, Player player){
+        for (int i = 0; i < 360; i++){
+            if (i % 20 == 0){
+                for (int i2 = 1; i2 < 4; i2++){
+                    level.sendParticles(new DustParticleOptions(this.element.getParticleVec3fColor(), 0.7f),
+                            player.getX() + Math.cos(i) * i2/4d, player.getY() + 0.1d, player.getZ() + Math.sin(i) * i2/4d,
+                            0, 0d, 0d, 0d, 1d);
+                }
+            }
+        }
+    }
+    /**
      * Chamado quando o poder ativo é utilizado.
-     * Lembre-se de utilizar o método super antes das funcionalidades adicionais, para que os PE sejam contabilizados.
      *
      * @param player o jogador que utilizou o poder
      */
-    public void use(Player player) {
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
-            if (cap.getCurrentEffort() < this.getEffortCost() && !canUse(player)) return;
-            cap.setCurrentEffort(cap.getCurrentEffort() - this.getEffortCost());
-        });
-    }
+    public void onUse(Player player){
 
+    }
     /**
      * Chamado a cada tick
      *
      * @param player o jogador que possui o poder
      */
-    public void tick(Player player){}
+    public void onTick(Player player){}
     /**
      * Chamado quando o usuário ataca
      *
      * @param player o jogador que possui o poder
      */
-    public void attack(Player player, LivingEntity target){}
+    public void onAttack(Player player, LivingEntity target){}
     /**
      * Chamado quando o usuário sofre dano
      *
      * @param player o jogador que possui o poder
      */
-    public void hurt(Player player, LivingEntity attacker, float amount){}
+    public void onHurt(Player player, LivingEntity attacker, float amount){}
 }

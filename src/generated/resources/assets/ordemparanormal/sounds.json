@@ -20,5 +20,68 @@
     "sounds": [
       "ordemparanormal:ritual_forgotten"
     ]
+  },
+  "ritual_used": {
+    "sounds": [
+      "ordemparanormal:ritual_used"
+    ]
+  },
+  "ingredient_blood": {
+    "sounds": [
+      "ordemparanormal:ingredient_blood"
+    ]
+  },
+  "ingredient_death": {
+    "sounds": [
+      "ordemparanormal:ingredient_death"
+    ]
+  },
+  "ingredient_energy": {
+    "sounds": [
+      "ordemparanormal:ingredient_energy"
+    ]
+  },
+  "ingredient_knowledge": {
+    "sounds": [
+      "ordemparanormal:ingredient_knowledge"
+    ]
+  },
+  "blood_power_used": {
+    "sounds": [
+      "ordemparanormal:blood_power_used",
+      "ordemparanormal:blood_power_used_2",
+      "ordemparanormal:blood_power_used_3"
+    ]
+  },
+  "energy_power_used": {
+    "sounds": [
+      "ordemparanormal:energy_power_used",
+      "ordemparanormal:energy_power_used_2",
+      "ordemparanormal:energy_power_used_3"
+    ]
+  },
+  "death_power_used": {
+    "sounds": [
+      "ordemparanormal:death_power_used",
+      "ordemparanormal:death_power_used_2",
+      "ordemparanormal:death_power_used_3"
+    ]
+  },
+  "knowledge_power_used": {
+    "sounds": [
+      "ordemparanormal:knowledge_power_used",
+      "ordemparanormal:knowledge_power_used_2",
+      "ordemparanormal:knowledge_power_used_3"
+    ]
+  },
+  "fear_power_used": {
+    "sounds": [
+      "ordemparanormal:fear_power_used"
+    ]
+  },
+  "vampirismo_used": {
+    "sounds": [
+      "ordemparanormal:vampirismo_used"
+    ]
   }
 }

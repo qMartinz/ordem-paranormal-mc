@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.api.powers.ritual;
+package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import net.minecraft.nbt.CompoundTag;

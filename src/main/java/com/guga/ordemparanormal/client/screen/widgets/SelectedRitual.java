@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.client.screen.widgets;
 
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -24,7 +24,7 @@ public class SelectedRitual extends AbstractWidget {
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
         Minecraft minecraft = Minecraft.getInstance();
-        minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(abilities -> {
+        minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(abilities -> {
             if (!abilities.getKnownRituals().isEmpty()){
                 ResourceLocation symbol = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/ritual_symbol/" + abilities.getKnownRituals().stream().toList().get(ritualIndex).getId() + ".png");
 

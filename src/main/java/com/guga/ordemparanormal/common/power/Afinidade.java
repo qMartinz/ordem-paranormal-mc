@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.common.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.powers.power.PlayerPower;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 
 public class Afinidade extends PlayerPower {
     public Afinidade(ParanormalElement element) {

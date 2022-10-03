@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.core.network;
 
 import com.guga.ordemparanormal.api.capabilities.network.*;
-import com.guga.ordemparanormal.api.powers.power.network.PowerPackets;
+import com.guga.ordemparanormal.api.abilities.power.network.PowerPackets;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,10 +30,10 @@ public class Messages {
 
         INSTANCE = net;
 
-        net.messageBuilder(SyncPowers.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncPowers::new)
-                .encoder(SyncPowers::toBytes)
-                .consumer(SyncPowers::handle)
+        net.messageBuilder(SyncAbilities.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(SyncAbilities::new)
+                .encoder(SyncAbilities::toBytes)
+                .consumer(SyncAbilities::handle)
                 .add();
         net.messageBuilder(SyncNexToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(SyncNexToClient::new)

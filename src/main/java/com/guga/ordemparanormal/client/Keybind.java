@@ -1,8 +1,8 @@
 package com.guga.ordemparanormal.client;
 
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
-import com.guga.ordemparanormal.api.powers.power.network.PowerPackets;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.abilities.power.network.PowerPackets;
 import com.guga.ordemparanormal.client.screen.NexScreen;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.block.AltarTranscender;
@@ -70,7 +70,7 @@ public class Keybind {
         for (int i = 0; i < usePowerList.size(); i++){
             KeyMapping binding = usePowerList.get(i);
             if (binding.consumeClick() && minecraft.screen == null){
-                IPowerCap cap = minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
+                IAbilitiesCap cap = minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
                 if (cap == null) return;
 
                 Messages.sendToServer(new PowerPackets.RequestPowerUse(i));

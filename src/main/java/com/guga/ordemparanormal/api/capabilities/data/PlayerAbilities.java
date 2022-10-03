@@ -1,15 +1,15 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
-import com.guga.ordemparanormal.api.powers.power.PlayerPower;
-import com.guga.ordemparanormal.api.powers.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.util.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class PlayerPowers implements IPowerCap {
+public class PlayerAbilities implements IAbilitiesCap {
     public Set<AbstractRitual> rituals = new HashSet<>();
     public Set<PlayerPower> powers = new HashSet<>();
     public Map<Integer, PlayerPower> activePowers = new HashMap<>();

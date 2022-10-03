@@ -1,12 +1,13 @@
 package com.guga.ordemparanormal.client.screen;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.power.RitualPower;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
-import com.guga.ordemparanormal.api.capabilities.data.IPowerCap;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
-import com.guga.ordemparanormal.api.powers.power.PlayerPower;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.client.screen.powerscreen.BloodPowerScreen;
 import com.guga.ordemparanormal.client.screen.powerscreen.DeathPowerScreen;
@@ -19,7 +20,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.*;
@@ -82,8 +82,8 @@ public class PowerScreen extends Screen {
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
         INexCap playerNex = minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-        IPowerCap playerPowers = minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).orElse(null);
-        if (playerNex == null || playerPowers == null) return;
+        IAbilitiesCap playerAbilities = minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        if (playerNex == null || playerAbilities == null) return;
 
         int tabWidth = this.width - 41;
         fill(stack,0,0,this.width,this.height,0xFF341c27);
@@ -108,7 +108,7 @@ public class PowerScreen extends Screen {
 
         RenderSystem.setShaderTexture(0, TEXTURE);
         blit(stack, tabWidth/2 - 41, height - 55, 0, 164, 136, 40);
-        drawActivePowerSlots(stack, playerPowers);
+        drawActivePowerSlots(stack, playerAbilities);
         RenderSystem.setShaderTexture(0, TEXTURE);
         if (selectedSlot < 6) blit(stack, tabWidth/2 - 38 + 26*selectedSlot, height - 50, 0, 134, 26, 30);
 
@@ -118,7 +118,7 @@ public class PowerScreen extends Screen {
         for (GuiEventListener eventListener : children()){
             if (eventListener instanceof Button button){
                 if (button.getMessage().getString().startsWith("slot_") && button.isMouseOver(pMouseX, pMouseY))
-                    drawPowerInfo(stack, playerPowers.getActivePower(Integer.parseInt(button.getMessage().getString().replaceAll("\\D+",""))));
+                    drawPowerInfo(stack, playerAbilities.getActivePower(Integer.parseInt(button.getMessage().getString().replaceAll("\\D+",""))));
             }
         }
     }
@@ -193,10 +193,11 @@ public class PowerScreen extends Screen {
             blit(stack, 2, 111, 110, 32, 32, 32);
         } else { blit(stack, 2, 111, 110, 0, 32, 32); }
     }
-    private void drawActivePowerSlots(PoseStack stack, IPowerCap playerPowers){
+    private void drawActivePowerSlots(PoseStack stack, IAbilitiesCap playerPowers){
         int tabWidth = this.width - 41;
         for (int i = 0; i < 5; i++){
             if (playerPowers.getActivePower(i) != PlayerPower.EMPTY){
+                RenderSystem.setShaderTexture(0, TEXTURE);
                 blit(stack, tabWidth / 2 - 35 + 26 * i, height - 45, 20 * playerPowers.getActivePower(i).getElement().index, 84, 20, 20);
 
                 ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + playerPowers.getActivePower(i).getId() + ".png");
@@ -218,8 +219,10 @@ public class PowerScreen extends Screen {
 
                 if (!power.getPowerRequirements().isEmpty()) power.getPowerRequirements().forEach(req -> requisites.add(req.getDisplayName().plainCopy()));
 
-                if (power.getNexRequired() != 0) requisites.add(CommonComponents.NEX_ABBREVIATION.plainCopy().append(" " + power.getNexRequired()*5 + "%"));
-
+                if (power.getNexRequired() != 0) {
+                    int nex = power.getNexRequired() * 5 - (power.getNexRequired() == 20 ? 1 : 0);
+                    requisites.add(CommonComponents.NEX_ABBREVIATION.plainCopy().append(" " + nex + "%"));
+                }
                 if (power.getAttributesRequired()[ParanormalAttribute.STRENGTH.index] != 0)
                     requisites.add(ParanormalAttribute.STRENGTH.getDisplayName().plainCopy().append(" " + power.getAttributesRequired()[ParanormalAttribute.STRENGTH.index]));
 
@@ -261,7 +264,7 @@ public class PowerScreen extends Screen {
 
             if (power.isActivePower() && power.getEffortCost() > 0) {
                 RenderSystem.setShaderTexture(0, TEXTURE);
-                blit(stack, x + width / 2 - (font.width(String.valueOf(power.getEffortCost())) + 9) / 2, y + height - 9,
+                blit(stack, x + width / 2 - (font.width(String.valueOf(power.getEffortCost())) + 9) / 2, y + height - 10,
                         100, 64, 9, 9);
                 font.draw(stack, Integer.toString(power.getEffortCost()),
                         x + width / 2f - (font.width(String.valueOf(power.getEffortCost())) + 9) / 2f + 9, y + height - 10,

@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.UUID;
+import java.util.*;
 
 public class PlayerNex implements INexCap{
     private int nex;
@@ -17,8 +17,10 @@ public class PlayerNex implements INexCap{
     private int powerPoints;
     private double maxEffort = 4;
     private double currentEffort;
+    private final Map<UUID, AttributeModifier> effortModifiers = new HashMap<>();
     private int[] attributes = new int[]{0, 0, 0};
     private int ritualSlots;
+    private int powerCooldownTicks;
     private final UUID damageBonusModUUID = UUID.randomUUID();
     private final UUID healthBonusModUUID = UUID.randomUUID();
     public int getNex() {
@@ -83,6 +85,21 @@ public class PlayerNex implements INexCap{
     public void setCurrentEffort(double currentEffort) {
         this.currentEffort = Mth.clamp(currentEffort, 0, maxEffort);
     }
+    public void addEffortModifier(AttributeModifier modifier){
+        this.effortModifiers.put(modifier.getId(), modifier);
+    }
+    public void removeEffortModifier(AttributeModifier modifier){
+        this.effortModifiers.remove(modifier.getId(), modifier);
+    }
+    public void removeEffortModifier(UUID uuid){
+        this.effortModifiers.remove(uuid);
+    }
+    public boolean hasEffortModifier(UUID uuid){
+        return this.effortModifiers.containsKey(uuid);
+    }
+    public boolean hasEffortModifier(AttributeModifier modifier){
+        return this.effortModifiers.containsValue(modifier);
+    }
     public int[] getAttributes() {
         return attributes;
     }
@@ -121,7 +138,23 @@ public class PlayerNex implements INexCap{
         }
 
         //Will
-        setMaxEffort(4 + attributes[ParanormalAttribute.PRESENCE.index]);
+        double d0 = 4 + attributes[ParanormalAttribute.PRESENCE.index];
+
+        for(AttributeModifier attributemodifier : this.effortModifiers.values().stream().filter(m -> m.getOperation() == AttributeModifier.Operation.ADDITION).toList()) {
+            d0 += attributemodifier.getAmount();
+        }
+
+        double d1 = d0;
+
+        for(AttributeModifier attributemodifier1 : this.effortModifiers.values().stream().filter(m -> m.getOperation() == AttributeModifier.Operation.MULTIPLY_BASE).toList()) {
+            d1 += d0 * attributemodifier1.getAmount();
+        }
+
+        for(AttributeModifier attributemodifier2 : this.effortModifiers.values().stream().filter(m -> m.getOperation() == AttributeModifier.Operation.MULTIPLY_TOTAL).toList()) {
+            d1 *= 1.0D + attributemodifier2.getAmount();
+        }
+
+        setMaxEffort(d1);
     }
 
     public void setRitualSlots(int ritualSlots) {
@@ -130,7 +163,14 @@ public class PlayerNex implements INexCap{
     public int getRitualSlots() {
         return ritualSlots;
     }
-
+    @Override
+    public void setPowerCooldown(int ticks) {
+        this.powerCooldownTicks = ticks;
+    }
+    @Override
+    public int getPowerCooldown() {
+        return powerCooldownTicks;
+    }
     /**
      * Copia os dados de outra capability e os aplica para essa
      *
@@ -156,6 +196,9 @@ public class PlayerNex implements INexCap{
         CompoundTag effortTag = new CompoundTag();
         effortTag.putDouble("max_effort", maxEffort);
         effortTag.putDouble("current_effort", currentEffort);
+        CompoundTag effortModifiersTag = new CompoundTag();
+        effortModifiers.values().forEach(effortMod -> effortModifiersTag.put("modifier_" + effortModifiers.values().stream().toList().indexOf(effortMod), effortMod.save()));
+        effortTag.put("modifiers", effortModifiersTag);
         nbt.put("effort", effortTag);
 
         CompoundTag attributeTag = new CompoundTag();
@@ -165,6 +208,7 @@ public class PlayerNex implements INexCap{
         nbt.put("paranormal_attributes", attributeTag);
 
         nbt.putInt("ritual_slots", ritualSlots);
+        nbt.putInt("power_cooldown_ticks", powerCooldownTicks);
 
         return nbt;
     }
@@ -177,6 +221,19 @@ public class PlayerNex implements INexCap{
         CompoundTag effortTag = nbt.getCompound("effort");
         maxEffort = effortTag.getDouble("max_effort");
         currentEffort = effortTag.getDouble("current_effort");
+        CompoundTag effortModifiersTag = nbt.getCompound("modifiers");
+        effortModifiers.clear();
+        for (int i = 0; i < effortModifiersTag.size(); i++){
+            CompoundTag modifierTag = effortModifiersTag.getCompound("modifier_" + i);
+
+            AttributeModifier modifier = new AttributeModifier(
+                    modifierTag.getUUID("UUID"),
+                    modifierTag.getString("Name"),
+                    modifierTag.getDouble("Amount"),
+                    AttributeModifier.Operation.fromValue(modifierTag.getInt("Operation")));
+
+            effortModifiers.put(modifier.getId(), modifier);
+        }
 
         CompoundTag attributeTag = nbt.getCompound("paranormal_attributes");
         attributes[0] = attributeTag.getInt("strength");
@@ -184,5 +241,6 @@ public class PlayerNex implements INexCap{
         attributes[2] = attributeTag.getInt("presence");
 
         ritualSlots = nbt.getInt("ritual_slots");
+        powerCooldownTicks = nbt.getInt("power_cooldown_ticks");
     }
 }

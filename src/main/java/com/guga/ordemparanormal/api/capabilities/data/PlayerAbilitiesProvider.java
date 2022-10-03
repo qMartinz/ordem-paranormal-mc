@@ -13,15 +13,15 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PlayerPowersProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static final ResourceLocation IDENTIFIER = new ResourceLocation(OrdemParanormal.MOD_ID, "player_powers");
-    private final IPowerCap backend = new PlayerPowers();
-    private final LazyOptional<IPowerCap> optionalData = LazyOptional.of(() -> backend);
-    public static Capability<IPowerCap> PLAYER_POWERS = CapabilityManager.get(new CapabilityToken<>(){});
+public class PlayerAbilitiesProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
+    public static final ResourceLocation IDENTIFIER = new ResourceLocation(OrdemParanormal.MOD_ID, "player_abilities");
+    private final IAbilitiesCap backend = new PlayerAbilities();
+    private final LazyOptional<IAbilitiesCap> optionalData = LazyOptional.of(() -> backend);
+    public static Capability<IAbilitiesCap> PLAYER_ABILITIES = CapabilityManager.get(new CapabilityToken<>(){});
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return PLAYER_POWERS.orEmpty(cap, this.optionalData);
+        return PLAYER_ABILITIES.orEmpty(cap, this.optionalData);
     }
 
     @Override

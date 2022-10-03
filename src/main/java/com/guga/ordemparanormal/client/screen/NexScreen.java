@@ -2,7 +2,7 @@ package com.guga.ordemparanormal.client.screen;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.client.screen.powerscreen.BloodPowerScreen;
 import com.guga.ordemparanormal.client.screen.widgets.SelectedRitual;
@@ -37,8 +37,8 @@ public class NexScreen extends Screen {
         addRenderableWidget(new AttributeButton(screenX + 131, screenY + 13, ParanormalAttribute.PRESENCE));
         SelectedRitual ritualWidget = new SelectedRitual(screenX + 177, screenY + 15);
         addRenderableWidget(ritualWidget);
-        addWidget(new Button(screenX + 175, screenY + 81, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> ritualWidget.setRitualIndex(ritualWidget.getRitualIndex() - 1 >= 0 ? ritualWidget.getRitualIndex() - 1 : playerAbilities.getKnownRituals().size() - 1))));
-        addWidget(new Button(screenX + 235, screenY + 81, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> ritualWidget.setRitualIndex(playerAbilities.getKnownRituals().size() - 1 >= ritualWidget.getRitualIndex() + 1 ? ritualWidget.getRitualIndex() + 1 : 0))));
+        addWidget(new Button(screenX + 175, screenY + 81, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities -> ritualWidget.setRitualIndex(ritualWidget.getRitualIndex() - 1 >= 0 ? ritualWidget.getRitualIndex() - 1 : playerAbilities.getKnownRituals().size() - 1))));
+        addWidget(new Button(screenX + 235, screenY + 81, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities -> ritualWidget.setRitualIndex(playerAbilities.getKnownRituals().size() - 1 >= ritualWidget.getRitualIndex() + 1 ? ritualWidget.getRitualIndex() + 1 : 0))));
         if (this.transcending) addWidget(new Button(screenX + 119, screenY + 92, 20, 20, TextComponent.EMPTY, b -> minecraft.setScreen(new BloodPowerScreen())));
     }
     @Override
@@ -65,7 +65,7 @@ public class NexScreen extends Screen {
         blit(stack, screenX + 175, screenY + 81, 96, 175, 8, 7);
         blit(stack, screenX + 235, screenY + 81, 96, 182, 8, 7);
 
-        minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
+        minecraft.player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities -> {
             String value = playerNex.getNexPercent() + "%";
             String label = CommonComponents.ATTRIBUTE_POINTS.getString();
 
@@ -87,7 +87,7 @@ public class NexScreen extends Screen {
                         mouseX, mouseY);
             }
             if (widget instanceof SelectedRitual selectedRitual){
-                minecraft.player.getCapability(PlayerPowersProvider.PLAYER_POWERS).ifPresent(playerAbilities -> {
+                minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities -> {
                     if (selectedRitual.isMouseOver(mouseX, mouseY) && !playerAbilities.getKnownRituals().isEmpty())
                         renderComponentTooltip(stack,
                             playerAbilities.getKnownRituals().stream().toList().get(selectedRitual.getRitualIndex()).getDescription(),

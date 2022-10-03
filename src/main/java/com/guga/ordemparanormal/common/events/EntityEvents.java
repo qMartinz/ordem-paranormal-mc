@@ -1,8 +1,6 @@
 package com.guga.ordemparanormal.common.events;
 
 import com.guga.ordemparanormal.api.ElementDamage;
-import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerPowersProvider;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
@@ -11,7 +9,6 @@ import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -20,7 +17,6 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
