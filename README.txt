@@ -5,7 +5,7 @@ No futuro, serão adicionados rituais, muitas criaturas entre outras coisas rela
 ============================================================================================================
 
 Mod feito por: Time OP Mod
-Créditos: Aufa, Lye e Babako por ajudarem com as texturas.
+Créditos: Aufa por iniciar o projeto e organizar a equipe e as redes do Mod, Lye e Babako por ajudarem com as texturas, Guga e Japa por programarem.
 
 Twitter: @ParanormalMod
 Discord: https://discord.gg/mcxGbQbjkT
