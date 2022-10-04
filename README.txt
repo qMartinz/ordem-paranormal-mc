@@ -1,4 +1,4 @@
-Esse é um mod de Ordem Paranormal feito para a versão 1.18.1 de Minecraft.
+Esse é um mod de Ordem Paranormal feito para a versão 1.18.2 de Minecraft Java.
 
 No futuro, serão adicionados rituais, muitas criaturas entre outras coisas relacionadas à Ordem Paranormal.
 
