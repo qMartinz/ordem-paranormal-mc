@@ -15,17 +15,17 @@ Discord: https://discord.gg/mcxGbQbjkT
 Anotações:
 
 itens:
-Livro de Rituais,
-Mesa de Escritura (pra modificar os livros),
+Grimorio Ritualistico,
+Mesa de Escritura (pra modificar os grimorios),
 Pergaminhos de PE,
 Livro de tutorial(em formato de historia)
 
 Mecanicas:
-Livro de rituais vir vazio quando craftar e poder adicionar pagina com rituais usando a mesa de escritura, papel e tinta.
+Grimorio Ritualistico vir vazio quando craftar e poder adicionar pagina com rituais usando a mesa de escritura, papel e tinta.
 Circulo de ritual
 Classes(?)
 Cadaver do Player
-Classes(?)
+Trilhas(?)
 
 Mobs:
 NPCs do Ordem(?)
