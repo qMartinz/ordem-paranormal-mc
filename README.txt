@@ -24,6 +24,7 @@ Mecanicas:
 Livro de rituais vir vazio quando craftar e poder adicionar pagina com rituais usando a mesa de escritura, papel e tinta.
 Circulo de ritual
 Classes(?)
+Cadaver do Player
 
 Mobs:
 
