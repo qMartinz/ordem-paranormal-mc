@@ -9,3 +9,15 @@ Créditos: Aufa por iniciar o projeto e organizar a equipe e as redes do Mod, Ly
 
 Twitter: @ParanormalMod
 Discord: https://discord.gg/mcxGbQbjkT
+
+============================================================================================================
+
+Anotações:
+
+itens:
+Livro de Rituais, Mesa de Escritura (pra modificar os livros), Pergaminhos de PE
+
+Mecanicas:
+Livro de rituais vir vazio quando craftar e poder adicionar pagina com rituais usando a mesa de escritura, papel e tinta
+
+

@@ -1,5 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
+import org.antlr.v4.parse.ANTLRParser.finallyClause_return;
+
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.ritual.*;
@@ -16,11 +18,12 @@ public class OPRituals {
     public static final AbstractRitual AMALDICOAR_ARMA = new AmaldicoarArma();
     public static final AbstractRitual HEMOFAGIA = new Hemofagia();
     public static final AbstractRitual MEDO_TANGIVEL = new MedoTangivel();
+    public static final AbstractRitual APRIMORAMENTO_FISICO = new AprimoramentoFisico();
 
     /**
      * Registra os rituais
      */
-    public static void setup(){
+    public static void setup() {
         registerRitual(DESCARNAR);
         registerRitual(DECADENCIA);
         registerRitual(CONSUMIR_MANANCIAL);
@@ -31,8 +34,10 @@ public class OPRituals {
         registerRitual(AMALDICOAR_ARMA);
         registerRitual(HEMOFAGIA);
         registerRitual(MEDO_TANGIVEL);
+        registerRitual(APRIMORAMENTO_FISICO);
     }
-    public static void registerRitual(AbstractRitual ritual){
+
+    public static void registerRitual(AbstractRitual ritual) {
         OrdemParanormalAPI.getInstance().registerRitual(ritual.getId(), ritual);
     }
 
