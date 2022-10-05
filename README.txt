@@ -28,17 +28,18 @@ Classes(?)
 Mobs:
 
 Rituais:
+```diff
 ----------
-Conhecimento
+!Conhecimento
 
-Perturbação
-Amaldiçoar Arma 📝 
-Esconder dos Olhos
-Detectar Ameaças
-Localização
-Aprimoramento Mental
-Tecer Ilusões
-Inexistir
+!Perturbação
+!Amaldiçoar Arma 📝 
+!Esconder dos Olhos
+!Detectar Ameaças
+!Localização
+!Aprimoramento Mental
+!Tecer Ilusões
+!Inexistir
 ----------
 Energia
 
