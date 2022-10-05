@@ -23,6 +23,7 @@ public class OPRituals {
     public static final AbstractRitual AMALDICOAR_ARMA = new AmaldicoarArma();
     // Medo
     public static final AbstractRitual MEDO_TANGIVEL = new MedoTangivel();
+    public static final AbstractRitual LAMINA_MEDO = new LaminaMedo();
 
     /**
      * Registra os rituais
@@ -45,6 +46,7 @@ public class OPRituals {
         registerRitual(AMALDICOAR_ARMA);
         // Medo
         registerRitual(MEDO_TANGIVEL);
+        registerRitual(LAMINA_MEDO);
     }
 
     public static void registerRitual(AbstractRitual ritual) {

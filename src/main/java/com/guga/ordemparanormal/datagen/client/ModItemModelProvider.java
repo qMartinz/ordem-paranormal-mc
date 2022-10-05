@@ -109,6 +109,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 		oneLayerItem(OPItems.RITUAL_HEMOFAGIA.get());
 		oneLayerItem(OPItems.RITUAL_APRIMORAMENTO_FISICO.get());
 		oneLayerItem(OPItems.RITUAL_VELOCIDADE_MORTAL.get());
+		oneLayerItem(OPItems.RITUAL_LAMINA_MEDO.get());
 
 		// Componentes Ritualisticos
 		oneLayerItem(OPItems.COMPONENTE_VAZIO.get());

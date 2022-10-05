@@ -41,6 +41,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRHemofagia();
 	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRAprimoramentoFisico();
 	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRVelocidadeMortal();
+	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRLaminaMedo();
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER
@@ -153,6 +154,11 @@ public final class OPItems {
 		private RegistryObject<RitualItem> createRVelocidadeMortal() {
 			return this.deferredRegister.register("ritual_velocidade_mortal",
 					() -> new RitualItem(OPRituals.VELOCIDADE_MORTAL));
+		}
+
+		private RegistryObject<RitualItem> createRLaminaMedo() {
+			return this.deferredRegister.register("ritual_lamina_medo",
+					() -> new RitualItem(OPRituals.LAMINA_MEDO));
 		}
 
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {
