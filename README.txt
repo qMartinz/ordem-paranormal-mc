@@ -31,6 +31,7 @@ Mobs:
 NPCs do Ordem(?)
 Telopsia(Boss)
 Lupi
+Organizações Paranormais
 
 Rituais:
 
