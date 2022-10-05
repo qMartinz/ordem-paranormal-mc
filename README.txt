@@ -30,6 +30,7 @@ Trilhas(?)
 Mobs:
 NPCs do Ordem(?)
 Telopsia(Boss)
+Lupi
 
 Rituais:
 
