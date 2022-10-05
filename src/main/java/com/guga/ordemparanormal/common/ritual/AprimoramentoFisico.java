@@ -18,7 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 public class AprimoramentoFisico extends AbstractRitual {
     public AprimoramentoFisico() {
-        super("aprimoramento_fisico", ParanormalElement.SANGUE, 2, 4, true, 0D, true);
+        super("aprimoramento_fisico", ParanormalElement.SANGUE, 2, 3, true, 0D, true);
     }
 
     @Override
