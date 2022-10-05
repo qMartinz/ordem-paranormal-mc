@@ -25,8 +25,11 @@ Livro de rituais vir vazio quando craftar e poder adicionar pagina com rituais u
 Circulo de ritual
 Classes(?)
 Cadaver do Player
+Classes(?)
 
 Mobs:
+NPCs do Ordem(?)
+Telopsia(Boss)
 
 Rituais:
 
