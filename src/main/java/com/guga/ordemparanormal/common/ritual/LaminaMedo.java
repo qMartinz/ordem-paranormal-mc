@@ -16,13 +16,13 @@ import net.minecraft.world.level.block.Blocks;
 
 public class LaminaMedo extends AbstractRitual {
     public LaminaMedo() {
-        super("lamina_medo", ParanormalElement.MEDO, 4, 8, true, 0D, false);
+        super("lamina_medo", ParanormalElement.MEDO, 4, 10, true, 0.1D, false);
     }
 
     @Override
     public void onUseSelf(Level world, LivingEntity caster) {
         // sets the item to itemstack
-        ItemStack lamina = new ItemStack(OPItems.CINZAS.get());
+        ItemStack lamina = new ItemStack(OPItems.LAMINA_DO_MEDO.get());
         // checa se tem item na mão principal e o livro ta na secundaria
         if (caster.getOffhandItem().getItem() == OPItems.RITUAL_LAMINA_MEDO.get()
                 && caster.hasItemInSlot(EquipmentSlot.MAINHAND) == false) {

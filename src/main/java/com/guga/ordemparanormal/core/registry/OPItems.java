@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.common.item.LaminaDoMedo;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
@@ -28,6 +30,7 @@ public final class OPItems {
 	public static final RegistryObject<Item> GRIMORIO_ENERGIA = HELPER.createGEnergia();
 	public static final RegistryObject<Item> ORGAO = HELPER.createOrgao();
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
+	public static final RegistryObject<SwordItem> LAMINA_DO_MEDO = HELPER.createLaminaDoMedo();
 
 	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRDescarnar();
@@ -105,6 +108,10 @@ public final class OPItems {
 					.register("cinzas",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
+		}
+
+		private RegistryObject<SwordItem> createLaminaDoMedo() {
+			return this.deferredRegister.register("lamina_do_medo", () -> new LaminaDoMedo());
 		}
 
 		private RegistryObject<RitualItem> createRDescarnar() {

@@ -58,6 +58,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence Altar");
+		add(OPItems.LAMINA_DO_MEDO.get(), "Blade of Fear");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");

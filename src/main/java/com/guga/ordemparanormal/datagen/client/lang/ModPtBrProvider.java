@@ -58,6 +58,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.ORGAO.get(), "�rg�o");
 		add(OPItems.CINZAS.get(), "Cinzas");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de Transcend�ncia");
+		add(OPItems.LAMINA_DO_MEDO.get(), "Lamina do Medo");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Livro amaldi�oado");
