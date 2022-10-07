@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.core.network;
 
 import com.guga.ordemparanormal.api.capabilities.network.*;
-import com.guga.ordemparanormal.api.abilities.power.network.PowerPackets;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,45 +20,32 @@ public class Messages {
     }
 
     public static void register() {
-        SimpleChannel net = NetworkRegistry.ChannelBuilder
-                .named(new ResourceLocation(OrdemParanormal.MOD_ID, "messages"))
-                .networkProtocolVersion(() -> "1.0")
-                .clientAcceptedVersions(s -> true)
-                .serverAcceptedVersions(s -> true)
-                .simpleChannel();
+        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(OrdemParanormal.MOD_ID, "network"), () -> "1.0", s->true, s->true);
 
-        INSTANCE = net;
-
-        net.messageBuilder(SyncAbilities.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncAbilities::new)
-                .encoder(SyncAbilities::toBytes)
-                .consumer(SyncAbilities::handle)
-                .add();
-        net.messageBuilder(SyncNexToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncNexToClient::new)
-                .encoder(SyncNexToClient::toBytes)
-                .consumer(SyncNexToClient::handle)
-                .add();
-        net.messageBuilder(SyncNexToServer.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(SyncNexToServer::new)
-                .encoder(SyncNexToServer::toBytes)
-                .consumer(SyncNexToServer::handle)
-                .add();
-        net.messageBuilder(UpdatePowers.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(UpdatePowers::new)
-                .encoder(UpdatePowers::toBytes)
-                .consumer(UpdatePowers::handle)
-                .add();
-        net.messageBuilder(PowerPackets.RequestPowerUse.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(PowerPackets.RequestPowerUse::new)
-                .encoder(PowerPackets.RequestPowerUse::toBytes)
-                .consumer(PowerPackets.RequestPowerUse::handle)
-                .add();
-        net.messageBuilder(SyncEffects.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncEffects::new)
-                .encoder(SyncEffects::toBytes)
-                .consumer(SyncEffects::handle)
-                .add();
+        INSTANCE.registerMessage(id(), Packets.SyncAbilities.class,
+                Packets.SyncAbilities::toBytes,
+                Packets.SyncAbilities::new,
+                Packets.SyncAbilities::handle);
+        INSTANCE.registerMessage(id(), Packets.SyncNexToClient.class,
+                Packets.SyncNexToClient::toBytes,
+                Packets.SyncNexToClient::new,
+                Packets.SyncNexToClient::handle);
+        INSTANCE.registerMessage(id(), Packets.SyncNexToServer.class,
+                Packets.SyncNexToServer::toBytes,
+                Packets.SyncNexToServer::new,
+                Packets.SyncNexToServer::handle);
+        INSTANCE.registerMessage(id(), Packets.UpdatePowers.class,
+                Packets.UpdatePowers::toBytes,
+                Packets.UpdatePowers::new,
+                Packets.UpdatePowers::handle);
+        INSTANCE.registerMessage(id(), Packets.RequestPowerUse.class,
+                Packets.RequestPowerUse::toBytes,
+                Packets.RequestPowerUse::new,
+                Packets.RequestPowerUse::handle);
+        INSTANCE.registerMessage(id(), Packets.SyncEffects.class,
+                Packets.SyncEffects::toBytes,
+                Packets.SyncEffects::new,
+                Packets.SyncEffects::handle);
     }
 
     public static <MSG> void sendToServer(MSG message) {
@@ -68,8 +54,7 @@ public class Messages {
 
     public static void sendToPlayer(Object msg, Player player) {
         if (EffectiveSide.get() == LogicalSide.SERVER) {
-            ServerPlayer serverPlayer = (ServerPlayer) player;
-            INSTANCE.send(PacketDistributor.PLAYER.with(() -> serverPlayer), msg);
+            INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player), msg);
         }
     }
 }

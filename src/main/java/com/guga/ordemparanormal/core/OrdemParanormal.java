@@ -4,7 +4,10 @@ import com.guga.ordemparanormal.api.curses.CursedItemProperties;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
+import com.guga.ordemparanormal.core.network.ClientProxy;
+import com.guga.ordemparanormal.core.network.IProxy;
 import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
@@ -28,6 +31,7 @@ import org.apache.logging.log4j.Logger;
 public class OrdemParanormal {
 	public static final String MOD_ID = "ordemparanormal";
 	public static final Logger LOGGER = LogManager.getLogger();
+	public static IProxy proxy = DistExecutor.runForDist(()-> ClientProxy::new, () -> ServerProxy::new);
 	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper ->
 			helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
 	public static final CreativeModeTab OP_TAB = new CreativeModeTab(MOD_ID) {
@@ -52,20 +56,20 @@ public class OrdemParanormal {
 		// Event Bus para registrar coisas do mod
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		Messages.register();
+		bus.addListener(this::apiSetup);
 		REGISTRY_HELPER.register(bus);
+
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.register(bus);
 		OPEffects.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 
-		MinecraftForge.EVENT_BUS.register(this);
-
+		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);
-		bus.addListener(this::commonSetup);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
-	public void commonSetup(final FMLCommonSetupEvent event){
+	public void apiSetup(final FMLCommonSetupEvent event){
 		OPCurses.setup();
 		OPRituals.setup();
 		OPPowers.setup();
@@ -78,6 +82,9 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.ZUMBI_ESPINHENTO.get(), ZumbiEspinhentoRenderer::new);
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
+	}
+	private void setup(final FMLCommonSetupEvent event){
+		Messages.register();
 	}
 	private void clientSetup(final FMLClientSetupEvent event){
 		MinecraftForge.EVENT_BUS.register(new Overlay());

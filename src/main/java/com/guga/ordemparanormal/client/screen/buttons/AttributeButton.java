@@ -2,8 +2,8 @@ package com.guga.ordemparanormal.client.screen.buttons;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
-import com.guga.ordemparanormal.client.screen.NexScreen;
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
+import com.guga.ordemparanormal.client.screen.AttributeScreen;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -24,18 +24,18 @@ public class AttributeButton extends AbstractButton {
     }
 
     public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks){
-        RenderSystem.setShaderTexture(0, NexScreen.TEXTURES);
+        RenderSystem.setShaderTexture(0, AttributeScreen.TEXTURES);
 
         int u = 32 * this.attribute.index;
-        blit(stack, x, y, u, 175, width, height);
+        blit(stack, x, y, u, 217, width, height);
 
         int color = 0xFFFFFF;
 
         int level = player.getCapability(PlayerNexProvider.PLAYER_NEX).map(cap -> cap.getAttribute(this.attribute)).orElseThrow();
-        minecraft.font.drawShadow(stack, Integer.toString(level), x + 16 - minecraft.font.width(Integer.toString(level))/2f, y + height + 1 + minecraft.font.lineHeight, color);
+        minecraft.font.drawShadow(stack, Integer.toString(level), x + 16 - minecraft.font.width(Integer.toString(level))/2f, y + height + 1, color);
 
         String text = attribute.getDisplayName().getString();
-        minecraft.font.drawShadow(stack, text, x + 16 - minecraft.font.width(text)/2f, y + height + 2 + minecraft.font.lineHeight*2, color);
+        minecraft.font.drawShadow(stack, text, x + 16 - minecraft.font.width(text)/2f, y + height + 2 + minecraft.font.lineHeight, color);
     }
     @Override
     public void onPress() {
@@ -43,7 +43,7 @@ public class AttributeButton extends AbstractButton {
             if (playerNex.getAttributePoints() > 0){
                 playerNex.setAttribute(attribute, playerNex.getAttribute(attribute) + 1);
                 playerNex.setAttributePoints(playerNex.getAttributePoints() - 1);
-                Messages.sendToServer(new SyncNexToServer(playerNex.serializeNBT()));
+                Messages.sendToServer(new Packets.SyncNexToServer(playerNex.serializeNBT()));
             }
         });
     }

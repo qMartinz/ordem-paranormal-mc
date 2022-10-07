@@ -1,9 +1,9 @@
 package com.guga.ordemparanormal.client;
 
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.api.abilities.power.network.PowerPackets;
-import com.guga.ordemparanormal.client.screen.NexScreen;
+import com.guga.ordemparanormal.client.screen.AttributeScreen;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.block.AltarTranscender;
 import com.guga.ordemparanormal.core.network.Messages;
@@ -61,8 +61,8 @@ public class Keybind {
             BlockPos blockpos = ((BlockHitResult)block).getBlockPos();
             BlockState blockstate = minecraft.player.level.getBlockState(blockpos);
             if (minecraft.screen == null){
-                minecraft.setScreen(new NexScreen(block.getType() == HitResult.Type.BLOCK && blockstate.getBlock() instanceof AltarTranscender));
-            } else if (minecraft.screen instanceof NexScreen || minecraft.screen instanceof PowerScreen){
+                minecraft.setScreen(new AttributeScreen(block.getType() == HitResult.Type.BLOCK && blockstate.getBlock() instanceof AltarTranscender));
+            } else if (minecraft.screen instanceof AttributeScreen || minecraft.screen instanceof PowerScreen){
                 minecraft.setScreen(null);
             }
         }
@@ -73,7 +73,7 @@ public class Keybind {
                 IAbilitiesCap cap = minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
                 if (cap == null) return;
 
-                Messages.sendToServer(new PowerPackets.RequestPowerUse(i));
+                Messages.sendToServer(new Packets.RequestPowerUse(i));
             }
         }
     }

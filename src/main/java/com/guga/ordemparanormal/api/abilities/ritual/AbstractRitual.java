@@ -1,11 +1,10 @@
 package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.common.CommonComponents;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.registry.OPItems;
@@ -14,7 +13,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -30,8 +28,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractRitual{
     private final String id;
@@ -60,28 +56,8 @@ public abstract class AbstractRitual{
     public ParanormalElement getElement() {
         return element;
     }
-    public List<Component> getDescription(){
-        List<Component> lines = new ArrayList<>();
-
-        ChatFormatting formatting = ChatFormatting.WHITE;
-        switch (element){
-            case SANGUE -> formatting = ChatFormatting.DARK_RED;
-            case CONHECIMENTO -> formatting = ChatFormatting.GOLD;
-            case ENERGIA -> formatting = ChatFormatting.DARK_PURPLE;
-            case MORTE -> formatting = ChatFormatting.DARK_GRAY;
-            case MEDO -> formatting = ChatFormatting.WHITE;
-            case NONE -> formatting = ChatFormatting.GRAY;
-        }
-        Component title = getDisplayName().plainCopy().withStyle(formatting);
-        lines.add(title);
-
-        lines.add(TextComponent.EMPTY);
-
-        lines.add(new TranslatableComponent(this.getTranslationKey() + ".description").withStyle(ChatFormatting.GRAY));
-        lines.add(CommonComponents.CONSUMES.plainCopy().append(" " + this.effortCost + " " + CommonComponents.EFFORT_POINTS_FULL_NAME.getString())
-                .withStyle(ChatFormatting.GRAY));
-
-        return lines;
+    public Component getDescription(){
+        return new TranslatableComponent(this.getTranslationKey() + ".description").withStyle(ChatFormatting.WHITE);
     }
     public int getTier() { return tier; }
     public int getPresenceRequired(){
@@ -127,6 +103,7 @@ public abstract class AbstractRitual{
                     if (mustHoldIngredient()) {
                         if (player.getOffhandItem().getItem() instanceof RitualComponent component &&
                                 component.element == this.element) canCast = true;
+
                     } else {
                         if (player.getInventory().items.stream().anyMatch(stack ->
                                 stack.getItem() instanceof RitualComponent component &&

@@ -1,8 +1,7 @@
 package com.guga.ordemparanormal.client.screen.buttons;
 
 import com.guga.ordemparanormal.api.capabilities.data.*;
-import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
-import com.guga.ordemparanormal.api.capabilities.network.UpdatePowers;
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
@@ -102,8 +101,8 @@ public class PowerButton extends AbstractButton {
             }
         }
 
-        Messages.sendToServer(new UpdatePowers(playerAbilities.serializeNBT()));
-        Messages.sendToServer(new SyncNexToServer(playerNex.serializeNBT()));
+        Messages.sendToServer(new Packets.UpdatePowers(playerAbilities.serializeNBT()));
+        Messages.sendToServer(new Packets.SyncNexToServer(playerNex.serializeNBT()));
     }
     @Override
     public void updateNarration(NarrationElementOutput pNarrationElementOutput) {

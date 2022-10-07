@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.client.screen;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.abilities.power.RitualPower;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;

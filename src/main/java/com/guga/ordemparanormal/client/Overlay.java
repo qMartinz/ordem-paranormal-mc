@@ -49,7 +49,7 @@ public class Overlay extends GuiComponent {
                 int max = (int) cap.getMaxEffort();
 
                 int x = width / 2 + 91;
-                int y = height - gui.right_height - (minecraft.player.isUnderWater() ? 9 : 0);
+                int y = height - gui.right_height - (minecraft.player.getAirSupply() < 300 ? 9 : 0);
                 int i3 = Mth.ceil(max / 10.0F);
                 int j2 = Math.max(10 - (i3 - 2), 3);
 

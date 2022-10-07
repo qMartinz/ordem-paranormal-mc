@@ -1,8 +1,6 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
-import com.guga.ordemparanormal.api.capabilities.network.SyncEffects;
-import com.guga.ordemparanormal.api.capabilities.network.SyncNexToClient;
-import com.guga.ordemparanormal.api.capabilities.network.SyncNexToServer;
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.core.network.Messages;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
@@ -43,13 +41,13 @@ public class CapManager extends SavedData {
                     nex.syncAttributeMods(serverPlayer);
                     if (nex.getPowerCooldown() > 0) nex.setPowerCooldown(nex.getPowerCooldown() - 1);
 
-                    Messages.sendToPlayer(new SyncNexToClient(nex.serializeNBT()), serverPlayer);
-                    Messages.sendToPlayer(new SyncEffects(effects.serializeNBT()), serverPlayer);
+                    Messages.sendToPlayer(new Packets.SyncNexToClient(nex.serializeNBT()), serverPlayer);
+                    Messages.sendToPlayer(new Packets.SyncEffects(effects.serializeNBT()), serverPlayer);
                 } else if (player instanceof  LocalPlayer localPlayer){
                     INexCap nex = localPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
                     if (nex == null) return;
 
-                    Messages.sendToServer(new SyncNexToServer(nex.serializeNBT()));
+                    Messages.sendToServer(new Packets.SyncNexToServer(nex.serializeNBT()));
                 }
             });
         }

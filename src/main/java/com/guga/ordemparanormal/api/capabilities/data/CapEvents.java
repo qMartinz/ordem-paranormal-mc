@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
 import com.guga.ordemparanormal.api.ElementDamage;
-import com.guga.ordemparanormal.api.capabilities.network.SyncAbilities;
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.registry.OPEffects;
@@ -69,15 +69,11 @@ public class CapEvents {
     }
     @SubscribeEvent
     public static void onPlayerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getPlayer() instanceof ServerPlayer){
-            syncPlayerPowers(event.getPlayer());
-        }
+        syncPlayerPowers(event.getPlayer());
     }
     @SubscribeEvent
     public static void respawnEvent(PlayerEvent.PlayerRespawnEvent event) {
-        if (event.getPlayer() instanceof ServerPlayer){
-            syncPlayerPowers(event.getPlayer());
-        }
+        syncPlayerPowers(event.getPlayer());
         if (!event.isEndConquered()){
             INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
             if (nex == null) return;
@@ -86,20 +82,19 @@ public class CapEvents {
     }
     @SubscribeEvent
     public static void onPlayerStartTrackingEvent(PlayerEvent.StartTracking event) {
-        if (event.getTarget() instanceof Player && event.getPlayer() instanceof ServerPlayer player) {
-            syncPlayerPowers(player);
-        }
+        syncPlayerPowers(event.getPlayer());
     }
     @SubscribeEvent
     public static void onPlayerDimChangedEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getPlayer() instanceof ServerPlayer) {
-            syncPlayerPowers(event.getPlayer());
-        }
+        syncPlayerPowers(event.getPlayer());
     }
     public static void syncPlayerPowers(Player player){
-        IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
-        CompoundTag tag = cap.serializeNBT();
-        Messages.sendToPlayer(new SyncAbilities(tag), player);
+        if (player instanceof ServerPlayer) {
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(cap -> {
+                CompoundTag tag = cap.serializeNBT();
+                Messages.sendToPlayer(new Packets.SyncAbilities(tag), player);
+            });
+        }
     }
     @SubscribeEvent
     public static void onWorldTick(TickEvent.WorldTickEvent event){

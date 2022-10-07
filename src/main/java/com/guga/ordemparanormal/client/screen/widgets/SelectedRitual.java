@@ -26,18 +26,25 @@ public class SelectedRitual extends AbstractWidget {
         Minecraft minecraft = Minecraft.getInstance();
         minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(abilities -> {
             if (!abilities.getKnownRituals().isEmpty()){
-                ResourceLocation symbol = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/ritual_symbol/" + abilities.getKnownRituals().stream().toList().get(ritualIndex).getId() + ".png");
+                ResourceLocation symbol = new ResourceLocation(OrdemParanormal.MOD_ID,
+                        "textures/ritual_symbol/" + abilities.getKnownRituals().stream().toList().get(ritualIndex).getId() + ".png");
 
                 if (minecraft.getResourceManager().hasResource(symbol)) {
                     RenderSystem.enableBlend();
                     RenderSystem.disableDepthTest();
                     RenderSystem.depthMask(false);
                     RenderSystem.defaultBlendFunc();
+
                     RenderSystem.setShaderTexture(0, symbol);
                     blit(stack, x + width/2 - 32, y + height/2 - 32, 0, 0, 64, 64, 64, 64);
+
                     RenderSystem.depthMask(true);
                     RenderSystem.enableDepthTest();
                     RenderSystem.disableBlend();
+
+                    minecraft.font.drawShadow(stack, String.valueOf(getRitualIndex() + 1),
+                            x + width/2f - minecraft.font.width(String.valueOf(getRitualIndex() + 1))/2f, y + height - minecraft.font.lineHeight,
+                            0xFFde9e41);
                 }
             }
         });
