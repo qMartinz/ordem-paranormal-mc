@@ -10,9 +10,10 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class CommandEvents {
     @SubscribeEvent
-    public static void onRegisterCommand(RegisterCommandsEvent event){
+    public static void onRegisterCommand(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
 
         NexCommands.register(dispatcher);
+        // RitualCommands.register(dispatcher);
     }
 }

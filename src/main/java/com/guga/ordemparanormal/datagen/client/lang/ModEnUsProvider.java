@@ -10,30 +10,34 @@ import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
-public class ModEnUsProvider extends LanguageProvider{
+public class ModEnUsProvider extends LanguageProvider {
 
 	public ModEnUsProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
 	}
-	private void addDescription(String key, String line1, String line2, String line3){
+
+	private void addDescription(String key, String line1, String line2, String line3) {
 		add(key + ".description.line_1", line1);
 		add(key + ".description.line_2", line2);
 		add(key + ".description.line_3", line3);
 	}
-	private void addDescription(String key, String line1, String line2){
+
+	private void addDescription(String key, String line1, String line2) {
 		add(key + ".description.line_1", line1);
 		add(key + ".description.line_2", line2);
 	}
-	private void addRitual(AbstractRitual ritual, String name, String description){
+
+	private void addRitual(AbstractRitual ritual, String name, String description) {
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
 	}
-	private void addPower(PlayerPower power, String name, String description){
+
+	private void addPower(PlayerPower power, String name, String description) {
 		add(power.getTranslationKey(), name);
 		add(power.getTranslationKey() + ".description", description);
 	}
 
-	// Adicionar traduções em EN-US
+	// Adicionar traduï¿½ï¿½es em EN-US
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens
@@ -44,16 +48,17 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Sons
 		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Blood zombie growl");
 		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
-		
+
 		// Itens
-		add("ordemparanormal.ritual_item.ritual_learned", "§7Just an item with a strange symbol.");
-		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
-		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual");
+		add("ordemparanormal.ritual_item.ritual_learned", "ï¿½7Just an item with a strange symbol.");
+		add("ordemparanormal.ritual_item.ritual_unknown", "ï¿½7Seems to emanate a strange presence...");
+		add("ordemparanormal.ritual_item.cursed_with", "ï¿½7Cursed with the ritual");
 		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
 		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence Altar");
+		add(OPItems.LAMINA_DO_MEDO.get(), "Blade of Fear");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");
@@ -68,13 +73,13 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(OPItems.COMPONENTE_ENERGIA.get(), "Energy ritualistic ingredients");
 		add(OPItems.COMPONENTE_MORTE.get(), "Death ritualistic ingredients");
 		add(OPItems.COMPONENTE_CONHECIMENTO.get(), "Knowledge ritualistic ingredients");
-		
+
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Bestial Blood zombie spawn egg");
 		add(OPItems.ZUMBI_SANGUE_OVO.get(), "Blood zombie spawn egg");
 		add(OPItems.ZUMBI_SECO_OVO.get(), "Skeletal Blood zombie spawn egg");
 		add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
-		
+
 		// Entidades
 		add(OPEntities.BESTIAL.get(), "Bestial Blood zombie");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Blood zombie");
@@ -100,17 +105,17 @@ public class ModEnUsProvider extends LanguageProvider{
 		add(ParanormalAttribute.VIGOR.name, "Vigor");
 		add(ParanormalAttribute.PRESENCE.name, "Presence");
 		addDescription(ParanormalAttribute.STRENGTH.name,
-				"§6Strength §rdetermines how strong the Paranormal has made you.",
-				"§8Increases the speed in wich you break blocks.",
-				"§8Increases the damage of your attacks.");
+				"ï¿½6Strength ï¿½rdetermines how strong the Paranormal has made you.",
+				"ï¿½8Increases the speed in wich you break blocks.",
+				"ï¿½8Increases the damage of your attacks.");
 		addDescription(ParanormalAttribute.VIGOR.name,
-				"§4Vigor §rdetermines how resistant the Paranormal has made you.",
-				"§8Increases how much your hunger is filled by eating.",
-				"§8Increases your maximum health.");
+				"ï¿½4Vigor ï¿½rdetermines how resistant the Paranormal has made you.",
+				"ï¿½8Increases how much your hunger is filled by eating.",
+				"ï¿½8Increases your maximum health.");
 		addDescription(ParanormalAttribute.PRESENCE.name,
-				"§9Presence §rdetermines how powerful the Paranormal has made you.",
-				"§8Allows the use of more powerful rituals.",
-				"§8Increases your maximum effort.");
+				"ï¿½9Presence ï¿½rdetermines how powerful the Paranormal has made you.",
+				"ï¿½8Allows the use of more powerful rituals.",
+				"ï¿½8Increases your maximum effort.");
 
 		// Rituais
 		add("ordemparanormal.rituals", "Rituals");
@@ -135,6 +140,8 @@ public class ModEnUsProvider extends LanguageProvider{
 				"Curses the weapon you're holding with knowledge sigils.");
 		addRitual(OPRituals.HEMOFAGIA, "Hematophagy",
 				"Sucks the target's blood, transfering their vitality to you.");
+		addRitual(OPRituals.APRIMORAMENTO_FISICO, "Physical Upgrade",
+				"Makes your body in extraordinary physical conditions");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -175,12 +182,12 @@ public class ModEnUsProvider extends LanguageProvider{
 		addPower(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
 				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
 		addPower(OPPowers.POTENCIAL_APRIMORADO, "Improved Potential",
-				"Você consegue passar dos seus limites, se esforçando mais do que o normal, ganhando 2 pontos de esforço.");
+				"Vocï¿½ consegue passar dos seus limites, se esforï¿½ando mais do que o normal, ganhando 2 pontos de esforï¿½o.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
 
-		// Maldições
+		// Maldiï¿½ï¿½es
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
 		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
@@ -195,16 +202,20 @@ public class ModEnUsProvider extends LanguageProvider{
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");
 		add("ordemparanormal.key.nex_screen", "Show Paranormal Attributes");
-		for (int i = 1; i < 6; i++){
+		for (int i = 1; i < 6; i++) {
 			add("ordemparanormal.key.power_" + i, "Use power slot " + i);
 		}
 
 		// Livros dentro do jogo
-		add("ordemparanormal.mansion_books.record_495", "Blood brother Lairon came back from his expedition... He said that he found a portal in the supposed \"Order's\" plains. We recreated it and watched it closely. We will never listen to Lairon again. Damned bastard! At least we got resources from that.");
-		add("ordemparanormal.mansion_books.record_001.page_1", "Day 1: \nJerome told me this place is safe for my habitation. The first guest told me something horrible... When I was returning from the forest, a fog appeared. It wasn't in my weather predictions... \nHe had a big bite on the leg, and didn't want to talk about it...");
+		add("ordemparanormal.mansion_books.record_495",
+				"Blood brother Lairon came back from his expedition... He said that he found a portal in the supposed \"Order's\" plains. We recreated it and watched it closely. We will never listen to Lairon again. Damned bastard! At least we got resources from that.");
+		add("ordemparanormal.mansion_books.record_001.page_1",
+				"Day 1: \nJerome told me this place is safe for my habitation. The first guest told me something horrible... When I was returning from the forest, a fog appeared. It wasn't in my weather predictions... \nHe had a big bite on the leg, and didn't want to talk about it...");
 		add("ordemparanormal.mansion_books.record_001.page_2", "Day 2: \nWHAT THE FUCK IS THAT?!");
-		add("ordemparanormal.devil_church_books.blood_book.page_1", "Blood is the entity of emotion. It searches for intensity: pain, obsession, passion, love, hunger, hate - everything that involves feeling an extreme emotion pleases the entity of Blood.");
-		add("ordemparanormal.devil_church_books.blood_book.page_2", "Everything begins with Blood. Blood is the flow that bathes the eternity of the Other Side.");
+		add("ordemparanormal.devil_church_books.blood_book.page_1",
+				"Blood is the entity of emotion. It searches for intensity: pain, obsession, passion, love, hunger, hate - everything that involves feeling an extreme emotion pleases the entity of Blood.");
+		add("ordemparanormal.devil_church_books.blood_book.page_2",
+				"Everything begins with Blood. Blood is the flow that bathes the eternity of the Other Side.");
 
 		// Outros
 		add("ordemparanormal.nex.title", "Paranormal Exposure");

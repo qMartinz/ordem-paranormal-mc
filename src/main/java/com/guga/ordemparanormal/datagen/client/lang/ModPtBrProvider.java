@@ -10,30 +10,34 @@ import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
-public class ModPtBrProvider extends LanguageProvider{
+public class ModPtBrProvider extends LanguageProvider {
 
 	public ModPtBrProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "pt_br");
 	}
-	private void addDescription(String key, String line1, String line2, String line3){
+
+	private void addDescription(String key, String line1, String line2, String line3) {
 		add(key + ".description.line_1", line1);
 		add(key + ".description.line_2", line2);
 		add(key + ".description.line_3", line3);
 	}
-	private void addDescription(String key, String line1, String line2){
+
+	private void addDescription(String key, String line1, String line2) {
 		add(key + ".description.line_1", line1);
 		add(key + ".description.line_2", line2);
 	}
-	private void addRitual(AbstractRitual ritual, String name, String description){
+
+	private void addRitual(AbstractRitual ritual, String name, String description) {
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
 	}
-	private void addPower(PlayerPower power, String name, String description){
+
+	private void addPower(PlayerPower power, String name, String description) {
 		add(power.getTranslationKey(), name);
 		add(power.getTranslationKey() + ".description", description);
 	}
 
-	// Adicionar traduções em PT-BR
+	// Adicionar traduï¿½ï¿½es em PT-BR
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens
@@ -44,41 +48,42 @@ public class ModPtBrProvider extends LanguageProvider{
 		// Sons
 		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Grunhido de zumbi de Sangue");
 		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Grunhido de zumbi de Sangue bestial");
-		
+
 		// Itens
-		add("ordemparanormal.ritual_item.ritual_learned", "§7Apenas um item com um símbolo estranho.");
-		add("ordemparanormal.ritual_item.ritual_unknown", "§7Parece emanar uma presença estranha...");
-		add("ordemparanormal.ritual_item.cursed_with", "§7Amaldiçoado com o ritual ");
-		add(OPItems.GRIMORIO_ENERGIA.get(), "Grimório de Energia");
-		add(OPItems.GRIMORIO_SANGUE.get(), "Grimório de Sangue");
-		add(OPItems.ORGAO.get(), "Órgão");
+		add("ordemparanormal.ritual_item.ritual_learned", "ï¿½7Apenas um item com um sï¿½mbolo estranho.");
+		add("ordemparanormal.ritual_item.ritual_unknown", "ï¿½7Parece emanar uma presenï¿½a estranha...");
+		add("ordemparanormal.ritual_item.cursed_with", "ï¿½7Amaldiï¿½oado com o ritual ");
+		add(OPItems.GRIMORIO_ENERGIA.get(), "Grimï¿½rio de Energia");
+		add(OPItems.GRIMORIO_SANGUE.get(), "Grimï¿½rio de Sangue");
+		add(OPItems.ORGAO.get(), "ï¿½rgï¿½o");
 		add(OPItems.CINZAS.get(), "Cinzas");
-		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de Transcendência");
+		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de Transcendï¿½ncia");
+		add(OPItems.LAMINA_DO_MEDO.get(), "Lamina do Medo");
 
 		// Itens de Rituais
-		add(OPItems.RITUAL_DESCARNAR.get(), "Livro amaldiçoado");
-		add(OPItems.RITUAL_DECADENCIA.get(), "Caveira com símbolo");
+		add(OPItems.RITUAL_DESCARNAR.get(), "Livro amaldiï¿½oado");
+		add(OPItems.RITUAL_DECADENCIA.get(), "Caveira com sï¿½mbolo");
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Cristal espiral");
-		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Papél amaldiçoado");
+		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Papï¿½l amaldiï¿½oado");
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Capacete enferrujado");
 
 		// Componentes Ritualisticos
-		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
+		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualï¿½sticos");
 		add(OPItems.COMPONENTE_SANGUE.get(), "Ingredientes ritualisticos de Sangue");
 		add(OPItems.COMPONENTE_ENERGIA.get(), "Ingredientes ritualisticos de Energia");
 		add(OPItems.COMPONENTE_MORTE.get(), "Ingredientes ritualisticos de Morte");
 		add(OPItems.COMPONENTE_CONHECIMENTO.get(), "Ingredientes ritualisticos de Conhecimento");
-		
+
 		// Ovos
 		add(OPItems.BESTIAL_OVO.get(), "Ovo gerador de zumbi de Sangue bestial");
 		add(OPItems.ZUMBI_SANGUE_OVO.get(), "Ovo gerador de zumbi de Sangue");
 		add(OPItems.ZUMBI_SECO_OVO.get(), "Ovo gerador de zumbi de Sangue seco");
 		add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Ovo gerador de zumbi de Sangue espinhento");
-		
+
 		// Entidades
 		add(OPEntities.BESTIAL.get(), "Zumbi de Sangue bestial");
 		add(OPEntities.ZUMBI_SANGUE.get(), "Zumbi de Sangue");
-		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeão");
+		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeï¿½o");
 		add(OPEntities.ZUMBI_SECO.get(), "Zumbi de Sangue seco");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
 
@@ -96,21 +101,21 @@ public class ModPtBrProvider extends LanguageProvider{
 
 		// Atributos paranormais
 		add("ordemparanormal.nex.attribute_points", "Pontos de Atributo");
-		add(ParanormalAttribute.STRENGTH.name, "Força");
+		add(ParanormalAttribute.STRENGTH.name, "Forï¿½a");
 		add(ParanormalAttribute.VIGOR.name, "Vigor");
-		add(ParanormalAttribute.PRESENCE.name, "Presença");
+		add(ParanormalAttribute.PRESENCE.name, "Presenï¿½a");
 		addDescription(ParanormalAttribute.STRENGTH.name,
-				"§6Força §rdetermina o quão forte o Paranormal te tornou.",
-				"§8Aumenta a velocidade em que você quebra blocos.",
-				"§8Aumenta o dano de seus ataques.");
+				"ï¿½6Forï¿½a ï¿½rdetermina o quï¿½o forte o Paranormal te tornou.",
+				"ï¿½8Aumenta a velocidade em que vocï¿½ quebra blocos.",
+				"ï¿½8Aumenta o dano de seus ataques.");
 		addDescription(ParanormalAttribute.VIGOR.name,
-				"§4Vigor §rdetermina o quão resistente o Paranormal te tornou.",
-				"§8Aumenta o quanto comida sacia sua fome.",
-				"§8Aumenta a sua vida máxima.");
+				"ï¿½4Vigor ï¿½rdetermina o quï¿½o resistente o Paranormal te tornou.",
+				"ï¿½8Aumenta o quanto comida sacia sua fome.",
+				"ï¿½8Aumenta a sua vida mï¿½xima.");
 		addDescription(ParanormalAttribute.PRESENCE.name,
-				"§9Presença §rdetermina o quão poderoso o Paranormal te tornou.",
-				"§8Permite o uso de rituais mais poderosos.",
-				"§8Aumenta o seu esforço máximo.");
+				"ï¿½9Presenï¿½a ï¿½rdetermina o quï¿½o poderoso o Paranormal te tornou.",
+				"ï¿½8Permite o uso de rituais mais poderosos.",
+				"ï¿½8Aumenta o seu esforï¿½o mï¿½ximo.");
 
 		// Rituais
 		add("ordemparanormal.rituals", "Rituais");
@@ -118,106 +123,112 @@ public class ModPtBrProvider extends LanguageProvider{
 		add("ordemparanormal.ritual.consumes", "Consome");
 
 		addRitual(OPRituals.DESCARNAR, "Descarnar",
-				"Descarna o alvo, causando dano de Sangue contínuo.");
-		addRitual(OPRituals.DECADENCIA, "Decadência",
-				"Imbui seu próximo ataque com espirais que inflingem apodrecimento.");
-		addRitual(OPRituals.CICATRIZACAO, "Cicatrização",
-				"Cicatriza as feridas do alvo ou de você mesmo.");
+				"Descarna o alvo, causando dano de Sangue contï¿½nuo.");
+		addRitual(OPRituals.DECADENCIA, "Decadï¿½ncia",
+				"Imbui seu prï¿½ximo ataque com espirais que inflingem apodrecimento.");
+		addRitual(OPRituals.CICATRIZACAO, "Cicatrizaï¿½ï¿½o",
+				"Cicatriza as feridas do alvo ou de vocï¿½ mesmo.");
 		addRitual(OPRituals.CONSUMIR_MANANCIAL, "Consumir Manancial",
 				"Consome a vida ao redor, fortificando sua vida.");
 		addRitual(OPRituals.ARMADURA_SANGUE, "Armadura de Sangue",
 				"Usa seu sangue para endurecer sua pele, servindo como armadura.");
 		addRitual(OPRituals.ARMA_ATROZ, "Arma Atroz",
-				"Torna a arma que você está segurando mais perigosa.");
+				"Torna a arma que vocï¿½ estï¿½ segurando mais perigosa.");
 		addRitual(OPRituals.ARMA_VELOZ, "Arma Veloz",
-				"Torna a arma que você está segurando mais rápida.");
-		addRitual(OPRituals.AMALDICOAR_ARMA, "Amaldiçoar Arma",
-				"Amaldiçoa a arma que você está segurando com sigilos de conhecimento.");
+				"Torna a arma que vocï¿½ estï¿½ segurando mais rï¿½pida.");
+		addRitual(OPRituals.AMALDICOAR_ARMA, "Amaldiï¿½oar Arma",
+				"Amaldiï¿½oa a arma que vocï¿½ estï¿½ segurando com sigilos de conhecimento.");
 		addRitual(OPRituals.HEMOFAGIA, "Hemofagia",
-				"Suga o sangue de seu alvo, transferindo a vitalidade dele para você.");
+				"Suga o sangue de seu alvo, transferindo a vitalidade dele para vocï¿½.");
+		addRitual(OPRituals.APRIMORAMENTO_FISICO, "Aprimoramento Fisico",
+				"Seu corpo fica em condiÃ§Ãµes fisicas extraordinarias");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
 		add("ordemparanormal.power.owned", "Poder adquirido");
 		add("ordemparanormal.power.active", "Poder ativo");
 		add("ordemparanormal.power.passive", "Poder passivo");
-		add("ordemparanormal.power.requisites", "Requisítos");
+		add("ordemparanormal.power.requisites", "Requisï¿½tos");
 
 		addPower(OPPowers.AFINIDADE_SANGUE, "Afinidade com Sangue",
-				"Você se conecta à entidade de Sangue, descartando a necessidade de ingredientes de Sangue e te tornando resistente a efeitos de Sangue, mas você se torna fraco a efeitos de Morte.");
+				"Vocï¿½ se conecta ï¿½ entidade de Sangue, descartando a necessidade de ingredientes de Sangue e te tornando resistente a efeitos de Sangue, mas vocï¿½ se torna fraco a efeitos de Morte.");
 		addPower(OPPowers.SANGUE_FERRO, "Sangue de Ferro",
-				"Suas veias são banhadas pelo paranormal, te fornecendo 2 corações extras de vida.");
+				"Suas veias sï¿½o banhadas pelo paranormal, te fornecendo 2 coraï¿½ï¿½es extras de vida.");
 		addPower(OPPowers.SANGUE_FERRO_2, "Sangue de Ferro II",
-				"Seu sangue é completamente irrigado pelo ódio e violência, te fornecendo 3 corações extras de vida.");
+				"Seu sangue ï¿½ completamente irrigado pelo ï¿½dio e violï¿½ncia, te fornecendo 3 coraï¿½ï¿½es extras de vida.");
 		addPower(OPPowers.PUNHO_ENRAIVECIDO, "Punho Enraivecido",
-				"O seu Sangue endurece e cobre suas mãos. Ao utilizar esse poder, seus próximos ataques com seus punhos causarão dano extra.");
+				"O seu Sangue endurece e cobre suas mï¿½os. Ao utilizar esse poder, seus prï¿½ximos ataques com seus punhos causarï¿½o dano extra.");
 		addPower(OPPowers.PUNHO_ENRAIVECIDO_2, "Punho Enraivecido II",
-				"O seu Sangue endurece e cobre suas mãos permanentemente. Todos os seus ataques com seus punhos causarão dano extra.");
+				"O seu Sangue endurece e cobre suas mï¿½os permanentemente. Todos os seus ataques com seus punhos causarï¿½o dano extra.");
 		addPower(OPPowers.SANGUE_VIVO, "Sangue Vivo",
 				"Seu sangue sempre flui violentamente, te curando mais rapidamente quando ferido.");
 		addPower(OPPowers.SANGUE_VISCERAL, "Sangue Visceral",
-				"A dor desperta sentimentos que você nunca soube que existiam. Você causa mais dano quando ferido.");
+				"A dor desperta sentimentos que vocï¿½ nunca soube que existiam. Vocï¿½ causa mais dano quando ferido.");
 		addPower(OPPowers.ADRENALINA, "Adrenalina",
-				"Seu corpo é anormalmente cheio de adrenalina, te tornando mais ágil quando ferido.");
+				"Seu corpo ï¿½ anormalmente cheio de adrenalina, te tornando mais ï¿½gil quando ferido.");
 		addPower(OPPowers.ADRENALINA_2, "Adrenalina II",
-				"Seu corpo todo é capaz de produz grandes doses de adrenalina, te tornando ainda mais ágil quando ferido.");
+				"Seu corpo todo ï¿½ capaz de produz grandes doses de adrenalina, te tornando ainda mais ï¿½gil quando ferido.");
 		addPower(OPPowers.FLAGELO, "Flagelo",
-				"Você troca a sua própria dor por poder, recebendo 2 pontos de esforço mas perdendo 4 corações de vida.");
+				"Vocï¿½ troca a sua prï¿½pria dor por poder, recebendo 2 pontos de esforï¿½o mas perdendo 4 coraï¿½ï¿½es de vida.");
 		addPower(OPPowers.ABSORVER_AGONIA, "Absorver Agonia",
-				"Você absorve a agonia daqueles em dor. Toda vez que ataca, há uma chance de que você recupere até 2 corações e meio de vida.");
+				"Vocï¿½ absorve a agonia daqueles em dor. Toda vez que ataca, hï¿½ uma chance de que vocï¿½ recupere atï¿½ 2 coraï¿½ï¿½es e meio de vida.");
 		addPower(OPPowers.DIETA_ADAPTADA, "Dieta Adaptada",
-				"Seu corpo se adaptou a absorver coisas que antes traziam malefícios a sua saúde.");
+				"Seu corpo se adaptou a absorver coisas que antes traziam malefï¿½cios a sua saï¿½de.");
 		addPower(OPPowers.DIETA_ADAPTADA_2, "Dieta Adaptada II",
-				"Seu corpo se beneficia consumindo coisas grotescas e que fazem mal à sua saúde, fornecendo efeitos positivos ao consumir tais itens.");
+				"Seu corpo se beneficia consumindo coisas grotescas e que fazem mal ï¿½ sua saï¿½de, fornecendo efeitos positivos ao consumir tais itens.");
 		addPower(OPPowers.VAMPIRISMO, "Vampirismo",
-				"Você consome o sangue de seu alvo, se curando e causando dano a ele.");
+				"Vocï¿½ consome o sangue de seu alvo, se curando e causando dano a ele.");
 		addPower(OPPowers.VAMPIRISMO_2, "Vampirismo II",
-				"Intensifica o poder Vampirismo, curando mais vida e também recebendo velocidade temporária.");
+				"Intensifica o poder Vampirismo, curando mais vida e tambï¿½m recebendo velocidade temporï¿½ria.");
 		addPower(OPPowers.MEDO_TANGIVEL, "Medo Tangivel",
-				"Você aprende o ritual Medo Tangível, que pode conjurar utilizando esse poder.");
+				"Vocï¿½ aprende o ritual Medo Tangï¿½vel, que pode conjurar utilizando esse poder.");
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Afinidade com Energia",
-				"Você se conecta à entidade de Energia, descartando a necessidade de ingredientes de Energia e te tornando resistente a efeitos de Energia, mas você se torna fraco a efeitos de Conhecimento.");
+				"Vocï¿½ se conecta ï¿½ entidade de Energia, descartando a necessidade de ingredientes de Energia e te tornando resistente a efeitos de Energia, mas vocï¿½ se torna fraco a efeitos de Conhecimento.");
 		addPower(OPPowers.AFINIDADE_MORTE, "Afinidade com Morte",
-				"Você se conecta à entidade de Morte, descartando a necessidade de ingredientes de Morte e te tornando resistente a efeitos de Morte, mas você se torna fraco a efeitos de Energia.");
+				"Vocï¿½ se conecta ï¿½ entidade de Morte, descartando a necessidade de ingredientes de Morte e te tornando resistente a efeitos de Morte, mas vocï¿½ se torna fraco a efeitos de Energia.");
 		addPower(OPPowers.POTENCIAL_APRIMORADO, "Potencial Aprimorado",
-				"Você consegue passar dos seus limites, se esforçando mais do que o normal, ganhando 2 pontos de esforço.");
+				"Vocï¿½ consegue passar dos seus limites, se esforï¿½ando mais do que o normal, ganhando 2 pontos de esforï¿½o.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
-				"Você se conecta à entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas você se torna fraco a efeitos de Sangue.");
+				"Vocï¿½ se conecta ï¿½ entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas vocï¿½ se torna fraco a efeitos de Sangue.");
 
-		// Maldições
+		// Maldiï¿½ï¿½es
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");
 		add(OPCurses.VELOZ.getTranslationKey(), "Veloz");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decadente");
-		add(OPCurses.AMALDICOAR_ARMA.getTranslationKey(), "Amaldiçoada");
+		add(OPCurses.AMALDICOAR_ARMA.getTranslationKey(), "Amaldiï¿½oada");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Sangrando");
 		add(OPEffects.LIFE_ABSORBED.get(), "Vida Absorvida");
-		add(OPEffects.SKIN_REINFORCED.get(), "Pele Reforçada");
+		add(OPEffects.SKIN_REINFORCED.get(), "Pele Reforï¿½ada");
 		add(OPEffects.DECAY.get(), "Apodrecimento");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");
 		add("ordemparanormal.key.nex_screen", "Mostrar Atributos Paranormais");
-		for (int i = 1; i < 6; i++){
+		for (int i = 1; i < 6; i++) {
 			add("ordemparanormal.key.power_" + i, "Usar slot de poder " + i);
 		}
 
 		// Livros dentro do jogo
-		add("ordemparanormal.mansion_books.record_495", "O irmão de Sangue, Lairon, voltou de sua expedição... Ele disse que encontrou um portal nas planícies da suposta \"Ordem\". Nós o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lá.");
-		add("ordemparanormal.mansion_books.record_001.page_1", "Dia 1: \nJerome me disse que o local é seguro para uma habitação. O primeiro hóspede me contou algo terrível... Uma névoa surgiu quando eu estava voltando da floresta, aquilo não estava na minha previsão do tempo... \nEle estava com uma mordida imensa na perna e se recusou a falar sobre ela...");
-		add("ordemparanormal.mansion_books.record_001.page_2", "Dia 2: \nQUE PORRA É ESSA?!");
-		add("ordemparanormal.devil_church_books.blood_book.page_1", "O Sangue é a entidade do sentimento. Ele busca a intensidade: dor, obsessão, paixão, amor, fome, ódio - tudo que envolve sentir uma emoção extrema agrada a entidade de Sangue.");
-		add("ordemparanormal.devil_church_books.blood_book.page_2", "Tudo começa pelo Sangue. O Sangue é o fluxo que banha a eternidade do Outro Lado.");
+		add("ordemparanormal.mansion_books.record_495",
+				"O irmï¿½o de Sangue, Lairon, voltou de sua expediï¿½ï¿½o... Ele disse que encontrou um portal nas planï¿½cies da suposta \"Ordem\". Nï¿½s o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lï¿½.");
+		add("ordemparanormal.mansion_books.record_001.page_1",
+				"Dia 1: \nJerome me disse que o local ï¿½ seguro para uma habitaï¿½ï¿½o. O primeiro hï¿½spede me contou algo terrï¿½vel... Uma nï¿½voa surgiu quando eu estava voltando da floresta, aquilo nï¿½o estava na minha previsï¿½o do tempo... \nEle estava com uma mordida imensa na perna e se recusou a falar sobre ela...");
+		add("ordemparanormal.mansion_books.record_001.page_2", "Dia 2: \nQUE PORRA ï¿½ ESSA?!");
+		add("ordemparanormal.devil_church_books.blood_book.page_1",
+				"O Sangue ï¿½ a entidade do sentimento. Ele busca a intensidade: dor, obsessï¿½o, paixï¿½o, amor, fome, ï¿½dio - tudo que envolve sentir uma emoï¿½ï¿½o extrema agrada a entidade de Sangue.");
+		add("ordemparanormal.devil_church_books.blood_book.page_2",
+				"Tudo comeï¿½a pelo Sangue. O Sangue ï¿½ o fluxo que banha a eternidade do Outro Lado.");
 
 		// Outros
-		add("ordemparanormal.nex.title", "Exposição Paranormal");
+		add("ordemparanormal.nex.title", "Exposiï¿½ï¿½o Paranormal");
 		add("ordemparanormal.nex.abbreviation", "NeX");
 		add("ordemparanormal.health_points", "PV");
 		add("ordemparanormal.effort_points", "PE");
-		add("ordemparanormal.effort_points.full_name", "Pontos de Esforço");
+		add("ordemparanormal.effort_points.full_name", "Pontos de Esforï¿½o");
 	}
 
 }

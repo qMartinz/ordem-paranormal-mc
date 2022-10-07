@@ -1,11 +1,94 @@
-Esse é um mod de Ordem Paranormal feito para a versão 1.18.1 de Minecraft.
+Esse é um mod de Ordem Paranormal feito para a versão 1.18.2 de Minecraft Java.
 
 No futuro, serão adicionados rituais, muitas criaturas entre outras coisas relacionadas à Ordem Paranormal.
 
 ============================================================================================================
 
 Mod feito por: Time OP Mod
-Créditos: Aufa, Lye e Babako por ajudarem com as texturas.
+Créditos: Aufa por iniciar o projeto e organizar a equipe e as redes do Mod, Lye e Babako por ajudarem com as texturas, Guga e Japa por programarem.
 
 Twitter: @ParanormalMod
 Discord: https://discord.gg/mcxGbQbjkT
+
+============================================================================================================
+
+Anotações:
+
+itens:
+Grimorio Ritualistico,
+Mesa de Escritura (pra modificar os grimorios),
+Pergaminhos de PE,
+Livro de tutorial(em formato de historia)
+
+Mecanicas:
+Grimorio Ritualistico vir vazio quando craftar e poder adicionar pagina com rituais usando a mesa de escritura, papel e tinta.
+Circulo de ritual
+Classes(?)
+Cadaver do Player
+Trilhas(?)
+
+Mobs:
+NPCs do Ordem(?)
+Telopsia(Boss)
+Lupi
+Organizações Paranormais
+
+Rituais:
+
+----------
+Conhecimento
+
+Perturbação
+Amaldiçoar Arma 📝 
+Esconder dos Olhos
+Detectar Ameaças
+Localização
+Aprimoramento Mental
+Tecer Ilusões
+Inexistir
+----------
+Energia
+
+Salto Fantasma
+Amaldiçoar Tecnologia 📝 
+Eletrocussão
+Luz
+Tela de Ruído
+Contenção Fantasma
+Chamas do Caos
+Deflagração de Energia
+----------
+Sangue
+
+Arma Atroz 📝 
+Descarnar ✅ 
+Armadura de Sangue ✅ 
+Hemofagia 📝
+Aprimoramento Físico📝
+Vomitar Peste
+Transfusão Vital
+Vínculo de Sangue
+----------
+Morte
+
+Cicatrização ✅ 
+Decadência ✅ 
+Consumir Manancial ✅ 
+Eco Espiral
+Velocidade Mortal (Fazer efeito englobando os dois já existentes) 📝
+Miasma
+Zerar Entropia
+Fim Inevitável
+----------
+Medo
+
+Cinerária
+Rejeitar Névoa
+Dissipar Ritual
+Lâmina do Medo
+Medo Tangível📝
+Presença de Medo
+----------
+
+✅ : Completo
+📝 : Texturas incompletas

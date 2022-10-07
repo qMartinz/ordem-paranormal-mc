@@ -8,6 +8,7 @@ import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
+import com.guga.ordemparanormal.common.item.LaminaDoMedo;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import net.minecraft.resources.ResourceLocation;
@@ -34,7 +35,7 @@ public class EntityEvents {
 	@SubscribeEvent
 	public static void deathListener(LivingDeathEvent event) {
 		LevelAccessor level = event.getEntity().level;
-		
+
 		// Checa se um villager morreu e cria um corpo no seu lugar
 		if (event.getEntity() instanceof AbstractVillager entity) {
 			VillagerCorpo corpo = OPEntities.VILLAGER_CORPO.get().create(entity.level);
@@ -45,14 +46,15 @@ public class EntityEvents {
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
 			List<Nevoa> list2 = corpo.level.getEntitiesOfClass(Nevoa.class,
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
-			// Checa se há corpos o suficiente para spawnar névoa no local
+			// Checa se hï¿½ corpos o suficiente para spawnar nï¿½voa no local
 			if (list1.size() >= 3 && list2.isEmpty()) {
 				Nevoa nevoa = OPEntities.NEVOA.get().create(corpo.level);
 				nevoa.copyPosition(corpo);
 				nevoa.setIntensity(1);
 				nevoa.setRadius(10);
 				level.addFreshEntity(nevoa);
-				// Checa se já há uma névoa por perto e fortalece ela no lugar de criar uma névoa nova
+				// Checa se jï¿½ hï¿½ uma nï¿½voa por perto e fortalece ela no lugar de criar uma
+				// nï¿½voa nova
 			} else if (list1.size() >= 3) {
 				for (Nevoa nevoaExistente : list2) {
 					int i = nevoaExistente.getIntensity();
@@ -63,7 +65,8 @@ public class EntityEvents {
 			}
 		}
 
-		if (event.getSource().getEntity() instanceof ZumbiSangue zumbissangue && !(event.getSource().getEntity() instanceof Bestial)){
+		if (event.getSource().getEntity() instanceof ZumbiSangue zumbissangue
+				&& !(event.getSource().getEntity() instanceof Bestial)) {
 			ExpModel.get(zumbissangue).setExposure(ExpModel.get(zumbissangue).getExposure() + 20);
 		}
 	}
@@ -71,7 +74,7 @@ public class EntityEvents {
 	// Detectar criaturas recebendo dano
 	@SubscribeEvent
 	public static void hurtListener(LivingHurtEvent event) {
-		
+
 		// Cancela certos danos para entidade Corpo
 		if (event.getEntity() instanceof CorpoEntity) {
 			if (event.getSource() == DamageSource.IN_WALL || event.getSource() == DamageSource.DROWN
@@ -81,25 +84,43 @@ public class EntityEvents {
 		}
 
 		// Aumenta ou diminui o dano para certos danos elementais
-		if (event.getEntity() instanceof LivingEntity entity && ElementDamage.isEntityResistant(entity, event.getSource())){
+		if (event.getEntity() instanceof LivingEntity entity
+				&& ElementDamage.isEntityResistant(entity, event.getSource())) {
 			event.setAmount(event.getAmount() / 2);
-		} else if (event.getEntity() instanceof LivingEntity entity && ElementDamage.isEntityWeakTo(entity, event.getSource())){
+		} else if (event.getEntity() instanceof LivingEntity entity
+				&& ElementDamage.isEntityWeakTo(entity, event.getSource())) {
 			event.setAmount(event.getAmount() * 2);
 		}
 	}
 
 	// Adicionar Capabilities para entidades
 	@SubscribeEvent
-	public static void onRegisterCapabilites(RegisterCapabilitiesEvent event){
+	public static void onRegisterCapabilites(RegisterCapabilitiesEvent event) {
 		event.register(ExpModel.class);
 	}
+
 	@SubscribeEvent
-	public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event){
-		if (event.getObject() instanceof LivingEntity && !(event.getObject() instanceof Player)){
+	public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
+		if (event.getObject() instanceof LivingEntity && !(event.getObject() instanceof Player)) {
 			ExpModel expModel = new ExpModel();
 			ExpProvider provider = new ExpProvider(expModel);
 
 			event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "cap_exp"), provider);
 		}
 	}
+	/*
+	 * @SubscribeEvent
+	 * public static void attackListener(ItemStack pStack, LivingEntity pTarget,
+	 * LivingEntity pAttacker) {
+	 * 
+	 * return super.attackListener(pStack, pTarget, pAttacker);
+	 * }
+	 * 
+	 * @SubscribeEvent
+	 * public boolean LaminaDoMedo.hurtEnemy(ItemStack pStack, LivingEntity pTarget,
+	 * LivingEntity pAttacker) {
+	 * 
+	 * return super.hurtEnemy(pStack, pTarget, pAttacker);
+	 * }
+	 */
 }

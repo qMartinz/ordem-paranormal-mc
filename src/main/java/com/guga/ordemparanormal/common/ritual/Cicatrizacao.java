@@ -15,6 +15,7 @@ public class Cicatrizacao extends AbstractRitual {
     public Cicatrizacao() {
         super("cicatrizacao", ParanormalElement.MORTE, 1, 2, true, 3.5D, true);
     }
+
     @Override
     public void onUseSelf(Level world, LivingEntity caster) {
         caster.heal(6);
@@ -30,7 +31,7 @@ public class Cicatrizacao extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         if (target instanceof ParanormalCreature paranormalCreature) {
-            if (paranormalCreature.getMainElement() != ParanormalElement.SANGUE){
+            if (paranormalCreature.getMainElement() != ParanormalElement.SANGUE) {
                 paranormalCreature.heal(6);
             }
         } else {
