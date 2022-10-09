@@ -42,8 +42,14 @@ public class SelectedRitual extends AbstractWidget {
                     RenderSystem.enableDepthTest();
                     RenderSystem.disableBlend();
 
-                    minecraft.font.drawShadow(stack, String.valueOf(getRitualIndex() + 1),
-                            x + width/2f - minecraft.font.width(String.valueOf(getRitualIndex() + 1))/2f, y + height - minecraft.font.lineHeight,
+                    fill(stack, x + width/2 - 9/2, y + height - 9, x + width/2 + 9/2, y + height, 0xFF602c2c);
+                    fill(stack, x + width/2 - 9/2 - 1, y + height - 11, x + width/2 - 9/2, y + height + 2, 0xFFde9e41);
+                    fill(stack, x + width/2 + 9/2 + 1, y + height - 11, x + width/2 + 9/2, y + height + 2, 0xFFde9e41);
+                    fill(stack, x + width/2 - 9/2 - 2, y + height - 10, x + width/2 + 9/2 + 2, y + height - 9, 0xFFde9e41);
+                    fill(stack, x + width/2 - 9/2 - 2, y + height + 1, x + width/2 + 9/2 + 2, y + height, 0xFFde9e41);
+
+                    minecraft.font.draw(stack, String.valueOf(getRitualIndex() + 1),
+                            x + width/2f - minecraft.font.width(String.valueOf(getRitualIndex() + 1))/2f + 1, y + height - minecraft.font.lineHeight + 1,
                             0xFFde9e41);
                 }
             }

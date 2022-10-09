@@ -8,26 +8,28 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 
 public class Atroz extends AbstractCurse {
     public Atroz() {
-        super("atroz", ParanormalElement.SANGUE, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
+        super("atroz", ParanormalElement.SANGUE, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
     }
     @Override
-    public int getMaxTicks() {
-        return 200;
+    public int getMaxUses() {
+        return 8;
     }
     @Override
     public int getDamageBonus() {
         return 2;
     }
     @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget) {
+    public void doPostAttack(ItemStack pStack, LivingEntity pAttacker, Entity pTarget) {
         for (int i = 0; i < getDamageBonus(); i++) {
             pTarget.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     pTarget.getX(), pTarget.getEyeY(), pTarget.getZ(),
                     0D, 0D, 0D);
         }
+        super.doPostAttack(pStack, pAttacker, pTarget);
     }
 }

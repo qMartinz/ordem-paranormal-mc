@@ -26,7 +26,7 @@ public class OPDataGeneration {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 		
 		if (event.includeClient()) {
-			// Geração de Data do Cliente
+			// GeraÃ§Ã£o de Data do Cliente
 			generator.addProvider(new ModItemModelProvider(generator, helper));
 			generator.addProvider(new ModSoundDefinitionsProvider(generator, helper));
 			generator.addProvider(new ModPtBrProvider(generator));
@@ -36,7 +36,7 @@ public class OPDataGeneration {
 		
 		if (event.includeServer()) {
 			ModBlockTagsProvider blocktags = new ModBlockTagsProvider(generator, helper);
-			// Geração de Data do Server
+			// GeraÃ§Ã£o de Data do Server
 			generator.addProvider(new ModLootTableProvider(generator));
 			generator.addProvider(new ModRecipeProvider(generator));
 			generator.addProvider(blocktags);

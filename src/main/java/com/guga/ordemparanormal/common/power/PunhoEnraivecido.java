@@ -1,9 +1,9 @@
 package com.guga.ordemparanormal.common.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.world.effect.MobEffectInstance;

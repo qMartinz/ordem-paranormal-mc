@@ -1,17 +1,14 @@
 package com.guga.ordemparanormal.common.item;
 
-import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.IRitualCaster;
 import com.guga.ordemparanormal.api.abilities.ritual.RitualCaster;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -25,9 +22,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -123,6 +117,9 @@ public class RitualItem extends Item {
     }
     public int getUseDuration(ItemStack stack) {
         return 72000;
+    }
+    public boolean canStoreInBook(){
+        return true;
     }
     public static class ItemCaster extends RitualCaster {
         public ItemCaster(ItemStack stack) {

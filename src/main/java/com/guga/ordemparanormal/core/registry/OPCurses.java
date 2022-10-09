@@ -2,9 +2,9 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
+import com.guga.ordemparanormal.common.curses.Amaldicoada;
 import com.guga.ordemparanormal.common.curses.Atroz;
 import com.guga.ordemparanormal.common.curses.Decadente;
-import com.guga.ordemparanormal.common.curses.Amaldicoada;
 import com.guga.ordemparanormal.common.curses.Veloz;
 
 public class OPCurses {
@@ -14,7 +14,7 @@ public class OPCurses {
     public static final AbstractCurse AMALDICOAR_ARMA = new Amaldicoada();
 
     /**
-     * Registra as maldições
+     * Registra as maldiÃ§Ãµes
      */
     public static void setup(){
         registerCurse(ATROZ);

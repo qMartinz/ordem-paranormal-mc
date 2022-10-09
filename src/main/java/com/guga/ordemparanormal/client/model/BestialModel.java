@@ -20,7 +20,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
 			new ResourceLocation(OrdemParanormal.MOD_ID, "zumbi_bestial"), "main");
 	
-	// Animação de caminhada
+	// AnimaÃ§Ã£o de caminhada
 	private static final Supplier<Endimation> WALKING = () -> Blueprint.ENDIMATION_LOADER.getEndimation(
 			new ResourceLocation(OrdemParanormal.MOD_ID, "bestial/walking"));
 
@@ -32,7 +32,7 @@ public class BestialModel<T extends Bestial> extends EntityModel<T> {
 		this.endimator = Endimator.compile(this.torso = createBodyLayer().bakeRoot());
 	}
 
-	// Definição de todas as partes do modelo
+	// DefiniÃ§Ã£o de todas as partes do modelo
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();

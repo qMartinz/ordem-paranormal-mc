@@ -1,10 +1,9 @@
 package com.guga.ordemparanormal.common.item;
 
-import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.abilities.ritual.IRitualCaster;
 import com.guga.ordemparanormal.api.abilities.ritual.RitualCaster;
-import com.guga.ordemparanormal.api.util.PowerUtils;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -13,18 +12,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class RitualBook extends Item {
-    private int tier;
-    public RitualBook(int tier) {
-        super(new Item.Properties().stacksTo(1).rarity(PowerUtils.getRarity(tier)).tab(OrdemParanormal.OP_TAB));
-        this.tier = tier;
-    }
-    public int getTier() {
-        return tier;
+    public RitualBook() {
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB));
     }
     @Override
     public void releaseUsing(ItemStack stack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
@@ -71,7 +66,7 @@ public class RitualBook extends Item {
         }
         @Override
         public int getMaxSlots() {
-            return 5;
+            return 4;
         }
     }
 }

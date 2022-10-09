@@ -1,12 +1,12 @@
 package com.guga.ordemparanormal.client.screen;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.capabilities.data.INexCap;
-import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.client.screen.powerscreen.BloodPowerScreen;
 import com.guga.ordemparanormal.client.screen.powerscreen.DeathPowerScreen;

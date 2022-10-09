@@ -58,7 +58,7 @@ public class Nevoa extends Entity {
 		this.getEntityData().define(DATA_LIFE, 80);
 	}
 
-	// Setters, para setar certos atributos da névoa
+	// Setters, para setar certos atributos da nï¿½voa
 	public void setRadius(int size) {
 		if (!this.level.isClientSide) {
 			if (this.getEntityData().get(DATA_RADIUS) < 45) {
@@ -76,7 +76,7 @@ public class Nevoa extends Entity {
 		this.getEntityData().set(DATA_LIFE, Math.min(life, 80));
 	}
 
-	// Getters, para pegar certos atributos da névoa
+	// Getters, para pegar certos atributos da nÃ©voa
 	public double getRadius() {
 		return this.getEntityData().get(DATA_RADIUS).doubleValue();
 	}
@@ -113,7 +113,7 @@ public class Nevoa extends Entity {
 			List<Monster> monstros = this.level.getEntitiesOfClass(Monster.class,
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 
-			// Manter a névoa se houver corpos ou monstros dentro e aumentar exposição dos tais.
+			// Manter a nÃ©voa se houver corpos ou monstros dentro e aumentar exposiÃ§Ã£o dos tais.
 			int l = this.getLife();
 			if (!corpos.isEmpty() || !monstros.isEmpty()) {
 				++l;
@@ -161,7 +161,7 @@ public class Nevoa extends Entity {
 					}
 				}
 			} else {
-				// Remove a névoa por não haver nada que traga medo suficiente para mantê-la lá.
+				// Remove a nÃ©voa por nÃ£o haver nada que traga medo suficiente para mantÃ©-la lÃ¡.
 				--l;
 				this.setLife(l);
 			}
@@ -169,7 +169,7 @@ public class Nevoa extends Entity {
 				this.discard();
 			}
 
-			// Instantaneamente adiciona 10XP para players com 0% dentro da névoa
+			// Adiciona 10XP para players com 0% dentro da nÃ©voa
 			List<Player> players = this.level.getEntitiesOfClass(Player.class,
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 			if (!players.isEmpty()) {

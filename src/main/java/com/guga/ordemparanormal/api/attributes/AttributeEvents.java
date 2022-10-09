@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 public class AttributeEvents {
     @SubscribeEvent
     public static void breakSpeedBonus(PlayerEvent.BreakSpeed event){
-        // Aumenta velocidade de mineração
+        // Aumenta velocidade de mineraÃ§Ã£o
         int speedBonus = event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).resolve().get().getAttribute(ParanormalAttribute.STRENGTH);
         event.setNewSpeed(event.getOriginalSpeed() + speedBonus);
     }

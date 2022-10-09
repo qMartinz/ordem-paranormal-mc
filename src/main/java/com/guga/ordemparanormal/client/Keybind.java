@@ -1,8 +1,8 @@
 package com.guga.ordemparanormal.client;
 
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.client.screen.AttributeScreen;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.block.AltarTranscender;

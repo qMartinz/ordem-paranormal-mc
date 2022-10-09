@@ -7,22 +7,23 @@ import com.guga.ordemparanormal.core.registry.OPParticles;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.Random;
 
 public class Amaldicoada extends AbstractCurse {
     public Amaldicoada() {
-        super("amaldicoada", ParanormalElement.CONHECIMENTO, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
+        super("amaldicoada", ParanormalElement.CONHECIMENTO, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
     }
-    public int getMaxTicks() {
-        return 200;
+    public int getMaxUses() {
+        return 8;
     }
     @Override
     public int getDamageBonus() {
         return 2;
     }
     @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget) {
+    public void doPostAttack(ItemStack pStack, LivingEntity pAttacker, Entity pTarget) {
         Random random = new Random();
         for (int i = 0; i < getDamageBonus(); i++) {
             pTarget.level.addParticle(OPParticles.SIGILOS_PARTICLE.get(),
@@ -31,5 +32,6 @@ public class Amaldicoada extends AbstractCurse {
                     pTarget.getZ() + random.nextDouble(-0.5d, 0.5d),
                     0D, 0D, 0D);
         }
+        super.doPostAttack(pStack, pAttacker, pTarget);
     }
 }

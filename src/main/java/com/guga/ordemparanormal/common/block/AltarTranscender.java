@@ -1,8 +1,12 @@
 package com.guga.ordemparanormal.common.block;
 
-import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.api.capabilities.data.*;
+import com.guga.ordemparanormal.api.ApiEvents;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.core.BlockPos;
@@ -90,7 +94,7 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
                         tag.putBoolean("ritualLearned", true);
                         stack.setTag(tag);
                         abilities.learnRitual(ritual);
-                        CapEvents.syncPlayerPowers(pPlayer);
+                        ApiEvents.syncPlayerPowers(pPlayer);
                         pLevel.playSound(null, pPos, OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 0.5f, 1f);
                         pLevel.playSound(null, pPos, SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
                         return InteractionResult.CONSUME;
@@ -102,7 +106,7 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
                         stack.setTag(tag);
                     }
                     abilities.forgetRitual(ritual);
-                    CapEvents.syncPlayerPowers(pPlayer);
+                    ApiEvents.syncPlayerPowers(pPlayer);
                     pLevel.playSound(null, pPos, OPSounds.RITUAL_FORGOTTEN.get(), SoundSource.BLOCKS, 0.5f, 1f);
                     pLevel.playSound(null, pPos, SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
                     return InteractionResult.CONSUME;

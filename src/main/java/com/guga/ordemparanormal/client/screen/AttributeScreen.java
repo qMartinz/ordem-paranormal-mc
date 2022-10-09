@@ -116,11 +116,17 @@ public class AttributeScreen extends Screen {
 
                 RenderSystem.setShaderTexture(0, TEXTURES);
                 blit(stack, tabX + 40, tabY + 1, 98, 0, 76, 86);
+                blit(stack, tabX + 1, tabY + tabHeight - 11, 98, 86, 9, 9);
 
-                String slots = playerAbilities.getKnownRituals().size() + "/" + playerNex.getRitualSlots();
-                font.draw(stack, slots, tabX + 79 - font.width(slots)/2f, tabY + 76, 0xFFFFFF);
+                String text = playerAbilities.getKnownRituals().size() + "/" + playerNex.getRitualSlots();
+                font.draw(stack, text, tabX + 79 - font.width(text)/2f, tabY + 76, 0xFFFFFF);
 
                 font.draw(stack, ritual.getDisplayName(), tabX + 79 - font.width(ritual.getDisplayName())/2f, tabY + 88, 0xFFFFFF);
+
+                text = String.valueOf(ritual.getEffortCost());
+                font.draw(stack, text, tabX + 11, tabY + tabHeight - 10, 0xFFFFFF);
+
+                font.draw(stack, ritual.getElement().getDisplayName(), tabX + 156 - font.width(ritual.getElement().getDisplayName()) - 2, tabY + tabHeight - 10, 0xFFFFFF);
 
                 for (int i = 0; i < splitLines.size(); i++) {
                     font.draw(stack, splitLines.get(i).getString(), tabX + 4, tabY + 100 + font.lineHeight * i, 0xFFFFFF);

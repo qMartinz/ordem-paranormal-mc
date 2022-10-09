@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,14 +21,12 @@ public abstract class AbstractCurse {
     private final EquipmentSlot[] slots;
     public final ParanormalElement element;
     public final CurseCategory category;
-    public final boolean temporary;
 
-    public AbstractCurse(String id, ParanormalElement element, CurseCategory category, boolean temporary, EquipmentSlot... slots) {
+    public AbstractCurse(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
         this.id = id;
         this.slots = slots;
         this.element = element;
         this.category = category;
-        this.temporary = temporary;
     }
     public String getId() {
         return id;
@@ -40,9 +39,6 @@ public abstract class AbstractCurse {
     }
     public CurseCategory getCategory() {
         return category;
-    }
-    public boolean isTemporary() {
-        return temporary;
     }
     public final boolean isCompatibleWith(AbstractCurse pOther) {
         return this.checkCompatibility(pOther) && pOther.checkCompatibility(this);
@@ -66,10 +62,12 @@ public abstract class AbstractCurse {
 
         return name;
     }
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget) {}
-    public void doPostHurt(LivingEntity pTarget, Entity pAttacker) {}
-    public void doTick(LivingEntity pUser) {}
-    public int getMaxTicks() {
+    public void doPostAttack(ItemStack pStack, LivingEntity pAttacker, Entity pTarget) {
+        CurseHelper.getCurse(pStack, this).useOrRemove(pStack);
+    }
+    public void doPostHurt(ItemStack pStack, LivingEntity pTarget, Entity pAttacker) {}
+    public void doTick(ItemStack pStack, LivingEntity pUser) {}
+    public int getMaxUses() {
         return 0;
     }
     public int getDamageProtection(DamageSource pSource) {

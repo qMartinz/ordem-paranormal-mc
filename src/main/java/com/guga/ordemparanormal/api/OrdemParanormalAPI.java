@@ -1,8 +1,8 @@
 package com.guga.ordemparanormal.api;
 
-import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.curses.AbstractCurse;
 
 import javax.annotation.Nullable;
 import java.util.Map;

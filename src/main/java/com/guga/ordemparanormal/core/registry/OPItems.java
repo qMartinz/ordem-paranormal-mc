@@ -14,7 +14,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,11 +25,8 @@ public final class OPItems {
 	public static final Helper HELPER = OrdemParanormal.REGISTRY_HELPER.getItemSubHelper();
 
 	// Registrar itens
-	public static final RegistryObject<Item> GRIMORIO_SANGUE = HELPER.createGSangue();
-	public static final RegistryObject<Item> GRIMORIO_ENERGIA = HELPER.createGEnergia();
 	public static final RegistryObject<Item> ORGAO = HELPER.createOrgao();
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
-	public static final RegistryObject<SwordItem> LAMINA_DO_MEDO = HELPER.createLaminaDoMedo();
 
 	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRDescarnar();
@@ -65,13 +61,10 @@ public final class OPItems {
 			"zumbi_bestial", OPEntities.BESTIAL::get, 7999247, 13875596);
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SECO_OVO = HELPER.createSpawnEggItem(
 			"zumbi_seco", OPEntities.ZUMBI_SECO::get, 7999247, 2428687);
-
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_ESPINHENTO_OVO = HELPER.createSpawnEggItem(
 			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
-
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens
-
 		@Override
 		public RegistryObject<ForgeSpawnEggItem> createSpawnEggItem(String entityName,
 				Supplier<EntityType<? extends Mob>> supplier, int primaryColor, int secondaryColor) {
@@ -82,18 +75,7 @@ public final class OPItems {
 		public Helper(RegistryHelper parent) {
 			super(parent, parent.getItemSubHelper().getDeferredRegister());
 		}
-
 		// Itens
-		private RegistryObject<Item> createGSangue() {
-			return this.deferredRegister.register("grimorio_sangue", () -> new Item(
-					new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB)));
-		}
-
-		private RegistryObject<Item> createGEnergia() {
-			return this.deferredRegister.register("grimorio_energia", () -> new Item(
-					new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB)));
-		}
-
 		private RegistryObject<Item> createOrgao() {
 			return this.deferredRegister
 					.register("orgao",
@@ -102,72 +84,54 @@ public final class OPItems {
 									.food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F)
 											.effect(() -> new MobEffectInstance(MobEffects.HUNGER, 800), 1F).build())));
 		}
-
 		private RegistryObject<Item> createCinzas() {
 			return this.deferredRegister
 					.register("cinzas",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
 		}
-
-		private RegistryObject<SwordItem> createLaminaDoMedo() {
-			return this.deferredRegister.register("lamina_do_medo", () -> new LaminaDoMedo());
-		}
-
 		private RegistryObject<RitualItem> createRDescarnar() {
 			return this.deferredRegister.register("livro_amaldicoado", () -> new RitualItem(OPRituals.DESCARNAR));
 		}
-
 		private RegistryObject<RitualItem> createRDecadencia() {
 			return this.deferredRegister.register("cranio_simbolo", () -> new RitualItem(OPRituals.DECADENCIA));
 		}
-
 		private RegistryObject<RitualItem> createRCicatrizacao() {
 			return this.deferredRegister.register("cristal_espiral", () -> new RitualItem(OPRituals.CICATRIZACAO));
 		}
-
 		private RegistryObject<RitualItem> createRConsumirManancial() {
 			return this.deferredRegister.register("papel_amaldicoado",
 					() -> new RitualItem(OPRituals.CONSUMIR_MANANCIAL));
 		}
-
 		private RegistryObject<RitualItem> createRArmaduraSangue() {
 			return this.deferredRegister.register("capacete_enferrujado",
 					() -> new RitualItem(OPRituals.ARMADURA_SANGUE));
 		}
-
 		private RegistryObject<RitualItem> createRArmaAtroz() {
 			return this.deferredRegister.register("ritual_arma_atroz", () -> new RitualItem(OPRituals.ARMA_ATROZ));
 		}
-
 		private RegistryObject<RitualItem> createRArmaVeloz() {
 			return this.deferredRegister.register("ritual_arma_veloz", () -> new RitualItem(OPRituals.ARMA_VELOZ));
 		}
-
 		private RegistryObject<RitualItem> createRAmaldicoarArma() {
 			return this.deferredRegister.register("ritual_amaldicoar_arma",
 					() -> new RitualItem(OPRituals.AMALDICOAR_ARMA));
 		}
-
 		private RegistryObject<RitualItem> createRHemofagia() {
 			return this.deferredRegister.register("ritual_hemofagia", () -> new RitualItem(OPRituals.HEMOFAGIA));
 		}
-
 		private RegistryObject<RitualItem> createRAprimoramentoFisico() {
 			return this.deferredRegister.register("ritual_aprimoramento_fisico",
 					() -> new RitualItem(OPRituals.APRIMORAMENTO_FISICO));
 		}
-
 		private RegistryObject<RitualItem> createRVelocidadeMortal() {
 			return this.deferredRegister.register("ritual_velocidade_mortal",
 					() -> new RitualItem(OPRituals.VELOCIDADE_MORTAL));
 		}
-
 		private RegistryObject<RitualItem> createRLaminaMedo() {
 			return this.deferredRegister.register("ritual_lamina_medo",
-					() -> new RitualItem(OPRituals.LAMINA_MEDO));
+					LaminaDoMedo::new);
 		}
-
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {
 			return this.deferredRegister.register("componente_" + elemento.getSerializedName(),
 					() -> new RitualComponent(elemento));

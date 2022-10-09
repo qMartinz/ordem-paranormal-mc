@@ -14,11 +14,11 @@ import java.util.Map;
 public class Veloz extends AbstractCurse {
     private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier("veloz_modifier", 0.6d, AttributeModifier.Operation.ADDITION);
     public Veloz() {
-        super("veloz", ParanormalElement.ENERGIA, CurseCategory.WEAPON, true, EquipmentSlot.MAINHAND);
+        super("veloz", ParanormalElement.ENERGIA, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
     }
     @Override
-    public int getMaxTicks() {
-        return 200;
+    public int getMaxUses() {
+        return 8;
     }
     @Override
     public Map<AttributeModifier, Attribute> getAttributeModifiers() {

@@ -25,11 +25,11 @@ public class ElementDamage {
     }
 
     /**
-     * Checa se a entidade especificada È resistente ao dano elemental especificado
+     * Checa se a entidade especificada √© resistente ao dano elemental especificado
      *
-     * @param entity a entidade que vocÍ deseja checar
-     * @param damage tipo de dano, se n„o for dano elemental esse mÈtodo sempre retornar· falso
-     * @return verdadeiro se ela È resistente ao dano, falso se n„o È
+     * @param entity a entidade que voc√™ deseja checar
+     * @param damage tipo de dano, se n√£o for dano elemental esse m√©todo sempre retornar√° falso
+     * @return verdadeiro se ela √© resistente ao dano, falso se n√£o √©
      */
     public static boolean isEntityResistant(LivingEntity entity, DamageSource damage){
         List<EntityType<?>> nonOrganicEntities = List.of(new EntityType<?>[]{EntityType.IRON_GOLEM, EntityType.SNOW_GOLEM, EntityType.SHULKER, EntityType.GUARDIAN, EntityType.ELDER_GUARDIAN});
@@ -45,11 +45,11 @@ public class ElementDamage {
     }
 
     /**
-     * Checa se a entidade especificada È fraca ao dano elemental especificado
+     * Checa se a entidade especificada √© fraca ao dano elemental especificado
      *
-     * @param entity a entidade que vocÍ deseja checar
-     * @param damage tipo de dano, se n„o for dano elemental esse mÈtodo sempre retornar· falso
-     * @return verdadeiro se ela È fraca ao dano, falso se ela n„o È
+     * @param entity a entidade que voc√™ deseja checar
+     * @param damage tipo de dano, se n√£o for dano elemental esse m√©todo sempre retornar√° falso
+     * @return verdadeiro se ela √© fraca ao dano, falso se ela n√£o √©
      */
     public static boolean isEntityWeakTo(LivingEntity entity, DamageSource damage){
         List<EntityType<?>> nonOrganicEntities = List.of(new EntityType<?>[]{EntityType.IRON_GOLEM, EntityType.SNOW_GOLEM, EntityType.SHULKER, EntityType.GUARDIAN, EntityType.ELDER_GUARDIAN});

@@ -1,6 +1,11 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
+import com.guga.ordemparanormal.api.ElementDamage;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ParanormalEffects implements IEffectsCap{
     public int deathHealthPoints;
@@ -13,6 +18,18 @@ public class ParanormalEffects implements IEffectsCap{
     @Override
     public int getBloodArmorPoints() {
         return bloodArmorPoints;
+    }
+    public Collection<DamageSource> unappliableBloodArmorDamageSources(){
+        ArrayList<DamageSource> unappliableDamageSources = new ArrayList<>();
+
+        unappliableDamageSources.add(DamageSource.DROWN);
+        unappliableDamageSources.add(DamageSource.WITHER);
+        unappliableDamageSources.add(DamageSource.STARVE);
+        unappliableDamageSources.add(DamageSource.OUT_OF_WORLD);
+        unappliableDamageSources.add(ElementDamage.DANO_MORTE);
+        unappliableDamageSources.add(ElementDamage.DANO_MEDO);
+
+        return unappliableDamageSources;
     }
     @Override
     public int getKnowledgeEffortPoints() {

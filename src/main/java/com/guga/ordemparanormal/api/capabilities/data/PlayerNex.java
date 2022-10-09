@@ -8,7 +8,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class PlayerNex implements INexCap{
     private int nex;
@@ -174,7 +176,7 @@ public class PlayerNex implements INexCap{
     /**
      * Copia os dados de outra capability e os aplica para essa
      *
-     * @param source a capability que você deseja extrair os dados
+     * @param source a capability que vocÃª deseja extrair os dados
      */
     public void copyFrom(INexCap source){
         nex = source.getNex();

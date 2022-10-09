@@ -83,7 +83,7 @@ public abstract class AbstractRitual{
     }
 
     /**
-     * Chamado quando o ritual È utilizado
+     * Chamado quando o ritual √© utilizado
      *
      * @param rayTraceResult o que foi atingido
      * @param world o level em que o ritual foi utilizado
@@ -145,7 +145,11 @@ public abstract class AbstractRitual{
                         if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                     }
                 } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                    onUseEntity(entityHitResult, world, caster);
+                    if (this.range > 0d) {
+                        onUseEntity(entityHitResult, world, caster);
+                    } else {
+                        onUseSelf(world, caster);
+                    }
                     if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
                 } else {
                     onUseSelf(world, caster);
@@ -178,7 +182,7 @@ public abstract class AbstractRitual{
         }
     }
     /**
-     * Chamado quando o ritual È utilizado em uma entidade como alvo
+     * Chamado quando o ritual √© utilizado em uma entidade como alvo
      *
      * @param rayTraceResult a entidade que foi atingido
      * @param world o level em que o ritual foi utilizado
@@ -186,7 +190,7 @@ public abstract class AbstractRitual{
      */
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster){}
     /**
-     * Chamado quando o ritual È utilizado em um bloco como alvo
+     * Chamado quando o ritual √© utilizado em um bloco como alvo
      *
      * @param rayTraceResult o bloco que foi atingido
      * @param world o level em que o ritual foi utilizado
@@ -195,7 +199,7 @@ public abstract class AbstractRitual{
     public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster){}
 
     /**
-     * Chamado quando o ritual n„o possui alvo especÌfico (n„o È uma entidade ou um bloco)
+     * Chamado quando o ritual n√£o possui alvo espec√≠fico (n√£o √© uma entidade ou um bloco)
      *
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual

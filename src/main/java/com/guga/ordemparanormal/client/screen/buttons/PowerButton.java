@@ -1,8 +1,11 @@
 package com.guga.ordemparanormal.client.screen.buttons;
 
-import com.guga.ordemparanormal.api.capabilities.data.*;
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.power.Afinidade;

@@ -1,7 +1,9 @@
-package com.guga.ordemparanormal.api.curses;
+package com.guga.ordemparanormal.common;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -9,9 +11,9 @@ import net.minecraft.world.item.Items;
 
 import java.util.Objects;
 
-public class CursedItemProperties {
+public class OPItemProperties {
     public static void register(){
-        // Propriedade de maldições para espadas
+        // Propriedade de maldiÃ§Ãµes para espadas
         ItemProperties.register(Items.WOODEN_SWORD,
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
         ItemProperties.register(Items.STONE_SWORD,
@@ -24,9 +26,12 @@ public class CursedItemProperties {
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
         ItemProperties.register(Items.NETHERITE_SWORD,
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+
+        ItemProperties.register(OPItems.RITUAL_LAMINA_MEDO.get(),
+                new ResourceLocation(OrdemParanormal.MOD_ID, "lamina_medo"), (stack, level, entity, id) -> stack.getOrCreateTag().getBoolean("active") ? 1f : 0f);
     }
     /**
-    * Retorna um float específico baseado em quais maldições o item possui.
+    * Retorna um float especÃ­fico baseado em quais maldiÃ§Ãµes o item possui.
      */
     protected static float getCurseFloat(ItemStack stack){
         float curse_float = 0f;

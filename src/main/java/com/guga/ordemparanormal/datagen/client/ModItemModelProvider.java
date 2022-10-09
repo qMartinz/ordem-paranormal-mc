@@ -11,7 +11,6 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModItemModelProvider extends ItemModelProvider {
-
 	public ModItemModelProvider(DataGenerator generator, ExistingFileHelper helper) {
 		super(generator, OrdemParanormal.MOD_ID, helper);
 	}
@@ -42,7 +41,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 	}
 
 	protected void oneLayerHandHeldItem(Item item) {
-		oneLayerItem(item, item.getRegistryName());
+		oneLayerHandHeldItem(item, item.getRegistryName());
 	}
 
 	protected void multipleLayerItem(Item item, ResourceLocation... textures) {
@@ -92,11 +91,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 		spawnEggItem(OPItems.ZUMBI_ESPINHENTO_OVO.get());
 
 		// Itens
-		oneLayerItem(OPItems.GRIMORIO_ENERGIA.get());
-		oneLayerItem(OPItems.GRIMORIO_SANGUE.get());
 		oneLayerItem(OPItems.ORGAO.get());
 		oneLayerItem(OPItems.CINZAS.get());
-		oneLayerHandHeldItem(OPItems.LAMINA_DO_MEDO.get());
 
 		// Itens de Rituais
 		oneLayerItem(OPItems.RITUAL_DESCARNAR.get());
@@ -110,7 +106,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 		oneLayerItem(OPItems.RITUAL_HEMOFAGIA.get());
 		oneLayerItem(OPItems.RITUAL_APRIMORAMENTO_FISICO.get());
 		oneLayerItem(OPItems.RITUAL_VELOCIDADE_MORTAL.get());
-		oneLayerItem(OPItems.RITUAL_LAMINA_MEDO.get());
 
 		// Componentes Ritualisticos
 		oneLayerItem(OPItems.COMPONENTE_VAZIO.get());

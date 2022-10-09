@@ -6,14 +6,19 @@ import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.network.chat.*;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.FormattedText;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PlayerPower {
     public static final PlayerPower EMPTY = new PlayerPower("", false, ParanormalElement.NONE, 0, 0, new int[]{0, 0, 0});
@@ -78,7 +83,7 @@ public class PlayerPower {
         return true;
     }
     /**
-     * Chamado quando o poder È adicionado ao jogador por um {@link PowerButton}
+     * Chamado quando o poder √© adicionado ao jogador por um {@link PowerButton}
      *
      * @param player o jogador que adquiriu o poder
      */
@@ -117,7 +122,7 @@ public class PlayerPower {
         }
     }
     /**
-     * Chamado quando o poder ativo È utilizado.
+     * Chamado quando o poder ativo √© utilizado.
      *
      * @param player o jogador que utilizou o poder
      */
@@ -131,13 +136,13 @@ public class PlayerPower {
      */
     public void onTick(Player player){}
     /**
-     * Chamado quando o usu·rio ataca
+     * Chamado quando o usu√°rio ataca
      *
      * @param player o jogador que possui o poder
      */
     public void onAttack(Player player, LivingEntity target){}
     /**
-     * Chamado quando o usu·rio sofre dano
+     * Chamado quando o usu√°rio sofre dano
      *
      * @param player o jogador que possui o poder
      */

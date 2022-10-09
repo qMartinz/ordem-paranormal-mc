@@ -1,9 +1,9 @@
 package com.guga.ordemparanormal.core;
 
-import com.guga.ordemparanormal.api.curses.CursedItemProperties;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
+import com.guga.ordemparanormal.common.OPItemProperties;
 import com.guga.ordemparanormal.core.network.ClientProxy;
 import com.guga.ordemparanormal.core.network.IProxy;
 import com.guga.ordemparanormal.core.network.Messages;
@@ -37,7 +37,7 @@ public class OrdemParanormal {
 	public static final CreativeModeTab OP_TAB = new CreativeModeTab(MOD_ID) {
 		@Override
 		public ItemStack makeIcon() {
-			return OPItems.GRIMORIO_SANGUE.get().getDefaultInstance();
+			return OPBlocks.ALTAR_TRANSCENDER.get().asItem().getDefaultInstance();
 		}
 	};
 	public static final CreativeModeTab RITUALS_TAB = new CreativeModeTab(MOD_ID + ".rituals") {
@@ -92,6 +92,6 @@ public class OrdemParanormal {
 
 		Overlay.registerOverlays();
 
-		event.enqueueWork(CursedItemProperties::register);
+		event.enqueueWork(OPItemProperties::register);
 	}
 }

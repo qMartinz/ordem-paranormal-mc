@@ -1,38 +1,27 @@
 package com.guga.ordemparanormal.common.item;
 
-import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPItems;
-
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
+import com.guga.ordemparanormal.api.ElementDamage;
+import com.guga.ordemparanormal.core.registry.OPRituals;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.AirItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
-import net.minecraft.world.level.block.AirBlock;
 
-public class LaminaDoMedo extends SwordItem {
-
+public class LaminaDoMedo extends RitualItem {
     public LaminaDoMedo() {
-
-        // new SwordItem(Tiers.NETHERITE, 3, -2.4F, (new
-        // Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-
-        super(Tiers.NETHERITE, 30, -2.4F, new Properties().tab(OrdemParanormal.OP_TAB));
-
+        super(OPRituals.LAMINA_MEDO);
     }
-
-    // TODO PASSAR PRA ENTITYEVENTS
     @Override
-    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity caster) {
-        if (caster.getMainHandItem().getItem() == OPItems.LAMINA_DO_MEDO.get()) {
-            // spawna o item na mao principal
-            pStack.shrink(1);
+    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        if (pStack.is(this) && pStack.getOrCreateTag().getBoolean("active")){
+            pTarget.hurt(new EntityDamageSource("laminaMedo", pAttacker),
+                    60 / (ElementDamage.isEntityResistant(pTarget, ElementDamage.DANO_MEDO) ? 2f : 1f));
 
+            pStack.getOrCreateTag().putBoolean("active", false);
         }
-        return super.hurtEnemy(pStack, pTarget, caster);
+        return super.hurtEnemy(pStack, pTarget, pAttacker);
+    }
+    @Override
+    public boolean canStoreInBook() {
+        return false;
     }
 }

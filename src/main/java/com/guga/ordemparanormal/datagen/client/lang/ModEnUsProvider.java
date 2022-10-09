@@ -2,9 +2,9 @@ package com.guga.ordemparanormal.datagen.client.lang;
 
 import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
@@ -15,18 +15,6 @@ public class ModEnUsProvider extends LanguageProvider {
 	public ModEnUsProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
 	}
-
-	private void addDescription(String key, String line1, String line2, String line3) {
-		add(key + ".description.line_1", line1);
-		add(key + ".description.line_2", line2);
-		add(key + ".description.line_3", line3);
-	}
-
-	private void addDescription(String key, String line1, String line2) {
-		add(key + ".description.line_1", line1);
-		add(key + ".description.line_2", line2);
-	}
-
 	private void addRitual(AbstractRitual ritual, String name, String description) {
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
@@ -37,7 +25,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(power.getTranslationKey() + ".description", description);
 	}
 
-	// Adicionar tradu��es em EN-US
+	// Adicionar traduções em EN-US
 	@Override
 	protected void addTranslations() {
 		// Grupo de itens
@@ -50,15 +38,12 @@ public class ModEnUsProvider extends LanguageProvider {
 		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
 
 		// Itens
-		add("ordemparanormal.ritual_item.ritual_learned", "�7Just an item with a strange symbol.");
-		add("ordemparanormal.ritual_item.ritual_unknown", "�7Seems to emanate a strange presence...");
-		add("ordemparanormal.ritual_item.cursed_with", "�7Cursed with the ritual");
-		add(OPItems.GRIMORIO_ENERGIA.get(), "Energy grimoire");
-		add(OPItems.GRIMORIO_SANGUE.get(), "Blood grimoire");
+		add("ordemparanormal.ritual_item.ritual_learned", "§7Just an item with a strange symbol.");
+		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
+		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence Altar");
-		add(OPItems.LAMINA_DO_MEDO.get(), "Blade of Fear");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");
@@ -104,18 +89,6 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(ParanormalAttribute.STRENGTH.name, "Strength");
 		add(ParanormalAttribute.VIGOR.name, "Vigor");
 		add(ParanormalAttribute.PRESENCE.name, "Presence");
-		addDescription(ParanormalAttribute.STRENGTH.name,
-				"�6Strength �rdetermines how strong the Paranormal has made you.",
-				"�8Increases the speed in wich you break blocks.",
-				"�8Increases the damage of your attacks.");
-		addDescription(ParanormalAttribute.VIGOR.name,
-				"�4Vigor �rdetermines how resistant the Paranormal has made you.",
-				"�8Increases how much your hunger is filled by eating.",
-				"�8Increases your maximum health.");
-		addDescription(ParanormalAttribute.PRESENCE.name,
-				"�9Presence �rdetermines how powerful the Paranormal has made you.",
-				"�8Allows the use of more powerful rituals.",
-				"�8Increases your maximum effort.");
 
 		// Rituais
 		add("ordemparanormal.rituals", "Rituals");
@@ -141,7 +114,13 @@ public class ModEnUsProvider extends LanguageProvider {
 		addRitual(OPRituals.HEMOFAGIA, "Hematophagy",
 				"Sucks the target's blood, transfering their vitality to you.");
 		addRitual(OPRituals.APRIMORAMENTO_FISICO, "Physical Upgrade",
-				"Makes your body in extraordinary physical conditions");
+				"Makes your body reach extraordinary physical conditions, making you more resistant and powerful.");
+		addRitual(OPRituals.LAMINA_MEDO, "Blade of Fear",
+				"Conjures an impossible flame, a glimpse of something that shouldn't exist, on a blade that starts to deal lethal amounts of damage.");
+		addRitual(OPRituals.VELOCIDADE_MORTAL, "Velocidade Mortal",
+				"Alters the time perception of your body, that starts to reach extraordinary speeds.");
+		addRitual(OPRituals.MEDO_TANGIVEL, "Tangible Fear",
+				"Your body becomes a manifestation of Fear, making you immune to mundane effects. You become immune to any non-paranormal damage source.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -176,18 +155,25 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Your body adapted to absorb things that once brought you negative effects.");
 		addPower(OPPowers.DIETA_ADAPTADA_2, "Adapted Diet II",
 				"Your body benefits from consuming grotesque and unhealthy things, giving you positive effects from eating them.");
+		addPower(OPPowers.VAMPIRISMO, "Vampirism",
+				"You consume the blood of your target, dealing damage to them but healing yourself.");
+		addPower(OPPowers.VAMPIRISMO_2, "Vampirism II",
+				"Intensifies the power Vampirism, increasing the healing power and also receiving more speed.");
+		addPower(OPPowers.MEDO_TANGIVEL, "Tangible Fear",
+				"You learn the ritual Tangible Fear, which you can cast by using this power.");
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Affinity with Energy",
 				"You're connected with the entity of Energy, discarding the need for Energy ingredients and making you resistant to Energy effects, but also weak to Knowledge effects.");
+
 		addPower(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
 				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
-		addPower(OPPowers.POTENCIAL_APRIMORADO, "Improved Potential",
-				"Voc� consegue passar dos seus limites, se esfor�ando mais do que o normal, ganhando 2 pontos de esfor�o.");
+		addPower(OPPowers.POTENCIAL_APRIMORADO, "Potencial Aprimorado",
+				"You can go past your limits, spending more effort than normal, receiving 2 effort points.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
 
-		// Maldi��es
+		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
 		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");

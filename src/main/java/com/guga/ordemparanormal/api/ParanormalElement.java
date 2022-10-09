@@ -1,10 +1,8 @@
 package com.guga.ordemparanormal.api;
 
-import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.mojang.math.Vector3f;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.damagesource.DamageSource;
 
