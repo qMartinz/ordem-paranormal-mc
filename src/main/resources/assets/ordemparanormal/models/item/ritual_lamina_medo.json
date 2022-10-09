@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "ordemparanormal:item/ritual_lamina_medo"
+  },
+  "overrides": [
+    { "predicate": { "ordemparanormal:lamina_medo": 1 }, "model": "ordemparanormal:item/active_ritual_lamina_medo" }
+  ]
+}

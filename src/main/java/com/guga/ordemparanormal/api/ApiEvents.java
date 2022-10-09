@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.api.capabilities.data;
 
 import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.api.capabilities.network.Packets;
+import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.registry.OPEffects;
@@ -14,6 +15,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -108,32 +111,27 @@ public class CapEvents {
         manager.tick(event.world);
     }
     @SubscribeEvent
+    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event){
+        if (event.getEntityLiving() instanceof Player player){
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> power.onTick(player)));
+        }
+
+        CurseHelper.doTickEffects(event.getEntityLiving());
+    }
+    @SubscribeEvent
     public static void onEntityHurt(LivingHurtEvent event){
-        IEffectsCap effects = event.getEntity().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
-        if (effects == null) return;
+        if (event.getEntity() instanceof Player player && event.getSource().getEntity() instanceof LivingEntity living)
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> power.onHurt(player, living, event.getAmount())));
 
-        List<DamageSource> unAppliableBloodArmor = new ArrayList<>();
-        unAppliableBloodArmor.add(DamageSource.DROWN);
-        unAppliableBloodArmor.add(DamageSource.WITHER);
-        unAppliableBloodArmor.add(DamageSource.STARVE);
-        unAppliableBloodArmor.add(DamageSource.OUT_OF_WORLD);
-        unAppliableBloodArmor.add(ElementDamage.DANO_MORTE);
-        unAppliableBloodArmor.add(ElementDamage.DANO_MEDO);
-
-        List<DamageSource> unAppliableMedoTangivel = new ArrayList<>();
-        unAppliableMedoTangivel.add(DamageSource.OUT_OF_WORLD);
-        unAppliableMedoTangivel.add(ElementDamage.DANO_MORTE);
-        unAppliableMedoTangivel.add(ElementDamage.DANO_SANGUE);
-        unAppliableMedoTangivel.add(ElementDamage.DANO_CONHECIMENTO);
-        unAppliableMedoTangivel.add(ElementDamage.DANO_ENERGIA);
-        unAppliableMedoTangivel.add(ElementDamage.DANO_MEDO);
-
-        float bloodArmorApplied = !unAppliableBloodArmor.contains(event.getSource()) ? Math.max(event.getAmount() - effects.getBloodArmorPoints()/2f, 1) : event.getAmount();
-        float deathHealthApplied = Math.max(bloodArmorApplied - effects.getDeathHealthPoints(), 0);
-        effects.setDeathHealthPoints(effects.getDeathHealthPoints() - (int) Math.min(effects.getDeathHealthPoints(), bloodArmorApplied));
-        if (event.getEntity() instanceof LivingEntity entity && entity.hasEffect(OPEffects.TANGIBLE_FEAR.get()) &&
-        !unAppliableMedoTangivel.contains(event.getSource())) deathHealthApplied = 0;
-
-        event.setAmount(deathHealthApplied);
+        if (event.getSource().getEntity() instanceof Player player && event.getEntity() instanceof LivingEntity living)
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> power.onAttack(player, living)));
+    }
+    @SubscribeEvent
+    public static void onEntityAttack(LivingAttackEvent event){
+        CurseHelper.doPostAttackEffects((LivingEntity) event.getSource().getEntity(), event.getEntity());
+        CurseHelper.doPostHurtEffects(event.getEntityLiving(), event.getSource().getEntity(), event.getAmount(), event.getSource());
     }
 }
