@@ -51,8 +51,8 @@ public class PlayerNex implements INexCap{
             this.nexXp -= (this.nex + 1) * 50;
             this.nex++;
             if ((nex - 1) % 2 == 0) attPointsGained++;
-            if ((nex - 1) % 2 == 0) ritualSlotsGained++;
-            if (nex % 2 == 0) abilityPointsGained++;
+            if (nex % 2 == 0) ritualSlotsGained++;
+            if ((nex - 1) % 3 == 0) abilityPointsGained++;
             if (nex == 20) powerPoints++;
             if (nex == 1) ritualSlotsGained += 2;
         }

@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.paranormaldamage;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
@@ -8,6 +9,7 @@ import com.guga.ordemparanormal.common.power.Afinidade;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -62,6 +64,12 @@ public class ParanormalDamageSource extends DamageSource {
         } else {
             return false;
         }
+    }
+    public static ParanormalDamageSource paranormalCreatureAttack(ParanormalCreature creature) {
+        return new EntityParanormalDamageSource("paranormalMob", creature).setElement(creature.getMainElement());
+    }
+    public static ParanormalDamageSource ritualAttack(LivingEntity entity, AbstractRitual ritual) {
+        return new EntityParanormalDamageSource("ritual", entity).setElement(ritual.getElement());
     }
     public String elementDmgTranslationKey(){
         return element.getTranslationKey() + ".damageType";

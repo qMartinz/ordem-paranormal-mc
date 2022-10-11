@@ -48,7 +48,7 @@ public class AttributeScreen extends Screen {
         addWidget(new Button(tabX + 104, screenY + 75, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
                 ritualWidget.setRitualIndex(playerAbilities.getKnownRituals().size() - 1 >= ritualWidget.getRitualIndex() + 1 ? ritualWidget.getRitualIndex() + 1 : 0))));
 
-        if (this.transcending) addWidget(new Button(screenX + 51, screenY + 195, 20, 20, TextComponent.EMPTY, b -> minecraft.setScreen(new BloodPowerScreen())));
+        if (this.transcending) addWidget(new Button(screenX + 39, screenY + 195, 20, 20, TextComponent.EMPTY, b -> minecraft.setScreen(new BloodPowerScreen())));
     }
     @Override
     public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {

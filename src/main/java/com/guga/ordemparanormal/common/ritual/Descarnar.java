@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.paranormaldamage.EntityParanormalDamageSource;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -22,7 +23,7 @@ public class Descarnar extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         
-        target.hurt((new EntityParanormalDamageSource("ritualDescarnar", caster)).setElement(SANGUE), 4f);
+        target.hurt(ParanormalDamageSource.ritualAttack(caster, this), 4f);
 
         if(world instanceof ServerLevel level) {
             level.sendParticles(

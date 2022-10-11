@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.common.ritual;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.paranormaldamage.EntityParanormalDamageSource;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -19,7 +20,7 @@ public class Hemofagia extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
 
-        target.hurt((new EntityParanormalDamageSource("ritualHemofagia", caster)).setElement(ParanormalElement.SANGUE), 5f);
+        target.hurt(ParanormalDamageSource.ritualAttack(caster, this), 5f);
         caster.heal(5);
 
         if(world instanceof ServerLevel level) {
