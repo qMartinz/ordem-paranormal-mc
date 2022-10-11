@@ -1,6 +1,5 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
-import com.guga.ordemparanormal.api.ElementDamage;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 
@@ -26,8 +25,6 @@ public class ParanormalEffects implements IEffectsCap{
         unappliableDamageSources.add(DamageSource.WITHER);
         unappliableDamageSources.add(DamageSource.STARVE);
         unappliableDamageSources.add(DamageSource.OUT_OF_WORLD);
-        unappliableDamageSources.add(ElementDamage.DANO_MORTE);
-        unappliableDamageSources.add(ElementDamage.DANO_MEDO);
 
         return unappliableDamageSources;
     }

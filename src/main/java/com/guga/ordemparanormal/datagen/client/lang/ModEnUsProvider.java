@@ -1,10 +1,10 @@
 package com.guga.ordemparanormal.datagen.client.lang;
 
-import com.guga.ordemparanormal.api.ElementDamage;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
@@ -78,11 +78,11 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(ParanormalElement.CONHECIMENTO.getTranslationKey(), "Knowledge");
 		add(ParanormalElement.ENERGIA.getTranslationKey(), "Energy");
 		add(ParanormalElement.MEDO.getTranslationKey(), "Fear");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.SANGUE), "Blood damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.MORTE), "Death damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.ENERGIA), "Energy damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.CONHECIMENTO), "Knowledge damage");
-		add(ElementDamage.elementDmgTranslationKey(ParanormalElement.MEDO), "Fear damage");
+		add(ParanormalDamageSource.DANO_SANGUE.elementDmgTranslationKey(), "Blood damage");
+		add(ParanormalDamageSource.DANO_MORTE.elementDmgTranslationKey(), "Death damage");
+		add(ParanormalDamageSource.DANO_ENERGIA.elementDmgTranslationKey(), "Energy damage");
+		add(ParanormalDamageSource.DANO_CONHECIMENTO.elementDmgTranslationKey(), "Knowledge damage");
+		add(ParanormalDamageSource.DANO_MEDO.elementDmgTranslationKey(), "Fear damage");
 
 		// Atributos paranormais
 		add("ordemparanormal.nex.attribute_points", "Attribute Points");

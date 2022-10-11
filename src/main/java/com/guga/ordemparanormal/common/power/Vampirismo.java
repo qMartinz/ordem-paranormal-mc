@@ -32,6 +32,7 @@ public class Vampirismo extends PlayerPower {
 
         if (result instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof LivingEntity target) {
             target.hurt(new EntityDamageSource("powerVampirismo", player), 3 * (cap.hasPower(OPPowers.VAMPIRISMO_2) ? 2 : 1));
+
             if (player.level instanceof ServerLevel level) level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     target.getX(), target.getEyeY(), target.getZ(),
                     4, 0d, 0d, 0d, 0d);

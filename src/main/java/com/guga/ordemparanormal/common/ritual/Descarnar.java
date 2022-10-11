@@ -1,8 +1,7 @@
 package com.guga.ordemparanormal.common.ritual;
 
-import com.guga.ordemparanormal.api.ElementDamage;
-import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.paranormaldamage.EntityParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,17 +12,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 
+import static com.guga.ordemparanormal.api.ParanormalElement.SANGUE;
+
 public class Descarnar extends AbstractRitual {
     public Descarnar() {
-        super("descarnar", ParanormalElement.SANGUE, 1, 2, true, 5D, true);
+        super("descarnar", SANGUE, 1, 2, true, 5D, true);
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         
-        target.hurt(ElementDamage.ritualDamage(caster, ParanormalElement.SANGUE),
-                ElementDamage.isEntityResistant(target, ElementDamage.DANO_SANGUE) ? 2f :
-                        ElementDamage.isEntityWeakTo(target, ElementDamage.DANO_SANGUE) ? 8f : 4f);
+        target.hurt((new EntityParanormalDamageSource("ritualDescarnar", caster)).setElement(SANGUE), 4f);
 
         if(world instanceof ServerLevel level) {
             level.sendParticles(

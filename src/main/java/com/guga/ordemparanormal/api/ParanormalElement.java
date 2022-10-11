@@ -1,10 +1,10 @@
 package com.guga.ordemparanormal.api;
 
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.mojang.math.Vector3f;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.damagesource.DamageSource;
 
 import javax.annotation.Nonnull;
 
@@ -21,14 +21,23 @@ public enum ParanormalElement implements StringRepresentable {
         this.name = name;
         this.index = index;
     }
-    public DamageSource getDamage() {
+    public ParanormalDamageSource getDamage() {
         return switch (this){
-            case MEDO -> ElementDamage.DANO_MEDO;
-            case SANGUE -> ElementDamage.DANO_SANGUE;
-            case CONHECIMENTO -> ElementDamage.DANO_CONHECIMENTO;
-            case MORTE -> ElementDamage.DANO_MORTE;
-            case ENERGIA -> ElementDamage.DANO_ENERGIA;
-            case NONE -> DamageSource.GENERIC;
+            case MEDO -> ParanormalDamageSource.DANO_MEDO;
+            case SANGUE -> ParanormalDamageSource.DANO_SANGUE;
+            case CONHECIMENTO -> ParanormalDamageSource.DANO_CONHECIMENTO;
+            case MORTE -> ParanormalDamageSource.DANO_MORTE;
+            case ENERGIA -> ParanormalDamageSource.DANO_ENERGIA;
+            case NONE -> null;
+        };
+    }
+    public ParanormalElement getOpressingElement() {
+        return switch (this){
+            case MEDO, NONE -> null;
+            case SANGUE -> MORTE;
+            case CONHECIMENTO -> SANGUE;
+            case MORTE -> ENERGIA;
+            case ENERGIA -> CONHECIMENTO;
         };
     }
     public Vector3f getParticleVec3fColor(){

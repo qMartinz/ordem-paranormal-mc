@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.effects;
 
-import com.guga.ordemparanormal.api.ElementDamage;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -20,11 +20,11 @@ public class DecayEffect extends MobEffect {
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         Random random = new Random();
-        if (ElementDamage.isEntityResistant(entity, ElementDamage.DANO_MORTE)){
+        if (ParanormalDamageSource.isEntityResistant(entity, ParanormalDamageSource.DANO_MORTE)){
             entity.removeEffect(this);
         } else {
             float amount = 2f * amplifier;
-            entity.hurt(ElementDamage.DANO_MORTE, amount);
+            entity.hurt(ParanormalDamageSource.DANO_MORTE, amount);
 
             if (entity.level instanceof ServerLevel level)
                 level.sendParticles(

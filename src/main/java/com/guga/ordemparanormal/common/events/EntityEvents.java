@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.events;
 
-import com.guga.ordemparanormal.api.ElementDamage;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
@@ -73,7 +73,6 @@ public class EntityEvents {
 	// Detectar criaturas recebendo dano
 	@SubscribeEvent
 	public static void hurtListener(LivingHurtEvent event) {
-
 		// Cancela certos danos para entidade Corpo
 		if (event.getEntity() instanceof CorpoEntity) {
 			if (event.getSource() == DamageSource.IN_WALL || event.getSource() == DamageSource.DROWN
@@ -83,12 +82,9 @@ public class EntityEvents {
 		}
 
 		// Aumenta ou diminui o dano para certos danos elementais
-		if (event.getEntity() instanceof LivingEntity entity
-				&& ElementDamage.isEntityResistant(entity, event.getSource())) {
-			event.setAmount(event.getAmount() / 2);
-		} else if (event.getEntity() instanceof LivingEntity entity
-				&& ElementDamage.isEntityWeakTo(entity, event.getSource())) {
-			event.setAmount(event.getAmount() * 2);
+		if (event.getEntity() instanceof LivingEntity entity && event.getSource() instanceof ParanormalDamageSource source) {
+			if (ParanormalDamageSource.isEntityWeakTo(entity, source)) event.setAmount(event.getAmount() * 2);
+			if (ParanormalDamageSource.isEntityResistant(entity, source)) event.setAmount(event.getAmount() / 2);
 		}
 	}
 
@@ -97,7 +93,6 @@ public class EntityEvents {
 	public static void onRegisterCapabilites(RegisterCapabilitiesEvent event) {
 		event.register(ExpModel.class);
 	}
-
 	@SubscribeEvent
 	public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof LivingEntity && !(event.getObject() instanceof Player)) {
@@ -107,19 +102,4 @@ public class EntityEvents {
 			event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "cap_exp"), provider);
 		}
 	}
-	/*
-	 * @SubscribeEvent
-	 * public static void attackListener(ItemStack pStack, LivingEntity pTarget,
-	 * LivingEntity pAttacker) {
-	 * 
-	 * return super.attackListener(pStack, pTarget, pAttacker);
-	 * }
-	 * 
-	 * @SubscribeEvent
-	 * public boolean LaminaDoMedo.hurtEnemy(ItemStack pStack, LivingEntity pTarget,
-	 * LivingEntity pAttacker) {
-	 * 
-	 * return super.hurtEnemy(pStack, pTarget, pAttacker);
-	 * }
-	 */
 }

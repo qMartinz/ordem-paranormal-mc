@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.common.effects;
 
-import com.guga.ordemparanormal.api.ElementDamage;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -19,11 +19,11 @@ public class BleedEffect extends MobEffect {
     }
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        if (ElementDamage.isEntityResistant(entity, ElementDamage.DANO_SANGUE)){
+        if (ParanormalDamageSource.isEntityResistant(entity, ParanormalDamageSource.DANO_SANGUE)){
             entity.removeEffect(this);
         } else {
             float amount = 2f * amplifier;
-            entity.hurt(ElementDamage.DANO_SANGUE, amount);
+            entity.hurt(ParanormalDamageSource.DANO_SANGUE, amount);
 
             if (entity.level instanceof ServerLevel level)
                 level.sendParticles(

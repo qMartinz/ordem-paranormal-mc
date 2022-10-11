@@ -150,7 +150,7 @@ public class ApiEvents {
 
                 for (EquipmentSlot slot : curse.getCurse().getSlots()){
                     if (slot == EquipmentSlot.MAINHAND && curse.getCurse().getDamageBonus() > 0) {
-                        event.getToolTip().add(ElementDamage.elementDmgTypeName(curse.getCurse().getElement()).plainCopy()
+                        event.getToolTip().add(curse.getCurse().getElement().getDamage().elementDmgTypeName().plainCopy()
                                 .append(": ").append(Integer.toString(curse.getCurse().getDamageBonus())).withStyle(ChatFormatting.BLUE));
                     }
                 }

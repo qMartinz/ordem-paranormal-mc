@@ -1,16 +1,18 @@
 package com.guga.ordemparanormal.common.events;
 
-import com.guga.ordemparanormal.api.ElementDamage;
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.IEffectsCap;
 import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.common.ritual.MedoTangivel;
+import com.guga.ordemparanormal.api.paranormaldamage.EntityParanormalDamageSource;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.guga.ordemparanormal.core.registry.OPRituals;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,11 +35,9 @@ public class AbilityEvents {
             IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
             if (cap != null) {
                 if (cap.hasPower(OPPowers.PUNHO_ENRAIVECIDO_2) && !(player.getMainHandItem().getItem() instanceof TieredItem)) {
-                    amount += ElementDamage.isEntityResistant(living, ElementDamage.DANO_SANGUE) ? 2 :
-                            ElementDamage.isEntityWeakTo(living, ElementDamage.DANO_SANGUE) ? 10 : 5;
+                    living.hurt((new EntityParanormalDamageSource("powerPunhoEnraivecido", player)).setElement(ParanormalElement.SANGUE), 4);
                 } else if (player.hasEffect(OPEffects.ENRAGED_FIST.get()) && !(player.getMainHandItem().getItem() instanceof TieredItem)) {
-                    amount += ElementDamage.isEntityResistant(living, ElementDamage.DANO_SANGUE) ? 2 :
-                            ElementDamage.isEntityWeakTo(living, ElementDamage.DANO_SANGUE) ? 8 : 4;
+                    living.hurt((new EntityParanormalDamageSource("powerPunhoEnraivecido", player)).setElement(ParanormalElement.SANGUE), 3);
                 }
             }
         }
@@ -47,14 +47,17 @@ public class AbilityEvents {
         if (effects == null) return;
 
         // altera o dano com base nos efeitos paranormais
-        amount = !effects.unappliableBloodArmorDamageSources().contains(event.getSource()) ? Math.max(amount - effects.getBloodArmorPoints()/2f, 1) : amount;
+        amount = !effects.unappliableBloodArmorDamageSources().contains(event.getSource()) ||
+                (event.getSource() instanceof ParanormalDamageSource s && s.element == ParanormalElement.MORTE) ?
+                Math.max(amount - effects.getBloodArmorPoints()/2f, 1) : amount;
+
         float deathHealthApplied = Math.max(amount - effects.getDeathHealthPoints(), 0);
         effects.setDeathHealthPoints(effects.getDeathHealthPoints() - (int) Math.min(effects.getDeathHealthPoints(), amount));
         amount = deathHealthApplied;
 
         // altera o dano com base no poder medo tangivel
         if (event.getEntity() instanceof LivingEntity entity && entity.hasEffect(OPEffects.TANGIBLE_FEAR.get()) &&
-                !MedoTangivel.unappliableDamageSources().contains(event.getSource())) amount = 0;
+                (!(event.getSource() instanceof ParanormalDamageSource) || event.getSource() == DamageSource.OUT_OF_WORLD)) amount = 0;
 
         event.setAmount(amount);
     }
