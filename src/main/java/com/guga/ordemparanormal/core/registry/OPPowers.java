@@ -32,7 +32,7 @@ public class OPPowers {
     public static final PlayerPower ABSORVER_AGONIA = new AbsorverAgonia();
     public static final PlayerPower DIETA_ADAPTADA = new PlayerPower("dieta_adaptada", false, SANGUE, 0, 7, new int[]{0, 3, 0}, SANGUE_VIVO);
     public static final PlayerPower DIETA_ADAPTADA_2 = new PlayerPower("dieta_adaptada_2", false, SANGUE, 0, 10, new int[]{0, 5, 0}, DIETA_ADAPTADA, AFINIDADE_SANGUE);
-    public static final PlayerPower POTENCIAL_APRIMORADO = new EffortModPower("punho_enraivecido_2", new AttributeModifier(UUID.randomUUID(), "potencial_aprimorado_mod", 2, AttributeModifier.Operation.ADDITION), ParanormalElement.SANGUE, 0, new int[]{5, 0, 0}, OPPowers.PUNHO_ENRAIVECIDO, OPPowers.AFINIDADE_SANGUE);
+    public static final PlayerPower POTENCIAL_APRIMORADO = new EffortModPower("potencial_aprimorado", new AttributeModifier(UUID.randomUUID(), "potencial_aprimorado_mod", 2, AttributeModifier.Operation.ADDITION), ParanormalElement.SANGUE, 0, new int[]{5, 0, 0}, OPPowers.PUNHO_ENRAIVECIDO, OPPowers.AFINIDADE_SANGUE);
     public static final PlayerPower VAMPIRISMO = new Vampirismo();
     public static final PlayerPower VAMPIRISMO_2 = new PlayerPower("vampirismo_2", false, ParanormalElement.SANGUE, 0, 10, new int[]{4, 0, 0}, VAMPIRISMO, AFINIDADE_SANGUE);
     public static final PlayerPower MEDO_TANGIVEL = new RitualPower("medo_tangivel", 20, new int[]{0, 0, 4}, OPRituals.MEDO_TANGIVEL, ABSORVER_AGONIA, AFINIDADE_SANGUE);

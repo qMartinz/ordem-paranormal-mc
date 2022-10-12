@@ -177,7 +177,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
 		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
-		add(OPCurses.AMALDICOAR_ARMA.getTranslationKey(), "Cursed");
+		add(OPCurses.AMALDICOADA.getTranslationKey(), "Cursed");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Bleeding");

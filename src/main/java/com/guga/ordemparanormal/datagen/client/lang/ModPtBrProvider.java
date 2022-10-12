@@ -177,7 +177,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");
 		add(OPCurses.VELOZ.getTranslationKey(), "Veloz");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decadente");
-		add(OPCurses.AMALDICOAR_ARMA.getTranslationKey(), "Amaldiçoada");
+		add(OPCurses.AMALDICOADA.getTranslationKey(), "Amaldiçoada");
 
 		// Efeitos
 		add(OPEffects.BLEED.get(), "Sangrando");
