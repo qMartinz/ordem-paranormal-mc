@@ -12,16 +12,12 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
 import net.minecraftforge.client.gui.OverlayRegistry;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class Overlay extends GuiComponent {
+public class Overlay {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/overlay.png");
-    private static int showLvlUpTicks = 0;
     public static final IIngameOverlay HUD_NEX = (gui, poseStack, partialTicks, width, height) -> {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
@@ -34,6 +30,23 @@ public class Overlay extends GuiComponent {
                 int nextLvlXP = (playerNex.getNex() + 1) * 50;
                 int barFilled = (int) ((playerNex.getNexXp() / nextLvlXP) * 90);
                 gui.blit(poseStack, width - 95, height - 9, 3, 29, barFilled, 5);
+
+                if (playerNex.getAttributePoints() > 0 || playerNex.getPowerPoints() > 0) {
+                    RenderSystem.enableBlend();
+                    RenderSystem.disableDepthTest();
+                    RenderSystem.depthMask(false);
+                    RenderSystem.defaultBlendFunc();
+
+                    RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate((int) ((System.currentTimeMillis() / 10) % 200), 1, 100) / 100f);
+
+                    gui.blit(poseStack, width - 98, height - 26, 0, 0, 98, 24);
+
+                    RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+
+                    RenderSystem.depthMask(true);
+                    RenderSystem.enableDepthTest();
+                    RenderSystem.disableBlend();
+                }
 
                 String s = playerNex.getNexPercent() + "%";
                 gui.getFont().drawShadow(poseStack, s, width - (gui.getFont().width(s) + 96), height - (gui.getFont().lineHeight + 2), FastColor.ARGB32.color(255, 255, 255, 255));
@@ -161,7 +174,7 @@ public class Overlay extends GuiComponent {
                     ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + power.getId() + ".png");
                     if (minecraft.getResourceManager().hasResource(icon)) {
                         RenderSystem.setShaderTexture(0, icon);
-                        blit(poseStack, x + 7, y + 7, 0, 0, 16, 16, 16, 16);
+                        gui.blit(poseStack, x + 7, y + 7, 0, 0, 16, 16, 16, 16);
                     }
 
                     gui.getFont().draw(poseStack, String.valueOf(i+1), x + 5, y + 27 - minecraft.font.lineHeight, 0xFFFFFF);
@@ -175,37 +188,7 @@ public class Overlay extends GuiComponent {
             }
         }
     };
-    @SubscribeEvent
-    public void onRenderOverlay(RenderGameOverlayEvent.Post event){
-        Minecraft minecraft = Minecraft.getInstance();
 
-        if(!minecraft.options.hideGui){
-            if (showLvlUpTicks > 0) {
-                RenderSystem.enableBlend();
-                RenderSystem.disableDepthTest();
-                RenderSystem.depthMask(false);
-                RenderSystem.defaultBlendFunc();
-
-                RenderSystem.setShaderTexture(0, TEXTURES);
-                RenderSystem.setShaderColor(1f, 1f, 1f, MathUtils.Oscillate(showLvlUpTicks, 1, 100) / 100f);
-
-                blit(event.getMatrixStack(), event.getWindow().getGuiScaledWidth() - 98, event.getWindow().getGuiScaledHeight() - 26, 0, 0, 98, 24);
-
-                RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-
-                RenderSystem.depthMask(true);
-                RenderSystem.enableDepthTest();
-                RenderSystem.disableBlend();
-            }
-        }
-    }
-    @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent event){
-        if (showLvlUpTicks > 0) showLvlUpTicks--;
-    }
-    public static void showLvLUpNotification(){
-        showLvlUpTicks = 200;
-    }
     public static void registerOverlays(){
         OverlayRegistry.registerOverlayTop("NEX", Overlay.HUD_NEX);
         OverlayRegistry.registerOverlayTop("Active Powers", Overlay.ACTIVE_POWERS);
