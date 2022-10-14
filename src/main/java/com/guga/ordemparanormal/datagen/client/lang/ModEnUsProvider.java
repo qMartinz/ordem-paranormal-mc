@@ -15,6 +15,7 @@ public class ModEnUsProvider extends LanguageProvider {
 	public ModEnUsProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
 	}
+
 	private void addRitual(AbstractRitual ritual, String name, String description) {
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
@@ -51,6 +52,11 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Spiral crystal");
 		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Cursed papers");
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Rusty helmet");
+		add(OPItems.RITUAL_AMALDICOAR_ARMA.get(), "Rusty Gold Ring");
+		add(OPItems.RITUAL_ARMA_ATROZ.get(), "Bloody Silver Ring");
+		add(OPItems.RITUAL_HEMOFAGIA.get(), "Blood Necklace");
+		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Prickly Bracelet");
+		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Burnt Poem");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");

@@ -20,6 +20,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(ritual.getTranslationKey(), name);
 		add(ritual.getTranslationKey() + ".description", description);
 	}
+
 	private void addPower(PlayerPower power, String name, String description) {
 		add(power.getTranslationKey(), name);
 		add(power.getTranslationKey() + ".description", description);
@@ -51,6 +52,11 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_CICATRIZACAO.get(), "Cristal espiral");
 		add(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), "Papel amaldiçoado");
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Capacete enferrujado");
+		add(OPItems.RITUAL_AMALDICOAR_ARMA.get(), "Anel Dourado Enferrujado");
+		add(OPItems.RITUAL_ARMA_ATROZ.get(), "Anel Sangrento de Prata");
+		add(OPItems.RITUAL_HEMOFAGIA.get(), "Colar de Sangue");
+		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Pulseira Espinhenta");
+		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Poema Queimado");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
