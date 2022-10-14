@@ -45,6 +45,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRLaminaMedo();
 	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRTransferenciaVital();
 	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRSaltoFantasma();
+	public static final RegistryObject<RitualItem> RITUAL_TELEPORTE = HELPER.createRTeleporte();
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER
@@ -166,6 +167,11 @@ public final class OPItems {
 		private RegistryObject<RitualItem> createRSaltoFantasma() {
 			return this.deferredRegister.register("ritual_salto_fantasma",
 					() -> new RitualItem(OPRituals.SALTO_FANTASMA));
+		}
+
+		private RegistryObject<RitualItem> createRTeleporte() {
+			return this.deferredRegister.register("ritual_teleporte",
+					() -> new RitualItem(OPRituals.TELEPORTE));
 		}
 
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {

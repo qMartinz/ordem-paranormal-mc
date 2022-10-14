@@ -22,6 +22,7 @@ public class OPRituals {
     // Energia
     public static final AbstractRitual ARMA_VELOZ = new CurseRitual("arma_veloz", OPCurses.VELOZ, 1, 2);
     public static final AbstractRitual SALTO_FANTASMA = new SaltoFantasma();
+    public static final AbstractRitual TELEPORTE = new Teleporte();
     // Conhecimento
     public static final AbstractRitual AMALDICOAR_ARMA = new CurseRitual("amaldicoar_arma", OPCurses.AMALDICOADA, 1, 2);
     // Medo
@@ -47,6 +48,7 @@ public class OPRituals {
         // Energia
         registerRitual(ARMA_VELOZ);
         registerRitual(SALTO_FANTASMA);
+        registerRitual(TELEPORTE);
         // Conhecimento
         registerRitual(AMALDICOAR_ARMA);
         // Medo

@@ -130,6 +130,10 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Your body becomes a manifestation of Fear, making you immune to mundane effects. You become immune to any non-paranormal damage source.");
 		addRitual(OPRituals.TRANSFERENCIA_VITAL, "Vitality Transfer",
 				"Transfers your vitality to your target.");
+		addRitual(OPRituals.SALTO_FANTASMA, "Phantom Jump",
+				"Teleports  you 10 blocks away in the direction you are looking.");
+		addRitual(OPRituals.TELEPORTE, "Teleport",
+				"If used while crouching it saves the actual location, and then if used without crouching it teleports you to the saved location.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");

@@ -93,6 +93,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 		// Itens
 		oneLayerItem(OPItems.ORGAO.get());
 		oneLayerItem(OPItems.CINZAS.get());
+		oneLayerItem(OPItems.PERGAMINHO_ANTIGO.get());
 
 		// Itens de Rituais
 		oneLayerItem(OPItems.RITUAL_DESCARNAR.get());
@@ -107,6 +108,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 		oneLayerItem(OPItems.RITUAL_APRIMORAMENTO_FISICO.get());
 		oneLayerItem(OPItems.RITUAL_VELOCIDADE_MORTAL.get());
 		oneLayerItem(OPItems.RITUAL_TRANSFERENCIA_VITAL.get());
+		oneLayerItem(OPItems.RITUAL_SALTO_FANTASMA.get());
+		oneLayerItem(OPItems.RITUAL_TELEPORTE.get());
 
 		// Componentes Ritualisticos
 		oneLayerItem(OPItems.COMPONENTE_VAZIO.get());
