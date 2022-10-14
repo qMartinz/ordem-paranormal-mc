@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[40,)"
-license="All rights reserved"
+license="Apache License Version 2.0"
 [[mods]]
 modId="ordemparanormal"
 version="${file.jarVersion}"
 displayName="Ordem Paranormal"
 logoFile="ordemparanormal.png"
-credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e Lye por criar as texturas."
-authors="Guga"
+credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e à equipe do OP Mod por tornar esse projeto algo real."
+authors="Guga, Japa, e toda a equipe OP Mod"
 description='''O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...'''
 [[dependencies.ordemparanormal]]
     modId="forge"

@@ -13,12 +13,14 @@ import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.guga.ordemparanormal.core.registry.OPRituals;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TieredItem;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -34,10 +36,18 @@ public class AbilityEvents {
         if (event.getSource().getEntity() instanceof Player player && event.getEntity() instanceof LivingEntity living) {
             IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
             if (cap != null) {
-                if (cap.hasPower(OPPowers.PUNHO_ENRAIVECIDO_2) && !(player.getMainHandItem().getItem() instanceof TieredItem)) {
-                    living.hurt((new EntityParanormalDamageSource("powerPunhoEnraivecido", player)).setElement(ParanormalElement.SANGUE), 4);
-                } else if (player.hasEffect(OPEffects.ENRAGED_FIST.get()) && !(player.getMainHandItem().getItem() instanceof TieredItem)) {
-                    living.hurt((new EntityParanormalDamageSource("powerPunhoEnraivecido", player)).setElement(ParanormalElement.SANGUE), 3);
+
+                if (cap.hasPower(OPPowers.PUNHO_ENRAIVECIDO_2) &&
+                        !(player.getMainHandItem().getItem() instanceof TieredItem) &&
+                        !(event.getSource() instanceof EntityParanormalDamageSource)) {
+                    amount += 4 * (ParanormalDamageSource.isEntityWeakTo((LivingEntity) event.getEntity(), ParanormalDamageSource.DANO_SANGUE) ? 2f : 1f)
+                              / (ParanormalDamageSource.isEntityResistant((LivingEntity) event.getEntity(), ParanormalDamageSource.DANO_SANGUE) ? 2f : 1f);
+
+                } else if (player.hasEffect(OPEffects.ENRAGED_FIST.get()) &&
+                        !(player.getMainHandItem().getItem() instanceof TieredItem) &&
+                        !(event.getSource() instanceof EntityParanormalDamageSource)) {
+                    amount += 3 * (ParanormalDamageSource.isEntityWeakTo((LivingEntity) event.getEntity(), ParanormalDamageSource.DANO_SANGUE) ? 2f : 1f)
+                              / (ParanormalDamageSource.isEntityResistant((LivingEntity) event.getEntity(), ParanormalDamageSource.DANO_SANGUE) ? 2f : 1f);
                 }
             }
         }
