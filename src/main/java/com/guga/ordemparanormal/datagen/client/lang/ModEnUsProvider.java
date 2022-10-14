@@ -57,6 +57,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_HEMOFAGIA.get(), "Blood necklace");
 		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Prickly bracelet");
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Burnt poem");
+		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Rusty syringe");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
@@ -127,6 +128,8 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Alters the time perception of your body, that starts to reach extraordinary speeds.");
 		addRitual(OPRituals.MEDO_TANGIVEL, "Tangible Fear",
 				"Your body becomes a manifestation of Fear, making you immune to mundane effects. You become immune to any non-paranormal damage source.");
+		addRitual(OPRituals.TRANSFERENCIA_VITAL, "Vitality Transfer",
+				"Transfers your vitality to your target.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");

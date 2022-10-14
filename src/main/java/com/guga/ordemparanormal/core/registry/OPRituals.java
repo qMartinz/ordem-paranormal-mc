@@ -13,6 +13,7 @@ public class OPRituals {
     public static final AbstractRitual ARMADURA_SANGUE = new ArmaduraSangue();
     public static final AbstractRitual DESCARNAR = new Descarnar();
     public static final AbstractRitual HEMOFAGIA = new Hemofagia();
+    public static final AbstractRitual TRANSFERENCIA_VITAL = new TransferenciaVital();
     // Morte
     public static final AbstractRitual CICATRIZACAO = new Cicatrizacao();
     public static final AbstractRitual CONSUMIR_MANANCIAL = new ConsumirManancial();
@@ -36,6 +37,7 @@ public class OPRituals {
         registerRitual(ARMADURA_SANGUE);
         registerRitual(DESCARNAR);
         registerRitual(HEMOFAGIA);
+        registerRitual(TRANSFERENCIA_VITAL);
         // Morte
         registerRitual(CICATRIZACAO);
         registerRitual(CONSUMIR_MANANCIAL);

@@ -41,6 +41,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRAprimoramentoFisico();
 	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRVelocidadeMortal();
 	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRLaminaMedo();
+	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRTransferenciaVital();
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER
@@ -63,6 +64,7 @@ public final class OPItems {
 			"zumbi_seco", OPEntities.ZUMBI_SECO::get, 7999247, 2428687);
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_ESPINHENTO_OVO = HELPER.createSpawnEggItem(
 			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
+
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens
 		@Override
@@ -75,6 +77,7 @@ public final class OPItems {
 		public Helper(RegistryHelper parent) {
 			super(parent, parent.getItemSubHelper().getDeferredRegister());
 		}
+
 		// Itens
 		private RegistryObject<Item> createOrgao() {
 			return this.deferredRegister
@@ -84,54 +87,73 @@ public final class OPItems {
 									.food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F)
 											.effect(() -> new MobEffectInstance(MobEffects.HUNGER, 800), 1F).build())));
 		}
+
 		private RegistryObject<Item> createCinzas() {
 			return this.deferredRegister
 					.register("cinzas",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
 		}
+
 		private RegistryObject<RitualItem> createRDescarnar() {
 			return this.deferredRegister.register("livro_amaldicoado", () -> new RitualItem(OPRituals.DESCARNAR));
 		}
+
 		private RegistryObject<RitualItem> createRDecadencia() {
 			return this.deferredRegister.register("cranio_simbolo", () -> new RitualItem(OPRituals.DECADENCIA));
 		}
+
 		private RegistryObject<RitualItem> createRCicatrizacao() {
 			return this.deferredRegister.register("cristal_espiral", () -> new RitualItem(OPRituals.CICATRIZACAO));
 		}
+
 		private RegistryObject<RitualItem> createRConsumirManancial() {
 			return this.deferredRegister.register("papel_amaldicoado",
 					() -> new RitualItem(OPRituals.CONSUMIR_MANANCIAL));
 		}
+
 		private RegistryObject<RitualItem> createRArmaduraSangue() {
 			return this.deferredRegister.register("capacete_enferrujado",
 					() -> new RitualItem(OPRituals.ARMADURA_SANGUE));
 		}
+
 		private RegistryObject<RitualItem> createRArmaAtroz() {
 			return this.deferredRegister.register("ritual_arma_atroz", () -> new RitualItem(OPRituals.ARMA_ATROZ));
 		}
+
 		private RegistryObject<RitualItem> createRArmaVeloz() {
 			return this.deferredRegister.register("ritual_arma_veloz", () -> new RitualItem(OPRituals.ARMA_VELOZ));
 		}
+
 		private RegistryObject<RitualItem> createRAmaldicoarArma() {
 			return this.deferredRegister.register("ritual_amaldicoar_arma",
 					() -> new RitualItem(OPRituals.AMALDICOAR_ARMA));
 		}
+
 		private RegistryObject<RitualItem> createRHemofagia() {
 			return this.deferredRegister.register("ritual_hemofagia", () -> new RitualItem(OPRituals.HEMOFAGIA));
 		}
+
 		private RegistryObject<RitualItem> createRAprimoramentoFisico() {
 			return this.deferredRegister.register("ritual_aprimoramento_fisico",
 					() -> new RitualItem(OPRituals.APRIMORAMENTO_FISICO));
 		}
+
 		private RegistryObject<RitualItem> createRVelocidadeMortal() {
 			return this.deferredRegister.register("ritual_velocidade_mortal",
 					() -> new RitualItem(OPRituals.VELOCIDADE_MORTAL));
 		}
+
 		private RegistryObject<RitualItem> createRLaminaMedo() {
 			return this.deferredRegister.register("ritual_lamina_medo",
 					LaminaDoMedo::new);
 		}
+
+		private RegistryObject<RitualItem> createRTransferenciaVital() {
+			return this.deferredRegister.register("ritual_transferencia_vital",
+					() -> new RitualItem(OPRituals.TRANSFERENCIA_VITAL));
+		}
+
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {
 			return this.deferredRegister.register("componente_" + elemento.getSerializedName(),
 					() -> new RitualComponent(elemento));
