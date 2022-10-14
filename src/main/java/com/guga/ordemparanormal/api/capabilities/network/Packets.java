@@ -29,7 +29,6 @@ public class Packets {
             context.get().setPacketHandled(true);
         }
     }
-
     public static class SyncAbilities {
         public CompoundTag tag;
         public SyncAbilities(FriendlyByteBuf buf){
@@ -53,7 +52,6 @@ public class Packets {
             ctx.get().setPacketHandled(true);
         }
     }
-
     public static class SyncEffects {
         public CompoundTag tag;
         public SyncEffects(FriendlyByteBuf buf){
@@ -73,7 +71,6 @@ public class Packets {
             context.get().setPacketHandled(true);
         }
     }
-
     public static class SyncNexToClient {
         public CompoundTag tag;
         public SyncNexToClient(FriendlyByteBuf buf){
@@ -93,7 +90,6 @@ public class Packets {
             context.get().setPacketHandled(true);
         }
     }
-
     public static class SyncNexToServer {
         public CompoundTag tag;
         public SyncNexToServer(FriendlyByteBuf buf){
@@ -113,7 +109,6 @@ public class Packets {
             context.get().setPacketHandled(true);
         }
     }
-
     public static class UpdatePowers {
         CompoundTag tag;
         public UpdatePowers(FriendlyByteBuf buf){

@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
-import com.guga.ordemparanormal.client.Overlay;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -41,7 +40,6 @@ public class PlayerNex implements INexCap{
         this.nexXp = nexXp;
     }
     public void addNexXp(double amount){
-        int oldLevel = this.getNex();
         this.nexXp += amount;
         int attPointsGained = 0;
         int ritualSlotsGained = 0;
@@ -60,8 +58,6 @@ public class PlayerNex implements INexCap{
         attributePoints += attPointsGained;
         ritualSlots += ritualSlotsGained;
         powerPoints += abilityPointsGained;
-
-        if (attPointsGained > 0 || abilityPointsGained > 0) Overlay.showLvLUpNotification();
     }
     public int getAttributePoints() {
         return attributePoints;
