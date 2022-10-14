@@ -39,7 +39,7 @@ Rituais:
 Conhecimento
 
 Perturbação
-Amaldiçoar Arma 📝 
+Amaldiçoar Arma ✅
 Esconder dos Olhos
 Detectar Ameaças
 Localização
@@ -50,7 +50,7 @@ Inexistir
 Energia
 
 Salto Fantasma
-Amaldiçoar Tecnologia 📝 
+Amaldiçoar Tecnologia 📝
 Eletrocussão
 Luz
 Tela de Ruído
@@ -60,13 +60,13 @@ Deflagração de Energia
 ----------
 Sangue
 
-Arma Atroz 📝 
+Arma Atroz ✅
 Descarnar ✅ 
 Armadura de Sangue ✅ 
-Hemofagia 📝
+Hemofagia ✅
 Aprimoramento Físico📝
 Vomitar Peste
-Transfusão Vital
+Transfusão Vital ✅
 Vínculo de Sangue
 ----------
 Morte
@@ -75,7 +75,7 @@ Cicatrização ✅
 Decadência ✅ 
 Consumir Manancial ✅ 
 Eco Espiral
-Velocidade Mortal (Fazer efeito englobando os dois já existentes) 📝
+Velocidade Mortal (Fazer efeito englobando os dois já existentes) ✅
 Miasma
 Zerar Entropia
 Fim Inevitável
