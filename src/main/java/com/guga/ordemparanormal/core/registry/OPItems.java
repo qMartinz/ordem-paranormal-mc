@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.common.item.LaminaDoMedo;
+import com.guga.ordemparanormal.common.item.PergaminhoAntigo;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -27,6 +28,7 @@ public final class OPItems {
 	// Registrar itens
 	public static final RegistryObject<Item> ORGAO = HELPER.createOrgao();
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
+	public static final RegistryObject<Item> PERGAMINHO_ANTIGO = HELPER.createPergaminhoAntigo();
 
 	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRDescarnar();
@@ -42,6 +44,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRVelocidadeMortal();
 	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRLaminaMedo();
 	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRTransferenciaVital();
+	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRSaltoFantasma();
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER
@@ -93,6 +96,12 @@ public final class OPItems {
 					.register("cinzas",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
 									.tab(OrdemParanormal.OP_TAB).fireResistant()));
+		}
+
+		private RegistryObject<Item> createPergaminhoAntigo() {
+			return this.deferredRegister
+					.register("pergaminho_antigo",
+							() -> new PergaminhoAntigo());
 		}
 
 		private RegistryObject<RitualItem> createRDescarnar() {
@@ -152,6 +161,11 @@ public final class OPItems {
 		private RegistryObject<RitualItem> createRTransferenciaVital() {
 			return this.deferredRegister.register("ritual_transferencia_vital",
 					() -> new RitualItem(OPRituals.TRANSFERENCIA_VITAL));
+		}
+
+		private RegistryObject<RitualItem> createRSaltoFantasma() {
+			return this.deferredRegister.register("ritual_salto_fantasma",
+					() -> new RitualItem(OPRituals.SALTO_FANTASMA));
 		}
 
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {
