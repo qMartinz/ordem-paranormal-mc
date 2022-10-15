@@ -138,7 +138,7 @@ public abstract class AbstractRitual{
 
                 if (rayTraceResult instanceof BlockHitResult blockHitResult) {
                     if (hasEntityTarget()){
-                        onUseSelf(world, caster);
+                        onUseSelf(rayTraceResult, world, caster);
                         if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                     } else {
                         onUseBlock(blockHitResult, world, caster);
@@ -148,11 +148,11 @@ public abstract class AbstractRitual{
                     if (this.range > 0d) {
                         onUseEntity(entityHitResult, world, caster);
                     } else {
-                        onUseSelf(world, caster);
+                        onUseSelf(rayTraceResult, world, caster);
                     }
                     if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
                 } else {
-                    onUseSelf(world, caster);
+                    onUseSelf(rayTraceResult, world, caster);
                     if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                 }
 
@@ -204,5 +204,5 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseSelf(Level world, LivingEntity caster){}
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster){}
 }

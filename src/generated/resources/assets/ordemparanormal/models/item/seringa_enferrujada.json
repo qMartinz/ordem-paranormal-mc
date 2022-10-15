@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ordemparanormal:item/ritual_hemofagia"
+    "layer0": "ordemparanormal:item/seringa_enferrujada"
   }
 }

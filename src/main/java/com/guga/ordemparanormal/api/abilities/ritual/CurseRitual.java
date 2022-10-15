@@ -31,7 +31,7 @@ public class CurseRitual extends AbstractRitual{
         }
     }
     @Override
-    public void onUseSelf(Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
         ItemStack cursedItem = null;
 
         if (curse.getCategory().canCurse(caster.getMainHandItem().getItem())){

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ordemparanormal:item/ritual_arma_atroz"
+    "layer0": "ordemparanormal:item/anel_dourado_enferrujado"
   }
 }

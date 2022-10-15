@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.HitResult;
 
 public class VelocidadeMortal extends AbstractRitual {
     public VelocidadeMortal() {
@@ -17,7 +18,7 @@ public class VelocidadeMortal extends AbstractRitual {
     }
 
     @Override
-    public void onUseSelf(Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
         MobEffectInstance velocity = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2400, 1, false, false);
         caster.addEffect(velocity);
 

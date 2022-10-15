@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ordemparanormal:item/ritual_velocidade_mortal"
+    "layer0": "ordemparanormal:item/pergaminho_antigo"
   }
 }

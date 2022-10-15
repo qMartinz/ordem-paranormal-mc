@@ -10,13 +10,14 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.HitResult;
 
 public class ArmaduraSangue extends AbstractRitual {
     public ArmaduraSangue() {
         super("armadura_sangue", ParanormalElement.SANGUE, 1, 3, true, 0, true);
     }
     @Override
-    public void onUseSelf(Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
         MobEffectInstance resistance = new MobEffectInstance(OPEffects.SKIN_REINFORCED.get(), 1800, 1, false, false);
         caster.addEffect(resistance);
 

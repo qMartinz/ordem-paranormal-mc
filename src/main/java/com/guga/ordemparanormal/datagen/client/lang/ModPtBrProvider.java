@@ -45,6 +45,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de Transcendência");
+		add(OPItems.PERGAMINHO_ANTIGO.get(), "Pergaminho Antigo");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Livro amaldiçoado");
@@ -58,6 +59,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Pulseira espinhenta");
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Poema queimado");
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Seringa enferrujada");
+		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");

@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 
 public class Cicatrizacao extends AbstractRitual {
     public Cicatrizacao() {
@@ -17,7 +18,7 @@ public class Cicatrizacao extends AbstractRitual {
     }
 
     @Override
-    public void onUseSelf(Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
         caster.heal(6);
 
         ServerLevel level = (ServerLevel) world;
