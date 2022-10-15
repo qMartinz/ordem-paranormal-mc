@@ -33,27 +33,29 @@ public class PergaminhoAntigo extends Item {
              * player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
              * if (abilities == null)
              * return;
-             */
-            int tier = 2;
-            int peCount;
-            /*
+             * 
+             * int tier = 2;
+             * int peCount;
+             * 
              * if (tier == 2){
-             * int peCount = 4;
+             * 
+             * }
+             * 
+             * 
+             * switch (tier) {
+             * default:
+             * peCount = 2;
+             * case 1:
+             * peCount = 2;
+             * case 2:
+             * peCount = 4;
+             * case 3:
+             * peCount = 6;
+             * case 4:
+             * peCount = 8;
              * }
              */
-
-            switch (tier) {
-                default:
-                    peCount = 2;
-                case 1:
-                    peCount = 2;
-                case 2:
-                    peCount = 4;
-                case 3:
-                    peCount = 6;
-                case 4:
-                    peCount = 8;
-            }
+            int peCount = 4;
 
             INexCap nex = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
             if (!player.isCreative()) {
