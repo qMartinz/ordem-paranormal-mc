@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.api.abilities.ritual;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.core.registry.OPCurses;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
@@ -31,7 +32,7 @@ public class CurseRitual extends AbstractRitual{
         }
     }
     @Override
-    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         ItemStack cursedItem = null;
 
         if (curse.getCategory().canCurse(caster.getMainHandItem().getItem())){

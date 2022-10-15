@@ -7,7 +7,9 @@ import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -18,7 +20,7 @@ public class Cicatrizacao extends AbstractRitual {
     }
 
     @Override
-    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         caster.heal(6);
 
         ServerLevel level = (ServerLevel) world;
@@ -29,7 +31,7 @@ public class Cicatrizacao extends AbstractRitual {
     }
 
     @Override
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         if (target instanceof ParanormalCreature paranormalCreature) {
             if (paranormalCreature.getMainElement() != ParanormalElement.SANGUE) {

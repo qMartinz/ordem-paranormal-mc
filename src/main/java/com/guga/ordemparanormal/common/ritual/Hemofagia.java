@@ -7,7 +7,9 @@ import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
@@ -17,7 +19,7 @@ public class Hemofagia extends AbstractRitual {
         super("hemofagia", ParanormalElement.SANGUE, 2, 4, true, 5D, true);
     }
     @Override
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
 
         target.hurt(ParanormalDamageSource.ritualAttack(caster, this), 5f);

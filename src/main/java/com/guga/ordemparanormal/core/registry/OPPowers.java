@@ -2,16 +2,15 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.abilities.power.AttributeModPower;
-import com.guga.ordemparanormal.api.abilities.power.EffortModPower;
-import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
-import com.guga.ordemparanormal.api.abilities.power.RitualPower;
+import com.guga.ordemparanormal.api.abilities.power.*;
 import com.guga.ordemparanormal.common.power.*;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
+import static com.guga.ordemparanormal.api.ParanormalElement.MORTE;
 import static com.guga.ordemparanormal.api.ParanormalElement.SANGUE;
 
 public class OPPowers {
@@ -32,10 +31,16 @@ public class OPPowers {
     public static final PlayerPower ABSORVER_AGONIA = new AbsorverAgonia();
     public static final PlayerPower DIETA_ADAPTADA = new PlayerPower("dieta_adaptada", false, SANGUE, 0, 7, new int[]{0, 3, 0}, SANGUE_VIVO);
     public static final PlayerPower DIETA_ADAPTADA_2 = new PlayerPower("dieta_adaptada_2", false, SANGUE, 0, 10, new int[]{0, 5, 0}, DIETA_ADAPTADA, AFINIDADE_SANGUE);
-    public static final PlayerPower POTENCIAL_APRIMORADO = new EffortModPower("potencial_aprimorado", new AttributeModifier(UUID.randomUUID(), "potencial_aprimorado_mod", 2, AttributeModifier.Operation.ADDITION), ParanormalElement.SANGUE, 0, new int[]{5, 0, 0}, OPPowers.PUNHO_ENRAIVECIDO, OPPowers.AFINIDADE_SANGUE);
+    public static final PlayerPower POTENCIAL_APRIMORADO = new EffortModPower("potencial_aprimorado", new AttributeModifier(UUID.randomUUID(), "potencial_aprimorado_mod", 2, AttributeModifier.Operation.ADDITION), ParanormalElement.MORTE, 0, new int[]{0, 0, 1});
     public static final PlayerPower VAMPIRISMO = new Vampirismo();
-    public static final PlayerPower VAMPIRISMO_2 = new PlayerPower("vampirismo_2", false, ParanormalElement.SANGUE, 0, 10, new int[]{4, 0, 0}, VAMPIRISMO, AFINIDADE_SANGUE);
+    public static final PlayerPower VAMPIRISMO_2 = new PlayerPower("vampirismo_2", false, SANGUE, 0, 10, new int[]{4, 0, 0}, VAMPIRISMO, AFINIDADE_SANGUE);
     public static final PlayerPower MEDO_TANGIVEL = new RitualPower("medo_tangivel", 20, new int[]{0, 0, 4}, OPRituals.MEDO_TANGIVEL, ABSORVER_AGONIA, AFINIDADE_SANGUE);
+    public static final PlayerPower POTENCIAL_APRIMORADO_2 = new EffortModPower("potencial_aprimorado_2", new AttributeModifier(UUID.randomUUID(), "potencial_aprimorado_2_mod", 3, AttributeModifier.Operation.ADDITION), ParanormalElement.MORTE, 10, new int[]{0, 0, 4}, POTENCIAL_APRIMORADO, AFINIDADE_MORTE);
+    public static final PlayerPower PUTREFATO = new Putrefato();
+    public static final PlayerPower PUTREFATO_2 = new PlayerPower("putrefato_2", false, MORTE, 0, 10, new int[]{4, 0, 0}, PUTREFATO, AFINIDADE_MORTE);
+    public static final PlayerPower POTENCIAL_REAPROVEITADO = new PotencialReaproveitado();
+    public static final PlayerPower ESCAPAR_MORTE = new MobEffectPower("escapar_morte", new MobEffectInstance(OPEffects.SWERVE_DEATH.get(), 800, 0, false, false), MORTE, 3, 3, new int[]{0, 2, 0});
+    public static final PlayerPower SURTO_TEMPORAL = new MobEffectPower("surto_temporal", new MobEffectInstance(OPEffects.TEMPORAL_SURGE.get(), 600, 0, false, false), MORTE, 3, 5, new int[]{3, 0, 0});
 
     /**
      * Registra os poderes
@@ -67,6 +72,12 @@ public class OPPowers {
 
         // Morte
         registerPower(POTENCIAL_APRIMORADO);
+        registerPower(POTENCIAL_APRIMORADO_2);
+        registerPower(PUTREFATO);
+        registerPower(PUTREFATO_2);
+        registerPower(POTENCIAL_REAPROVEITADO);
+        registerPower(ESCAPAR_MORTE);
+        registerPower(SURTO_TEMPORAL);
 
         // Conhecimento
 

@@ -55,6 +55,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Capacete enferrujado");
 		add(OPItems.RITUAL_AMALDICOAR_ARMA.get(), "Anel dourado enferrujado");
 		add(OPItems.RITUAL_ARMA_ATROZ.get(), "Anel sangrento de prata");
+		add(OPItems.RITUAL_ARMA_VELOZ.get(), "Laço amarrado");
 		add(OPItems.RITUAL_HEMOFAGIA.get(), "Colar de sangue");
 		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Pulseira espinhenta");
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Poema queimado");

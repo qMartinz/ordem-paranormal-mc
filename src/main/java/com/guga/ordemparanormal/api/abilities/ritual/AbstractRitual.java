@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.item.RitualComponent;
+import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPSounds;
@@ -17,6 +18,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -113,6 +115,20 @@ public abstract class AbstractRitual{
             }
 
             if (canCast){
+                ItemStack ritualItem;
+                InteractionHand hand;
+
+                if (player.getMainHandItem().getItem() instanceof RitualItem item && item.ritual == this){
+                    ritualItem = player.getMainHandItem();
+                    hand = InteractionHand.MAIN_HAND;
+                } else if (player.getOffhandItem().getItem() instanceof RitualItem item && item.ritual == this){
+                    ritualItem = player.getOffhandItem();
+                    hand = InteractionHand.OFF_HAND;
+                } else {
+                    ritualItem = null;
+                    hand = null;
+                }
+
                 if (!player.isCreative()){
                     nex.setCurrentEffort(nex.getCurrentEffort() - getEffortCost());
                     if (useIngredient){
@@ -138,21 +154,21 @@ public abstract class AbstractRitual{
 
                 if (rayTraceResult instanceof BlockHitResult blockHitResult) {
                     if (hasEntityTarget()){
-                        onUseSelf(rayTraceResult, world, caster);
+                        onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
                         if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                     } else {
-                        onUseBlock(blockHitResult, world, caster);
+                        onUseBlock(blockHitResult, world, caster, ritualItem, hand);
                         if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                     }
                 } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
                     if (this.range > 0d) {
-                        onUseEntity(entityHitResult, world, caster);
+                        onUseEntity(entityHitResult, world, caster, ritualItem, hand);
                     } else {
-                        onUseSelf(rayTraceResult, world, caster);
+                        onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
                     }
                     if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
                 } else {
-                    onUseSelf(rayTraceResult, world, caster);
+                    onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
                     if (world instanceof ServerLevel level) usedParticles(level, caster, null);
                 }
 
@@ -188,7 +204,7 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster){}
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, @Nullable ItemStack ritualItem, @Nullable InteractionHand hand){}
     /**
      * Chamado quando o ritual é utilizado em um bloco como alvo
      *
@@ -196,7 +212,7 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster){}
+    public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster, @Nullable ItemStack ritualItem, @Nullable InteractionHand hand){}
 
     /**
      * Chamado quando o ritual não possui alvo específico (não é uma entidade ou um bloco)
@@ -204,5 +220,5 @@ public abstract class AbstractRitual{
      * @param world o level em que o ritual foi utilizado
      * @param caster a entidade que utilizou o ritual
      */
-    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster){}
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, @Nullable ItemStack ritualItem, @Nullable InteractionHand hand){}
 }

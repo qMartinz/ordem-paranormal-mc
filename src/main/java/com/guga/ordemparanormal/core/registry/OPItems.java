@@ -38,7 +38,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRItem("papel_amaldicoado", OPRituals.CONSUMIR_MANANCIAL);
 	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRItem("capacete_enferrujado", OPRituals.ARMADURA_SANGUE);
 	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRItem("anel_sangrento_prata", OPRituals.ARMA_ATROZ);
-	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRItem("ritual_arma_veloz", OPRituals.ARMA_VELOZ);
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRItem("laco_amarrado", OPRituals.ARMA_VELOZ);
 	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER.createRItem("anel_dourado_enferrujado", OPRituals.AMALDICOAR_ARMA);
 	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRItem("colar_sangue", OPRituals.HEMOFAGIA);
 	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRItem("pulseira_espinhenta", OPRituals.APRIMORAMENTO_FISICO);

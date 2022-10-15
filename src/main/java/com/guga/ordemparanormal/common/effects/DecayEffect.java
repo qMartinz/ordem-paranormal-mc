@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.effects;
 
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class DecayEffect extends MobEffect {
+public class DecayEffect extends OPEffects.ParanormalEffect {
     public DecayEffect(MobEffectCategory effectCategory, int color) {
         super(effectCategory, color);
     }
@@ -43,9 +44,5 @@ public class DecayEffect extends MobEffect {
         } else {
             return true;
         }
-    }
-    @Override
-    public List<ItemStack> getCurativeItems() {
-        return new ArrayList<>();
     }
 }

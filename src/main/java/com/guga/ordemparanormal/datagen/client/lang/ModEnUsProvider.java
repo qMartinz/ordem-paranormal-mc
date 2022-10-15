@@ -55,6 +55,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Rusty helmet");
 		add(OPItems.RITUAL_AMALDICOAR_ARMA.get(), "Rusty gold ring");
 		add(OPItems.RITUAL_ARMA_ATROZ.get(), "Bloody silver ring");
+		add(OPItems.RITUAL_ARMA_VELOZ.get(), "Tied bow");
 		add(OPItems.RITUAL_HEMOFAGIA.get(), "Blood necklace");
 		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Prickly bracelet");
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Burnt poem");

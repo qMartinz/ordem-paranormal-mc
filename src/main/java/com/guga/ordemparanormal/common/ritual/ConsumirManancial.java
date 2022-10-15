@@ -6,8 +6,10 @@ import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
@@ -16,7 +18,7 @@ public class ConsumirManancial extends AbstractRitual {
         super("consumir_manancial", ParanormalElement.MORTE, 1, 3, true, 0D, true);
     }
     @Override
-    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         MobEffectInstance effect = new MobEffectInstance(OPEffects.LIFE_ABSORBED.get(), 1800, 1, false, false);
         caster.addEffect(effect);
 
