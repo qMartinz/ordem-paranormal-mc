@@ -61,6 +61,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Poema queimado");
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Seringa enferrujada");
 		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
+		add(OPItems.RITUAL_TELEPORTE.get(), "Foto familiar");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
