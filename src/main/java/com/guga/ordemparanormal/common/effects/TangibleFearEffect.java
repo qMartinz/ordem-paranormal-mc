@@ -1,12 +1,13 @@
 package com.guga.ordemparanormal.common.effects;
 
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class TangibleFearEffect extends MobEffect {
+public class TangibleFearEffect extends OPEffects.ParanormalEffect {
     public TangibleFearEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
     }

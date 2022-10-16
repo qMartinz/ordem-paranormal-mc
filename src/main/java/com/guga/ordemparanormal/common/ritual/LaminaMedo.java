@@ -6,10 +6,12 @@ import com.guga.ordemparanormal.core.registry.OPItems;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.HitResult;
 
 public class LaminaMedo extends AbstractRitual {
     public LaminaMedo() {
@@ -17,18 +19,12 @@ public class LaminaMedo extends AbstractRitual {
     }
 
     @Override
-    public void onUseSelf(Level world, LivingEntity caster) {
-        // pega os itens relevantes
-        ItemStack mainHandItem = caster.getMainHandItem();
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
+        ritualItem.getOrCreateTag().putBoolean("active", true);
 
-        // se tiver um espaço vazio no inv, realiza o ritual com sucesso. se não, dropa o item amaldiçoado para abrir espaço
-        if (caster.getMainHandItem().is(OPItems.RITUAL_LAMINA_MEDO.get())){
-            caster.getMainHandItem().getOrCreateTag().putBoolean("active", true);
-
-            // Particula
-            ServerLevel level = (ServerLevel) world;
-            level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.GLASS.defaultBlockState()),
-                    caster.getX(), caster.getY(), caster.getZ(), 5, 0, 0.3, 0, 0D);
-        }
+        // Particula
+        ServerLevel level = (ServerLevel) world;
+        level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.GLASS.defaultBlockState()),
+                caster.getX(), caster.getY(), caster.getZ(), 5, 0, 0.3, 0, 0D);
     }
 }

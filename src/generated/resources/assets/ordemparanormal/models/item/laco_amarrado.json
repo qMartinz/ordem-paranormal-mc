@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ordemparanormal:item/ritual_arma_veloz"
+    "layer0": "ordemparanormal:item/laco_amarrado"
   }
 }

@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.common.item.LaminaDoMedo;
 import com.guga.ordemparanormal.common.item.PergaminhoAntigo;
 import com.guga.ordemparanormal.common.item.RitualComponent;
@@ -31,21 +32,20 @@ public final class OPItems {
 	public static final RegistryObject<Item> PERGAMINHO_ANTIGO = HELPER.createPergaminhoAntigo();
 
 	// Itens de rituais
-	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRDescarnar();
-	public static final RegistryObject<RitualItem> RITUAL_DECADENCIA = HELPER.createRDecadencia();
-	public static final RegistryObject<RitualItem> RITUAL_CICATRIZACAO = HELPER.createRCicatrizacao();
-	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRConsumirManancial();
-	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRArmaduraSangue();
-	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRArmaAtroz();
-	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRArmaVeloz();
-	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER.createRAmaldicoarArma();
-	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRHemofagia();
-	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRAprimoramentoFisico();
-	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRVelocidadeMortal();
-	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRLaminaMedo();
-	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRTransferenciaVital();
-	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRSaltoFantasma();
-	public static final RegistryObject<RitualItem> RITUAL_TELEPORTE = HELPER.createRTeleporte();
+	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRItem("livro_amaldicoado", OPRituals.DESCARNAR);
+	public static final RegistryObject<RitualItem> RITUAL_DECADENCIA = HELPER.createRItem("cranio_simbolo", OPRituals.DECADENCIA);
+	public static final RegistryObject<RitualItem> RITUAL_CICATRIZACAO = HELPER.createRItem("cristal_espiral", OPRituals.CICATRIZACAO);
+	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRItem("papel_amaldicoado", OPRituals.CONSUMIR_MANANCIAL);
+	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRItem("capacete_enferrujado", OPRituals.ARMADURA_SANGUE);
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRItem("anel_sangrento_prata", OPRituals.ARMA_ATROZ);
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRItem("laco_amarrado", OPRituals.ARMA_VELOZ);
+	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER.createRItem("anel_dourado_enferrujado", OPRituals.AMALDICOAR_ARMA);
+	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRItem("colar_sangue", OPRituals.HEMOFAGIA);
+	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRItem("pulseira_espinhenta", OPRituals.APRIMORAMENTO_FISICO);
+	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRItem("poema_queimado", OPRituals.VELOCIDADE_MORTAL);
+	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRItem("ritual_lamina_medo", OPRituals.LAMINA_MEDO);
+	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRItem("seringa_enferrujada", OPRituals.TRANSFERENCIA_VITAL);
+	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRItem("relogio_energizado", OPRituals.SALTO_FANTASMA);
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER
@@ -102,76 +102,11 @@ public final class OPItems {
 		private RegistryObject<Item> createPergaminhoAntigo() {
 			return this.deferredRegister
 					.register("pergaminho_antigo",
-							() -> new PergaminhoAntigo());
+							PergaminhoAntigo::new);
 		}
 
-		private RegistryObject<RitualItem> createRDescarnar() {
-			return this.deferredRegister.register("livro_amaldicoado", () -> new RitualItem(OPRituals.DESCARNAR));
-		}
-
-		private RegistryObject<RitualItem> createRDecadencia() {
-			return this.deferredRegister.register("cranio_simbolo", () -> new RitualItem(OPRituals.DECADENCIA));
-		}
-
-		private RegistryObject<RitualItem> createRCicatrizacao() {
-			return this.deferredRegister.register("cristal_espiral", () -> new RitualItem(OPRituals.CICATRIZACAO));
-		}
-
-		private RegistryObject<RitualItem> createRConsumirManancial() {
-			return this.deferredRegister.register("papel_amaldicoado",
-					() -> new RitualItem(OPRituals.CONSUMIR_MANANCIAL));
-		}
-
-		private RegistryObject<RitualItem> createRArmaduraSangue() {
-			return this.deferredRegister.register("capacete_enferrujado",
-					() -> new RitualItem(OPRituals.ARMADURA_SANGUE));
-		}
-
-		private RegistryObject<RitualItem> createRArmaAtroz() {
-			return this.deferredRegister.register("ritual_arma_atroz", () -> new RitualItem(OPRituals.ARMA_ATROZ));
-		}
-
-		private RegistryObject<RitualItem> createRArmaVeloz() {
-			return this.deferredRegister.register("ritual_arma_veloz", () -> new RitualItem(OPRituals.ARMA_VELOZ));
-		}
-
-		private RegistryObject<RitualItem> createRAmaldicoarArma() {
-			return this.deferredRegister.register("ritual_amaldicoar_arma",
-					() -> new RitualItem(OPRituals.AMALDICOAR_ARMA));
-		}
-
-		private RegistryObject<RitualItem> createRHemofagia() {
-			return this.deferredRegister.register("ritual_hemofagia", () -> new RitualItem(OPRituals.HEMOFAGIA));
-		}
-
-		private RegistryObject<RitualItem> createRAprimoramentoFisico() {
-			return this.deferredRegister.register("ritual_aprimoramento_fisico",
-					() -> new RitualItem(OPRituals.APRIMORAMENTO_FISICO));
-		}
-
-		private RegistryObject<RitualItem> createRVelocidadeMortal() {
-			return this.deferredRegister.register("ritual_velocidade_mortal",
-					() -> new RitualItem(OPRituals.VELOCIDADE_MORTAL));
-		}
-
-		private RegistryObject<RitualItem> createRLaminaMedo() {
-			return this.deferredRegister.register("ritual_lamina_medo",
-					LaminaDoMedo::new);
-		}
-
-		private RegistryObject<RitualItem> createRTransferenciaVital() {
-			return this.deferredRegister.register("ritual_transferencia_vital",
-					() -> new RitualItem(OPRituals.TRANSFERENCIA_VITAL));
-		}
-
-		private RegistryObject<RitualItem> createRSaltoFantasma() {
-			return this.deferredRegister.register("ritual_salto_fantasma",
-					() -> new RitualItem(OPRituals.SALTO_FANTASMA));
-		}
-
-		private RegistryObject<RitualItem> createRTeleporte() {
-			return this.deferredRegister.register("ritual_teleporte",
-					() -> new RitualItem(OPRituals.TELEPORTE));
+		private RegistryObject<RitualItem> createRItem(String id, AbstractRitual ritual) {
+			return this.deferredRegister.register(id, () -> new RitualItem(ritual));
 		}
 
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {

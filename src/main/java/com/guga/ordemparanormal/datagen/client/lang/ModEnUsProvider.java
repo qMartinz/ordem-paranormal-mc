@@ -45,6 +45,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence Altar");
+		add(OPItems.PERGAMINHO_ANTIGO.get(), "Ancient Scroll");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");
@@ -54,10 +55,12 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Rusty helmet");
 		add(OPItems.RITUAL_AMALDICOAR_ARMA.get(), "Rusty gold ring");
 		add(OPItems.RITUAL_ARMA_ATROZ.get(), "Bloody silver ring");
+		add(OPItems.RITUAL_ARMA_VELOZ.get(), "Tied bow");
 		add(OPItems.RITUAL_HEMOFAGIA.get(), "Blood necklace");
 		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Prickly bracelet");
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Burnt poem");
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Rusty syringe");
+		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Energized Clock");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");

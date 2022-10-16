@@ -13,12 +13,16 @@
   },
   "ritual_learned": {
     "sounds": [
-      "ordemparanormal:ritual_learned"
+      {
+        "name": "ordemparanormal:ritual_learned"
+      }
     ]
   },
   "ritual_forgotten": {
     "sounds": [
-      "ordemparanormal:ritual_forgotten"
+      {
+        "name": "ordemparanormal:ritual_forgotten"
+      }
     ]
   },
   "ritual_used": {

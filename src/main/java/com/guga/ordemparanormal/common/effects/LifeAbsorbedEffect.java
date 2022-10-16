@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.effects;
 
 import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LifeAbsorbedEffect extends MobEffect {
+public class LifeAbsorbedEffect extends OPEffects.ParanormalEffect {
     public LifeAbsorbedEffect(MobEffectCategory p_19414_, int p_19415_) {
         super(p_19414_, p_19415_);
     }
@@ -45,9 +46,5 @@ public class LifeAbsorbedEffect extends MobEffect {
         } else {
             return true;
         }
-    }
-    @Override
-    public List<ItemStack> getCurativeItems() {
-        return new ArrayList<>();
     }
 }

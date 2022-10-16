@@ -1,6 +1,8 @@
 package com.guga.ordemparanormal.common.effects;
 
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -13,7 +15,7 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BleedEffect extends MobEffect {
+public class BleedEffect extends OPEffects.ParanormalEffect {
     public BleedEffect(MobEffectCategory effectCategory, int color) {
         super(effectCategory, color);
     }
@@ -40,9 +42,5 @@ public class BleedEffect extends MobEffect {
         } else {
             return true;
         }
-    }
-    @Override
-    public List<ItemStack> getCurativeItems() {
-        return new ArrayList<>();
     }
 }

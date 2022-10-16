@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class Teleporte extends AbstractRitual {
@@ -18,31 +19,30 @@ public class Teleporte extends AbstractRitual {
     }
 
     @Override
-    public void onUseSelf(Level world, LivingEntity caster) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         boolean crouch = caster.isCrouching();
-        ItemStack teleporte = caster.getItemInHand(InteractionHand.MAIN_HAND);
         if (crouch == true) {
             CompoundTag pos = new CompoundTag();
             pos.putDouble("opmod.coordsX", caster.getX());
             pos.putDouble("opmod.coordsY", caster.getY());
             pos.putDouble("opmod.coordsZ", caster.getZ());
 
-            teleporte.getOrCreateTag().put("opmod.coords", pos);
+            ritualItem.getOrCreateTag().put("opmod.coords", pos);
 
         } else if (crouch == false
-                && teleporte.getOrCreateTag().contains("opmod.coords")) {
+                && ritualItem.getOrCreateTag().contains("opmod.coords")) {
 
             Vec3 position = new Vec3(
-                    teleporte.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsX"),
-                    teleporte.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsY"),
-                    teleporte.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsZ"));
+                    ritualItem.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsX"),
+                    ritualItem.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsY"),
+                    ritualItem.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsZ"));
 
             caster.moveTo(position);
         }
     }
 
     @Override
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster) {
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         boolean crouch = caster.isCrouching();
         ItemStack teleporte = caster.getItemInHand(InteractionHand.MAIN_HAND);
 

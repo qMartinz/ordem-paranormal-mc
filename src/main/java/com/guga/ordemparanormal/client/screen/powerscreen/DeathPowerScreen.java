@@ -14,6 +14,6 @@ public class DeathPowerScreen extends PowerScreen {
     public void initContents() {
         int tabWidth = this.width - 41;
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 10, OPPowers.AFINIDADE_MORTE));
-        addPowerIcon(new PowerButton(tabWidth/2 + 77, height/2 - 10, OPPowers.POTENCIAL_APRIMORADO));
+        addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 60, OPPowers.POTENCIAL_APRIMORADO));
     }
 }

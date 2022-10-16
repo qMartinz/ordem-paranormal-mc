@@ -17,7 +17,6 @@ public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
     public SoundDefinition soundDefinition(String soundFileName){
         return definition().with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, soundFileName)));
     }
-
     @Override
     public void registerSounds() {
         add(OPSounds.ZUMBI_BESTIAL_GROWL, soundDefinition("zumbi_bestial.growl").subtitle("subtitles.ordemparanormal.zumbi_bestial.growl"));

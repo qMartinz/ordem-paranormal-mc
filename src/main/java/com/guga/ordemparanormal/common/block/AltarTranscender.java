@@ -11,6 +11,7 @@ import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -95,8 +96,8 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
                         stack.setTag(tag);
                         abilities.learnRitual(ritual);
                         ApiEvents.syncPlayerPowers(pPlayer);
-                        pLevel.playSound(null, pPos, OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 0.5f, 1f);
-                        pLevel.playSound(null, pPos, SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
+                        pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 0.5f, 1f);
+                        pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
                         return InteractionResult.CONSUME;
                     }
                 } else {
@@ -107,8 +108,8 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
                     }
                     abilities.forgetRitual(ritual);
                     ApiEvents.syncPlayerPowers(pPlayer);
-                    pLevel.playSound(null, pPos, OPSounds.RITUAL_FORGOTTEN.get(), SoundSource.BLOCKS, 0.5f, 1f);
-                    pLevel.playSound(null, pPos, SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
+                    pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), OPSounds.RITUAL_FORGOTTEN.get(), SoundSource.BLOCKS, 0.5f, 1f);
+                    pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
                     return InteractionResult.CONSUME;
                 }
             }

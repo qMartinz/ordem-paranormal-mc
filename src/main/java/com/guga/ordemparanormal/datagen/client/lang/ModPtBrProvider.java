@@ -45,6 +45,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de Transcendência");
+		add(OPItems.PERGAMINHO_ANTIGO.get(), "Pergaminho Antigo");
 
 		// Itens de Rituais
 		add(OPItems.RITUAL_DESCARNAR.get(), "Livro amaldiçoado");
@@ -54,11 +55,12 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_ARMADURA_SANGUE.get(), "Capacete enferrujado");
 		add(OPItems.RITUAL_AMALDICOAR_ARMA.get(), "Anel dourado enferrujado");
 		add(OPItems.RITUAL_ARMA_ATROZ.get(), "Anel sangrento de prata");
+		add(OPItems.RITUAL_ARMA_VELOZ.get(), "Laço amarrado");
 		add(OPItems.RITUAL_HEMOFAGIA.get(), "Colar de sangue");
 		add(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), "Pulseira espinhenta");
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Poema queimado");
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Seringa enferrujada");
-		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relogio Energizado");
+		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
@@ -131,10 +133,6 @@ public class ModPtBrProvider extends LanguageProvider {
 				"Seu corpo se torna uma manifestação do medo, te tornando imune a efeitos mundanos. Você passa a ser imune a qualquer dano não-paranormal.");
 		addRitual(OPRituals.TRANSFERENCIA_VITAL, "Transferencia Vital",
 				"Transfere sua vitalidade para o alvo do ritual.");
-		addRitual(OPRituals.SALTO_FANTASMA, "Salto Fantasma",
-				"Teleporta o usuario 10 blocos na direção que está olhando.");
-		addRitual(OPRituals.TELEPORTE, "Teleporte",
-				"Teleporta o usuario 10 blocos na direção que está olhando.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
