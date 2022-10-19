@@ -23,19 +23,21 @@ public class Teleporte extends AbstractRitual {
         boolean crouch = caster.isCrouching();
         if (crouch == true) {
             CompoundTag pos = new CompoundTag();
-            pos.putDouble("opmod.coordsX", caster.getX());
-            pos.putDouble("opmod.coordsY", caster.getY());
-            pos.putDouble("opmod.coordsZ", caster.getZ());
+            pos.putDouble("teleport.coordsX", caster.getX());
+            pos.putDouble("teleport.coordsY", caster.getY());
+            pos.putDouble("teleport.coordsZ", caster.getZ());
 
-            ritualItem.getOrCreateTag().put("opmod.coords", pos);
+            ritualItem.getOrCreateTag().put("teleport.coords", pos);
 
         } else if (crouch == false
-                && ritualItem.getOrCreateTag().contains("opmod.coords")) {
+                && ritualItem.getOrCreateTag().contains("teleport.coords")) {
+
+            CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
             Vec3 position = new Vec3(
-                    ritualItem.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsX"),
-                    ritualItem.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsY"),
-                    ritualItem.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsZ"));
+                    pos.getDouble("teleport.coordsX"),
+                    pos.getDouble("teleport.coordsY"),
+                    pos.getDouble("teleport.coordsZ"));
 
             caster.moveTo(position);
         }
@@ -44,13 +46,14 @@ public class Teleporte extends AbstractRitual {
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         boolean crouch = caster.isCrouching();
-        ItemStack teleporte = caster.getItemInHand(InteractionHand.MAIN_HAND);
 
-        if (crouch == false && teleporte.getOrCreateTag().contains("opmod.coords")) {
+        if (crouch == false && ritualItem.getOrCreateTag().contains("opmod.coords")) {
+            CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
+
             Vec3 position = new Vec3(
-                    teleporte.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsX"),
-                    teleporte.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsY"),
-                    teleporte.getOrCreateTag().getCompound("opmod.coords").getDouble("opmod.coordsZ"));
+                    pos.getDouble("teleport.coordsX"),
+                    pos.getDouble("teleport.coordsY"),
+                    pos.getDouble("teleport.coordsZ"));
 
             rayTraceResult.getEntity().moveTo(position);
         }

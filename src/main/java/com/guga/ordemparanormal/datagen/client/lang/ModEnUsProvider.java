@@ -61,6 +61,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Burnt poem");
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Rusty syringe");
 		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Energized Clock");
+		add(OPItems.RITUAL_TELEPORTE.get(), "Familiar photo");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
@@ -134,9 +135,9 @@ public class ModEnUsProvider extends LanguageProvider {
 		addRitual(OPRituals.TRANSFERENCIA_VITAL, "Vitality Transfer",
 				"Transfers your vitality to your target.");
 		addRitual(OPRituals.SALTO_FANTASMA, "Phantom Jump",
-				"Teleports  you 10 blocks away in the direction you are looking.");
+				"Teleports you 10 blocks away in the direction you are looking.");
 		addRitual(OPRituals.TELEPORTE, "Teleport",
-				"If used while crouching it saves the actual location, and then if used without crouching it teleports you to the saved location.");
+				"If used while crouching, saves the current location, and then if used without crouching, teleports you to the saved location.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");

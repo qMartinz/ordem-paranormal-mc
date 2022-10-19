@@ -61,6 +61,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), "Poema queimado");
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Seringa enferrujada");
 		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
+		add(OPItems.RITUAL_TELEPORTE.get(), "Foto familiar");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
@@ -133,6 +134,10 @@ public class ModPtBrProvider extends LanguageProvider {
 				"Seu corpo se torna uma manifestação do medo, te tornando imune a efeitos mundanos. Você passa a ser imune a qualquer dano não-paranormal.");
 		addRitual(OPRituals.TRANSFERENCIA_VITAL, "Transferencia Vital",
 				"Transfere sua vitalidade para o alvo do ritual.");
+		addRitual(OPRituals.SALTO_FANTASMA, "Phantom Jump",
+				"Te teleporta 10 blocos na direção que está olhando.");
+		addRitual(OPRituals.TELEPORTE, "Teleport",
+				"Se usado enquanto agacha, salva sua a posição atual. Se usado sem estar agachando, te teleporta para a posição salvada.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
