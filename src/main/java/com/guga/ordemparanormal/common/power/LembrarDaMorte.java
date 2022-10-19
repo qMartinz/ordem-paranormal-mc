@@ -1,0 +1,27 @@
+package com.guga.ordemparanormal.common.power;
+
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.core.registry.OPPowers;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.player.Player;
+
+import java.util.List;
+
+import static com.guga.ordemparanormal.api.ParanormalElement.MORTE;
+
+public class LembrarDaMorte extends PlayerPower {
+    public LembrarDaMorte() {
+        super("lembrar_da_morte", false, MORTE, 0, 11, new int[]{0, 0, 4}, OPPowers.PERIMETRO_ESPIRAL);
+    }
+    @Override
+    public void onTick(Player player) {
+        List<LivingEntity> targets = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5d, 5d, 5d));
+
+        if (targets.stream().anyMatch(e -> e.getMobType() == MobType.UNDEAD) && !player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60));
+        }
+    }
+}

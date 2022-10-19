@@ -183,8 +183,26 @@ public class ModEnUsProvider extends LanguageProvider {
 
 		addPower(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
 				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
-		addPower(OPPowers.POTENCIAL_APRIMORADO, "Potencial Aprimorado",
+		addPower(OPPowers.POTENCIAL_APRIMORADO, "Enhanced Potential",
 				"You can go past your limits, spending more effort than normal, receiving 2 effort points.");
+		addPower(OPPowers.POTENCIAL_APRIMORADO_2, "Enhanced Potential II",
+				"You can go even further past your limits, receiving 3 effort points.");
+		addPower(OPPowers.PUTREFATO,"Foul",
+				"Your strikes, in addition to causing damage, also alter the time perception of your target's physical matter. Unarmed strikes might cause decay.");
+		addPower(OPPowers.PUTREFATO_2,"Foul II",
+				"Your strikes cause decay more frequently.");
+		addPower(OPPowers.POTENCIAL_REAPROVEITADO, "Reused Potential",
+				"You take advantage of lost moments when receiving damage, being able to recover effort points when getting hurt.");
+		addPower(OPPowers.ESCAPAR_MORTE, "Swerve Death",
+				"Your body can utilize lost moments to stop you from losing yours, saving you from fatal blows.");
+		addPower(OPPowers.SURTO_TEMPORAL, "Temporal Surge",
+				"Your time perception is altered with a brief impulse of adrenaline, increasing the speed of your attacks.");
+		addPower(OPPowers.PERIMETRO_ESPIRAL, "Spiral Perimeter",
+				"You drain the potential energy of those around you, slowing them down while also making your faster.");
+		addPower(OPPowers.LEMBRAR_DA_MORTE, "Remember Death",
+				"The presence of moments lost by time encourage you to go onward. When near any undead, you receive the Speed effect.");
+		addPower(OPPowers.ABSORVER_ENTROPIA, "Absorb Entropy",
+				"Death consumes all. When killing any being, you get an amount of hearts depending on the strength of that being.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
@@ -200,6 +218,9 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPEffects.LIFE_ABSORBED.get(), "Life Absorbed");
 		add(OPEffects.SKIN_REINFORCED.get(), "Skin Reinforced");
 		add(OPEffects.DECAY.get(), "Decay");
+		add(OPEffects.TEMPORAL_SURGE.get(), "Temporal Surge");
+		add(OPEffects.ENRAGED_FIST.get(), "Enraged Fist");
+		add(OPEffects.SWERVE_DEATH.get(), "Swerve Death");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");

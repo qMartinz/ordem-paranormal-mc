@@ -26,9 +26,6 @@ public class OPItemProperties {
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
         ItemProperties.register(Items.NETHERITE_SWORD,
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
-
-        ItemProperties.register(OPItems.RITUAL_LAMINA_MEDO.get(),
-                new ResourceLocation(OrdemParanormal.MOD_ID, "lamina_medo"), (stack, level, entity, id) -> stack.getOrCreateTag().getBoolean("active") ? 1f : 0f);
     }
     /**
     * Retorna um float específico baseado em quais maldições o item possui.

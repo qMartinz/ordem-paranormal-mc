@@ -5,7 +5,7 @@ import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -24,12 +24,12 @@ public class Atroz extends AbstractCurse {
         return 2;
     }
     @Override
-    public void doPostAttack(ItemStack pStack, LivingEntity pAttacker, Entity pTarget) {
+    public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         for (int i = 0; i < getDamageBonus(); i++) {
             pTarget.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     pTarget.getX(), pTarget.getEyeY(), pTarget.getZ(),
                     0D, 0D, 0D);
         }
-        super.doPostAttack(pStack, pAttacker, pTarget);
+        return super.doPostAttack(pStack, pAttacker, pTarget, amount, source);
     }
 }

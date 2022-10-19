@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Veloz extends AbstractCurse {
-    private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier("veloz_modifier", 0.6d, AttributeModifier.Operation.ADDITION);
+    private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier("veloz_modifier", 1d, AttributeModifier.Operation.ADDITION);
     public Veloz() {
         super("veloz", ParanormalElement.ENERGIA, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
     }

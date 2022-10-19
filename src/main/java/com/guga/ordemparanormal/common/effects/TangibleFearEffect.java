@@ -1,15 +1,25 @@
 package com.guga.ordemparanormal.common.effects;
 
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.Nullable;
 
 public class TangibleFearEffect extends OPEffects.ParanormalEffect {
     public TangibleFearEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
+    }
+    @Override
+    public float onHurt(LivingEntity livingEntity, @Nullable Entity attacker, float amount, DamageSource source) {
+        if ((!(source instanceof ParanormalDamageSource) || source == DamageSource.OUT_OF_WORLD)){
+            return 0;
+        }
+        return amount;
     }
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {

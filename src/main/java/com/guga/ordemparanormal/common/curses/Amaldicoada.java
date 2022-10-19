@@ -4,7 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
 import com.guga.ordemparanormal.core.registry.OPParticles;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +23,7 @@ public class Amaldicoada extends AbstractCurse {
         return 2;
     }
     @Override
-    public void doPostAttack(ItemStack pStack, LivingEntity pAttacker, Entity pTarget) {
+    public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         Random random = new Random();
         for (int i = 0; i < getDamageBonus(); i++) {
             pTarget.level.addParticle(OPParticles.SIGILOS_PARTICLE.get(),
@@ -32,6 +32,7 @@ public class Amaldicoada extends AbstractCurse {
                     pTarget.getZ() + random.nextDouble(-0.5d, 0.5d),
                     0D, 0D, 0D);
         }
-        super.doPostAttack(pStack, pAttacker, pTarget);
+
+        return super.doPostAttack(pStack, pAttacker, pTarget, amount, source);
     }
 }

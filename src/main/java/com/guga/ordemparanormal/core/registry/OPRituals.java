@@ -27,7 +27,7 @@ public class OPRituals {
     public static final AbstractRitual AMALDICOAR_ARMA = new CurseRitual("amaldicoar_arma", OPCurses.AMALDICOADA, 1, 2);
     // Medo
     public static final AbstractRitual MEDO_TANGIVEL = new MedoTangivel();
-    public static final AbstractRitual LAMINA_MEDO = new LaminaMedo();
+    public static final AbstractRitual LAMINA_MEDO = new CurseRitual("lamina_do_medo", OPCurses.LAMINA_MEDO, 4, 8);
 
     /**
      * Registra os rituais

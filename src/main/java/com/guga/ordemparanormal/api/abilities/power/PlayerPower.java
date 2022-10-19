@@ -12,8 +12,12 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -138,13 +142,61 @@ public class PlayerPower {
     /**
      * Chamado quando o usuário ataca
      *
-     * @param player o jogador que possui o poder
+     * @param player quem causou dano
+     * @param amount quanto dano foi causado
+     * @param target o alvo do dano
+     * @param source o tipo de dano causado
+     * @return o dano alterado
      */
-    public void onAttack(Player player, LivingEntity target){}
+    public float onAttack(Player player, float amount, LivingEntity target, DamageSource source){
+        return amount;
+    }
     /**
      * Chamado quando o usuário sofre dano
      *
-     * @param player o jogador que possui o poder
+     * @param player quem sofreu dano
+     * @param amount quanto dano foi sofrido
+     * @param attacker quem causou o dano
+     * @param source o tipo de dano causado
+     * @return o dano alterado
      */
-    public void onHurt(Player player, LivingEntity attacker, float amount){}
+    public float onHurt(Player player, float amount, @Nullable Entity attacker, DamageSource source){
+        return amount;
+    }
+
+    /**
+     * Chamado quando o usuário começa a usar um item
+     *
+     * @param player quem utilizou
+     * @param item o item utilizado
+     * @param duration o item resultante do uso
+     * @return a duração alterada pelo método
+     */
+    public int onStartUseItem(Player player, ItemStack item, int duration){
+        return duration;
+    }
+    /**
+     * Chamado quando o usuário usa algum item
+     *
+     * @param player quem utilizou
+     * @param item o item que foi utilizado
+     * @param result o item resultante do uso
+     * @param duration a duração do uso
+     * @return o item resultante do uso alterado pelo método
+     */
+    public ItemStack onFinishUseItem(Player player, ItemStack item, ItemStack result, int duration){
+        return result;
+    }
+
+    /**
+     * Chamado a cada tick quando o usuário está usando um item
+     *
+     * @param player quem está utilizando
+     * @param item o item sendo utilizado
+     * @param duration a duração da utilização
+     * @return a duração alterada pelo método
+     */
+    public int onTickUseItem(Player player, ItemStack item, int duration){
+        return duration;
+    }
 }

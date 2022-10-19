@@ -181,6 +181,24 @@ public class ModPtBrProvider extends LanguageProvider {
 				"Você se conecta à entidade de Morte, descartando a necessidade de ingredientes de Morte e te tornando resistente a efeitos de Morte, mas você se torna fraco a efeitos de Energia.");
 		addPower(OPPowers.POTENCIAL_APRIMORADO, "Potencial Aprimorado",
 				"Você consegue passar dos seus limites, se esforçando mais do que o normal, ganhando 2 pontos de esforço.");
+		addPower(OPPowers.POTENCIAL_APRIMORADO_2, "Potencial Aprimorado II",
+				"Você consegue passar ainda mais dos seus limites, ganhando 3 pontos de esforço.");
+		addPower(OPPowers.PUTREFATO,"Putrefato",
+				"Seus golpes, além de causar danos, também alteram a percepção de tempo da matéria física dos alvos. Ataques desarmados podem causar apodrecimento.");
+		addPower(OPPowers.PUTREFATO_2,"Putrefato II",
+				"Seus golpes desarmados passam a causar apodrecimento com mais frequência.");
+		addPower(OPPowers.POTENCIAL_REAPROVEITADO, "Potencial Reaproveitado",
+				"Você se aproveita de momentos perdidos ao receber danos, podendo recuperar pontos de esforço ao ser atingido.");
+		addPower(OPPowers.ESCAPAR_MORTE, "Escapar da Morte",
+				"Seu corpo consegue utilizar momentos perdidos para impedir que você perca os seus, te salvando de ataques fatais.");
+		addPower(OPPowers.SURTO_TEMPORAL, "Surto Temporal",
+				"Sua percepção do tempo é alterada com um breve impulso de adrenalina, acelerando seus ataques.");
+		addPower(OPPowers.PERIMETRO_ESPIRAL, "Perimetro Espiral",
+				"Você suga a energia potencial daqueles ao seu redor, deixando-os lentos, enquanto você se torna mais rápido.");
+		addPower(OPPowers.LEMBRAR_DA_MORTE, "Lembrar da Morte",
+				"A presença de momentos perdidos pelo tempo te incentivam a seguir em frente. Quando estiver perto de mortos-vivos, você ganha o efeito de velocidade.");
+		addPower(OPPowers.ABSORVER_ENTROPIA, "Absorver Entropia",
+				"A Morte consome tudo. Ao matar algum ser, você ganha uma quantidade de corações dependentes da força de tal ser.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
 				"Você se conecta à entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas você se torna fraco a efeitos de Sangue.");
@@ -196,6 +214,9 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPEffects.LIFE_ABSORBED.get(), "Vida Absorvida");
 		add(OPEffects.SKIN_REINFORCED.get(), "Pele Reforçada");
 		add(OPEffects.DECAY.get(), "Apodrecimento");
+		add(OPEffects.TEMPORAL_SURGE.get(), "Surto Temporal");
+		add(OPEffects.ENRAGED_FIST.get(), "Punho Enraivecido");
+		add(OPEffects.SWERVE_DEATH.get(), "Escapar da Morte");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");

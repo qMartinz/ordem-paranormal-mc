@@ -22,12 +22,12 @@ public class LifeAbsorbedEffect extends OPEffects.ParanormalEffect {
     }
     @Override
     public void addAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints(effects.getDeathHealthPoints() + 6*pAmplifier));
+        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints(effects.getDeathHealthPoints() + 6*pAmplifier, pLivingEntity.getMaxHealth()));
         super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
     @Override
     public void removeAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints(effects.getDeathHealthPoints() - 6*pAmplifier));
+        pLivingEntity.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(effects -> effects.setDeathHealthPoints(effects.getDeathHealthPoints() - 6*pAmplifier, pLivingEntity.getMaxHealth()));
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
     @Override

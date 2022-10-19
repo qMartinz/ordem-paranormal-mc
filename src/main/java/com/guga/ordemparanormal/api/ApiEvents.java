@@ -4,32 +4,29 @@ import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.api.curses.CurseInstance;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID)
 public class ApiEvents {
@@ -125,37 +122,62 @@ public class ApiEvents {
 
         CurseHelper.doTickEffects(event.getEntityLiving());
     }
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityHurt(LivingHurtEvent event){
-        if (event.getEntity() instanceof Player player && event.getSource().getEntity() instanceof LivingEntity living)
-            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                    playerAbilities.getPowers().forEach(power -> power.onHurt(player, living, event.getAmount())));
+        if (event.getSource().getEntity() instanceof LivingEntity living) {
+            event.setAmount(CurseHelper.doPostAttackEffects(living, event.getEntityLiving(), event.getAmount(), event.getSource()));
+        }
 
-        if (event.getSource().getEntity() instanceof Player player && event.getEntity() instanceof LivingEntity living)
+        event.setAmount(CurseHelper.doPostHurtEffects(event.getEntityLiving(), event.getSource().getEntity(), event.getAmount(), event.getSource()));
+
+        if (event.getSource().getEntity() instanceof Player player)
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                    playerAbilities.getPowers().forEach(power -> power.onAttack(player, living)));
+                    playerAbilities.getPowers().forEach(power -> event.setAmount(power.onAttack(player, event.getAmount(), event.getEntityLiving(), event.getSource()))));
+
+        if (event.getEntity() instanceof Player player)
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> event.setAmount(power.onHurt(player, event.getAmount(), event.getSource().getEntity(), event.getSource()))));
+    }
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void onParanormalEffectsApply(LivingHurtEvent event){
+        float amount = event.getAmount();
+
+        // pega a capability com efeitos paranormais
+        IEffectsCap targetEffects = event.getEntityLiving().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
+        if (targetEffects == null) return;
+
+        // altera o dano com base nos efeitos paranormais
+        amount = !targetEffects.unappliableBloodArmorDamageSources().contains(event.getSource()) ||
+                (event.getSource() instanceof ParanormalDamageSource s && s.element == ParanormalElement.MORTE) ?
+                Math.max(amount - targetEffects.getBloodArmorPoints()/2f, 1) : amount;
+
+        float deathHealthApplied = Math.max(amount - targetEffects.getDeathHealthPoints(), 0);
+        targetEffects.setDeathHealthPoints(targetEffects.getDeathHealthPoints() - (int) Math.min(targetEffects.getDeathHealthPoints(), amount), event.getEntityLiving().getMaxHealth());
+        amount = deathHealthApplied;
+
+        event.setAmount(amount);
     }
     @SubscribeEvent
-    public static void onEntityAttack(LivingAttackEvent event){
-        CurseHelper.doPostAttackEffects((LivingEntity) event.getSource().getEntity(), event.getEntity());
-        CurseHelper.doPostHurtEffects(event.getEntityLiving(), event.getSource().getEntity(), event.getAmount(), event.getSource());
+    public static void onLivingUseItem(LivingEntityUseItemEvent event){
+        if (event.getEntity() instanceof Player player)
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> {
+                        if (event instanceof LivingEntityUseItemEvent.Start) event.setDuration(power.onStartUseItem(player, event.getItem(), event.getDuration()));
+                        if (event instanceof LivingEntityUseItemEvent.Tick) event.setDuration(power.onTickUseItem(player, event.getItem(), event.getDuration()));
+                        if (event instanceof LivingEntityUseItemEvent.Finish e) e.setResultStack(power.onFinishUseItem(player, event.getItem(), e.getResultStack(), event.getDuration()));
+                    }));
     }
     @SubscribeEvent
     public static void onRenderItemTooltips(ItemTooltipEvent event){
         if (!CurseHelper.getCurses(event.getItemStack()).isEmpty() && CurseHelper.getCurses(event.getItemStack()).stream().noneMatch(Objects::isNull)){
-            List<Component> components = new ArrayList<>();
 
-            CurseHelper.getCurses(event.getItemStack()).forEach(curse -> {
-                components.add(curse.getCurse().getDisplayName());
+            List<Component> curseComponents = new ArrayList<>();
+            for (CurseInstance curse : CurseHelper.getCurses(event.getItemStack())) {
+                curseComponents.add(curse.getCurse().getDisplayName());
+            }
+            curseComponents.sort(Comparator.comparing(Component::getString));
 
-                for (EquipmentSlot slot : curse.getCurse().getSlots()){
-                    if (slot == EquipmentSlot.MAINHAND && curse.getCurse().getDamageBonus() > 0) {
-                        event.getToolTip().add(curse.getCurse().getElement().getDamage().elementDmgTypeName().plainCopy()
-                                .append(": ").append(Integer.toString(curse.getCurse().getDamageBonus())).withStyle(ChatFormatting.BLUE));
-                    }
-                }
-            });
-            event.getToolTip().addAll(1, components);
+            event.getToolTip().addAll(1, curseComponents);
         }
     }
     @SubscribeEvent

@@ -12,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,10 +63,14 @@ public abstract class AbstractCurse {
 
         return name;
     }
-    public void doPostAttack(ItemStack pStack, LivingEntity pAttacker, Entity pTarget) {
+    public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         CurseHelper.getCurse(pStack, this).useOrRemove(pStack);
+        return amount;
     }
-    public void doPostHurt(ItemStack pStack, LivingEntity pTarget, Entity pAttacker) {}
+    public float doPostHurt(ItemStack pStack, LivingEntity pTarget, @Nullable Entity pAttacker, float amount, DamageSource source) {
+        CurseHelper.getCurse(pStack, this).useOrRemove(pStack);
+        return amount;
+    }
     public void doTick(ItemStack pStack, LivingEntity pUser) {}
     public int getMaxUses() {
         return 0;

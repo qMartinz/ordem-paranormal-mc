@@ -140,7 +140,7 @@ public class PowerScreen extends Screen {
 
                         if (yd < 0) {
                             minY += icon.getHeight();
-                            midY -= icon2.getHeight()/2;
+                            midY += icon2.getHeight()/2;
                         }
                         if (yd > 0) {
                             maxY += icon2.getHeight();
@@ -148,7 +148,7 @@ public class PowerScreen extends Screen {
                         }
 
                         fill(stack, minX - 1, minY, minX + 1, midY, 0xFFbf782c);
-                        fill(stack, minX - 1, midY - 1, maxX + 1, midY + 1, 0xFFbf782c);
+                        fill(stack, minX - 1 + (xd > 0 ? 2 : 0), midY - 1, maxX + 1 - (xd > 0 ? 2 : 0), midY + 1, 0xFFbf782c);
                         fill(stack, maxX - 1, midY, maxX + 1, maxY, 0xFFbf782c);
                     } else {
                         int minX = vertical ? (icon.x + icon.getWidth()/2) - 1 : icon.x;

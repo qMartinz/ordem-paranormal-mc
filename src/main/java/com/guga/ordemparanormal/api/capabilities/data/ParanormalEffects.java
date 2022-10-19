@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 
 import java.util.ArrayList;
@@ -33,8 +34,8 @@ public class ParanormalEffects implements IEffectsCap{
         return knowledgeEffortPoints;
     }
     @Override
-    public void setDeathHealthPoints(int amount) {
-        deathHealthPoints = Math.max(0, amount);
+    public void setDeathHealthPoints(int amount, float maxHealth) {
+        deathHealthPoints = (int) Mth.clamp(amount, 0, maxHealth);
     }
 
     @Override

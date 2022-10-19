@@ -10,7 +10,7 @@ public interface IEffectsCap {
     int getBloodArmorPoints();
     Collection<DamageSource> unappliableBloodArmorDamageSources();
     int getKnowledgeEffortPoints();
-    void setDeathHealthPoints(int amount);
+    void setDeathHealthPoints(int amount, float maxHealth);
     void setBloodArmorPoints(int amount);
     void setKnowledgeEffortPoints(int amount);
     void copyFrom(IEffectsCap source);

@@ -43,7 +43,6 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRItem("colar_sangue", OPRituals.HEMOFAGIA);
 	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRItem("pulseira_espinhenta", OPRituals.APRIMORAMENTO_FISICO);
 	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRItem("poema_queimado", OPRituals.VELOCIDADE_MORTAL);
-	public static final RegistryObject<RitualItem> RITUAL_LAMINA_MEDO = HELPER.createRItem("ritual_lamina_medo", OPRituals.LAMINA_MEDO);
 	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRItem("seringa_enferrujada", OPRituals.TRANSFERENCIA_VITAL);
 	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRItem("relogio_energizado", OPRituals.SALTO_FANTASMA);
 

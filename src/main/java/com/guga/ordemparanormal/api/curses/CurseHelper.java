@@ -1,20 +1,21 @@
 package com.guga.ordemparanormal.api.curses;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.api.util.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 public class CurseHelper {
-
+    private static final String PREFIX = "curse_";
     public static String getCurseId(CompoundTag pCompoundTag) {
         return pCompoundTag.getString("id");
     }
@@ -22,38 +23,37 @@ public class CurseHelper {
         return pCompoundTag.getInt("uses");
     }
     public static Set<CurseInstance> getCurses(ItemStack pStack) {
-        ListTag listtag = pStack.getTag() != null ? pStack.getTag().getList("Curses", 10) : new ListTag();
-        return deserializeCurses(listtag);
+        CompoundTag compoundTag = pStack.getTag() != null ? pStack.getTag().getCompound("Curses") : new CompoundTag();
+        return deserializeCurses(compoundTag);
     }
     public static CurseInstance getCurse(ItemStack stack, AbstractCurse curse){
-        ListTag listtag = stack.getTag().getList("Curses", Tag.TAG_COMPOUND);
-        for (int i = 0; i < listtag.size(); i++){
-            CompoundTag curseTag = listtag.getCompound(i);
+        CompoundTag compoundTag = stack.getTag() != null ? stack.getTag().getCompound("Curses") : new CompoundTag();
+        for (int i = 0; i < compoundTag.size(); i++){
+            CompoundTag curseTag = compoundTag.getCompound(PREFIX + i);
             if (getCurseId(curseTag).equals(curse.getId())) {
                 return new CurseInstance(OrdemParanormalAPI.getInstance().getCurse(getCurseId(curseTag)), getCurseUses(curseTag));
             }
         }
         return null;
     }
-    public static Set<CurseInstance> deserializeCurses(ListTag pSerialized) {
+    public static Set<CurseInstance> deserializeCurses(CompoundTag pSerialized) {
         Set<CurseInstance> set = new HashSet<>();
 
-        for(int i = 0; i < pSerialized.size(); ++i) {
-            CompoundTag compoundtag = pSerialized.getCompound(i);
-            set.add(new CurseInstance(OrdemParanormalAPI.getInstance().getCurse(getCurseId(compoundtag)), getCurseUses(compoundtag)));
+        for(CompoundTag c : NBTUtil.readCurses(pSerialized)){
+            set.add(new CurseInstance(OrdemParanormalAPI.getInstance().getCurse(c.getString("id")), c.getInt("uses")));
         }
 
         return set;
     }
     public static void setCurses(Collection<CurseInstance> pCurses, ItemStack pStack) {
-        ListTag listtag = new ListTag();
+        CompoundTag compoundTag = new CompoundTag();
 
-        for (CurseInstance curseInstance : pCurses) listtag.add(curseInstance.serializeNBT());
+        for (int i = 0; i < pCurses.size(); i++) compoundTag.put(PREFIX + i, pCurses.stream().toList().get(i).serializeNBT());
 
-        if (listtag.isEmpty()) {
+        if (compoundTag.isEmpty()) {
             pStack.removeTagKey("Curses");
         } else {
-            pStack.addTagElement("Curses", listtag);
+            pStack.addTagElement("Curses", compoundTag);
         }
     }
     public static void addCurse(ItemStack pStack, CurseInstance pCurse){
@@ -74,27 +74,35 @@ public class CurseHelper {
         curses.removeIf(c -> c.getCurse().getId().equals(pCurse.getId()));
         CurseHelper.setCurses(curses, pStack);
     }
-    public static void doPostAttackEffects(LivingEntity pAttacker, Entity pTarget){
+    public static float doPostAttackEffects(LivingEntity pAttacker, LivingEntity pTarget, float pAmount, DamageSource source){
+        float f = pAmount;
         if (pAttacker != null) {
             for (CurseInstance curse : getCurses(pAttacker.getMainHandItem())) {
                 if (curse != null) {
-                    curse.getCurse().doPostAttack(pAttacker.getMainHandItem(), pAttacker, pTarget);
-                    pTarget.hurt(curse.getCurse().getElement().getDamage(), curse.getCurse().getDamageBonus());
+                    f = curse.getCurse().doPostAttack(pAttacker.getMainHandItem(), pAttacker, pTarget, f, source);
+
+                    f += curse.getCurse().getDamageBonus()
+                            * (ParanormalDamageSource.isEntityWeakTo(pTarget, curse.getCurse().getElement().getDamage()) ? 2f : 1f)
+                            / (ParanormalDamageSource.isEntityResistant(pTarget, curse.getCurse().getElement().getDamage()) ? 2f : 1f);
                 }
             }
         }
+        return f;
     }
-    public static void doPostHurtEffects(LivingEntity pTarget, Entity pAttacker, float pAmount, DamageSource source){
+    public static float doPostHurtEffects(LivingEntity pTarget, @Nullable Entity pAttacker, float pAmount, DamageSource source){
+        float f = pAmount;
         if (pTarget != null) {
             for (ItemStack item : pTarget.getAllSlots()) {
                 for (CurseInstance curseInstance : getCurses(item)) {
                     if (curseInstance != null) {
-                        curseInstance.getCurse().doPostHurt(item, pTarget, pAttacker);
-                        pTarget.heal(Math.min(curseInstance.getCurse().getDamageProtection(source), pAmount));
+                        f = curseInstance.getCurse().doPostHurt(item, pTarget, pAttacker, f, source);
+
+                        f -= curseInstance.getCurse().getDamageProtection(source);
                     }
                 }
             }
         }
+        return f;
     }
     public static void doTickEffects(LivingEntity pUser){
         if (pUser != null) {
