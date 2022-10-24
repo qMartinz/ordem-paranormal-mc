@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
@@ -17,6 +18,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -136,9 +140,10 @@ public class PlayerPower {
     /**
      * Chamado a cada tick
      *
-     * @param player o jogador que possui o poder
+     * @param player    o jogador que possui o poder
+     * @param tickCount
      */
-    public void onTick(Player player){}
+    public void onTick(Player player, int tickCount){}
     /**
      * Chamado quando o usuário ataca
      *
@@ -198,5 +203,44 @@ public class PlayerPower {
      */
     public int onTickUseItem(Player player, ItemStack item, int duration){
         return duration;
+    }
+    /**
+     * Chamado quando o usuário bloqueia um ataque com um escudo
+     *
+     * @param player quem bloqueou
+     * @param attacker quem atacou
+     * @param source o tipo de dano
+     * @param originalBlockedDamage o dano bloqueado
+     * @param blockedDamage o dano bloqueado
+     * @return o dano bloqueado pelo escudo
+     */
+    public float onShieldBlock(Player player, @Nullable Entity attacker, DamageSource source, float originalBlockedDamage, float blockedDamage){
+        return blockedDamage;
+    }
+    /**
+     * Chamado quando o usuário ataca, mas seu ataque é bloqueado por um escudo
+     *
+     * @param player quem atacou
+     * @param target quem bloqueou
+     * @param source o tipo de dano
+     * @param originalBlockedDamage o dano bloqueado
+     * @param blockedDamage o dano bloqueado
+     * @return o dano bloqueado pelo escudo
+     */
+    public float onAttackBlocked(Player player, LivingEntity target, DamageSource source, float originalBlockedDamage, float blockedDamage){
+        return blockedDamage;
+    }
+    /**
+     * Chamado quando o usuário quebra um bloco
+     *
+     * @param player quem quebrou
+     * @param level o level onde o bloco foi quebrado
+     * @param pos a posição do bloco
+     * @param state o bloco quebrado
+     * @param exp o exp ganho por quebrar o bloco
+     * @return o exp ganho após o poder ser ativo
+     */
+    public int onBlockBreak(Player player, LevelAccessor level, BlockPos pos, BlockState state, int exp){
+        return exp;
     }
 }

@@ -17,7 +17,7 @@ public class LembrarDaMorte extends PlayerPower {
         super("lembrar_da_morte", false, MORTE, 0, 11, new int[]{0, 0, 4}, OPPowers.PERIMETRO_ESPIRAL);
     }
     @Override
-    public void onTick(Player player) {
+    public void onTick(Player player, int tickCount) {
         List<LivingEntity> targets = player.level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5d, 5d, 5d));
 
         if (targets.stream().anyMatch(e -> e.getMobType() == MobType.UNDEAD) && !player.hasEffect(MobEffects.MOVEMENT_SPEED)) {

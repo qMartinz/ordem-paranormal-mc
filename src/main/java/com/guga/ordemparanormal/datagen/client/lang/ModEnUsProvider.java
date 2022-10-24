@@ -126,8 +126,8 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Sucks the target's blood, transfering their vitality to you.");
 		addRitual(OPRituals.APRIMORAMENTO_FISICO, "Physical Upgrade",
 				"Makes your body reach extraordinary physical conditions, making you more resistant and powerful.");
-		addRitual(OPRituals.LAMINA_MEDO, "Blade of Fear",
-				"Conjures an impossible flame, a glimpse of something that shouldn't exist, on a blade that starts to deal lethal amounts of damage.");
+		addRitual(OPRituals.LAMINA_MEDO, "Fear's Blade",
+				"Conjures an impossible flame, a glimpse of something that shouldn't exist, on the blade that you're holding, which begins to deal lethal amounts of damage.");
 		addRitual(OPRituals.VELOCIDADE_MORTAL, "Velocidade Mortal",
 				"Alters the time perception of your body, that starts to reach extraordinary speeds.");
 		addRitual(OPRituals.MEDO_TANGIVEL, "Tangible Fear",
@@ -181,6 +181,16 @@ public class ModEnUsProvider extends LanguageProvider {
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Affinity with Energy",
 				"You're connected with the entity of Energy, discarding the need for Energy ingredients and making you resistant to Energy effects, but also weak to Knowledge effects.");
+		addPower(OPPowers.CAMPO_PROTETOR, "Protective Field",
+				"Randomly, you might be protected by a paranormal barrier around your body while blocking an attack with a shield. The barrier will repel any attackers that hit you and set them on fire.");
+		addPower(OPPowers.CAMPO_PROTETOR_2, "Protective Field II",
+				"Increases the distance the attacker is repelled and the amount of time the attacker will burn.");
+		addPower(OPPowers.GRAVIDADE_DISTORCIDA, "Distorted Gravity",
+				"Lowers your gravity when used.");
+		addPower(OPPowers.GRAVIDADE_DISTORCIDA_2, "Distorted Gravity II",
+				"Lowers your gravity even more when used, and for a longer period of time.");
+		addPower(OPPowers.CASUALIDADE_FORTUITA, "Fortuitous Chance",
+				"When mining, there is a chance you might find rare minerals that you couldn't find before.");
 
 		addPower(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
 				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
@@ -204,6 +214,8 @@ public class ModEnUsProvider extends LanguageProvider {
 				"The presence of moments lost by time encourage you to go onward. When near any undead, you receive the Speed effect.");
 		addPower(OPPowers.ABSORVER_ENTROPIA, "Absorb Entropy",
 				"Death consumes all. When killing any being, you get an amount of hearts depending on the strength of that being.");
+		addPower(OPPowers.LAMINA_MEDO, "Fear's Blade",
+				"You learn the ritual Fear's Blade, which you can cast by using this power.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");

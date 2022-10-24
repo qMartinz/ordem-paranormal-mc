@@ -20,8 +20,10 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -117,7 +119,7 @@ public class ApiEvents {
     public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event){
         if (event.getEntityLiving() instanceof Player player){
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                    playerAbilities.getPowers().forEach(power -> power.onTick(player)));
+                    playerAbilities.getPowers().forEach(power -> power.onTick(player, event.getEntityLiving().tickCount)));
         }
 
         CurseHelper.doTickEffects(event.getEntityLiving());
@@ -166,6 +168,21 @@ public class ApiEvents {
                         if (event instanceof LivingEntityUseItemEvent.Tick) event.setDuration(power.onTickUseItem(player, event.getItem(), event.getDuration()));
                         if (event instanceof LivingEntityUseItemEvent.Finish e) e.setResultStack(power.onFinishUseItem(player, event.getItem(), e.getResultStack(), event.getDuration()));
                     }));
+    }
+    @SubscribeEvent
+    public static void onShieldBlock(ShieldBlockEvent event){
+        if (event.getDamageSource().getEntity() instanceof Player player)
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> event.setBlockedDamage(power.onAttackBlocked(player, event.getEntityLiving(), event.getDamageSource(), event.getOriginalBlockedDamage(), event.getBlockedDamage()))));
+
+        if (event.getEntity() instanceof Player player)
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.getPowers().forEach(power -> event.setBlockedDamage(power.onShieldBlock(player, event.getDamageSource().getEntity(), event.getDamageSource(), event.getOriginalBlockedDamage(), event.getBlockedDamage()))));
+    }
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event){
+        event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                playerAbilities.getPowers().forEach(power -> event.setExpToDrop(power.onBlockBreak(event.getPlayer(), event.getWorld(), event.getPos(), event.getState(), event.getExpToDrop()))));
     }
     @SubscribeEvent
     public static void onRenderItemTooltips(ItemTooltipEvent event){

@@ -10,8 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-import static com.guga.ordemparanormal.api.ParanormalElement.MORTE;
-import static com.guga.ordemparanormal.api.ParanormalElement.SANGUE;
+import static com.guga.ordemparanormal.api.ParanormalElement.*;
 
 public class OPPowers {
     // Poderes
@@ -39,12 +38,17 @@ public class OPPowers {
     public static final PlayerPower PUTREFATO = new Putrefato();
     public static final PlayerPower PUTREFATO_2 = new PlayerPower("putrefato_2", false, MORTE, 0, 10, new int[]{4, 0, 0}, PUTREFATO, AFINIDADE_MORTE);
     public static final PlayerPower POTENCIAL_REAPROVEITADO = new PotencialReaproveitado();
-    public static final PlayerPower ESCAPAR_MORTE = new MobEffectPower("escapar_morte", new MobEffectInstance(OPEffects.SWERVE_DEATH.get(), 800, 0, false, false), MORTE, 3, 3, new int[]{0, 2, 0}, POTENCIAL_APRIMORADO);
-    public static final PlayerPower SURTO_TEMPORAL = new MobEffectPower("surto_temporal", new MobEffectInstance(OPEffects.TEMPORAL_SURGE.get(), 600, 0, false, false), MORTE, 3, 5, new int[]{2, 0, 1});
+    public static final PlayerPower ESCAPAR_MORTE = new MobEffectPower("escapar_morte", new MobEffectInstance(OPEffects.SWERVE_DEATH.get(), 800, 0), MORTE, 3, 3, new int[]{0, 2, 0}, POTENCIAL_APRIMORADO);
+    public static final PlayerPower SURTO_TEMPORAL = new MobEffectPower("surto_temporal", new MobEffectInstance(OPEffects.TEMPORAL_SURGE.get(), 600, 0), MORTE, 3, 5, new int[]{2, 0, 1});
     public static final PlayerPower PERIMETRO_ESPIRAL = new PerimetroEspiral();
     public static final PlayerPower LAMINA_MEDO = new RitualPower("lamina_do_medo", 20, new int[]{4, 0, 4}, OPRituals.LAMINA_MEDO, PERIMETRO_ESPIRAL);
     public static final PlayerPower ABSORVER_ENTROPIA = new AbsorverEntropia();
     public static final PlayerPower LEMBRAR_DA_MORTE = new LembrarDaMorte();
+    public static final PlayerPower CAMPO_PROTETOR = new CampoProtetor();
+    public static final PlayerPower CAMPO_PROTETOR_2 = new PlayerPower("campo_protetor_2", false, ParanormalElement.ENERGIA, 0, 10, new int[]{0, 0, 4}, CAMPO_PROTETOR, AFINIDADE_ENERGIA);
+    public static final PlayerPower GRAVIDADE_DISTORCIDA = new GravidadeDistorcida();
+    public static final PlayerPower GRAVIDADE_DISTORCIDA_2 = new MobEffectPower("gravidade_distorcida_2", new MobEffectInstance(OPEffects.DISTORTED_GRAVITY.get(), 1200, 1), ENERGIA, 3, 10, new int[]{0, 4, 0}, GRAVIDADE_DISTORCIDA, AFINIDADE_ENERGIA);
+    public static final PlayerPower CASUALIDADE_FORTUITA = new CasualidadeFortuita();
 
     /**
      * Registra os poderes
@@ -73,6 +77,11 @@ public class OPPowers {
         registerPower(MEDO_TANGIVEL);
 
         // Energia
+        registerPower(CAMPO_PROTETOR);
+        registerPower(CAMPO_PROTETOR_2);
+        registerPower(GRAVIDADE_DISTORCIDA);
+        registerPower(GRAVIDADE_DISTORCIDA_2);
+        registerPower(CASUALIDADE_FORTUITA);
 
         // Morte
         registerPower(POTENCIAL_APRIMORADO);

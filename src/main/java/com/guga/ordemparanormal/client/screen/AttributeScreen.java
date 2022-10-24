@@ -94,6 +94,9 @@ public class AttributeScreen extends Screen {
         int tabX = (this.width/2) - 266/2 + 110;
         int tabY = (this.height/2) - (this.screenHeight/2);
 
+        RenderSystem.setShaderTexture(0, new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/simbolo_outro_lado.png"));
+        blit(stack, tabX + 156/2 - 80, tabY + screenHeight/2 - 90, 0, 0, 160, 160, 160, 160);
+
         renderables.stream().filter(w -> w instanceof SelectedRitual).findFirst().ifPresent(widget -> {
             if (widget instanceof SelectedRitual ritualWidget && playerAbilities.getKnownRituals().size() > 0) {
                 AbstractRitual ritual = playerAbilities.getKnownRituals().stream().toList().get(ritualWidget.getRitualIndex());
