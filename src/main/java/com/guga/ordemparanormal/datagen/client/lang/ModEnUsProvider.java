@@ -62,7 +62,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Rusty syringe");
 		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Energized Clock");
 		add(OPItems.RITUAL_TELEPORTE.get(), "Familiar photo");
-		add(OPItems.RITUAL_TELEPORTE.get(), "Marked mirror");
+		add(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get(), "Marked mirror");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
