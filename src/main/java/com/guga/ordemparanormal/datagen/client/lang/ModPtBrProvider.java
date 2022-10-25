@@ -128,7 +128,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		addRitual(OPRituals.APRIMORAMENTO_FISICO, "Aprimoramento Fisico",
 				"Seu corpo atinge condições fisicas extraordinárias, se tornando mais resistente e poderoso.");
 		addRitual(OPRituals.LAMINA_MEDO, "Lâmina do Medo",
-				"Conjura uma chama impossível, um vislumbre de algo que não deveria existir, em uma lâmina que passa a causar dano letais.");
+				"Conjura uma chama impossível, um vislumbre de algo que não deveria existir, na lâmina que estiver segurando, que passa a causar danos letais.");
 		addRitual(OPRituals.VELOCIDADE_MORTAL, "Velocidade Mortal",
 				"Altera a percepção do tempo de seu corpo, que passa a atingir velocidades extraordinárias.");
 		addRitual(OPRituals.MEDO_TANGIVEL, "Medo Tangível",
@@ -184,6 +184,16 @@ public class ModPtBrProvider extends LanguageProvider {
 
 		addPower(OPPowers.AFINIDADE_ENERGIA, "Afinidade com Energia",
 				"Você se conecta à entidade de Energia, descartando a necessidade de ingredientes de Energia e te tornando resistente a efeitos de Energia, mas você se torna fraco a efeitos de Conhecimento.");
+		addPower(OPPowers.CAMPO_PROTETOR, "Campo Protetor",
+				"Aleatoriamente, você pode ser protegido por uma barreira paranormal quando estiver bloqueando um ataque com um escudo, repelindo o atacante e o envolvendo em chamas.");
+		addPower(OPPowers.CAMPO_PROTETOR_2, "Campo Protetor II",
+				"Aumenta a distância que os atacantes são repelidos e o tempo em que queimarão.");
+		addPower(OPPowers.GRAVIDADE_DISTORCIDA, "Gravidade Distorcida",
+				"Diminui a sua gravidade quando utilizado.");
+		addPower(OPPowers.GRAVIDADE_DISTORCIDA_2, "Gravidade Distorcida II",
+				"Diminui a sua gravidade ainda mais quando utilizado, por um período mais longo de tempo.");
+		addPower(OPPowers.CASUALIDADE_FORTUITA, "Casualidade Fortuita",
+				"Quando minerar, haverá a chance de você encontrar minerais raros que você antes não conseguia encontrar.");
 
 		addPower(OPPowers.AFINIDADE_MORTE, "Afinidade com Morte",
 				"Você se conecta à entidade de Morte, descartando a necessidade de ingredientes de Morte e te tornando resistente a efeitos de Morte, mas você se torna fraco a efeitos de Energia.");
@@ -207,6 +217,8 @@ public class ModPtBrProvider extends LanguageProvider {
 				"A presença de momentos perdidos pelo tempo te incentivam a seguir em frente. Quando estiver perto de mortos-vivos, você ganha o efeito de velocidade.");
 		addPower(OPPowers.ABSORVER_ENTROPIA, "Absorver Entropia",
 				"A Morte consome tudo. Ao matar algum ser, você ganha uma quantidade de corações dependentes da força de tal ser.");
+		addPower(OPPowers.LAMINA_MEDO, "Lâmina do Medo",
+				"Você aprende o ritual Lâmina do Medo, que pode conjurar utilizando esse poder.");
 
 		addPower(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
 				"Você se conecta à entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas você se torna fraco a efeitos de Sangue.");
@@ -225,6 +237,8 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPEffects.TEMPORAL_SURGE.get(), "Surto Temporal");
 		add(OPEffects.ENRAGED_FIST.get(), "Punho Enraivecido");
 		add(OPEffects.SWERVE_DEATH.get(), "Escapar da Morte");
+		add(OPEffects.DISTORTED_GRAVITY.get(), "Gravidade Distorcida");
+		add(OPEffects.TANGIBLE_FEAR.get(), "Medo Tangível");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");

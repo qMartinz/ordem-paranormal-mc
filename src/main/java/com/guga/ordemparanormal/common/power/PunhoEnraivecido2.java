@@ -14,7 +14,6 @@ public class PunhoEnraivecido2 extends PlayerPower {
     public PunhoEnraivecido2() {
         super("punho_enraivecido_2", false, ParanormalElement.SANGUE, 0, 10, new int[]{5, 0, 0}, OPPowers.PUNHO_ENRAIVECIDO, OPPowers.AFINIDADE_SANGUE);
     }
-
     @Override
     public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {
         if (player.getMainHandItem().getItem() instanceof TieredItem) return amount;

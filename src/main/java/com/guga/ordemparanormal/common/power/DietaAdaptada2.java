@@ -12,7 +12,7 @@ import static com.guga.ordemparanormal.api.ParanormalElement.SANGUE;
 
 public class DietaAdaptada2 extends PlayerPower {
     public DietaAdaptada2() {
-        super("dieta_adaptada_2", false, SANGUE, 0, 10, new int[]{0, 5, 0}, OPPowers.DIETA_ADAPTADA, OPPowers.AFINIDADE_SANGUE);
+        super("dieta_adaptada_2", false, SANGUE, 0, 10, new int[]{0, 4, 0}, OPPowers.DIETA_ADAPTADA, OPPowers.AFINIDADE_SANGUE);
     }
 
     @Override

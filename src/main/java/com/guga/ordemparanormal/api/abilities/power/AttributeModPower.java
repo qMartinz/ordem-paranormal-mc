@@ -14,7 +14,7 @@ public class AttributeModPower extends PlayerPower{
         this.modifier = modifier;
     }
     @Override
-    public void onTick(Player player) {
+    public void onTick(Player player, int tickCount) {
         if (!player.getAttribute(attribute).hasModifier(modifier)){
             player.getAttribute(attribute).addTransientModifier(modifier);
         }

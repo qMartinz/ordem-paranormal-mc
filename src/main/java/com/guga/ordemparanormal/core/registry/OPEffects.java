@@ -39,6 +39,8 @@ public final class OPEffects {
     public static final RegistryObject<MobEffect> TEMPORAL_SURGE = MOB_EFFECTS.register("temporal_surge",
             () -> new ParanormalEffect(MobEffectCategory.BENEFICIAL, 0x121212)
                     .addAttributeModifier(Attributes.ATTACK_SPEED, UUID.randomUUID().toString(), 1d, AttributeModifier.Operation.ADDITION));
+    public static final RegistryObject<MobEffect> DISTORTED_GRAVITY = MOB_EFFECTS.register("distorted_gravity",
+            () -> new DistortedGravityEffect(MobEffectCategory.BENEFICIAL, 0x46ebac));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }

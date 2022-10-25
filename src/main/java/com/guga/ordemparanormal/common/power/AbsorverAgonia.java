@@ -16,7 +16,7 @@ public class AbsorverAgonia extends PlayerPower {
     @Override
     public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {
         Random rand = new Random();
-        if (rand.nextInt(1, 8) == 2) {
+        if (rand.nextInt(1, 20) <= 6) {
             player.heal(rand.nextInt(2, 5));
         }
         return amount;

@@ -19,7 +19,7 @@ public class PotencialReaproveitado extends PlayerPower {
     public float onHurt(Player player, float amount, @Nullable Entity attacker, DamageSource source) {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
             Random rand = new Random();
-            if (rand.nextInt(1, 5) == 2){
+            if (rand.nextInt(1, 20) <= 8){
                 cap.setCurrentEffort(cap.getCurrentEffort() + 1);
             }
         });

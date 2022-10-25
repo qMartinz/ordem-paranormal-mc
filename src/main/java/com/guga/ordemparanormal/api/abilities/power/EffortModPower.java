@@ -12,7 +12,7 @@ public class EffortModPower extends PlayerPower{
         this.modifier = modifier;
     }
     @Override
-    public void onTick(Player player) {
+    public void onTick(Player player, int tickCount) {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
             if (!cap.hasEffortModifier(modifier)){
                 cap.addEffortModifier(modifier);
