@@ -49,6 +49,7 @@ public class OPPowers {
     public static final PlayerPower GRAVIDADE_DISTORCIDA = new GravidadeDistorcida();
     public static final PlayerPower GRAVIDADE_DISTORCIDA_2 = new MobEffectPower("gravidade_distorcida_2", new MobEffectInstance(OPEffects.DISTORTED_GRAVITY.get(), 1200, 1), ENERGIA, 3, 10, new int[]{0, 4, 0}, GRAVIDADE_DISTORCIDA, AFINIDADE_ENERGIA);
     public static final PlayerPower CASUALIDADE_FORTUITA = new CasualidadeFortuita();
+    public static final PlayerPower CONHECIMENTO_APLICADO = new ConhecimentoAmpliado();
 
     /**
      * Registra os poderes

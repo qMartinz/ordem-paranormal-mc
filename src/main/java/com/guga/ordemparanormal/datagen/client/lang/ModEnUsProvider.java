@@ -234,6 +234,8 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPEffects.TEMPORAL_SURGE.get(), "Temporal Surge");
 		add(OPEffects.ENRAGED_FIST.get(), "Enraged Fist");
 		add(OPEffects.SWERVE_DEATH.get(), "Swerve Death");
+		add(OPEffects.DISTORTED_GRAVITY.get(), "Distorted Gravity");
+		add(OPEffects.TANGIBLE_FEAR.get(), "Tangible Fear");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");

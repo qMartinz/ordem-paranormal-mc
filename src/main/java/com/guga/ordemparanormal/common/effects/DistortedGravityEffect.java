@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.effects;
 
 import com.guga.ordemparanormal.core.registry.OPEffects;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -11,9 +12,9 @@ public class DistortedGravityEffect extends OPEffects.ParanormalEffect {
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if (pLivingEntity.getDeltaMovement().y != 0){
-            double gravity = 0.028 - (0.05 * pAmplifier);
-            double resistance = 0.90 - (0.05 * pAmplifier);
-            double gravityValue = 0.35 + - (0.05 * pAmplifier);
+            double gravity = 0.08d * ((40d / (pAmplifier + 1d)) / 100d);
+            double resistance = Mth.clamp(0.90d + (0.02 * pAmplifier), 0.1, 0.98);
+            double gravityValue = ((40d / (pAmplifier + 1d)) / 100d);
 
             pLivingEntity.setDeltaMovement(
                     pLivingEntity.getDeltaMovement().x,

@@ -14,5 +14,6 @@ public class KnowledgePowerScreen extends PowerScreen {
     public void initContents() {
         int tabWidth = this.width - 41;
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 10, OPPowers.AFINIDADE_CONHECIMENTO));
+        addPowerIcon(new PowerButton(tabWidth/2 + 87, height/2 - 10, OPPowers.CONHECIMENTO_APLICADO));
     }
 }

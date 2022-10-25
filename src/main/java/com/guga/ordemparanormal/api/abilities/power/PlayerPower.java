@@ -134,9 +134,7 @@ public class PlayerPower {
      *
      * @param player o jogador que utilizou o poder
      */
-    public void onUse(Player player){
-
-    }
+    public void onUse(Player player){}
     /**
      * Chamado a cada tick
      *

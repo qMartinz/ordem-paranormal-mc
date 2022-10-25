@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.guga.ordemparanormal.core.registry.OPSounds;
@@ -26,12 +27,12 @@ public class Vampirismo extends PlayerPower {
     }
     @Override
     public void onUse(Player player) {
-        HitResult result = PowerUtils.rayTrace(player, 4.5d, 0, false);
+        HitResult result = PowerUtils.rayTrace(player, 5d, 0, false);
         IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
         if (cap == null) return;
 
         if (result instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof LivingEntity target) {
-            target.hurt(new EntityDamageSource("powerVampirismo", player), 3 * (cap.hasPower(OPPowers.VAMPIRISMO_2) ? 2 : 1));
+            target.hurt(ParanormalDamageSource.powerAttack(player, this), 3 * (cap.hasPower(OPPowers.VAMPIRISMO_2) ? 2 : 1));
 
             if (player.level instanceof ServerLevel level) level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     target.getX(), target.getEyeY(), target.getZ(),

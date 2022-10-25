@@ -234,6 +234,8 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPEffects.TEMPORAL_SURGE.get(), "Surto Temporal");
 		add(OPEffects.ENRAGED_FIST.get(), "Punho Enraivecido");
 		add(OPEffects.SWERVE_DEATH.get(), "Escapar da Morte");
+		add(OPEffects.DISTORTED_GRAVITY.get(), "Gravidade Distorcida");
+		add(OPEffects.TANGIBLE_FEAR.get(), "Medo Tangível");
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");
