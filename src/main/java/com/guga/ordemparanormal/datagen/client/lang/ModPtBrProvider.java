@@ -62,6 +62,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Seringa enferrujada");
 		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
 		add(OPItems.RITUAL_TELEPORTE.get(), "Foto familiar");
+		add(OPItems.RITUAL_TELEPORTE.get(), "Espelho marcado");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
@@ -134,10 +135,12 @@ public class ModPtBrProvider extends LanguageProvider {
 				"Seu corpo se torna uma manifestação do medo, te tornando imune a efeitos mundanos. Você passa a ser imune a qualquer dano não-paranormal.");
 		addRitual(OPRituals.TRANSFERENCIA_VITAL, "Transferencia Vital",
 				"Transfere sua vitalidade para o alvo do ritual.");
-		addRitual(OPRituals.SALTO_FANTASMA, "Phantom Jump",
+		addRitual(OPRituals.SALTO_FANTASMA, "Salto Fantasma",
 				"Te teleporta 10 blocos na direção que está olhando.");
-		addRitual(OPRituals.TELEPORTE, "Teleport",
+		addRitual(OPRituals.TELEPORTE, "Teleporte",
 				"Se usado enquanto agacha, salva sua a posição atual. Se usado sem estar agachando, te teleporta para a posição salvada.");
+		addRitual(OPRituals.ESPIRAIS_DA_PERDICAO, "Espirais da Perdição",
+				"Quando usado enfraquece o alvo.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
@@ -188,9 +191,9 @@ public class ModPtBrProvider extends LanguageProvider {
 				"Você consegue passar dos seus limites, se esforçando mais do que o normal, ganhando 2 pontos de esforço.");
 		addPower(OPPowers.POTENCIAL_APRIMORADO_2, "Potencial Aprimorado II",
 				"Você consegue passar ainda mais dos seus limites, ganhando 3 pontos de esforço.");
-		addPower(OPPowers.PUTREFATO,"Putrefato",
+		addPower(OPPowers.PUTREFATO, "Putrefato",
 				"Seus golpes, além de causar danos, também alteram a percepção de tempo da matéria física dos alvos. Ataques desarmados podem causar apodrecimento.");
-		addPower(OPPowers.PUTREFATO_2,"Putrefato II",
+		addPower(OPPowers.PUTREFATO_2, "Putrefato II",
 				"Seus golpes desarmados passam a causar apodrecimento com mais frequência.");
 		addPower(OPPowers.POTENCIAL_REAPROVEITADO, "Potencial Reaproveitado",
 				"Você se aproveita de momentos perdidos ao receber danos, podendo recuperar pontos de esforço ao ser atingido.");

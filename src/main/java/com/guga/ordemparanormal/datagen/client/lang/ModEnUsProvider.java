@@ -62,6 +62,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Rusty syringe");
 		add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Energized Clock");
 		add(OPItems.RITUAL_TELEPORTE.get(), "Familiar photo");
+		add(OPItems.RITUAL_TELEPORTE.get(), "Marked mirror");
 
 		// Componentes Ritualisticos
 		add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
@@ -138,6 +139,8 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Teleports you 10 blocks away in the direction you are looking.");
 		addRitual(OPRituals.TELEPORTE, "Teleport",
 				"If used while crouching, saves the current location, and then if used without crouching, teleports you to the saved location.");
+		addRitual(OPRituals.ESPIRAIS_DA_PERDICAO, "Spirals of Doom",
+				"When used it weakens the target");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -188,9 +191,9 @@ public class ModEnUsProvider extends LanguageProvider {
 				"You can go past your limits, spending more effort than normal, receiving 2 effort points.");
 		addPower(OPPowers.POTENCIAL_APRIMORADO_2, "Enhanced Potential II",
 				"You can go even further past your limits, receiving 3 effort points.");
-		addPower(OPPowers.PUTREFATO,"Foul",
+		addPower(OPPowers.PUTREFATO, "Foul",
 				"Your strikes, in addition to causing damage, also alter the time perception of your target's physical matter. Unarmed strikes might cause decay.");
-		addPower(OPPowers.PUTREFATO_2,"Foul II",
+		addPower(OPPowers.PUTREFATO_2, "Foul II",
 				"Your strikes cause decay more frequently.");
 		addPower(OPPowers.POTENCIAL_REAPROVEITADO, "Reused Potential",
 				"You take advantage of lost moments when receiving damage, being able to recover effort points when getting hurt.");
