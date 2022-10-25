@@ -9,17 +9,19 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class EspiraisDaPerdicao extends AbstractRitual {
     public EspiraisDaPerdicao() {
-        super("espirais_da_perdicao", ParanormalElement.MORTE, 1, 2, true, 3D, true);
+        super("espirais_da_perdicao", ParanormalElement.MORTE, 1, 2, true, 5D, true);
     }
 
-    public void onUseEntity(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
             InteractionHand hand) {
+        LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         MobEffectInstance weakness = new MobEffectInstance(MobEffects.WEAKNESS, 2400, 1, false, true);
-        caster.addEffect(weakness);
+        target.addEffect(weakness);
     }
 
 }
