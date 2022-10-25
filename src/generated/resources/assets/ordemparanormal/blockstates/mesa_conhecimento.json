@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ordemparanormal:block/mesa_conhecimento",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ordemparanormal:block/mesa_conhecimento",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "ordemparanormal:block/mesa_conhecimento"
+    },
+    "facing=east": {
+      "model": "ordemparanormal:block/mesa_conhecimento",
+      "y": 180
+    }
+  }
+}

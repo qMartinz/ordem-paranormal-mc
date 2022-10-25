@@ -9,20 +9,26 @@ import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPEffects;
-import com.guga.ordemparanormal.core.registry.OPEntities;
+import com.guga.ordemparanormal.core.registry.*;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -52,8 +58,7 @@ public class EntityEvents {
 				nevoa.setIntensity(1);
 				nevoa.setRadius(10);
 				level.addFreshEntity(nevoa);
-				// Checa se j� h� uma n�voa por perto e fortalece ela no lugar de criar uma
-				// n�voa nova
+				// Checa se já há uma névoa por perto e fortalece ela no lugar de criar uma névoa nova
 			} else if (list1.size() >= 3) {
 				for (Nevoa nevoaExistente : list2) {
 					int i = nevoaExistente.getIntensity();
@@ -99,6 +104,125 @@ public class EntityEvents {
 					event.setAmount(opeffect.onAttack(living, event.getEntityLiving(), event.getAmount(), event.getSource()));
 				}
 			});
+		}
+	}
+	@SubscribeEvent
+	public static void addTrades(VillagerTradesEvent event){
+		if (event.getType() == OPProfessions.OCULTISTA_SANGUE.get()){
+			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(OPItems.ORGAO.get(), 6), new ItemStack(Items.EMERALD, 1),
+					16, 2, 0.05f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 13), new ItemStack(OPItems.COMPONENTE_SANGUE.get(), 1),
+					12, 8, 0.02f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 19), new ItemStack(OPItems.RITUAL_ARMA_ATROZ.get(), 1),
+					1, 30, 0.02f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 24), new ItemStack(OPItems.RITUAL_DESCARNAR.get(), 1),
+					1, 30, 0.02f
+			));
+
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 31), new ItemStack(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), 1),
+					1, 45, 0.02f
+			));
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.ROTTEN_FLESH, 22), new ItemStack(Items.EMERALD, 1),
+					16, 2, 0.05f
+			));
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 35), new ItemStack(OPItems.RITUAL_HEMOFAGIA.get(), 1),
+					1, 45, 0.02f
+			));
+		}
+
+		if (event.getType() == OPProfessions.OCULTISTA_MORTE.get()){
+			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(OPItems.CINZAS.get(), 6), new ItemStack(Items.EMERALD, 1),
+					16, 2, 0.05f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 13), new ItemStack(OPItems.COMPONENTE_MORTE.get(), 1),
+					12, 8, 0.02f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 19), new ItemStack(OPItems.RITUAL_DECADENCIA.get(), 1),
+					1, 30, 0.02f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 24), new ItemStack(OPItems.RITUAL_CICATRIZACAO.get(), 1),
+					1, 30, 0.02f
+			));
+
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 31), new ItemStack(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), 1),
+					1, 45, 0.02f
+			));
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.BONE, 22), new ItemStack(Items.EMERALD, 1),
+					16, 2, 0.05f
+			));
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 25), new ItemStack(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), 1),
+					1, 30, 0.02f
+			));
+		}
+
+		if (event.getType() == OPProfessions.OCULTISTA_ENERGIA.get()){
+			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.AMETHYST_SHARD, 8), new ItemStack(Items.EMERALD, 1),
+					16, 2, 0.05f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 13), new ItemStack(OPItems.COMPONENTE_ENERGIA.get(), 1),
+					12, 8, 0.02f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 19), new ItemStack(OPItems.RITUAL_ARMA_VELOZ.get(), 1),
+					1, 30, 0.02f
+			));
+
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.RAW_COPPER, 12), new ItemStack(Items.EMERALD, 1),
+					12, 4, 0.05f
+			));
+
+			trades.get(3).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 41), new ItemStack(OPItems.RITUAL_SALTO_FANTASMA.get(), 1),
+					1, 65, 0.02f
+			));
+		}
+
+		if (event.getType() == OPProfessions.OCULTISTA_CONHECIMENTO.get()){
+			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.GLOWSTONE, 8), new ItemStack(Items.EMERALD, 1),
+					16, 2, 0.05f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 13), new ItemStack(OPItems.COMPONENTE_CONHECIMENTO.get(), 1),
+					12, 8, 0.02f
+			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 19), new ItemStack(OPItems.RITUAL_AMALDICOAR_ARMA.get(), 1),
+					1, 30, 0.02f
+			));
+
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.RAW_GOLD, 12), new ItemStack(Items.EMERALD, 1),
+					12, 4, 0.05f
+			));
 		}
 	}
 	@SubscribeEvent

@@ -10,7 +10,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "ordemparanormal:componente_sangue"
+          "name": "ordemparanormal:componente_energia"
         },
         {
           "type": "minecraft:item",
@@ -32,7 +32,7 @@
         {
           "type": "minecraft:item",
           "weight": 2,
-          "name": "minecraft:leather",
+          "name": "minecraft:amethyst_shard",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -46,21 +46,7 @@
         {
           "type": "minecraft:item",
           "weight": 2,
-          "name": "minecraft:beef",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 2,
-          "name": "minecraft:porkchop",
+          "name": "minecraft:raw_copper",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -74,7 +60,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "ordemparanormal:orgao",
+          "name": "minecraft:soul_torch",
           "functions": [
             {
               "function": "minecraft:set_count",

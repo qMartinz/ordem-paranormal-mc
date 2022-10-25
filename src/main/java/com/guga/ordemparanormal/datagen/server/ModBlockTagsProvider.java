@@ -17,5 +17,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         tag(BlockTags.NEEDS_STONE_TOOL).add(OPBlocks.ALTAR_TRANSCENDER.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(OPBlocks.ALTAR_TRANSCENDER.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(OPBlocks.MESA_MORTE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(OPBlocks.MESA_MORTE.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(OPBlocks.MESA_SANGUE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(OPBlocks.MESA_SANGUE.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(OPBlocks.MESA_ENERGIA.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(OPBlocks.MESA_ENERGIA.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(OPBlocks.MESA_CONHECIMENTO.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(OPBlocks.MESA_CONHECIMENTO.get());
     }
 }

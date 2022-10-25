@@ -120,6 +120,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 		// Blocos
 		simpleBlockItem(OPBlocks.ALTAR_TRANSCENDER.get().asItem());
+		simpleBlockItem(OPBlocks.MESA_SANGUE.get().asItem());
+		simpleBlockItem(OPBlocks.MESA_ENERGIA.get().asItem());
+		simpleBlockItem(OPBlocks.MESA_CONHECIMENTO.get().asItem());
+		simpleBlockItem(OPBlocks.MESA_MORTE.get().asItem());
 	}
 
 }

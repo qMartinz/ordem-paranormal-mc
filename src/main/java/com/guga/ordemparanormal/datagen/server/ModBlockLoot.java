@@ -9,6 +9,10 @@ public class ModBlockLoot extends BlockLoot {
     @Override
     protected void addTables() {
         dropSelf(OPBlocks.ALTAR_TRANSCENDER.get());
+        dropSelf(OPBlocks.MESA_SANGUE.get());
+        dropSelf(OPBlocks.MESA_CONHECIMENTO.get());
+        dropSelf(OPBlocks.MESA_ENERGIA.get());
+        dropSelf(OPBlocks.MESA_MORTE.get());
     }
     @Override
     protected Iterable<Block> getKnownBlocks() {

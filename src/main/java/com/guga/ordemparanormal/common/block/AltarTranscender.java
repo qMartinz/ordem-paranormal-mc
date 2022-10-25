@@ -34,7 +34,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class AltarTranscender extends HorizontalDirectionalBlock {
+public class AltarTranscender extends HorizontalBlock {
     public static final VoxelShape NORTH = Shapes.or(
             Block.box(2, 0, 2.0100752375298914, 14, 2, 14.010075237529891),
             Block.box(3, 2, 3.0100752375298914, 13, 3, 13.010075237529891),
@@ -57,15 +57,6 @@ public class AltarTranscender extends HorizontalDirectionalBlock {
             Block.box(2.4896610595177275, 9.876189780110156, 2.5, 13.489661059517728, 13.876189780110156, 13.5));
     public AltarTranscender() {
         super(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE));
-    }
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder){
-        builder.add(FACING);
-    }
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {

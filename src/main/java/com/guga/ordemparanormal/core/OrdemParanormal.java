@@ -26,6 +26,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static com.guga.ordemparanormal.core.registry.OPItems.COMPONENTE_VAZIO;
+
 @Mod(OrdemParanormal.MOD_ID)
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OrdemParanormal {
@@ -33,7 +35,7 @@ public class OrdemParanormal {
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static IProxy proxy = DistExecutor.runForDist(()-> ClientProxy::new, () -> ServerProxy::new);
 	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper ->
-			helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
+		helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
 	public static final CreativeModeTab OP_TAB = new CreativeModeTab(MOD_ID) {
 		@Override
 		public ItemStack makeIcon() {
@@ -62,6 +64,8 @@ public class OrdemParanormal {
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.register(bus);
 		OPEffects.register(bus);
+		OPPois.register(bus);
+		OPProfessions.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 
@@ -85,6 +89,10 @@ public class OrdemParanormal {
 	}
 	private void setup(final FMLCommonSetupEvent event){
 		Messages.register();
+
+		event.enqueueWork(() -> {
+			//OPPois.registerPOIs();
+		});
 	}
 	private void clientSetup(final FMLClientSetupEvent event){
 		MinecraftForge.EVENT_BUS.register(new Overlay());

@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "ordemparanormal:altar_transcender"
+    "ordemparanormal:altar_transcender",
+    "ordemparanormal:mesa_morte",
+    "ordemparanormal:mesa_sangue",
+    "ordemparanormal:mesa_energia",
+    "ordemparanormal:mesa_conhecimento"
   ]
 }
