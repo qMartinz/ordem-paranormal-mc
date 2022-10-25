@@ -72,6 +72,7 @@ public class ModPtBrProvider extends LanguageProvider {
 			add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Seringa enferrujada");
 			add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
 			add(OPItems.RITUAL_TELEPORTE.get(), "Foto familiar");
+			add(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get(), "Espelho marcado");
 
 			// Componentes Ritualisticos
 			add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
@@ -160,6 +161,8 @@ public class ModPtBrProvider extends LanguageProvider {
 				"Te teleporta 10 blocos na direção que está olhando.");
 		add(OPRituals.TELEPORTE, "Teleporte",
 				"Se usado enquanto agacha, salva sua a posição atual. Se usado sem estar agachando, te teleporta para a posição salvada.");
+		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Espirais da Perdição",
+				"Quando usado enfraquece o alvo.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");

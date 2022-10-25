@@ -32,20 +32,36 @@ public final class OPItems {
 	public static final RegistryObject<Item> PERGAMINHO_ANTIGO = HELPER.createPergaminhoAntigo();
 
 	// Itens de rituais
-	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRItem("livro_amaldicoado", OPRituals.DESCARNAR);
-	public static final RegistryObject<RitualItem> RITUAL_DECADENCIA = HELPER.createRItem("cranio_simbolo", OPRituals.DECADENCIA);
-	public static final RegistryObject<RitualItem> RITUAL_CICATRIZACAO = HELPER.createRItem("cristal_espiral", OPRituals.CICATRIZACAO);
-	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRItem("papel_amaldicoado", OPRituals.CONSUMIR_MANANCIAL);
-	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRItem("capacete_enferrujado", OPRituals.ARMADURA_SANGUE);
-	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRItem("anel_sangrento_prata", OPRituals.ARMA_ATROZ);
-	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRItem("laco_amarrado", OPRituals.ARMA_VELOZ);
-	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER.createRItem("anel_dourado_enferrujado", OPRituals.AMALDICOAR_ARMA);
-	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRItem("colar_sangue", OPRituals.HEMOFAGIA);
-	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRItem("pulseira_espinhenta", OPRituals.APRIMORAMENTO_FISICO);
-	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRItem("poema_queimado", OPRituals.VELOCIDADE_MORTAL);
-	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRItem("seringa_enferrujada", OPRituals.TRANSFERENCIA_VITAL);
-	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRItem("relogio_energizado", OPRituals.SALTO_FANTASMA);
-	public static final RegistryObject<RitualItem> RITUAL_TELEPORTE = HELPER.createRItem("foto_familiar", OPRituals.TELEPORTE);
+	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRItem("livro_amaldicoado",
+			OPRituals.DESCARNAR);
+	public static final RegistryObject<RitualItem> RITUAL_DECADENCIA = HELPER.createRItem("cranio_simbolo",
+			OPRituals.DECADENCIA);
+	public static final RegistryObject<RitualItem> RITUAL_CICATRIZACAO = HELPER.createRItem("cristal_espiral",
+			OPRituals.CICATRIZACAO);
+	public static final RegistryObject<RitualItem> RITUAL_CONSUMIR_MANANCIAL = HELPER.createRItem("papel_amaldicoado",
+			OPRituals.CONSUMIR_MANANCIAL);
+	public static final RegistryObject<RitualItem> RITUAL_ARMADURA_SANGUE = HELPER.createRItem("capacete_enferrujado",
+			OPRituals.ARMADURA_SANGUE);
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_ATROZ = HELPER.createRItem("anel_sangrento_prata",
+			OPRituals.ARMA_ATROZ);
+	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRItem("laco_amarrado",
+			OPRituals.ARMA_VELOZ);
+	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER
+			.createRItem("anel_dourado_enferrujado", OPRituals.AMALDICOAR_ARMA);
+	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRItem("colar_sangue",
+			OPRituals.HEMOFAGIA);
+	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER
+			.createRItem("pulseira_espinhenta", OPRituals.APRIMORAMENTO_FISICO);
+	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRItem("poema_queimado",
+			OPRituals.VELOCIDADE_MORTAL);
+	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER
+			.createRItem("seringa_enferrujada", OPRituals.TRANSFERENCIA_VITAL);
+	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRItem("relogio_energizado",
+			OPRituals.SALTO_FANTASMA);
+	public static final RegistryObject<RitualItem> RITUAL_TELEPORTE = HELPER.createRItem("foto_familiar",
+			OPRituals.TELEPORTE);
+	public static final RegistryObject<RitualItem> RITUAL_ESPIRAIS_DA_PERDICAO = HELPER.createRItem("espelho_marcado",
+			OPRituals.ESPIRAIS_DA_PERDICAO);
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER

@@ -71,6 +71,7 @@ public class ModEnUsProvider extends LanguageProvider {
 			add(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), "Rusty syringe");
 			add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Energized Clock");
 			add(OPItems.RITUAL_TELEPORTE.get(), "Familiar photo");
+			add(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get(), "Marked mirror");
 
 			// Componentes Ritualisticos
 			add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
@@ -159,6 +160,8 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Teleports you 10 blocks away in the direction you are looking.");
 		add(OPRituals.TELEPORTE, "Teleport",
 				"If used while crouching, saves the current location, and then if used without crouching, teleports you to the saved location.");
+		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Spirals of Doom",
+				"When used it weakens the target");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");

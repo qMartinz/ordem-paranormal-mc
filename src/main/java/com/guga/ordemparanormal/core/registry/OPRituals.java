@@ -19,6 +19,7 @@ public class OPRituals {
     public static final AbstractRitual CONSUMIR_MANANCIAL = new ConsumirManancial();
     public static final AbstractRitual DECADENCIA = new CurseRitual("decadencia", OPCurses.DECADENTE, 1, 2);
     public static final AbstractRitual VELOCIDADE_MORTAL = new VelocidadeMortal();
+    public static final AbstractRitual ESPIRAIS_DA_PERDICAO = new EspiraisDaPerdicao();
     // Energia
     public static final AbstractRitual ARMA_VELOZ = new CurseRitual("arma_veloz", OPCurses.VELOZ, 1, 2);
     public static final AbstractRitual SALTO_FANTASMA = new SaltoFantasma();
@@ -45,6 +46,7 @@ public class OPRituals {
         registerRitual(CONSUMIR_MANANCIAL);
         registerRitual(DECADENCIA);
         registerRitual(VELOCIDADE_MORTAL);
+        registerRitual(ESPIRAIS_DA_PERDICAO);
         // Energia
         registerRitual(ARMA_VELOZ);
         registerRitual(SALTO_FANTASMA);
