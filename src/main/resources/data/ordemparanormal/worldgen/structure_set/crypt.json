@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "ordemparanormal:crypt",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 11703029,
+
+    "spacing": 40,
+
+    "separation": 20,
+
+    "type": "minecraft:random_spread"
+  }
+}

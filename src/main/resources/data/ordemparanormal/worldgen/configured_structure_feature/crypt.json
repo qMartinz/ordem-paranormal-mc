@@ -1,0 +1,15 @@
+{
+  "type": "ordemparanormal:crypt",
+
+  "config": {
+    "start_pool": "ordemparanormal:crypt/start_pool",
+
+    "size": 8
+  },
+
+  "biomes": "#ordemparanormal:has_structure/crypt",
+
+  "adapt_noise": true,
+
+  "spawn_overrides": {}
+}
