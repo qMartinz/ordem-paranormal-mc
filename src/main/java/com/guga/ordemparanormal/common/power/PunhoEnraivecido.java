@@ -11,10 +11,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 
 public class PunhoEnraivecido extends MobEffectPower {
-    public PunhoEnraivecido() {
-        super("punho_enraivecido",
-                new MobEffectInstance(OPEffects.ENRAGED_FIST.get(), 1200, 0, false, false),
-                ParanormalElement.SANGUE, 2, 1, new int[]{1, 0, 0});
+    public PunhoEnraivecido(String id, MobEffectInstance effect, ParanormalElement element, int cost, int nex, int[] attributes) {
+        super(id, effect, element, cost, nex, attributes);
     }
     @Override
     public boolean canEquip(Player player) {

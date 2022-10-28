@@ -10,8 +10,8 @@ import net.minecraft.world.entity.player.Player;
 import java.util.Random;
 
 public class AbsorverAgonia extends PlayerPower {
-    public AbsorverAgonia() {
-        super("absorver_agonia", false, ParanormalElement.SANGUE, 0, 10, new int[]{0, 4, 0}, OPPowers.FLAGELO);
+    public AbsorverAgonia(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {

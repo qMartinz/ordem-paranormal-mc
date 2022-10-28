@@ -11,8 +11,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TieredItem;
 
 public class PunhoEnraivecido2 extends PlayerPower {
-    public PunhoEnraivecido2() {
-        super("punho_enraivecido_2", false, ParanormalElement.SANGUE, 0, 10, new int[]{5, 0, 0}, OPPowers.PUNHO_ENRAIVECIDO, OPPowers.AFINIDADE_SANGUE);
+    public PunhoEnraivecido2(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {

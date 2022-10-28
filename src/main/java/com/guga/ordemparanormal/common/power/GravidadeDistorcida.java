@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.MobEffectPower;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.registry.OPEffects;
@@ -12,10 +13,8 @@ import net.minecraft.world.entity.player.Player;
 import static com.guga.ordemparanormal.api.ParanormalElement.ENERGIA;
 
 public class GravidadeDistorcida extends MobEffectPower {
-    public GravidadeDistorcida() {
-        super("gravidade_distorcida",
-                new MobEffectInstance(OPEffects.DISTORTED_GRAVITY.get(), 600, 0),
-                ENERGIA, 3, 1, new int[]{0, 1, 0});
+    public GravidadeDistorcida(String id, MobEffectInstance effect, ParanormalElement element, int cost, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, effect, element, cost, nex, attributes, powers);
     }
     @Override
     public boolean canEquip(Player player) {

@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.power;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,8 +14,8 @@ import java.util.List;
 import static com.guga.ordemparanormal.api.ParanormalElement.MORTE;
 
 public class LembrarDaMorte extends PlayerPower {
-    public LembrarDaMorte() {
-        super("lembrar_da_morte", false, MORTE, 0, 11, new int[]{0, 0, 4}, OPPowers.PERIMETRO_ESPIRAL);
+    public LembrarDaMorte(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public void onTick(Player player, int tickCount) {

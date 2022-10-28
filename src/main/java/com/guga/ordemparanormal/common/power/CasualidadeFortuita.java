@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Random;
 
 public class CasualidadeFortuita extends PlayerPower {
-    public CasualidadeFortuita() {
-        super("casualidade_fortuita", false, ParanormalElement.ENERGIA, 0, 3, new int[]{0, 0, 2});
+    public CasualidadeFortuita(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public int onBlockBreak(Player player, LevelAccessor level, BlockPos pos, BlockState state, int exp) {

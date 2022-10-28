@@ -9,7 +9,6 @@ import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModPtBrProvider extends LanguageProvider {
@@ -244,6 +243,11 @@ public class ModPtBrProvider extends LanguageProvider {
 
 		add(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
 				"Você se conecta à entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas você se torna fraco a efeitos de Sangue.");
+		add(OPPowers.CONHECIMENTO_AMPLIADO, "Conhecimento Ampliado",
+				"Expande a sua mente para níveis sobrenaturais, aumentando a quantidade de rituais que você se torna capaz de aprender.");
+		add(OPPowers.CONHECIMENTO_AMPLIADO_2, "Conhecimento Ampliado II",
+				"Expande a sua mente para níveis ainda maiores, aumentando a quantidade de rituais que você se torna capaz de aprender.");
+
 
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");

@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.power;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
 import com.guga.ordemparanormal.core.registry.OPPowers;
@@ -10,8 +11,8 @@ import net.minecraft.world.entity.player.Player;
 import static com.guga.ordemparanormal.api.ParanormalElement.MORTE;
 
 public class AbsorverEntropia extends PlayerPower {
-    public AbsorverEntropia() {
-        super("absorver_entropia", false, MORTE, 0, 11, new int[]{3, 0, 0}, OPPowers.PERIMETRO_ESPIRAL);
+    public AbsorverEntropia(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {

@@ -7,8 +7,8 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 
 public class Flagelo extends PlayerPower {
-    public Flagelo() {
-        super("flagelo", true, ParanormalElement.SANGUE, 0, 5, new int[]{0, 3, 0});
+    public Flagelo(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, true, element, 0, nex, attributes, powers);
     }
     @Override
     public void onUse(Player player) {

@@ -20,8 +20,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class CampoProtetor extends PlayerPower {
-    public CampoProtetor() {
-        super("campo_protetor", false, ParanormalElement.ENERGIA, 0, 1, new int[]{0, 0, 1});
+    public CampoProtetor(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onShieldBlock(Player player, @Nullable Entity attacker, DamageSource source, float originalBlockedDamage, float blockedDamage) {
