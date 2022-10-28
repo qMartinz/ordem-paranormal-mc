@@ -14,8 +14,8 @@ import net.minecraft.world.item.TieredItem;
 import java.util.Random;
 
 public class Putrefato extends PlayerPower {
-    public Putrefato() {
-        super("putrefato", false, ParanormalElement.MORTE, 0, 1, new int[]{1, 0, 0});
+    public Putrefato(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {

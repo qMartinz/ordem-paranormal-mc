@@ -22,8 +22,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class Vampirismo extends PlayerPower {
-    public Vampirismo() {
-        super("vampirismo", true, ParanormalElement.SANGUE, 3, 7, new int[]{3, 0, 0}, OPPowers.SANGUE_VISCERAL);
+    public Vampirismo(String id, ParanormalElement element, int cost, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, true, element, cost, nex, attributes, powers);
     }
     @Override
     public void onUse(Player player) {

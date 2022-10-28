@@ -12,8 +12,8 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
 public class Adrenalina extends PlayerPower {
-    public Adrenalina() {
-        super("adrenalina", false, ParanormalElement.SANGUE, 0, 3, new int[]{1, 1, 0});
+    public Adrenalina(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onHurt(Player player, float amount, @Nullable Entity attacker, DamageSource source) {

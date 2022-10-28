@@ -243,6 +243,10 @@ public class ModEnUsProvider extends LanguageProvider {
 
 		add(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
+		add(OPPowers.CONHECIMENTO_AMPLIADO, "Amplified Knowledge",
+				"Expands your mind to supernatural levels, increasing the amount of rituals that you can learn.");
+		add(OPPowers.CONHECIMENTO_AMPLIADO_2, "Amplified Knowledge II",
+				"Expands your mind to even higher levels, increasing the amount of rituals that you can learn.");
 
 		// Maldições
 		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");

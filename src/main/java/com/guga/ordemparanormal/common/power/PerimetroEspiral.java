@@ -12,8 +12,8 @@ import net.minecraft.world.entity.player.Player;
 import java.util.List;
 
 public class PerimetroEspiral extends PlayerPower {
-    public PerimetroEspiral() {
-        super("perimetro_espiral", true, ParanormalElement.MORTE, 3, 10, new int[]{0, 0, 3}, OPPowers.SURTO_TEMPORAL);
+    public PerimetroEspiral(String id, ParanormalElement element, int cost, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, true, element, cost, nex, attributes, powers);
     }
     @Override
     public void onUse(Player player) {

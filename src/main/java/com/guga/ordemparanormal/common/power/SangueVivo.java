@@ -11,8 +11,8 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
 public class SangueVivo extends PlayerPower {
-    public SangueVivo() {
-        super("sangue_vivo", false, ParanormalElement.SANGUE, 0, 5, new int[]{0, 2, 0}, OPPowers.SANGUE_FERRO, OPPowers.ADRENALINA);
+    public SangueVivo(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onHurt(Player player, float amount, @Nullable Entity attacker, DamageSource source) {

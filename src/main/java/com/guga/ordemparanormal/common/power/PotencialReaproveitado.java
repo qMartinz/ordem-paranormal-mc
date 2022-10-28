@@ -12,8 +12,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class PotencialReaproveitado extends PlayerPower {
-    public PotencialReaproveitado() {
-        super("potencial_reaproveitado", false, ParanormalElement.MORTE, 0, 3, new int[]{2, 0, 0}, OPPowers.PUTREFATO);
+    public PotencialReaproveitado(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
     public float onHurt(Player player, float amount, @Nullable Entity attacker, DamageSource source) {

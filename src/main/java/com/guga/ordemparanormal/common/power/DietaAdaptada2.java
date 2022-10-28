@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.power;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,8 +12,8 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import static com.guga.ordemparanormal.api.ParanormalElement.SANGUE;
 
 public class DietaAdaptada2 extends PlayerPower {
-    public DietaAdaptada2() {
-        super("dieta_adaptada_2", false, SANGUE, 0, 10, new int[]{0, 4, 0}, OPPowers.DIETA_ADAPTADA, OPPowers.AFINIDADE_SANGUE);
+    public DietaAdaptada2(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+        super(id, false, element, 0, nex, attributes, powers);
     }
 
     @Override
