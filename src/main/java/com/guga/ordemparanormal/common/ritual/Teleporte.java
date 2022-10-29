@@ -19,7 +19,8 @@ public class Teleporte extends AbstractRitual {
     }
 
     @Override
-    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
+    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
+            InteractionHand hand) {
         boolean crouch = caster.isCrouching();
         if (crouch == true) {
             CompoundTag pos = new CompoundTag();
@@ -31,7 +32,6 @@ public class Teleporte extends AbstractRitual {
 
         } else if (crouch == false
                 && ritualItem.getOrCreateTag().contains("teleport.coords")) {
-
             CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
             Vec3 position = new Vec3(
@@ -44,10 +44,13 @@ public class Teleporte extends AbstractRitual {
     }
 
     @Override
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
-        boolean crouch = caster.isCrouching();
+    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
+            InteractionHand hand) {
 
-        if (crouch == false && ritualItem.getOrCreateTag().contains("opmod.coords")) {
+        boolean crouch = caster.isCrouching();
+        LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
+
+        if (crouch == false && ritualItem.getOrCreateTag().contains("teleport.coords")) {
             CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
             Vec3 position = new Vec3(
@@ -55,7 +58,7 @@ public class Teleporte extends AbstractRitual {
                     pos.getDouble("teleport.coordsY"),
                     pos.getDouble("teleport.coordsZ"));
 
-            rayTraceResult.getEntity().moveTo(position);
+            target.moveTo(position);
         }
     }
 }

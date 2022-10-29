@@ -62,6 +62,12 @@ public final class OPItems {
 			OPRituals.TELEPORTE);
 	public static final RegistryObject<RitualItem> RITUAL_ESPIRAIS_DA_PERDICAO = HELPER.createRItem("espelho_marcado",
 			OPRituals.ESPIRAIS_DA_PERDICAO);
+	public static final RegistryObject<RitualItem> RITUAL_PERTUBACAO = HELPER.createRItem("pertubacao",
+			OPRituals.PERTUBACAO);
+	public static final RegistryObject<RitualItem> RITUAL_INEXISTIR = HELPER.createRItem("inexistir",
+			OPRituals.INEXISTIR);
+	public static final RegistryObject<RitualItem> RITUAL_LUZ = HELPER.createRItem("luz",
+			OPRituals.LUZ);
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER

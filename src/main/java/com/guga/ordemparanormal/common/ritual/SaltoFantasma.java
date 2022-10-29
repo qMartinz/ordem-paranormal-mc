@@ -14,25 +14,27 @@ import net.minecraft.world.phys.Vec3;
 
 public class SaltoFantasma extends AbstractRitual {
     public SaltoFantasma() {
-        super("salto_fantasma", ParanormalElement.ENERGIA, 3, 6, false, 10D, true);
+        super("salto_fantasma", ParanormalElement.ENERGIA, 3, 6, false, 15D, true);
     }
 
     @Override
-    public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
+    public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
+            InteractionHand hand) {
         Vec3 blockPos = rayTraceResult.getLocation();
+        caster.moveTo(blockPos);
 
         ServerLevel level = (ServerLevel) world;
         level.sendParticles(ParticleTypes.PORTAL,
-                caster.getX(), caster.getY() + caster.getEyeHeight()/2f, caster.getZ(),
+                caster.getX(), caster.getY() + caster.getEyeHeight() / 2f, caster.getZ(),
                 10,
-                0.2d, caster.getEyeHeight()/2f, 0.2d,
+                0.2d, caster.getEyeHeight() / 2f, 0.2d,
                 1);
 
         caster.moveTo(blockPos);
         level.sendParticles(ParticleTypes.PORTAL,
-                caster.getX(), caster.getY() + caster.getEyeHeight()/2f, caster.getZ(),
+                caster.getX(), caster.getY() + caster.getEyeHeight() / 2f, caster.getZ(),
                 10,
-                0.2d, caster.getEyeHeight()/2f, 0.2d,
+                0.2d, caster.getEyeHeight() / 2f, 0.2d,
                 1);
     }
 }
