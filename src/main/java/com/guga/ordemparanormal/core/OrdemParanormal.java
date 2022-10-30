@@ -28,8 +28,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.guga.ordemparanormal.core.registry.OPItems.COMPONENTE_VAZIO;
-
 @Mod(OrdemParanormal.MOD_ID)
 @Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OrdemParanormal {
@@ -93,7 +91,7 @@ public class OrdemParanormal {
 		Messages.register();
 
 		event.enqueueWork(() -> {
-			//OPPois.registerPOIs();
+			OPPois.registerPOIs();
 		});
 	}
 	private void clientSetup(final FMLClientSetupEvent event){
@@ -102,7 +100,7 @@ public class OrdemParanormal {
 
 		Overlay.registerOverlays();
 
-		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ_BLOCK.get(), RenderType.translucent());
 
 		event.enqueueWork(OPItemProperties::register);
 	}

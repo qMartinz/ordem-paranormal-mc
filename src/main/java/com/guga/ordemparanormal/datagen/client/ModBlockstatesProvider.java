@@ -30,9 +30,9 @@ public class ModBlockstatesProvider extends BlockStateProvider {
                 new ModelFile.ExistingModelFile(
                         new ResourceLocation(OrdemParanormal.MOD_ID, "block/mesa_energia"),
                         models().existingFileHelper), 270);
-        simpleBlock(OPBlocks.LUZ.get(),
+        simpleBlock(OPBlocks.LUZ_BLOCK.get(),
                 new ModelFile.ExistingModelFile(
-                        new ResourceLocation(OrdemParanormal.MOD_ID, "block/luz"),
+                        new ResourceLocation(OrdemParanormal.MOD_ID, "block/luz_block"),
                         models().existingFileHelper));
     }
 }
