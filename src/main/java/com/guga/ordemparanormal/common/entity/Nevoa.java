@@ -58,7 +58,7 @@ public class Nevoa extends Entity {
 		this.getEntityData().define(DATA_LIFE, 80);
 	}
 
-	// Setters, para setar certos atributos da n�voa
+	// Setters, para setar certos atributos da névoa
 	public void setRadius(int size) {
 		if (!this.level.isClientSide) {
 			if (this.getEntityData().get(DATA_RADIUS) < 45) {
