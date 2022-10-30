@@ -10,6 +10,8 @@ import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -99,6 +101,8 @@ public class OrdemParanormal {
 		MinecraftForge.EVENT_BUS.register(new Keybind());
 
 		Overlay.registerOverlays();
+
+		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ.get(), RenderType.translucent());
 
 		event.enqueueWork(OPItemProperties::register);
 	}

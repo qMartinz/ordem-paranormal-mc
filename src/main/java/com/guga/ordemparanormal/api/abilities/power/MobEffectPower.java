@@ -13,6 +13,5 @@ public class MobEffectPower extends PlayerPower{
     @Override
     public void onUse(Player player) {
         player.addEffect(effect);
-        System.out.println("haaah");
     }
 }
