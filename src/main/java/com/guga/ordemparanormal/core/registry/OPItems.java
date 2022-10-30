@@ -67,8 +67,8 @@ public final class OPItems {
 			OPRituals.INEXISTIR);
 	public static final RegistryObject<RitualItem> RITUAL_LUZ = HELPER.createRItem("fragmento_brilhante",
 			OPRituals.LUZ);
-	public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA = HELPER.createRItem("alterar_memoria",
-			OPRituals.ALTERAR_MEMORIA);
+	/*public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA = HELPER.createRItem("alterar_memoria",
+			OPRituals.ALTERAR_MEMORIA);*/
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER

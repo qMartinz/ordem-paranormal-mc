@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 
 public class PergaminhoAntigo extends Item {
     public PergaminhoAntigo() {
-        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB));
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(null));
     }
 
     @Override
