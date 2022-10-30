@@ -33,15 +33,6 @@ public class Luz extends AbstractRitual {
         BlockState iblockstate = world.getBlockState(blockPos);
         Block block = iblockstate.getBlock();
 
-        // snow layer stuff we don't care about
-        /*
-         * 394
-         * if (!block.(world, blockPos)) {
-         * BlockPos pos = blockPos.offset(0.5,facing);
-         * }
-         * placement code
-         */
-
         world.setBlockAndUpdate(blockPos, luz);
     }
 }

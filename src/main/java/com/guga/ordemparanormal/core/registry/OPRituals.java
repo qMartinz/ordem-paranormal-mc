@@ -29,6 +29,7 @@ public class OPRituals {
     public static final AbstractRitual AMALDICOAR_ARMA = new CurseRitual("amaldicoar_arma", OPCurses.AMALDICOADA, 1, 2);
     public static final AbstractRitual PERTUBACAO = new Pertubacao();
     public static final AbstractRitual INEXISTIR = new Inexistir();
+    public static final AbstractRitual ALTERAR_MEMORIA = new AlterarMemoria();
     // Medo
     public static final AbstractRitual MEDO_TANGIVEL = new MedoTangivel();
     public static final AbstractRitual LAMINA_MEDO = new CurseRitual("lamina_do_medo", OPCurses.LAMINA_MEDO, 4, 8);
@@ -58,6 +59,7 @@ public class OPRituals {
         registerRitual(AMALDICOAR_ARMA);
         registerRitual(PERTUBACAO);
         registerRitual(INEXISTIR);
+        registerRitual(ALTERAR_MEMORIA);
         // Medo
         registerRitual(MEDO_TANGIVEL);
         registerRitual(LAMINA_MEDO);
