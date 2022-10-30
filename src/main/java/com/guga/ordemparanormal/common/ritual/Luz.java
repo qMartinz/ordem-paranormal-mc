@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.core.registry.OPBlocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -27,7 +28,7 @@ public class Luz extends AbstractRitual {
 
         BlockPos blockPos = rayTraceResult.getBlockPos().relative(rayTraceResult.getDirection());
         // 200
-        BlockState luz = Blocks.GLOWSTONE.defaultBlockState();
+        BlockState luz = OPBlocks.LUZ_BLOCK.get().defaultBlockState();
 
         //
         BlockState iblockstate = world.getBlockState(blockPos);
