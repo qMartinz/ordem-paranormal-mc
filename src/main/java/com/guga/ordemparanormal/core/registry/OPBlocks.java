@@ -2,9 +2,11 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.common.block.AltarTranscender;
+import com.guga.ordemparanormal.common.block.Luz;
 import com.guga.ordemparanormal.common.block.MesaMaldicao;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.common.Mod;
@@ -23,4 +25,6 @@ public final class OPBlocks {
             () -> new MesaMaldicao(ParanormalElement.SANGUE), Rarity.RARE, OrdemParanormal.OP_TAB);
     public static final RegistryObject<Block> MESA_MORTE = HELPER.createRareBlock("mesa_morte",
             () -> new MesaMaldicao(ParanormalElement.SANGUE), Rarity.RARE, OrdemParanormal.OP_TAB);
+    public static final RegistryObject<Block> LUZ = HELPER.createBlock("luz",
+            Luz::new, (CreativeModeTab) null);
 }

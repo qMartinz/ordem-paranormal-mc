@@ -15,8 +15,9 @@ public class EnergyPowerScreen extends PowerScreen {
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 10, OPPowers.AFINIDADE_ENERGIA));
         addPowerIcon(new PowerButton(tabWidth/2 + 67, height/2 - 50, OPPowers.CAMPO_PROTETOR));
         addPowerIcon(new PowerButton(tabWidth/2 + 127, height/2 - 120, OPPowers.CAMPO_PROTETOR_2));
-        addPowerIcon(new PowerButton(tabWidth/2 - 13, height/2 - 50, OPPowers.GRAVIDADE_DISTORCIDA));
-        addPowerIcon(new PowerButton(tabWidth/2 - 73, height/2 - 120, OPPowers.GRAVIDADE_DISTORCIDA_2));
+        // TODO arrumar erro de efeito desse poder durar meio segundo após um uso
+        //addPowerIcon(new PowerButton(tabWidth/2 - 13, height/2 - 50, OPPowers.GRAVIDADE_DISTORCIDA));
+        //addPowerIcon(new PowerButton(tabWidth/2 - 73, height/2 - 120, OPPowers.GRAVIDADE_DISTORCIDA_2));
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 + 30, OPPowers.CASUALIDADE_FORTUITA));
     }
 }
