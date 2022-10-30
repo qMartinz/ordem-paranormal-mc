@@ -2,7 +2,6 @@ package com.guga.ordemparanormal.common.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -15,9 +14,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
-public class Luz extends Block {
+public class LuzBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(6D, 6D, 6D, 10D, 10D, 10D);
-    public Luz() {
+    public LuzBlock() {
         super(Properties.of((new Material.Builder(MaterialColor.COLOR_PURPLE).build())).lightLevel((emission) -> 12).instabreak());
     }
     @Override
