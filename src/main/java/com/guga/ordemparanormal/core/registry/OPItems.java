@@ -2,7 +2,6 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
-import com.guga.ordemparanormal.common.item.LaminaDoMedo;
 import com.guga.ordemparanormal.common.item.PergaminhoAntigo;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.item.RitualItem;
@@ -46,16 +45,16 @@ public final class OPItems {
 			OPRituals.ARMA_ATROZ);
 	public static final RegistryObject<RitualItem> RITUAL_ARMA_VELOZ = HELPER.createRItem("laco_amarrado",
 			OPRituals.ARMA_VELOZ);
-	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER
-			.createRItem("anel_dourado_enferrujado", OPRituals.AMALDICOAR_ARMA);
+	public static final RegistryObject<RitualItem> RITUAL_AMALDICOAR_ARMA = HELPER.createRItem("anel_dourado_enferrujado",
+			OPRituals.AMALDICOAR_ARMA);
 	public static final RegistryObject<RitualItem> RITUAL_HEMOFAGIA = HELPER.createRItem("colar_sangue",
 			OPRituals.HEMOFAGIA);
-	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER
-			.createRItem("pulseira_espinhenta", OPRituals.APRIMORAMENTO_FISICO);
+	public static final RegistryObject<RitualItem> RITUAL_APRIMORAMENTO_FISICO = HELPER.createRItem("pulseira_espinhenta",
+			OPRituals.APRIMORAMENTO_FISICO);
 	public static final RegistryObject<RitualItem> RITUAL_VELOCIDADE_MORTAL = HELPER.createRItem("poema_queimado",
 			OPRituals.VELOCIDADE_MORTAL);
-	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER
-			.createRItem("seringa_enferrujada", OPRituals.TRANSFERENCIA_VITAL);
+	public static final RegistryObject<RitualItem> RITUAL_TRANSFERENCIA_VITAL = HELPER.createRItem("seringa_enferrujada",
+			OPRituals.TRANSFERENCIA_VITAL);
 	public static final RegistryObject<RitualItem> RITUAL_SALTO_FANTASMA = HELPER.createRItem("relogio_energizado",
 			OPRituals.SALTO_FANTASMA);
 	public static final RegistryObject<RitualItem> RITUAL_TELEPORTE = HELPER.createRItem("foto_familiar",
@@ -63,7 +62,7 @@ public final class OPItems {
 	public static final RegistryObject<RitualItem> RITUAL_ESPIRAIS_DA_PERDICAO = HELPER.createRItem("espelho_marcado",
 			OPRituals.ESPIRAIS_DA_PERDICAO);
 	public static final RegistryObject<RitualItem> RITUAL_PERTUBACAO = HELPER.createRItem("cruz_curvada",
-			OPRituals.PERTUBACAO);
+			OPRituals.PERTURBACAO);
 	public static final RegistryObject<RitualItem> RITUAL_INEXISTIR = HELPER.createRItem("livro_indescritivel",
 			OPRituals.INEXISTIR);
 	public static final RegistryObject<RitualItem> RITUAL_LUZ = HELPER.createRItem("fragmento_brilhante",

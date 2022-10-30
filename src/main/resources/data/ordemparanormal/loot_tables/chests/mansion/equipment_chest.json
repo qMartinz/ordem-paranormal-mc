@@ -112,7 +112,15 @@
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 1
+      },
+      "entries": [
         {
           "type": "minecraft:item",
           "weight": 1,
@@ -120,7 +128,10 @@
           "functions": [
             {
               "function": "minecraft:set_count",
-              "count": 1
+              "count": {
+                "min": 0,
+                "max": 1
+              }
             }
           ]
         }

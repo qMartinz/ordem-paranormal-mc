@@ -72,6 +72,9 @@ public class ModEnUsProvider extends LanguageProvider {
 			add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Energized Clock");
 			add(OPItems.RITUAL_TELEPORTE.get(), "Familiar photo");
 			add(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get(), "Marked mirror");
+			add(OPItems.RITUAL_LUZ.get(), "Sparkling fragment");
+			add(OPItems.RITUAL_INEXISTIR.get(), "Indescribable book");
+			add(OPItems.RITUAL_PERTUBACAO.get(), "Curved cross");
 
 			// Componentes Ritualisticos
 			add(OPItems.COMPONENTE_VAZIO.get(), "Empty ritualistic ingredient pouch");
@@ -162,6 +165,14 @@ public class ModEnUsProvider extends LanguageProvider {
 				"If used while crouching, saves the current location, and then if used without crouching, teleports you to the saved location.");
 		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Spirals of Doom",
 				"When used it weakens the target");
+		add(OPRituals.LUZ, "Light",
+				"Cria uma orbe brilhante de pura energia.");
+		add(OPRituals.INEXISTIR, "Unexist",
+				"Distorts your target's existance, dealing serious amounts of Knowledge damage.");
+		add(OPRituals.PERTURBACAO, "Disturbance",
+				"Confunses the mind of your target, making it impossible for them to move.");
+		add(OPRituals.ALTERAR_MEMORIA, "Alter Memories",
+				"Distorts the memories of your target. Villagers are more friendly towards you, lowering their prices.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");

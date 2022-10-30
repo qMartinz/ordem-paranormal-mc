@@ -13,9 +13,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class Pertubacao extends AbstractRitual {
-    public Pertubacao() {
-        super("pertubacao", ParanormalElement.CONHECIMENTO, 1, 1, true, 3D, true);
+public class Perturbacao extends AbstractRitual {
+    public Perturbacao() {
+        super("perturbacao", ParanormalElement.CONHECIMENTO, 1, 1, true, 3D, true);
     }
 
     @Override

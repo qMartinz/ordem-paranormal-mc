@@ -108,6 +108,7 @@ public class EntityEvents {
 	}
 	@SubscribeEvent
 	public static void addTrades(VillagerTradesEvent event){
+		// SANGUE
 		if (event.getType() == OPProfessions.OCULTISTA_SANGUE.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
@@ -130,7 +131,7 @@ public class EntityEvents {
 
 			trades.get(2).add((trader, rand) -> new MerchantOffer(
 					new ItemStack(Items.EMERALD, 31), new ItemStack(OPItems.RITUAL_APRIMORAMENTO_FISICO.get(), 1),
-					1, 45, 0.02f
+					1, 40, 0.02f
 			));
 			trades.get(2).add((trader, rand) -> new MerchantOffer(
 					new ItemStack(Items.ROTTEN_FLESH, 22), new ItemStack(Items.EMERALD, 1),
@@ -140,8 +141,17 @@ public class EntityEvents {
 					new ItemStack(Items.EMERALD, 35), new ItemStack(OPItems.RITUAL_HEMOFAGIA.get(), 1),
 					1, 45, 0.02f
 			));
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 31), new ItemStack(OPItems.RITUAL_ARMADURA_SANGUE.get(), 1),
+					1, 40, 0.02f
+			));
+			trades.get(2).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 35), new ItemStack(OPItems.RITUAL_TRANSFERENCIA_VITAL.get(), 1),
+					1, 45, 0.02f
+			));
 		}
 
+		// MORTE
 		if (event.getType() == OPProfessions.OCULTISTA_MORTE.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
@@ -161,6 +171,10 @@ public class EntityEvents {
 					new ItemStack(Items.EMERALD, 24), new ItemStack(OPItems.RITUAL_CICATRIZACAO.get(), 1),
 					1, 30, 0.02f
 			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 24), new ItemStack(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get(), 1),
+					1, 30, 0.02f
+			));
 
 			trades.get(2).add((trader, rand) -> new MerchantOffer(
 					new ItemStack(Items.EMERALD, 31), new ItemStack(OPItems.RITUAL_VELOCIDADE_MORTAL.get(), 1),
@@ -171,11 +185,12 @@ public class EntityEvents {
 					16, 2, 0.05f
 			));
 			trades.get(2).add((trader, rand) -> new MerchantOffer(
-					new ItemStack(Items.EMERALD, 25), new ItemStack(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), 1),
-					1, 30, 0.02f
+					new ItemStack(Items.EMERALD, 31), new ItemStack(OPItems.RITUAL_CONSUMIR_MANANCIAL.get(), 1),
+					1, 40, 0.02f
 			));
 		}
 
+		// ENERGIA
 		if (event.getType() == OPProfessions.OCULTISTA_ENERGIA.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
@@ -191,6 +206,10 @@ public class EntityEvents {
 					new ItemStack(Items.EMERALD, 19), new ItemStack(OPItems.RITUAL_ARMA_VELOZ.get(), 1),
 					1, 30, 0.02f
 			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 24), new ItemStack(OPItems.RITUAL_LUZ.get(), 1),
+					1, 30, 0.02f
+			));
 
 			trades.get(2).add((trader, rand) -> new MerchantOffer(
 					new ItemStack(Items.RAW_COPPER, 12), new ItemStack(Items.EMERALD, 1),
@@ -201,8 +220,14 @@ public class EntityEvents {
 					new ItemStack(Items.EMERALD, 41), new ItemStack(OPItems.RITUAL_SALTO_FANTASMA.get(), 1),
 					1, 65, 0.02f
 			));
+
+			trades.get(4).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 52), new ItemStack(OPItems.RITUAL_TELEPORTE.get(), 1),
+					1, 75, 0.02f
+			));
 		}
 
+		// CONHECIMENTO
 		if (event.getType() == OPProfessions.OCULTISTA_CONHECIMENTO.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
@@ -218,10 +243,19 @@ public class EntityEvents {
 					new ItemStack(Items.EMERALD, 19), new ItemStack(OPItems.RITUAL_AMALDICOAR_ARMA.get(), 1),
 					1, 30, 0.02f
 			));
+			trades.get(1).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 24), new ItemStack(OPItems.RITUAL_PERTUBACAO.get(), 1),
+					1, 30, 0.02f
+			));
 
 			trades.get(2).add((trader, rand) -> new MerchantOffer(
 					new ItemStack(Items.RAW_GOLD, 12), new ItemStack(Items.EMERALD, 1),
 					12, 4, 0.05f
+			));
+
+			trades.get(5).add((trader, rand) -> new MerchantOffer(
+					new ItemStack(Items.EMERALD, 61), new ItemStack(OPItems.RITUAL_INEXISTIR.get(), 1),
+					1, 80, 0.02f
 			));
 		}
 	}

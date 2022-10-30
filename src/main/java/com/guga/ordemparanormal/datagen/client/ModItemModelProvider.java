@@ -111,6 +111,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 		oneLayerItem(OPItems.RITUAL_SALTO_FANTASMA.get());
 		oneLayerItem(OPItems.RITUAL_TELEPORTE.get());
 		oneLayerItem(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get());
+		oneLayerItem(OPItems.RITUAL_LUZ.get());
+		oneLayerItem(OPItems.RITUAL_PERTUBACAO.get());
+		oneLayerItem(OPItems.RITUAL_INEXISTIR.get());
 
 		// Componentes Ritualisticos
 		oneLayerItem(OPItems.COMPONENTE_VAZIO.get());

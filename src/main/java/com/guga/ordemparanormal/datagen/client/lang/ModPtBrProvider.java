@@ -72,6 +72,9 @@ public class ModPtBrProvider extends LanguageProvider {
 			add(OPItems.RITUAL_SALTO_FANTASMA.get(), "Relógio energizado");
 			add(OPItems.RITUAL_TELEPORTE.get(), "Foto familiar");
 			add(OPItems.RITUAL_ESPIRAIS_DA_PERDICAO.get(), "Espelho marcado");
+			add(OPItems.RITUAL_LUZ.get(), "Fragmento brilhante");
+			add(OPItems.RITUAL_INEXISTIR.get(), "Livro indescritível");
+			add(OPItems.RITUAL_PERTUBACAO.get(), "Cruz curvada");
 
 			// Componentes Ritualisticos
 			add(OPItems.COMPONENTE_VAZIO.get(), "Saco vazio de ingredientes ritualísticos");
@@ -161,7 +164,15 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPRituals.TELEPORTE, "Teleporte",
 				"Se usado enquanto agacha, salva sua a posição atual. Se usado sem estar agachando, te teleporta para a posição salvada.");
 		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Espirais da Perdição",
-				"Quando usado enfraquece o alvo.");
+				"Quando usado, enfraquece o alvo.");
+		add(OPRituals.LUZ, "Luz",
+				"Cria uma orbe brilhante de pura energia.");
+		add(OPRituals.INEXISTIR, "Inexistir",
+				"Distorce a existência de seu alvo, causando gravíssimos danos de Conhecimento.");
+		add(OPRituals.PERTURBACAO, "Perturbação",
+				"Confunde a mente do alvo, impedindo-o de se mover.");
+		add(OPRituals.ALTERAR_MEMORIA, "Alterar Memória",
+				"Altera as memórias do alvo. Villagers se tornam mais amigáveis e diminuem seus preços.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
@@ -281,7 +292,7 @@ public class ModPtBrProvider extends LanguageProvider {
 
 		// Livros dentro do jogo
 		add("ordemparanormal.mansion_books.record_495",
-				"O irm�o de Sangue, Lairon, voltou de sua expedição... Ele disse que encontrou um portal nas planícies da suposta \"Ordem\". Nós o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lá.");
+				"O irmão de Sangue, Lairon, voltou de sua expedição... Ele disse que encontrou um portal nas planícies da suposta \"Ordem\". Nós o recriamos e espiamos. Nunca mais ouviremos Lairon. Maldito bastardo! Pelo menos conseguimos recursos de lá.");
 		add("ordemparanormal.mansion_books.record_001.page_1",
 				"Dia 1: \nJerome me disse que o local é seguro para uma habitação. O primeiro hóspede me contou algo terrível... Uma névoa surgiu quando eu estava voltando da floresta, aquilo não estava na minha previsão do tempo... \nEle estava com uma mordida imensa na perna e se recusou a falar sobre ela...");
 		add("ordemparanormal.mansion_books.record_001.page_2", "Dia 2: \nQUE PORRA É ESSA?!");

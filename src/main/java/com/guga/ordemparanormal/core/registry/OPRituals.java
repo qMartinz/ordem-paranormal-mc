@@ -27,7 +27,7 @@ public class OPRituals {
     public static final AbstractRitual LUZ = new Luz();
     // Conhecimento
     public static final AbstractRitual AMALDICOAR_ARMA = new CurseRitual("amaldicoar_arma", OPCurses.AMALDICOADA, 1, 2);
-    public static final AbstractRitual PERTUBACAO = new Pertubacao();
+    public static final AbstractRitual PERTURBACAO = new Perturbacao();
     public static final AbstractRitual INEXISTIR = new Inexistir();
     public static final AbstractRitual ALTERAR_MEMORIA = new AlterarMemoria();
     // Medo
@@ -57,7 +57,7 @@ public class OPRituals {
         registerRitual(TELEPORTE);
         // Conhecimento
         registerRitual(AMALDICOAR_ARMA);
-        registerRitual(PERTUBACAO);
+        registerRitual(PERTURBACAO);
         registerRitual(INEXISTIR);
         registerRitual(ALTERAR_MEMORIA);
         // Medo
