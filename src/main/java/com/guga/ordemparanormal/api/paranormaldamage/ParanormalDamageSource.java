@@ -68,21 +68,18 @@ public class ParanormalDamageSource extends DamageSource {
         }
     }
     public static ParanormalDamageSource paranormalCreatureAttack(ParanormalCreature creature) {
-        return new EntityParanormalDamageSource("paranormalMob", creature).setElement(creature.getMainElement());
+        return new EntityParanormalDamageSource(creature.getMainElement().name + "Creature", creature).setElement(creature.getMainElement());
     }
     public static ParanormalDamageSource ritualAttack(LivingEntity entity, AbstractRitual ritual) {
-        return new EntityParanormalDamageSource("ritual", entity).setElement(ritual.getElement());
+        return new EntityParanormalDamageSource(ritual.getElement().name + "Ritual", entity).setElement(ritual.getElement());
     }
     public static ParanormalDamageSource curseAttack(LivingEntity entity, AbstractCurse curse) {
-        return new EntityParanormalDamageSource("curse", entity).setElement(curse.getElement());
+        return new EntityParanormalDamageSource(curse.getElement().name + "Curse", entity).setElement(curse.getElement());
     }
     public static ParanormalDamageSource powerAttack(LivingEntity entity, PlayerPower power) {
         return new EntityParanormalDamageSource(power.getId(), entity).setElement(power.getElement());
     }
     public String elementDmgTranslationKey(){
         return element.getTranslationKey() + ".damageType";
-    }
-    public Component elementDmgTypeName(){
-        return new TranslatableComponent(elementDmgTranslationKey());
     }
 }

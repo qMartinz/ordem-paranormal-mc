@@ -28,6 +28,9 @@ public class ModEnUsProvider extends LanguageProvider {
 	public void add(VillagerProfession key, String name) {
 		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
 	}
+	public void addDeath(String key, String translation){
+		super.add("death.attack." + key, translation);
+	}
 
 	// Adicionar traduções em EN-US
 	@Override
@@ -299,6 +302,33 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Blood is the entity of emotion. It searches for intensity: pain, obsession, passion, love, hunger, hate - everything that involves feeling an extreme emotion pleases the entity of Blood.");
 		add("ordemparanormal.devil_church_books.blood_book.page_2",
 				"Everything begins with Blood. Blood is the flow that bathes the eternity of the Other Side.");
+
+		// -------------------------------------------------------------
+
+		// Mensagem de mortes
+		addDeath("paranormalBlood", "%1$s was torn apart by the intensity of Blood");
+		addDeath("paranomalDeath", "%1$s was consumed by the spiral of Death");
+		addDeath("paranormalEnergy", "%1$s was fried by the chaos of Energy");
+		addDeath("paranormalKnowledge", "%1$s was forgotten by the immensity of Knowledge");
+		addDeath("paranormalFear", "%1$s discovered the impossible");
+		addDeath("medoCreature", "%2$s showed the impossible to %1$s");
+		addDeath("sangueCreature", "%1$s was torn apart by %2$s");
+		addDeath("conhecimentoCreature", "%1$s was erased from reality by %2$s");
+		addDeath("morteCreature", "%1$s was consumed by %2$s");
+		addDeath("energiaCreature", "%1$s was distorted out of reality by %2$s");
+		addDeath("medoCurse", "%1$s was killed by an item cursed with an impossible flame");
+		addDeath("sangueCurse", "%1$s was killed by an item cursed with the intensity of Blood");
+		addDeath("conhecimentoCurse", "%1$s was killed by an item cursed with the immensity of Knowledge");
+		addDeath("morteCurse", "%1$s was killed by an item cursed with the spiral of Death");
+		addDeath("energiaCurse", "%1$s was killed by an item cursed with the chaos of Energy");
+		addDeath("sangueRitual", "%1$s was torn apart by the intensity of Blood summoned by %2$s");
+		addDeath("morteRitual", "%1$s was consumed by the spiral of Death summoned by %2$s");
+		addDeath("energiaRitual", "%1$s was fried by the chaos of Energy summoned by %2$s");
+		addDeath("conhecimentoRitual", "%1$s was forgotten by the immensity of Knowledge summoned by %2$s");
+		addDeath("medoRitual", "%1$s discovered the impossible summoned by %2$s");
+
+			// Mensagem de mortes por poder
+			addDeath("vampirismo", "%1$s had its blood drained out by %2$s");
 
 		// -------------------------------------------------------------
 

@@ -28,6 +28,9 @@ public class ModPtBrProvider extends LanguageProvider {
 	public void add(VillagerProfession key, String name) {
 		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
 	}
+	public void addDeath(String key, String translation){
+		super.add("death.attack." + key, translation);
+	}
 
 	// Adicionar traduções em PT-BR
 	@Override
@@ -300,6 +303,33 @@ public class ModPtBrProvider extends LanguageProvider {
 				"O Sangue é a entidade do sentimento. Ele busca a intensidade: dor, obsessão, paixão, amor, fome, ódio - tudo que envolve sentir uma emoção extrema agrada a entidade de Sangue.");
 		add("ordemparanormal.devil_church_books.blood_book.page_2",
 				"Tudo começa pelo Sangue. O Sangue é o fluxo que banha a eternidade do Outro Lado.");
+
+		// -------------------------------------------------------------
+
+		// Mensagem de mortes
+		addDeath("paranormalBlood", "%1$s foi dilacerado pela intensidade do Sangue");
+		addDeath("paranomalDeath", "%1$s foi consumido pela espiral da Morte");
+		addDeath("paranormalEnergy", "%1$s foi fritado pelo caos da Energia");
+		addDeath("paranormalKnowledge", "%1$s foi esquecido pela imensidade do Conhecimento");
+		addDeath("paranormalFear", "%1$s descobriu o impossível");
+		addDeath("medoCreature", "%2$s mostrou o impossível para %1$s");
+		addDeath("sangueCreature", "%1$s foi dilacerado por %2$s");
+		addDeath("conhecimentoCreature", "%1$s foi apagado da realidade por %2$s");
+		addDeath("morteCreature", "%1$s foi consumido por %2$s");
+		addDeath("energiaCreature", "%1$s foi distorcido para fora da realidade por %2$s");
+		addDeath("medoCurse", "%1$s foi morto por um item amaldiçoado com uma chama impossível");
+		addDeath("sangueCurse", "%1$s foi morto por um item amaldiçoado com a intesidade do Sangue");
+		addDeath("conhecimentoCurse", "%1$s foi morto por um item amaldiçoado com a imensidão do Conhecimento");
+		addDeath("morteCurse", "%1$s foi morto por um item amaldiçoado com a espiral da Morte");
+		addDeath("energiaCurse", "%1$s foi morto por um item amaldiçoado com o caos da Energia");
+		addDeath("sangueRitual", "%1$s foi dilacerado pela intensidade do Sangue convocada por %2$s");
+		addDeath("morteRitual", "%1$s foi consumido pela espiral da Morte convocada por %2$s");
+		addDeath("energiaRitual", "%1$s foi fritado pelo caos da Energia convocado por %2$s");
+		addDeath("conhecimentoRitual", "%1$s foi esquecido pela imensidão do Conhecimento convocada por %2$s");
+		addDeath("medoRitual", "%1$s descobriu o impossível convocado por %2$s");
+
+			// Mensagem de mortes por poder
+			addDeath("vampirismo", "%1$s teve seu sangue drenado por %2$s");
 
 		// -------------------------------------------------------------
 
