@@ -213,7 +213,7 @@ public class PlayerPower {
      * @return o dano bloqueado pelo escudo
      */
     public float onShieldBlock(Player player, @Nullable Entity attacker, DamageSource source, float originalBlockedDamage, float blockedDamage){
-        return blockedDamage;
+        return originalBlockedDamage;
     }
     /**
      * Chamado quando o usuário ataca, mas seu ataque é bloqueado por um escudo
@@ -226,7 +226,7 @@ public class PlayerPower {
      * @return o dano bloqueado pelo escudo
      */
     public float onAttackBlocked(Player player, LivingEntity target, DamageSource source, float originalBlockedDamage, float blockedDamage){
-        return blockedDamage;
+        return originalBlockedDamage;
     }
     /**
      * Chamado quando o usuário quebra um bloco

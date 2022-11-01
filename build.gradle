@@ -82,6 +82,8 @@ dependencies {
     implementation fg.deobf("com.teamabnormals:blueprint:1.18.2-5.3.2")
 }
 
+processResources {}
+
 jar {
     manifest {
         attributes([

@@ -62,10 +62,11 @@ public class OrdemParanormal {
 		REGISTRY_HELPER.register(bus);
 
 		OPParticles.PARTICLE_TYPES.register(bus);
-		OPStructures.register(bus);
+		OPStructures.STRUCTURE_FEATURES.register(bus);
 		OPEffects.register(bus);
 		OPPois.register(bus);
 		OPProfessions.register(bus);
+		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 
@@ -79,7 +80,7 @@ public class OrdemParanormal {
 		OPPowers.setup();
 	}
 	@OnlyIn(Dist.CLIENT)
-	private void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
+	public void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
 		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
 		event.registerEntityRenderer(OPEntities.ZUMBI_SECO.get(), ZumbiSecoRenderer::new);
@@ -87,16 +88,14 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 	}
-	private void setup(final FMLCommonSetupEvent event){
+	public void setup(final FMLCommonSetupEvent event){
 		Messages.register();
 
 		event.enqueueWork(() -> {
 			OPPois.registerPOIs();
-
-			OPProcessors.register();
 		});
 	}
-	private void clientSetup(final FMLClientSetupEvent event){
+	public void clientSetup(final FMLClientSetupEvent event){
 		MinecraftForge.EVENT_BUS.register(new Overlay());
 		MinecraftForge.EVENT_BUS.register(new Keybind());
 
