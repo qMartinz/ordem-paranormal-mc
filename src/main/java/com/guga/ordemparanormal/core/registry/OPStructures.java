@@ -18,7 +18,7 @@ public final class OPStructures {
     public static final RegistryObject<StructureFeature<?>> MANSION = STRUCTURE_FEATURES.register("mansion", Mansion::new);
     public static final RegistryObject<StructureFeature<?>> CULTIST_CABIN = STRUCTURE_FEATURES.register("cultist_cabin", CultistCabin::new);
     // TODO arrumar os problemas na geração dessa estrutura
-    //public static final RegistryObject<StructureFeature<?>> CRYPT = STRUCTURE_FEATURES.register("crypt", Crypt::new);
+    public static final RegistryObject<StructureFeature<?>> CRYPT = STRUCTURE_FEATURES.register("crypt", Crypt::new);
 
     public static void register(IEventBus eventBus) {
         STRUCTURE_FEATURES.register(eventBus);

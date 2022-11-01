@@ -50,7 +50,7 @@ public class OPPowers {
     public static final PlayerPower GRAVIDADE_DISTORCIDA_2 = new MobEffectPower("gravidade_distorcida_2", new MobEffectInstance(OPEffects.DISTORTED_GRAVITY.get(), 1200, 1), ENERGIA, 3, 10, new int[]{0, 4, 0}, GRAVIDADE_DISTORCIDA, AFINIDADE_ENERGIA);
     public static final PlayerPower CASUALIDADE_FORTUITA = new CasualidadeFortuita("casualidade_fortuita", ParanormalElement.ENERGIA, 3, new int[]{0, 0, 2});
     public static final PlayerPower CONHECIMENTO_AMPLIADO = new ConhecimentoAmpliado("conhecimento_ampliado", ParanormalElement.CONHECIMENTO, 1, new int[]{0, 0, 1});
-    public static final PlayerPower CONHECIMENTO_AMPLIADO_2 = new ConhecimentoAmpliado("conhecimento_ampliado_2", ParanormalElement.CONHECIMENTO, 10, new int[]{0, 0, 4});
+    public static final PlayerPower CONHECIMENTO_AMPLIADO_2 = new ConhecimentoAmpliado("conhecimento_ampliado_2", ParanormalElement.CONHECIMENTO, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, CONHECIMENTO_AMPLIADO);
 
     /**
      * Registra os poderes

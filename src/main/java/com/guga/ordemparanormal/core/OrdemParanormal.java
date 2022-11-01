@@ -92,6 +92,8 @@ public class OrdemParanormal {
 
 		event.enqueueWork(() -> {
 			OPPois.registerPOIs();
+
+			OPProcessors.register();
 		});
 	}
 	private void clientSetup(final FMLClientSetupEvent event){

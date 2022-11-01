@@ -79,8 +79,9 @@ public final class OPItems {
 			.createComponenteRitualistico(ParanormalElement.MORTE);
 	public static final RegistryObject<RitualComponent> COMPONENTE_CONHECIMENTO = HELPER
 			.createComponenteRitualistico(ParanormalElement.CONHECIMENTO);
-	public static final RegistryObject<RitualComponent> COMPONENTE_VAZIO = HELPER
-			.createComponenteRitualistico(ParanormalElement.NONE);
+	public static final RegistryObject<Item> COMPONENTE_VAZIO = HELPER
+			.createItem("componente_vazio",
+					() -> new Item(new Item.Properties().stacksTo(16).tab(OrdemParanormal.RITUALS_TAB)));
 
 	// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(

@@ -4,12 +4,12 @@
   "config": {
     "start_pool": "ordemparanormal:crypt/start_pool",
 
-    "size": 8
+    "size": 7
   },
 
   "biomes": "#ordemparanormal:has_structure/crypt",
 
-  "adapt_noise": true,
+  "adapt_noise": false,
 
   "spawn_overrides": {}
 }
