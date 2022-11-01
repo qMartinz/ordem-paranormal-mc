@@ -30,7 +30,7 @@ public final class OPItems {
 	public static final RegistryObject<Item> ORGAO = HELPER.createOrgao();
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
 	public static final RegistryObject<Item> PERGAMINHO_ANTIGO = HELPER.createPergaminhoAntigo();
-	public static final RegistryObject<Item> GIZ = HELPER.createGiz();
+	//public static final RegistryObject<Item> GIZ = HELPER.createGiz();
 
 	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRItem("livro_amaldicoado",
