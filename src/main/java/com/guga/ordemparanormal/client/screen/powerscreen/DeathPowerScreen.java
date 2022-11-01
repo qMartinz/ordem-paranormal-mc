@@ -16,7 +16,7 @@ public class DeathPowerScreen extends PowerScreen {
         addPowerIcon(new PowerButton(tabWidth/2 + 27, height/2 - 10, OPPowers.AFINIDADE_MORTE));
         addPowerIcon(new PowerButton(tabWidth/2 + 67, height/2 - 10, OPPowers.POTENCIAL_APRIMORADO));
         addPowerIcon(new PowerButton(tabWidth/2 + 67, height/2 - 80, OPPowers.POTENCIAL_APRIMORADO_2));
-        addPowerIcon(new PowerButton(tabWidth/2 + 117, height/2 - 80, OPPowers.ESCAPAR_MORTE));
+        //addPowerIcon(new PowerButton(tabWidth/2 + 117, height/2 - 80, OPPowers.ESCAPAR_MORTE));
         addPowerIcon(new PowerButton(tabWidth/2 - 13, height/2 - 10, OPPowers.PUTREFATO));
         addPowerIcon(new PowerButton(tabWidth/2 - 13, height/2 - 80, OPPowers.PUTREFATO_2));
         addPowerIcon(new PowerButton(tabWidth/2 - 63, height/2 - 80, OPPowers.POTENCIAL_REAPROVEITADO));

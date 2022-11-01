@@ -7,7 +7,7 @@
       "weight": 1,
       "element": {
         "location": "ordemparanormal:devil_church/bottom",
-        "processors": "minecraft:empty",
+        "processors": "ordemparanormal:remove_waterlogged",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

@@ -1,0 +1,7 @@
+{
+  "processors": [
+    {
+      "processor_type": "ordemparanormal:waterlogging_fix_processor"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
@@ -18,16 +19,16 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import java.util.Optional;
 
 public class Crypt extends StructureFeature<JigsawConfiguration> {
-    public static final Codec<JigsawConfiguration> CODEC = RecordCodecBuilder.create((codec) -> codec.group(
-            StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(JigsawConfiguration::startPool),
-            Codec.intRange(0, 30).fieldOf("size").forGetter(JigsawConfiguration::maxDepth)
-    ).apply(codec, JigsawConfiguration::new));
+    public static final Codec<JigsawConfiguration> CODEC = RecordCodecBuilder.create((p_67764_) ->
+            p_67764_.group(StructureTemplatePool.CODEC.fieldOf("start_pool")
+            .forGetter(JigsawConfiguration::startPool), Codec.intRange(0, 30).fieldOf("size")
+            .forGetter(JigsawConfiguration::maxDepth)).apply(p_67764_, JigsawConfiguration::new));
     public Crypt() {
-        super(CODEC, DevilChurch::createPiecesGenerator, PostPlacementProcessor.NONE);
+        super(CODEC, Crypt::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
+        return GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
     }
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         ChunkPos chunkpos = context.chunkPos();

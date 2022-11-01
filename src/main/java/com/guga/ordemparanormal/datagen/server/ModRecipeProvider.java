@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.datagen.server;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPBlocks;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPTags;
 import net.minecraft.data.DataGenerator;
@@ -61,5 +62,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.SOUL_TORCH).requires(Items.AMETHYST_SHARD).requires(Items.RAW_COPPER)
                 .unlockedBy("has_empty_component", has(OPItems.COMPONENTE_VAZIO.get()))
                 .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_ENERGIA.get().getDescriptionId() + "_refilled"));
+
+        ShapedRecipeBuilder.shaped(OPBlocks.ALTAR_TRANSCENDER.get())
+                .define('S', Tags.Items.STONE).define('P', Items.PAPER).define('I', Items.INK_SAC)
+                .pattern(" I ").pattern(" P ").pattern(" S ")
+                .unlockedBy("has_paper", has(Items.PAPER)).save(pFinishedRecipeConsumer);
     }
 }
