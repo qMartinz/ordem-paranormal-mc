@@ -27,7 +27,6 @@ public class PergaminhoAntigo extends Item {
             int i = this.getUseDuration(stack) - pTimeLeft;
             if (i < 0)
                 return;
-
             /*
              * IAbilitiesCap abilities =
              * player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
