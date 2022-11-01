@@ -31,8 +31,8 @@ public class Luz extends AbstractRitual {
         BlockState luz = OPBlocks.LUZ_BLOCK.get().defaultBlockState();
 
         //
-        BlockState iblockstate = world.getBlockState(blockPos);
-        Block block = iblockstate.getBlock();
+        // BlockState iblockstate = world.getBlockState(blockPos);
+        // Block block = iblockstate.getBlock();
 
         world.setBlockAndUpdate(blockPos, luz);
     }
