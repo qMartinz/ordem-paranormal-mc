@@ -114,6 +114,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 		oneLayerItem(OPItems.RITUAL_LUZ.get());
 		oneLayerItem(OPItems.RITUAL_PERTUBACAO.get());
 		oneLayerItem(OPItems.RITUAL_INEXISTIR.get());
+		basicItem(new ResourceLocation(OrdemParanormal.MOD_ID, "manual_ocultista"));
 
 		// Componentes Ritualisticos
 		oneLayerItem(OPItems.COMPONENTE_VAZIO.get());
