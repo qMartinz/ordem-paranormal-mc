@@ -1,7 +1,7 @@
 {
-    "name": "Energy",
+    "name": "Blood",
     "description": "Rituals are super powerful but you have to attend the requirements for the $(OS) to chose you.$(2br)Here i listed most of the rituals ive came across in my studies.",
-    "icon": "ordemparanormal:componente_energia",
+    "icon": "ordemparanormal:componente_sangue",
     "parent":"ordemparanormal:ritual_category",
     "sortnum": "1"
 }
