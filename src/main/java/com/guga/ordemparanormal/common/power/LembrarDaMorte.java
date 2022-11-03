@@ -2,7 +2,6 @@ package com.guga.ordemparanormal.common.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
-import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,8 +9,6 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
-
-import static com.guga.ordemparanormal.api.ParanormalElement.MORTE;
 
 public class LembrarDaMorte extends PlayerPower {
     public LembrarDaMorte(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {

@@ -235,6 +235,7 @@
   "ordemparanormal.ritual.velocidade_mortal": "Velocidade Mortal",
   "ordemparanormal.ritual.velocidade_mortal.description": "Altera a percep\u00E7\u00E3o do tempo de seu corpo, que passa a atingir velocidades extraordin\u00E1rias.",
   "ordemparanormal.ritual_item.cursed_with": "\u00A77Amaldi\u00E7oado com o ritual ",
+  "ordemparanormal.ritual_item.requires": "\u00A77Para entender esse item, voc\u00EA precisa de: ",
   "ordemparanormal.ritual_item.ritual_learned": "\u00A77Apenas um item com um s\u00EDmbolo estranho.",
   "ordemparanormal.ritual_item.ritual_unknown": "\u00A77Parece emanar uma presen\u00E7a estranha...",
   "ordemparanormal.rituals": "Rituais",

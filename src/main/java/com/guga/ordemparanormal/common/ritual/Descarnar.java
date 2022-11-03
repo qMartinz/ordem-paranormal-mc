@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
-import com.guga.ordemparanormal.api.paranormaldamage.EntityParanormalDamageSource;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.BlockParticleOption;

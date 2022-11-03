@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.api.capabilities.network;
+package com.guga.ordemparanormal.core.network;
 
 import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -104,7 +104,10 @@ public class Packets {
         public void handle(Supplier<NetworkEvent.Context> context){
             context.get().enqueueWork(() -> {
                if (context.get().getSender() == null) return;
-               context.get().getSender().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> nex.deserializeNBT(tag));
+               context.get().getSender().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> {
+                   nex.deserializeNBT(tag);
+                   nex.syncAttributeMods(context.get().getSender());
+               });
             });
             context.get().setPacketHandled(true);
         }
@@ -127,6 +130,7 @@ public class Packets {
 
                 if(cap != null){
                     cap.deserializeNBT(tag);
+                    cap.syncAttributeMods(ctx.get().getSender());
                 }
             });
             ctx.get().setPacketHandled(true);

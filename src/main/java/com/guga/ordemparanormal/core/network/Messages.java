@@ -1,6 +1,5 @@
 package com.guga.ordemparanormal.core.network;
 
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,14 +20,6 @@ public class Messages {
     public static void register() {
         INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(OrdemParanormal.MOD_ID, "network"), () -> "1.0", s->true, s->true);
 
-        INSTANCE.registerMessage(id(), Packets.SyncAbilities.class,
-                Packets.SyncAbilities::toBytes,
-                Packets.SyncAbilities::new,
-                Packets.SyncAbilities::handle);
-        INSTANCE.registerMessage(id(), Packets.SyncNexToClient.class,
-                Packets.SyncNexToClient::toBytes,
-                Packets.SyncNexToClient::new,
-                Packets.SyncNexToClient::handle);
         INSTANCE.registerMessage(id(), Packets.SyncNexToServer.class,
                 Packets.SyncNexToServer::toBytes,
                 Packets.SyncNexToServer::new,
@@ -45,6 +36,14 @@ public class Messages {
                 Packets.SyncEffects::toBytes,
                 Packets.SyncEffects::new,
                 Packets.SyncEffects::handle);
+        INSTANCE.registerMessage(id(), Packets.SyncAbilities.class,
+                Packets.SyncAbilities::toBytes,
+                Packets.SyncAbilities::new,
+                Packets.SyncAbilities::handle);
+        INSTANCE.registerMessage(id(), Packets.SyncNexToClient.class,
+                Packets.SyncNexToClient::toBytes,
+                Packets.SyncNexToClient::new,
+                Packets.SyncNexToClient::handle);
     }
 
     public static <MSG> void sendToServer(MSG message) {

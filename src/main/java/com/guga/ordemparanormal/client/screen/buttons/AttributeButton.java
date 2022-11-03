@@ -2,9 +2,9 @@ package com.guga.ordemparanormal.client.screen.buttons;
 
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.client.screen.AttributeScreen;
 import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -27,6 +27,7 @@ public class AttributeButton extends AbstractButton {
         RenderSystem.setShaderTexture(0, AttributeScreen.TEXTURES);
 
         int u = 32 * this.attribute.index;
+        if (isMouseOver(mouseX, mouseY)) RenderSystem.setShaderColor(1.4f, 1.4f, 1.4f, 1f);
         blit(stack, x, y, u, 217, width, height);
 
         int color = 0xFFFFFF;
@@ -43,6 +44,7 @@ public class AttributeButton extends AbstractButton {
             if (playerNex.getAttributePoints() > 0){
                 playerNex.setAttribute(attribute, playerNex.getAttribute(attribute) + 1);
                 playerNex.setAttributePoints(playerNex.getAttributePoints() - 1);
+                playerNex.syncAttributeMods(player);
                 Messages.sendToServer(new Packets.SyncNexToServer(playerNex.serializeNBT()));
             }
         });

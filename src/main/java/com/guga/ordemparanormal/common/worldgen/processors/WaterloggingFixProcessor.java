@@ -1,42 +1,35 @@
 package com.guga.ordemparanormal.common.worldgen.processors;
 
-import com.guga.ordemparanormal.core.registry.OPProcessors;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import org.jetbrains.annotations.Nullable;
 
 public class WaterloggingFixProcessor extends StructureProcessor {
-    // Code created by TelepathicGrunt, creator of mod RepurposedStructures.
-
-    public static final Codec<WaterloggingFixProcessor> CODEC = Codec.unit(WaterloggingFixProcessor::new);
-    private WaterloggingFixProcessor() { }
+    public static final Codec<WaterloggingFixProcessor> CODEC = Codec.unit(new WaterloggingFixProcessor());
+    public static final StructureProcessorType<WaterloggingFixProcessor> TYPE = () -> CODEC;
+    @Nullable
     @Override
-    public StructureTemplate.StructureBlockInfo processBlock(LevelReader levelReader, BlockPos pos, BlockPos pos2, StructureTemplate.StructureBlockInfo infoIn1, StructureTemplate.StructureBlockInfo infoIn2, StructurePlaceSettings settings) {
-        if(!infoIn2.state.getFluidState().isEmpty()) {
-            if(levelReader instanceof WorldGenRegion worldGenRegion && !worldGenRegion.getCenter().equals(new ChunkPos(infoIn2.pos))) {
-                return infoIn2;
-            }
+    public StructureTemplate.StructureBlockInfo process(LevelReader level, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo structureBlockInfoLocal, StructureTemplate.StructureBlockInfo structureBlockInfoWorld, StructurePlaceSettings placeSettings, @Nullable StructureTemplate template) {
+        ChunkAccess chunk = level.getChunk(structureBlockInfoWorld.pos);
 
-            ChunkAccess chunk = levelReader.getChunk(infoIn2.pos);
-            int minY = chunk.getMinBuildHeight();
-            int maxY = chunk.getMaxBuildHeight();
-            int currentY = infoIn2.pos.getY();
-            if(currentY >= minY && currentY <= maxY) {
-                ((LevelAccessor) levelReader).scheduleTick(infoIn2.pos, infoIn2.state.getBlock(), 0);
-            }
+        if(structureBlockInfoWorld.state.hasProperty(BlockStateProperties.WATERLOGGED) && !chunk.getFluidState(structureBlockInfoWorld.pos).isEmpty())
+        {
+            boolean waterlog = (structureBlockInfoLocal.state.hasProperty(BlockStateProperties.WATERLOGGED) && structureBlockInfoLocal.state.getValue(BlockStateProperties.WATERLOGGED));
+
+            chunk.setBlockState(structureBlockInfoWorld.pos, structureBlockInfoWorld.state.rotate(placeSettings.getRotation()).setValue(BlockStateProperties.WATERLOGGED, waterlog), false);
         }
-        return infoIn2;
+
+        return structureBlockInfoWorld;
     }
     @Override
     protected StructureProcessorType<?> getType() {
-        return OPProcessors.WATERLOGGING_FIX_PROCESSOR;
+        return TYPE;
     }
 }

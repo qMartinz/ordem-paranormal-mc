@@ -5,12 +5,12 @@ import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -50,10 +50,28 @@ public class PowerButton extends AbstractButton {
         RenderSystem.setShaderTexture(0, PowerScreen.TEXTURE);
         if (playerAbilities.hasPower(power)) {
             blit(stack, x - 5, y - 5, 0, 104, 30, 30);
+
+            if (!playerAbilities.getActivePowers().containsValue(this.power)){
+                if (this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){
+                    if (pScreen.selectedSlot < 6) {
+                        RenderSystem.setShaderColor(1f, 1f, 1f, 0.5f);
+                        blit(stack, x - 4, y - 4, 76, 104, 28, 28);
+                    }
+                }
+            } else {
+                blit(stack, x - 4, y - 4, 76, 104, 28, 28);
+            }
+
             if (power instanceof Afinidade) blit(stack, (x + width/2) - 23, (y + height/2) - 24, 30, 104, 46, 44);
         }
 
         RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
+
+        if (playerAbilities.hasPower(power) && this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){
+            if (pScreen.selectedSlot < 6) {
+                RenderSystem.setShaderColor(1.15f, 1.15f, 1.15f, 1f);
+            }
+        }
 
         blit(stack, x, y, 20 * power.getElement().index, power.isActivePower() ? 84 : 64, 20, 20);
 
@@ -95,6 +113,7 @@ public class PowerButton extends AbstractButton {
             playerNex.setPowerPoints(playerNex.getPowerPoints() - 1);
             playerAbilities.addPower(power);
             power.onAdded(minecraft.player);
+            playerAbilities.syncAttributeMods(minecraft.player);
         }
 
         if (playerAbilities.hasPower(this.power) && this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){

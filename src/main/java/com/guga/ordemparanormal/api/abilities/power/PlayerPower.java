@@ -18,7 +18,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -98,7 +97,7 @@ public class PlayerPower {
     public void onAdded(Player player){}
     public void use(Player player) {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
-            if (cap.getCurrentEffort() >= this.getEffortCost() && canUse(player) && cap.getPowerCooldown() == 0) {
+            if (cap.getCurrentEffort() >= this.getEffortCost() && canUse(player) && cap.getPowerCooldown() == 0 && this != EMPTY) {
                 cap.setCurrentEffort(cap.getCurrentEffort() - this.getEffortCost());
 
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), this.getSound(), SoundSource.PLAYERS, 1f, 1f);
@@ -213,7 +212,7 @@ public class PlayerPower {
      * @return o dano bloqueado pelo escudo
      */
     public float onShieldBlock(Player player, @Nullable Entity attacker, DamageSource source, float originalBlockedDamage, float blockedDamage){
-        return blockedDamage;
+        return originalBlockedDamage;
     }
     /**
      * Chamado quando o usuário ataca, mas seu ataque é bloqueado por um escudo
@@ -226,7 +225,7 @@ public class PlayerPower {
      * @return o dano bloqueado pelo escudo
      */
     public float onAttackBlocked(Player player, LivingEntity target, DamageSource source, float originalBlockedDamage, float blockedDamage){
-        return blockedDamage;
+        return originalBlockedDamage;
     }
     /**
      * Chamado quando o usuário quebra um bloco

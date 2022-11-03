@@ -3,7 +3,7 @@ loaderVersion="[40,)"
 license="Apache License Version 2.0"
 [[mods]]
 modId="ordemparanormal"
-version="20221101indev"
+version="20221102indev"
 displayName="Ordem Paranormal"
 logoFile="ordemparanormal.png"
 credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e à equipe do OP Mod por tornar esse projeto algo real."

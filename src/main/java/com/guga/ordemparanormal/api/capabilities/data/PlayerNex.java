@@ -92,6 +92,10 @@ public class PlayerNex implements INexCap{
     public void removeEffortModifier(UUID uuid){
         this.effortModifiers.remove(uuid);
     }
+    @Override
+    public void clearEffortModifiers() {
+        this.effortModifiers.clear();
+    }
     public boolean hasEffortModifier(UUID uuid){
         return this.effortModifiers.containsKey(uuid);
     }
@@ -154,7 +158,6 @@ public class PlayerNex implements INexCap{
 
         setMaxEffort(d1);
     }
-
     public void setRitualSlots(int ritualSlots) {
         this.ritualSlots = ritualSlots;
     }

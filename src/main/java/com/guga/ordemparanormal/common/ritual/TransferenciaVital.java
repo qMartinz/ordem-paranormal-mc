@@ -1,11 +1,8 @@
 package com.guga.ordemparanormal.common.ritual;
 
-import javax.swing.text.html.parser.Entity;
-
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
-
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;

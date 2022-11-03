@@ -8,10 +8,8 @@ import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
-import com.guga.ordemparanormal.client.screen.powerscreen.BloodPowerScreen;
-import com.guga.ordemparanormal.client.screen.powerscreen.DeathPowerScreen;
-import com.guga.ordemparanormal.client.screen.powerscreen.EnergyPowerScreen;
-import com.guga.ordemparanormal.client.screen.powerscreen.KnowledgePowerScreen;
+import com.guga.ordemparanormal.client.screen.buttons.PowerSlotButton;
+import com.guga.ordemparanormal.client.screen.buttons.PowerTabButton;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -49,7 +47,7 @@ public class PowerScreen extends Screen {
 
         powerIcons.forEach(button -> iconsX.put(button, button.x));
         powerIcons.forEach(button -> iconsY.put(button, button.y));
-        powerIcons.forEach(this::addRenderableWidget);
+        powerIcons.forEach(this::addWidget);
 
         this.addWidget(new Button(37, (int) (this.height/2f - 7/2f), 7, 7, TextComponent.EMPTY, button -> {
             if (xOffset < -350) xOffset = 0;
@@ -65,18 +63,13 @@ public class PowerScreen extends Screen {
         }));
 
         for (int i = 0; i < 5; i++){
-            int finalI = i;
-            this.addWidget(new Button(tabWidth / 2 - 36 + 26*i, height - 46, 22, 22, new TextComponent("slot_" + i), button -> {
-                if (selectedSlot != finalI) {
-                    selectedSlot = finalI;
-                } else selectedSlot = 6;
-            }));
+            this.addRenderableWidget(new PowerSlotButton(tabWidth / 2 - 36 + 26*i, height - 46, 22, 22, i));
         }
 
-        this.addWidget(new Button(2, 9, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new BloodPowerScreen())));
-        this.addWidget(new Button(2, 43, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new DeathPowerScreen())));
-        this.addWidget(new Button(2, 77, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new EnergyPowerScreen())));
-        this.addWidget(new Button(2, 111, 32, 32, TextComponent.EMPTY, button -> minecraft.setScreen(new KnowledgePowerScreen())));
+        this.addRenderableWidget(new PowerTabButton(2, 9, 32, 32, ParanormalElement.SANGUE, element == ParanormalElement.SANGUE));
+        this.addRenderableWidget(new PowerTabButton(2, 43, 32, 32, ParanormalElement.MORTE, element == ParanormalElement.MORTE));
+        this.addRenderableWidget(new PowerTabButton(2, 77, 32, 32, ParanormalElement.ENERGIA, element == ParanormalElement.ENERGIA));
+        this.addRenderableWidget(new PowerTabButton(2, 111, 32, 32, ParanormalElement.CONHECIMENTO, element == ParanormalElement.CONHECIMENTO));
     }
     @Override
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
@@ -89,16 +82,15 @@ public class PowerScreen extends Screen {
 
         this.renderContents(stack, pMouseX, pMouseY, pPartialTick);
         this.drawPowerHierarchyLines(stack);
-        super.render(stack, pMouseX, pMouseY, pPartialTick);
+        powerIcons.forEach(button -> button.render(stack, pMouseX, pMouseY, pPartialTick));
 
         drawBorder(stack);
+
         RenderSystem.setShaderTexture(0, TEXTURE);
         if (xOffset < -350) blit(stack, 37, (int) (this.height/2f - 7/2f), 0, 0, 7, 7);
         if (xOffset > 350) blit(stack, this.width - 13, (int) (this.height/2f - 7/2f), 7, 7, 7, 7);
         if (yOffset < -200) blit(stack, (int) (tabWidth/2f - 7/2f) + 37, 6, 0, 7, 7, 7);
         if (yOffset > 200) blit(stack, (int) (tabWidth/2f - 7/2f) + 37, this.height - 13, 7, 0, 7, 7);
-
-        drawTabButtons(stack);
 
         Component label = CommonComponents.POWER_POINTS;
         String value = String.valueOf(playerNex.getPowerPoints());
@@ -111,11 +103,13 @@ public class PowerScreen extends Screen {
         RenderSystem.setShaderTexture(0, TEXTURE);
         if (selectedSlot < 6) blit(stack, tabWidth/2 - 38 + 26*selectedSlot, height - 50, 0, 134, 26, 30);
 
+        super.render(stack, pMouseX, pMouseY, pPartialTick);
+
         for (PowerButton powerButton : powerIcons){
             if (powerButton.isMouseOver(pMouseX, pMouseY)) drawPowerInfo(stack, powerButton.getPower());
         }
         for (GuiEventListener eventListener : children()){
-            if (eventListener instanceof Button button){
+            if (eventListener instanceof PowerSlotButton button){
                 if (button.getMessage().getString().startsWith("slot_") && button.isMouseOver(pMouseX, pMouseY))
                     drawPowerInfo(stack, playerAbilities.getActivePower(Integer.parseInt(button.getMessage().getString().replaceAll("\\D+",""))));
             }
@@ -177,20 +171,6 @@ public class PowerScreen extends Screen {
         fill(stack, this.width - 5,0,this.width - 6,this.height,0xFFde9e41);
         fill(stack, 0,5,this.width,6,0xFFde9e41);
         fill(stack, 0,this.height - 5,this.width,this.height - 6,0xFFde9e41);
-    }
-    private void drawTabButtons(PoseStack stack){
-        if (this.element == ParanormalElement.SANGUE) {
-            blit(stack, 2, 9, 14, 32, 32, 32);
-        } else { blit(stack, 2, 9, 14, 0, 32, 32); }
-        if (this.element == ParanormalElement.MORTE) {
-            blit(stack, 2, 43, 46, 32, 32, 32);
-        } else { blit(stack, 2, 43, 46, 0, 32, 32); }
-        if (this.element == ParanormalElement.ENERGIA) {
-            blit(stack, 2, 77, 78, 32, 32, 32);
-        } else { blit(stack, 2, 77, 78, 0, 32, 32); }
-        if (this.element == ParanormalElement.CONHECIMENTO) {
-            blit(stack, 2, 111, 110, 32, 32, 32);
-        } else { blit(stack, 2, 111, 110, 0, 32, 32); }
     }
     private void drawActivePowerSlots(PoseStack stack, IAbilitiesCap playerPowers){
         int tabWidth = this.width - 41;

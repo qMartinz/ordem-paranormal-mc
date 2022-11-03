@@ -28,6 +28,7 @@ public interface INexCap extends INBTSerializable<CompoundTag> {
     void removeEffortModifier(AttributeModifier modifier);
 
     void removeEffortModifier(UUID uuid);
+    void clearEffortModifiers();
 
     boolean hasEffortModifier(UUID uuid);
 

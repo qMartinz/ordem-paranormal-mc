@@ -13,21 +13,22 @@
   },
   "ritual_learned": {
     "sounds": [
-      {
-        "name": "ordemparanormal:ritual_learned"
-      }
+      "ordemparanormal:ritual_learned"
     ]
   },
   "ritual_forgotten": {
     "sounds": [
-      {
-        "name": "ordemparanormal:ritual_forgotten"
-      }
+      "ordemparanormal:ritual_forgotten"
     ]
   },
   "ritual_used": {
     "sounds": [
       "ordemparanormal:ritual_used"
+    ]
+  },
+  "ritual_failed": {
+    "sounds": [
+      "ordemparanormal:ritual_failed"
     ]
   },
   "ingredient_blood": {

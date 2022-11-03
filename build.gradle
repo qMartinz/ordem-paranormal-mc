@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-20221101indev'
+version = '1.18.2-20221102indev'
 group = 'com.guga.ordemparanormal'
 archivesBaseName = 'ordemparanormal'
 
@@ -81,6 +81,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.20'
     implementation fg.deobf("com.teamabnormals:blueprint:1.18.2-5.3.2")
 }
+
+processResources {}
 
 jar {
     manifest {
