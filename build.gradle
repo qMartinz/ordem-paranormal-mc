@@ -79,10 +79,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.20'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.51'
     implementation fg.deobf("com.teamabnormals:blueprint:1.18.2-5.3.2")
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-69:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-69")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
 }
 
 processResources {}

@@ -12,7 +12,7 @@ description='''O Paranormal não vem para a nossa realidade facilmente, ou pelo 
 [[dependencies.ordemparanormal]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[40.1.51,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.ordemparanormal]]
@@ -27,3 +27,9 @@ description='''O Paranormal não vem para a nossa realidade facilmente, ou pelo 
     versionRange = "[5.3.2,)"
     ordering = "BEFORE"
     side = "BOTH"
+[[dependencies.ordemparanormal]]
+modId = "patchouli"
+mandatory = true
+versionRange = "[1.18.2-71.1,)"
+ordering = "BEFORE"
+side = "BOTH"
