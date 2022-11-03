@@ -66,7 +66,7 @@ public abstract class AbstractRitual{
         return switch (tier) {
             case 2 -> 2;
             case 3 -> 4;
-            case 4 -> 8;
+            case 4 -> 6;
             default -> 0;
         };
     }
@@ -173,6 +173,16 @@ public abstract class AbstractRitual{
                 }
 
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), OPSounds.RITUAL_USED.get(), SoundSource.PLAYERS, 1f, 1f);
+            } else {
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), OPSounds.RITUAL_FAILED.get(), SoundSource.PLAYERS, 1f, 1f);
+
+                ItemStack ingredient = mustHoldIngredient() ? player.getOffhandItem() :
+                        player.getInventory().items.stream().filter(stack -> stack.getItem() instanceof RitualComponent comp &&
+                                comp.element == element).findFirst().get();
+
+                if (ingredient.getItem() instanceof RitualComponent comp && comp.getUsedSound() != null) {
+                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(), comp.getUsedSound(), SoundSource.PLAYERS, 1f, 1f);
+                }
             }
         }
     }

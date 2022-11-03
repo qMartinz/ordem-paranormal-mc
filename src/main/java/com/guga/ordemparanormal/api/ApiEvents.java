@@ -1,12 +1,12 @@
 package com.guga.ordemparanormal.api;
 
 import com.guga.ordemparanormal.api.capabilities.data.*;
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.api.curses.CurseInstance;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,7 +24,6 @@ import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -58,7 +57,9 @@ public class ApiEvents {
         Player oldPlayer = event.getOriginal();
         oldPlayer.revive();
 
-        oldPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(oldNex -> event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(newNex -> newNex.copyFrom(oldNex)));
+        oldPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(oldNex -> event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(newNex -> {
+            newNex.copyFrom(oldNex);
+        }));
 
         if (!event.isWasDeath()){
             oldPlayer.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(oldEffects ->
@@ -79,13 +80,22 @@ public class ApiEvents {
     @SubscribeEvent
     public static void onPlayerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
         syncPlayerPowers(event.getPlayer());
+
+        INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        IAbilitiesCap abilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        if (nex == null || abilities == null) return;
+        abilities.syncAttributeMods(event.getPlayer());
+        nex.syncAttributeMods(event.getPlayer());
     }
     @SubscribeEvent
     public static void respawnEvent(PlayerEvent.PlayerRespawnEvent event) {
         syncPlayerPowers(event.getPlayer());
         if (!event.isEndConquered()){
             INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-            if (nex == null) return;
+            IAbilitiesCap abilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+            if (nex == null || abilities == null) return;
+            nex.syncAttributeMods(event.getPlayer());
+            abilities.syncAttributeMods(event.getPlayer());
             nex.setCurrentEffort(nex.getMaxEffort());
         }
     }
@@ -96,6 +106,12 @@ public class ApiEvents {
     @SubscribeEvent
     public static void onPlayerDimChangedEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
         syncPlayerPowers(event.getPlayer());
+
+        INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        IAbilitiesCap abilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        if (nex == null || abilities == null) return;
+        abilities.syncAttributeMods(event.getPlayer());
+        nex.syncAttributeMods(event.getPlayer());
     }
     public static void syncPlayerPowers(Player player){
         if (player instanceof ServerPlayer) {

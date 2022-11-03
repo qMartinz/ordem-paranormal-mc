@@ -16,6 +16,7 @@ public final class OPSounds {
     public static final RegistryObject<SoundEvent> RITUAL_LEARNED = HELPER.createSoundEvent("ritual_learned");
     public static final RegistryObject<SoundEvent> RITUAL_FORGOTTEN = HELPER.createSoundEvent("ritual_forgotten");
     public static final RegistryObject<SoundEvent> RITUAL_USED = HELPER.createSoundEvent("ritual_used");
+    public static final RegistryObject<SoundEvent> RITUAL_FAILED = HELPER.createSoundEvent("ritual_failed");
     public static final RegistryObject<SoundEvent> BLOOD_POWER_USED = HELPER.createSoundEvent("blood_power_used");
     public static final RegistryObject<SoundEvent> ENERGY_POWER_USED = HELPER.createSoundEvent("energy_power_used");
     public static final RegistryObject<SoundEvent> DEATH_POWER_USED = HELPER.createSoundEvent("death_power_used");

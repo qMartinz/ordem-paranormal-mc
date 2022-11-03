@@ -1,10 +1,15 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
+import com.guga.ordemparanormal.api.abilities.power.AttributeModPower;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.util.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,6 +18,13 @@ public class PlayerAbilities implements IAbilitiesCap {
     public Set<AbstractRitual> rituals = new HashSet<>();
     public Set<PlayerPower> powers = new HashSet<>();
     public Map<Integer, PlayerPower> activePowers = new HashMap<>();
+    private final UUID healthBonusModUUID = UUID.randomUUID();
+    private final UUID knockbackResistBonusModUUID = UUID.randomUUID();
+    private final UUID speedBonusModUUID = UUID.randomUUID();
+    private final UUID damageBonusModUUID = UUID.randomUUID();
+    private final UUID knockbackBonusModUUID = UUID.randomUUID();
+    private final UUID attackSpeedBonusModUUID = UUID.randomUUID();
+    private final UUID toughnessBonusModUUID = UUID.randomUUID();
     @Override
     public Collection<AbstractRitual> getKnownRituals() {
         return rituals;
@@ -79,6 +91,51 @@ public class PlayerAbilities implements IAbilitiesCap {
     public void setActivePower(PlayerPower ability, int slot) {
         activePowers.values().removeIf(ab -> ab.equals(ability));
         activePowers.put(slot, ability);
+    }
+    @Override
+    public void syncAttributeMod(Player player, Attribute attribute, UUID uuid) {
+        double attributeOriginal = player.getAttribute(attribute).getValue();
+        List<AttributeModPower> powers = new ArrayList<>(this.powers.stream()
+                .filter(p -> p instanceof AttributeModPower)
+                .map(power -> (AttributeModPower) power).toList());
+
+        List<AttributeModifier> modifiers = powers.stream().map(p -> p.getAttributeModifiers().get(attribute)).toList();
+
+        if (!modifiers.isEmpty()) {
+            double d0 = attributeOriginal;
+
+            for (AttributeModifier attributemodifier : modifiers.stream().filter(m -> m != null && m.getOperation() == AttributeModifier.Operation.ADDITION).toList()) {
+                d0 += attributemodifier.getAmount();
+            }
+
+            double d1 = d0;
+
+            for (AttributeModifier attributemodifier1 : modifiers.stream().filter(m -> m != null && m.getOperation() == AttributeModifier.Operation.MULTIPLY_BASE).toList()) {
+                d1 += d0 * attributemodifier1.getAmount();
+            }
+
+            for (AttributeModifier attributemodifier2 : modifiers.stream().filter(m -> m != null && m.getOperation() == AttributeModifier.Operation.MULTIPLY_TOTAL).toList()) {
+                d1 *= 1.0D + attributemodifier2.getAmount();
+            }
+
+            AttributeModifier modifier = new AttributeModifier(uuid, "paranormal_powers_mod", d1 - attributeOriginal, AttributeModifier.Operation.ADDITION);
+            if (player.getAttribute(attribute).getModifier(uuid) == null) {
+                player.getAttribute(attribute).addTransientModifier(modifier);
+            } else {
+                player.getAttribute(attribute).removeModifier(uuid);
+                player.getAttribute(attribute).addTransientModifier(modifier);
+            }
+        }
+    }
+    @Override
+    public void syncAttributeMods(Player player) {
+        syncAttributeMod(player, Attributes.MAX_HEALTH, healthBonusModUUID);
+        syncAttributeMod(player, Attributes.KNOCKBACK_RESISTANCE, knockbackResistBonusModUUID);
+        syncAttributeMod(player, Attributes.MOVEMENT_SPEED, speedBonusModUUID);
+        syncAttributeMod(player, Attributes.ATTACK_DAMAGE, damageBonusModUUID);
+        syncAttributeMod(player, Attributes.ATTACK_KNOCKBACK, knockbackBonusModUUID);
+        syncAttributeMod(player, Attributes.ATTACK_SPEED, attackSpeedBonusModUUID);
+        syncAttributeMod(player, Attributes.ARMOR_TOUGHNESS, toughnessBonusModUUID);
     }
     @Override
     public CompoundTag serializeNBT() {

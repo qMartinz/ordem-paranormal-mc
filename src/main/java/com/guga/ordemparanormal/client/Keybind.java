@@ -2,18 +2,11 @@ package com.guga.ordemparanormal.client;
 
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
-import com.guga.ordemparanormal.client.screen.AttributeScreen;
-import com.guga.ordemparanormal.client.screen.PowerScreen;
-import com.guga.ordemparanormal.common.block.AltarTranscender;
 import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
@@ -29,8 +22,6 @@ public class Keybind {
     private final KeyMapping nexScreenKey = new KeyMapping("ordemparanormal.key.nex_screen", KeyConflictContext.UNIVERSAL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, MOD_CATEGORY);
     public final List<KeyMapping> usePowerList = new LinkedList<>();
     public Keybind(){
-        ClientRegistry.registerKeyBinding(nexScreenKey);
-
         KeyMapping power1 = new KeyMapping("ordemparanormal.key.power_1", KeyConflictContext.IN_GAME, KeyModifier.CONTROL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_1, MOD_CATEGORY);
         ClientRegistry.registerKeyBinding(power1);
 
@@ -56,16 +47,6 @@ public class Keybind {
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event){
         Minecraft minecraft = Minecraft.getInstance();
-        if (nexScreenKey.consumeClick()){
-            HitResult block =  minecraft.player.pick(minecraft.player.isCreative() ? 5D : 4.5D, 0.0F, false);
-            BlockPos blockpos = ((BlockHitResult)block).getBlockPos();
-            BlockState blockstate = minecraft.player.level.getBlockState(blockpos);
-            if (minecraft.screen == null){
-                minecraft.setScreen(new AttributeScreen(block.getType() == HitResult.Type.BLOCK && blockstate.getBlock() instanceof AltarTranscender));
-            } else if (minecraft.screen instanceof AttributeScreen || minecraft.screen instanceof PowerScreen){
-                minecraft.setScreen(null);
-            }
-        }
 
         for (int i = 0; i < usePowerList.size(); i++){
             KeyMapping binding = usePowerList.get(i);

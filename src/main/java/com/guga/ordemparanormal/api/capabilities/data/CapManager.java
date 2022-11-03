@@ -1,8 +1,7 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
-import com.guga.ordemparanormal.api.capabilities.network.Packets;
 import com.guga.ordemparanormal.core.network.Messages;
-import net.minecraft.client.player.LocalPlayer;
+import com.guga.ordemparanormal.core.network.Packets;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,9 +10,11 @@ import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 public class CapManager extends SavedData {
     private int counter = 0;
+    private final UUID uuid = UUID.randomUUID();
     @Nonnull
     public static CapManager get(Level level) {
         if (level.isClientSide) {
@@ -29,8 +30,9 @@ public class CapManager extends SavedData {
             level.players().forEach(player -> {
                 if (player instanceof ServerPlayer serverPlayer){
                     INexCap nex = serverPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+                    IAbilitiesCap abilities = serverPlayer.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
                     IEffectsCap effects = serverPlayer.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
-                    if (nex == null || effects == null) return;
+                    if (nex == null || effects == null || abilities == null) return;
 
                     if (nex.getCurrentEffort() != nex.getMaxEffort() && serverPlayer.getFoodData().getFoodLevel() >= 20){
                         nex.setCurrentEffort(nex.getCurrentEffort() + 0.15D);
@@ -38,16 +40,10 @@ public class CapManager extends SavedData {
                     } else {
                         nex.setCurrentEffort(nex.getCurrentEffort() + 0.05D);
                     }
-                    nex.syncAttributeMods(serverPlayer);
                     if (nex.getPowerCooldown() > 0) nex.setPowerCooldown(nex.getPowerCooldown() - 1);
 
                     Messages.sendToPlayer(new Packets.SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     Messages.sendToPlayer(new Packets.SyncEffects(effects.serializeNBT()), serverPlayer);
-                } else if (player instanceof  LocalPlayer localPlayer){
-                    INexCap nex = localPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-                    if (nex == null) return;
-
-                    Messages.sendToServer(new Packets.SyncNexToServer(nex.serializeNBT()));
                 }
             });
         }

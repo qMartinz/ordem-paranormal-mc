@@ -58,7 +58,6 @@ public class OrdemParanormal {
 		// Event Bus para registrar coisas do mod
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		bus.addListener(this::apiSetup);
 		REGISTRY_HELPER.register(bus);
 
 		OPParticles.PARTICLE_TYPES.register(bus);
@@ -74,11 +73,6 @@ public class OrdemParanormal {
 		bus.addListener(this::clientSetup);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	public void apiSetup(final FMLCommonSetupEvent event){
-		OPCurses.setup();
-		OPRituals.setup();
-		OPPowers.setup();
-	}
 	@OnlyIn(Dist.CLIENT)
 	public void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
@@ -90,6 +84,9 @@ public class OrdemParanormal {
 	}
 	public void setup(final FMLCommonSetupEvent event){
 		Messages.register();
+		OPCurses.setup();
+		OPRituals.setup();
+		OPPowers.setup();
 
 		event.enqueueWork(() -> {
 			OPPois.registerPOIs();

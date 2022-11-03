@@ -45,6 +45,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.ritual_learned", "§7Just an item with a strange symbol.");
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
 		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual ");
+		add("ordemparanormal.ritual_item.requires", "§7To understand this item, you require: ");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence altar");

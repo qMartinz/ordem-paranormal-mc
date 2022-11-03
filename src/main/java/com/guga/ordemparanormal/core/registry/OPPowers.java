@@ -18,8 +18,8 @@ public class OPPowers {
     public static final PlayerPower AFINIDADE_MORTE = new Afinidade(ParanormalElement.MORTE);
     public static final PlayerPower AFINIDADE_ENERGIA = new Afinidade(ParanormalElement.ENERGIA);
     public static final PlayerPower AFINIDADE_CONHECIMENTO = new Afinidade(ParanormalElement.CONHECIMENTO);
-    public static final PlayerPower SANGUE_FERRO = new AttributeModPower("sangue_ferro", Attributes.MAX_HEALTH, new AttributeModifier(UUID.randomUUID(), "sangue_ferro_mod", 4, AttributeModifier.Operation.ADDITION), ParanormalElement.SANGUE, 1, new int[]{0, 1, 0});
-    public static final PlayerPower SANGUE_FERRO_2 = new AttributeModPower("sangue_ferro_2", Attributes.MAX_HEALTH, new AttributeModifier(UUID.randomUUID(), "sangue_ferro_2_mod", 6, AttributeModifier.Operation.ADDITION), ParanormalElement.SANGUE, 10, new int[]{0, 5, 0}, OPPowers.SANGUE_FERRO, OPPowers.AFINIDADE_SANGUE);
+    public static final PlayerPower SANGUE_FERRO = new AttributeModPower("sangue_ferro", ParanormalElement.SANGUE, 1, new int[]{0, 1, 0}).modifier(Attributes.MAX_HEALTH, new AttributeModifier("health_mod", 4, AttributeModifier.Operation.ADDITION));
+    public static final PlayerPower SANGUE_FERRO_2 = new AttributeModPower("sangue_ferro_2", ParanormalElement.SANGUE, 10, new int[]{0, 5, 0}, OPPowers.SANGUE_FERRO, OPPowers.AFINIDADE_SANGUE).modifier(Attributes.MAX_HEALTH, new AttributeModifier("health_mod", 8, AttributeModifier.Operation.ADDITION));
     public static final PlayerPower PUNHO_ENRAIVECIDO = new PunhoEnraivecido("punho_enraivecido", new MobEffectInstance(OPEffects.ENRAGED_FIST.get(), 1200, 0, false, false), ParanormalElement.SANGUE, 2, 1, new int[]{1, 0, 0});
     public static final PlayerPower PUNHO_ENRAIVECIDO_2 = new PunhoEnraivecido2("punho_enraivecido_2", ParanormalElement.SANGUE, 10, new int[]{5, 0, 0}, OPPowers.PUNHO_ENRAIVECIDO, OPPowers.AFINIDADE_SANGUE);
     public static final PlayerPower ADRENALINA = new Adrenalina("adrenalina", ParanormalElement.SANGUE, 3, new int[]{1, 1, 0});

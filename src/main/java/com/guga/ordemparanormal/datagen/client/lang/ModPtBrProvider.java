@@ -45,6 +45,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.ritual_learned", "§7Apenas um item com um símbolo estranho.");
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Parece emanar uma presença estranha...");
 		add("ordemparanormal.ritual_item.cursed_with", "§7Amaldiçoado com o ritual ");
+		add("ordemparanormal.ritual_item.requires", "§7Para entender esse item, você precisa de: ");
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de transcendência");

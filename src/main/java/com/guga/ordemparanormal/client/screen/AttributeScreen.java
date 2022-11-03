@@ -7,7 +7,8 @@ import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
-import com.guga.ordemparanormal.client.screen.powerscreen.BloodPowerScreen;
+import com.guga.ordemparanormal.client.screen.buttons.PowerScreenButton;
+import com.guga.ordemparanormal.client.screen.buttons.SelectedRitualButtons;
 import com.guga.ordemparanormal.client.screen.widgets.SelectedRitual;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -26,10 +27,8 @@ import java.util.List;
 public class AttributeScreen extends Screen {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/nexscreen.png");
     private final int screenHeight = 217;
-    public final boolean transcending;
-    public AttributeScreen(boolean transcending) {
+    public AttributeScreen() {
         super(TextComponent.EMPTY);
-        this.transcending = transcending;
     }
     @Override
     protected void init(){
@@ -43,12 +42,10 @@ public class AttributeScreen extends Screen {
         SelectedRitual ritualWidget = new SelectedRitual(tabX + 46, screenY + 7);
         addRenderableWidget(ritualWidget);
 
-        addWidget(new Button(tabX + 44, screenY + 75, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                ritualWidget.setRitualIndex(ritualWidget.getRitualIndex() - 1 >= 0 ? ritualWidget.getRitualIndex() - 1 : playerAbilities.getKnownRituals().size() - 1))));
-        addWidget(new Button(tabX + 104, screenY + 75, 8, 8, TextComponent.EMPTY, b -> minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                ritualWidget.setRitualIndex(playerAbilities.getKnownRituals().size() - 1 >= ritualWidget.getRitualIndex() + 1 ? ritualWidget.getRitualIndex() + 1 : 0))));
+        addRenderableWidget(new SelectedRitualButtons.Backward(tabX + 44, screenY + 75, 8, 8));
+        addRenderableWidget(new SelectedRitualButtons.Forward(tabX + 104, screenY + 75, 8, 8));
 
-        if (this.transcending) addWidget(new Button(screenX + 39, screenY + 195, 20, 20, TextComponent.EMPTY, b -> minecraft.setScreen(new BloodPowerScreen())));
+        addRenderableWidget(new PowerScreenButton(screenX + 39, screenY + 195, 20, 20));
     }
     @Override
     public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
@@ -67,11 +64,9 @@ public class AttributeScreen extends Screen {
         RenderSystem.disableDepthTest();
         RenderSystem.setShaderTexture(0, TEXTURES);
 
-        if (transcending) blit(stack, screenX + 98/2 - 27, screenY + 174, 174, 0, 54, 63);
+        blit(stack, screenX + 98/2 - 27, screenY + 174, 174, 0, 54, 63);
 
         blit(stack, screenX, screenY, 0, 0, 98, this.screenHeight);
-
-        if (transcending) blit(stack, screenX + 44, screenY + 197, 228, 0, 10, 16);
 
         String label = CommonComponents.ATTRIBUTE_POINTS.getString();
         String value = String.valueOf(playerNex.getAttributePoints());

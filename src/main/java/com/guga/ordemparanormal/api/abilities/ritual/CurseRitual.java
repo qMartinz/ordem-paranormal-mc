@@ -2,11 +2,9 @@ package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
-import com.guga.ordemparanormal.core.registry.OPCurses;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;

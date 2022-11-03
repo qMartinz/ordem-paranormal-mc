@@ -25,6 +25,7 @@ public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
         add(OPSounds.RITUAL_FORGOTTEN, soundDefinition("ritual_forgotten"));
 
         add(OPSounds.RITUAL_USED, soundDefinition("ritual_used"));
+        add(OPSounds.RITUAL_FAILED, soundDefinition("ritual_failed"));
         add(OPSounds.INGREDIENT_BLOOD, soundDefinition("ingredient_blood"));
         add(OPSounds.INGREDIENT_DEATH, soundDefinition("ingredient_death"));
         add(OPSounds.INGREDIENT_ENERGY, soundDefinition("ingredient_energy"));
