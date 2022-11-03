@@ -103,5 +103,7 @@
     "Vínculo",
     "Vomitar",
     "Zerar"
-  ]
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "githubPullRequests.ignoredPullRequestBranches": ["main"]
 }
