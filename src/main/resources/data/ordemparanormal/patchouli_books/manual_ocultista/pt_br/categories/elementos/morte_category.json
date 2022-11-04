@@ -1,0 +1,7 @@
+{
+    "name": "Morte",
+    "description": "$(l)A Morte é a entidade da espiral do tempo. Ela busca os momentos vivenciados, distorcendo a percepção egóica da existência de cada indivíduo para seu agrado.",
+    "icon": "ordemparanormal:componente_morte",
+    "parent":"ordemparanormal:ritual_category",
+    "sortnum": "1"
+}

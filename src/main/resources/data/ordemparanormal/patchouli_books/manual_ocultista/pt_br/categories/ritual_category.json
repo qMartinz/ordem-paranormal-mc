@@ -1,5 +1,6 @@
 {
     "name": "Rituais",
-    "description": "This is a test category for testing!",
-    "icon": "minecraft:writable_book"
+    "description": "Rituais são super poderosos, mas você tem o que é preciso para que o $(OL) te escolha?$(2br)Aqui eu listei a maioria dos rituais que eu encontrei durante meus estudos.",
+    "icon": "ordemparanormal:livro_amaldicoado",
+    "sortnum": "1"
 }

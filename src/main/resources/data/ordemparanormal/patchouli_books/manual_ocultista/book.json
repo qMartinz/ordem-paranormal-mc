@@ -5,6 +5,11 @@
     "model": "ordemparanormal:textures/item/manual_ocultista.png",
     "pause_game": "true",
     "macros": {
-        "$(OS)": "$(5)$(l)OTHER SIDE/$"
+        "$(OS)": "$(5)$(l)OTHER SIDE/$",
+        "$(OL)": "$(5)$(l)OUTRO LADO/$",
+        "$(conhecimento)": "$(6)$(l)",
+        "$(energia)": "$(5)$(l)",
+        "$(morte)": "$(l)",
+        "$(sangue)": "$(4)$(l)"
     }
 }
