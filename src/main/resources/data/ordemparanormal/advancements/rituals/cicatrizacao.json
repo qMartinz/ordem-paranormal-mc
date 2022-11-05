@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:cristal_espiral"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.cicatrizacao.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.cicatrizacao.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:learn_ritual",
+  "criteria": {
+    "cicatrizacao": {
+      "conditions": {
+        "ritual": "cicatrizacao"
+      },
+      "trigger": "ordemparanormal:new_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "cicatrizacao"
+    ]
+  ]
+}

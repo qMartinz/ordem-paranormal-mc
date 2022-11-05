@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:white_candle"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.root.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.root.description"
+    },
+    "background": "minecraft:textures/block/light_gray_concrete_powder.png",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "player_join": {
+      "conditions": {},
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "player_join"
+    ]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:seringa_enferrujada"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.transferencia_vital.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.transferencia_vital.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:learn_ritual",
+  "criteria": {
+    "transferencia_vital": {
+      "conditions": {
+        "ritual": "transferencia_vital"
+      },
+      "trigger": "ordemparanormal:new_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "transferencia_vital"
+    ]
+  ]
+}

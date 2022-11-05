@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:livro_amaldicoado"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.descarnar.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.descarnar.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:learn_ritual",
+  "criteria": {
+    "descarnar": {
+      "conditions": {
+        "ritual": "descarnar"
+      },
+      "trigger": "ordemparanormal:new_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "descarnar"
+    ]
+  ]
+}

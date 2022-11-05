@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:anel_dourado_enferrujado"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.amaldicoar_arma.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.amaldicoar_arma.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:learn_ritual",
+  "criteria": {
+    "amaldicoar_arma": {
+      "conditions": {
+        "ritual": "amaldicoar_arma"
+      },
+      "trigger": "ordemparanormal:new_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "amaldicoar_arma"
+    ]
+  ]
+}

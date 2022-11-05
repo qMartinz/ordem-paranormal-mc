@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:papel_amaldicoado"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.consumir_manancial.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.consumir_manancial.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:learn_ritual",
+  "criteria": {
+    "consumir_manancial": {
+      "conditions": {
+        "ritual": "consumir_manancial"
+      },
+      "trigger": "ordemparanormal:new_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "consumir_manancial"
+    ]
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond_sword",
+      "nbt": "{Curses:{curse_0:{uses:0,id:\"lamina_do_medo\"}}}"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.paranormal_creature.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.paranormal_creature.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:enter_fog",
+  "criteria": {
+    "paranormal_creature": {
+      "conditions": {},
+      "trigger": "ordemparanormal:paranormal_creature"
+    }
+  },
+  "requirements": [
+    [
+      "paranormal_creature"
+    ]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:capacete_enferrujado"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.armadura_sangue.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.armadura_sangue.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:learn_ritual",
+  "criteria": {
+    "armadura_sangue": {
+      "conditions": {
+        "ritual": "armadura_sangue"
+      },
+      "trigger": "ordemparanormal:new_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "armadura_sangue"
+    ]
+  ]
+}

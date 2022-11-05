@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:pergaminho_antigo"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.receive_power.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.receive_power.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:enter_fog",
+  "criteria": {
+    "receive_power": {
+      "conditions": {},
+      "trigger": "ordemparanormal:receive_power"
+    }
+  },
+  "requirements": [
+    [
+      "receive_power"
+    ]
+  ]
+}

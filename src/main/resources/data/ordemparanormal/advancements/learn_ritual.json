@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "ordemparanormal:altar_transcender"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.learn_ritual.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.learn_ritual.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:enter_fog",
+  "criteria": {
+    "learn_ritual": {
+      "conditions": {},
+      "trigger": "ordemparanormal:learn_ritual"
+    }
+  },
+  "requirements": [
+    [
+      "learn_ritual"
+    ]
+  ]
+}

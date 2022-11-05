@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/iron_sword",
+    "layer1": "ordemparanormal:item/curses/blood",
+    "layer2": "ordemparanormal:item/curses/energy",
+    "layer3": "ordemparanormal:item/curses/fear"
+  }
+}

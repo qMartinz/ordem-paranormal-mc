@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:water_bucket"
+    },
+    "title": {
+      "translate": "ordemparanormal.advancement.enter_fog.title"
+    },
+    "description": {
+      "translate": "ordemparanormal.advancement.enter_fog.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "ordemparanormal:root",
+  "criteria": {
+    "enter_fog": {
+      "conditions": {},
+      "trigger": "ordemparanormal:enter_fog"
+    }
+  },
+  "requirements": [
+    [
+      "enter_fog"
+    ]
+  ]
+}

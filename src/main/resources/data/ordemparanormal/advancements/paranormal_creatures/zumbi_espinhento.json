@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "zumbi_espinhento": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "ordemparanormal:zumbi_espinhento"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "zumbi_espinhento"
+    ]
+  ]
+}
