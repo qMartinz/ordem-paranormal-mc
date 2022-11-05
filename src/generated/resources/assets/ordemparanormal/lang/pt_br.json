@@ -240,5 +240,7 @@
   "ordemparanormal.ritual_item.ritual_unknown": "\u00A77Parece emanar uma presen\u00E7a estranha...",
   "ordemparanormal.rituals": "Rituais",
   "subtitles.ordemparanormal.zumbi_bestial.growl": "Grunhido de zumbi de Sangue bestial",
-  "subtitles.ordemparanormal.zumbi_sangue.growl": "Grunhido de zumbi de Sangue"
+  "subtitles.ordemparanormal.zumbi_sangue.growl": "Grunhido de zumbi de Sangue",
+  "ordemparanormal.manual_ocultista.name": "Manual Ocultista",
+  "ordemparanormal.manual_ocultista.landing_text": "Diario do Japa.$(br)Feito para aqueles que precisam de um empurrãozinho pra começar com o ocultismo, e para compartilhar minhas experienccias nesse mundo com o $(5)$(l)OUTRO LADO/$ $(br)Esse diario é paranormal então olhe frequentemente para ver se há novas entradas."
 }

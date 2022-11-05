@@ -1,0 +1,7 @@
+{
+    "name": "Conhecimento",
+    "description": "$(6)$(l)Conhecimento é a entidade da consciência. Descobrir, decifrar, entender, aprender. Ter a própria percepção do Outro Lado e suas entidades agrada o elemento de Conhecimento.",
+    "icon": "ordemparanormal:componente_conhecimento",
+    "parent":"ordemparanormal:ritual_category",
+    "sortnum": "1"
+}

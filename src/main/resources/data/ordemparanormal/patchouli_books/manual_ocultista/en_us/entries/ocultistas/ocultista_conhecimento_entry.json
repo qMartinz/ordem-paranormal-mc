@@ -1,0 +1,13 @@
+{
+    "name": "Altar de Transcendência",
+    "icon": "ordemparanormal:altar_transcender",
+    "category": "ordemparanormal:comeco_category",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "ordemparanormal:altar_transcender",
+            "text": "Isso é um Altar de Transcendência, ele é usado para Transcender quando você estiver pronto. $(2br)"
+        }
+        
+    ]
+}

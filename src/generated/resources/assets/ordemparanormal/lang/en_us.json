@@ -240,5 +240,8 @@
   "ordemparanormal.ritual_item.ritual_unknown": "\u00A77Seems to emanate a strange presence...",
   "ordemparanormal.rituals": "Rituals",
   "subtitles.ordemparanormal.zumbi_bestial.growl": "Bestial Blood zombie growl",
-  "subtitles.ordemparanormal.zumbi_sangue.growl": "Blood zombie growl"
+  "subtitles.ordemparanormal.zumbi_sangue.growl": "Blood zombie growl",
+  "ordemparanormal.manual_ocultista.name": "Occultist Guide",
+  "ordemparanormal.manual_ocultista.landing_text": "Japa's Diary. $(br)Made for those who need a little push to start with occultism, and to share my experiences in this world with the $(5)$(bold)OTHER SIDE /$ $(br)This diary is paranormal so check it often to see new entries"
+
 }
