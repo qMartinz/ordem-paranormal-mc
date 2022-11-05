@@ -7,15 +7,21 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModItemModelProvider extends ItemModelProvider {
 	public ModItemModelProvider(DataGenerator generator, ExistingFileHelper helper) {
 		super(generator, OrdemParanormal.MOD_ID, helper);
 	}
-
-	// Método para gerar modelo de item
+	public ItemModelBuilder basicItem(ResourceLocation item)
+	{
+		return getBuilder(item.toString())
+				.parent(new ModelFile.UncheckedModelFile("item/generated"))
+				.texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
+	}
 	protected void oneLayerItem(Item item, ResourceLocation texture) {
 		ResourceLocation itemTexture = new ResourceLocation(texture.getNamespace(), "item/" + texture.getPath());
 		if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
