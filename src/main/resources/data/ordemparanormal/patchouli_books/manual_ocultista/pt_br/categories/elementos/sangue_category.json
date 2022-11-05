@@ -3,5 +3,5 @@
     "description": "$(4)$(l)A entidade dos sentimentos: fome, dor, amor, ódio, paixão, obsessão. O Sangue busca a intensidade e tudo que envolve sentir uma emoção extrema agrada essa entidade.",
     "icon": "ordemparanormal:componente_sangue",
     "parent":"ordemparanormal:ritual_category",
-    "sortnum": "1"
+    "sortnum": 1
 }

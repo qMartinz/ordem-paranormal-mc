@@ -3,5 +3,5 @@
     "description": "$(5)$(l)Energia é a entidade do caos. Tudo que não pode ser controlado, o intangível, a anarquia. A mudança constante, o frio e o calor. Tudo que envolve o inesperado e a transformação agrada a entidade de Energia.",
     "icon": "ordemparanormal:componente_energia",
     "parent":"ordemparanormal:ritual_category",
-    "sortnum": "1"
+    "sortnum": 1
 }
