@@ -9,6 +9,9 @@
     { "predicate": { "ordemparanormal:curses": 3 }, "model": "ordemparanormal:item/cursed_wooden_swords/knowledge" },
     { "predicate": { "ordemparanormal:curses": 4 }, "model": "ordemparanormal:item/cursed_wooden_swords/energy" },
     { "predicate": { "ordemparanormal:curses": 5 }, "model": "ordemparanormal:item/cursed_wooden_swords/blood_energy" },
-    { "predicate": { "ordemparanormal:curses": 6 }, "model": "ordemparanormal:item/cursed_wooden_swords/death_knowledge" }
+    { "predicate": { "ordemparanormal:curses": 6 }, "model": "ordemparanormal:item/cursed_wooden_swords/death_knowledge" },
+    { "predicate": { "ordemparanormal:curses": 7 }, "model": "ordemparanormal:item/cursed_wooden_swords/fear" },
+    { "predicate": { "ordemparanormal:curses": 8 }, "model": "ordemparanormal:item/cursed_wooden_swords/blood_energy_fear" },
+    { "predicate": { "ordemparanormal:curses": 9 }, "model": "ordemparanormal:item/cursed_wooden_swords/death_knowledge_fear" }
   ]
 }

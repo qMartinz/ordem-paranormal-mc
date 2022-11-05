@@ -6,10 +6,7 @@ import com.guga.ordemparanormal.datagen.client.ModItemModelProvider;
 import com.guga.ordemparanormal.datagen.client.ModSoundDefinitionsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModEnUsProvider;
 import com.guga.ordemparanormal.datagen.client.lang.ModPtBrProvider;
-import com.guga.ordemparanormal.datagen.server.ModBlockTagsProvider;
-import com.guga.ordemparanormal.datagen.server.ModItemTagsProvider;
-import com.guga.ordemparanormal.datagen.server.ModLootTableProvider;
-import com.guga.ordemparanormal.datagen.server.ModRecipeProvider;
+import com.guga.ordemparanormal.datagen.server.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,10 +32,10 @@ public class OPDataGeneration {
 		}
 		
 		if (event.includeServer()) {
-			ModBlockTagsProvider blocktags = new ModBlockTagsProvider(generator, helper);
 			// Geração de Data do Server
 			generator.addProvider(new ModLootTableProvider(generator));
 			generator.addProvider(new ModRecipeProvider(generator));
+			ModBlockTagsProvider blocktags = new ModBlockTagsProvider(generator, helper);
 			generator.addProvider(blocktags);
 			generator.addProvider(new ModItemTagsProvider(generator, blocktags, helper));
 		}	
