@@ -7,14 +7,13 @@ import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPEffects;
-import com.guga.ordemparanormal.core.registry.OPEntities;
-import com.guga.ordemparanormal.core.registry.OPItems;
-import com.guga.ordemparanormal.core.registry.OPProfessions;
+import com.guga.ordemparanormal.core.registry.*;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
@@ -74,6 +73,33 @@ public class EntityEvents {
 		if (event.getSource().getEntity() instanceof ZumbiSangue zumbissangue
 				&& !(event.getSource().getEntity() instanceof Bestial)) {
 			ExpModel.get(zumbissangue).setExposure(ExpModel.get(zumbissangue).getExposure() + 20);
+			if (ExpModel.get(zumbissangue).isMaxExp()){
+				if (zumbissangue.isAlive()) {
+					Bestial entityOut = new Bestial(OPEntities.BESTIAL.get(), zumbissangue.level);
+
+					entityOut.moveTo(zumbissangue.getX(), zumbissangue.getY(), zumbissangue.getZ(), zumbissangue.getYRot(), zumbissangue.getXRot());
+
+					if (zumbissangue.hasCustomName()) {
+						entityOut.setCustomName(zumbissangue.getCustomName());
+						entityOut.setCustomNameVisible(zumbissangue.isCustomNameVisible());
+					}
+
+					if (zumbissangue.isLeashed()) {
+						entityOut.setLeashedTo(zumbissangue.getLeashHolder(), true);
+						zumbissangue.dropLeash(true, false);
+					}
+
+					if (zumbissangue.getVehicle() != null) {
+						entityOut.startRiding(zumbissangue.getVehicle());
+					}
+
+					entityOut.setHealth(entityOut.getMaxHealth());
+					zumbissangue.level.addFreshEntity(entityOut);
+					zumbissangue.discard();
+
+					entityOut.playSound(OPSounds.ZUMBI_SANGUE_CONVERT.get(), 1.0F, 1.0F);
+				}
+			}
 		}
 	}
 	@SubscribeEvent(priority = EventPriority.LOWEST)

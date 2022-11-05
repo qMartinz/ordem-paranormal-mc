@@ -284,9 +284,23 @@
   "ordemparanormal.ritual_item.ritual_learned": "\u00A77Just an item with a strange symbol.",
   "ordemparanormal.ritual_item.ritual_unknown": "\u00A77Seems to emanate a strange presence...",
   "ordemparanormal.rituals": "Rituals",
+  "subtitles.ordemparanormal.blood_power_used": "Blood power is used",
+  "subtitles.ordemparanormal.corpse.hurt": "Villager corpse is hurt",
+  "subtitles.ordemparanormal.corpse_convert": "Villager corpse converts to Blood zombie",
+  "subtitles.ordemparanormal.corpse_death": "Villager corpse is dissipated",
+  "subtitles.ordemparanormal.death_power_used": "Death power is used",
+  "subtitles.ordemparanormal.energy_power_used": "Energy power is used",
+  "subtitles.ordemparanormal.fear_power_used": "Fear power is used",
+  "subtitles.ordemparanormal.knowledge_power_used": "Knowledge power is used",
+  "subtitles.ordemparanormal.ritual_failed": "Ritual fails",
+  "subtitles.ordemparanormal.ritual_forgotten": "Ritual is forgotten",
+  "subtitles.ordemparanormal.ritual_learned": "Ritual is learned",
+  "subtitles.ordemparanormal.ritual_used": "Ritual is used",
+  "subtitles.ordemparanormal.skeleton_convert": "Skeleton converts to Blood zombie",
+  "subtitles.ordemparanormal.zombie_convert": "Zombie converts to Blood zombie",
   "subtitles.ordemparanormal.zumbi_bestial.growl": "Bestial Blood zombie growl",
+  "subtitles.ordemparanormal.zumbi_sangue.convert": "Blood zombie converts to bestial Blood zombie",
+  "subtitles.ordemparanormal.zumbi_sangue.death": "Blood zombie is killed",
   "subtitles.ordemparanormal.zumbi_sangue.growl": "Blood zombie growl",
-  "ordemparanormal.manual_ocultista.name": "Occultist Guide",
-  "ordemparanormal.manual_ocultista.landing_text": "Japa's Diary. $(br)Made for those who need a little push to start with occultism, and to share my experiences in this world with the $(5)$(bold)OTHER SIDE /$ $(br)This diary is paranormal so check it often to see new entries"
-
+  "subtitles.ordemparanormal.zumbi_sangue.hurt": "Blood zombie is hurt"
 }

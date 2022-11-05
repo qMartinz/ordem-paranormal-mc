@@ -11,22 +11,80 @@
       "ordemparanormal:zumbi_sangue.growl"
     ]
   },
+  "zombie_convert": {
+    "subtitle": "subtitles.ordemparanormal.zombie.convert",
+    "sounds": [
+      "ordemparanormal:zombie_convert"
+    ]
+  },
+  "skeleton_convert": {
+    "subtitle": "subtitles.ordemparanormal.skeleton_convert",
+    "sounds": [
+      "ordemparanormal:skeleton_convert"
+    ]
+  },
+  "corpse.death": {
+    "subtitle": "subtitles.ordemparanormal.corpse.death",
+    "sounds": [
+      "ordemparanormal:corpse_death"
+    ]
+  },
+  "zumbi_sangue.death": {
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.death",
+    "sounds": [
+      "ordemparanormal:corpse_death"
+    ]
+  },
+  "corpse.convert": {
+    "subtitle": "subtitles.ordemparanormal.corpse.convert",
+    "sounds": [
+      "ordemparanormal:corpse_death"
+    ]
+  },
+  "zumbi_sangue.convert": {
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.convert",
+    "sounds": [
+      "ordemparanormal:corpse_death"
+    ]
+  },
   "ritual_learned": {
+    "subtitle": "subtitles.ordemparanormal.ritual_learned",
     "sounds": [
       "ordemparanormal:ritual_learned"
     ]
   },
   "ritual_forgotten": {
+    "subtitle": "subtitles.ordemparanormal.ritual_forgotten",
     "sounds": [
       "ordemparanormal:ritual_forgotten"
     ]
   },
+  "corpse.hurt": {
+    "subtitle": "subtitles.ordemparanormal.corpse.hurt",
+    "sounds": [
+      "ordemparanormal:blood_hurt_1",
+      "ordemparanormal:blood_hurt_2",
+      "ordemparanormal:blood_hurt_3",
+      "ordemparanormal:blood_hurt_4"
+    ]
+  },
+  "zumbi_sangue.hurt": {
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.hurt",
+    "sounds": [
+      "ordemparanormal:blood_hurt_1",
+      "ordemparanormal:blood_hurt_2",
+      "ordemparanormal:blood_hurt_3",
+      "ordemparanormal:blood_hurt_4"
+    ]
+  },
   "ritual_used": {
+    "subtitle": "subtitles.ordemparanormal.ritual_used",
     "sounds": [
       "ordemparanormal:ritual_used"
     ]
   },
   "ritual_failed": {
+    "subtitle": "subtitles.ordemparanormal.ritual_failed",
     "sounds": [
       "ordemparanormal:ritual_failed"
     ]
@@ -52,6 +110,7 @@
     ]
   },
   "blood_power_used": {
+    "subtitle": "subtitles.ordemparanormal.blood_power_used",
     "sounds": [
       "ordemparanormal:blood_power_used",
       "ordemparanormal:blood_power_used_2",
@@ -59,6 +118,7 @@
     ]
   },
   "energy_power_used": {
+    "subtitle": "subtitles.ordemparanormal.energy_power_used",
     "sounds": [
       "ordemparanormal:energy_power_used",
       "ordemparanormal:energy_power_used_2",
@@ -66,6 +126,7 @@
     ]
   },
   "death_power_used": {
+    "subtitle": "subtitles.ordemparanormal.death_power_used",
     "sounds": [
       "ordemparanormal:death_power_used",
       "ordemparanormal:death_power_used_2",
@@ -73,6 +134,7 @@
     ]
   },
   "knowledge_power_used": {
+    "subtitle": "subtitles.ordemparanormal.knowledge_power_used",
     "sounds": [
       "ordemparanormal:knowledge_power_used",
       "ordemparanormal:knowledge_power_used_2",
@@ -80,6 +142,7 @@
     ]
   },
   "fear_power_used": {
+    "subtitle": "subtitles.ordemparanormal.fear_power_used",
     "sounds": [
       "ordemparanormal:fear_power_used"
     ]

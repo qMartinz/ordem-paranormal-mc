@@ -8,6 +8,7 @@ import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSeco;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
+import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.guga.ordemparanormal.core.registry.OPTriggers;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.CriterionTrigger;
@@ -32,6 +33,7 @@ import net.minecraftforge.network.PlayMessages;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -132,10 +134,10 @@ public class Nevoa extends Entity {
 						zumbis.add(new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), corpo.level));
 						zumbis.add(new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), corpo.level));
 						zumbis.add(new ZumbiEspinhento(OPEntities.ZUMBI_ESPINHENTO.get(), corpo.level));
+						Collections.shuffle(zumbis);
 
-						transform(corpo, zumbis.get(random.nextInt(zumbis.size() - 1)));
-						corpo.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
-						corpo.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
+						transform(corpo, zumbis.get(0));
+						corpo.playSound(OPSounds.CORPSE_CONVERT.get(), 1.0F, 1.0F);
 					}
 				}
 
@@ -147,9 +149,7 @@ public class Nevoa extends Entity {
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()) {
 							transform(monstro, new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), monstro.level));
-							monstro.playSound(SoundEvents.ZOMBIE_DEATH, 0.2F, 0.7F);
-							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
-							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
+							monstro.playSound(OPSounds.ZOMBIE_CONVERT.get(), 1.0F, 1.0F);
 						}
 					}
 
@@ -158,9 +158,7 @@ public class Nevoa extends Entity {
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()){
 							transform(monstro, new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), monstro.level));
-							monstro.playSound(SoundEvents.SKELETON_DEATH, 0.2F, 0.7F);
-							monstro.playSound(SoundEvents.TURTLE_EGG_CRACK, 0.4F, 1.0F);
-							monstro.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 0.6F, 1.0F);
+							monstro.playSound(OPSounds.SKELETON_CONVERT.get(), 1.0F, 1.0F);
 						}
 					}
 				}
