@@ -9,8 +9,10 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.registry.OPSounds;
+import com.guga.ordemparanormal.core.registry.OPTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -83,6 +85,12 @@ public class AltarTranscender extends HorizontalBlock {
                         ApiEvents.syncPlayerPowers(pPlayer);
                         pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), OPSounds.RITUAL_LEARNED.get(), SoundSource.BLOCKS, 0.5f, 1f);
                         pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOOK_PAGE_TURN, SoundSource.BLOCKS, 1f, 1f);
+
+                        if (pPlayer instanceof ServerPlayer serverPlayer) {
+                            OPTriggers.LEARN_RITUAL.trigger(serverPlayer);
+                            OPTriggers.NEW_RITUAL.trigger(serverPlayer, ritual);
+                        };
+
                         return InteractionResult.CONSUME;
                     }
                 } else {

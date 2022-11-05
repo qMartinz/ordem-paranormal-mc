@@ -14,10 +14,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class TransferenciaVital extends AbstractRitual {
-    public TransferenciaVital() {
-        super("transferencia_vital", ParanormalElement.SANGUE, 2, 4, true, 5D, true);
-    }
 
+    public TransferenciaVital(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
+    }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();

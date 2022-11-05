@@ -113,6 +113,7 @@ public class PowerButton extends AbstractButton {
             playerNex.setPowerPoints(playerNex.getPowerPoints() - 1);
             playerAbilities.addPower(power);
             power.onAdded(minecraft.player);
+            Messages.sendToServer(new Packets.ReceivePowerTrigger());
             playerAbilities.syncAttributeMods(minecraft.player);
         }
 

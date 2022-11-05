@@ -15,8 +15,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.HitResult;
 
 public class ArmaduraSangue extends AbstractRitual {
-    public ArmaduraSangue() {
-        super("armadura_sangue", ParanormalElement.SANGUE, 1, 3, true, 0, true);
+
+    public ArmaduraSangue(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {

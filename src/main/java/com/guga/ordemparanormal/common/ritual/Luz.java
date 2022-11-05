@@ -14,10 +14,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 
 public class Luz extends AbstractRitual {
-    public Luz() {
-        super("luz", ParanormalElement.ENERGIA, 1, 1, false, 5D, true);
+    public Luz(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
-
     @Override
     public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster,
             @Nullable ItemStack ritualItem, @Nullable InteractionHand hand) {

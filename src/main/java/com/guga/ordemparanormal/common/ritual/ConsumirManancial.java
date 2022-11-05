@@ -14,8 +14,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
 public class ConsumirManancial extends AbstractRitual {
-    public ConsumirManancial() {
-        super("consumir_manancial", ParanormalElement.MORTE, 1, 3, true, 0D, true);
+    public ConsumirManancial(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {

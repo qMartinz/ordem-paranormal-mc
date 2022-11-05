@@ -15,10 +15,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.HitResult;
 
 public class VelocidadeMortal extends AbstractRitual {
-    public VelocidadeMortal() {
-        super("velocidade_mortal", ParanormalElement.MORTE, 2, 4, true, 0D, true);
+    public VelocidadeMortal(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
-
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         MobEffectInstance velocity = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2400, 1, false, false);

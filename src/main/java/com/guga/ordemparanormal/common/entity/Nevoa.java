@@ -8,6 +8,9 @@ import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSeco;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
+import com.guga.ordemparanormal.core.registry.OPTriggers;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -15,6 +18,7 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
@@ -177,6 +181,7 @@ public class Nevoa extends Entity {
 					player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
 						if (playerNex.getNex() == 0) playerNex.addNexXp(10);
 					});
+					if (player instanceof ServerPlayer serverPlayer) OPTriggers.ENTER_FOG.trigger(serverPlayer);
 				}
 			}
 		}

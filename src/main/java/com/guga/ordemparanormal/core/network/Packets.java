@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.core.network;
 
 import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -132,6 +133,17 @@ public class Packets {
                     cap.deserializeNBT(tag);
                     cap.syncAttributeMods(ctx.get().getSender());
                 }
+            });
+            ctx.get().setPacketHandled(true);
+        }
+    }
+    public static class ReceivePowerTrigger {
+        public ReceivePowerTrigger(FriendlyByteBuf buf){}
+        public void toBytes(FriendlyByteBuf buf){}
+        public ReceivePowerTrigger(){}
+        public void handle(Supplier<NetworkEvent.Context> ctx){
+            ctx.get().enqueueWork(()->{
+                OPTriggers.RECEIVE_POWER.trigger(ctx.get().getSender());
             });
             ctx.get().setPacketHandled(true);
         }

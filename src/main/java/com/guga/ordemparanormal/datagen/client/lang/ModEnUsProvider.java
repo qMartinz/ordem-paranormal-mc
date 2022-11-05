@@ -29,7 +29,11 @@ public class ModEnUsProvider extends LanguageProvider {
 		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
 	}
 	public void addDeath(String key, String translation){
-		super.add("death.attack." + key, translation);
+		add("death.attack." + key, translation);
+	}
+	public void addAdvancement(String id, String title, String description){
+		add("ordemparanormal.advancement." + id + ".title", title);
+		add("ordemparanormal.advancement." + id + ".description", description);
 	}
 
 	// Adicionar traduções em EN-US
@@ -157,7 +161,7 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Makes your body reach extraordinary physical conditions, making you more resistant and powerful.");
 		add(OPRituals.LAMINA_MEDO, "Fear's Blade",
 				"Conjures an impossible flame, a glimpse of something that shouldn't exist, on the blade that you're holding, which begins to deal lethal amounts of damage.");
-		add(OPRituals.VELOCIDADE_MORTAL, "Velocidade Mortal",
+		add(OPRituals.VELOCIDADE_MORTAL, "Deadly Velocity",
 				"Alters the time perception of your body, that starts to reach extraordinary speeds.");
 		add(OPRituals.MEDO_TANGIVEL, "Tangible Fear",
 				"Your body becomes a manifestation of Fear, making you immune to mundane effects. You become immune to any non-paranormal damage source.");
@@ -170,7 +174,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Spirals of Doom",
 				"When used it weakens the target");
 		add(OPRituals.LUZ, "Light",
-				"Cria uma orbe brilhante de pura energia.");
+				"Creates a shiny orb of pure energy.");
 		add(OPRituals.INEXISTIR, "Unexist",
 				"Distorts your target's existance, dealing serious amounts of Knowledge damage.");
 		add(OPRituals.PERTURBACAO, "Disturbance",
@@ -286,7 +290,6 @@ public class ModEnUsProvider extends LanguageProvider {
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Paranormal Order Mod");
-		add("ordemparanormal.key.nex_screen", "Show Paranormal Attributes");
 		for (int i = 1; i < 6; i++) {
 			add("ordemparanormal.key.power_" + i, "Use power slot " + i);
 		}
@@ -332,6 +335,33 @@ public class ModEnUsProvider extends LanguageProvider {
 			addDeath("vampirismo", "%1$s had its blood drained out by %2$s");
 
 		// -------------------------------------------------------------
+
+		// Progresso
+		addAdvancement("root", "Other Side", "The paranormal doesn't come to our reality easily... Or atleast it should be that way.");
+		addAdvancement("enter_fog", "Lack of Visibility", "The humid atmosphere created by this dense fog is truly terrifying... Is this even natural?");
+		addAdvancement("learn_ritual", "Understand the Other Side", "Aha! I finally understand this cursed item, that was it the entire time! All I needed to do was TRANSCEND...");
+		addAdvancement("receive_power", "Capabilities of the Other Side", "What a strange sensation. This is definitely not normal but... it's very cool.");
+		addAdvancement("paranormal_creature", "Abominations of the Other Side", "That was... What even was that?! I thought they were just tales, it can't be...");
+		addAdvancement("amaldicoar_arma", "Curse Weapon", "Learn the ritual \"Amaldiçoar Arma\".");
+		addAdvancement("aprimoramento_fisico", "Physical Upgrade", "Learn the ritual \"Physical Upgrade\".");
+		addAdvancement("arma_atroz", "Atrocious Weapon", "Learn the ritual \"Atrocious Weapon\".");
+		addAdvancement("arma_veloz", "Nimble Weapon", "Learn the ritual \"Nimble Weapon\".");
+		addAdvancement("armadura_sangue", "Blood Armor", "Learn the ritual \"Blood Armor\".");
+		addAdvancement("cicatrizacao", "Cicatrization", "Learn the ritual \"Cicatrization\".");
+		addAdvancement("consumir_manancial", "Consume Lifeforce", "Learn the ritual \"Consume Lifeforce\".");
+		addAdvancement("decadencia", "Decay", "Learn the ritual \"Decay\".");
+		addAdvancement("descarnar", "Skinning", "Learn the ritual \"Skinning\".");
+		addAdvancement("espirais_da_perdicao", "Spirals of Doom", "Learn the ritual \"Spirals of Doom\".");
+		addAdvancement("hemofagia", "Hematophagy", "Learn the ritual \"Hematophagy\".");
+		addAdvancement("inexistir", "Unexist", "Learn the ritual \"Unexist\".");
+		addAdvancement("luz", "Light", "Learn the ritual \"Light\".");
+		addAdvancement("perturbacao", "Disturbance", "Learn the ritual \"Disturbance\".");
+		addAdvancement("salto_fantasma", "Phantom Jump", "Learn the ritual \"Phantom Jump\".");
+		addAdvancement("teleporte", "Teleport", "Learn the ritual \"Teleport\".");
+		addAdvancement("transferencia_vital", "Vitality Transfer", "Learn the ritual \"Vitality Transfer\".");
+		addAdvancement("velocidade_mortal", "Deadly Velocity", "Learn the ritual \"Deadly Velocity\".");
+
+		// --------------------------------------------------------------
 
 		// Outros
 		add("ordemparanormal.nex.title", "Paranormal Exposure");

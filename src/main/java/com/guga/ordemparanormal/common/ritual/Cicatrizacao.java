@@ -15,10 +15,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class Cicatrizacao extends AbstractRitual {
-    public Cicatrizacao() {
-        super("cicatrizacao", ParanormalElement.MORTE, 1, 2, true, 3.5D, true);
+    public Cicatrizacao(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
-
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         caster.heal(6);

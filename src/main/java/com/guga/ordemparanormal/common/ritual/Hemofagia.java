@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class Hemofagia extends AbstractRitual {
-    public Hemofagia() {
-        super("hemofagia", ParanormalElement.SANGUE, 2, 4, true, 5D, true);
+    public Hemofagia(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {

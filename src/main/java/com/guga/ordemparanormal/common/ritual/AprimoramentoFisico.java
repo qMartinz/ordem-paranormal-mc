@@ -15,10 +15,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.HitResult;
 
 public class AprimoramentoFisico extends AbstractRitual {
-    public AprimoramentoFisico() {
-        super("aprimoramento_fisico", ParanormalElement.SANGUE, 2, 4, true, 0D, true);
-    }
 
+    public AprimoramentoFisico(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
+    }
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         MobEffectInstance resistance = new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 1, false,

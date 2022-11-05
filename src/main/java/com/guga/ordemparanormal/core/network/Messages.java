@@ -44,6 +44,10 @@ public class Messages {
                 Packets.SyncNexToClient::toBytes,
                 Packets.SyncNexToClient::new,
                 Packets.SyncNexToClient::handle);
+        INSTANCE.registerMessage(id(), Packets.ReceivePowerTrigger.class,
+                Packets.ReceivePowerTrigger::toBytes,
+                Packets.ReceivePowerTrigger::new,
+                Packets.ReceivePowerTrigger::handle);
     }
 
     public static <MSG> void sendToServer(MSG message) {

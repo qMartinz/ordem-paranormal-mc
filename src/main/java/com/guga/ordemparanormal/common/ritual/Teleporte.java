@@ -12,11 +12,9 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class Teleporte extends AbstractRitual {
-
-    public Teleporte() {
-        super("teleporte", ParanormalElement.ENERGIA, 4, 8, true, 2D, true);
+    public Teleporte(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
-
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
             InteractionHand hand) {

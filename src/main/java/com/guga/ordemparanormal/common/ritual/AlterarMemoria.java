@@ -11,10 +11,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import javax.annotation.Nullable;
 
 public class AlterarMemoria extends AbstractRitual {
-    public AlterarMemoria() {
-        super("alterar_memoria", ParanormalElement.CONHECIMENTO, 3, 6, true, 3D, true);
+    public AlterarMemoria(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
-
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster,
             @Nullable ItemStack ritualItem, @Nullable InteractionHand hand) {

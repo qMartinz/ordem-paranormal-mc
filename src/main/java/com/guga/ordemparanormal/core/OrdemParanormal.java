@@ -60,12 +60,14 @@ public class OrdemParanormal {
 
 		REGISTRY_HELPER.register(bus);
 
+		bus.addListener(this::apiSetup);
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.STRUCTURE_FEATURES.register(bus);
 		OPEffects.register(bus);
 		OPPois.register(bus);
 		OPProfessions.register(bus);
 		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
+		OPTriggers.init();
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 
@@ -82,11 +84,13 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 	}
-	public void setup(final FMLCommonSetupEvent event){
-		Messages.register();
+	public void apiSetup(final FMLCommonSetupEvent event){
 		OPCurses.setup();
 		OPRituals.setup();
 		OPPowers.setup();
+	}
+	public void setup(final FMLCommonSetupEvent event){
+		Messages.register();
 
 		event.enqueueWork(() -> {
 			OPPois.registerPOIs();

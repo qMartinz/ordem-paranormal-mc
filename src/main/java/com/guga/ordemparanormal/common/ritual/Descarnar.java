@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.ritual;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEffects;
@@ -17,8 +18,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import static com.guga.ordemparanormal.api.ParanormalElement.SANGUE;
 
 public class Descarnar extends AbstractRitual {
-    public Descarnar() {
-        super("descarnar", SANGUE, 1, 2, true, 5D, true);
+    public Descarnar(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {

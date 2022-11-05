@@ -46,6 +46,16 @@ public class OPItemProperties {
 
             if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MORTE) &&
                     CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.CONHECIMENTO)) curse_float = 6f;
+
+            if (CurseHelper.getCurses(stack).stream().allMatch(curse -> curse.getCurse().element == ParanormalElement.MEDO)) curse_float = 7f;
+
+            if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.SANGUE) &&
+                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.ENERGIA) &&
+                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MEDO)) curse_float = 8f;
+
+            if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MORTE) &&
+                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.CONHECIMENTO) &&
+                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MEDO)) curse_float = 9f;
         }
         return curse_float;
     }

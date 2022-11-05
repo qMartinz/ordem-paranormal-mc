@@ -29,7 +29,11 @@ public class ModPtBrProvider extends LanguageProvider {
 		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
 	}
 	public void addDeath(String key, String translation){
-		super.add("death.attack." + key, translation);
+		add("death.attack." + key, translation);
+	}
+	public void addAdvancement(String id, String title, String description){
+		add("ordemparanormal.advancement." + id + ".title", title);
+		add("ordemparanormal.advancement." + id + ".description", description);
 	}
 
 	// Adicionar traduções em PT-BR
@@ -287,7 +291,6 @@ public class ModPtBrProvider extends LanguageProvider {
 
 		// Atalhos de Teclado
 		add("ordemparanormal.key_category", "Mod Ordem Paranormal");
-		add("ordemparanormal.key.nex_screen", "Mostrar Atributos Paranormais");
 		for (int i = 1; i < 6; i++) {
 			add("ordemparanormal.key.power_" + i, "Usar slot de poder " + i);
 		}
@@ -333,6 +336,33 @@ public class ModPtBrProvider extends LanguageProvider {
 			addDeath("vampirismo", "%1$s teve seu sangue drenado por %2$s");
 
 		// -------------------------------------------------------------
+
+		// Progresso
+		addAdvancement("root", "Outro Lado", "O paranormal não vem para a nossa realidade facilmente... Ou pelo menos era para ser dessa forma.");
+		addAdvancement("enter_fog", "Falta de Visibilidade", "A atmosfera úmida criada por essa densa névoa é verdadeiramente assustadora... Isso sequer é natural?");
+		addAdvancement("learn_ritual", "Entender o Outro Lado", "Aha! Eu finalmente entendi esse item amaldiçoado, era isso esse tempo todo! Eu só precisava TRANSCENDER...");
+		addAdvancement("receive_power", "Capacidades do Outro Lado", "Que sensação estranha. Isso com certeza não é normal mas... É muito legal.");
+		addAdvancement("paranormal_creature", "Abominações do Outro Lado", "Aquilo foi... O que sequer foi aquilo?! Eu achava que eram apenas contos, não pode ser...");
+		addAdvancement("amaldicoar_arma", "Amaldiçoar Arma", "Aprenda o ritual \"Amaldiçoar Arma\".");
+		addAdvancement("aprimoramento_fisico", "Aprimoramento Físico", "Aprenda o ritual \"Aprimoramento Físico\".");
+		addAdvancement("arma_atroz", "Arma Atroz", "Aprenda o ritual \"Arma Atroz\".");
+		addAdvancement("arma_veloz", "Arma Veloz", "Aprenda o ritual \"Arma Veloz\".");
+		addAdvancement("armadura_sangue", "Armadura de Sangue", "Aprenda o ritual \"Armadura de Sangue\".");
+		addAdvancement("cicatrizacao", "Cicatrização", "Aprenda o ritual \"Cicatrização\".");
+		addAdvancement("consumir_manancial", "Consumir Manancial", "Aprenda o ritual \"Consumir Manancial\".");
+		addAdvancement("decadencia", "Decadência", "Aprenda o ritual \"Decadência\".");
+		addAdvancement("descarnar", "Descarnar", "Aprenda o ritual \"Descarnar\".");
+		addAdvancement("espirais_da_perdicao", "Espirais da Perdição", "Aprenda o ritual \"Espirais da Perdição\".");
+		addAdvancement("hemofagia", "Hemofagia", "Aprenda o ritual \"Hemofagia\".");
+		addAdvancement("inexistir", "Inexistir", "Aprenda o ritual \"Inexistir\".");
+		addAdvancement("luz", "Luz", "Aprenda o ritual \"Luz\".");
+		addAdvancement("perturbacao", "Perturbação", "Aprenda o ritual \"Perturbação\".");
+		addAdvancement("salto_fantasma", "Salto Fantasma", "Aprenda o ritual \"Salto Fantasma\".");
+		addAdvancement("teleporte", "Teleporte", "Aprenda o ritual \"Teleporte\".");
+		addAdvancement("transferencia_vital", "Transferência Vital", "Aprenda o ritual \"Transferência Vital\".");
+		addAdvancement("velocidade_mortal", "Velocidade Mortal", "Aprenda o ritual \"Velocidade Mortal\".");
+
+		// --------------------------------------------------------------
 
 		// Outros
 		add("ordemparanormal.nex.title", "Exposição Paranormal");

@@ -12,10 +12,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class SaltoFantasma extends AbstractRitual {
-    public SaltoFantasma() {
-        super("salto_fantasma", ParanormalElement.ENERGIA, 3, 6, false, 15D, true);
+    public SaltoFantasma(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
-
     @Override
     public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
             InteractionHand hand) {

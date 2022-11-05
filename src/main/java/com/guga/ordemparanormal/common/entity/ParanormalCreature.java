@@ -3,6 +3,8 @@ package com.guga.ordemparanormal.common.entity;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.core.registry.OPTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -75,6 +77,7 @@ public class ParanormalCreature extends Monster {
         super.die(source);
         if (source.getEntity() instanceof Player player){
             player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> playerNex.addNexXp(rewardedXP));
+            if (player instanceof ServerPlayer serverPlayer) OPTriggers.PARANORMAL_CREATURE.trigger(serverPlayer);
         }
     }
 }
