@@ -1,6 +1,6 @@
 {
-    "name": "Structures",
-    "description": "Wooah there is a lot of places scattered around the world",
+    "name": "Lugares Assombrados",
+    "description": "Há muitos locais assombrados pelas terríveis forças do $(OL), neles você poderá encontrar criaturas paranormais, objetos amaldiçoados e uma névoa aterrorizante...",
     "icon": "ordemparanormal:mesa_sangue",
-    "sortnum": 3
+    "sortnum": 4
 }

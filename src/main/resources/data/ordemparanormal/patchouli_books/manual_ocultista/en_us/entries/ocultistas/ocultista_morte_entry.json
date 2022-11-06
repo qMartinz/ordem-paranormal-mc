@@ -1,13 +1,19 @@
 {
-    "name": "Altar de Transcendência",
-    "icon": "ordemparanormal:altar_transcender",
-    "category": "ordemparanormal:comeco_category",
+    "name": "Ocultista de Morte",
+    "icon": "ordemparanormal:mesa_morte",
+    "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
+            "type": "patchouli:entity",
+            "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_morte\"}}",
+            "text": "Vendem os rituais de $(morte)Morte/$."
+        },
+        {
             "type": "patchouli:spotlight",
-            "item": "ordemparanormal:altar_transcender",
-            "text": "Isso é um Altar de Transcendência, ele é usado para Transcender quando você estiver pronto. $(2br)"
+            "item": "ordemparanormal:mesa_morte",
+            "title": "Mesa de Morte",
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles possuem grande domínio sobre os rituais de $(morte)Morte/$."
         }
-        
     ]
 }

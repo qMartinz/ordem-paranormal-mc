@@ -1,13 +1,16 @@
 {
-    "name": "Transcendence Altar",
+    "name": "Altar de Transcendência",
     "icon": "ordemparanormal:altar_transcender",
     "category": "ordemparanormal:comeco_category",
     "pages": [
         {
             "type": "patchouli:spotlight",
             "item": "ordemparanormal:altar_transcender",
-            "text": "Thats an transcendence altar, it is used to trancend when you're ready. $(2br)To trancend with it you have to press the key $(2)G/$ on your keyboard looking at the Altar. "
+            "text": "Isso é um Altar de Transcendência, ele é usado para Transcender quando você estiver pronto. $(2br)Você pode encontrá-lo em diversos lugares assombrados, ou fazê-lo com materiais simples."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "ordemparanormal:altar_transcender"
         }
-        
     ]
 }

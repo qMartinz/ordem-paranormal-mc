@@ -1,0 +1,18 @@
+{
+  "name": "Igreja do Diabo",
+  "icon": "ordemparanormal:mesa_sangue",
+  "category": "ordemparanormal:estruturas_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Há diversos contos de um culto antigo que pregava a palavra de uma entidade misteriosa chamada pelo nome \"Diabo\". $(br)Esses mesmos contos também contam sobre a existência de igrejas, onde esse mesmo culto realizava sacrifícios secretos para membros de alto escalão."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/igreja.png"
+      ],
+      "border": true
+    }
+  ]
+}

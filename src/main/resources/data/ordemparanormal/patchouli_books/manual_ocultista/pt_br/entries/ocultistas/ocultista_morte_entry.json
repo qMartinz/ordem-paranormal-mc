@@ -2,17 +2,18 @@
     "name": "Ocultista de Morte",
     "icon": "ordemparanormal:mesa_morte",
     "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
             "type": "patchouli:entity",
             "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_morte\"}}",
-            "text": "Eles vendem os rituais de $(morte)Morte"
+            "text": "Vendem os rituais de $(morte)Morte/$."
         },
         {
             "type": "patchouli:spotlight",
             "item": "ordemparanormal:mesa_morte",
             "title": "Mesa de Morte",
-            "text": "Usado para transformar um aldeão normal em um Ocultista, eles tem grande dominio sob os rituais de $(morte)Morte"
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles possuem grande domínio sobre os rituais de $(morte)Morte/$."
         }
     ]
 }

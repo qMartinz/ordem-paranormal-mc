@@ -1,0 +1,18 @@
+{
+  "name": "Cabana Abandonada",
+  "icon": "ordemparanormal:altar_transcender",
+  "category": "ordemparanormal:estruturas_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Aparenta ser uma cabana, antes ocupada por um ocultista que experimentava com coisas mais obscuras... tão obscuras que causaram o seu sumiço. $(br)Ou talvez tenha só enlouquecido e deixado sua cabana para trás. $(br)Nessas estruturas, você encontrará um altar de transcendência."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/cabana_abandonada.png"
+      ],
+      "border": true
+    }
+  ]
+}

@@ -2,17 +2,18 @@
     "name": "Ocultista de Conhecimento",
     "icon": "ordemparanormal:mesa_conhecimento",
     "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
             "type": "patchouli:entity",
             "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_conhecimento\"}}",
-            "text": "Eles vendem os rituais de $(conhecimento)Conhecimento"
+            "text": "Vendem os rituais de $(conhecimento)Conhecimento/$."
         },
         {
             "type": "patchouli:spotlight",
             "item": "ordemparanormal:mesa_conhecimento",
             "title": "Mesa de Conhecimento",
-            "text": "Usado para transformar um aldeão normal em um Ocultista, eles tem grande dominio sob os rituais de $(conhecimento)Conhecimento"
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles tem grande domínio sobre os rituais de $(conhecimento)Conhecimento/$."
         }
     ]
 }

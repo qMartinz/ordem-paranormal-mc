@@ -1,0 +1,19 @@
+{
+  "name": "Cabana de Ocultista",
+  "icon": "minecraft:bricks",
+  "category": "ordemparanormal:ocultistas_category",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Quando estiver viajando pelo mundo, talvez você encontre uma cabana humilde isolada pelo mundo. Essas são as casas dos Aldeões Ocultistas, aldeões que decidiram se isolar para proteger vilarejos de seus experimentos com o paranormal. $(br)Nessas cabanas, você encontrará uma moradia simples, com uma mesa de maldição."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/cabana.png"
+      ],
+      "border": true
+    }
+  ]
+}

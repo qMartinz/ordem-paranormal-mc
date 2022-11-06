@@ -70,6 +70,8 @@ public class ModPtBrProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Parece emanar uma presença estranha...");
 		add("ordemparanormal.ritual_item.cursed_with", "§7Amaldiçoado com o ritual ");
 		add("ordemparanormal.ritual_item.requires", "§7Para entender esse item, você precisa de: ");
+		add("ordemparanormal.patchouli.manual_ocultista.title", "Manual do Ocultismo");
+		add("ordemparanormal.patchouli.manual_ocultista.landing_text", "Diário de Japa. $(br)Feito para aqueles que precisam de um empurrãozinho para entender o oculto e para compartilhar minhas experiências com o $(5)$(bold)OUTRO LADO. /$ $(br)Sinta-se livre para adicionar novas descobertas nesse livro... Ele é seu agora.");
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de transcendência");

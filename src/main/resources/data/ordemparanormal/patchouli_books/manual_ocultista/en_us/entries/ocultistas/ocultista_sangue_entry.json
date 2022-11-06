@@ -1,13 +1,19 @@
 {
-    "name": "Altar de Transcendência",
-    "icon": "ordemparanormal:altar_transcender",
-    "category": "ordemparanormal:comeco_category",
+    "name": "Ocultista de Sangue",
+    "icon": "ordemparanormal:mesa_sangue",
+    "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
+            "type": "patchouli:entity",
+            "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_sangue\"}}",
+            "text": "Vendem os rituais de $(sangue)Sangue/$."
+        },
+        {
             "type": "patchouli:spotlight",
-            "item": "ordemparanormal:altar_transcender",
-            "text": "Isso é um Altar de Transcendência, ele é usado para Transcender quando você estiver pronto. $(2br)"
+            "item": "ordemparanormal:mesa_sangue",
+            "title": "Mesa de Sangue",
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles possuem grande domínio sobre os rituais de $(sangue)Sangue/$."
         }
-        
     ]
 }

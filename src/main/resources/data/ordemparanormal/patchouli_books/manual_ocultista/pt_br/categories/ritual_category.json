@@ -1,6 +1,6 @@
 {
     "name": "Rituais",
-    "description": "Rituais são super poderosos, mas você tem o que é preciso para que o $(OL) te escolha?$(2br)Aqui eu listei a maioria dos rituais que eu encontrei durante meus estudos.",
+    "description": "Rituais são poderosos, mas você tem o que é preciso para que o $(OL) te escolha?$(2br)Nessa categoria você encontrará como utilizar rituais e informações sobre o seu funcionamento.",
     "icon": "ordemparanormal:livro_amaldicoado",
-    "sortnum": 1
+    "sortnum": 2
 }

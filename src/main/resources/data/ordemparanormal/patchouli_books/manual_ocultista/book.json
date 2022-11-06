@@ -1,9 +1,11 @@
 {
-    "name": "Manual Ocultista",
-    "landing_text": "Japa's Diary. $(br)Made for those who need a little push to start with occultism, and to share my experiences in this world with the $(5)$(bold)OTHER SIDE /$ $(br)This diary is paranormal so check it often to see new entries",
+    "name": "ordemparanormal.patchouli.manual_ocultista.title",
+    "landing_text": "ordemparanormal.patchouli.manual_ocultista.landing_text",
     "version": 1,
     "model": "ordemparanormal:manual_ocultista",
     "pause_game": "true",
+    "creative_tab": "ordemparanormal",
+    "show_progress": "false",
     "macros": {
         "$(OS)": "$(5)$(l)OTHER SIDE/$",
         "$(OL)": "$(5)$(l)OUTRO LADO/$",

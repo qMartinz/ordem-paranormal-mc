@@ -1,13 +1,19 @@
 {
-    "name": "Altar de Transcendência",
-    "icon": "ordemparanormal:altar_transcender",
-    "category": "ordemparanormal:comeco_category",
+    "name": "Ocultista de Energia",
+    "icon": "ordemparanormal:mesa_energia",
+    "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
+            "type": "patchouli:entity",
+            "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_energia\"}}",
+            "text": "Vendem os rituais de $(energia)Energia/$."
+        },
+        {
             "type": "patchouli:spotlight",
-            "item": "ordemparanormal:altar_transcender",
-            "text": "Isso é um Altar de Transcendência, ele é usado para Transcender quando você estiver pronto. $(2br)"
+            "item": "ordemparanormal:mesa_energia",
+            "title": "Mesa de Energia",
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles possuem grande domínio sobre os rituais de $(energia)Energia/$."
         }
-        
     ]
 }

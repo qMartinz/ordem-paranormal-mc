@@ -2,17 +2,18 @@
     "name": "Ocultista de Energia",
     "icon": "ordemparanormal:mesa_energia",
     "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
             "type": "patchouli:entity",
             "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_energia\"}}",
-            "text": "Eles vendem os rituais de $(energia)Energia"
+            "text": "Vendem os rituais de $(energia)Energia/$."
         },
         {
             "type": "patchouli:spotlight",
             "item": "ordemparanormal:mesa_energia",
             "title": "Mesa de Energia",
-            "text": "Usado para transformar um aldeão normal em um Ocultista, eles tem grande dominio sob os rituais de $(energia)Energia"
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles possuem grande domínio sobre os rituais de $(energia)Energia/$."
         }
     ]
 }

@@ -1,6 +1,6 @@
 {
-    "name": "Occultists",
-    "description": "They are like me, but with bigger noses??",
-    "icon": "ordemparanormal:mesa_sangue",
-    "sortnum": 2
+    "name": "Ocultistas",
+    "description": "Diversas pessoas já tentaram comungar com o $(OL), mas muitas se perderam na loucura. Porém, os poucos que conseguiram manter sua sanidade intacta são conhecidos como Ocultistas...",
+    "icon": "minecraft:emerald",
+    "sortnum": 1
 }
