@@ -1,0 +1,37 @@
+{
+    "name": "Transcender",
+    "icon": "ordemparanormal:altar_transcender",
+    "category": "ordemparanormal:comeco_category",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Ser exposto ao $(OL) causa efeitos irreversíveis, mas, talvez você possa transformá-los em benefícios. Para fazer isso, basta transcender."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Nível de Exposiçao",
+            "text": "No canto inferior direito, você poderá ver uma porcentagem, que mostra o seu nível de exposição. Ao derrotar alguma criatura paranormal ou presenciar alguma atividade paranormal, sua exposição aumentará, enchendo a barra ao lado da porcentagem, que ao ser completa, aumentará o seu nível de exposição em 5%. Quando isso ocorre, você poderá transcender."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "ordemparanormal:altar_transcender",
+            "text": "Usado para Transcender quando você estiver pronto. $(2br)Você pode encontrá-lo em diversos lugares assombrados, ou fazê-lo com materiais simples."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Benefícios",
+            "text": "Com um altar de transcendência, você poderá receber os benefícios por aumentar sua exposição paranormal. Tais benefícios podem vir na forma de poderes paranormais, aumentos em atributos ou rituais."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Atributos",
+            "text": "O $(OL) te fortalece de três formas diferentes, representadas por três atributos. $(br)$(l)Força/$ aumenta a velocidade que você quebra blocos e o seu dano.$(br)$(l)Vigor/$ aumenta a sua vida máxima e o quanto comida te sacia. $(br)$(l)Presença/$ aumenta seu esforço máximo e te permite aprender rituais mais poderosos."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Poderes e Rituais",
+            "text": "O $(OL) também te permite manifestar as entidades para o seu próprio favor. $(l)Rituais/$ te permitem convocar entidades para que realizem tarefas específicas, enquanto $(l)Poderes Paranormais/$ modificam seu próprio ser na visão da entidade em específico.$(br)Leia as categorias \"Rituais\" e \"Poderes Paranormais\"."
+        }
+    ]
+}

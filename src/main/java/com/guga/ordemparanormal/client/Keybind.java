@@ -19,7 +19,6 @@ import java.util.List;
 
 public class Keybind {
     private static final String MOD_CATEGORY = "ordemparanormal.key_category";
-    private final KeyMapping nexScreenKey = new KeyMapping("ordemparanormal.key.nex_screen", KeyConflictContext.UNIVERSAL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, MOD_CATEGORY);
     public final List<KeyMapping> usePowerList = new LinkedList<>();
     public Keybind(){
         KeyMapping power1 = new KeyMapping("ordemparanormal.key.power_1", KeyConflictContext.IN_GAME, KeyModifier.CONTROL, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_1, MOD_CATEGORY);

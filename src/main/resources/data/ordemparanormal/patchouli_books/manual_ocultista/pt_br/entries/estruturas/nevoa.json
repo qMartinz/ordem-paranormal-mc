@@ -1,0 +1,20 @@
+{
+  "name": "Névoa",
+  "icon": "ordemparanormal:textures/gui/entries/nevoa_icon.png",
+  "category": "ordemparanormal:estruturas_category",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "É muito comum encontrar uma densa névoa em lugares assombrados. $(br)Quando uma área gera medo suficiente, sua membrana enfraquece, tornando-a passível para o aparecimento de atividades paranormais. A forma mais comum de enfraquecer a membrana é por sacrifícios, afinal, não há nada mais aterrorizante do que a morte e a violência."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/nevoa.png"
+      ],
+      "border": true,
+      "text": "Corpos em membrana danificada se tornarão criaturas paranormais."
+    }
+  ]
+}

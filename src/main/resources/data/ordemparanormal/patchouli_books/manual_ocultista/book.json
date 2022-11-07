@@ -7,11 +7,12 @@
     "creative_tab": "ordemparanormal",
     "show_progress": "false",
     "macros": {
-        "$(OS)": "$(5)$(l)OTHER SIDE/$",
-        "$(OL)": "$(5)$(l)OUTRO LADO/$",
+        "$(OS)": "$(3)$(l)OTHER SIDE/$",
+        "$(OL)": "$(3)$(l)OUTRO LADO/$",
         "$(conhecimento)": "$(6)$(l)",
         "$(energia)": "$(5)$(l)",
         "$(morte)": "$(l)",
-        "$(sangue)": "$(4)$(l)"
+        "$(sangue)": "$(4)$(l)",
+        "$(medo)": "$(#54707a)$(l)"
     }
 }

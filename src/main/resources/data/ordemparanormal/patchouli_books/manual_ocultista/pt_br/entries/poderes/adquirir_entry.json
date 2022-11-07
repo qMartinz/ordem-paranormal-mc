@@ -1,0 +1,15 @@
+{
+  "name": "Adquirir um Poder Paranormal",
+  "icon": "ordemparanormal:colar_sangue",
+  "category": "ordemparanormal:poder_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": ""
+    }
+  ]
+}

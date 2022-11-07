@@ -1,0 +1,17 @@
+{
+  "name": "Zumbi de Sangue espinhento",
+  "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
+  "advancement": "ordemparanormal:paranormal_creatures/zumbi_espinhento",
+  "category": "ordemparanormal:criaturas_category",
+  "pages": [
+    {
+      "type": "patchouli:entity",
+      "entity": "ordemparanormal:zumbi_espinhento",
+      "text": "Uma das variações de um zumbi de Sangue."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)São zumbis de Sangue, mas cujos ossos foram gravemente deformados durante sua transformação. São mais resistentes que um zumbi de Sangue comum, apesar de mais lentos."
+    }
+  ]
+}

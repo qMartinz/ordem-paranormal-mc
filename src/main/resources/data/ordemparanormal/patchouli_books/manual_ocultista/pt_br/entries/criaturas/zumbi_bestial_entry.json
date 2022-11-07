@@ -1,0 +1,17 @@
+{
+  "name": "Zumbi de Sangue bestial",
+  "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
+  "advancement": "ordemparanormal:paranormal_creatures/zumbi_bestial",
+  "category": "ordemparanormal:criaturas_category",
+  "pages": [
+    {
+      "type": "patchouli:entity",
+      "entity": "ordemparanormal:zumbi_bestial",
+      "text": "Um zumbi de Sangue após passar por todo o processo de transformação."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)Quando um zumbi de Sangue finalmente finaliza o processo de transformação, ele adquire uma forma muito mais animalesca e perigosa. Essas criaturas ferozes são extremamente perigosas, muito mais fortes que um zumbi de Sangue comum."
+    }
+  ]
+}

@@ -71,7 +71,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual ");
 		add("ordemparanormal.ritual_item.requires", "§7To understand this item, you require: ");
 		add("ordemparanormal.patchouli.manual_ocultista.title", "Manual do Ocultismo");
-		add("ordemparanormal.patchouli.manual_ocultista.landing_text", "Japa's Diary. $(br)Made for those who need a little push to understand the occult, and to share my experiences with the $(5)$(bold)OTHER SIDE. /$ $(br)Feel free to add new discoveries to this book... It's yours now.");
+		add("ordemparanormal.patchouli.manual_ocultista.landing_text", "Japa's Diary. $(br)Made for those who need a little push to understand the occult, and to share my experiences with the $(OS).$(br)Feel free to add new discoveries to this book... It's yours now.");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence altar");

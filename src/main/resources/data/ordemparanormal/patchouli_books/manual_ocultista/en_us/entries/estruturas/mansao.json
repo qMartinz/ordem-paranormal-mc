@@ -2,6 +2,7 @@
   "name": "Mansão Abandonada",
   "icon": "ordemparanormal:capacete_enferrujado",
   "category": "ordemparanormal:estruturas_category",
+  "sortnum": 1,
   "pages": [
     {
       "type": "patchouli:text",

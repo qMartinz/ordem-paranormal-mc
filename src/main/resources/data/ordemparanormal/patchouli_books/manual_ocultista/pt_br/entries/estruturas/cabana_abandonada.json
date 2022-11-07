@@ -2,6 +2,7 @@
   "name": "Cabana Abandonada",
   "icon": "ordemparanormal:altar_transcender",
   "category": "ordemparanormal:estruturas_category",
+  "sortnum": 1,
   "pages": [
     {
       "type": "patchouli:text",

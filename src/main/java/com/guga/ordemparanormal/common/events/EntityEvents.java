@@ -62,7 +62,7 @@ public class EntityEvents {
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
 			List<Nevoa> list2 = corpo.level.getEntitiesOfClass(Nevoa.class,
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
-			// Checa se h� corpos o suficiente para spawnar n�voa no local
+			// Checa se há corpos o suficiente para spawnar névoa no local
 			if (list1.size() >= 3 && list2.isEmpty()) {
 				Nevoa nevoa = OPEntities.NEVOA.get().create(corpo.level);
 				nevoa.copyPosition(corpo);

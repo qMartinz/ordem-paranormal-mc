@@ -2,6 +2,7 @@
   "name": "Igreja do Diabo",
   "icon": "ordemparanormal:mesa_sangue",
   "category": "ordemparanormal:estruturas_category",
+  "sortnum": 1,
   "pages": [
     {
       "type": "patchouli:text",
