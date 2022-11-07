@@ -70,6 +70,9 @@ public class ParanormalDamageSource extends DamageSource {
     public static ParanormalDamageSource ritualAttack(LivingEntity entity, AbstractRitual ritual) {
         return new EntityParanormalDamageSource(ritual.getElement().name + "Ritual", entity).setElement(ritual.getElement());
     }
+    public static ParanormalDamageSource mobRitualAttack(LivingEntity entity, ParanormalElement element) {
+        return new EntityParanormalDamageSource(element.name + "Ritual", entity).setElement(element);
+    }
     public static ParanormalDamageSource curseAttack(LivingEntity entity, AbstractCurse curse) {
         return new EntityParanormalDamageSource(curse.getElement().name + "Curse", entity).setElement(curse.getElement());
     }

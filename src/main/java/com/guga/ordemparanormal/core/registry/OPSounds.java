@@ -12,7 +12,15 @@ public final class OPSounds {
 
     // Registrar sons
     public static final RegistryObject<SoundEvent> ZUMBI_SANGUE_GROWL = HELPER.createSoundEvent("zumbi_sangue.growl");
+    public static final RegistryObject<SoundEvent> ZUMBI_SANGUE_CONVERT = HELPER.createSoundEvent("zumbi_sangue.convert");
+    public static final RegistryObject<SoundEvent> ZUMBI_SANGUE_HURT = HELPER.createSoundEvent("zumbi_sangue.hurt");
+    public static final RegistryObject<SoundEvent> ZUMBI_SANGUE_DEATH = HELPER.createSoundEvent("zumbi_sangue.death");
     public static final RegistryObject<SoundEvent> ZUMBI_BESTIAL_GROWL = HELPER.createSoundEvent("zumbi_bestial.growl");
+    public static final RegistryObject<SoundEvent> ZOMBIE_CONVERT = HELPER.createSoundEvent("zombie_convert");
+    public static final RegistryObject<SoundEvent> SKELETON_CONVERT = HELPER.createSoundEvent("skeleton_convert");
+    public static final RegistryObject<SoundEvent> CORPSE_CONVERT = HELPER.createSoundEvent("corpse.convert");
+    public static final RegistryObject<SoundEvent> CORPSE_HURT = HELPER.createSoundEvent("corpse.hurt");
+    public static final RegistryObject<SoundEvent> CORPSE_DEATH = HELPER.createSoundEvent("corpse.death");
     public static final RegistryObject<SoundEvent> RITUAL_LEARNED = HELPER.createSoundEvent("ritual_learned");
     public static final RegistryObject<SoundEvent> RITUAL_FORGOTTEN = HELPER.createSoundEvent("ritual_forgotten");
     public static final RegistryObject<SoundEvent> RITUAL_USED = HELPER.createSoundEvent("ritual_used");

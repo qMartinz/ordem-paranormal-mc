@@ -49,7 +49,11 @@ public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	}
 	@Override
 	protected SoundEvent getHurtSound(@NotNull DamageSource source) {
-		return SoundEvents.DOLPHIN_EAT;
+		return OPSounds.ZUMBI_SANGUE_HURT.get();
+	}
+	@Override
+	protected SoundEvent getDeathSound() {
+		return OPSounds.ZUMBI_SANGUE_DEATH.get();
 	}
 	@Override
 	protected SoundEvent getAmbientSound() {

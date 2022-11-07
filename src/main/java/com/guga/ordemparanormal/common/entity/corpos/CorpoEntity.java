@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.entity.corpos;
 
+import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,7 +18,7 @@ public abstract class CorpoEntity extends AmbientCreature{
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
 		if (source != DamageSource.IN_WALL) {
-			return SoundEvents.DOLPHIN_EAT;
+			return OPSounds.CORPSE_HURT.get();
 		} else {
 			return null;
 		}
@@ -25,11 +26,7 @@ public abstract class CorpoEntity extends AmbientCreature{
 	
 	@Override
 	protected SoundEvent getDeathSound() {
-		if (this.isOnFire()) {
-			return SoundEvents.GENERIC_EXTINGUISH_FIRE;
-		} else {
-		return SoundEvents.TURTLE_EGG_BREAK;
-		}
+		return OPSounds.CORPSE_DEATH.get();
 	}
 	
 	// Atributos

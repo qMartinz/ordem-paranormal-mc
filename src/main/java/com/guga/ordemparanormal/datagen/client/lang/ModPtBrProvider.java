@@ -35,13 +35,33 @@ public class ModPtBrProvider extends LanguageProvider {
 		add("ordemparanormal.advancement." + id + ".title", title);
 		add("ordemparanormal.advancement." + id + ".description", description);
 	}
+	public void addSubtitle(String id, String subtitle){
+		add("subtitles.ordemparanormal." + id, subtitle);
+	}
 
 	// Adicionar traduções em PT-BR
 	@Override
 	protected void addTranslations() {
 		// Sons
-		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Grunhido de zumbi de Sangue");
-		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Grunhido de zumbi de Sangue bestial");
+		addSubtitle("zumbi_sangue.growl", "Grunhido de zumbi de Sangue");
+		addSubtitle("zumbi_bestial.growl", "Grunhido de zumbi de Sangue bestial");
+		addSubtitle("zombie_convert", "Zumbi converte-se em zumbi de Sangue");
+		addSubtitle("skeleton_convert", "Esqueleto converte-se em zumbi de Sangue");
+		addSubtitle("corpse.death", "Corpo de Aldeão se desfaz");
+		addSubtitle("corpse.convert", "Corpo de Aldeão converte-se em zumbi de Sangue");
+		addSubtitle("corpse.hurt", "Corpo de Aldeão é ferido");
+		addSubtitle("zumbi_sangue.hurt", "Zumbi de Sangue é ferido");
+		addSubtitle("zumbi_sangue.death", "Zumbi de Sangue é morto");
+		addSubtitle("zumbi_sangue.convert", "Zumbi de Sangue converte-se em zumbi de Sangue bestial");
+		addSubtitle("ritual_learned", "Ritual é aprendido");
+		addSubtitle("ritual_forgotten", "Ritual é esquecido");
+		addSubtitle("ritual_used", "Ritual é utilizado");
+		addSubtitle("ritual_failed", "Ritual falha");
+		addSubtitle("blood_power_used", "Poder de Sangue é utilizado");
+		addSubtitle("energy_power_used", "Poder de Energia é utilizado");
+		addSubtitle("death_power_used", "Poder de Morte é utilizado");
+		addSubtitle("knowledge_power_used", "Poder de Conhecimento é utilizado");
+		addSubtitle("fear_power_used", "Poder de Medo é utilizado");
 
 		// -------------------------------------------------------------
 
@@ -50,6 +70,8 @@ public class ModPtBrProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Parece emanar uma presença estranha...");
 		add("ordemparanormal.ritual_item.cursed_with", "§7Amaldiçoado com o ritual ");
 		add("ordemparanormal.ritual_item.requires", "§7Para entender esse item, você precisa de: ");
+		add("ordemparanormal.patchouli.manual_ocultista.title", "Manual do Ocultismo");
+		add("ordemparanormal.patchouli.manual_ocultista.landing_text", "Diário de Japa. $(br)Feito para aqueles que precisam de um empurrãozinho para entender o oculto e para compartilhar minhas experiências com o $(5)$(bold)OUTRO LADO. /$ $(br)Sinta-se livre para adicionar novas descobertas nesse livro... Ele é seu agora.");
 		add(OPItems.ORGAO.get(), "Órgão");
 		add(OPItems.CINZAS.get(), "Cinzas");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Altar de transcendência");

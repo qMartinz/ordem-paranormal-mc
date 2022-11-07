@@ -30,7 +30,6 @@ public class ParanormalCreature extends Monster {
     public ParanormalElement getMainElement() {
         return this.element;
     }
-
     @Override
     public boolean doHurtTarget(Entity pEntity) {
         float f = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);

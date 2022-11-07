@@ -1,6 +1,6 @@
 {
-    "name": "OUTRO LADO",
-    "description": "O $(OL) é super $(4)$(bold)PERIGOSO/$, eu não recomendo que me siga e vire ocultista. $(2br)Mas se você é teimoso como eu, leia este diario, eu lhe escrevi para ajudar ocultistas aprendizes a manusear o $(OL), Boa sorte." ,
+    "name": "O Outro Lado",
+    "description": "O $(OL) é $(4)$(bold)PERIGOSO/$, pense duas vezes antes de se meter com ele... $(2br)Mas se você é teimoso como eu, boa sorte." ,
     "icon": "ordemparanormal:altar_transcender",
     "sortnum": 0
 }

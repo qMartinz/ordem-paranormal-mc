@@ -1,25 +1,33 @@
 package com.guga.ordemparanormal.common.events;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
+import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
+import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
+import com.guga.ordemparanormal.common.goals.AreaRitualGoal;
 import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.registry.OPEffects;
-import com.guga.ordemparanormal.core.registry.OPEntities;
-import com.guga.ordemparanormal.core.registry.OPItems;
-import com.guga.ordemparanormal.core.registry.OPProfessions;
+import com.guga.ordemparanormal.core.registry.*;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.gossip.GossipType;
 import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -28,6 +36,7 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -74,6 +83,33 @@ public class EntityEvents {
 		if (event.getSource().getEntity() instanceof ZumbiSangue zumbissangue
 				&& !(event.getSource().getEntity() instanceof Bestial)) {
 			ExpModel.get(zumbissangue).setExposure(ExpModel.get(zumbissangue).getExposure() + 20);
+			if (ExpModel.get(zumbissangue).isMaxExp()){
+				if (zumbissangue.isAlive()) {
+					Bestial entityOut = new Bestial(OPEntities.BESTIAL.get(), zumbissangue.level);
+
+					entityOut.moveTo(zumbissangue.getX(), zumbissangue.getY(), zumbissangue.getZ(), zumbissangue.getYRot(), zumbissangue.getXRot());
+
+					if (zumbissangue.hasCustomName()) {
+						entityOut.setCustomName(zumbissangue.getCustomName());
+						entityOut.setCustomNameVisible(zumbissangue.isCustomNameVisible());
+					}
+
+					if (zumbissangue.isLeashed()) {
+						entityOut.setLeashedTo(zumbissangue.getLeashHolder(), true);
+						zumbissangue.dropLeash(true, false);
+					}
+
+					if (zumbissangue.getVehicle() != null) {
+						entityOut.startRiding(zumbissangue.getVehicle());
+					}
+
+					entityOut.setHealth(entityOut.getMaxHealth());
+					zumbissangue.level.addFreshEntity(entityOut);
+					zumbissangue.discard();
+
+					entityOut.playSound(OPSounds.ZUMBI_SANGUE_CONVERT.get(), 1.0F, 1.0F);
+				}
+			}
 		}
 	}
 	@SubscribeEvent(priority = EventPriority.LOWEST)
@@ -272,6 +308,15 @@ public class EntityEvents {
 			ExpProvider provider = new ExpProvider(expModel);
 
 			event.addCapability(new ResourceLocation(OrdemParanormal.MOD_ID, "cap_exp"), provider);
+		}
+	}
+	@SubscribeEvent
+	public static void onEntityRegisterGoals(EntityJoinWorldEvent event){
+		if (event.getEntity() instanceof Villager villager){
+			villager.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(villager, ParanormalCreature.class, true));
+			villager.targetSelector.addGoal(2, new HurtByTargetGoal(villager));
+			villager.goalSelector.addGoal(3, new AreaRitualGoal(villager, 1d, false));
+			villager.goalSelector.addGoal(4, new AvoidEntityGoal<ParanormalCreature>(villager, ParanormalCreature.class, 10f, 1d, 1d));
 		}
 	}
 }

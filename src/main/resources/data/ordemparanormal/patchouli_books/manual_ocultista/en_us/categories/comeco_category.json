@@ -1,6 +1,6 @@
 {
-    "name": "OTHER SIDE",
-    "description": "The $(OS) its super $(4)$(bold)DANGEROUS/$, i dont recommend you to follow my path as an occultist. $(2br)But if you are stubborn like me read this diary i wrote for helping aprentice occultist to handle with the $(OS), Good luck.",
+    "name": "O Outro Lado",
+    "description": "O $(OL) é $(4)$(bold)PERIGOSO/$, pense duas vezes antes de se meter com ele... $(2br)Mas se você é teimoso como eu, boa sorte." ,
     "icon": "ordemparanormal:altar_transcender",
     "sortnum": 0
 }

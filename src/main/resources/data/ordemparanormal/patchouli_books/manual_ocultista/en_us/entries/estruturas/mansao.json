@@ -1,0 +1,18 @@
+{
+  "name": "Mansão Abandonada",
+  "icon": "ordemparanormal:capacete_enferrujado",
+  "category": "ordemparanormal:estruturas_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Uma mansão ocupada por ocultistas amadores que não faziam ideia do que estavam fazendo e acabaram sofrendo terríveis consequências. Apesar de serem amadores, sabiam esconder segredos com grande facilidade. Quem sabe o que essa mansão esconde?"
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/mansao.png"
+      ],
+      "border": true
+    }
+  ]
+}

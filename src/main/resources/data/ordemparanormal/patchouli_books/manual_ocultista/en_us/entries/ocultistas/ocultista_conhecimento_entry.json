@@ -1,13 +1,19 @@
 {
-    "name": "Altar de Transcendência",
-    "icon": "ordemparanormal:altar_transcender",
-    "category": "ordemparanormal:comeco_category",
+    "name": "Ocultista de Conhecimento",
+    "icon": "ordemparanormal:mesa_conhecimento",
+    "category": "ordemparanormal:ocultistas_category",
+    "sortnum": 1,
     "pages": [
         {
+            "type": "patchouli:entity",
+            "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_conhecimento\"}}",
+            "text": "Vendem os rituais de $(conhecimento)Conhecimento/$."
+        },
+        {
             "type": "patchouli:spotlight",
-            "item": "ordemparanormal:altar_transcender",
-            "text": "Isso é um Altar de Transcendência, ele é usado para Transcender quando você estiver pronto. $(2br)"
+            "item": "ordemparanormal:mesa_conhecimento",
+            "title": "Mesa de Conhecimento",
+            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles tem grande domínio sobre os rituais de $(conhecimento)Conhecimento/$."
         }
-        
     ]
 }

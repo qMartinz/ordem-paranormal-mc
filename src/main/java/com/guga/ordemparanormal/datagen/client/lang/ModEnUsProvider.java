@@ -35,6 +35,9 @@ public class ModEnUsProvider extends LanguageProvider {
 		add("ordemparanormal.advancement." + id + ".title", title);
 		add("ordemparanormal.advancement." + id + ".description", description);
 	}
+	public void addSubtitle(String id, String subtitle){
+		add("subtitles.ordemparanormal." + id, subtitle);
+	}
 
 	// Adicionar traduções em EN-US
 	@Override
@@ -42,6 +45,23 @@ public class ModEnUsProvider extends LanguageProvider {
 		// Sons
 		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Blood zombie growl");
 		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
+		addSubtitle("zombie_convert", "Zombie converts to Blood zombie");
+		addSubtitle("skeleton_convert", "Skeleton converts to Blood zombie");
+		addSubtitle("corpse_death", "Villager corpse is dissipated");
+		addSubtitle("corpse_convert", "Villager corpse converts to Blood zombie");
+		addSubtitle("corpse.hurt", "Villager corpse is hurt");
+		addSubtitle("zumbi_sangue.hurt", "Blood zombie is hurt");
+		addSubtitle("zumbi_sangue.death", "Blood zombie is killed");
+		addSubtitle("zumbi_sangue.convert", "Blood zombie converts to bestial Blood zombie");
+		addSubtitle("ritual_learned", "Ritual is learned");
+		addSubtitle("ritual_forgotten", "Ritual is forgotten");
+		addSubtitle("ritual_used", "Ritual is used");
+		addSubtitle("ritual_failed", "Ritual fails");
+		addSubtitle("blood_power_used", "Blood power is used");
+		addSubtitle("energy_power_used", "Energy power is used");
+		addSubtitle("death_power_used", "Death power is used");
+		addSubtitle("knowledge_power_used", "Knowledge power is used");
+		addSubtitle("fear_power_used", "Fear power is used");
 
 		// -------------------------------------------------------------
 
@@ -50,6 +70,8 @@ public class ModEnUsProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
 		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual ");
 		add("ordemparanormal.ritual_item.requires", "§7To understand this item, you require: ");
+		add("ordemparanormal.patchouli.manual_ocultista.title", "Manual do Ocultismo");
+		add("ordemparanormal.patchouli.manual_ocultista.landing_text", "Japa's Diary. $(br)Made for those who need a little push to understand the occult, and to share my experiences with the $(5)$(bold)OTHER SIDE. /$ $(br)Feel free to add new discoveries to this book... It's yours now.");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
 		add(OPBlocks.ALTAR_TRANSCENDER.get(), "Transcendence altar");
