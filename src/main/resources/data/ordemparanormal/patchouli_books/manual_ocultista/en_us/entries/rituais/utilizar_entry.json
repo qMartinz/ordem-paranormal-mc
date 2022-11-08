@@ -1,0 +1,35 @@
+{
+  "name": "Utilizar um ritual",
+  "icon": "ordemparanormal:relogio_energizado",
+  "category": "ordemparanormal:ritual_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Utilizar um ritual é uma tarefa simples, mas que exige muita concentração e custos significantes. Para utilizar um ritual, basta segurar em sua mão não-dominante um saco com ingredientes ritualísticos, e na outra o item amaldiçoado pelo ritual. Depois, segure o botão direito e o ritual será invocado, com um gasto de pontos de esforço."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Para utilizar rituais aprendidos por poderes paranormais, apenas equipe o poder que o permitiu adquirir o ritual e o utilize como normalmente utilizaria um poder.$(p)$(l)Ingredientes ritualísticos/$ podem ser feitos ou recarregados em uma bancada de trabalho. O uso de ingredientes de certo elemento é descartado ao possuir afinidade com o elemento."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ordemparanormal:componente_sangue",
+      "recipe2": "ordemparanormal:componente_sangue_refilled"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ordemparanormal:componente_energia",
+      "recipe2": "ordemparanormal:componente_energia_refilled"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ordemparanormal:componente_morte",
+      "recipe2": "ordemparanormal:componente_morte_refilled"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ordemparanormal:componente_conhecimento",
+      "recipe2": "ordemparanormal:componente_conhecimento_refilled"
+    }
+  ]
+}

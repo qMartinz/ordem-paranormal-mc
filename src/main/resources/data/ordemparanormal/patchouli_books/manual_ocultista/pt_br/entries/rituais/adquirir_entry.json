@@ -1,0 +1,25 @@
+{
+  "name": "Adquirir um Ritual",
+  "icon": "ordemparanormal:livro_indescritivel",
+  "category": "ordemparanormal:ritual_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Em 5% de exposição, você receberá 2 slots de ritual, que podem ser preenchidos ao aprender um $(l)ritual/$. Em cada 20% de exposição adquirido, você receberá um novo slot. Seu número de slots também pode ser alterado por alguns poderes paranormais, te permitindo aprender rituais extras."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Requisitos",
+      "text": "Os únicos requisitos para aprender um ritual é a quantidade de presença exigida pelo círculo do ritual, que é o nível de poder do ritual. Rituais mais poderosos necessitam de mais presença do que rituais mais fracos. Isso pode ser visto na descrição do item amaldiçoado do ritual."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Itens amaldiçoados/$ são objetos possuidos pela entidade de um ritual específico. Eles te permitem aprender um ritual, caso esteja apto para aprendê-lo. Com um desses itens em mãos, clique com o botão direito sobre um altar de transcendência. Se cumprir os requisitos, você aprenderá o ritual. Seu ritual novo pode ser visto na mesma tela em que se encontram os atributos."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rituais de poderes",
+      "text": "Alguns rituais só podem ser obtidos por possuir um poder paranormal específico. Para aprender rituais como esses, você só precisa cumprir com os requisitos do poder. Quando receber o poder, automaticamente aprenderá o ritual."
+    }
+  ]
+}

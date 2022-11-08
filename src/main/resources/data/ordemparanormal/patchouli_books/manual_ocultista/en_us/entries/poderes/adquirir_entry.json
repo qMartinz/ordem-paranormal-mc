@@ -1,15 +1,25 @@
 {
-  "name": "Adquirir um Poder Paranormal",
+  "name": "Adquirir um Poder",
   "icon": "ordemparanormal:colar_sangue",
   "category": "ordemparanormal:poder_category",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": ""
+      "text": "A partir de 5%, em cada 15% de exposição paranormal atingido você receberá um ponto de poder, que poderá gastar para comprar um $(l)poder paranormal/$. Porém, para adquirir um poder paranormal específico, você deve cumprir todos os seus requisitos, mostrados no final da descrição que aparece ao passar o mouse sobre o icone do poder."
     },
     {
       "type": "patchouli:text",
-      "text": ""
+      "title": "Navegação",
+      "text": "Clique com um botão direito em um altar de transcendência e depois clique no sigilo branco abaixo dos atributos para abrir a tela de poderes paranormais. Nela, poderá navegar pelos elementos com os botões no lado esquerdo, e também poderá arrastar na tela para visualizar melhor outros poderes."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Requisitos",
+      "text": "Os requisitos de um poder podem ser os seguintes:$(br)$(li)Um nível de exposição mínimo;$(li)Atributos mínimos;$(li)Outros poderes paranormais;$(li)Afinidade com certo elemento.$(p)Caso você não cumpra os requisitos de um poder, seu ícone estará mais transparente do que os demais."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Quando cumprir com os requisitos de um poder, possuir pontos suficientes e estiver pronto, poderá receber o poder simplesmente clicando sobre seu ícone. Ao fazer isso, perceberá que uma moldura aparecerá atrás de seu ícone, mostrando que o poder já foi pego."
     }
   ]
 }

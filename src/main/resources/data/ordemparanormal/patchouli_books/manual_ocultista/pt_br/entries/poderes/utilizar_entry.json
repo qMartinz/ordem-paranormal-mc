@@ -1,0 +1,15 @@
+{
+  "name": "Utilizar um poder",
+  "icon": "ordemparanormal:cruz_curvada",
+  "category": "ordemparanormal:poder_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Poderes Ativos/$ são poderes que apenas surtem efeito ao serem utilizados, algo que muitas vezes tem um custo. Tais poderes são representados na tela de poderes por um ícone quadrado, diferente do circular comum."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Para utilizar um poder ativo, equipe-o clicando em um dos slots numerados por números romanos na tela de poder e em seguida clique no poder a ser equipado. Depois, durante o jogo, aperte CTRL + o número do slot equipado. Essa tecla pode ser alterada nas configurações do jogo."
+    }
+  ]
+}

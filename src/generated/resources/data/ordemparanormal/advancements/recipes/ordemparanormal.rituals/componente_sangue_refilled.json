@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "ordemparanormal:item.ordemparanormal.componente_sangue_refilled"
+      "ordemparanormal:componente_sangue_refilled"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "ordemparanormal:item.ordemparanormal.componente_sangue_refilled"
+        "recipe": "ordemparanormal:componente_sangue_refilled"
       }
     }
   },
