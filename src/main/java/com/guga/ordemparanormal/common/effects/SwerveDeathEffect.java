@@ -13,9 +13,9 @@ public class SwerveDeathEffect extends OPEffects.ParanormalEffect{
     }
     @Override
     public float onHurt(LivingEntity livingEntity, @Nullable Entity attacker, float amount, DamageSource source) {
-        if (amount > livingEntity.getHealth()){
+        if (amount > livingEntity.getHealth() && livingEntity.getHealth() > 1f){
             livingEntity.removeEffect(OPEffects.SWERVE_DEATH.get());
-            return livingEntity.getHealth() - 1;
+            return livingEntity.getHealth() - 1f;
         }
         return amount;
     }

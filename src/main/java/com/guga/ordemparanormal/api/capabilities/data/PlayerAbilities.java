@@ -138,6 +138,12 @@ public class PlayerAbilities implements IAbilitiesCap {
         syncAttributeMod(player, Attributes.ARMOR_TOUGHNESS, toughnessBonusModUUID);
     }
     @Override
+    public void clearPowers() {
+        this.rituals.clear();
+        this.powers.clear();
+        this.activePowers.clear();
+    }
+    @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
 
@@ -154,6 +160,7 @@ public class PlayerAbilities implements IAbilitiesCap {
     }
     @Override
     public void deserializeNBT(CompoundTag nbt) {
+        clearPowers();
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
         for(String s : NBTUtil.readStrings(nbt, "ritual")){

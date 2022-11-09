@@ -22,7 +22,7 @@ public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
         add(OPSounds.ZUMBI_BESTIAL_GROWL, soundDefinition("zumbi_bestial.growl").subtitle("subtitles.ordemparanormal.zumbi_bestial.growl"));
         add(OPSounds.ZUMBI_SANGUE_GROWL, soundDefinition("zumbi_sangue.growl").subtitle("subtitles.ordemparanormal.zumbi_sangue.growl"));
         add(OPSounds.ZOMBIE_CONVERT, soundDefinition("zombie_convert").subtitle("subtitles.ordemparanormal.zombie.convert"));
-        add(OPSounds.SKELETON_CONVERT, soundDefinition("skeleton_convert").subtitle("subtitles.ordemparanormal.skeleton_convert"));
+        add(OPSounds.SKELETON_CONVERT, soundDefinition("skeleton_convert").subtitle("subtitles.ordemparanormal.skeleton.convert"));
         add(OPSounds.CORPSE_DEATH, soundDefinition("corpse_death").subtitle("subtitles.ordemparanormal.corpse.death"));
         add(OPSounds.ZUMBI_SANGUE_DEATH, soundDefinition("corpse_death").subtitle("subtitles.ordemparanormal.zumbi_sangue.death"));
         add(OPSounds.CORPSE_CONVERT, soundDefinition("corpse_death").subtitle("subtitles.ordemparanormal.corpse.convert"));

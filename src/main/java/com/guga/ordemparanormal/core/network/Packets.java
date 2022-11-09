@@ -41,16 +41,14 @@ public class Packets {
         public SyncAbilities(CompoundTag playerAbilities){
             this.tag = playerAbilities;
         }
-        public void handle(Supplier<NetworkEvent.Context> ctx){
-            ctx.get().enqueueWork(()->{
-                Player player = OrdemParanormal.proxy.getPlayer();
-                IAbilitiesCap cap = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
-
-                if(cap != null){
-                    cap.deserializeNBT(tag);
-                }
+        public void handle(Supplier<NetworkEvent.Context> context){
+            context.get().enqueueWork(() -> {
+                if (OrdemParanormal.proxy.getPlayer() == null) return;
+                OrdemParanormal.proxy.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(ab -> {
+                    ab.deserializeNBT(tag);
+                });
             });
-            ctx.get().setPacketHandled(true);
+            context.get().setPacketHandled(true);
         }
     }
     public static class SyncEffects {

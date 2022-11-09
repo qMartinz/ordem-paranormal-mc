@@ -29,4 +29,5 @@ public interface IAbilitiesCap extends INBTSerializable<CompoundTag> {
     void setActivePower(PlayerPower power, int slot);
     void syncAttributeMod(Player player, Attribute attribute, UUID uuid);
     void syncAttributeMods(Player player);
+    void clearPowers();
 }

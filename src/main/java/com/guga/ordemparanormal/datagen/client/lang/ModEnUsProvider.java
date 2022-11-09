@@ -45,10 +45,10 @@ public class ModEnUsProvider extends LanguageProvider {
 		// Sons
 		add("subtitles.ordemparanormal.zumbi_sangue.growl", "Blood zombie growl");
 		add("subtitles.ordemparanormal.zumbi_bestial.growl", "Bestial Blood zombie growl");
-		addSubtitle("zombie_convert", "Zombie converts to Blood zombie");
-		addSubtitle("skeleton_convert", "Skeleton converts to Blood zombie");
+		addSubtitle("zombie.convert", "Zombie converts to Blood zombie");
+		addSubtitle("skeleton.convert", "Skeleton converts to Blood zombie");
 		addSubtitle("corpse_death", "Villager corpse is dissipated");
-		addSubtitle("corpse_convert", "Villager corpse converts to Blood zombie");
+		addSubtitle("corpse.convert", "Villager corpse converts to Blood zombie");
 		addSubtitle("corpse.hurt", "Villager corpse is hurt");
 		addSubtitle("zumbi_sangue.hurt", "Blood zombie is hurt");
 		addSubtitle("zumbi_sangue.death", "Blood zombie is killed");
@@ -270,7 +270,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPPowers.POTENCIAL_REAPROVEITADO, "Reused Potential",
 				"You take advantage of lost moments when receiving damage, being able to recover effort points when getting hurt.");
 		add(OPPowers.ESCAPAR_MORTE, "Swerve Death",
-				"Your body can utilize lost moments to stop you from losing yours, saving you from fatal blows.");
+				"Your body can utilize lost moments to stop you from losing yours, saving you from fatal blows. But, it doesn't save you if you're already near death...");
 		add(OPPowers.SURTO_TEMPORAL, "Temporal Surge",
 				"Your time perception is altered with a brief impulse of adrenaline, increasing the speed of your attacks.");
 		add(OPPowers.PERIMETRO_ESPIRAL, "Spiral Perimeter",
@@ -294,6 +294,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
 		add(OPCurses.AMALDICOADA.getTranslationKey(), "Cursed");
+		add(OPCurses.LAMINA_MEDO.getTranslationKey(), "Blade of Fear");
 
 		// -------------------------------------------------------------
 

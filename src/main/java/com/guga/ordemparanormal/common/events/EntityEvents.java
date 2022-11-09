@@ -18,6 +18,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
@@ -122,27 +123,29 @@ public class EntityEvents {
 			}
 		}
 
+		float amount = event.getAmount();
+
 		// Aumenta ou diminui o dano para certos danos elementais
 		if (event.getEntity() instanceof LivingEntity entity && event.getSource() instanceof ParanormalDamageSource source) {
-			if (ParanormalDamageSource.isEntityWeakTo(entity, source)) event.setAmount(event.getAmount() * 2);
-			if (ParanormalDamageSource.isEntityResistant(entity, source)) event.setAmount(event.getAmount() / 2);
+			if (ParanormalDamageSource.isEntityWeakTo(entity, source)) amount = amount * 2;
+			if (ParanormalDamageSource.isEntityResistant(entity, source)) amount = amount / 2;
 		}
-	}
-	@SubscribeEvent(priority = EventPriority.NORMAL)
-	public static void onEntityHurt(LivingHurtEvent event){
-		event.getEntityLiving().getActiveEffects().forEach(effect -> {
-			if (effect.getEffect() instanceof OPEffects.ParanormalEffect opeffect) {
-				event.setAmount(opeffect.onHurt(event.getEntityLiving(), event.getSource().getEntity(), event.getAmount(), event.getSource()));
-			}
-		});
 
 		if (event.getSource().getEntity() instanceof LivingEntity living) {
-			living.getActiveEffects().forEach(effect -> {
+			for (MobEffectInstance effect : living.getActiveEffects()){
 				if (effect.getEffect() instanceof OPEffects.ParanormalEffect opeffect) {
-					event.setAmount(opeffect.onAttack(living, event.getEntityLiving(), event.getAmount(), event.getSource()));
+					amount = opeffect.onAttack(living, event.getEntityLiving(), amount, event.getSource());
 				}
-			});
+			}
 		}
+
+		for (MobEffectInstance effect : event.getEntityLiving().getActiveEffects()){
+			if (effect.getEffect() instanceof OPEffects.ParanormalEffect opeffect) {
+				amount = opeffect.onHurt(event.getEntityLiving(), event.getEntityLiving(), amount, event.getSource());
+			}
+		}
+
+		event.setAmount(amount);
 	}
 	@SubscribeEvent
 	public static void addTrades(VillagerTradesEvent event){

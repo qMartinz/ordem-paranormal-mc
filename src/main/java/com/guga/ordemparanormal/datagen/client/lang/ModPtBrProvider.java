@@ -45,8 +45,8 @@ public class ModPtBrProvider extends LanguageProvider {
 		// Sons
 		addSubtitle("zumbi_sangue.growl", "Grunhido de zumbi de Sangue");
 		addSubtitle("zumbi_bestial.growl", "Grunhido de zumbi de Sangue bestial");
-		addSubtitle("zombie_convert", "Zumbi converte-se em zumbi de Sangue");
-		addSubtitle("skeleton_convert", "Esqueleto converte-se em zumbi de Sangue");
+		addSubtitle("zombie.convert", "Zumbi converte-se em zumbi de Sangue");
+		addSubtitle("skeleton.convert", "Esqueleto converte-se em zumbi de Sangue");
 		addSubtitle("corpse.death", "Corpo de Aldeão se desfaz");
 		addSubtitle("corpse.convert", "Corpo de Aldeão converte-se em zumbi de Sangue");
 		addSubtitle("corpse.hurt", "Corpo de Aldeão é ferido");
@@ -270,7 +270,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPPowers.POTENCIAL_REAPROVEITADO, "Potencial Reaproveitado",
 				"Você se aproveita de momentos perdidos ao receber danos, podendo recuperar pontos de esforço ao ser atingido.");
 		add(OPPowers.ESCAPAR_MORTE, "Escapar da Morte",
-				"Seu corpo consegue utilizar momentos perdidos para impedir que você perca os seus, te salvando de ataques fatais.");
+				"Seu corpo consegue utilizar momentos perdidos para impedir que você perca os seus, te salvando de ataques fatais. Porém, não funciona caso já esteja prestes a morrer...");
 		add(OPPowers.SURTO_TEMPORAL, "Surto Temporal",
 				"Sua percepção do tempo é alterada com um breve impulso de adrenalina, acelerando seus ataques.");
 		add(OPPowers.PERIMETRO_ESPIRAL, "Perimetro Espiral",
@@ -295,6 +295,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPCurses.VELOZ.getTranslationKey(), "Veloz");
 		add(OPCurses.DECADENTE.getTranslationKey(), "Decadente");
 		add(OPCurses.AMALDICOADA.getTranslationKey(), "Amaldiçoada");
+		add(OPCurses.LAMINA_MEDO.getTranslationKey(), "Lâmina do Medo");
 
 		// -------------------------------------------------------------
 

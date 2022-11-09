@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
+import com.guga.ordemparanormal.api.ApiEvents;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.Packets;
 import net.minecraft.nbt.CompoundTag;

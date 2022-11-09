@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +24,7 @@ public class Putrefato extends PlayerPower {
 
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(cap -> {
             if (rand.nextInt(1, 20) <= (cap.hasPower(OPPowers.PUTREFATO_2) ? 12 : 5) &&
-                    !(player.getMainHandItem().getItem() instanceof TieredItem)) {
+                    !(player.getMainHandItem().getItem() instanceof TieredItem) && !(source instanceof IndirectEntityDamageSource)) {
 
                 target.addEffect(new MobEffectInstance(OPEffects.DECAY.get(), 100));
             }
