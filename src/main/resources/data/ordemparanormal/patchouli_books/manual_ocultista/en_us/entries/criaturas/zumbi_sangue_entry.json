@@ -1,16 +1,16 @@
 {
-  "name": "Zumbi de Sangue comum",
+  "name": "Common Blood zombie",
   "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
   "category": "ordemparanormal:criaturas_category",
   "pages": [
     {
       "type": "patchouli:entity",
       "entity": "ordemparanormal:zumbi_sangue",
-      "text": "As criaturas mais comuns de se encontrar."
+      "text": "The most common creatures to find."
     },
     {
       "type": "patchouli:text",
-      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)Geralmente se manifestam quando um corpo é deixado em uma área com membrana fraca. Essas criaturas violentas atacam qualquer ser vivo à sua vista, incluindo você. Tome bastante cuidado, são seres ferozes..."
+      "text": "A $(sangue)Blood/$ creature.$(br2)Usually when a corpse is kept in an area with weak membrane. These violent creatures attack anything living in their sight, including you. Take care, they are ferocious creatures..."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Zumbi de Sangue bestial",
+  "name": "Bestial Blood zombie",
   "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
   "advancement": "ordemparanormal:paranormal_creatures/zumbi_bestial",
   "category": "ordemparanormal:criaturas_category",
@@ -7,11 +7,11 @@
     {
       "type": "patchouli:entity",
       "entity": "ordemparanormal:zumbi_bestial",
-      "text": "Um zumbi de Sangue após passar por todo o processo de transformação."
+      "text": "A Blood zombie after going through it's entire transformation process."
     },
     {
       "type": "patchouli:text",
-      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)Quando um zumbi de Sangue finalmente finaliza o processo de transformação, ele adquire uma forma muito mais animalesca e perigosa. Essas criaturas ferozes são extremamente perigosas, muito mais fortes que um zumbi de Sangue comum."
+      "text": "A $(sangue)Blood/$ creature.$(br2)When a Blood zombie finally ends it's transformation process, it acquires a much more dangerous and animal form. These ferocious creatures are extremely dangerous, much stronger than a common Blood zombie."
     }
   ]
 }

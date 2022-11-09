@@ -1,15 +1,15 @@
 {
-  "name": "Afinidades",
+  "name": "Affinities",
   "icon": "ordemparanormal:cruz_curvada",
   "category": "ordemparanormal:poder_category",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "$(l)Afinidades elementais/$ são poderes passivos que apenas possuem um requisito: 50% de exposição paranormal. Esses poderes abrem muitas novas possibilidades de poderes, porém, só é possível receber afinidade com um elemento. Além disso, oferecem benefícios consideráveis, como resistência ao elemento escolhido."
+      "text": "$(l)Elemental affinities/$ are passive powers that only require one thing: 50% of paranormal exposure. These powers open many more possibilities for other powers, but it is only possible to receive affinity with one element. Furthermore, they offer considerable benefits, like resistance to the chosen element."
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Poderes com afinidade/$ são versões aprimoradas de seu poder original, que só são acessíveis para quem possui afinidade com o elemento do poder."
+      "text": "$(l)Powers with affinities/$ are enhanced versions of it's original counterpart, but they are only accessible to those with affinity with it's element."
     }
   ]
 }

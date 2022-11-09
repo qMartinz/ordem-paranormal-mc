@@ -9,7 +9,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Para utilizar rituais aprendidos por poderes paranormais, apenas equipe o poder que o permitiu adquirir o ritual e o utilize como normalmente utilizaria um poder.$(p)$(l)Ingredientes ritualísticos/$ podem ser feitos ou recarregados em uma bancada de trabalho. O uso de ingredientes de certo elemento é descartado ao possuir afinidade com o elemento."
+      "text": "Para utilizar rituais aprendidos por poderes paranormais, apenas utilize o poder.$(p)$(l)Ingredientes ritualísticos/$ são feitos ou recarregados em uma bancada de trabalho. Seu é descartado ao possuir afinidade com o elemento do ingrediente.$(br)$(l)Pontos de esforço/$ são os pontos verdes acima da sua barra de fome. Presença aumenta seu esforço máximo."
     },
     {
       "type": "patchouli:crafting",

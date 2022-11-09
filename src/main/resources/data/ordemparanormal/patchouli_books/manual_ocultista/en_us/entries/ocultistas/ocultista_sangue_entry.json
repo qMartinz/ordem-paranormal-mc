@@ -1,5 +1,5 @@
 {
-    "name": "Ocultista de Sangue",
+    "name": "Blood Occultist",
     "icon": "ordemparanormal:mesa_sangue",
     "category": "ordemparanormal:ocultistas_category",
     "sortnum": 1,
@@ -7,13 +7,13 @@
         {
             "type": "patchouli:entity",
             "entity": "minecraft:villager{VillagerData:{profession:\"ordemparanormal:ocultista_sangue\"}}",
-            "text": "Vendem os rituais de $(sangue)Sangue/$."
+            "text": "They sell $(sangue)Blood/$ rituals."
         },
         {
             "type": "patchouli:spotlight",
             "item": "ordemparanormal:mesa_sangue",
-            "title": "Mesa de Sangue",
-            "text": "Usado para transformar um aldeão normal em um Ocultista. $(br)Eles possuem grande domínio sobre os rituais de $(sangue)Sangue/$."
+            "title": "Blood curse table",
+            "text": "Used to transform a normal villager into an occultist. $(br)They have great skill with rituals of $(sangue)Blood/$."
         }
     ]
 }

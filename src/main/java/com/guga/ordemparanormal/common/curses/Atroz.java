@@ -12,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 
 public class Atroz extends AbstractCurse {
-    public Atroz() {
-        super("atroz", ParanormalElement.SANGUE, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
+    public Atroz(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+        super(id, element, category, slots);
     }
     @Override
     public int getMaxUses() {

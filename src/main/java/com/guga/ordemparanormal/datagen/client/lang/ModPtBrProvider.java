@@ -164,39 +164,39 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPRituals.DESCARNAR, "Descarnar",
 				"Descarna o alvo, causando dano de Sangue contínuo.");
 		add(OPRituals.DECADENCIA, "Decadência",
-				"Imbui seu próximo ataque com espirais que inflingem apodrecimento.");
+				"Imbui seu próximo ataque com espirais que inflingem apodrecimento. Segure uma espada e mantenha os ingredientes no inventário para utilizar esse ritual.");
 		add(OPRituals.CICATRIZACAO, "Cicatrização",
-				"Cicatriza as feridas do alvo ou de você mesmo.");
+				"Cura três corações do alvo ou de você mesmo.");
 		add(OPRituals.CONSUMIR_MANANCIAL, "Consumir Manancial",
-				"Consome a vida ao redor, fortificando sua vida.");
+				"Consome a vida ao redor, te dando três corações temporários de vida.");
 		add(OPRituals.ARMADURA_SANGUE, "Armadura de Sangue",
-				"Usa seu sangue para endurecer sua pele, servindo como armadura.");
+				"Usa seu sangue para endurecer sua pele, te dando quatro pontos de armadura.");
 		add(OPRituals.ARMA_ATROZ, "Arma Atroz",
-				"Torna a arma que você está segurando mais perigosa.");
+				"Torna a arma que você está segurando mais perigosa, passando a causar mais dano. Segure uma espada e mantenha os ingredientes no inventário para utilizar esse ritual.");
 		add(OPRituals.ARMA_VELOZ, "Arma Veloz",
-				"Torna a arma que você está segurando mais rápida.");
+				"Torna a arma que você está segurando mais rápida. Segure uma espada e mantenha os ingredientes no inventário para utilizar esse ritual.");
 		add(OPRituals.AMALDICOAR_ARMA, "Amaldiçoar Arma",
-				"Amaldiçoa a arma que você está segurando com sigilos de conhecimento.");
+				"Amaldiçoa a arma que você está segurando com sigilos de conhecimento, passando a causar mais dano. Segure uma espada e mantenha os ingredientes no inventário para utilizar esse ritual.");
 		add(OPRituals.HEMOFAGIA, "Hemofagia",
-				"Suga o sangue de seu alvo, transferindo a vitalidade dele para você.");
+				"Suga o sangue de seu alvo, transferindo quatro corações e meio dele para você.");
 		add(OPRituals.APRIMORAMENTO_FISICO, "Aprimoramento Fisico",
-				"Seu corpo atinge condições fisicas extraordinárias, se tornando mais resistente e poderoso.");
+				"Seu corpo atinge condições fisicas extraordinárias, se dando o efeito de força e resistência.");
 		add(OPRituals.LAMINA_MEDO, "Lâmina do Medo",
-				"Conjura uma chama impossível, um vislumbre de algo que não deveria existir, na lâmina que estiver segurando, que passa a causar danos letais.");
+				"Conjura uma chama impossível, um vislumbre de algo que não deveria existir, na lâmina que estiver segurando, que passa a causar danos letais. Segure uma espada para utilizar esse ritual.");
 		add(OPRituals.VELOCIDADE_MORTAL, "Velocidade Mortal",
-				"Altera a percepção do tempo de seu corpo, que passa a atingir velocidades extraordinárias.");
+				"Altera a percepção do tempo de seu corpo, que passa a atingir velocidades extraordinárias, te dando o efeito de velocidade.");
 		add(OPRituals.MEDO_TANGIVEL, "Medo Tangível",
 				"Seu corpo se torna uma manifestação do medo, te tornando imune a efeitos mundanos. Você passa a ser imune a qualquer dano não-paranormal.");
 		add(OPRituals.TRANSFERENCIA_VITAL, "Transferencia Vital",
-				"Transfere sua vitalidade para o alvo do ritual.");
+				"Transfere quatro corações e meio para o alvo do ritual.");
 		add(OPRituals.SALTO_FANTASMA, "Salto Fantasma",
 				"Te teleporta 10 blocos na direção que está olhando.");
 		add(OPRituals.TELEPORTE, "Teleporte",
-				"Se usado enquanto agacha, salva sua a posição atual. Se usado sem estar agachando, te teleporta para a posição salvada.");
+				"Se usado enquanto agacha, salva sua a posição atual. Se usado sem estar agachando, teleporta você ou seu alvo para a posição salvada.");
 		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Espirais da Perdição",
-				"Quando usado, enfraquece o alvo.");
+				"Quando usado, enfraquece o alvo, causando o efeito de fraqueza.");
 		add(OPRituals.LUZ, "Luz",
-				"Cria uma orbe brilhante de pura energia.");
+				"Cria uma orbe brilhante de pura energia. no local em que você está olhando. A orbe pode ser facilmente quebrada por punhos humanos e é intangível.");
 		add(OPRituals.INEXISTIR, "Inexistir",
 				"Distorce a existência de seu alvo, causando gravíssimos danos de Conhecimento.");
 		add(OPRituals.PERTURBACAO, "Perturbação",

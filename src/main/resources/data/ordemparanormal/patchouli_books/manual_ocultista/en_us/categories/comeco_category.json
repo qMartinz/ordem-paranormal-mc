@@ -1,6 +1,6 @@
 {
-    "name": "O Outro Lado",
-    "description": "O $(OL) é $(4)$(bold)PERIGOSO/$, pense duas vezes antes de se meter com ele... $(2br)Mas se você é teimoso como eu, boa sorte." ,
+    "name": "The Other Side",
+    "description": "The $(OS) is $(4)$(bold)DANGEROUS/$, think twice before messing with it... $(2br)But if you're stubborn like me, good luck." ,
     "icon": "ordemparanormal:altar_transcender",
     "sortnum": 0
 }

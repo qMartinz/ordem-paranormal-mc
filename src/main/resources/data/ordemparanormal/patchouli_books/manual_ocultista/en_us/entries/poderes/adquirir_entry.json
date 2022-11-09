@@ -1,25 +1,25 @@
 {
-  "name": "Adquirir um Poder",
+  "name": "Acquire a Power",
   "icon": "ordemparanormal:colar_sangue",
   "category": "ordemparanormal:poder_category",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "A partir de 5%, em cada 15% de exposição paranormal atingido você receberá um ponto de poder, que poderá gastar para comprar um $(l)poder paranormal/$. Porém, para adquirir um poder paranormal específico, você deve cumprir todos os seus requisitos, mostrados no final da descrição que aparece ao passar o mouse sobre o icone do poder."
+      "text": "Since 5%, after each 15% of paranormal exposure reached you will receive a point of power, that you can use to receive a $(l)paranormal power/$. But, to acquire a power, you must fulfill all of it's requirements, shown at the end of the description that appears when hovering over the power's icon."
     },
     {
       "type": "patchouli:text",
-      "title": "Navegação",
-      "text": "Clique com um botão direito em um altar de transcendência e depois clique no sigilo branco abaixo dos atributos para abrir a tela de poderes paranormais. Nela, poderá navegar pelos elementos com os botões no lado esquerdo, e também poderá arrastar na tela para visualizar melhor outros poderes."
+      "title": "Navigation",
+      "text": "Right click on a transcendance altar and click the sigil button below the attributes, this will open up the powers screen. In it, you can navigate through the elements by clicking on the buttons on the left, and you can also drag the screen to see other powers."
     },
     {
       "type": "patchouli:text",
-      "title": "Requisitos",
-      "text": "Os requisitos de um poder podem ser os seguintes:$(br)$(li)Um nível de exposição mínimo;$(li)Atributos mínimos;$(li)Outros poderes paranormais;$(li)Afinidade com certo elemento.$(p)Caso você não cumpra os requisitos de um poder, seu ícone estará mais transparente do que os demais."
+      "title": "Requisites",
+      "text": "The requisites for a power can be the following:$(br)$(li)A minimum level of exposure;$(li)Minimum attributes;$(li)Other paranormal powers;$(li)Affinity with a certain element.$(p)If you don't meet a power's requirements, it's icon will appear greyed out and more transparent than the others."
     },
     {
       "type": "patchouli:text",
-      "text": "Quando cumprir com os requisitos de um poder, possuir pontos suficientes e estiver pronto, poderá receber o poder simplesmente clicando sobre seu ícone. Ao fazer isso, perceberá que uma moldura aparecerá atrás de seu ícone, mostrando que o poder já foi pego."
+      "text": "Once you meet a power's requirements, have enough power points and are ready to transcend, you are able to receive the power by simply clicking on it's icon. When doing this, you'll notice a frame will appear on the icon, showing that the power is already owned."
     }
   ]
 }

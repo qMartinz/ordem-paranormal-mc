@@ -1,5 +1,5 @@
 {
-  "name": "Zumbi de Sangue seco",
+  "name": "Skeletal Blood zombie",
   "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
   "advancement": "ordemparanormal:paranormal_creatures/zumbi_seco",
   "category": "ordemparanormal:criaturas_category",
@@ -7,12 +7,12 @@
     {
       "type": "patchouli:entity",
       "entity": "ordemparanormal:zumbi_seco",
-      "text": "Uma das variações de um zumbi de Sangue.",
+      "text": "One of the variations of the Blood zombie.",
       "offset": 0.2
     },
     {
       "type": "patchouli:text",
-      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)São zumbis de Sangue, mas cujos orgãos foram removidos por algum motivo, as vezes por causa da decomposição natural antes de sua transformação. São mais velozes que zumbis de Sangue comuns, apesar de mais frágeis."
+      "text": "A $(sangue)Blood/$ creature.$(br2)They are Blood zombies, but which organs were removed for some reason, most likely because of the natural decomposition during it's transformation. They are faster than common Blood zombies, although more fragile."
     }
   ]
 }

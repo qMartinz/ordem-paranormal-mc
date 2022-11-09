@@ -1,15 +1,15 @@
 {
-  "name": "Utilizar um poder",
+  "name": "Using a power",
   "icon": "ordemparanormal:cruz_curvada",
   "category": "ordemparanormal:poder_category",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "$(l)Poderes Ativos/$ são poderes que apenas surtem efeito ao serem utilizados, algo que muitas vezes tem um custo. Tais poderes são representados na tela de poderes por um ícone quadrado, diferente do circular comum."
+      "text": "$(l)Active powers/$ are powers that only have effect when used, which normally has a cost. They are represented by a square icon, different from the common circle."
     },
     {
       "type": "patchouli:text",
-      "text": "Para utilizar um poder ativo, equipe-o clicando em um dos slots numerados por números romanos na tela de poder e em seguida clique no poder a ser equipado. Depois, durante o jogo, aperte CTRL + o número do slot equipado. Essa tecla pode ser alterada nas configurações do jogo."
+      "text": "To use an active power, equip it by clicking one of the slots numbered with roman numbers, and then click the power to be equipped. Then, during the game, press CTRL + the number of the chosen slot, to use it. This key can be changed in the game settings."
     }
   ]
 }

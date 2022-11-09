@@ -1,5 +1,5 @@
 {
-  "name": "Zumbi de Sangue espinhento",
+  "name": "Spiky Blood zombie",
   "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
   "advancement": "ordemparanormal:paranormal_creatures/zumbi_espinhento",
   "category": "ordemparanormal:criaturas_category",
@@ -7,11 +7,11 @@
     {
       "type": "patchouli:entity",
       "entity": "ordemparanormal:zumbi_espinhento",
-      "text": "Uma das variações de um zumbi de Sangue."
+      "text": "One of the variations of a Blood zombie."
     },
     {
       "type": "patchouli:text",
-      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)São zumbis de Sangue, mas cujos ossos foram gravemente deformados durante sua transformação. São mais resistentes que um zumbi de Sangue comum, apesar de mais lentos."
+      "text": "A $(sangue)Blood/$ creature.$(br2)They are Blood zombies, but with heavily deformed bones, that formed spikes during it's transformation. They are more resistant than a common Blood zombie, although slower."
     }
   ]
 }

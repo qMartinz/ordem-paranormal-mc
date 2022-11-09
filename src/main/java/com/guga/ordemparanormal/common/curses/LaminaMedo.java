@@ -6,10 +6,9 @@ import com.guga.ordemparanormal.api.curses.CurseCategory;
 import net.minecraft.world.entity.EquipmentSlot;
 
 public class LaminaMedo extends AbstractCurse {
-    public LaminaMedo() {
-        super("lamina_do_medo", ParanormalElement.MEDO, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
+    public LaminaMedo(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+        super(id, element, category, slots);
     }
-
     @Override
     public int getMaxUses() {
         return 1;

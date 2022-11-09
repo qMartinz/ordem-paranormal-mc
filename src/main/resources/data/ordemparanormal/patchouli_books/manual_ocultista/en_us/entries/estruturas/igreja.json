@@ -1,12 +1,12 @@
 {
-  "name": "Igreja do Diabo",
+  "name": "Devil's Church",
   "icon": "ordemparanormal:mesa_sangue",
   "category": "ordemparanormal:estruturas_category",
   "sortnum": 1,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Há diversos contos de um culto antigo que pregava a palavra de uma entidade misteriosa chamada pelo nome \"Diabo\". $(br)Esses mesmos contos também contam sobre a existência de igrejas, onde esse mesmo culto realizava sacrifícios secretos para membros de alto escalão."
+      "text": "There are many stories of a cult that used to preach the words of an entity called by the name \"Devil\". $(br)These same stories also tell of churches, where that same cult realized secret sacrifices for high ranking members."
     },
     {
       "type": "patchouli:image",

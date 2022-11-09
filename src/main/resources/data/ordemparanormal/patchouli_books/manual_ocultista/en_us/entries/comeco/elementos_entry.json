@@ -1,12 +1,12 @@
 {
-  "name": "Elementos do Outro Lado",
+  "name": "Elements",
   "icon": "ordemparanormal:textures/gui/entries/elementos_icon.png",
   "category": "ordemparanormal:comeco_category",
   "sortnum": 0,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Os Elementos do Outro Lado são uma das principais fundações do Ocultismo. Cada um desses elementos são responsáveis por definir as características das manifestações do $(OL) na Realidade."
+      "text": "The elements of the $(OS) are one the main foundations of the occult. Each of these elements are responsible of defining the $(OS) manifestations' characteristics in our Reality."
     },
     {
       "type": "patchouli:image",
@@ -14,12 +14,12 @@
         "ordemparanormal:textures/gui/entries/outro_lado.png"
       ],
       "border": false,
-      "text": "Os elementos são $(sangue)Sangue/$, $(morte)Morte/$, $(conhecimento)Conhecimento/$, $(energia)Energia/$ e $(medo)Medo/$."
+      "text": "The elements are $(sangue)Blood/$, $(morte)Death/$, $(conhecimento)Knowledge/$, $(energia)Energy/$ and $(medo)Fear/$."
     },
     {
       "type": "patchouli:text",
-      "title": "Sangue",
-      "text": "O Sangue é a entidade do sentimento. Ele busca a intensidade: dor, obsessão, paixão, amor, fome, ódio - tudo que envolve sentir uma emoção extrema agrada a entidade de Sangue. A presença de coisas asquerosas como tripas e sangue é algo característico desse elemento."
+      "title": "Blood",
+      "text": "Blood is the entity of feeling. It seeks intensity: pain, obsession, passion, love, hunger, hatred - everything that involves feeling an extreme emotion pleases the entity of Blood. The presence of grotesque things like blood and gore is something characteristic of this element."
     },
     {
       "type": "patchouli:image",
@@ -27,12 +27,12 @@
         "ordemparanormal:textures/gui/entries/sangue_image.png"
       ],
       "border": false,
-      "text": "\"Tudo começa pelo Sangue. O Sangue é o fluxo que banha a eternidade do Outro Lado\"."
+      "text": "\"Everything begins with blood. Blood is the flow that bathes the eternity of the Other Side\"."
     },
     {
       "type": "patchouli:text",
-      "title": "Energia",
-      "text": "A Energia é a entidade do caos. Tudo que não pode ser explicado, o intangível, a anarquia. Tudo que envolve a imprevisibilidade e a transformação agrada a entidade de Energia. A presença de coisas fantasmagóricas ou brilhantes é algo característico desse elemento."
+      "title": "Energy",
+      "text": "Energy is the entity of chaos. Everything that cannot be explained, the intangible, anarchy. Everything that involves unpreditability and transformation pleases the entity of Energy. The presence of ghostly or shiny things is something characteristic of this element."
     },
     {
       "type": "patchouli:image",
@@ -40,12 +40,12 @@
         "ordemparanormal:textures/gui/entries/energia_image.png"
       ],
       "border": false,
-      "text": "\"O Caos é inevitável e tudo deve ser o caos\"."
+      "text": "\"Chaos is inevitable and everything must be chaos\"."
     },
     {
       "type": "patchouli:text",
-      "title": "Conhecimento",
-      "text": "O Conhecimento é a entidade da consciência. Descobrir, aprender, conhecer, decifrar. Ter a própria percepção do Outro Lado e suas entidades agrada o elemento de Conhecimento. A presença de sigilos e ilusões é algo característico desse elemento."
+      "title": "Knowledge",
+      "text": "Knowledge is the entity of conscience. Discover, learn, experience, decipher. Having the perception of the Other Side and it's entities pleases the entity of Knowledge. The presence of sigils and illusions is something characteristic of this element."
     },
     {
       "type": "patchouli:image",
@@ -53,12 +53,12 @@
         "ordemparanormal:textures/gui/entries/conhecimento_image.png"
       ],
       "border": false,
-      "text": "  \"Saber tudo é perder tudo\"."
+      "text": "  \"Knowing all is losing all\"."
     },
     {
       "type": "patchouli:text",
-      "title": "Morte",
-      "text": "A Morte é a entidade do tempo. Ela busca os momentos vivenciados, distorcendo a percepção egóica da existência de cada indivíduo para seu próprio agrado. A presença de coisas podres e alterações temporais é algo característico desse elemento."
+      "title": "Death",
+      "text": "Death is the entity of time. It seeks lived moments, distorting the egoic perception of each individual's existance to its own pleasure. The presence of rot and altered time is something characteristic of this element."
     },
     {
       "type": "patchouli:image",
@@ -66,12 +66,12 @@
         "ordemparanormal:textures/gui/entries/morte_image.png"
       ],
       "border": false,
-      "text": "\"Tudo tem um começo e um fim. Nada que é levado pela Morte pode voltar ao que era antes\"."
+      "text": "\"Everything has a beginning and an ending. Nothing taken by Death can return to what it was\"."
     },
     {
       "type": "patchouli:text",
-      "title": "Medo",
-      "text": "O Medo é a entidade do desconhecido. Pouco se sabe sobre esse elemento e sua existência."
+      "title": "Fear",
+      "text": "Fear is the entity of the unknown. Little is known by this element's existance."
     },
     {
       "type": "patchouli:image",
@@ -79,7 +79,7 @@
         "ordemparanormal:textures/gui/entries/medo_image.png"
       ],
       "border": false,
-      "text": "      \"O Medo é infinito\"."
+      "text": "      \"Fear is infinite\"."
     }
   ]
 }

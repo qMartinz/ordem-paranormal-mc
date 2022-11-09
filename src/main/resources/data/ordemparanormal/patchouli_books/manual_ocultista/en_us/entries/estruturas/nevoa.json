@@ -1,12 +1,12 @@
 {
-  "name": "Névoa",
+  "name": "Fog",
   "icon": "ordemparanormal:textures/gui/entries/nevoa_icon.png",
   "category": "ordemparanormal:estruturas_category",
   "sortnum": 0,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "É muito comum encontrar uma densa névoa em lugares assombrados. $(br)Quando uma área gera medo suficiente, sua membrana enfraquece, tornando-a passível para o aparecimento de atividades paranormais. A forma mais comum de enfraquecer a membrana é por sacrifícios, afinal, não há nada mais aterrorizante do que a morte e a violência."
+      "text": "It's common to find a dense fog in haunted locations. $(br)When an area creates enough fear, it's membrane weakens, making it liable to paranormal activity. The easiest way to weaken the membrane is by sacrifices, after all, nothing's scarier than death and violence."
     },
     {
       "type": "patchouli:image",
@@ -14,7 +14,7 @@
         "ordemparanormal:textures/gui/entries/nevoa.png"
       ],
       "border": true,
-      "text": "Corpos em membrana danificada se tornarão criaturas paranormais."
+      "text": "Corpses in areas with weak membrane will turn into paranormal creatures."
     }
   ]
 }

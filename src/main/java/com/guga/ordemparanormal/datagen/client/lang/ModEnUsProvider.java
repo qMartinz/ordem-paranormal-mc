@@ -70,7 +70,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add("ordemparanormal.ritual_item.ritual_unknown", "§7Seems to emanate a strange presence...");
 		add("ordemparanormal.ritual_item.cursed_with", "§7Cursed with the ritual ");
 		add("ordemparanormal.ritual_item.requires", "§7To understand this item, you require: ");
-		add("ordemparanormal.patchouli.manual_ocultista.title", "Manual do Ocultismo");
+		add("ordemparanormal.patchouli.manual_ocultista.title", "Occultism Handbook");
 		add("ordemparanormal.patchouli.manual_ocultista.landing_text", "Japa's Diary. $(br)Made for those who need a little push to understand the occult, and to share my experiences with the $(OS).$(br)Feel free to add new discoveries to this book... It's yours now.");
 		add(OPItems.ORGAO.get(), "Organ");
 		add(OPItems.CINZAS.get(), "Ashes");
@@ -164,39 +164,39 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPRituals.DESCARNAR, "Skinning",
 				"Skins the target, dealing continuous blood damage.");
 		add(OPRituals.DECADENCIA, "Decay",
-				"Imbues your next attack with spirals inflict decay.");
+				"Imbues your next attack with spirals inflict decay. Hold a sword and keep the ingredients in your inventory to use this ritual.");
 		add(OPRituals.CICATRIZACAO, "Cicatrization",
-				"Heals the your wounds or your target's.");
+				"Heals three hearts for you or your target.");
 		add(OPRituals.CONSUMIR_MANANCIAL, "Consume Lifeforce",
-				"Consumes the surrounding life, fortifying yours.");
+				"Consumes the surrounding life, giving you three temporary hearts of life.");
 		add(OPRituals.ARMADURA_SANGUE, "Blood Armor",
-				"Uses your blood to harden your skin, serving as armor.");
+				"Uses your blood to harden your skin, giving you four armor points.");
 		add(OPRituals.ARMA_ATROZ, "Atrocious Weapon",
-				"Makes the weapon you're holding more dangerous.");
+				"Makes the weapon you're holding more dangerous, now dealing more damage. Hold a sword and keep the ingredients in your inventory to use this ritual.");
 		add(OPRituals.ARMA_VELOZ, "Nimble Weapon",
-				"Makes the weapon you're holding more swift.");
+				"Makes the weapon you're holding more swift. Hold a sword and keep the ingredients in your inventory to use this ritual.");
 		add(OPRituals.AMALDICOAR_ARMA, "Curse Weapon",
-				"Curses the weapon you're holding with knowledge sigils.");
+				"Curses the weapon you're holding with knowledge sigils, now dealing more damage. Hold a sword and keep the ingredients in your inventory to use this ritual.");
 		add(OPRituals.HEMOFAGIA, "Hematophagy",
-				"Sucks the target's blood, transfering their vitality to you.");
+				"Sucks the target's blood, transfering four and a half hearts to you.");
 		add(OPRituals.APRIMORAMENTO_FISICO, "Physical Upgrade",
-				"Makes your body reach extraordinary physical conditions, making you more resistant and powerful.");
+				"Makes your body reach extraordinary physical conditions, giving you resistance and strength effects.");
 		add(OPRituals.LAMINA_MEDO, "Fear's Blade",
-				"Conjures an impossible flame, a glimpse of something that shouldn't exist, on the blade that you're holding, which begins to deal lethal amounts of damage.");
+				"Conjures an impossible flame, a glimpse of something that shouldn't exist, on the blade that you're holding, which begins to deal lethal amounts of damage. Hold a sword to use this ritual.");
 		add(OPRituals.VELOCIDADE_MORTAL, "Deadly Velocity",
-				"Alters the time perception of your body, that starts to reach extraordinary speeds.");
+				"Alters the time perception of your body, that starts to reach extraordinary speeds, giving you the effect of speed.");
 		add(OPRituals.MEDO_TANGIVEL, "Tangible Fear",
 				"Your body becomes a manifestation of Fear, making you immune to mundane effects. You become immune to any non-paranormal damage source.");
 		add(OPRituals.TRANSFERENCIA_VITAL, "Vitality Transfer",
-				"Transfers your vitality to your target.");
+				"Transfers four and a half hearts to your target.");
 		add(OPRituals.SALTO_FANTASMA, "Phantom Jump",
 				"Teleports you 10 blocks away in the direction you are looking.");
 		add(OPRituals.TELEPORTE, "Teleport",
-				"If used while crouching, saves the current location, and then if used without crouching, teleports you to the saved location.");
+				"If used while crouching, saves the current location, and then if used without crouching, teleports you or your target to the saved location.");
 		add(OPRituals.ESPIRAIS_DA_PERDICAO, "Spirals of Doom",
-				"When used it weakens the target");
+				"When used, weakens the target, causing the weakness effect.");
 		add(OPRituals.LUZ, "Light",
-				"Creates a shiny orb of pure energy.");
+				"Creates a shiny orb of pure energy. The orb can be easily broken by human fists and is intangible.");
 		add(OPRituals.INEXISTIR, "Unexist",
 				"Distorts your target's existance, dealing serious amounts of Knowledge damage.");
 		add(OPRituals.PERTURBACAO, "Disturbance",

@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Os Elementos do Outro Lado são uma das principais fundações do Ocultismo. Cada um desses elementos são responsáveis por definir as características das manifestações do $(OL) na Realidade."
+      "text": "Os Elementos do $(OL) são uma das principais fundações do Ocultismo. Cada um desses elementos são responsáveis por definir as características das manifestações do $(OL) na Realidade."
     },
     {
       "type": "patchouli:image",

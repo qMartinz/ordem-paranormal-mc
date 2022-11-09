@@ -1,6 +1,6 @@
 {
-    "name": "Ocultistas",
-    "description": "Diversas pessoas já tentaram comungar com o $(OL), mas muitas se perderam na loucura. Porém, os poucos que conseguiram manter sua sanidade intacta são conhecidos como Ocultistas...",
+    "name": "Occultists",
+    "description": "Many have tried to commune wit the $(OS), but many lost themselves in madness. But, the small portion that managed to maintain their sanity, are known as occultists...",
     "icon": "minecraft:emerald",
     "sortnum": 1
 }

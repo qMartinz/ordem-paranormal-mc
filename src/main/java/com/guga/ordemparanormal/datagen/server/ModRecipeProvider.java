@@ -49,19 +49,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(OPItems.COMPONENTE_SANGUE.get()).requires(OPItems.COMPONENTE_VAZIO.get())
                 .requires(OPItems.ORGAO.get()).requires(OPTags.RAW_MEATS).requires(Items.ROTTEN_FLESH)
                 .unlockedBy("has_empty_component", has(OPItems.COMPONENTE_VAZIO.get()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_SANGUE.get().getDescriptionId() + "_refilled"));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_SANGUE.getId().getPath() + "_refilled"));
         ShapelessRecipeBuilder.shapeless(OPItems.COMPONENTE_CONHECIMENTO.get()).requires(OPItems.COMPONENTE_VAZIO.get())
                 .requires(Items.GLOWSTONE).requires(Items.RAW_GOLD).requires(Tags.Items.GLASS)
                 .unlockedBy("has_empty_component", has(OPItems.COMPONENTE_VAZIO.get()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_CONHECIMENTO.get().getDescriptionId() + "_refilled"));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_CONHECIMENTO.getId().getPath() + "_refilled"));
         ShapelessRecipeBuilder.shapeless(OPItems.COMPONENTE_MORTE.get()).requires(OPItems.COMPONENTE_VAZIO.get())
                 .requires(OPItems.CINZAS.get()).requires(Items.BONE).requires(Tags.Items.SAND)
                 .unlockedBy("has_empty_component", has(OPItems.COMPONENTE_VAZIO.get()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_MORTE.get().getDescriptionId() + "_refilled"));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_MORTE.getId().getPath() + "_refilled"));
         ShapelessRecipeBuilder.shapeless(OPItems.COMPONENTE_ENERGIA.get()).requires(OPItems.COMPONENTE_VAZIO.get())
                 .requires(Items.SOUL_TORCH).requires(Items.AMETHYST_SHARD).requires(Items.RAW_COPPER)
                 .unlockedBy("has_empty_component", has(OPItems.COMPONENTE_VAZIO.get()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_ENERGIA.get().getDescriptionId() + "_refilled"));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(OrdemParanormal.MOD_ID, OPItems.COMPONENTE_ENERGIA.getId().getPath() + "_refilled"));
 
         ShapedRecipeBuilder.shaped(OPBlocks.ALTAR_TRANSCENDER.get())
                 .define('S', Tags.Items.STONE).define('P', Items.PAPER).define('I', Items.INK_SAC)

@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-20221102indev'
+version = '1.18.2-20221108indev'
 group = 'com.guga.ordemparanormal'
 archivesBaseName = 'ordemparanormal'
 
@@ -80,7 +80,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.51'
-    implementation fg.deobf("com.teamabnormals:blueprint:1.18.2-5.3.2")
+    implementation fg.deobf("com.teamabnormals:blueprint:1.18.2-5.4.0")
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
 }

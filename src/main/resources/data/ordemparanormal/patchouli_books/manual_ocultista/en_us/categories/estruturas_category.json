@@ -1,6 +1,6 @@
 {
-    "name": "Lugares Assombrados",
-    "description": "Há muitos locais assombrados pelas terríveis forças do $(OL), neles você poderá encontrar criaturas paranormais, objetos amaldiçoados e uma névoa aterrorizante...",
+    "name": "Haunted Locations",
+    "description": "There are many locations aunted by the $(OS). in them you can find paranormal creatures, cursed items and a terrifying fog...",
     "icon": "ordemparanormal:mesa_sangue",
     "sortnum": 4
 }

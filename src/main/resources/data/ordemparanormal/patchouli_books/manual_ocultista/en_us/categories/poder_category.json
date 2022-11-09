@@ -1,6 +1,6 @@
 {
-    "name": "Poderes Paranormais",
-    "description": "Ser exposto ao paranormal inevitavelmente te tornará parte dele. Ao atingir níveis de exposição altos o suficiente, você poderá receber benefícios dados pelo $(OL), mas a que custo?",
+    "name": "Paranormal Powers",
+    "description": "Being exposed to the paranormal will inevitably make you part of it. When reaching high enough levels of exposure, you can receive benefits given by the $(OS), but at what cost?",
     "icon": "ordemparanormal:pergaminho_antigo",
     "sortnum": 3
 }

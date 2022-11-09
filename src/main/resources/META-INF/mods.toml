@@ -3,7 +3,7 @@ loaderVersion="[40,)"
 license="Apache License Version 2.0"
 [[mods]]
 modId="ordemparanormal"
-version="20221102indev"
+version="20221108indev"
 displayName="Ordem Paranormal"
 logoFile="ordemparanormal.png"
 credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e à equipe do OP Mod por tornar esse projeto algo real."
@@ -24,12 +24,12 @@ description='''O Paranormal não vem para a nossa realidade facilmente, ou pelo 
 [[dependencies.ordemparanormal]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[5.3.2,)"
+    versionRange = "[5.4.0,)"
     ordering = "BEFORE"
     side = "BOTH"
 [[dependencies.ordemparanormal]]
 modId = "patchouli"
 mandatory = true
-versionRange = "[1.18.2-71.1,)"
+versionRange = "[1.18.2-71,)"
 ordering = "BEFORE"
 side = "BOTH"

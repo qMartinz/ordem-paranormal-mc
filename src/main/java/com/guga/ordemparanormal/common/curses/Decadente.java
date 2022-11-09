@@ -11,8 +11,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public class Decadente extends AbstractCurse {
-    public Decadente() {
-        super("decadente", ParanormalElement.MORTE, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
+    public Decadente(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+        super(id, element, category, slots);
     }
     @Override
     public int getMaxUses() {

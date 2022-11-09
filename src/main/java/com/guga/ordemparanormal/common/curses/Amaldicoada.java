@@ -12,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Random;
 
 public class Amaldicoada extends AbstractCurse {
-    public Amaldicoada() {
-        super("amaldicoada", ParanormalElement.CONHECIMENTO, CurseCategory.WEAPON, EquipmentSlot.MAINHAND);
+    public Amaldicoada(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+        super(id, element, category, slots);
     }
     public int getMaxUses() {
         return 8;

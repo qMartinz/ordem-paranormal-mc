@@ -21,9 +21,9 @@ public class Perturbacao extends AbstractRitual {
             @Nullable ItemStack ritualItem, @Nullable InteractionHand hand) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
 
-        MobEffectInstance stop = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100, false, false);
+        MobEffectInstance stop = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100, false, false, false);
         target.addEffect(stop);
-        MobEffectInstance jump = new MobEffectInstance(MobEffects.JUMP, 200, -6, false, false);
+        MobEffectInstance jump = new MobEffectInstance(MobEffects.JUMP, 200, -6, false, false, false);
         target.addEffect(jump);
     }
 }

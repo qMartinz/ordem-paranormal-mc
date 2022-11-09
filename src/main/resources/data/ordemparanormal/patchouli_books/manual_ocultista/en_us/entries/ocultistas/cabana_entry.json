@@ -1,12 +1,12 @@
 {
-  "name": "Cabana de Ocultista",
+  "name": "Occultist Cabin",
   "icon": "minecraft:bricks",
   "category": "ordemparanormal:ocultistas_category",
   "sortnum": 0,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Quando estiver viajando pelo mundo, talvez você encontre uma cabana humilde isolada pelo mundo. Essas são as casas dos Aldeões Ocultistas, aldeões que decidiram se isolar para proteger vilarejos de seus experimentos com o paranormal. $(br)Nessas cabanas, você encontrará uma moradia simples, com uma mesa de maldição."
+      "text": "When travelling around the world, maybe you will find a humble cabin. They are houses for the occultist villagers, villagers that decided to isolate themselves to protect villages from their experiments with the paranormal. $(br)In these cabins you will find a simples home, with a curse table."
     },
     {
       "type": "patchouli:image",
