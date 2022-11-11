@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.entity;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
+import com.guga.ordemparanormal.common.goals.AberracaoAttackGoal;
 import com.guga.ordemparanormal.common.goals.AbocanharGoal;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.teamabnormals.blueprint.core.endimator.Endimatable;
@@ -31,7 +32,7 @@ public class AberracaoCarne extends ParanormalCreature implements Endimatable {
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(3, new AbocanharGoal(this));
-        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(4, new AberracaoAttackGoal(this, 1.0D, false));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));

@@ -10,7 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
     private int ticksUntilNextAttack;
-    private final int attackInterval = 800;
+    private final int attackInterval = 650;
     public AbocanharGoal(AberracaoCarne entity) {
         super(entity, OPEndimations.ABERRACAO_ABOCANHAR);
     }
@@ -19,7 +19,7 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
         LivingEntity livingentity = this.entity.getTarget();
         this.ticksUntilNextAttack = Math.max(this.ticksUntilNextAttack - 1, 0);
         if (livingentity != null && livingentity.isAlive() && isTimeToAttack()) {
-            return this.getAttackReachSqr(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ());
+            return this.getAttackReach(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ());
         } else return false;
     }
     @Override
@@ -28,7 +28,7 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
         this.ticksUntilNextAttack = 0;
     }
     protected void performGrab(LivingEntity pEnemy, double pDistToEnemySqr){
-        double d0 = this.getAttackReachSqr(pEnemy);
+        double d0 = this.getAttackReach(pEnemy);
         if (pDistToEnemySqr <= d0 && this.isTimeToAttack()) {
             this.resetAttackCooldown();
             // Grab
@@ -45,13 +45,13 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
                 this.entity.setDeltaMovement(0, this.entity.getDeltaMovement().y, 0);
             }
 
-            if (this.isEndimationPastOrAtTick(10) && this.getAttackReachSqr(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ())){
+            if (this.isEndimationPastOrAtTick(5) && this.getAttackReach(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ())){
                 double motionX = (this.entity.getX() - livingentity.getX());
                 double motionZ = (this.entity.getZ() - livingentity.getZ());
                 livingentity.setDeltaMovement(motionX, 0d, motionZ);
             }
 
-            if (this.isEndimationAtTick(20) && this.getAttackReachSqr(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ())){
+            if (this.isEndimationAtTick(10) && this.getAttackReach(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ())){
                 livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 25f);
                 livingentity.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 200));
             }
@@ -75,7 +75,7 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
     protected boolean isTimeToAttack() {
         return this.getTicksUntilNextAttack() <= 0;
     }
-    protected double getAttackReachSqr(LivingEntity pAttackTarget) {
+    protected double getAttackReach(LivingEntity pAttackTarget) {
         return this.entity.getBbWidth() * 2.0F * this.entity.getBbWidth() * 2.0F + pAttackTarget.getBbWidth();
     }
 }
