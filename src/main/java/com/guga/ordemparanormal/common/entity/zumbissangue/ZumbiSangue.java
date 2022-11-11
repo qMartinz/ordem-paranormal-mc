@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
-		super(type, level, 50, ParanormalElement.SANGUE);
+		super(type, level, 20, ParanormalElement.SANGUE);
 	}
 
 	// AI e comportamento

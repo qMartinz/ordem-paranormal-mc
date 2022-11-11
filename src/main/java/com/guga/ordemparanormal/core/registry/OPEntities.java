@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
+import com.guga.ordemparanormal.common.entity.AberracaoCarne;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
@@ -33,6 +34,8 @@ public final class OPEntities {
 			"villager_corpo", VillagerCorpo::new, MobCategory.AMBIENT, 1.2F, 0.2F);
 	public static final RegistryObject<EntityType<Nevoa>> NEVOA = HELPER.createEntity(
 			"nevoa", Nevoa::new, Nevoa::new, MobCategory.MISC, 0F, 0F);
+	public static final RegistryObject<EntityType<AberracaoCarne>> ABERRACAO_CARNE = HELPER.createLivingEntity(
+			"aberracao_carne", AberracaoCarne::new, MobCategory.MONSTER, 2f, 3f);
 	
 	// Registrar Atributos
 	@SubscribeEvent
@@ -42,5 +45,6 @@ public final class OPEntities {
 		event.put(OPEntities.ZUMBI_SECO.get(), ZumbiSeco.createZumbiSecoAttributes().build());
 		event.put(OPEntities.ZUMBI_ESPINHENTO.get(), ZumbiEspinhento.createZumbiEspinhentoAttributes().build());
 		event.put(OPEntities.VILLAGER_CORPO.get(), VillagerCorpo.createCorpseAttributes().build());
+		event.put(OPEntities.ABERRACAO_CARNE.get(), AberracaoCarne.createAberracaoAttributes().build());
 	}
 }

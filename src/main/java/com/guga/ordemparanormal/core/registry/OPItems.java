@@ -97,6 +97,8 @@ public final class OPItems {
 			"zumbi_seco", OPEntities.ZUMBI_SECO::get, 7999247, 2428687);
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_ESPINHENTO_OVO = HELPER.createSpawnEggItem(
 			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
+	public static final RegistryObject<ForgeSpawnEggItem> ABERRACAO_CARNE_OVO = HELPER.createSpawnEggItem(
+			"aberracao_carne", OPEntities.ABERRACAO_CARNE::get, 0x8E392F, 0xD01431);
 
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens

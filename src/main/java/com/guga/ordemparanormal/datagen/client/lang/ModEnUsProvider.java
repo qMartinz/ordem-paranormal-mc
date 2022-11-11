@@ -11,34 +11,11 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraftforge.common.data.LanguageProvider;
 
-public class ModEnUsProvider extends LanguageProvider {
+public class ModEnUsProvider extends ModLangProvider {
 
 	public ModEnUsProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
 	}
-
-	private void add(AbstractRitual ritual, String name, String description) {
-		add(ritual.getTranslationKey(), name);
-		add(ritual.getTranslationKey() + ".description", description);
-	}
-	private void add(PlayerPower power, String name, String description) {
-		add(power.getTranslationKey(), name);
-		add(power.getTranslationKey() + ".description", description);
-	}
-	public void add(VillagerProfession key, String name) {
-		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
-	}
-	public void addDeath(String key, String translation){
-		add("death.attack." + key, translation);
-	}
-	public void addAdvancement(String id, String title, String description){
-		add("ordemparanormal.advancement." + id + ".title", title);
-		add("ordemparanormal.advancement." + id + ".description", description);
-	}
-	public void addSubtitle(String id, String subtitle){
-		add("subtitles.ordemparanormal." + id, subtitle);
-	}
-
 	// Adicionar traduções em EN-US
 	@Override
 	protected void addTranslations() {
@@ -118,6 +95,7 @@ public class ModEnUsProvider extends LanguageProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Blood zombie spawn egg");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Skeletal Blood zombie spawn egg");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
+			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
 
 		// -------------------------------------------------------------
 
@@ -127,6 +105,7 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPEntities.VILLAGER_CORPO.get(), "Villager corpse");
 		add(OPEntities.ZUMBI_SECO.get(), "Skeletal Blood zombie");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Spiky Blood zombie");
+		add(OPEntities.ABERRACAO_CARNE.get(), "Flesh aberration");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Blood Occultist");

@@ -11,34 +11,11 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraftforge.common.data.LanguageProvider;
 
-public class ModPtBrProvider extends LanguageProvider {
+public class ModPtBrProvider extends ModLangProvider {
 
 	public ModPtBrProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "pt_br");
 	}
-
-	private void add(AbstractRitual ritual, String name, String description) {
-		add(ritual.getTranslationKey(), name);
-		add(ritual.getTranslationKey() + ".description", description);
-	}
-	private void add(PlayerPower power, String name, String description) {
-		add(power.getTranslationKey(), name);
-		add(power.getTranslationKey() + ".description", description);
-	}
-	public void add(VillagerProfession key, String name) {
-		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
-	}
-	public void addDeath(String key, String translation){
-		add("death.attack." + key, translation);
-	}
-	public void addAdvancement(String id, String title, String description){
-		add("ordemparanormal.advancement." + id + ".title", title);
-		add("ordemparanormal.advancement." + id + ".description", description);
-	}
-	public void addSubtitle(String id, String subtitle){
-		add("subtitles.ordemparanormal." + id, subtitle);
-	}
-
 	// Adicionar traduções em PT-BR
 	@Override
 	protected void addTranslations() {
@@ -118,6 +95,7 @@ public class ModPtBrProvider extends LanguageProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Ovo gerador de zumbi de Sangue");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Ovo gerador de zumbi de Sangue seco");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Ovo gerador de zumbi de Sangue espinhento");
+			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
 
 		// -------------------------------------------------------------
 
@@ -127,6 +105,7 @@ public class ModPtBrProvider extends LanguageProvider {
 		add(OPEntities.VILLAGER_CORPO.get(), "Corpo de Aldeão");
 		add(OPEntities.ZUMBI_SECO.get(), "Zumbi de Sangue seco");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
+		add(OPEntities.ABERRACAO_CARNE.get(), "Aberração de carne");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Ocultista de Sangue");

@@ -126,10 +126,12 @@ public class Nevoa extends Entity {
 				this.setLife(l);
 
 				for (CorpoEntity corpo : corpos) {
-					if (corpo.isAlive() && !ExpModel.get(corpo).isMaxExp()) {
-						float i = ExpModel.get(corpo).getExposure();
-						ExpModel.get(corpo).setExposure(i + (float) this.getIntensity() / 2);
-					} else if (corpo.isAlive() && ExpModel.get(corpo).isMaxExp()) {
+					ExpModel expModel = ExpModel.get(corpo);
+
+					if (corpo.isAlive() && !expModel.isMaxExp()) {
+						float exp = expModel.getExposure();
+						expModel.setExposure(exp + (float) this.getIntensity() / 2);
+					} else if (corpo.isAlive() && expModel.isMaxExp()) {
 						List<Mob> zumbis = new ArrayList<>();
 						zumbis.add(new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), corpo.level));
 						zumbis.add(new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), corpo.level));
@@ -144,7 +146,7 @@ public class Nevoa extends Entity {
 				for (Monster monstro : monstros) {
 					ExpModel expModel = ExpModel.get(monstro);
 
-					if (monstro instanceof Zombie) {
+					if (monstro.isAlive() && monstro instanceof Zombie) {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()) {
@@ -153,7 +155,7 @@ public class Nevoa extends Entity {
 						}
 					}
 
-					if (monstro instanceof Skeleton){
+					if (monstro.isAlive() && monstro instanceof Skeleton){
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()){
@@ -167,6 +169,7 @@ public class Nevoa extends Entity {
 				--l;
 				this.setLife(l);
 			}
+
 			if (this.getLife() < 1){
 				this.discard();
 			}
@@ -174,13 +177,12 @@ public class Nevoa extends Entity {
 			// Adiciona 10XP para players com 0% dentro da névoa
 			List<Player> players = this.level.getEntitiesOfClass(Player.class,
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-			if (!players.isEmpty()) {
-				for (Player player : players) {
-					player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-						if (playerNex.getNex() == 0) playerNex.addNexXp(10);
-					});
-					if (player instanceof ServerPlayer serverPlayer) OPTriggers.ENTER_FOG.trigger(serverPlayer);
-				}
+
+			for (Player player : players) {
+				player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+					if (playerNex.getNex() == 0) playerNex.addNexXp(10);
+				});
+				if (player instanceof ServerPlayer serverPlayer) OPTriggers.ENTER_FOG.trigger(serverPlayer);
 			}
 		}
 	}

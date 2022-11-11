@@ -95,6 +95,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 		spawnEggItem(OPItems.ZUMBI_SANGUE_OVO.get());
 		spawnEggItem(OPItems.ZUMBI_SECO_OVO.get());
 		spawnEggItem(OPItems.ZUMBI_ESPINHENTO_OVO.get());
+		spawnEggItem(OPItems.ABERRACAO_CARNE_OVO.get());
 
 		// Itens
 		oneLayerItem(OPItems.ORGAO.get());
