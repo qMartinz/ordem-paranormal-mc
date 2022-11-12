@@ -30,15 +30,21 @@ public class ModEnUsProvider extends ModLangProvider {
 		addSubtitle("zumbi_sangue.hurt", "Blood zombie is hurt");
 		addSubtitle("zumbi_sangue.death", "Blood zombie is killed");
 		addSubtitle("zumbi_sangue.convert", "Blood zombie converts to bestial Blood zombie");
-		addSubtitle("ritual_learned", "Ritual is learned");
-		addSubtitle("ritual_forgotten", "Ritual is forgotten");
-		addSubtitle("ritual_used", "Ritual is used");
-		addSubtitle("ritual_failed", "Ritual fails");
+		addSubtitle("ritual.learned", "Ritual is learned");
+		addSubtitle("ritual.forgotten", "Ritual is forgotten");
+		addSubtitle("ritual.used", "Ritual is used");
+		addSubtitle("ritual.failed", "Ritual fails");
 		addSubtitle("blood_power_used", "Blood power is used");
 		addSubtitle("energy_power_used", "Energy power is used");
 		addSubtitle("death_power_used", "Death power is used");
 		addSubtitle("knowledge_power_used", "Knowledge power is used");
 		addSubtitle("fear_power_used", "Fear power is used");
+		addSubtitle("aberracao.death", "Flesh aberration dies");
+		addSubtitle("aberracao.hurt", "Flesh aberration is hurt");
+		addSubtitle("aberracao.idle", "Flesh aberration moans in pain");
+		addSubtitle("aberracao.step", "Flesh aberration walking");
+		addSubtitle("aberracao.attack", "Flesh aberration attacks");
+		addSubtitle("aberracao.abocanhar", "Flesh aberration bites");
 
 		// -------------------------------------------------------------
 

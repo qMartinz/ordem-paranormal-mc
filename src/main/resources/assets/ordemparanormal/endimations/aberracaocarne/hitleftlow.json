@@ -83,7 +83,7 @@
 				},
 				{
 					"time": 0.25,
-					"transform": [-1.25, 0, -0.25],
+					"transform": [1.25, 0, -0.25],
 					"interpolation": {
 						"type": "catmullrom"
 					}

@@ -30,15 +30,21 @@ public class ModPtBrProvider extends ModLangProvider {
 		addSubtitle("zumbi_sangue.hurt", "Zumbi de Sangue é ferido");
 		addSubtitle("zumbi_sangue.death", "Zumbi de Sangue é morto");
 		addSubtitle("zumbi_sangue.convert", "Zumbi de Sangue converte-se em zumbi de Sangue bestial");
-		addSubtitle("ritual_learned", "Ritual é aprendido");
-		addSubtitle("ritual_forgotten", "Ritual é esquecido");
-		addSubtitle("ritual_used", "Ritual é utilizado");
-		addSubtitle("ritual_failed", "Ritual falha");
+		addSubtitle("ritual.learned", "Ritual é aprendido");
+		addSubtitle("ritual.forgotten", "Ritual é esquecido");
+		addSubtitle("ritual.used", "Ritual é utilizado");
+		addSubtitle("ritual.failed", "Ritual falha");
 		addSubtitle("blood_power_used", "Poder de Sangue é utilizado");
 		addSubtitle("energy_power_used", "Poder de Energia é utilizado");
 		addSubtitle("death_power_used", "Poder de Morte é utilizado");
 		addSubtitle("knowledge_power_used", "Poder de Conhecimento é utilizado");
 		addSubtitle("fear_power_used", "Poder de Medo é utilizado");
+		addSubtitle("aberracao.death", "Aberração de carne morre");
+		addSubtitle("aberracao.hurt", "Aberração de carne é ferida");
+		addSubtitle("aberracao.idle", "Aberração de carne geme de dor");
+		addSubtitle("aberracao.step", "Aberração de carne caminha");
+		addSubtitle("aberracao.attack", "Aberração de carne ataca");
+		addSubtitle("aberracao.abocanhar", "Aberração de carne abocanha");
 
 		// -------------------------------------------------------------
 

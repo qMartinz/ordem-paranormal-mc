@@ -186,7 +186,7 @@
 				},
 				{
 					"time": 0.5,
-					"transform": [-2, 0, 0.25],
+					"transform": [2, 0, 0.25],
 					"interpolation": {
 						"type": "catmullrom"
 					}
@@ -323,14 +323,14 @@
 				},
 				{
 					"time": 0.5,
-					"transform": [0.75, -0.5, 4],
+					"transform": [-0.75, -0.5, 4],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
 					"time": 1,
-					"transform": [0.75, -0.5, 4],
+					"transform": [-0.75, -0.5, 4],
 					"interpolation": {
 						"type": "catmullrom"
 					}
@@ -385,14 +385,14 @@
 				},
 				{
 					"time": 0.5,
-					"transform": [1, 0, 0],
+					"transform": [-1, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
 					"time": 1,
-					"transform": [1, 0, 0],
+					"transform": [-1, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}

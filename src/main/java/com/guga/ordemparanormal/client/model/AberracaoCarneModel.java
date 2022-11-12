@@ -87,7 +87,7 @@ public class AberracaoCarneModel<T extends AberracaoCarne> extends EndimatorEnti
 		super.setupAnim(entity, limbSwing, limbSwingAmount, p_102621_, p_102622_, p_102623_);
 		assert walking != null;
 		float length = walking.getLength();
-		float adjustedLimbSwingAmount = 4.0F * limbSwingAmount / length;
+		float adjustedLimbSwingAmount = 6.0F * limbSwingAmount / length;
 		if (adjustedLimbSwingAmount > 1.0F) {
 			adjustedLimbSwingAmount = 1.0F;
 		}
