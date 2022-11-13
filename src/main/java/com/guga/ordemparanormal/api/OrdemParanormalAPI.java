@@ -32,7 +32,7 @@ public class OrdemParanormalAPI {
         if(!ritualMap.containsKey(id))
             return null;
         try{
-            return ritualMap.get(id).getClass().getDeclaredConstructor().newInstance();
+            return ritualMap.get(id);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -30,12 +30,14 @@ public final class CurseInstance implements INBTSerializable<CompoundTag> {
         this.uses = uses;
     }
     public void useOrRemove(ItemStack pStack){
-        int newUses = uses + 1;
-        if (newUses == curse.getMaxUses()){
-            CurseHelper.removeCurse(pStack, this.curse);
-        } else {
-            this.uses = newUses;
-            CurseHelper.addCurse(pStack, this);
+        if (curse.getMaxUses() > 0) {
+            int newUses = uses + 1;
+            if (newUses == curse.getMaxUses()) {
+                CurseHelper.removeCurse(pStack, this.curse);
+            } else {
+                this.uses = newUses;
+                CurseHelper.addCurse(pStack, this);
+            }
         }
     }
     @Override

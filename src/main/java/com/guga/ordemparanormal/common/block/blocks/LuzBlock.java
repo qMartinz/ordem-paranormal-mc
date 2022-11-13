@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.block;
+package com.guga.ordemparanormal.common.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

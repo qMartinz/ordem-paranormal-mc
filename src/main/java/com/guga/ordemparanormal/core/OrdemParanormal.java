@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.core;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
+import com.guga.ordemparanormal.client.screen.BloodTableScreen;
 import com.guga.ordemparanormal.common.OPItemProperties;
 import com.guga.ordemparanormal.core.network.ClientProxy;
 import com.guga.ordemparanormal.core.network.IProxy;
@@ -10,6 +11,7 @@ import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -68,6 +70,7 @@ public class OrdemParanormal {
 		OPProfessions.register(bus);
 		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
 		OPTriggers.init();
+		OPMenuTypes.MENUS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 
@@ -104,6 +107,8 @@ public class OrdemParanormal {
 		Overlay.registerOverlays();
 
 		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ_BLOCK.get(), RenderType.translucent());
+
+		MenuScreens.register(OPMenuTypes.BLOOD_TABLE_MENU.get(), BloodTableScreen::new);
 
 		event.enqueueWork(OPItemProperties::register);
 	}

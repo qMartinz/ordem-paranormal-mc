@@ -344,30 +344,32 @@ public class ModEnUsProvider extends ModLangProvider {
 
 		// -------------------------------------------------------------
 
+		//Mensagem de comandos
+		add("ordemparanormal.commands.nex.attributes.points.add.success", "Attribute points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.points.remove.success", "Attribute points successfully removed.");
+		add("ordemparanormal.commands.nex.attributes.vigor.add.success", "Vigor points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.vigor.remove.success", "Vigor points successfully removed.");
+		add("ordemparanormal.commands.nex.attributes.strength.add.success", "Strength points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.strength.remove.success", "Strength points successfully removed.");
+		add("ordemparanormal.commands.nex.attributes.presence.add.success", "Presence points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.presence.remove.success", "Presence points successfully removed.");
+		add("ordemparanormal.commands.nex.powers.points.add.success", "Power points successfully added.");
+		add("ordemparanormal.commands.nex.powers.points.remove.success", "Power points successfully removed.");
+		add("ordemparanormal.commands.nex.powers.add.success", "%1$s successfully added.");
+		add("ordemparanormal.commands.nex.powers.remove.success", "%1$s successfully removed.");
+		add("ordemparanormal.commands.nex.rituals.slots.add.success", "Ritual slots successfully added.");
+		add("ordemparanormal.commands.nex.rituals.slots.remove.success", "Ritual slots successfully removed.");
+		add("ordemparanormal.commands.nex.rituals.add.success", "%1$s successfully added.");
+		add("ordemparanormal.commands.nex.rituals.remove.success", "%1$s successfully removed.");
+
+		// -------------------------------------------------------------
+
 		// Progresso
 		addAdvancement("root", "Other Side", "The paranormal doesn't come to our reality easily... Or atleast it should be that way.");
 		addAdvancement("enter_fog", "Lack of Visibility", "The humid atmosphere created by this dense fog is truly terrifying... Is this even natural?");
 		addAdvancement("learn_ritual", "Understand the Other Side", "Aha! I finally understand this cursed item, that was it the entire time! All I needed to do was TRANSCEND...");
 		addAdvancement("receive_power", "Capabilities of the Other Side", "What a strange sensation. This is definitely not normal but... it's very cool.");
 		addAdvancement("paranormal_creature", "Abominations of the Other Side", "That was... What even was that?! I thought they were just tales, it can't be...");
-		addAdvancement("amaldicoar_arma", "Curse Weapon", "Learn the ritual \"Amaldiçoar Arma\".");
-		addAdvancement("aprimoramento_fisico", "Physical Upgrade", "Learn the ritual \"Physical Upgrade\".");
-		addAdvancement("arma_atroz", "Atrocious Weapon", "Learn the ritual \"Atrocious Weapon\".");
-		addAdvancement("arma_veloz", "Nimble Weapon", "Learn the ritual \"Nimble Weapon\".");
-		addAdvancement("armadura_sangue", "Blood Armor", "Learn the ritual \"Blood Armor\".");
-		addAdvancement("cicatrizacao", "Cicatrization", "Learn the ritual \"Cicatrization\".");
-		addAdvancement("consumir_manancial", "Consume Lifeforce", "Learn the ritual \"Consume Lifeforce\".");
-		addAdvancement("decadencia", "Decay", "Learn the ritual \"Decay\".");
-		addAdvancement("descarnar", "Skinning", "Learn the ritual \"Skinning\".");
-		addAdvancement("espirais_da_perdicao", "Spirals of Doom", "Learn the ritual \"Spirals of Doom\".");
-		addAdvancement("hemofagia", "Hematophagy", "Learn the ritual \"Hematophagy\".");
-		addAdvancement("inexistir", "Unexist", "Learn the ritual \"Unexist\".");
-		addAdvancement("luz", "Light", "Learn the ritual \"Light\".");
-		addAdvancement("perturbacao", "Disturbance", "Learn the ritual \"Disturbance\".");
-		addAdvancement("salto_fantasma", "Phantom Jump", "Learn the ritual \"Phantom Jump\".");
-		addAdvancement("teleporte", "Teleport", "Learn the ritual \"Teleport\".");
-		addAdvancement("transferencia_vital", "Vitality Transfer", "Learn the ritual \"Vitality Transfer\".");
-		addAdvancement("velocidade_mortal", "Deadly Velocity", "Learn the ritual \"Deadly Velocity\".");
 
 		// --------------------------------------------------------------
 

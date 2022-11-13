@@ -1,9 +1,9 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.common.block.AltarTranscender;
-import com.guga.ordemparanormal.common.block.LuzBlock;
-import com.guga.ordemparanormal.common.block.MesaMaldicao;
+import com.guga.ordemparanormal.common.block.blocks.AltarTranscender;
+import com.guga.ordemparanormal.common.block.blocks.LuzBlock;
+import com.guga.ordemparanormal.common.block.blocks.MesaMaldicao;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;

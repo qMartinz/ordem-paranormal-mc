@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.client;
 
 import com.guga.ordemparanormal.client.screen.AttributeScreen;
-import com.guga.ordemparanormal.common.block.AltarTranscender;
+import com.guga.ordemparanormal.common.block.blocks.AltarTranscender;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.client.Minecraft;

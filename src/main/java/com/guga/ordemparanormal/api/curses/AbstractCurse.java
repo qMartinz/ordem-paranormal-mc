@@ -63,15 +63,30 @@ public abstract class AbstractCurse {
 
         return name;
     }
+    /**
+     * Realiza seu efeito quando o usuário ataca.
+     * @return a quantidade de dano após o efeito da maldição.
+     */
     public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         CurseHelper.getCurse(pStack, this).useOrRemove(pStack);
         return amount;
     }
+    /**
+     * Realiza seu efeito quando o usuário é atacado.
+     * @return a quantidade de dano após o efeito da maldição.
+     */
     public float doPostHurt(ItemStack pStack, LivingEntity pTarget, @Nullable Entity pAttacker, float amount, DamageSource source) {
         CurseHelper.getCurse(pStack, this).useOrRemove(pStack);
         return amount;
     }
+    /**
+     * Realiza seu efeito a cada tick.
+     */
     public void doTick(ItemStack pStack, LivingEntity pUser) {}
+    /**
+     * Mantenha os usos máximos como 0 para uma maldição permanente.
+     * @return quantos usos essa maldição pode ter.
+     */
     public int getMaxUses() {
         return 0;
     }

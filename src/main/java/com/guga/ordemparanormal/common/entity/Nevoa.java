@@ -21,6 +21,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
@@ -66,16 +67,10 @@ public class Nevoa extends Entity {
 
 	// Setters, para setar certos atributos da névoa
 	public void setRadius(int size) {
-		if (!this.level.isClientSide) {
-			if (this.getEntityData().get(DATA_RADIUS) < 45) {
-				this.getEntityData().set(DATA_RADIUS, size);
-			} else {
-				this.getEntityData().set(DATA_RADIUS, 45);
-			}
-		}
+		this.getEntityData().set(DATA_RADIUS, Mth.clamp(size, 1, 45));
 	}
 	public void setIntensity(int intensity) {
-		this.getEntityData().set(DATA_INTENSITY, Math.min(intensity, 5));
+		this.getEntityData().set(DATA_INTENSITY, Mth.clamp(intensity, 1, 5));
 	}
 
 	public void setLife(int life) {

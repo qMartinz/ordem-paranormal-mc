@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.block;
+package com.guga.ordemparanormal.common.block.blocks;
 
 import com.guga.ordemparanormal.api.ApiEvents;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
