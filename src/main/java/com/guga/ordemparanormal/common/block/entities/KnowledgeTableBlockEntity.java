@@ -3,7 +3,7 @@ package com.guga.ordemparanormal.common.block.entities;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.api.curses.CurseInstance;
-import com.guga.ordemparanormal.client.screen.BloodTableMenu;
+import com.guga.ordemparanormal.client.screen.KnowledgeTableMenu;
 import com.guga.ordemparanormal.core.registry.OPBlockEntities;
 import com.guga.ordemparanormal.core.registry.OPTags;
 import net.minecraft.core.BlockPos;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 
-public class BloodTableBlockEntity extends BlockEntity implements MenuProvider {
+public class KnowledgeTableBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(4){
         @Override
         protected void onContentsChanged(int slot) {
@@ -40,13 +40,13 @@ public class BloodTableBlockEntity extends BlockEntity implements MenuProvider {
     };
     public boolean isOpen = false;
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-    public BloodTableBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(OPBlockEntities.BLOOD_TABLE_ENTITY.get(), pWorldPosition, pBlockState);
+    public KnowledgeTableBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
+        super(OPBlockEntities.KNOWLEDGE_TABLE_ENTITY.get(), pWorldPosition, pBlockState);
     }
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory, Player pPlayer) {
-        return new BloodTableMenu(pContainerId, pInventory, this);
+        return new KnowledgeTableMenu(pContainerId, pInventory, this);
     }
     @Nonnull
     @Override
@@ -85,18 +85,18 @@ public class BloodTableBlockEntity extends BlockEntity implements MenuProvider {
 
         Containers.dropContents(level, this.worldPosition, inventory);
     }
-    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, BloodTableBlockEntity pBlockEntity) {
+    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, KnowledgeTableBlockEntity pBlockEntity) {
         if(hasRecipe(pBlockEntity)) {
             craftItem(pBlockEntity);
         } else {
             pBlockEntity.itemHandler.setStackInSlot(3, ItemStack.EMPTY);
         }
     }
-    private static void craftItem(BloodTableBlockEntity entity) {
+    private static void craftItem(KnowledgeTableBlockEntity entity) {
         ItemStack result = entity.itemHandler.getStackInSlot(1).copy();
 
         for (CurseInstance curse : CurseHelper.getCurses(entity.itemHandler.getStackInSlot(2))){
-            if (curse.getCurse().getElement() == ParanormalElement.SANGUE &&
+            if (curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO &&
                     CurseHelper.getCurses(entity.itemHandler.getStackInSlot(1)).stream().noneMatch(inst -> inst.getCurse() == curse.getCurse())){
 
                 CurseHelper.addCurse(result, curse);
@@ -105,8 +105,8 @@ public class BloodTableBlockEntity extends BlockEntity implements MenuProvider {
 
         entity.itemHandler.setStackInSlot(3, result);
     }
-    public static boolean hasRecipe(BloodTableBlockEntity entity) {
-        boolean hasItemInFirstSlot = entity.itemHandler.getStackInSlot(0).is(OPTags.BLOOD_FUEL);
+    public static boolean hasRecipe(KnowledgeTableBlockEntity entity) {
+        boolean hasItemInFirstSlot = entity.itemHandler.getStackInSlot(0).is(OPTags.KNOWLEDGE_FUEL);
         boolean hasCursableItemInSlot = !entity.itemHandler.getStackInSlot(1).isEmpty();
 
         boolean hasCursedItemInSlot = CurseHelper.getCurses(entity.itemHandler.getStackInSlot(2)).stream().anyMatch(inst ->
@@ -114,7 +114,7 @@ public class BloodTableBlockEntity extends BlockEntity implements MenuProvider {
                 inst.getCurse().getMaxUses() == 0 &&
                 CurseHelper.getCurses(entity.itemHandler.getStackInSlot(1)).stream().noneMatch(inst2 -> inst.getCurse() == inst2.getCurse()) &&
                 CurseHelper.getCurses(entity.itemHandler.getStackInSlot(1)).stream().allMatch(inst2 -> inst.getCurse().isCompatibleWith(inst2.getCurse())) &&
-                inst.getCurse().getElement() == ParanormalElement.SANGUE);
+                inst.getCurse().getElement() == ParanormalElement.CONHECIMENTO);
 
         return hasItemInFirstSlot && hasCursableItemInSlot && hasCursedItemInSlot;
     }

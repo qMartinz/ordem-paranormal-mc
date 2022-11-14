@@ -4,6 +4,9 @@ import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
 import com.guga.ordemparanormal.client.screen.BloodTableScreen;
+import com.guga.ordemparanormal.client.screen.DeathTableScreen;
+import com.guga.ordemparanormal.client.screen.EnergyTableScreen;
+import com.guga.ordemparanormal.client.screen.KnowledgeTableScreen;
 import com.guga.ordemparanormal.common.OPItemProperties;
 import com.guga.ordemparanormal.core.network.ClientProxy;
 import com.guga.ordemparanormal.core.network.IProxy;
@@ -109,6 +112,9 @@ public class OrdemParanormal {
 		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ_BLOCK.get(), RenderType.translucent());
 
 		MenuScreens.register(OPMenuTypes.BLOOD_TABLE_MENU.get(), BloodTableScreen::new);
+		MenuScreens.register(OPMenuTypes.ENERGY_TABLE_MENU.get(), EnergyTableScreen::new);
+		MenuScreens.register(OPMenuTypes.DEATH_TABLE_MENU.get(), DeathTableScreen::new);
+		MenuScreens.register(OPMenuTypes.KNOWLEDGE_TABLE_MENU.get(), KnowledgeTableScreen::new);
 
 		event.enqueueWork(OPItemProperties::register);
 	}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:glass",
+    "minecraft:gold_ingot",
+    "minecraft:glowstone_dust",
+    "minecraft:paper",
+    "minecraft:candle"
+  ]
+}

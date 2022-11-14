@@ -9,9 +9,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class BloodTableScreen extends AbstractContainerScreen<BloodTableMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/blood_table_gui.png");
-    public BloodTableScreen(BloodTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+public class EnergyTableScreen extends AbstractContainerScreen<EnergyTableMenu> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/energy_table_gui.png");
+    public EnergyTableScreen(EnergyTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
     @Override

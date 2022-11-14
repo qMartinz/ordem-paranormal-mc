@@ -1,15 +1,11 @@
 package com.guga.ordemparanormal.datagen.client.lang;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
-import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModPtBrProvider extends ModLangProvider {
 
@@ -118,6 +114,9 @@ public class ModPtBrProvider extends ModLangProvider {
 			add(OPProfessions.OCULTISTA_CONHECIMENTO.get(), "Ocultista de Conhecimento");
 			add(OPProfessions.OCULTISTA_ENERGIA.get(), "Ocultista de Energia");
 			add(OPProfessions.OCULTISTA_MORTE.get(), "Ocultista de Morte");
+
+			// Entidades de Blocos
+			add("ordemparanormal.block.block_entity.curse_table", "Maldições");
 
 		// -------------------------------------------------------------
 

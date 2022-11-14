@@ -2,9 +2,11 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.abilities.power.*;
+import com.guga.ordemparanormal.api.abilities.power.AttributeModPower;
+import com.guga.ordemparanormal.api.abilities.power.EffortModPower;
+import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import com.guga.ordemparanormal.api.abilities.power.RitualPower;
 import com.guga.ordemparanormal.common.power.*;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 

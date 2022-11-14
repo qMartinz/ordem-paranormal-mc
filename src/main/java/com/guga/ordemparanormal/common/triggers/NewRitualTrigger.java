@@ -1,8 +1,6 @@
 package com.guga.ordemparanormal.common.triggers;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.advancements.critereon.*;

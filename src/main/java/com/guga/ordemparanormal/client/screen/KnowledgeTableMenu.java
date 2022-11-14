@@ -2,7 +2,7 @@ package com.guga.ordemparanormal.client.screen;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.client.screen.slot.CurseTableResultSlot;
-import com.guga.ordemparanormal.common.block.entities.BloodTableBlockEntity;
+import com.guga.ordemparanormal.common.block.entities.KnowledgeTableBlockEntity;
 import com.guga.ordemparanormal.core.registry.OPBlocks;
 import com.guga.ordemparanormal.core.registry.OPMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
@@ -17,16 +17,16 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class BloodTableMenu extends AbstractContainerMenu {
-    private final BloodTableBlockEntity blockEntity;
+public class KnowledgeTableMenu extends AbstractContainerMenu {
+    private final KnowledgeTableBlockEntity blockEntity;
     private final Level level;
-    public BloodTableMenu(int id, Inventory inv, FriendlyByteBuf buf) {
+    public KnowledgeTableMenu(int id, Inventory inv, FriendlyByteBuf buf) {
         this(id, inv, inv.player.level.getBlockEntity(buf.readBlockPos()));
     }
-    public BloodTableMenu(int id, Inventory inv, BlockEntity entity) {
-        super(OPMenuTypes.BLOOD_TABLE_MENU.get(), id);
+    public KnowledgeTableMenu(int id, Inventory inv, BlockEntity entity) {
+        super(OPMenuTypes.KNOWLEDGE_TABLE_MENU.get(), id);
         checkContainerSize(inv, 4);
-        blockEntity = ((BloodTableBlockEntity) entity);
+        blockEntity = ((KnowledgeTableBlockEntity) entity);
         this.blockEntity.isOpen = true;
         this.level = inv.player.level;
 
@@ -37,9 +37,10 @@ public class BloodTableMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(cap, 0, 39, 40));
             this.addSlot(new SlotItemHandler(cap, 1, 67, 28));
             this.addSlot(new SlotItemHandler(cap, 2, 39, 16));
-            this.addSlot(new CurseTableResultSlot(cap, 3, 119, 28, ParanormalElement.SANGUE));
+            this.addSlot(new CurseTableResultSlot(cap, 3, 119, 28, ParanormalElement.CONHECIMENTO));
         });
     }
+
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
@@ -79,7 +80,7 @@ public class BloodTableMenu extends AbstractContainerMenu {
     }
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, OPBlocks.MESA_SANGUE.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, OPBlocks.MESA_CONHECIMENTO.get());
     }
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
