@@ -42,7 +42,6 @@ public class Keybind {
         usePowerList.add(power4);
         usePowerList.add(power5);
     }
-
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event){
         Minecraft minecraft = Minecraft.getInstance();

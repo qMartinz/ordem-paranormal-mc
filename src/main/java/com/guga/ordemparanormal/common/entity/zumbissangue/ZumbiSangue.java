@@ -42,7 +42,7 @@ public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	public static AttributeSupplier.Builder createZumbiSangueAttributes() {
 		return Monster.createMonsterAttributes().add(Attributes.FOLLOW_RANGE, 40.0D)
 				.add(Attributes.MAX_HEALTH, 22.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.35F)
+				.add(Attributes.MOVEMENT_SPEED, 0.35D)
 				.add(Attributes.ATTACK_DAMAGE, 9.0D)
 				.add(Attributes.ARMOR, 3.0D);
 	}

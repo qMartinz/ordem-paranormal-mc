@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
 import com.guga.ordemparanormal.core.registry.OPEffects;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -11,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public class Decadente extends AbstractCurse {
-    public Decadente(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+    public Decadente(ResourceLocation id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
         super(id, element, category, slots);
     }
     @Override

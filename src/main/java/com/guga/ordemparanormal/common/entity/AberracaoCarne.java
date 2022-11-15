@@ -52,9 +52,10 @@ public class AberracaoCarne extends ParanormalCreature implements Endimatable {
         return ParanormalCreature.createMonsterAttributes()
                 .add(Attributes.FOLLOW_RANGE, 30.0D)
                 .add(Attributes.MAX_HEALTH, 86.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25F)
+                .add(Attributes.MOVEMENT_SPEED, 0.25D)
                 .add(Attributes.ATTACK_DAMAGE, 18.0D)
-                .add(Attributes.ARMOR, 2.0D);
+                .add(Attributes.ARMOR, 2.0D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.75D);
     }
     @Nullable
     @Override

@@ -17,6 +17,7 @@ import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -41,24 +42,6 @@ public class OrdemParanormal {
 	public static IProxy proxy = DistExecutor.runForDist(()-> ClientProxy::new, () -> ServerProxy::new);
 	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper ->
 		helper.putSubHelper(ForgeRegistries.ITEMS, new OPItems.Helper(helper)));
-	public static final CreativeModeTab OP_TAB = new CreativeModeTab(MOD_ID) {
-		@Override
-		public ItemStack makeIcon() {
-			return OPBlocks.ALTAR_TRANSCENDER.get().asItem().getDefaultInstance();
-		}
-	};
-	public static final CreativeModeTab RITUALS_TAB = new CreativeModeTab(MOD_ID + ".rituals") {
-		@Override
-		public ItemStack makeIcon() {
-			return OPItems.RITUAL_DESCARNAR.get().getDefaultInstance();
-		}
-	};
-	public static final CreativeModeTab MOBS_TAB = new CreativeModeTab(MOD_ID + ".mobs") {
-		@Override
-		public ItemStack makeIcon() {
-			return OPItems.ZUMBI_SANGUE_OVO.get().getDefaultInstance();
-		}
-	};
 	public OrdemParanormal() {
 		// Event Bus para registrar coisas do mod
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -72,7 +55,9 @@ public class OrdemParanormal {
 		OPPois.register(bus);
 		OPProfessions.register(bus);
 		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
+		OPLootFunctions.LOOT_FUNCTIONS.register(bus);
 		OPTriggers.init();
+		OPCreativeTabs.init();
 		OPMenuTypes.MENUS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));

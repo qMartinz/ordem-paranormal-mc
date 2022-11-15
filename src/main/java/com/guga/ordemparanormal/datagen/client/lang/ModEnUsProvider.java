@@ -64,6 +64,7 @@ public class ModEnUsProvider extends ModLangProvider {
 			add("itemGroup.ordemparanormal", "Paranormal Order");
 			add("itemGroup.ordemparanormal.rituals", "Rituals");
 			add("itemGroup.ordemparanormal.mobs", "Paranormal Creatures");
+			add("itemGroup.ordemparanormal.curses", "Curses");
 
 			// Itens de Rituais
 			add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");
@@ -274,11 +275,21 @@ public class ModEnUsProvider extends ModLangProvider {
 				"Expands your mind to even higher levels, increasing the amount of rituals that you can learn.");
 
 		// Maldições
-		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
-		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
-		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
-		add(OPCurses.AMALDICOADA.getTranslationKey(), "Cursed");
-		add(OPCurses.LAMINA_MEDO.getTranslationKey(), "Blade of Fear");
+		add(OPCurses.ATROZ, "Atrocious");
+		add(OPCurses.VELOZ, "Nimble");
+		add(OPCurses.DECADENTE, "Decaying");
+		add(OPCurses.AMALDICOADA, "Cursed");
+		add(OPCurses.LAMINA_MEDO, "Blade of Fear");
+		add(OPCurses.SANGUINARIA, "Bloodthirsty");
+		add(OPCurses.LANCINANTE, "Harrowing");
+		add(OPCurses.ANTI_CONHECIMENTO, "Anti-Element (Knowledge)");
+		add(OPCurses.ANTI_SANGUE, "Anti-Element (Blood)");
+		add(OPCurses.ANTI_MORTE, "Anti-Element (Death)");
+		add(OPCurses.ANTI_ENERGIA, "Anti-Element (Energy)");
+		add(OPCurses.LEPIDA, "Light-footed");
+		add(OPCurses.ENERGETICA, "Energetic");
+		add(OPCurses.VOLTAICA, "Voltaic");
+		add(OPCurses.CONSUMIDORA, "Consumer");
 
 		// -------------------------------------------------------------
 
@@ -339,7 +350,7 @@ public class ModEnUsProvider extends ModLangProvider {
 		addDeath("medoRitual", "%1$s discovered the impossible summoned by %2$s");
 
 			// Mensagem de mortes por poder
-			addDeath("vampirismo", "%1$s had its blood drained out by %2$s");
+			addDeath("vampirismoPower", "%1$s had its blood drained out by %2$s");
 
 		// -------------------------------------------------------------
 

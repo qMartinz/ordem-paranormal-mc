@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.api;
 
+import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.api.curses.CurseInstance;
@@ -13,14 +14,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.ShieldBlockEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -133,6 +132,36 @@ public class ApiEvents {
         manager.tick(event.world);
     }
     @SubscribeEvent
+    public static void breakSpeedBonus(PlayerEvent.BreakSpeed event){
+        float speed = event.getOriginalSpeed();
+        INexCap nex = event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        if (nex != null) {
+            // Aumenta velocidade de mineração
+            float speedBonus = nex.getAttribute(ParanormalAttribute.STRENGTH);
+            speed += speedBonus;
+        }
+
+        float energyCursePenalty = 1f;
+        for (ItemStack item : event.getEntityLiving().getAllSlots()) {
+            energyCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
+                            !curse.getCurse().isTemporary() &&
+                                    curse.getCurse().getElement() == ParanormalElement.ENERGIA)
+                    .toList().size();
+        }
+        speed /= energyCursePenalty;
+
+        event.setNewSpeed(speed);
+    }
+    @SubscribeEvent
+    public static void eatSaturationBonus(LivingEntityUseItemEvent.Finish event){
+        INexCap nex = event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        if (nex != null) {
+            if (event.getEntity() instanceof Player player && event.getItem().isEdible()) {
+                player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() + nex.getAttribute(ParanormalAttribute.VIGOR));
+            }
+        }
+    }
+    @SubscribeEvent
     public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event){
         if (event.getEntityLiving() instanceof Player player){
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
@@ -143,19 +172,25 @@ public class ApiEvents {
     }
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityHurt(LivingHurtEvent event){
+        float amount = event.getAmount();
+
         if (event.getSource().getEntity() instanceof LivingEntity living) {
-            event.setAmount(CurseHelper.doPostAttackEffects(living, event.getEntityLiving(), event.getAmount(), event.getSource()));
+            amount = CurseHelper.doPostAttackEffects(living, event.getEntityLiving(), amount, event.getSource());
         }
 
-        event.setAmount(CurseHelper.doPostHurtEffects(event.getEntityLiving(), event.getSource().getEntity(), event.getAmount(), event.getSource()));
+        amount = CurseHelper.doPostHurtEffects(event.getEntityLiving(), event.getSource().getEntity(), amount, event.getSource());
 
-        if (event.getSource().getEntity() instanceof Player player)
+        event.setAmount(amount);
+
+        if (event.getSource().getEntity() instanceof Player player) {
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
                     playerAbilities.getPowers().forEach(power -> event.setAmount(power.onAttack(player, event.getAmount(), event.getEntityLiving(), event.getSource()))));
+        }
 
-        if (event.getEntity() instanceof Player player)
+        if (event.getEntity() instanceof Player player) {
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
                     playerAbilities.getPowers().forEach(power -> event.setAmount(power.onHurt(player, event.getAmount(), event.getSource().getEntity(), event.getSource()))));
+        }
     }
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onParanormalEffectsApply(LivingHurtEvent event){
@@ -164,6 +199,16 @@ public class ApiEvents {
         // pega a capability com efeitos paranormais
         IEffectsCap targetEffects = event.getEntityLiving().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
         if (targetEffects == null) return;
+
+        float deathCursePenalty = 1f;
+        for (ItemStack item : event.getEntityLiving().getAllSlots()) {
+            deathCursePenalty += 0.2f * CurseHelper.getCurses(item).stream().filter(curse ->
+                            !curse.getCurse().isTemporary() &&
+                            curse.getCurse().getElement() == ParanormalElement.MORTE)
+                    .toList().size();
+        }
+
+        amount *= deathCursePenalty;
 
         // altera o dano com base nos efeitos paranormais
         amount = !targetEffects.unappliableBloodArmorDamageSources().contains(event.getSource()) ||
@@ -223,5 +268,16 @@ public class ApiEvents {
                 });
             }
         }
+    }
+    @SubscribeEvent
+    public static void onLivingHeal(LivingHealEvent event){
+        float bloodCursePenalty = 1f;
+        for (ItemStack item : event.getEntityLiving().getAllSlots()) {
+            bloodCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
+                            !curse.getCurse().isTemporary() &&
+                            curse.getCurse().getElement() == ParanormalElement.SANGUE)
+                    .toList().size();
+        }
+        event.setAmount(event.getAmount() / bloodCursePenalty);
     }
 }

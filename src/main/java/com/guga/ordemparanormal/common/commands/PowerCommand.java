@@ -13,6 +13,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public class PowerCommand {
@@ -38,7 +39,7 @@ public class PowerCommand {
     };
     private static final Command<CommandSourceStack> ADD_POWER = context -> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
-        String power = StringArgumentType.getString(context, "power");
+        ResourceLocation power = ResourceLocation.tryParse(StringArgumentType.getString(context, "power"));
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
@@ -52,7 +53,7 @@ public class PowerCommand {
     };
     private static final Command<CommandSourceStack> REMOVE_POWER = context -> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
-        String power = StringArgumentType.getString(context, "power");
+        ResourceLocation power = ResourceLocation.tryParse(StringArgumentType.getString(context, "power"));
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
@@ -70,10 +71,10 @@ public class PowerCommand {
                         .then(Commands.literal("add").then(Commands.argument("amount", IntegerArgumentType.integer(1, 99)).executes(ADD_POINTS)))
                         .then(Commands.literal("remove").then(Commands.argument("amount", IntegerArgumentType.integer(1, 99)).executes(REMOVE_POINTS))))
                 .then(Commands.literal("add").then(Commands.argument("power", StringArgumentType.greedyString()).suggests(
-                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getPowerMap().keySet(), builder)
+                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getPowerMap().keySet().stream().map(ResourceLocation::toString), builder)
                 ).executes(ADD_POWER)))
                 .then(Commands.literal("remove").then(Commands.argument("power", StringArgumentType.greedyString()).suggests(
-                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getPowerMap().keySet(), builder)
+                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getPowerMap().keySet().stream().map(ResourceLocation::toString), builder)
                 ).executes(REMOVE_POWER)));
     }
 }

@@ -91,7 +91,7 @@ public final class OPItems {
 			.createComponenteRitualistico(ParanormalElement.CONHECIMENTO);
 	public static final RegistryObject<Item> COMPONENTE_VAZIO = HELPER
 			.createItem("componente_vazio",
-					() -> new Item(new Item.Properties().stacksTo(16).tab(OrdemParanormal.RITUALS_TAB)));
+					() -> new Item(new Item.Properties().stacksTo(16).tab(OPCreativeTabs.RITUALS_TAB)));
 
 	// Ovos geradores
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_SANGUE_OVO = HELPER.createSpawnEggItem(
@@ -111,7 +111,7 @@ public final class OPItems {
 		public RegistryObject<ForgeSpawnEggItem> createSpawnEggItem(String entityName,
 				Supplier<EntityType<? extends Mob>> supplier, int primaryColor, int secondaryColor) {
 			return this.deferredRegister.register(entityName + "_spawn_egg", () -> new ForgeSpawnEggItem(supplier,
-					primaryColor, secondaryColor, new Item.Properties().tab(OrdemParanormal.MOBS_TAB)));
+					primaryColor, secondaryColor, new Item.Properties().tab(OPCreativeTabs.MOBS_TAB)));
 		}
 
 		public Helper(RegistryHelper parent) {
@@ -123,7 +123,7 @@ public final class OPItems {
 			return this.deferredRegister
 					.register("orgao",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
-									.tab(OrdemParanormal.OP_TAB)
+									.tab(OPCreativeTabs.OP_TAB)
 									.food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F)
 											.effect(() -> new MobEffectInstance(MobEffects.HUNGER, 800), 1F).build())));
 		}
@@ -132,7 +132,7 @@ public final class OPItems {
 			return this.deferredRegister
 					.register("cinzas",
 							() -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
-									.tab(OrdemParanormal.OP_TAB).fireResistant()));
+									.tab(OPCreativeTabs.OP_TAB).fireResistant()));
 		}
 
 		private RegistryObject<Item> createPergaminhoAntigo() {

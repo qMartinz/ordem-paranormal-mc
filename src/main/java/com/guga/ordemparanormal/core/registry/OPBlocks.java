@@ -13,15 +13,15 @@ import net.minecraftforge.registries.RegistryObject;
 public final class OPBlocks {
     public static final BlockSubRegistryHelper HELPER = OrdemParanormal.REGISTRY_HELPER.getBlockSubHelper();
     public static final RegistryObject<Block> ALTAR_TRANSCENDER = HELPER.createBlock("altar_transcender",
-            AltarTranscender::new, OrdemParanormal.OP_TAB);
+            AltarTranscender::new, OPCreativeTabs.OP_TAB);
     public static final RegistryObject<Block> MESA_SANGUE = HELPER.createRareBlock("mesa_sangue",
-            MesaSangue::new, Rarity.RARE, OrdemParanormal.OP_TAB);
+            MesaSangue::new, Rarity.RARE, OPCreativeTabs.CURSES_TAB);
     public static final RegistryObject<Block> MESA_ENERGIA = HELPER.createRareBlock("mesa_energia",
-            MesaEnergia::new, Rarity.RARE, OrdemParanormal.OP_TAB);
+            MesaEnergia::new, Rarity.RARE, OPCreativeTabs.CURSES_TAB);
     public static final RegistryObject<Block> MESA_CONHECIMENTO = HELPER.createRareBlock("mesa_conhecimento",
-            MesaConhecimento::new, Rarity.RARE, OrdemParanormal.OP_TAB);
+            MesaConhecimento::new, Rarity.RARE, OPCreativeTabs.CURSES_TAB);
     public static final RegistryObject<Block> MESA_MORTE = HELPER.createRareBlock("mesa_morte",
-            MesaMorte::new, Rarity.RARE, OrdemParanormal.OP_TAB);
+            MesaMorte::new, Rarity.RARE, OPCreativeTabs.CURSES_TAB);
     public static final RegistryObject<Block> LUZ_BLOCK = HELPER.createBlock("luz_block",
             LuzBlock::new, (CreativeModeTab) null);
 }

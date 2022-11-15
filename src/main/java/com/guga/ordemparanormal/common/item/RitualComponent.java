@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.item;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
@@ -12,7 +13,7 @@ import javax.annotation.Nullable;
 public class RitualComponent extends Item {
     public final ParanormalElement element;
     public RitualComponent(ParanormalElement element) {
-        super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).durability(15).tab(OrdemParanormal.RITUALS_TAB).setNoRepair());
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).durability(15).tab(OPCreativeTabs.RITUALS_TAB).setNoRepair());
         this.element = element;
     }
     @Nullable

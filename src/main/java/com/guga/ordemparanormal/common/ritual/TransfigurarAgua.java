@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -15,8 +16,8 @@ import net.minecraft.world.phys.HitResult;
 import javax.annotation.Nullable;
 
 public class TransfigurarAgua extends AbstractRitual {
-    public TransfigurarAgua(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget,
-            double range, boolean mustHoldIngredient) {
+    public TransfigurarAgua(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget,
+                            double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
 

@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class CurseRitual extends AbstractRitual{
     private final AbstractCurse curse;
-    public CurseRitual(String id, AbstractCurse curse, int tier, int effortCost) {
+    public CurseRitual(ResourceLocation id, AbstractCurse curse, int tier, int effortCost) {
         super(id, curse.element, tier, effortCost, true, 0, false);
         this.curse = curse;
     }

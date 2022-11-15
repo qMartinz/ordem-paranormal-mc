@@ -179,7 +179,7 @@ public class PowerScreen extends Screen {
                 RenderSystem.setShaderTexture(0, TEXTURE);
                 blit(stack, tabWidth / 2 - 35 + 26 * i, height - 45, 20 * playerPowers.getActivePower(i).getElement().index, 84, 20, 20);
 
-                ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + playerPowers.getActivePower(i).getId() + ".png");
+                ResourceLocation icon = new ResourceLocation(playerPowers.getActivePower(i).getId().getNamespace(), "textures/paranormal_power/" + playerPowers.getActivePower(i).getId().getPath() + ".png");
                 if (minecraft.getResourceManager().hasResource(icon)) {
                     RenderSystem.setShaderTexture(0, icon);
                     blit(stack, tabWidth / 2 - 33 + 26 * i, height - 43, 0, 0, 16, 16, 16, 16);

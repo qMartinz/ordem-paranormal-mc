@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -53,7 +54,7 @@ public class RitualCaster implements IRitualCaster {
         tag.putInt("current_slot", getCurrentSlot());
 
         for (int i = 0; i < getMaxSlots(); i++){
-            tag.putString("ritual_" + i, getRitual(i).getId());
+            tag.putString("ritual_" + i, getRitual(i).getId().toString());
         }
         return tag;
     }
@@ -63,7 +64,7 @@ public class RitualCaster implements IRitualCaster {
         this.slot = tag.contains("current_slot") ? tag.getInt("current_slot") : 1;
         for (int i = 0; i < getMaxSlots(); i++){
             if (tag.contains("ritual_" + i)){
-                this.setRitual(OrdemParanormalAPI.getInstance().getRitual(tag.getString("ritual_" + i)), i);
+                this.setRitual(OrdemParanormalAPI.getInstance().getRitual(ResourceLocation.tryParse(tag.getString("ritual_" + i))), i);
             }
         }
     }

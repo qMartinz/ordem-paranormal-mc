@@ -107,13 +107,13 @@ public class DeathTableBlockEntity extends BlockEntity implements MenuProvider {
     }
     public static boolean hasRecipe(DeathTableBlockEntity entity) {
         boolean hasItemInFirstSlot = entity.itemHandler.getStackInSlot(0).is(OPTags.DEATH_FUEL);
-        boolean hasCursableItemInSlot = !entity.itemHandler.getStackInSlot(1).isEmpty();
+        boolean hasCursableItemInSlot = !entity.itemHandler.getStackInSlot(1).isEmpty() &&
+                CurseHelper.getCurses(entity.itemHandler.getStackInSlot(1)).stream().filter(inst -> !inst.getCurse().isTemporary()).toList().size() < 4;
 
         boolean hasCursedItemInSlot = CurseHelper.getCurses(entity.itemHandler.getStackInSlot(2)).stream().anyMatch(inst ->
-                inst.getCurse().getCategory().canCurse(entity.itemHandler.getStackInSlot(1).getItem()) &&
+                inst.getCurse().canCurse(entity.itemHandler.getStackInSlot(1)) &&
                 inst.getCurse().getMaxUses() == 0 &&
                 CurseHelper.getCurses(entity.itemHandler.getStackInSlot(1)).stream().noneMatch(inst2 -> inst.getCurse() == inst2.getCurse()) &&
-                CurseHelper.getCurses(entity.itemHandler.getStackInSlot(1)).stream().allMatch(inst2 -> inst.getCurse().isCompatibleWith(inst2.getCurse())) &&
                 inst.getCurse().getElement() == ParanormalElement.MORTE);
 
         return hasItemInFirstSlot && hasCursableItemInSlot && hasCursedItemInSlot;

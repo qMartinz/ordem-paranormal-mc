@@ -9,6 +9,7 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import com.guga.ordemparanormal.common.CommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -31,7 +32,7 @@ import java.util.List;
 public class RitualItem extends Item {
     public final AbstractRitual ritual;
     public RitualItem(AbstractRitual ritual) {
-        super(new Item.Properties().stacksTo(1).rarity(PowerUtils.getRarity(ritual.getTier())).tab(OrdemParanormal.RITUALS_TAB));
+        super(new Item.Properties().stacksTo(1).rarity(PowerUtils.getRarity(ritual.getTier())).tab(OPCreativeTabs.RITUALS_TAB));
         this.ritual = ritual;
     }
     @NotNull

@@ -1,12 +1,15 @@
 package com.guga.ordemparanormal.api.curses;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.api.util.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,8 +19,8 @@ import java.util.Set;
 
 public class CurseHelper {
     private static final String PREFIX = "curse_";
-    public static String getCurseId(CompoundTag pCompoundTag) {
-        return pCompoundTag.getString("id");
+    public static ResourceLocation getCurseId(CompoundTag pCompoundTag) {
+        return ResourceLocation.tryParse(pCompoundTag.getString("id"));
     }
     public static int getCurseUses(CompoundTag pCompoundTag) {
         return pCompoundTag.getInt("uses");
@@ -40,7 +43,7 @@ public class CurseHelper {
         Set<CurseInstance> set = new HashSet<>();
 
         for(CompoundTag c : NBTUtil.readCurses(pSerialized)){
-            set.add(new CurseInstance(OrdemParanormalAPI.getInstance().getCurse(c.getString("id")), c.getInt("uses")));
+            set.add(new CurseInstance(OrdemParanormalAPI.getInstance().getCurse(ResourceLocation.tryParse(c.getString("id"))), c.getInt("uses")));
         }
 
         return set;
@@ -56,23 +59,30 @@ public class CurseHelper {
             pStack.addTagElement("Curses", compoundTag);
         }
     }
-    public static void addCurse(ItemStack pStack, CurseInstance pCurse){
+    public static ItemStack addCurse(ItemStack pStack, CurseInstance pCurse){
         Set<CurseInstance> curses = CurseHelper.getCurses(pStack);
         curses.removeIf(c -> c.getCurse().getId().equals(pCurse.getCurse().getId()));
-        curses.add(pCurse);
+        if (curses.stream().filter(inst -> !inst.getCurse().isTemporary()).toList().size() < 4) {
+            curses.add(pCurse);
+        }
         CurseHelper.setCurses(curses, pStack);
+        return pStack;
     }
-    public static void addCurse(ItemStack pStack, AbstractCurse pCurse){
+    public static ItemStack addCurse(ItemStack pStack, AbstractCurse pCurse){
         Set<CurseInstance> curses = CurseHelper.getCurses(pStack);
         curses.removeIf(c -> c.getCurse().getId().equals(pCurse.getId()));
-        curses.add(new CurseInstance(pCurse));
+        if (curses.stream().filter(inst -> !inst.getCurse().isTemporary()).toList().size() < 4) {
+            curses.add(new CurseInstance(pCurse));
+        }
         CurseHelper.setCurses(curses, pStack);
+        return pStack;
     }
 
-    public static void removeCurse(ItemStack pStack, AbstractCurse pCurse){
+    public static ItemStack removeCurse(ItemStack pStack, AbstractCurse pCurse){
         Set<CurseInstance> curses = CurseHelper.getCurses(pStack);
         curses.removeIf(c -> c.getCurse().getId().equals(pCurse.getId()));
         CurseHelper.setCurses(curses, pStack);
+        return pStack;
     }
     public static float doPostAttackEffects(LivingEntity pAttacker, LivingEntity pTarget, float pAmount, DamageSource source){
         float f = pAmount;

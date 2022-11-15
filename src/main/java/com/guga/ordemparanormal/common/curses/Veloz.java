@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.common.curses;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 public class Veloz extends AbstractCurse {
     private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier("veloz_modifier", 1d, AttributeModifier.Operation.ADDITION);
-    public Veloz(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+    public Veloz(ResourceLocation id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
         super(id, element, category, slots);
     }
     @Override

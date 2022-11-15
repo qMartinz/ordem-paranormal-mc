@@ -4,12 +4,14 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.paranormaldamage.EntityParanormalDamageSource;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -21,7 +23,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class Vampirismo extends PlayerPower {
-    public Vampirismo(String id, ParanormalElement element, int cost, int nex, int[] attributes, PlayerPower... powers) {
+    public Vampirismo(ResourceLocation id, ParanormalElement element, int cost, int nex, int[] attributes, PlayerPower... powers) {
         super(id, true, element, cost, nex, attributes, powers);
     }
     @Override
@@ -31,7 +33,7 @@ public class Vampirismo extends PlayerPower {
         if (cap == null) return;
 
         if (result instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof LivingEntity target) {
-            target.hurt(ParanormalDamageSource.powerAttack(player, this), 3 * (cap.hasPower(OPPowers.VAMPIRISMO_2) ? 2 : 1));
+            target.hurt(new EntityParanormalDamageSource("vampirismoPower", player).setElement(this.getElement()), 3 * (cap.hasPower(OPPowers.VAMPIRISMO_2) ? 2 : 1));
 
             if (player.level instanceof ServerLevel level) level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     target.getX(), target.getEyeY(), target.getZ(),

@@ -64,6 +64,7 @@ public class ModPtBrProvider extends ModLangProvider {
 			add("itemGroup.ordemparanormal", "Ordem Paranormal");
 			add("itemGroup.ordemparanormal.rituals", "Rituais");
 			add("itemGroup.ordemparanormal.mobs", "Criaturas Paranormais");
+			add("itemGroup.ordemparanormal.curses", "Maldições");
 
 			// Itens de Rituais
 			add(OPItems.RITUAL_DESCARNAR.get(), "Livro amaldiçoado");
@@ -275,11 +276,21 @@ public class ModPtBrProvider extends ModLangProvider {
 
 
 		// Maldições
-		add(OPCurses.ATROZ.getTranslationKey(), "Atroz");
-		add(OPCurses.VELOZ.getTranslationKey(), "Veloz");
-		add(OPCurses.DECADENTE.getTranslationKey(), "Decadente");
-		add(OPCurses.AMALDICOADA.getTranslationKey(), "Amaldiçoada");
-		add(OPCurses.LAMINA_MEDO.getTranslationKey(), "Lâmina do Medo");
+		add(OPCurses.ATROZ, "Atroz");
+		add(OPCurses.VELOZ, "Veloz");
+		add(OPCurses.DECADENTE, "Decadente");
+		add(OPCurses.AMALDICOADA, "Amaldiçoada");
+		add(OPCurses.LAMINA_MEDO, "Lâmina do Medo");
+		add(OPCurses.SANGUINARIA, "Sanguinária");
+		add(OPCurses.LANCINANTE, "Lancinante");
+		add(OPCurses.ANTI_CONHECIMENTO, "Anti-Elemento (Conhecimento)");
+		add(OPCurses.ANTI_SANGUE, "Anti-Elemento (Sangue)");
+		add(OPCurses.ANTI_MORTE, "Anti-Elemento (Morte)");
+		add(OPCurses.ANTI_ENERGIA, "Anti-Elemento (Energia)");
+		add(OPCurses.LEPIDA, "Lépida");
+		add(OPCurses.ENERGETICA, "Energética");
+		add(OPCurses.VOLTAICA, "Voltáica");
+		add(OPCurses.CONSUMIDORA, "Consumidora");
 
 		// -------------------------------------------------------------
 
@@ -340,7 +351,7 @@ public class ModPtBrProvider extends ModLangProvider {
 		addDeath("medoRitual", "%1$s descobriu o impossível convocado por %2$s");
 
 			// Mensagem de mortes por poder
-			addDeath("vampirismo", "%1$s teve seu sangue drenado por %2$s");
+			addDeath("vampirismoPower", "%1$s teve seu sangue drenado por %2$s");
 
 		// -------------------------------------------------------------
 

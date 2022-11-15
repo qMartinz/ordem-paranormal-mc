@@ -16,7 +16,7 @@ public class ZumbiEspinhento extends ZumbiSangue implements Endimatable {
 	public static AttributeSupplier.Builder createZumbiEspinhentoAttributes() {
 		return Monster.createMonsterAttributes().add(Attributes.FOLLOW_RANGE, 40.0D)
 				.add(Attributes.MAX_HEALTH, 20.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.3F)
+				.add(Attributes.MOVEMENT_SPEED, 0.3D)
 				.add(Attributes.ATTACK_DAMAGE, 13.0D)
 				.add(Attributes.ARMOR, 4.0D);
 	}

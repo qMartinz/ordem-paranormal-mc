@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,14 +17,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class Descarnar extends AbstractRitual {
-    public Descarnar(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public Descarnar(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         
-        target.hurt(ParanormalDamageSource.ritualAttack(caster, this), 4f);
+        target.hurt(ParanormalDamageSource.ritualAttack(caster, this), 2f);
 
         if(world instanceof ServerLevel level) {
             level.sendParticles(
@@ -36,7 +37,7 @@ public class Descarnar extends AbstractRitual {
                     3, 0, 0, 0, 0d);
         }
         
-        MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 100, 1, false, false);
+        MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 200, 1, false, false);
         target.addEffect(effect, caster);
     }
 }

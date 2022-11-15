@@ -4,10 +4,11 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 
 public class ConhecimentoAmpliado extends PlayerPower {
-    public ConhecimentoAmpliado(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+    public ConhecimentoAmpliado(ResourceLocation id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
         super(id, false, element, 0, nex, attributes, powers);
     }
     @Override

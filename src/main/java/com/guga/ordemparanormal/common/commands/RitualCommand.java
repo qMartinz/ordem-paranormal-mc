@@ -13,6 +13,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public class RitualCommand {
@@ -38,7 +39,7 @@ public class RitualCommand {
     };
     private static final Command<CommandSourceStack> ADD_RITUAL = context -> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
-        String ritual = StringArgumentType.getString(context, "ritual");
+        ResourceLocation ritual = ResourceLocation.tryParse(StringArgumentType.getString(context, "ritual"));
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
@@ -52,7 +53,7 @@ public class RitualCommand {
     };
     private static final Command<CommandSourceStack> REMOVE_RITUAL = context -> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
-        String ritual = StringArgumentType.getString(context, "ritual");
+        ResourceLocation ritual = ResourceLocation.tryParse(StringArgumentType.getString(context, "ritual"));
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
@@ -70,10 +71,10 @@ public class RitualCommand {
                         .then(Commands.literal("add").then(Commands.argument("amount", IntegerArgumentType.integer(1, 99)).executes(ADD_SLOTS)))
                         .then(Commands.literal("remove").then(Commands.argument("amount", IntegerArgumentType.integer(1, 99)).executes(REMOVE_SLOTS))))
                 .then(Commands.literal("add").then(Commands.argument("ritual", StringArgumentType.greedyString()).suggests(
-                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getRitualMap().keySet(), builder)
+                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getRitualMap().keySet().stream().map(ResourceLocation::toString), builder)
                 ).executes(ADD_RITUAL)))
                 .then(Commands.literal("remove").then(Commands.argument("ritual", StringArgumentType.greedyString()).suggests(
-                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getRitualMap().keySet(), builder)
+                        (context, builder) -> SharedSuggestionProvider.suggest(OrdemParanormalAPI.getInstance().getRitualMap().keySet().stream().map(ResourceLocation::toString), builder)
                 ).executes(REMOVE_RITUAL)));
     }
 }

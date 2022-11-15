@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 
 public class Atroz extends AbstractCurse {
-    public Atroz(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+    public Atroz(ResourceLocation id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
         super(id, element, category, slots);
     }
     @Override

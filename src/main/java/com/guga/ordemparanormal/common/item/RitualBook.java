@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.api.abilities.ritual.RitualCaster;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class RitualBook extends Item {
     public RitualBook() {
-        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OrdemParanormal.OP_TAB));
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(OPCreativeTabs.OP_TAB));
     }
     @Override
     public void releaseUsing(ItemStack stack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
