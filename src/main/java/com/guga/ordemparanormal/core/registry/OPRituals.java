@@ -72,6 +72,11 @@ public class OPRituals {
                         new ResourceLocation(MOD_ID, "medo_tangivel"), ParanormalElement.MEDO, 4, 8, true, 0d, false);
         public static final AbstractRitual LAMINA_MEDO = new CurseRitual(new ResourceLocation(MOD_ID, "lamina_do_medo"),
                         OPCurses.LAMINA_MEDO, 4, 8);
+        public static final AbstractRitual CINERARIA = new Cineraria(
+                        new ResourceLocation(MOD_ID, "cineraria"), ParanormalElement.MEDO, 1, 2, false, 0d, false);
+        public static final AbstractRitual REJEITAR_NEVOA = new RejeitarNevoa(
+                        new ResourceLocation(MOD_ID, "rejeitar_nevoa"), ParanormalElement.MEDO, 2, 4, false, 0d,
+                        false);
 
         /**
          * Registra os rituais
