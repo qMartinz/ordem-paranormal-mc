@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.util.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -147,12 +148,12 @@ public class PlayerAbilities implements IAbilitiesCap {
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
 
-        NBTUtil.writeStrings(tag, "ritual", rituals.stream().map(AbstractRitual::getId).collect(Collectors.toList()));
-        NBTUtil.writeStrings(tag, "power", powers.stream().map(PlayerPower::getId).collect(Collectors.toList()));
+        NBTUtil.writeStrings(tag, "ritual", rituals.stream().map(AbstractRitual::getId).map(ResourceLocation::toString).collect(Collectors.toList()));
+        NBTUtil.writeStrings(tag, "power", powers.stream().map(PlayerPower::getId).map(ResourceLocation::toString).collect(Collectors.toList()));
 
         for (int i = 0; i < 5; i++){
             if (activePowers.containsKey(i)) {
-                tag.putString("active_power_" + i, getActivePower(i).getId());
+                tag.putString("active_power_" + i, getActivePower(i).getId().toString());
             }
         }
 
@@ -164,20 +165,20 @@ public class PlayerAbilities implements IAbilitiesCap {
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
         for(String s : NBTUtil.readStrings(nbt, "ritual")){
-            if(api.getRitualMap().containsKey(s)){
-                rituals.add(api.getRitualMap().get(s));
+            if(api.getRitualMap().containsKey(ResourceLocation.tryParse(s))){
+                rituals.add(api.getRitualMap().get(ResourceLocation.tryParse(s)));
             }
         }
 
         for(String s : NBTUtil.readStrings(nbt, "power")){
-            if(api.getPowerMap().containsKey(s)){
-                powers.add(api.getPowerMap().get(s));
+            if(api.getPowerMap().containsKey(ResourceLocation.tryParse(s))){
+                powers.add(api.getPowerMap().get(ResourceLocation.tryParse(s)));
             }
         }
 
         for (int i = 0; i < 5; i++){
-            if (nbt.contains("active_power_" + i) && powers.contains(OrdemParanormalAPI.getInstance().getPower(nbt.getString("active_power_" + i)))){
-                this.setActivePower(OrdemParanormalAPI.getInstance().getPower(nbt.getString("active_power_" + i)), i);
+            if (nbt.contains("active_power_" + i) && powers.contains(OrdemParanormalAPI.getInstance().getPower(ResourceLocation.tryParse(nbt.getString("active_power_" + i))))){
+                this.setActivePower(OrdemParanormalAPI.getInstance().getPower(ResourceLocation.tryParse(nbt.getString("active_power_" + i))), i);
             }
         }
     }

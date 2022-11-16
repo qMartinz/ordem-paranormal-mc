@@ -21,7 +21,6 @@ public class ParanormalDamageSource extends DamageSource {
     public ParanormalElement element;
     public ParanormalDamageSource(String msgId) {
         super(msgId);
-        bypassArmor();
     }
     public ParanormalDamageSource setElement(ParanormalElement element) {
         this.element = element;
@@ -30,7 +29,7 @@ public class ParanormalDamageSource extends DamageSource {
     public static boolean isEntityResistant(LivingEntity entity, ParanormalDamageSource damage){
         // se for uma criatura paranormal
         if (entity instanceof ParanormalCreature creature){
-            return creature.getMainElement().getDamage().element == damage.element;
+            return creature.getElement().getDamage().element == damage.element;
 
         // se for um jogador
         } else if(entity instanceof Player player) {
@@ -46,7 +45,7 @@ public class ParanormalDamageSource extends DamageSource {
     public static boolean isEntityWeakTo(LivingEntity entity, ParanormalDamageSource damage){
         // se for uma criatura paranormal
         if (entity instanceof ParanormalCreature creature){
-            return creature.getMainElement().getOpressingElement() == damage.element;
+            return creature.getElement().getOpressingElement() == damage.element;
 
         // se for um jogador
         } else if(entity instanceof Player player) {
@@ -65,7 +64,7 @@ public class ParanormalDamageSource extends DamageSource {
         }
     }
     public static ParanormalDamageSource paranormalCreatureAttack(ParanormalCreature creature) {
-        return new EntityParanormalDamageSource(creature.getMainElement().name + "Creature", creature).setElement(creature.getMainElement());
+        return new EntityParanormalDamageSource(creature.getElement().name + "Creature", creature).setElement(creature.getElement());
     }
     public static ParanormalDamageSource ritualAttack(LivingEntity entity, AbstractRitual ritual) {
         return new EntityParanormalDamageSource(ritual.getElement().name + "Ritual", entity).setElement(ritual.getElement());
@@ -75,9 +74,6 @@ public class ParanormalDamageSource extends DamageSource {
     }
     public static ParanormalDamageSource curseAttack(LivingEntity entity, AbstractCurse curse) {
         return new EntityParanormalDamageSource(curse.getElement().name + "Curse", entity).setElement(curse.getElement());
-    }
-    public static ParanormalDamageSource powerAttack(LivingEntity entity, PlayerPower power) {
-        return new EntityParanormalDamageSource(power.getId(), entity).setElement(power.getElement());
     }
     public String elementDmgTranslationKey(){
         return element.getTranslationKey() + ".damageType";

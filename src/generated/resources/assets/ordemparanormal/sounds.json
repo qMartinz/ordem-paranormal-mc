@@ -2,13 +2,13 @@
   "zumbi_bestial.growl": {
     "subtitle": "subtitles.ordemparanormal.zumbi_bestial.growl",
     "sounds": [
-      "ordemparanormal:zumbi_bestial.growl"
+      "ordemparanormal:bestial/growl"
     ]
   },
   "zumbi_sangue.growl": {
     "subtitle": "subtitles.ordemparanormal.zumbi_sangue.growl",
     "sounds": [
-      "ordemparanormal:zumbi_sangue.growl"
+      "ordemparanormal:zumbi_sangue/growl"
     ]
   },
   "zombie_convert": {
@@ -47,109 +47,154 @@
       "ordemparanormal:corpse_death"
     ]
   },
-  "ritual_learned": {
+  "ritual.learned": {
     "subtitle": "subtitles.ordemparanormal.ritual_learned",
     "sounds": [
-      "ordemparanormal:ritual_learned"
+      "ordemparanormal:ritual/learned"
     ]
   },
-  "ritual_forgotten": {
+  "ritual.forgotten": {
     "subtitle": "subtitles.ordemparanormal.ritual_forgotten",
     "sounds": [
-      "ordemparanormal:ritual_forgotten"
+      "ordemparanormal:ritual/forgotten"
     ]
   },
   "corpse.hurt": {
     "subtitle": "subtitles.ordemparanormal.corpse.hurt",
     "sounds": [
-      "ordemparanormal:blood_hurt_1",
-      "ordemparanormal:blood_hurt_2",
-      "ordemparanormal:blood_hurt_3",
-      "ordemparanormal:blood_hurt_4"
+      "ordemparanormal:blood/hurt_1",
+      "ordemparanormal:blood/hurt_2",
+      "ordemparanormal:blood/hurt_3",
+      "ordemparanormal:blood/hurt_4"
     ]
   },
   "zumbi_sangue.hurt": {
     "subtitle": "subtitles.ordemparanormal.zumbi_sangue.hurt",
     "sounds": [
-      "ordemparanormal:blood_hurt_1",
-      "ordemparanormal:blood_hurt_2",
-      "ordemparanormal:blood_hurt_3",
-      "ordemparanormal:blood_hurt_4"
+      "ordemparanormal:blood/hurt_1",
+      "ordemparanormal:blood/hurt_2",
+      "ordemparanormal:blood/hurt_3",
+      "ordemparanormal:blood/hurt_4"
     ]
   },
-  "ritual_used": {
-    "subtitle": "subtitles.ordemparanormal.ritual_used",
+  "ritual.used": {
+    "subtitle": "subtitles.ordemparanormal.ritual.used",
     "sounds": [
-      "ordemparanormal:ritual_used"
+      "ordemparanormal:ritual/used"
     ]
   },
-  "ritual_failed": {
-    "subtitle": "subtitles.ordemparanormal.ritual_failed",
+  "ritual.failed": {
+    "subtitle": "subtitles.ordemparanormal.ritual.failed",
     "sounds": [
-      "ordemparanormal:ritual_failed"
+      "ordemparanormal:ritual/failed"
     ]
   },
   "ingredient_blood": {
     "sounds": [
-      "ordemparanormal:ingredient_blood"
+      "ordemparanormal:ingredient/blood"
     ]
   },
   "ingredient_death": {
     "sounds": [
-      "ordemparanormal:ingredient_death"
+      "ordemparanormal:ingredient/death"
     ]
   },
   "ingredient_energy": {
     "sounds": [
-      "ordemparanormal:ingredient_energy"
+      "ordemparanormal:ingredient/energy"
     ]
   },
   "ingredient_knowledge": {
     "sounds": [
-      "ordemparanormal:ingredient_knowledge"
+      "ordemparanormal:ingredient/knowledge"
     ]
   },
   "blood_power_used": {
     "subtitle": "subtitles.ordemparanormal.blood_power_used",
     "sounds": [
-      "ordemparanormal:blood_power_used",
-      "ordemparanormal:blood_power_used_2",
-      "ordemparanormal:blood_power_used_3"
+      "ordemparanormal:blood/power_used",
+      "ordemparanormal:blood/power_used_2",
+      "ordemparanormal:blood/power_used_3"
     ]
   },
   "energy_power_used": {
     "subtitle": "subtitles.ordemparanormal.energy_power_used",
     "sounds": [
-      "ordemparanormal:energy_power_used",
-      "ordemparanormal:energy_power_used_2",
-      "ordemparanormal:energy_power_used_3"
+      "ordemparanormal:energy/power_used",
+      "ordemparanormal:energy/power_used_2",
+      "ordemparanormal:energy/power_used_3"
     ]
   },
   "death_power_used": {
-    "subtitle": "subtitles.ordemparanormal.death_power_used",
+    "subtitle": "subtitles.ordemparanormal.death/power_used",
     "sounds": [
-      "ordemparanormal:death_power_used",
-      "ordemparanormal:death_power_used_2",
-      "ordemparanormal:death_power_used_3"
+      "ordemparanormal:death/power_used",
+      "ordemparanormal:death/power_used_2",
+      "ordemparanormal:death/power_used_3"
     ]
   },
   "knowledge_power_used": {
     "subtitle": "subtitles.ordemparanormal.knowledge_power_used",
     "sounds": [
-      "ordemparanormal:knowledge_power_used",
-      "ordemparanormal:knowledge_power_used_2",
-      "ordemparanormal:knowledge_power_used_3"
+      "ordemparanormal:knowledge/power_used",
+      "ordemparanormal:knowledge/power_used_2",
+      "ordemparanormal:knowledge/power_used_3"
     ]
   },
   "fear_power_used": {
     "subtitle": "subtitles.ordemparanormal.fear_power_used",
     "sounds": [
-      "ordemparanormal:fear_power_used"
+      "ordemparanormal:fear/power_used"
     ]
   },
   "vampirismo_used": {
     "sounds": [
-      "ordemparanormal:vampirismo_used"
+      "ordemparanormal:power/vampirismo_used"
+    ]
+  },
+  "aberracao.hurt": {
+    "subtitle": "subtitles.ordemparanormal.aberracao.hurt",
+    "sounds": [
+      "ordemparanormal:blood/hurt_1",
+      "ordemparanormal:blood/hurt_2",
+      "ordemparanormal:blood/hurt_3",
+      "ordemparanormal:blood/hurt_4"
+    ]
+  },
+  "aberracao.idle": {
+    "subtitle": "subtitles.ordemparanormal.aberracao.idle",
+    "sounds": [
+      "ordemparanormal:aberracao/idle1",
+      "ordemparanormal:aberracao/idle2",
+      "ordemparanormal:aberracao/idle3",
+      "ordemparanormal:aberracao/idle4"
+    ]
+  },
+  "aberracao.step": {
+    "subtitle": "subtitles.ordemparanormal.aberracao.step",
+    "sounds": [
+      "ordemparanormal:aberracao/step1",
+      "ordemparanormal:aberracao/step2",
+      "ordemparanormal:aberracao/step3",
+      "ordemparanormal:aberracao/step4"
+    ]
+  },
+  "aberracao.attack": {
+    "subtitle": "subtitles.ordemparanormal.aberracao.attack",
+    "sounds": [
+      "ordemparanormal:aberracao/attack"
+    ]
+  },
+  "aberracao.abocanhar": {
+    "subtitle": "subtitles.ordemparanormal.aberracao.abocanhar",
+    "sounds": [
+      "ordemparanormal:aberracao/abocanhar"
+    ]
+  },
+  "aberracao.death": {
+    "subtitle": "subtitles.ordemparanormal.aberracao.death",
+    "sounds": [
+      "ordemparanormal:aberracao/death"
     ]
   }
 }

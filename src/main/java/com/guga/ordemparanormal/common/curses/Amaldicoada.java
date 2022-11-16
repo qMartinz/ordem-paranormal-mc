@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
 import com.guga.ordemparanormal.core.registry.OPParticles;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Random;
 
 public class Amaldicoada extends AbstractCurse {
-    public Amaldicoada(String id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
+    public Amaldicoada(ResourceLocation id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
         super(id, element, category, slots);
     }
     public int getMaxUses() {

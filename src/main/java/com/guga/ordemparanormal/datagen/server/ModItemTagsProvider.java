@@ -19,5 +19,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(OPTags.RAW_MEATS).add(Items.BEEF, Items.PORKCHOP, Items.MUTTON, Items.RABBIT);
 
         tag(OPTags.RITUAL_COMPONENTS).add(OPItems.COMPONENTE_CONHECIMENTO.get(), OPItems.COMPONENTE_ENERGIA.get(), OPItems.COMPONENTE_MORTE.get(), OPItems.COMPONENTE_SANGUE.get());
+        tag(OPTags.BLOOD_FUEL).addTag(OPTags.RAW_MEATS).add(OPItems.ORGAO.get());
+        tag(OPTags.ENERGY_FUEL).add(Items.LAPIS_LAZULI, Items.AMETHYST_SHARD, Items.PRISMARINE_SHARD, Items.EMERALD, Items.QUARTZ);
+        tag(OPTags.DEATH_FUEL).add(Items.BONE, Items.SAND, Items.RED_SAND, Items.GRAVEL, OPItems.CINZAS.get());
+        tag(OPTags.KNOWLEDGE_FUEL).add(Items.GLASS, Items.GOLD_INGOT, Items.GLOWSTONE_DUST, Items.PAPER, Items.CANDLE);
     }
 }

@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 public class CasualidadeFortuita extends PlayerPower {
-    public CasualidadeFortuita(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+    public CasualidadeFortuita(ResourceLocation id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
         super(id, false, element, 0, nex, attributes, powers);
     }
     @Override

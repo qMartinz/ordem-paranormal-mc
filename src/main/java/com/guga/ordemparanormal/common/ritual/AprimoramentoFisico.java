@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +17,7 @@ import net.minecraft.world.phys.HitResult;
 
 public class AprimoramentoFisico extends AbstractRitual {
 
-    public AprimoramentoFisico(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public AprimoramentoFisico(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override

@@ -5,7 +5,6 @@ import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.teamabnormals.blueprint.core.endimator.Endimatable;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -24,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	public ZumbiSangue(EntityType<? extends Monster> type, Level level) {
-		super(type, level, 50, ParanormalElement.SANGUE);
+		super(type, level, 20, ParanormalElement.SANGUE);
 	}
 
 	// AI e comportamento
@@ -43,7 +42,7 @@ public class ZumbiSangue extends ParanormalCreature implements Endimatable {
 	public static AttributeSupplier.Builder createZumbiSangueAttributes() {
 		return Monster.createMonsterAttributes().add(Attributes.FOLLOW_RANGE, 40.0D)
 				.add(Attributes.MAX_HEALTH, 22.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.35F)
+				.add(Attributes.MOVEMENT_SPEED, 0.35D)
 				.add(Attributes.ATTACK_DAMAGE, 9.0D)
 				.add(Attributes.ARMOR, 3.0D);
 	}

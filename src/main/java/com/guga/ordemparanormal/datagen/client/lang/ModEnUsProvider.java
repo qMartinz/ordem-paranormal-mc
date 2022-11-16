@@ -1,44 +1,17 @@
 package com.guga.ordemparanormal.datagen.client.lang;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
-import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraftforge.common.data.LanguageProvider;
 
-public class ModEnUsProvider extends LanguageProvider {
+public class ModEnUsProvider extends ModLangProvider {
 
 	public ModEnUsProvider(DataGenerator gen) {
 		super(gen, OrdemParanormal.MOD_ID, "en_us");
 	}
-
-	private void add(AbstractRitual ritual, String name, String description) {
-		add(ritual.getTranslationKey(), name);
-		add(ritual.getTranslationKey() + ".description", description);
-	}
-	private void add(PlayerPower power, String name, String description) {
-		add(power.getTranslationKey(), name);
-		add(power.getTranslationKey() + ".description", description);
-	}
-	public void add(VillagerProfession key, String name) {
-		super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
-	}
-	public void addDeath(String key, String translation){
-		add("death.attack." + key, translation);
-	}
-	public void addAdvancement(String id, String title, String description){
-		add("ordemparanormal.advancement." + id + ".title", title);
-		add("ordemparanormal.advancement." + id + ".description", description);
-	}
-	public void addSubtitle(String id, String subtitle){
-		add("subtitles.ordemparanormal." + id, subtitle);
-	}
-
 	// Adicionar traduções em EN-US
 	@Override
 	protected void addTranslations() {
@@ -53,15 +26,21 @@ public class ModEnUsProvider extends LanguageProvider {
 		addSubtitle("zumbi_sangue.hurt", "Blood zombie is hurt");
 		addSubtitle("zumbi_sangue.death", "Blood zombie is killed");
 		addSubtitle("zumbi_sangue.convert", "Blood zombie converts to bestial Blood zombie");
-		addSubtitle("ritual_learned", "Ritual is learned");
-		addSubtitle("ritual_forgotten", "Ritual is forgotten");
-		addSubtitle("ritual_used", "Ritual is used");
-		addSubtitle("ritual_failed", "Ritual fails");
+		addSubtitle("ritual.learned", "Ritual is learned");
+		addSubtitle("ritual.forgotten", "Ritual is forgotten");
+		addSubtitle("ritual.used", "Ritual is used");
+		addSubtitle("ritual.failed", "Ritual fails");
 		addSubtitle("blood_power_used", "Blood power is used");
 		addSubtitle("energy_power_used", "Energy power is used");
 		addSubtitle("death_power_used", "Death power is used");
 		addSubtitle("knowledge_power_used", "Knowledge power is used");
 		addSubtitle("fear_power_used", "Fear power is used");
+		addSubtitle("aberracao.death", "Flesh aberration dies");
+		addSubtitle("aberracao.hurt", "Flesh aberration is hurt");
+		addSubtitle("aberracao.idle", "Flesh aberration moans in pain");
+		addSubtitle("aberracao.step", "Flesh aberration walking");
+		addSubtitle("aberracao.attack", "Flesh aberration attacks");
+		addSubtitle("aberracao.abocanhar", "Flesh aberration bites");
 
 		// -------------------------------------------------------------
 
@@ -85,6 +64,7 @@ public class ModEnUsProvider extends LanguageProvider {
 			add("itemGroup.ordemparanormal", "Paranormal Order");
 			add("itemGroup.ordemparanormal.rituals", "Rituals");
 			add("itemGroup.ordemparanormal.mobs", "Paranormal Creatures");
+			add("itemGroup.ordemparanormal.curses", "Curses");
 
 			// Itens de Rituais
 			add(OPItems.RITUAL_DESCARNAR.get(), "Cursed book");
@@ -118,6 +98,7 @@ public class ModEnUsProvider extends LanguageProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Blood zombie spawn egg");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Skeletal Blood zombie spawn egg");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
+			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
 
 		// -------------------------------------------------------------
 
@@ -127,12 +108,16 @@ public class ModEnUsProvider extends LanguageProvider {
 		add(OPEntities.VILLAGER_CORPO.get(), "Villager corpse");
 		add(OPEntities.ZUMBI_SECO.get(), "Skeletal Blood zombie");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Spiky Blood zombie");
+		add(OPEntities.ABERRACAO_CARNE.get(), "Flesh aberration");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Blood Occultist");
 			add(OPProfessions.OCULTISTA_ENERGIA.get(), "Energy Occultist");
 			add(OPProfessions.OCULTISTA_CONHECIMENTO.get(), "Knowledge Occultist");
 			add(OPProfessions.OCULTISTA_MORTE.get(), "Death Occultist");
+
+			// Entidades de Blocos
+			add("ordemparanormal.block.block_entity.curse_table", "Curses");
 
 		// -------------------------------------------------------------
 
@@ -290,11 +275,21 @@ public class ModEnUsProvider extends LanguageProvider {
 				"Expands your mind to even higher levels, increasing the amount of rituals that you can learn.");
 
 		// Maldições
-		add(OPCurses.ATROZ.getTranslationKey(), "Atrocious");
-		add(OPCurses.VELOZ.getTranslationKey(), "Nimble");
-		add(OPCurses.DECADENTE.getTranslationKey(), "Decaying");
-		add(OPCurses.AMALDICOADA.getTranslationKey(), "Cursed");
-		add(OPCurses.LAMINA_MEDO.getTranslationKey(), "Blade of Fear");
+		add(OPCurses.ATROZ, "Atrocious");
+		add(OPCurses.VELOZ, "Nimble");
+		add(OPCurses.DECADENTE, "Decaying");
+		add(OPCurses.AMALDICOADA, "Cursed");
+		add(OPCurses.LAMINA_MEDO, "Blade of Fear");
+		add(OPCurses.SANGUINARIA, "Bloodthirsty");
+		add(OPCurses.LANCINANTE, "Harrowing");
+		add(OPCurses.ANTI_CONHECIMENTO, "Anti-Element (Knowledge)");
+		add(OPCurses.ANTI_SANGUE, "Anti-Element (Blood)");
+		add(OPCurses.ANTI_MORTE, "Anti-Element (Death)");
+		add(OPCurses.ANTI_ENERGIA, "Anti-Element (Energy)");
+		add(OPCurses.LEPIDA, "Light-footed");
+		add(OPCurses.ENERGETICA, "Energetic");
+		add(OPCurses.VOLTAICA, "Voltaic");
+		add(OPCurses.CONSUMIDORA, "Consumer");
 
 		// -------------------------------------------------------------
 
@@ -355,7 +350,27 @@ public class ModEnUsProvider extends LanguageProvider {
 		addDeath("medoRitual", "%1$s discovered the impossible summoned by %2$s");
 
 			// Mensagem de mortes por poder
-			addDeath("vampirismo", "%1$s had its blood drained out by %2$s");
+			addDeath("vampirismoPower", "%1$s had its blood drained out by %2$s");
+
+		// -------------------------------------------------------------
+
+		//Mensagem de comandos
+		add("ordemparanormal.commands.nex.attributes.points.add.success", "Attribute points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.points.remove.success", "Attribute points successfully removed.");
+		add("ordemparanormal.commands.nex.attributes.vigor.add.success", "Vigor points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.vigor.remove.success", "Vigor points successfully removed.");
+		add("ordemparanormal.commands.nex.attributes.strength.add.success", "Strength points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.strength.remove.success", "Strength points successfully removed.");
+		add("ordemparanormal.commands.nex.attributes.presence.add.success", "Presence points successfully added.");
+		add("ordemparanormal.commands.nex.attributes.presence.remove.success", "Presence points successfully removed.");
+		add("ordemparanormal.commands.nex.powers.points.add.success", "Power points successfully added.");
+		add("ordemparanormal.commands.nex.powers.points.remove.success", "Power points successfully removed.");
+		add("ordemparanormal.commands.nex.powers.add.success", "%1$s successfully added.");
+		add("ordemparanormal.commands.nex.powers.remove.success", "%1$s successfully removed.");
+		add("ordemparanormal.commands.nex.rituals.slots.add.success", "Ritual slots successfully added.");
+		add("ordemparanormal.commands.nex.rituals.slots.remove.success", "Ritual slots successfully removed.");
+		add("ordemparanormal.commands.nex.rituals.add.success", "%1$s successfully added.");
+		add("ordemparanormal.commands.nex.rituals.remove.success", "%1$s successfully removed.");
 
 		// -------------------------------------------------------------
 
@@ -365,24 +380,6 @@ public class ModEnUsProvider extends LanguageProvider {
 		addAdvancement("learn_ritual", "Understand the Other Side", "Aha! I finally understand this cursed item, that was it the entire time! All I needed to do was TRANSCEND...");
 		addAdvancement("receive_power", "Capabilities of the Other Side", "What a strange sensation. This is definitely not normal but... it's very cool.");
 		addAdvancement("paranormal_creature", "Abominations of the Other Side", "That was... What even was that?! I thought they were just tales, it can't be...");
-		addAdvancement("amaldicoar_arma", "Curse Weapon", "Learn the ritual \"Amaldiçoar Arma\".");
-		addAdvancement("aprimoramento_fisico", "Physical Upgrade", "Learn the ritual \"Physical Upgrade\".");
-		addAdvancement("arma_atroz", "Atrocious Weapon", "Learn the ritual \"Atrocious Weapon\".");
-		addAdvancement("arma_veloz", "Nimble Weapon", "Learn the ritual \"Nimble Weapon\".");
-		addAdvancement("armadura_sangue", "Blood Armor", "Learn the ritual \"Blood Armor\".");
-		addAdvancement("cicatrizacao", "Cicatrization", "Learn the ritual \"Cicatrization\".");
-		addAdvancement("consumir_manancial", "Consume Lifeforce", "Learn the ritual \"Consume Lifeforce\".");
-		addAdvancement("decadencia", "Decay", "Learn the ritual \"Decay\".");
-		addAdvancement("descarnar", "Skinning", "Learn the ritual \"Skinning\".");
-		addAdvancement("espirais_da_perdicao", "Spirals of Doom", "Learn the ritual \"Spirals of Doom\".");
-		addAdvancement("hemofagia", "Hematophagy", "Learn the ritual \"Hematophagy\".");
-		addAdvancement("inexistir", "Unexist", "Learn the ritual \"Unexist\".");
-		addAdvancement("luz", "Light", "Learn the ritual \"Light\".");
-		addAdvancement("perturbacao", "Disturbance", "Learn the ritual \"Disturbance\".");
-		addAdvancement("salto_fantasma", "Phantom Jump", "Learn the ritual \"Phantom Jump\".");
-		addAdvancement("teleporte", "Teleport", "Learn the ritual \"Teleport\".");
-		addAdvancement("transferencia_vital", "Vitality Transfer", "Learn the ritual \"Vitality Transfer\".");
-		addAdvancement("velocidade_mortal", "Deadly Velocity", "Learn the ritual \"Deadly Velocity\".");
 
 		// --------------------------------------------------------------
 

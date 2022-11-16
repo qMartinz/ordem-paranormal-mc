@@ -27,7 +27,7 @@ public class ParanormalCreature extends Monster {
         this.rewardedXP = rewardedXP;
         this.element = element;
     }
-    public ParanormalElement getMainElement() {
+    public ParanormalElement getElement() {
         return this.element;
     }
     @Override

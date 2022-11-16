@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.client.screen.widgets;
 
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -26,8 +27,10 @@ public class SelectedRitual extends AbstractWidget {
         Minecraft minecraft = Minecraft.getInstance();
         minecraft.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(abilities -> {
             if (!abilities.getKnownRituals().isEmpty()){
-                ResourceLocation symbol = new ResourceLocation(OrdemParanormal.MOD_ID,
-                        "textures/ritual_symbol/" + abilities.getKnownRituals().stream().toList().get(ritualIndex).getId() + ".png");
+                AbstractRitual ritual = abilities.getKnownRituals().stream().toList().get(ritualIndex);
+
+                ResourceLocation symbol = new ResourceLocation(ritual.getId().getNamespace(),
+                        "textures/ritual_symbol/" + ritual.getId().getPath() + ".png");
 
                 if (minecraft.getResourceManager().hasResource(symbol)) {
                     RenderSystem.enableBlend();

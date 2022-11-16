@@ -21,10 +21,10 @@ public final class OPSounds {
     public static final RegistryObject<SoundEvent> CORPSE_CONVERT = HELPER.createSoundEvent("corpse.convert");
     public static final RegistryObject<SoundEvent> CORPSE_HURT = HELPER.createSoundEvent("corpse.hurt");
     public static final RegistryObject<SoundEvent> CORPSE_DEATH = HELPER.createSoundEvent("corpse.death");
-    public static final RegistryObject<SoundEvent> RITUAL_LEARNED = HELPER.createSoundEvent("ritual_learned");
-    public static final RegistryObject<SoundEvent> RITUAL_FORGOTTEN = HELPER.createSoundEvent("ritual_forgotten");
-    public static final RegistryObject<SoundEvent> RITUAL_USED = HELPER.createSoundEvent("ritual_used");
-    public static final RegistryObject<SoundEvent> RITUAL_FAILED = HELPER.createSoundEvent("ritual_failed");
+    public static final RegistryObject<SoundEvent> RITUAL_LEARNED = HELPER.createSoundEvent("ritual.learned");
+    public static final RegistryObject<SoundEvent> RITUAL_FORGOTTEN = HELPER.createSoundEvent("ritual.forgotten");
+    public static final RegistryObject<SoundEvent> RITUAL_USED = HELPER.createSoundEvent("ritual.used");
+    public static final RegistryObject<SoundEvent> RITUAL_FAILED = HELPER.createSoundEvent("ritual.failed");
     public static final RegistryObject<SoundEvent> BLOOD_POWER_USED = HELPER.createSoundEvent("blood_power_used");
     public static final RegistryObject<SoundEvent> ENERGY_POWER_USED = HELPER.createSoundEvent("energy_power_used");
     public static final RegistryObject<SoundEvent> DEATH_POWER_USED = HELPER.createSoundEvent("death_power_used");
@@ -35,4 +35,10 @@ public final class OPSounds {
     public static final RegistryObject<SoundEvent> INGREDIENT_DEATH = HELPER.createSoundEvent("ingredient_death");
     public static final RegistryObject<SoundEvent> INGREDIENT_KNOWLEDGE = HELPER.createSoundEvent("ingredient_knowledge");
     public static final RegistryObject<SoundEvent> VAMPIRISMO_USED = HELPER.createSoundEvent("vampirismo_used");
+    public static final RegistryObject<SoundEvent> ABERRACAO_IDLE = HELPER.createSoundEvent("aberracao.idle");
+    public static final RegistryObject<SoundEvent> ABERRACAO_STEP = HELPER.createSoundEvent("aberracao.step");
+    public static final RegistryObject<SoundEvent> ABERRACAO_ATTACK = HELPER.createSoundEvent("aberracao.attack");
+    public static final RegistryObject<SoundEvent> ABERRACAO_ABOCANHAR = HELPER.createSoundEvent("aberracao.abocanhar");
+    public static final RegistryObject<SoundEvent> ABERRACAO_HURT = HELPER.createSoundEvent("aberracao.hurt");
+    public static final RegistryObject<SoundEvent> ABERRACAO_DEATH = HELPER.createSoundEvent("aberracao.death");
 }

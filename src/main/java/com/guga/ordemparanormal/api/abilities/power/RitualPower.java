@@ -6,12 +6,13 @@ import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.HitResult;
 
 public class RitualPower extends PlayerPower{
     public final AbstractRitual ritual;
-    public RitualPower(String id, int nexRequired, int[] attributesRequired, AbstractRitual ritual, PlayerPower... powerRequirements) {
+    public RitualPower(ResourceLocation id, int nexRequired, int[] attributesRequired, AbstractRitual ritual, PlayerPower... powerRequirements) {
         super(id, true, ritual.getElement(), 0, nexRequired, attributesRequired, powerRequirements);
         this.ritual = ritual;
     }

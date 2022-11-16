@@ -64,7 +64,7 @@ public class NBTUtil {
         int i = 0;
         for(CurseInstance c : instances){
             CompoundTag curse = new CompoundTag();
-            curse.putString("id", c.getCurse().getId());
+            curse.putString("id", c.getCurse().getId().toString());
             curse.putInt("uses", c.getUses());
 
             tag.put("curse_" + i, curse);

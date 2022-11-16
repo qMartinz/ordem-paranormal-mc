@@ -170,7 +170,7 @@ public class Overlay {
                     gui.blit(poseStack, x, y, 0, 74, 30, 30);
                     gui.blit(poseStack, x + 5, y + 5, 20 * power.getElement().index, power.isActivePower() ? 54 : 34, 20, 20);
 
-                    ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + power.getId() + ".png");
+                    ResourceLocation icon = new ResourceLocation(power.getId().getNamespace(), "textures/paranormal_power/" + power.getId().getPath() + ".png");
                     if (minecraft.getResourceManager().hasResource(icon)) {
                         RenderSystem.setShaderTexture(0, icon);
                         gui.blit(poseStack, x + 7, y + 7, 0, 0, 16, 16, 16, 16);

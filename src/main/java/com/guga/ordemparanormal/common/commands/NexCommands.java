@@ -14,7 +14,9 @@ public class NexCommands {
                         .then(Commands.argument("player", EntityArgument.player())
                                 .then(SetNexCommand.register())
                                 .then(ResetNexCommand.register())
-                                .then(AddPointsCommand.register())
+                                .then(AttributeCommand.register())
+                                .then(PowerCommand.register())
+                                .then(RitualCommand.register())
                                 .then(AddXpCommand.register()))
         );
     }

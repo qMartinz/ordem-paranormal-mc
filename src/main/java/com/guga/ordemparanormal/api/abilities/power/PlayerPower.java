@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.api.abilities.power;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
+import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -10,6 +11,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -28,15 +30,15 @@ import java.util.List;
 import java.util.Set;
 
 public class PlayerPower {
-    public static final PlayerPower EMPTY = new PlayerPower("", false, ParanormalElement.NONE, 0, 0, new int[]{0, 0, 0});
-    private final String id;
+    public static final PlayerPower EMPTY = new PlayerPower(new ResourceLocation(OrdemParanormal.MOD_ID, "empty"), false, ParanormalElement.NONE, 0, 0, new int[]{0, 0, 0});
+    private final ResourceLocation id;
     private final boolean isActivePower;
     private final ParanormalElement element;
     private final int effortCost;
     private final Set<PlayerPower> powerRequirements;
     private final int nexRequired;
     private final int[] attributesRequired;
-    public PlayerPower(String id, boolean isActivePower, ParanormalElement element, int effortCost, int nexRequired, int[] attributesRequired, PlayerPower... powerRequirements){
+    public PlayerPower(ResourceLocation id, boolean isActivePower, ParanormalElement element, int effortCost, int nexRequired, int[] attributesRequired, PlayerPower... powerRequirements){
         this.id = id;
         this.isActivePower = isActivePower;
         this.element = element;
@@ -45,7 +47,7 @@ public class PlayerPower {
         this.nexRequired = nexRequired;
         this.attributesRequired = attributesRequired;
     }
-    public String getId() {
+    public ResourceLocation getId() {
         return id;
     }
     public boolean isActivePower() {
@@ -67,7 +69,7 @@ public class PlayerPower {
         return attributesRequired;
     }
     public String getTranslationKey(){
-        return "ordemparanormal.ability." + getId();
+        return getId().getNamespace() + ".power." + getId().getPath();
     }
     public Component getDisplayName(){ return new TranslatableComponent(getTranslationKey()); }
     public FormattedText getDescription(){

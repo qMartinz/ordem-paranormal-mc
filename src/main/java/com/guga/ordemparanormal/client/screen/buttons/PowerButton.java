@@ -75,7 +75,7 @@ public class PowerButton extends AbstractButton {
 
         blit(stack, x, y, 20 * power.getElement().index, power.isActivePower() ? 84 : 64, 20, 20);
 
-        ResourceLocation icon = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/paranormal_power/" + this.power.getId() + ".png");
+        ResourceLocation icon = new ResourceLocation(this.power.getId().getNamespace(), "textures/paranormal_power/" + this.power.getId().getPath() + ".png");
         if (minecraft.getResourceManager().hasResource(icon)) {
             RenderSystem.setShaderTexture(0, icon);
             blit(stack, x + 2, y + 2, 0, 0, 16, 16, 16, 16);

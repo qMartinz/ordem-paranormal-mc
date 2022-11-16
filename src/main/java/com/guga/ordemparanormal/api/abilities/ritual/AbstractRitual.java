@@ -15,6 +15,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -32,14 +33,14 @@ import net.minecraft.world.phys.HitResult;
 import javax.annotation.Nullable;
 
 public abstract class AbstractRitual{
-    private final String id;
+    private final ResourceLocation id;
     private final ParanormalElement element;
     private final int tier;
     private final int effortCost;
     private final boolean hasEntityTarget;
     private final double range;
     private final boolean mustHoldIngredient;
-    public AbstractRitual(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public AbstractRitual(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         this.id = id;
         this.element = element;
         this.tier = Mth.clamp(tier, 1, 4);
@@ -48,9 +49,9 @@ public abstract class AbstractRitual{
         this.range = range;
         this.mustHoldIngredient = mustHoldIngredient;
     }
-    public String getId() { return id; }
+    public ResourceLocation getId() { return id; }
     public String getTranslationKey(){
-        return "ordemparanormal.ritual." + getId();
+        return getId().getNamespace() + ".ritual." + getId().getPath();
     }
     public Component getDisplayName(){
         return new TranslatableComponent(getTranslationKey());

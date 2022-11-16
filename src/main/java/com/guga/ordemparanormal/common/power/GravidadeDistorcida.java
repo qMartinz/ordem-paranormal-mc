@@ -6,11 +6,12 @@ import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPPowers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 
 public class GravidadeDistorcida extends PlayerPower {
-    public GravidadeDistorcida(String id, boolean isActivePower, ParanormalElement element, int effortCost, int nexRequired, int[] attributesRequired, PlayerPower... powerRequirements) {
+    public GravidadeDistorcida(ResourceLocation id, boolean isActivePower, ParanormalElement element, int effortCost, int nexRequired, int[] attributesRequired, PlayerPower... powerRequirements) {
         super(id, isActivePower, element, effortCost, nexRequired, attributesRequired, powerRequirements);
     }
     @Override

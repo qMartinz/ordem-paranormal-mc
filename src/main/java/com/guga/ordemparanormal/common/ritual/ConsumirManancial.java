@@ -5,6 +5,7 @@ import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -14,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
 public class ConsumirManancial extends AbstractRitual {
-    public ConsumirManancial(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public ConsumirManancial(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override

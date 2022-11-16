@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bone",
+    "minecraft:sand",
+    "minecraft:red_sand",
+    "minecraft:gravel",
+    "ordemparanormal:cinzas"
+  ]
+}

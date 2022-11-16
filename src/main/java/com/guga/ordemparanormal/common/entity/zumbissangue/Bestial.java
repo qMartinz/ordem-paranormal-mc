@@ -20,7 +20,7 @@ public class Bestial extends ZumbiSangue {
 
 	public Bestial(EntityType<? extends ZumbiSangue> type, Level level) {
 		super(type, level);
-		this.rewardedXP = 100;
+		this.rewardedXP = 35;
 	}
 	
 	// AI e comportamento
@@ -40,7 +40,7 @@ public class Bestial extends ZumbiSangue {
 	public static AttributeSupplier.Builder createBestialAttributes() {
 		return ZumbiSangue.createZumbiSangueAttributes()
 				.add(Attributes.MAX_HEALTH, 36.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.35F)
+				.add(Attributes.MOVEMENT_SPEED, 0.35D)
 				.add(Attributes.ATTACK_DAMAGE, 18.0D)
 				.add(Attributes.ARMOR, 5.0D);
 	}

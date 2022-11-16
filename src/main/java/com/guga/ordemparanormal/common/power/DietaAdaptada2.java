@@ -2,13 +2,14 @@ package com.guga.ordemparanormal.common.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class DietaAdaptada2 extends PlayerPower {
-    public DietaAdaptada2(String id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
+    public DietaAdaptada2(ResourceLocation id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
         super(id, false, element, 0, nex, attributes, powers);
     }
 

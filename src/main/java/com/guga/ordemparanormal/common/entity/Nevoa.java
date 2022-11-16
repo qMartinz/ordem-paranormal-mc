@@ -10,8 +10,6 @@ import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPParticles;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import com.guga.ordemparanormal.core.registry.OPTriggers;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -20,7 +18,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
@@ -66,16 +64,10 @@ public class Nevoa extends Entity {
 
 	// Setters, para setar certos atributos da névoa
 	public void setRadius(int size) {
-		if (!this.level.isClientSide) {
-			if (this.getEntityData().get(DATA_RADIUS) < 45) {
-				this.getEntityData().set(DATA_RADIUS, size);
-			} else {
-				this.getEntityData().set(DATA_RADIUS, 45);
-			}
-		}
+		this.getEntityData().set(DATA_RADIUS, Mth.clamp(size, 1, 45));
 	}
 	public void setIntensity(int intensity) {
-		this.getEntityData().set(DATA_INTENSITY, Math.min(intensity, 5));
+		this.getEntityData().set(DATA_INTENSITY, Mth.clamp(intensity, 1, 5));
 	}
 
 	public void setLife(int life) {
@@ -126,10 +118,12 @@ public class Nevoa extends Entity {
 				this.setLife(l);
 
 				for (CorpoEntity corpo : corpos) {
-					if (corpo.isAlive() && !ExpModel.get(corpo).isMaxExp()) {
-						float i = ExpModel.get(corpo).getExposure();
-						ExpModel.get(corpo).setExposure(i + (float) this.getIntensity() / 2);
-					} else if (corpo.isAlive() && ExpModel.get(corpo).isMaxExp()) {
+					ExpModel expModel = ExpModel.get(corpo);
+
+					if (corpo.isAlive() && !expModel.isMaxExp()) {
+						float exp = expModel.getExposure();
+						expModel.setExposure(exp + (float) this.getIntensity() / 2);
+					} else if (corpo.isAlive() && expModel.isMaxExp()) {
 						List<Mob> zumbis = new ArrayList<>();
 						zumbis.add(new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), corpo.level));
 						zumbis.add(new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), corpo.level));
@@ -144,7 +138,7 @@ public class Nevoa extends Entity {
 				for (Monster monstro : monstros) {
 					ExpModel expModel = ExpModel.get(monstro);
 
-					if (monstro instanceof Zombie) {
+					if (monstro.isAlive() && monstro instanceof Zombie) {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()) {
@@ -153,7 +147,7 @@ public class Nevoa extends Entity {
 						}
 					}
 
-					if (monstro instanceof Skeleton){
+					if (monstro.isAlive() && monstro instanceof Skeleton){
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()){
@@ -167,6 +161,7 @@ public class Nevoa extends Entity {
 				--l;
 				this.setLife(l);
 			}
+
 			if (this.getLife() < 1){
 				this.discard();
 			}
@@ -174,13 +169,12 @@ public class Nevoa extends Entity {
 			// Adiciona 10XP para players com 0% dentro da névoa
 			List<Player> players = this.level.getEntitiesOfClass(Player.class,
 					this.getBoundingBox().inflate(radius), EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-			if (!players.isEmpty()) {
-				for (Player player : players) {
-					player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
-						if (playerNex.getNex() == 0) playerNex.addNexXp(10);
-					});
-					if (player instanceof ServerPlayer serverPlayer) OPTriggers.ENTER_FOG.trigger(serverPlayer);
-				}
+
+			for (Player player : players) {
+				player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+					if (playerNex.getNex() == 0) playerNex.addNexXp(10);
+				});
+				if (player instanceof ServerPlayer serverPlayer) OPTriggers.ENTER_FOG.trigger(serverPlayer);
 			}
 		}
 	}

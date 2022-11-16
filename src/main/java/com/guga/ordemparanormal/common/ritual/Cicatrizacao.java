@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +16,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class Cicatrizacao extends AbstractRitual {
-    public Cicatrizacao(String id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public Cicatrizacao(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
     @Override
@@ -33,7 +34,7 @@ public class Cicatrizacao extends AbstractRitual {
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
         LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
         if (target instanceof ParanormalCreature paranormalCreature) {
-            if (paranormalCreature.getMainElement() != ParanormalElement.SANGUE) {
+            if (paranormalCreature.getElement() != ParanormalElement.SANGUE) {
                 paranormalCreature.heal(6);
             }
         } else {

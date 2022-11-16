@@ -3,9 +3,6 @@ package com.guga.ordemparanormal.common.commands;
 import com.guga.ordemparanormal.api.ApiEvents;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.core.OrdemParanormal;
-import com.guga.ordemparanormal.core.network.Messages;
-import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -14,9 +11,6 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.server.level.ServerPlayer;
-
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class ResetNexCommand implements Command<CommandSourceStack> {
     private static final ResetNexCommand COMMAND = new ResetNexCommand();

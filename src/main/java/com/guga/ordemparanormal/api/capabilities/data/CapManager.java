@@ -1,11 +1,14 @@
 package com.guga.ordemparanormal.api.capabilities.data;
 
-import com.guga.ordemparanormal.api.ApiEvents;
+import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.curses.CurseHelper;
+import com.guga.ordemparanormal.api.curses.CurseInstance;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.Packets;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
@@ -35,11 +38,19 @@ public class CapManager extends SavedData {
                     IEffectsCap effects = serverPlayer.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
                     if (nex == null || effects == null || abilities == null) return;
 
+                    float knowledgeCursePenalty = 1f;
+                    for (ItemStack item : player.getAllSlots()) {
+                        knowledgeCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
+                                        !curse.getCurse().isTemporary() &&
+                                        curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO)
+                                .toList().size();
+                    }
+
                     if (nex.getCurrentEffort() != nex.getMaxEffort() && serverPlayer.getFoodData().getFoodLevel() >= 20){
-                        nex.setCurrentEffort(nex.getCurrentEffort() + 0.15D);
+                        nex.setCurrentEffort(nex.getCurrentEffort() + (0.15D / knowledgeCursePenalty));
                         serverPlayer.getFoodData().addExhaustion(0.3f);
                     } else {
-                        nex.setCurrentEffort(nex.getCurrentEffort() + 0.05D);
+                        nex.setCurrentEffort(nex.getCurrentEffort() + (0.05D / knowledgeCursePenalty));
                     }
                     if (nex.getPowerCooldown() > 0) nex.setPowerCooldown(nex.getPowerCooldown() - 1);
 
