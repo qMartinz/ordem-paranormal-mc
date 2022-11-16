@@ -74,6 +74,10 @@ public final class OPItems {
 			OPRituals.LUZ);
 	public static final RegistryObject<RitualItem> RITUAL_TRANSFIGURAR_TERRA = HELPER.createRItem("tranfigurar_terra",
 			OPRituals.TRANSFIGURAR_TERRA);
+	public static final RegistryObject<RitualItem> RITUAL_CINERARIA = HELPER.createRItem("cineraria",
+			OPRituals.CINERARIA);
+	public static final RegistryObject<RitualItem> RITUAL_REJEITAR_NEVOA = HELPER.createRItem("rejeitar_nevoa",
+			OPRituals.REJEITAR_NEVOA);
 	/*
 	 * public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA =
 	 * HELPER.createRItem("alterar_memoria",
