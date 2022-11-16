@@ -9,13 +9,15 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
 
-public class Luz extends AbstractRitual {
-    public Luz(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget,
+public class TransfigurarTerra extends AbstractRitual {
+    public TransfigurarTerra(ResourceLocation id, ParanormalElement element, int tier, int effortCost,
+            boolean hasEntityTarget,
             double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
@@ -24,14 +26,17 @@ public class Luz extends AbstractRitual {
     public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster,
             @Nullable ItemStack ritualItem, @Nullable InteractionHand hand) {
 
-        BlockPos blockPos = rayTraceResult.getBlockPos().relative(rayTraceResult.getDirection());
+        BlockPos blockPos = rayTraceResult.getBlockPos();
         // 200
-        BlockState luz = OPBlocks.LUZ_BLOCK.get().defaultBlockState();
+        BlockState lama = Blocks.SOUL_SAND.defaultBlockState();
+        BlockState old = world.getBlockState(blockPos);
 
         //
         // BlockState iblockstate = world.getBlockState(blockPos);
         // Block block = iblockstate.getBlock();
-
-        world.setBlockAndUpdate(blockPos, luz);
+        if (old.getBlock() == Blocks.GRASS_BLOCK || old.getBlock() == Blocks.DIRT || old.getBlock() == Blocks.PODZOL
+                || old.getBlock() == Blocks.MYCELIUM || old.getBlock() == Blocks.SAND) {
+            world.setBlockAndUpdate(blockPos, lama);
+        }
     }
 }

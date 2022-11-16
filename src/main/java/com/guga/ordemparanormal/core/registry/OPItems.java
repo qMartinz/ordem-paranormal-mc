@@ -72,8 +72,8 @@ public final class OPItems {
 			OPRituals.INEXISTIR);
 	public static final RegistryObject<RitualItem> RITUAL_LUZ = HELPER.createRItem("fragmento_brilhante",
 			OPRituals.LUZ);
-	public static final RegistryObject<RitualItem> RITUAL_TRANSFIGURAR_AGUA = HELPER.createRItem("tranfigurar_agua",
-			OPRituals.TRANSFIGURAR_AGUA);
+	public static final RegistryObject<RitualItem> RITUAL_TRANSFIGURAR_TERRA = HELPER.createRItem("tranfigurar_terra",
+			OPRituals.TRANSFIGURAR_TERRA);
 	/*
 	 * public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA =
 	 * HELPER.createRItem("alterar_memoria",

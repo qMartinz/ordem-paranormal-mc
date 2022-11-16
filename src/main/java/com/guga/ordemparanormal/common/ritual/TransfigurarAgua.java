@@ -26,28 +26,22 @@ public class TransfigurarAgua extends AbstractRitual {
         rayTraceResult = PowerUtils.rayTrace(caster, this.getRange(), 0, true);
 
         BlockPos pPos = new BlockPos(rayTraceResult.getLocation());
-        // double x1 = blockpos.subtract() + 1;
-        // double x1n = blockpos.getX() - 1;
-        // double z1 = blockpos.getZ() + 1;
-        // double z1n = blockpos.getZ() - 1;
-
-        BlockPos RTCpos = new BlockPos(rayTraceResult.getLocation());// rayTraceResult.getLocation();
 
         BlockState gelo = Blocks.ICE.defaultBlockState();
         // LiquidBlock liquid LiquidBlock
-        BlockState liquid = world.getBlockState(RTCpos);// Blocks.WATER.defaultBlockState();
+        BlockState liquid = world.getBlockState(pPos);// Blocks.WATER.defaultBlockState();
         // HitResult.Type result = rayTraceResult.getType();
 
-        if (liquid == Blocks.WATER.defaultBlockState()) {
-            world.setBlockAndUpdate(pPos.offset(-1, 0, 1), gelo);
-            world.setBlockAndUpdate(pPos.offset(0, 0, 1), gelo);
-            world.setBlockAndUpdate(pPos.offset(1, 0, 1), gelo);
-            world.setBlockAndUpdate(pPos.offset(-1, 0, 0), gelo);
-            world.setBlockAndUpdate(pPos.offset(0, 0, 0), gelo);
-            world.setBlockAndUpdate(pPos.offset(1, 0, 0), gelo);
-            world.setBlockAndUpdate(pPos.offset(-1, 0, -1), gelo);
-            world.setBlockAndUpdate(pPos.offset(-0, 0, -1), gelo);
-            world.setBlockAndUpdate(pPos.offset(1, 0, -1), gelo);
-        }
+        // if (liquid instanceof BlockLiquid) {
+        world.setBlockAndUpdate(pPos.offset(-1, 0, 1), gelo);
+        world.setBlockAndUpdate(pPos.offset(0, 0, 1), gelo);
+        world.setBlockAndUpdate(pPos.offset(1, 0, 1), gelo);
+        world.setBlockAndUpdate(pPos.offset(-1, 0, 0), gelo);
+        world.setBlockAndUpdate(pPos.offset(0, 0, 0), gelo);
+        world.setBlockAndUpdate(pPos.offset(1, 0, 0), gelo);
+        world.setBlockAndUpdate(pPos.offset(-1, 0, -1), gelo);
+        world.setBlockAndUpdate(pPos.offset(-0, 0, -1), gelo);
+        world.setBlockAndUpdate(pPos.offset(1, 0, -1), gelo);
+        // }
     }
 }
