@@ -1,13 +1,17 @@
 package com.guga.ordemparanormal.common;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
+import com.guga.ordemparanormal.api.curses.CurseInstance;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class OPItemProperties {
@@ -31,31 +35,32 @@ public class OPItemProperties {
      */
     protected static float getCurseFloat(ItemStack stack){
         float curse_float = 0f;
+        List<AbstractCurse> curses = CurseHelper.getCurses(stack).stream().map(CurseInstance::getCurse).toList();
 
-        if (!CurseHelper.getCurses(stack).isEmpty() && CurseHelper.getCurses(stack).stream().noneMatch(Objects::isNull)) {
-            if (CurseHelper.getCurses(stack).stream().allMatch(curse -> curse.getCurse().element == ParanormalElement.SANGUE)) curse_float = 1f;
+        if (!curses.isEmpty() && curses.stream().noneMatch(Objects::isNull)) {
+            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.SANGUE)) curse_float = 1f;
 
-            if (CurseHelper.getCurses(stack).stream().allMatch(curse -> curse.getCurse().element == ParanormalElement.MORTE)) curse_float = 2f;
+            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.MORTE)) curse_float = 2f;
 
-            if (CurseHelper.getCurses(stack).stream().allMatch(curse -> curse.getCurse().element == ParanormalElement.CONHECIMENTO)) curse_float = 3f;
+            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO)) curse_float = 3f;
 
-            if (CurseHelper.getCurses(stack).stream().allMatch(curse -> curse.getCurse().element == ParanormalElement.ENERGIA)) curse_float = 4f;
+            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.ENERGIA)) curse_float = 4f;
 
-            if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.SANGUE) &&
-                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.ENERGIA)) curse_float = 5f;
+            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.SANGUE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.ENERGIA)) curse_float = 5f;
 
-            if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MORTE) &&
-                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.CONHECIMENTO)) curse_float = 6f;
+            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MORTE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO)) curse_float = 6f;
 
-            if (CurseHelper.getCurses(stack).stream().allMatch(curse -> curse.getCurse().element == ParanormalElement.MEDO)) curse_float = 7f;
+            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.MEDO)) curse_float = 7f;
 
-            if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.SANGUE) &&
-                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.ENERGIA) &&
-                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MEDO)) curse_float = 8f;
+            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.SANGUE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.ENERGIA) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MEDO)) curse_float = 8f;
 
-            if (CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MORTE) &&
-                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.CONHECIMENTO) &&
-                    CurseHelper.getCurses(stack).stream().anyMatch(curse -> curse.getCurse().element == ParanormalElement.MEDO)) curse_float = 9f;
+            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MORTE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MEDO)) curse_float = 9f;
         }
         return curse_float;
     }
