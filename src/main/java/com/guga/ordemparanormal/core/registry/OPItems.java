@@ -78,6 +78,8 @@ public final class OPItems {
 			OPRituals.CINERARIA);
 	public static final RegistryObject<RitualItem> RITUAL_REJEITAR_NEVOA = HELPER.createRItem("rejeitar_nevoa",
 			OPRituals.REJEITAR_NEVOA);
+	public static final RegistryObject<RitualItem> RITUAL_ZERAR_ENTROPIA = HELPER.createRItem("zerar_entropia",
+			OPRituals.ZERAR_ENTROPIA);
 	/*
 	 * public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA =
 	 * HELPER.createRItem("alterar_memoria",
