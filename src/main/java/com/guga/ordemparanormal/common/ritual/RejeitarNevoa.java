@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.util.EntityUtil;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 
@@ -21,9 +22,11 @@ public class RejeitarNevoa extends AbstractRitual {
 
     @Override
     public void onUse(@Nullable HitResult rayTraceResult, Level world, LivingEntity caster) {
-        Nevoa nevoa = OPEntities.NEVOA.get().create(caster.level);
-        nevoa.copyPosition(caster);
-        nevoa.discard();
+        Nevoa nevoa = EntityUtil.getInNevoa(caster);
+
+        if (nevoa != null) {
+            nevoa.discard();
+        }
     }
 
 }
