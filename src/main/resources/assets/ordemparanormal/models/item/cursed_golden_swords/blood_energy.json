@@ -2,7 +2,7 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "minecraft:item/golden_sword",
-    "layer1": "ordemparanormal:item/curses/blood",
-    "layer2": "ordemparanormal:item/curses/energy"
+    "layer1": "ordemparanormal:item/curses_sword/blood",
+    "layer2": "ordemparanormal:item/curses_sword/energy"
   }
 }

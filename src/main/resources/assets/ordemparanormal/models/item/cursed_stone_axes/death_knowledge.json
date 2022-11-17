@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/stone_axe",
+    "layer1": "ordemparanormal:item/curses_axe/death",
+    "layer2": "ordemparanormal:item/curses_axe/knowledge"
+  }
+}

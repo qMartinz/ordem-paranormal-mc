@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.events;
 
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.api.util.EntityUtil;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpProvider;
 import com.guga.ordemparanormal.common.entity.Nevoa;
@@ -19,6 +20,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -51,27 +53,19 @@ public class EntityEvents {
 		// Checa se um villager morreu e cria um corpo no seu lugar
 		if (event.getEntity() instanceof AbstractVillager entity) {
 			VillagerCorpo corpo = OPEntities.VILLAGER_CORPO.get().create(entity.level);
-
-			corpo.moveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
+			corpo.copyPosition(entity);
 			level.addFreshEntity(corpo);
+
 			List<CorpoEntity> list1 = corpo.level.getEntitiesOfClass(CorpoEntity.class,
 					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
-			List<Nevoa> list2 = corpo.level.getEntitiesOfClass(Nevoa.class,
-					corpo.getBoundingBox().inflate(20D, 20D, 20D), EntitySelector.ENTITY_STILL_ALIVE);
-			// Checa se há corpos o suficiente para spawnar névoa no local
-			if (list1.size() >= 3 && list2.isEmpty()) {
-				Nevoa nevoa = OPEntities.NEVOA.get().create(corpo.level);
-				nevoa.copyPosition(corpo);
-				nevoa.setIntensity(1);
-				nevoa.setRadius(10);
-				level.addFreshEntity(nevoa);
-				// Checa se já há uma névoa por perto e fortalece ela no lugar de criar uma névoa nova
-			} else if (list1.size() >= 3) {
-				for (Nevoa nevoaExistente : list2) {
-					int i = nevoaExistente.getIntensity();
-					int r = (int) nevoaExistente.getRadius();
-					nevoaExistente.setIntensity(i + 1);
-					nevoaExistente.setRadius(r + 5);
+			Nevoa nevoa = EntityUtil.getInNevoa(corpo);
+
+			if (list1.size() >= 3) {
+				if (nevoa == null) {
+					EntityUtil.createNevoa(corpo.level, corpo.position());
+				} else {
+					nevoa.setIntensity(nevoa.getIntensity() + 1);
+					nevoa.setRadius(nevoa.getRadius() + 5f);
 				}
 			}
 		}
@@ -80,31 +74,8 @@ public class EntityEvents {
 				&& !(event.getSource().getEntity() instanceof Bestial)) {
 			ExpModel.get(zumbissangue).setExposure(ExpModel.get(zumbissangue).getExposure() + 20);
 			if (ExpModel.get(zumbissangue).isMaxExp()){
-				if (zumbissangue.isAlive()) {
-					Bestial entityOut = new Bestial(OPEntities.BESTIAL.get(), zumbissangue.level);
-
-					entityOut.moveTo(zumbissangue.getX(), zumbissangue.getY(), zumbissangue.getZ(), zumbissangue.getYRot(), zumbissangue.getXRot());
-
-					if (zumbissangue.hasCustomName()) {
-						entityOut.setCustomName(zumbissangue.getCustomName());
-						entityOut.setCustomNameVisible(zumbissangue.isCustomNameVisible());
-					}
-
-					if (zumbissangue.isLeashed()) {
-						entityOut.setLeashedTo(zumbissangue.getLeashHolder(), true);
-						zumbissangue.dropLeash(true, false);
-					}
-
-					if (zumbissangue.getVehicle() != null) {
-						entityOut.startRiding(zumbissangue.getVehicle());
-					}
-
-					entityOut.setHealth(entityOut.getMaxHealth());
-					zumbissangue.level.addFreshEntity(entityOut);
-					zumbissangue.discard();
-
-					entityOut.playSound(OPSounds.ZUMBI_SANGUE_CONVERT.get(), 1.0F, 1.0F);
-				}
+				Mob entityOut = EntityUtil.transformMob(zumbissangue, new Bestial(OPEntities.BESTIAL.get(), zumbissangue.level));
+				entityOut.playSound(OPSounds.ZUMBI_SANGUE_CONVERT.get(), 1.0F, 1.0F);
 			}
 		}
 	}

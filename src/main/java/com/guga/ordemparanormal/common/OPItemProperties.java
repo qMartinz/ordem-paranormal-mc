@@ -10,9 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class OPItemProperties {
     public static void register(){
@@ -29,6 +27,48 @@ public class OPItemProperties {
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
         ItemProperties.register(Items.NETHERITE_SWORD,
                 new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+
+        // Propriedade de maldições para picaretas
+        ItemProperties.register(Items.WOODEN_PICKAXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.STONE_PICKAXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.IRON_PICKAXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.GOLDEN_PICKAXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.DIAMOND_PICKAXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.NETHERITE_PICKAXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+
+        // Propriedade de maldições para machados
+        ItemProperties.register(Items.WOODEN_AXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.STONE_AXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.IRON_AXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.GOLDEN_AXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.DIAMOND_AXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.NETHERITE_AXE,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+
+        // Propriedade de maldições para pás
+        ItemProperties.register(Items.WOODEN_SHOVEL,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.STONE_SHOVEL,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.IRON_SHOVEL,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.GOLDEN_SHOVEL,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.DIAMOND_SHOVEL,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
+        ItemProperties.register(Items.NETHERITE_SHOVEL,
+                new ResourceLocation(OrdemParanormal.MOD_ID, "curses"), (stack, level, entity, id) -> getCurseFloat(stack));
     }
     /**
     * Retorna um float específico baseado em quais maldições o item possui.
@@ -38,29 +78,31 @@ public class OPItemProperties {
         List<AbstractCurse> curses = CurseHelper.getCurses(stack).stream().map(CurseInstance::getCurse).toList();
 
         if (!curses.isEmpty() && curses.stream().noneMatch(Objects::isNull)) {
-            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.SANGUE)) curse_float = 1f;
-
-            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.MORTE)) curse_float = 2f;
-
-            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO)) curse_float = 3f;
-
-            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.ENERGIA)) curse_float = 4f;
-
-            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.SANGUE) &&
-                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.ENERGIA)) curse_float = 5f;
-
-            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MORTE) &&
-                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO)) curse_float = 6f;
-
-            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.MEDO)) curse_float = 7f;
-
-            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.SANGUE) &&
+            if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.SANGUE)) {
+                curse_float = 0.1f;
+            } else if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.MORTE)) {
+                curse_float = 0.2f;
+            } else if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO)) {
+                curse_float = 0.3f;
+            } else if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.ENERGIA)) {
+                curse_float = 0.4f;
+            } else if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.SANGUE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.ENERGIA)) {
+                curse_float = 0.5f;
+            } else if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MORTE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO)) {
+                curse_float = 0.6f;
+            } else if (curses.stream().allMatch(curse -> curse.element == ParanormalElement.MEDO)) {
+                curse_float = 0.7f;
+            } else if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.SANGUE) &&
                     curses.stream().anyMatch(curse -> curse.element == ParanormalElement.ENERGIA) &&
-                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MEDO)) curse_float = 8f;
-
-            if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MORTE) &&
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MEDO)) {
+                curse_float = 0.8f;
+            } else if (curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MORTE) &&
                     curses.stream().anyMatch(curse -> curse.element == ParanormalElement.CONHECIMENTO) &&
-                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MEDO)) curse_float = 9f;
+                    curses.stream().anyMatch(curse -> curse.element == ParanormalElement.MEDO)) {
+                curse_float = 0.9f;
+            }
         }
         return curse_float;
     }

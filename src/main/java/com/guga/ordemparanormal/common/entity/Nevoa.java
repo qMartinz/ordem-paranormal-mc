@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.entity;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.util.EntityUtil;
 import com.guga.ordemparanormal.common.capabilities.expentities.ExpModel;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
@@ -36,8 +37,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Nevoa extends Entity {
-	private static final EntityDataAccessor<Integer> DATA_RADIUS = SynchedEntityData.defineId(Nevoa.class,
-			EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Float> DATA_RADIUS = SynchedEntityData.defineId(Nevoa.class,
+			EntityDataSerializers.FLOAT);
 	private static final EntityDataAccessor<Integer> DATA_INTENSITY = SynchedEntityData.defineId(Nevoa.class,
 			EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DATA_LIFE = SynchedEntityData.defineId(Nevoa.class,
@@ -57,14 +58,14 @@ public class Nevoa extends Entity {
 		this(OPEntities.NEVOA.get(), level);
 	}
 	protected void defineSynchedData() {
-		this.getEntityData().define(DATA_RADIUS, 7);
+		this.getEntityData().define(DATA_RADIUS, 7f);
 		this.getEntityData().define(DATA_INTENSITY, 1);
 		this.getEntityData().define(DATA_LIFE, 80);
 	}
 
 	// Setters, para setar certos atributos da névoa
-	public void setRadius(int size) {
-		this.getEntityData().set(DATA_RADIUS, Mth.clamp(size, 1, 45));
+	public void setRadius(float size) {
+		this.getEntityData().set(DATA_RADIUS, Mth.clamp(size, 1f, 45f));
 	}
 	public void setIntensity(int intensity) {
 		this.getEntityData().set(DATA_INTENSITY, Mth.clamp(intensity, 1, 5));
@@ -75,8 +76,8 @@ public class Nevoa extends Entity {
 	}
 
 	// Getters, para pegar certos atributos da névoa
-	public double getRadius() {
-		return this.getEntityData().get(DATA_RADIUS).doubleValue();
+	public float getRadius() {
+		return this.getEntityData().get(DATA_RADIUS);
 	}
 	public int getIntensity() {
 		return this.getEntityData().get(DATA_INTENSITY);
@@ -130,7 +131,7 @@ public class Nevoa extends Entity {
 						zumbis.add(new ZumbiEspinhento(OPEntities.ZUMBI_ESPINHENTO.get(), corpo.level));
 						Collections.shuffle(zumbis);
 
-						transform(corpo, zumbis.get(0));
+						EntityUtil.transformMob(corpo, zumbis.get(0));
 						corpo.playSound(OPSounds.CORPSE_CONVERT.get(), 1.0F, 1.0F);
 					}
 				}
@@ -142,7 +143,7 @@ public class Nevoa extends Entity {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()) {
-							transform(monstro, new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), monstro.level));
+							EntityUtil.transformMob(monstro, new ZumbiSangue(OPEntities.ZUMBI_SANGUE.get(), monstro.level));
 							monstro.playSound(OPSounds.ZOMBIE_CONVERT.get(), 1.0F, 1.0F);
 						}
 					}
@@ -151,7 +152,7 @@ public class Nevoa extends Entity {
 						float exp = expModel.getExposure();
 						expModel.setExposure(exp + (float) this.getIntensity() / 2);
 						if (expModel.isMaxExp()){
-							transform(monstro, new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), monstro.level));
+							EntityUtil.transformMob(monstro, new ZumbiSeco(OPEntities.ZUMBI_SECO.get(), monstro.level));
 							monstro.playSound(OPSounds.SKELETON_CONVERT.get(), 1.0F, 1.0F);
 						}
 					}
@@ -177,32 +178,6 @@ public class Nevoa extends Entity {
 				if (player instanceof ServerPlayer serverPlayer) OPTriggers.ENTER_FOG.trigger(serverPlayer);
 			}
 		}
-	}
-
-	public LivingEntity transform(Mob entityIn, Mob entityOut) {
-		if (entityIn.isAlive()) {
-			entityOut.moveTo(entityIn.getX(), entityIn.getY(), entityIn.getZ(), entityIn.getYRot(), entityIn.getXRot());
-
-			if (entityIn.hasCustomName()) {
-				entityOut.setCustomName(entityIn.getCustomName());
-				entityOut.setCustomNameVisible(entityIn.isCustomNameVisible());
-			}
-
-			if (entityIn.isLeashed()) {
-				entityOut.setLeashedTo(entityIn.getLeashHolder(), true);
-				entityIn.dropLeash(true, false);
-			}
-
-			if (entityIn.getVehicle() != null) {
-				entityOut.startRiding(entityIn.getVehicle());
-			}
-
-			entityOut.setHealth(entityOut.getMaxHealth());
-			entityIn.level.addFreshEntity(entityOut);
-			entityIn.discard();
-			return entityOut;
-		}
-		return entityIn;
 	}
 	@Override
 	protected void readAdditionalSaveData(CompoundTag data) {

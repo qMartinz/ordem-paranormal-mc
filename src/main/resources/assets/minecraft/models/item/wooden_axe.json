@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/wooden_axe"
+  },
+  "overrides": [
+    { "predicate": { "ordemparanormal:curses": 0.1 }, "model": "ordemparanormal:item/cursed_wooden_axes/blood" },
+    { "predicate": { "ordemparanormal:curses": 0.2 }, "model": "ordemparanormal:item/cursed_wooden_axes/death" },
+    { "predicate": { "ordemparanormal:curses": 0.3 }, "model": "ordemparanormal:item/cursed_wooden_axes/knowledge" },
+    { "predicate": { "ordemparanormal:curses": 0.4 }, "model": "ordemparanormal:item/cursed_wooden_axes/energy" },
+    { "predicate": { "ordemparanormal:curses": 0.5 }, "model": "ordemparanormal:item/cursed_wooden_axes/blood_energy" },
+    { "predicate": { "ordemparanormal:curses": 0.6 }, "model": "ordemparanormal:item/cursed_wooden_axes/death_knowledge" }
+  ]
+}

@@ -2,8 +2,8 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "minecraft:item/golden_sword",
-    "layer1": "ordemparanormal:item/curses/death",
-    "layer2": "ordemparanormal:item/curses/knowledge",
-    "layer3": "ordemparanormal:item/curses/fear"
+    "layer1": "ordemparanormal:item/curses_sword/death",
+    "layer2": "ordemparanormal:item/curses_sword/knowledge",
+    "layer3": "ordemparanormal:item/curses_sword/fear"
   }
 }

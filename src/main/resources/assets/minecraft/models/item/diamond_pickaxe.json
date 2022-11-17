@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/diamond_pickaxe"
+  },
+  "overrides": [
+    { "predicate": { "ordemparanormal:curses": 0.1 }, "model": "ordemparanormal:item/cursed_diamond_pickaxes/blood" },
+    { "predicate": { "ordemparanormal:curses": 0.2 }, "model": "ordemparanormal:item/cursed_diamond_pickaxes/death" },
+    { "predicate": { "ordemparanormal:curses": 0.3 }, "model": "ordemparanormal:item/cursed_diamond_pickaxes/knowledge" },
+    { "predicate": { "ordemparanormal:curses": 0.4 }, "model": "ordemparanormal:item/cursed_diamond_pickaxes/energy" },
+    { "predicate": { "ordemparanormal:curses": 0.5 }, "model": "ordemparanormal:item/cursed_diamond_pickaxes/blood_energy" },
+    { "predicate": { "ordemparanormal:curses": 0.6 }, "model": "ordemparanormal:item/cursed_diamond_pickaxes/death_knowledge" }
+  ]
+}

@@ -2,6 +2,6 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "minecraft:item/diamond_sword",
-    "layer1": "ordemparanormal:item/curses/knowledge"
+    "layer1": "ordemparanormal:item/curses_sword/knowledge"
   }
 }
