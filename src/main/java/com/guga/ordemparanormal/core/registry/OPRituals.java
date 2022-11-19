@@ -47,6 +47,9 @@ public class OPRituals {
         public static final AbstractRitual ZERAR_ENTROPIA = new ZerarEntropia(
                         new ResourceLocation(MOD_ID, "zerar_entropia"), ParanormalElement.MORTE, 3, 6, true, 5D,
                         true);
+        public static final AbstractRitual ECO_ESPIRAL = new EcoEspiral(
+                        new ResourceLocation(MOD_ID, "eco_espiral"), ParanormalElement.MORTE, 2, 4, true, 10D,
+                        true);
         // Energia
         public static final AbstractRitual ARMA_VELOZ = new CurseRitual(new ResourceLocation(MOD_ID, "arma_veloz"),
                         OPCurses.VELOZ, 1, 2);
@@ -99,6 +102,7 @@ public class OPRituals {
                 registerRitual(VELOCIDADE_MORTAL);
                 registerRitual(ESPIRAIS_DA_PERDICAO);
                 registerRitual(ZERAR_ENTROPIA);
+                registerRitual(ECO_ESPIRAL);
                 // Energia
                 registerRitual(ARMA_VELOZ);
                 registerRitual(SALTO_FANTASMA);

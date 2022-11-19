@@ -13,14 +13,16 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class Teleporte extends AbstractRitual {
-    public Teleporte(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public Teleporte(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget,
+            double range, boolean mustHoldIngredient) {
         super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
     }
+
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
             InteractionHand hand) {
         boolean crouch = caster.isCrouching();
-        if (crouch == true) {
+        if (crouch) {
             CompoundTag pos = new CompoundTag();
             pos.putDouble("teleport.coordsX", caster.getX());
             pos.putDouble("teleport.coordsY", caster.getY());
