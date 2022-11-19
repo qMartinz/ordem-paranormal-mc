@@ -88,11 +88,11 @@ public class Nevoa extends Entity {
 	private void spawnNevoaParticles() {
 		Random random = new Random();
 		double radius = this.getRadius();
-		AABB area = this.getBoundingBox().inflate(radius, radius, radius);
+		AABB area = this.getBoundingBox().inflate(radius);
 		for (int i = 1; i <= Math.pow(this.getIntensity(), 3) + radius - (5 * this.getIntensity()); i++) {
-			double randX = random.nextDouble(area.maxX - area.minX) + area.minX;
-			double randZ = random.nextDouble(area.maxZ - area.minZ) + area.minZ;
-			double randY = random.nextDouble(area.maxY - area.minY) + area.minY;
+			double randX = Mth.nextDouble(random, area.minX, area.maxX);
+			double randZ = Mth.nextDouble(random, area.minZ, area.maxZ);
+			double randY = Mth.nextDouble(random, area.minY, area.maxY);
 			Vec3 randomPos = new Vec3(randX, randY, randZ);
 			BlockPos block = new BlockPos(randomPos);
 			if (!this.level.getBlockState(block.below()).isAir() && this.level.getBlockState(block).isAir()) {

@@ -41,6 +41,12 @@ public final class OPEffects {
                     .addAttributeModifier(Attributes.ATTACK_SPEED, UUID.randomUUID().toString(), 1d, AttributeModifier.Operation.ADDITION));
     public static final RegistryObject<MobEffect> DISTORTED_GRAVITY = MOB_EFFECTS.register("distorted_gravity",
             () -> new DistortedGravityEffect(MobEffectCategory.BENEFICIAL, 0x46ebac));
+    public static final RegistryObject<MobEffect> ZERO_ENTROPY = MOB_EFFECTS.register("zero_entropy",
+            () -> new ZeroEntropyEffect(MobEffectCategory.HARMFUL, 0x121212)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID.randomUUID().toString(), -50, AttributeModifier.Operation.ADDITION));
+    public static final RegistryObject<MobEffect> DISTURBED = MOB_EFFECTS.register("disturbed",
+            () -> new DisturbedEffect(MobEffectCategory.HARMFUL, 0x121212)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID.randomUUID().toString(), -50, AttributeModifier.Operation.ADDITION));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }
