@@ -1,0 +1,11 @@
+{
+  "type": "ordemparanormal:ardente",
+  "conditions": [
+    {
+      "condition": "ordemparanormal:curse",
+      "curses": [
+        "ordemparanormal:ardente"
+      ]
+    }
+  ]
+}

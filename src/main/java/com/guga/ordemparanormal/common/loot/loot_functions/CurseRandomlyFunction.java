@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.common.loot_functions;
+package com.guga.ordemparanormal.common.loot.loot_functions;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;

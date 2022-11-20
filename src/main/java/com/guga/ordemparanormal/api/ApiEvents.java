@@ -245,6 +245,8 @@ public class ApiEvents {
     public static void onBlockBreak(BlockEvent.BreakEvent event){
         event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
                 playerAbilities.getPowers().forEach(power -> event.setExpToDrop(power.onBlockBreak(event.getPlayer(), event.getWorld(), event.getPos(), event.getState(), event.getExpToDrop()))));
+
+        event.setExpToDrop(CurseHelper.doBlockBreakEffects(event.getPlayer(), event.getExpToDrop(), event.getPos(), event.getState()));
     }
     @SubscribeEvent
     public static void onRenderItemTooltips(ItemTooltipEvent event){

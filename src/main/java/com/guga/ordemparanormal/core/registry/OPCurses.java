@@ -27,6 +27,8 @@ public class OPCurses {
     public static final AbstractCurse VOLTAICA = new Voltaica(new ResourceLocation(MOD_ID, "voltaica"), ENERGIA, ARMOR_CHEST, CHEST);
     public static final AbstractCurse ENERGETICA = new Energetica(new ResourceLocation(MOD_ID, "energetica"), ENERGIA, WEAPON, MAINHAND);
     public static final AbstractCurse CONSUMIDORA = new Consumidora(new ResourceLocation(MOD_ID, "consumidora"), MORTE, WEAPON, MAINHAND);
+    public static final AbstractCurse SORTUDA = new Sortuda(new ResourceLocation(MOD_ID, "sortuda"), ENERGIA, DIGGER, MAINHAND);
+    public static final AbstractCurse ARDENTE = new Ardente(new ResourceLocation(MOD_ID, "ardente"), ENERGIA, DIGGER, MAINHAND);
 
     /**
      * Registra as maldições
@@ -47,6 +49,8 @@ public class OPCurses {
         registerCurse(VOLTAICA);
         registerCurse(ENERGETICA);
         registerCurse(CONSUMIDORA);
+        registerCurse(SORTUDA);
+        registerCurse(ARDENTE);
     }
     public static void registerCurse(AbstractCurse curse){
         OrdemParanormalAPI.getInstance().registerCurse(curse.getId(), curse);

@@ -46,6 +46,8 @@ public class OPCreativeTabs {
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.CONSUMIDORA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_BOOTS), OPCurses.LEPIDA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_CHESTPLATE), OPCurses.VOLTAICA));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.ARDENTE));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.SORTUDA));
         }
     };
     public static void init(){}

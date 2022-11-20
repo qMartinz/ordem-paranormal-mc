@@ -56,6 +56,8 @@ public class OrdemParanormal {
 		OPProfessions.register(bus);
 		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
 		OPLootFunctions.LOOT_FUNCTIONS.register(bus);
+		OPLootItemConditions.LOOT_CONDITIONS.register(bus);
+		OPLootModifiers.LOOT_MODIFIERS.register(bus);
 		OPTriggers.init();
 		OPCreativeTabs.init();
 		OPMenuTypes.MENUS.register(bus);

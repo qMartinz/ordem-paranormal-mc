@@ -29,6 +29,7 @@ public class CasualidadeFortuita extends PlayerPower {
         Random rand = new Random();
         if (rand.nextInt(1, 20) <= 1 &&
                 state.is(Tags.Blocks.STONE) &&
+                !player.isCreative() &&
                 !EnchantmentHelper.getEnchantments(player.getMainHandItem()).containsKey(Enchantments.SILK_TOUCH)){
 
             List<ItemStack> items = player.getServer().getLootTables().get(new ResourceLocation(OrdemParanormal.MOD_ID, "powers/casualidade_fortuita"))

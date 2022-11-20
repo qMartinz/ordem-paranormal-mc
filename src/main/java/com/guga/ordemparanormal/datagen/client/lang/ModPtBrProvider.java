@@ -291,6 +291,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPCurses.ENERGETICA, "Energética");
 		add(OPCurses.VOLTAICA, "Voltáica");
 		add(OPCurses.CONSUMIDORA, "Consumidora");
+		add(OPCurses.ARDENTE, "Ardente");
+		add(OPCurses.SORTUDA, "Sortuda");
 
 		// -------------------------------------------------------------
 

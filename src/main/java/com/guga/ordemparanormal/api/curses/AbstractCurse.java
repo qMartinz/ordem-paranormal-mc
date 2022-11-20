@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.api.curses;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -12,7 +13,10 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -89,6 +93,19 @@ public abstract class AbstractCurse {
      * Realiza seu efeito a cada tick.
      */
     public void doTick(ItemStack pStack, LivingEntity pUser) {}
+    /**
+     * Chamado quando o usuário quebra um bloco
+     *
+     * @param entity quem quebrou
+     * @param level o level onde o bloco foi quebrado
+     * @param pos a posição do bloco
+     * @param state o bloco quebrado
+     * @param exp o exp ganho por quebrar o bloco
+     * @return o exp ganho após a maldição ser ativa
+     */
+    public int doBlockBreak(Player entity, LevelAccessor level, BlockPos pos, BlockState state, int exp){
+        return exp;
+    }
     /**
      * Mantenha os usos máximos como 0 para uma maldição permanente.
      * @return quantos usos essa maldição pode ter.

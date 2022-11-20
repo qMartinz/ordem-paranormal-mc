@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
-import com.guga.ordemparanormal.common.loot_functions.CurseRandomlyFunction;
+import com.guga.ordemparanormal.common.loot.loot_functions.CurseRandomlyFunction;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.storage.loot.Serializer;

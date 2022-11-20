@@ -290,6 +290,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPCurses.ENERGETICA, "Energetic");
 		add(OPCurses.VOLTAICA, "Voltaic");
 		add(OPCurses.CONSUMIDORA, "Consumer");
+		add(OPCurses.ARDENTE, "Ardent");
+		add(OPCurses.SORTUDA, "Lucky");
 
 		// -------------------------------------------------------------
 

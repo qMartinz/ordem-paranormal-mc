@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.api.util.NBTUtil;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -122,5 +124,15 @@ public class CurseHelper {
                 }
             }
         }
+    }
+    public static int doBlockBreakEffects(Player pUser, int pXP, BlockPos pPos, BlockState pState){
+        if (pUser != null) {
+            for (ItemStack item : pUser.getAllSlots()) {
+                for (CurseInstance curse : getCurses(item)) {
+                    if (curse != null) pXP = curse.getCurse().doBlockBreak(pUser, pUser.level, pPos, pState, pXP);
+                }
+            }
+        }
+        return pXP;
     }
 }
