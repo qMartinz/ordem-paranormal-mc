@@ -72,16 +72,19 @@ public final class OPItems {
 			OPRituals.INEXISTIR);
 	public static final RegistryObject<RitualItem> RITUAL_LUZ = HELPER.createRItem("fragmento_brilhante",
 			OPRituals.LUZ);
-	//public static final RegistryObject<RitualItem> RITUAL_TRANSFIGURAR_TERRA = HELPER.createRItem("tranfigurar_terra",
-			//OPRituals.TRANSFIGURAR_TERRA);
-	//public static final RegistryObject<RitualItem> RITUAL_CINERARIA = HELPER.createRItem("cineraria",
-			//OPRituals.CINERARIA);
-	//public static final RegistryObject<RitualItem> RITUAL_REJEITAR_NEVOA = HELPER.createRItem("rejeitar_nevoa",
-			//OPRituals.REJEITAR_NEVOA);
-	//public static final RegistryObject<RitualItem> RITUAL_ZERAR_ENTROPIA = HELPER.createRItem("zerar_entropia",
-			//OPRituals.ZERAR_ENTROPIA);
-	//public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA =
-	        //HELPER.createRItem("alterar_memoria", OPRituals.ALTERAR_MEMORIA);
+	public static final RegistryObject<RitualItem> RITUAL_TRANSFIGURAR_TERRA = HELPER.createRItem("tranfigurar_terra",
+			OPRituals.TRANSFIGURAR_TERRA);
+	public static final RegistryObject<RitualItem> RITUAL_CINERARIA = HELPER.createRItem("cineraria",
+			OPRituals.CINERARIA);
+	public static final RegistryObject<RitualItem> RITUAL_REJEITAR_NEVOA = HELPER.createRItem("rejeitar_nevoa",
+			OPRituals.REJEITAR_NEVOA);
+	public static final RegistryObject<RitualItem> RITUAL_ZERAR_ENTROPIA = HELPER.createRItem("zerar_entropia",
+			OPRituals.ZERAR_ENTROPIA);
+	/*
+	 * public static final RegistryObject<RitualItem> RITUAL_ALTERAR_MEMORIA =
+	 * HELPER.createRItem("alterar_memoria",
+	 * OPRituals.ALTERAR_MEMORIA);
+	 */
 
 	// Componentes ritualisticos
 	public static final RegistryObject<RitualComponent> COMPONENTE_SANGUE = HELPER
@@ -105,8 +108,8 @@ public final class OPItems {
 			"zumbi_seco", OPEntities.ZUMBI_SECO::get, 7999247, 2428687);
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_ESPINHENTO_OVO = HELPER.createSpawnEggItem(
 			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
-	//public static final RegistryObject<ForgeSpawnEggItem> ABERRACAO_CARNE_OVO = HELPER.createSpawnEggItem(
-			//"aberracao_carne", OPEntities.ABERRACAO_CARNE::get, 0x8E392F, 0xD01431);
+	public static final RegistryObject<ForgeSpawnEggItem> ABERRACAO_CARNE_OVO = HELPER.createSpawnEggItem(
+			"aberracao_carne", OPEntities.ABERRACAO_CARNE::get, 0x8E392F, 0xD01431);
 
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens
