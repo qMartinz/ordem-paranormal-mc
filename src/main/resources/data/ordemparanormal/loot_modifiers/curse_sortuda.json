@@ -1,0 +1,11 @@
+{
+  "type": "ordemparanormal:sortuda",
+  "conditions": [
+    {
+      "condition": "ordemparanormal:curse",
+      "curses": [
+        "ordemparanormal:sortuda"
+      ]
+    }
+  ]
+}

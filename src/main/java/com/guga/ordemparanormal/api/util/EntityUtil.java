@@ -2,15 +2,22 @@ package com.guga.ordemparanormal.api.util;
 
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.core.registry.OPEntities;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Function;
 
 public class EntityUtil {
     /**
@@ -56,5 +63,17 @@ public class EntityUtil {
             return entityOut;
         }
         return entityIn;
+    }
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public static <E extends LivingEntity, T extends RenderLayer<E, M>, M extends HumanoidModel<E>>
+    void addLayer(EntityRenderersEvent.AddLayers event, EntityType mobType, Function<LivingEntityRenderer<E, M>, T> factory) {
+        LivingEntityRenderer renderer = event.getRenderer(mobType);
+        if (renderer != null) renderer.addLayer(factory.apply(renderer));
+    }
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public static <E extends Player, T extends RenderLayer<E, M>, M extends HumanoidModel<E>>
+    void addPlayerLayer(EntityRenderersEvent.AddLayers event, String skinType, Function<LivingEntityRenderer<E, M>, T> factory) {
+        LivingEntityRenderer renderer = event.getSkin(skinType);
+        if (renderer != null) renderer.addLayer(factory.apply(renderer));
     }
 }

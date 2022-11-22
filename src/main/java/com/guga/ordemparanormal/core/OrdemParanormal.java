@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.core;
 
+import com.guga.ordemparanormal.client.ClientEvents;
 import com.guga.ordemparanormal.client.Keybind;
 import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
@@ -17,9 +18,6 @@ import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -63,6 +61,7 @@ public class OrdemParanormal {
 		OPMenuTypes.MENUS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(ClientEvents::onAddLayers));
 
 		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);

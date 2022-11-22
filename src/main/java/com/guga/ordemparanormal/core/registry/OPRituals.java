@@ -107,6 +107,7 @@ public class OPRituals {
                 registerRitual(ARMA_VELOZ);
                 registerRitual(SALTO_FANTASMA);
                 registerRitual(TELEPORTE);
+                registerRitual(LUZ);
                 registerRitual(TRANSFIGURAR_TERRA);
                 // Conhecimento
                 registerRitual(AMALDICOAR_ARMA);

@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.common.loot.loot_modifiers;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.item.ItemStack;
@@ -32,12 +33,17 @@ public class ArdenteModifier extends LootModifier {
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         return generatedLoot.stream().map(stack -> {
-            var smelted = context.getLevel().getRecipeManager()
+            ItemStack smelted = context.getLevel().getRecipeManager()
                     .getRecipeFor(RecipeType.SMELTING, new SimpleContainer(stack), context.getLevel())
                     .map(SmeltingRecipe::getResultItem)
                     .filter(itemStack -> !itemStack.isEmpty())
                     .map(itemStack -> ItemHandlerHelper.copyStackWithSize(itemStack, stack.getCount() * itemStack.getCount()))
                     .orElse(stack);
+
+            if (Mth.nextInt(context.getRandom(), 1, 20) >= 7){
+                smelted.setCount(smelted.getCount() * Mth.nextInt(context.getRandom(), 1, 3));
+            }
+
             if (smelted != stack) {
                 ExperienceOrb.award(context.getLevel(), context.getParam(LootContextParams.ORIGIN), context.getRandom().nextInt(3) + 1);
             }
