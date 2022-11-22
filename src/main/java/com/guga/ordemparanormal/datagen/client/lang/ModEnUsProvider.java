@@ -98,7 +98,7 @@ public class ModEnUsProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Blood zombie spawn egg");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Skeletal Blood zombie spawn egg");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
-			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
+			//add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
 
 		// -------------------------------------------------------------
 

@@ -98,7 +98,7 @@ public class ModPtBrProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Ovo gerador de zumbi de Sangue");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Ovo gerador de zumbi de Sangue seco");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Ovo gerador de zumbi de Sangue espinhento");
-			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
+			//add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
 
 		// -------------------------------------------------------------
 
