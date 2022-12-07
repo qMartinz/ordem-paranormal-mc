@@ -88,5 +88,15 @@ public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
                 .subtitle("subtitles.ordemparanormal.aberracao.abocanhar"));
         add(OPSounds.ABERRACAO_DEATH, soundDefinition("aberracao/death")
                 .subtitle("subtitles.ordemparanormal.aberracao.death"));
+
+        add(OPSounds.BIDENTE_HIT, soundDefinition("bidente/hit1")
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "bidente/hit2")))
+                .subtitle("subtitles.ordemparanormal.bidente.hit"));
+        add(OPSounds.BIDENTE_RIPTIDE_1, soundDefinition("bidente/riptide1")
+                .subtitle("subtitles.ordemparanormal.bidente.riptide"));
+        add(OPSounds.BIDENTE_RIPTIDE_2, soundDefinition("bidente/riptide2")
+                .subtitle("subtitles.ordemparanormal.bidente.riptide"));
+        add(OPSounds.BIDENTE_RIPTIDE_3, soundDefinition("bidente/riptide3")
+                .subtitle("subtitles.ordemparanormal.bidente.riptide"));
     }
 }

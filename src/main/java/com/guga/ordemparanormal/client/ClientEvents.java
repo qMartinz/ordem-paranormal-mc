@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.client;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.util.EntityUtil;
+import com.guga.ordemparanormal.client.layers.BidenteRiptideLayer;
 import com.guga.ordemparanormal.client.layers.CurseArmorLayer;
 import com.guga.ordemparanormal.client.screen.AttributeScreen;
 import com.guga.ordemparanormal.common.block.blocks.AltarTranscender;
@@ -38,12 +39,15 @@ public class ClientEvents {
             event.setUseItem(Event.Result.DENY);
         }
     }
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @OnlyIn(Dist.CLIENT)
     public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
         addCurseArmorLayers(event, ParanormalElement.SANGUE);
         addCurseArmorLayers(event, ParanormalElement.CONHECIMENTO);
         addCurseArmorLayers(event, ParanormalElement.ENERGIA);
         addCurseArmorLayers(event, ParanormalElement.MORTE);
+        EntityUtil.addPlayerLayer(event, "slim", (r) -> new BidenteRiptideLayer(r, event.getEntityModels()));
+        EntityUtil.addPlayerLayer(event, "default", (r) -> new BidenteRiptideLayer(r, event.getEntityModels()));
     }
     @SuppressWarnings({"rawtypes", "unchecked"})
     private static void addCurseArmorLayers(EntityRenderersEvent.AddLayers event, ParanormalElement element){

@@ -21,13 +21,6 @@
           "name": "minecraft:stone_sword",
           "functions": [
             {
-              "function": "ordemparanormal:curse_randomly",
-              "curses": [
-                "ordemparanormal:sanguinaria",
-                "ordemparanormal:lancinante"
-              ]
-            },
-            {
               "function": "minecraft:set_count",
               "count": {
                 "min": 1,

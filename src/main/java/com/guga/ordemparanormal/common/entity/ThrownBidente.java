@@ -3,6 +3,7 @@ package com.guga.ordemparanormal.common.entity;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPItems;
+import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -126,7 +127,7 @@ public class ThrownBidente extends AbstractArrow {
         Entity entity1 = this.getOwner();
         DamageSource damagesource = DamageSource.trident(this, entity1 == null ? this : entity1);
         this.dealtDamage = true;
-        SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
+        SoundEvent soundevent = OPSounds.BIDENTE_HIT.get();
         for (int i = 0; i < 7; i++) {
             entity.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
                     this.getX(), this.getY(), this.getZ(),

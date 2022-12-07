@@ -41,6 +41,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		addSubtitle("aberracao.step", "Aberração de carne caminha");
 		addSubtitle("aberracao.attack", "Aberração de carne ataca");
 		addSubtitle("aberracao.abocanhar", "Aberração de carne abocanha");
+		addSubtitle("bidente.hit", "Bidente perfura");
+		addSubtitle("bidente.riptide", "Bidente zumbindo");
 
 		// -------------------------------------------------------------
 

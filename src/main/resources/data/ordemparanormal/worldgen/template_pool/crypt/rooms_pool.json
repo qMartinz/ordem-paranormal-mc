@@ -1,17 +1,8 @@
 {
-  "name": "ordemparanormal:crypt/roomn_pool",
+  "name": "ordemparanormal:crypt/rooms_pool",
   "fallback": "minecraft:empty",
 
   "elements": [
-    {
-      "weight": 1,
-      "element": {
-        "location": "ordemparanormal:crypt/room0",
-        "processors": "ordemparanormal:waterlogging_fix",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
     {
       "weight": 1,
       "element": {

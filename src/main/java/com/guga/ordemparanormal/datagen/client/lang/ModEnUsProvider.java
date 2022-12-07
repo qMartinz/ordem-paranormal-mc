@@ -41,6 +41,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		addSubtitle("aberracao.step", "Flesh aberration walking");
 		addSubtitle("aberracao.attack", "Flesh aberration attacks");
 		addSubtitle("aberracao.abocanhar", "Flesh aberration bites");
+		addSubtitle("bidente.hit", "Bident stabs");
+		addSubtitle("bidente.riptide", "Bident zooms");
 
 		// -------------------------------------------------------------
 

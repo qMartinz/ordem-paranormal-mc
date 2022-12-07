@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.item;
 
 import com.guga.ordemparanormal.common.entity.ThrownBidente;
+import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -28,7 +29,7 @@ public class Bidente extends TridentItem {
             int i = this.getUseDuration(pStack) - pTimeLeft;
             if (i >= 10) {
                 int j = EnchantmentHelper.getRiptide(pStack);
-                if (j <= 0 || player.getHealth() <= player.getMaxHealth()/3) {
+                if (j <= 0 || player.getHealth() <= player.getMaxHealth()/2.5f) {
                     if (!pLevel.isClientSide) {
                         pStack.hurtAndBreak(1, player, (p_43388_) -> {
                             p_43388_.broadcastBreakEvent(pEntityLiving.getUsedItemHand());
@@ -71,11 +72,11 @@ public class Bidente extends TridentItem {
 
                         SoundEvent soundevent;
                         if (j >= 3) {
-                            soundevent = SoundEvents.TRIDENT_RIPTIDE_3;
+                            soundevent = OPSounds.BIDENTE_RIPTIDE_3.get();
                         } else if (j == 2) {
-                            soundevent = SoundEvents.TRIDENT_RIPTIDE_2;
+                            soundevent = OPSounds.BIDENTE_RIPTIDE_2.get();
                         } else {
-                            soundevent = SoundEvents.TRIDENT_RIPTIDE_1;
+                            soundevent = OPSounds.BIDENTE_RIPTIDE_1.get();
                         }
 
                         pLevel.playSound(null, player, soundevent, SoundSource.PLAYERS, 1.0F, 1.0F);
@@ -89,7 +90,7 @@ public class Bidente extends TridentItem {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if (itemstack.getDamageValue() >= itemstack.getMaxDamage() - 1) {
             return InteractionResultHolder.fail(itemstack);
-        } else if (EnchantmentHelper.getRiptide(itemstack) > 0 && pPlayer.getHealth() > pPlayer.getMaxHealth()/3) {
+        } else if (EnchantmentHelper.getRiptide(itemstack) > 0 && pPlayer.getHealth() > pPlayer.getMaxHealth()/2.5f) {
             return InteractionResultHolder.fail(itemstack);
         } else {
             pPlayer.startUsingItem(pHand);

@@ -41,4 +41,8 @@ public final class OPSounds {
     public static final RegistryObject<SoundEvent> ABERRACAO_ABOCANHAR = HELPER.createSoundEvent("aberracao.abocanhar");
     public static final RegistryObject<SoundEvent> ABERRACAO_HURT = HELPER.createSoundEvent("aberracao.hurt");
     public static final RegistryObject<SoundEvent> ABERRACAO_DEATH = HELPER.createSoundEvent("aberracao.death");
+    public static final RegistryObject<SoundEvent> BIDENTE_HIT = HELPER.createSoundEvent("bidente.hit");
+    public static final RegistryObject<SoundEvent> BIDENTE_RIPTIDE_1 = HELPER.createSoundEvent("bidente.riptide_1");
+    public static final RegistryObject<SoundEvent> BIDENTE_RIPTIDE_2 = HELPER.createSoundEvent("bidente.riptide_2");
+    public static final RegistryObject<SoundEvent> BIDENTE_RIPTIDE_3 = HELPER.createSoundEvent("bidente.riptide_3");
 }

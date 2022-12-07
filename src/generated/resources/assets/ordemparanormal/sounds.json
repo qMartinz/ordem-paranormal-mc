@@ -196,5 +196,30 @@
     "sounds": [
       "ordemparanormal:aberracao/death"
     ]
+  },
+  "bidente.hit": {
+    "subtitle": "subtitles.ordemparanormal.bidente.hit",
+    "sounds": [
+      "ordemparanormal:bidente/hit1",
+      "ordemparanormal:bidente/hit2"
+    ]
+  },
+  "bidente.riptide_1": {
+    "subtitle": "subtitles.ordemparanormal.bidente.riptide",
+    "sounds": [
+      "ordemparanormal:bidente/riptide1"
+    ]
+  },
+  "bidente.riptide_2": {
+    "subtitle": "subtitles.ordemparanormal.bidente.riptide",
+    "sounds": [
+      "ordemparanormal:bidente/riptide2"
+    ]
+  },
+  "bidente.riptide_3": {
+    "subtitle": "subtitles.ordemparanormal.bidente.riptide",
+    "sounds": [
+      "ordemparanormal:bidente/riptide3"
+    ]
   }
 }

@@ -5,48 +5,27 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:empty",
-          "weight": 6
-        },
+          "type": "minecraft:item",
+          "name": "ordemparanormal:bidente"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         {
           "type": "minecraft:item",
-          "weight": 4,
-          "name": "ordemparanormal:capacete_enferrujado"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 4,
-          "name": "ordemparanormal:livro_amaldicoado"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 4,
-          "name": "ordemparanormal:anel_sangrento_prata"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 2,
-          "name": "ordemparanormal:colar_sangue"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 2,
-          "name": "ordemparanormal:pulseira_espinhenta"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 2,
-          "name": "ordemparanormal:seringa_enferrujada"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 6,
-          "name": "ordemparanormal:componente_sangue"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 6,
-          "name": "ordemparanormal:componente_vazio"
+          "name": "minecraft:stone_sword",
+          "functions": [
+            {
+              "function": "ordemparanormal:curse_randomly",
+              "curses": [
+                "ordemparanormal:sanguinaria",
+                "ordemparanormal:lancinante",
+                "ordemparanormal:sadica"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -87,21 +66,6 @@
           "type": "minecraft:item",
           "weight": 20,
           "name": "minecraft:name_tag"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 2,
-          "name": "minecraft:stone_sword",
-          "functions": [
-            {
-              "function": "ordemparanormal:curse_randomly",
-              "curses": [
-                "ordemparanormal:sanguinaria",
-                "ordemparanormal:lancinante",
-                "ordemparanormal:sadica"
-              ]
-            }
-          ]
         }
       ]
     },
