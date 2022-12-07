@@ -2,7 +2,9 @@ package com.guga.ordemparanormal.api.curses;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.api.util.NBTUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -12,6 +14,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -93,9 +96,7 @@ public class CurseHelper {
                 if (curse != null) {
                     f = curse.getCurse().doPostAttack(pAttacker.getMainHandItem(), pAttacker, pTarget, f, source);
 
-                    f += curse.getCurse().getDamageBonus()
-                            * (ParanormalDamageSource.isEntityWeakTo(pTarget, curse.getCurse().getElement().getDamage()) ? 2f : 1f)
-                            / (ParanormalDamageSource.isEntityResistant(pTarget, curse.getCurse().getElement().getDamage()) ? 2f : 1f);
+                    f += MathUtils.calcParanormalDmg(curse.getCurse().getDamageBonus(), pTarget, curse.getCurse().getElement());
                 }
             }
         }
@@ -134,5 +135,25 @@ public class CurseHelper {
             }
         }
         return pXP;
+    }
+    public static boolean isRitualTargetEffects(Player pUser, AbstractRitual pRitual, LivingEntity pCaster, boolean pCanceled){
+        if (pUser != null) {
+            for (ItemStack item : pUser.getAllSlots()) {
+                for (CurseInstance curse : getCurses(item)) {
+                    if (curse != null) pCanceled = pCanceled && curse.getCurse().isRitualTarget(pUser, pUser.level, pRitual, pCaster, pCanceled);
+                }
+            }
+        }
+        return pCanceled;
+    }
+    public static boolean isRitualCasterEffects(Player pUser, AbstractRitual pRitual, boolean pCanceled){
+        if (pUser != null) {
+            for (ItemStack item : pUser.getAllSlots()) {
+                for (CurseInstance curse : getCurses(item)) {
+                    if (curse != null) pCanceled = pCanceled && curse.getCurse().isRitualCaster(pUser, pUser.level, pRitual, pCanceled);
+                }
+            }
+        }
+        return pCanceled;
     }
 }

@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.abilities.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.ritual.events.RitualUsedEvent;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.common.MinecraftForge;
 
 import javax.annotation.Nullable;
 
@@ -115,7 +117,10 @@ public abstract class AbstractRitual{
                 } else canCast = true;
             }
 
-            if (canCast){
+            RitualUsedEvent event = new RitualUsedEvent(caster, this, rayTraceResult);
+            MinecraftForge.EVENT_BUS.post(event);
+
+            if (canCast && event.isCanceled()){
                 ItemStack ritualItem;
                 InteractionHand hand;
 

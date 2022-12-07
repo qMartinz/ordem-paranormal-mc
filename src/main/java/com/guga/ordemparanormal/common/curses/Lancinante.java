@@ -4,6 +4,7 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseCategory;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.api.util.MathUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,8 +18,7 @@ public class Lancinante extends AbstractCurse {
     @Override
     public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         if (pTarget.getHealth() > pTarget.getMaxHealth() / 1.2){
-            amount += 5 * (ParanormalDamageSource.isEntityWeakTo(pTarget, this.getElement().getDamage()) ? 2f : 1f)
-                    / (ParanormalDamageSource.isEntityResistant(pTarget, this.getElement().getDamage()) ? 2f : 1f);
+            amount += MathUtils.calcParanormalDmg(10, pTarget, getElement());
         }
         return super.doPostAttack(pStack, pAttacker, pTarget, amount, source);
     }

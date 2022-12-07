@@ -1,6 +1,9 @@
 package com.guga.ordemparanormal.api.util;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
@@ -56,5 +59,9 @@ public class MathUtils {
         }
 
         return entity == null ? null : new EntityHitResult(entity, vec3d);
+    }
+    public static float calcParanormalDmg(float dmg, LivingEntity target, ParanormalElement element){
+        return dmg * (ParanormalDamageSource.isEntityWeakTo(target, element.getDamage()) ? 2f : 1f)
+                / (ParanormalDamageSource.isEntityResistant(target, element.getDamage()) ? 2f : 1f);
     }
 }

@@ -2,10 +2,7 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
-import com.guga.ordemparanormal.common.item.Giz;
-import com.guga.ordemparanormal.common.item.PergaminhoAntigo;
-import com.guga.ordemparanormal.common.item.RitualComponent;
-import com.guga.ordemparanormal.common.item.RitualItem;
+import com.guga.ordemparanormal.common.item.*;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
@@ -31,6 +28,7 @@ public final class OPItems {
 	public static final RegistryObject<Item> CINZAS = HELPER.createCinzas();
 	public static final RegistryObject<Item> PERGAMINHO_ANTIGO = HELPER.createPergaminhoAntigo();
 	// public static final RegistryObject<Item> GIZ = HELPER.createGiz();
+	public static final RegistryObject<Bidente> BIDENTE = HELPER.createBidente();
 
 	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRItem("livro_amaldicoado",
@@ -105,8 +103,8 @@ public final class OPItems {
 			"zumbi_seco", OPEntities.ZUMBI_SECO::get, 7999247, 2428687);
 	public static final RegistryObject<ForgeSpawnEggItem> ZUMBI_ESPINHENTO_OVO = HELPER.createSpawnEggItem(
 			"zumbi_espinhento", OPEntities.ZUMBI_ESPINHENTO::get, 7999247, 11493703);
-	//public static final RegistryObject<ForgeSpawnEggItem> ABERRACAO_CARNE_OVO = HELPER.createSpawnEggItem(
-			//"aberracao_carne", OPEntities.ABERRACAO_CARNE::get, 0x8E392F, 0xD01431);
+	public static final RegistryObject<ForgeSpawnEggItem> ABERRACAO_CARNE_OVO = HELPER.createSpawnEggItem(
+			"aberracao_carne", OPEntities.ABERRACAO_CARNE::get, 0x8E392F, 0xD01431);
 
 	public static class Helper extends ItemSubRegistryHelper {
 		// Ajudante para registrar itens
@@ -157,6 +155,13 @@ public final class OPItems {
 		private RegistryObject<RitualComponent> createComponenteRitualistico(ParanormalElement elemento) {
 			return this.deferredRegister.register("componente_" + elemento.getSerializedName(),
 					() -> new RitualComponent(elemento));
+		}
+
+		private RegistryObject<Bidente> createBidente() {
+			return this.deferredRegister
+					.register("bidente",
+							() -> new Bidente(new Item.Properties().durability(250)
+									.tab(OPCreativeTabs.OP_TAB)));
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class Consumidora extends AbstractCurse {
     @Override
     public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         if (!ParanormalDamageSource.isEntityResistant(pTarget, this.element.getDamage())){
-            pTarget.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1));
+            pTarget.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 140, 1));
         }
         return super.doPostAttack(pStack, pAttacker, pTarget, amount, source);
     }

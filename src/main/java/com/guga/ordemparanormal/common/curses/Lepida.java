@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Lepida extends AbstractCurse {
-    private static final AttributeModifier MOVEMENT_SPEED_MODIFIER = new AttributeModifier("lepida_modifier", 0.25d, AttributeModifier.Operation.ADDITION);
+    private static final AttributeModifier MOVEMENT_SPEED_MODIFIER = new AttributeModifier("lepida_modifier", 0.29d, AttributeModifier.Operation.ADDITION);
     public Lepida(ResourceLocation id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {
         super(id, element, category, slots);
     }

@@ -76,6 +76,7 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.ABERRACAO_CARNE.get(), AberracaoCarneRenderer::new);
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
+		event.registerEntityRenderer(OPEntities.BIDENTE.get(), BidenteRenderer::new);
 	}
 	public void apiSetup(final FMLCommonSetupEvent event){
 		OPCurses.setup();

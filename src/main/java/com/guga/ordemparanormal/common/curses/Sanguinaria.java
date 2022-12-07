@@ -17,7 +17,7 @@ public class Sanguinaria extends AbstractCurse {
     }
     @Override
     public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
-        MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 100, 0, false, false);
+        MobEffectInstance effect = new MobEffectInstance(OPEffects.BLEED.get(), 120, 1, false, false);
         pTarget.addEffect(effect);
         return super.doPostAttack(pStack, pAttacker, pTarget, amount, source);
     }

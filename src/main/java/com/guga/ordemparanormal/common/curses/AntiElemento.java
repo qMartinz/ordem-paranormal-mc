@@ -19,7 +19,7 @@ public class AntiElemento extends AbstractCurse {
     @Override
     public float doPostAttack(ItemStack pStack, LivingEntity pAttacker, LivingEntity pTarget, float amount, DamageSource source) {
         if (pTarget instanceof ParanormalCreature creature && creature.getElement() == effectiveElement){
-            amount += 8;
+            amount += 10;
         }
         return super.doPostAttack(pStack, pAttacker, pTarget, amount, source);
     }

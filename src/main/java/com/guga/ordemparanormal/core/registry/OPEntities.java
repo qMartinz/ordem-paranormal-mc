@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.common.entity.AberracaoCarne;
 import com.guga.ordemparanormal.common.entity.Nevoa;
+import com.guga.ordemparanormal.common.entity.ThrownBidente;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
@@ -11,6 +12,7 @@ import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -36,6 +38,8 @@ public final class OPEntities {
 			"nevoa", Nevoa::new, Nevoa::new, MobCategory.MISC, 0F, 0F);
 	public static final RegistryObject<EntityType<AberracaoCarne>> ABERRACAO_CARNE = HELPER.createLivingEntity(
 			"aberracao_carne", AberracaoCarne::new, MobCategory.MONSTER, 2f, 3f);
+	public static final RegistryObject<EntityType<ThrownBidente>> BIDENTE = HELPER.getDeferredRegister().register("bidente",
+			() -> EntityType.Builder.<ThrownBidente>of(ThrownBidente::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("bidente"));
 	
 	// Registrar Atributos
 	@SubscribeEvent

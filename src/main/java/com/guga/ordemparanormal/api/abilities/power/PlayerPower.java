@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.abilities.power;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.power.events.PowerUsedEvent;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.core.OrdemParanormal;
@@ -22,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.MinecraftForge;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -99,7 +101,12 @@ public class PlayerPower {
     public void onAdded(Player player){}
     public void use(Player player) {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
-            if (cap.getCurrentEffort() >= this.getEffortCost() && canUse(player) && cap.getPowerCooldown() == 0 && this != EMPTY) {
+            PowerUsedEvent event = new PowerUsedEvent(player, this);
+            MinecraftForge.EVENT_BUS.post(event);
+
+            boolean use = cap.getCurrentEffort() >= this.getEffortCost() && canUse(player) && cap.getPowerCooldown() == 0 && this != EMPTY;
+
+            if (use && event.isCanceled()) {
                 cap.setCurrentEffort(cap.getCurrentEffort() - this.getEffortCost());
 
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), this.getSound(), SoundSource.PLAYERS, 1f, 1f);

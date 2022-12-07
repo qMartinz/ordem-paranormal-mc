@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.api;
 
+import com.guga.ordemparanormal.api.abilities.ritual.events.RitualUsedEvent;
 import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.*;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
@@ -141,9 +143,23 @@ public class ApiEvents {
             speed += speedBonus;
         }
 
+        for (ItemStack stack : event.getEntityLiving().getAllSlots()) {
+            for (CurseInstance instance : CurseHelper.getCurses(stack)){
+                speed += instance.getCurse().getBreakSpeedBonus();
+            }
+        }
+
         float energyCursePenalty = 1f;
+        if (event.getEntityLiving() instanceof Player player) {
+            for (ItemStack item : player.getInventory().items) {
+                energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
+                                !curse.getCurse().isTemporary() &&
+                                        curse.getCurse().getElement() == ParanormalElement.ENERGIA)
+                        .toList().size();
+            }
+        }
         for (ItemStack item : event.getEntityLiving().getAllSlots()) {
-            energyCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
+            energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
                             !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.ENERGIA)
                     .toList().size();
@@ -201,10 +217,18 @@ public class ApiEvents {
         if (targetEffects == null) return;
 
         float deathCursePenalty = 1f;
+        if (event.getEntityLiving() instanceof Player player) {
+            for (ItemStack item : player.getInventory().items) {
+                deathCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
+                                !curse.getCurse().isTemporary() &&
+                                        curse.getCurse().getElement() == ParanormalElement.MORTE)
+                        .toList().size();
+            }
+        }
         for (ItemStack item : event.getEntityLiving().getAllSlots()) {
-            deathCursePenalty += 0.2f * CurseHelper.getCurses(item).stream().filter(curse ->
+            deathCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
                             !curse.getCurse().isTemporary() &&
-                            curse.getCurse().getElement() == ParanormalElement.MORTE)
+                                    curse.getCurse().getElement() == ParanormalElement.MORTE)
                     .toList().size();
         }
 
@@ -249,6 +273,16 @@ public class ApiEvents {
         event.setExpToDrop(CurseHelper.doBlockBreakEffects(event.getPlayer(), event.getExpToDrop(), event.getPos(), event.getState()));
     }
     @SubscribeEvent
+    public static void onRitualUsed(RitualUsedEvent event){
+        if (event.getEntityLiving() instanceof Player player) {
+            event.setCanceled(CurseHelper.isRitualCasterEffects(player, event.getRitual(), event.isCanceled()));
+        }
+
+        if (event.getHitResult() instanceof EntityHitResult hitresult && hitresult.getEntity() instanceof Player target){
+            event.setCanceled(CurseHelper.isRitualTargetEffects(target, event.getRitual(), event.getEntityLiving(), event.isCanceled()));
+        }
+    }
+    @SubscribeEvent
     public static void onRenderItemTooltips(ItemTooltipEvent event){
         if (!CurseHelper.getCurses(event.getItemStack()).isEmpty() && CurseHelper.getCurses(event.getItemStack()).stream().noneMatch(Objects::isNull)){
 
@@ -274,10 +308,18 @@ public class ApiEvents {
     @SubscribeEvent
     public static void onLivingHeal(LivingHealEvent event){
         float bloodCursePenalty = 1f;
+        if (event.getEntityLiving() instanceof Player player) {
+            for (ItemStack item : player.getInventory().items) {
+                bloodCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
+                                !curse.getCurse().isTemporary() &&
+                                        curse.getCurse().getElement() == ParanormalElement.SANGUE)
+                        .toList().size();
+            }
+        }
         for (ItemStack item : event.getEntityLiving().getAllSlots()) {
-            bloodCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
+            bloodCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
                             !curse.getCurse().isTemporary() &&
-                            curse.getCurse().getElement() == ParanormalElement.SANGUE)
+                                    curse.getCurse().getElement() == ParanormalElement.SANGUE)
                     .toList().size();
         }
         event.setAmount(event.getAmount() / bloodCursePenalty);

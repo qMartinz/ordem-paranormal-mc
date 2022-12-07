@@ -76,4 +76,5 @@ public class EntityUtil {
         LivingEntityRenderer renderer = event.getSkin(skinType);
         if (renderer != null) renderer.addLayer(factory.apply(renderer));
     }
+
 }

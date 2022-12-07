@@ -38,16 +38,18 @@ public class OPCreativeTabs {
             super.fillItemList(pItems);
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.SANGUINARIA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.LANCINANTE));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.SADICA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ANTI_CONHECIMENTO));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ANTI_ENERGIA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ANTI_MORTE));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ANTI_SANGUE));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ENERGETICA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.CONSUMIDORA));
-            //pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_BOOTS), OPCurses.LEPIDA));
-            //pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_CHESTPLATE), OPCurses.VOLTAICA));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_BOOTS), OPCurses.LEPIDA));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_CHESTPLATE), OPCurses.VOLTAICA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.ARDENTE));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.SORTUDA));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.EROSIVA));
         }
     };
     public static void init(){}

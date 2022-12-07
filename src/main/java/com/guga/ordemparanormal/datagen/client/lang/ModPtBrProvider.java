@@ -26,8 +26,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		addSubtitle("zumbi_sangue.hurt", "Zumbi de Sangue é ferido");
 		addSubtitle("zumbi_sangue.death", "Zumbi de Sangue é morto");
 		addSubtitle("zumbi_sangue.convert", "Zumbi de Sangue converte-se em zumbi de Sangue bestial");
-		addSubtitle("ritual.learned", "Ritual é aprendido");
-		addSubtitle("ritual.forgotten", "Ritual é esquecido");
+		addSubtitle("ritual_learned", "Ritual é aprendido");
+		addSubtitle("ritual_forgotten", "Ritual é esquecido");
 		addSubtitle("ritual.used", "Ritual é utilizado");
 		addSubtitle("ritual.failed", "Ritual falha");
 		addSubtitle("blood_power_used", "Poder de Sangue é utilizado");
@@ -59,6 +59,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPBlocks.MESA_MORTE.get(), "Mesa de maldições de Morte");
 		add(OPBlocks.MESA_ENERGIA.get(), "Mesa de maldições de Energia");
 		add(OPBlocks.MESA_CONHECIMENTO.get(), "Mesa de maldições de Conhecimento");
+		add(OPItems.BIDENTE.get(), "Bidente");
+		add(OPEntities.BIDENTE.get(), "Bidente");
 
 			// Grupo de itens
 			add("itemGroup.ordemparanormal", "Ordem Paranormal");
@@ -98,7 +100,7 @@ public class ModPtBrProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Ovo gerador de zumbi de Sangue");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Ovo gerador de zumbi de Sangue seco");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Ovo gerador de zumbi de Sangue espinhento");
-			//add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
+			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
 
 		// -------------------------------------------------------------
 
@@ -293,6 +295,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPCurses.CONSUMIDORA, "Consumidora");
 		add(OPCurses.ARDENTE, "Ardente");
 		add(OPCurses.SORTUDA, "Sortuda");
+		add(OPCurses.EROSIVA, "Erosiva");
+		add(OPCurses.SADICA, "Sádica");
 
 		// -------------------------------------------------------------
 
@@ -306,6 +310,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEffects.SWERVE_DEATH.get(), "Escapar da Morte");
 		add(OPEffects.DISTORTED_GRAVITY.get(), "Gravidade Distorcida");
 		add(OPEffects.TANGIBLE_FEAR.get(), "Medo Tangível");
+		add(OPEffects.DISTURBED.get(), "Perturbado");
+		add(OPEffects.ZERO_ENTROPY.get(), "Entropia Zerada");
 
 		// -------------------------------------------------------------
 

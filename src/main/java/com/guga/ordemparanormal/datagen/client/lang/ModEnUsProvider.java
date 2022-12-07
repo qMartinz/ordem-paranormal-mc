@@ -26,8 +26,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		addSubtitle("zumbi_sangue.hurt", "Blood zombie is hurt");
 		addSubtitle("zumbi_sangue.death", "Blood zombie is killed");
 		addSubtitle("zumbi_sangue.convert", "Blood zombie converts to bestial Blood zombie");
-		addSubtitle("ritual.learned", "Ritual is learned");
-		addSubtitle("ritual.forgotten", "Ritual is forgotten");
+		addSubtitle("ritual_learned", "Ritual is learned");
+		addSubtitle("ritual_forgotten", "Ritual is forgotten");
 		addSubtitle("ritual.used", "Ritual is used");
 		addSubtitle("ritual.failed", "Ritual fails");
 		addSubtitle("blood_power_used", "Blood power is used");
@@ -59,6 +59,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPBlocks.MESA_ENERGIA.get(), "Energy curse table");
 		add(OPBlocks.MESA_MORTE.get(), "Death curse table");
 		add(OPBlocks.MESA_CONHECIMENTO.get(), "Knowledge curse table");
+		add(OPItems.BIDENTE.get(), "Bident");
+		add(OPEntities.BIDENTE.get(), "Bident");
 
 			// Grupo de itens
 			add("itemGroup.ordemparanormal", "Paranormal Order");
@@ -98,7 +100,7 @@ public class ModEnUsProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_SANGUE_OVO.get(), "Blood zombie spawn egg");
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Skeletal Blood zombie spawn egg");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
-			//add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
+			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
 
 		// -------------------------------------------------------------
 
@@ -292,6 +294,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPCurses.CONSUMIDORA, "Consumer");
 		add(OPCurses.ARDENTE, "Ardent");
 		add(OPCurses.SORTUDA, "Lucky");
+		add(OPCurses.EROSIVA, "Erosive");
+		add(OPCurses.SADICA, "Sadistic");
 
 		// -------------------------------------------------------------
 
@@ -305,6 +309,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEffects.SWERVE_DEATH.get(), "Swerve Death");
 		add(OPEffects.DISTORTED_GRAVITY.get(), "Distorted Gravity");
 		add(OPEffects.TANGIBLE_FEAR.get(), "Tangible Fear");
+		add(OPEffects.DISTURBED.get(), "Disturbed");
+		add(OPEffects.ZERO_ENTROPY.get(), "Zero Entropy");
 
 		// -------------------------------------------------------------
 

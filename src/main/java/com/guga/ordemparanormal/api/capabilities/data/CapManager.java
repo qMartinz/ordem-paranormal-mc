@@ -8,6 +8,7 @@ import com.guga.ordemparanormal.core.network.Packets;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -39,10 +40,16 @@ public class CapManager extends SavedData {
                     if (nex == null || effects == null || abilities == null) return;
 
                     float knowledgeCursePenalty = 1f;
-                    for (ItemStack item : player.getAllSlots()) {
-                        knowledgeCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
+                    for (ItemStack item : player.getInventory().items) {
+                        knowledgeCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
                                         !curse.getCurse().isTemporary() &&
-                                        curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO)
+                                                curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO)
+                                .toList().size();
+                    }
+                    for (ItemStack item : player.getAllSlots()) {
+                        knowledgeCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
+                                        !curse.getCurse().isTemporary() &&
+                                                curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO)
                                 .toList().size();
                     }
 

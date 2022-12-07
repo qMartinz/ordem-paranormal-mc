@@ -71,6 +71,9 @@ public class ParanormalCreature extends Monster {
         }
 
     }
+    public boolean removeWhenFarAway(double pDistanceToClosestPlayer) {
+        return false;
+    }
     @Override
     public void die(DamageSource source){
         super.die(source);

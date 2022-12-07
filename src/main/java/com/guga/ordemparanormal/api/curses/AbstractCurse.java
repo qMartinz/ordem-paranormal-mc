@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.api.curses;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -107,6 +108,31 @@ public abstract class AbstractCurse {
         return exp;
     }
     /**
+     * Chamado quando o usuário é alvo de um ritual
+     *
+     * @param entity o usuário
+     * @param level o level onde o ritual foi conjurado
+     * @param ritual o ritual conjurado
+     * @param caster o usuário do ritual
+     * @param canceled um boolean que mostra se o ritual foi cancelado
+     * @return um boolean que define se o ritual foi cancelado ou não
+     */
+    public boolean isRitualTarget(Player entity, LevelAccessor level, AbstractRitual ritual, LivingEntity caster, boolean canceled){
+        return canceled;
+    }
+    /**
+     * Chamado quando o usuário conjura um ritual
+     *
+     * @param entity o usuário
+     * @param level o level onde o ritual foi conjurado
+     * @param ritual o ritual conjurado
+     * @param canceled um boolean que mostra se o ritual foi cancelado
+     * @return um boolean que define se o ritual foi cancelado ou não
+     */
+    public boolean isRitualCaster(Player entity, LevelAccessor level, AbstractRitual ritual, boolean canceled){
+        return canceled;
+    }
+    /**
      * Mantenha os usos máximos como 0 para uma maldição permanente.
      * @return quantos usos essa maldição pode ter.
      */
@@ -120,6 +146,9 @@ public abstract class AbstractCurse {
         return 0;
     }
     public int getDamageBonus() {
+        return 0;
+    }
+    public float getBreakSpeedBonus() {
         return 0;
     }
     public Map<AttributeModifier, Attribute> getAttributeModifiers(){

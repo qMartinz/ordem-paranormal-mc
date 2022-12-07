@@ -19,7 +19,7 @@ public class Voltaica extends AbstractCurse {
     @Override
     public float doPostHurt(ItemStack pStack, LivingEntity pTarget, @Nullable Entity pAttacker, float amount, DamageSource source) {
         if (source instanceof ParanormalDamageSource paranormaldamage &&
-                paranormaldamage.element == ParanormalElement.ENERGIA) amount -= Math.min(10, amount);
+                paranormaldamage.element == ParanormalElement.ENERGIA) amount -= Math.min(13, amount);
         return super.doPostHurt(pStack, pTarget, pAttacker, amount, source);
     }
 }

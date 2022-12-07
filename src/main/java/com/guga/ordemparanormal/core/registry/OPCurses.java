@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.core.registry;
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.common.curses.*;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.resources.ResourceLocation;
 
 import static com.guga.ordemparanormal.api.ParanormalElement.*;
@@ -29,6 +28,8 @@ public class OPCurses {
     public static final AbstractCurse CONSUMIDORA = new Consumidora(new ResourceLocation(MOD_ID, "consumidora"), MORTE, WEAPON, MAINHAND);
     public static final AbstractCurse SORTUDA = new Sortuda(new ResourceLocation(MOD_ID, "sortuda"), ENERGIA, DIGGER, MAINHAND);
     public static final AbstractCurse ARDENTE = new Ardente(new ResourceLocation(MOD_ID, "ardente"), ENERGIA, DIGGER, MAINHAND);
+    public static final AbstractCurse EROSIVA = new Erosiva(new ResourceLocation(MOD_ID, "erosiva"), MORTE, DIGGER, MAINHAND);
+    public static final AbstractCurse SADICA = new Sadica(new ResourceLocation(MOD_ID, "sadica"), SANGUE, WEAPON, MAINHAND);
 
     /**
      * Registra as maldições
@@ -51,6 +52,8 @@ public class OPCurses {
         registerCurse(CONSUMIDORA);
         registerCurse(SORTUDA);
         registerCurse(ARDENTE);
+        registerCurse(EROSIVA);
+        registerCurse(SADICA);
     }
     public static void registerCurse(AbstractCurse curse){
         OrdemParanormalAPI.getInstance().registerCurse(curse.getId(), curse);
