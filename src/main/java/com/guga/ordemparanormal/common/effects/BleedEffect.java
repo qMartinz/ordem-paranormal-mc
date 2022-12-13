@@ -15,18 +15,14 @@ public class BleedEffect extends OPEffects.ParanormalEffect {
     }
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        if (ParanormalDamageSource.isEntityResistant(entity, ParanormalDamageSource.DANO_SANGUE)){
-            entity.removeEffect(this);
-        } else {
-            float amount = 2f * amplifier;
-            entity.hurt(ParanormalDamageSource.DANO_SANGUE, amount);
+        float amount = 2f * (amplifier + 1);
+        entity.hurt(ParanormalDamageSource.DANO_SANGUE, amount);
 
-            if (entity.level instanceof ServerLevel level)
-                level.sendParticles(
-                        new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
-                        entity.getX(), entity.getEyeY(), entity.getZ(),
-                        (int) amount*2, 0, 0, 0, 0);
-        }
+        if (entity.level instanceof ServerLevel level)
+            level.sendParticles(
+                    new BlockParticleOption(ParticleTypes.BLOCK, Blocks.REDSTONE_BLOCK.defaultBlockState()),
+                    entity.getX(), entity.getEyeY(), entity.getZ(),
+                    (int) amount*2, 0, 0, 0, 0);
     }
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {

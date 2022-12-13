@@ -17,6 +17,9 @@ public final class OPEndimations {
     public static final PlayableEndimation ABERRACAO_HITRIGHTUP = register("aberracaocarne/hitrightup", 15, PlayableEndimation.LoopType.NONE);
     public static final PlayableEndimation ABERRACAO_HITRIGHTLOW = register("aberracaocarne/hitrightlow", 15, PlayableEndimation.LoopType.NONE);
     public static final PlayableEndimation ABERRACAO_WALKING = register("aberracaocarne/walking", 20, PlayableEndimation.LoopType.LOOP);
+    public static final PlayableEndimation TITA_WALKING = register("titasangue/walking", 40, PlayableEndimation.LoopType.LOOP);
+    public static final PlayableEndimation TITA_ATTACK = register("titasangue/attack", 15, PlayableEndimation.LoopType.NONE);
+    public static final PlayableEndimation TITA_BITE = register("titasangue/bite", 15, PlayableEndimation.LoopType.NONE);
     private static PlayableEndimation register(String name, int duration, PlayableEndimation.LoopType loopType){
         return PlayableEndimationManager.INSTANCE.registerPlayableEndimation(new PlayableEndimation(new ResourceLocation(OrdemParanormal.MOD_ID, name), duration, loopType));
     }

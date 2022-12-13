@@ -4,10 +4,7 @@ import com.guga.ordemparanormal.common.entity.AberracaoCarne;
 import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.ThrownBidente;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
-import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiEspinhento;
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
-import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSeco;
+import com.guga.ordemparanormal.common.entity.zumbissangue.*;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import net.minecraft.world.entity.EntityType;
@@ -38,6 +35,8 @@ public final class OPEntities {
 			"nevoa", Nevoa::new, Nevoa::new, MobCategory.MISC, 0F, 0F);
 	public static final RegistryObject<EntityType<AberracaoCarne>> ABERRACAO_CARNE = HELPER.createLivingEntity(
 			"aberracao_carne", AberracaoCarne::new, MobCategory.MONSTER, 2f, 3f);
+	public static final RegistryObject<EntityType<TitaSangue>> TITA_SANGUE = HELPER.createLivingEntity(
+			"tita_sangue", TitaSangue::new, MobCategory.MONSTER, 2f, 3f);
 	public static final RegistryObject<EntityType<ThrownBidente>> BIDENTE = HELPER.getDeferredRegister().register("bidente",
 			() -> EntityType.Builder.<ThrownBidente>of(ThrownBidente::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("bidente"));
 	
@@ -50,5 +49,6 @@ public final class OPEntities {
 		event.put(OPEntities.ZUMBI_ESPINHENTO.get(), ZumbiEspinhento.createZumbiEspinhentoAttributes().build());
 		event.put(OPEntities.VILLAGER_CORPO.get(), VillagerCorpo.createCorpseAttributes().build());
 		event.put(OPEntities.ABERRACAO_CARNE.get(), AberracaoCarne.createAberracaoAttributes().build());
+		event.put(OPEntities.TITA_SANGUE.get(), TitaSangue.createTitaSangueAttributes().build());
 	}
 }

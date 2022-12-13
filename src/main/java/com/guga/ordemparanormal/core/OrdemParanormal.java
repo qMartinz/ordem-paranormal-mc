@@ -74,6 +74,7 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.ZUMBI_SECO.get(), ZumbiSecoRenderer::new);
 		event.registerEntityRenderer(OPEntities.ZUMBI_ESPINHENTO.get(), ZumbiEspinhentoRenderer::new);
 		event.registerEntityRenderer(OPEntities.ABERRACAO_CARNE.get(), AberracaoCarneRenderer::new);
+		event.registerEntityRenderer(OPEntities.TITA_SANGUE.get(), TitaSangueRenderer::new);
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 		event.registerEntityRenderer(OPEntities.BIDENTE.get(), BidenteRenderer::new);

@@ -17,20 +17,16 @@ public class DecayEffect extends OPEffects.ParanormalEffect {
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         Random random = new Random();
-        if (ParanormalDamageSource.isEntityResistant(entity, ParanormalDamageSource.DANO_MORTE)){
-            entity.removeEffect(this);
-        } else {
-            float amount = 2f * amplifier;
-            entity.hurt(ParanormalDamageSource.DANO_MORTE, amount);
+        float amount = 2f * (amplifier + 1);
+        entity.hurt(ParanormalDamageSource.DANO_MORTE, amount);
 
-            if (entity.level instanceof ServerLevel level)
-                level.sendParticles(
-                        new DustParticleOptions(new Vector3f(0.25f, 0.25f, 0.25f), 0.7f),
-                        entity.getX() + random.nextDouble(-0.5d, 0.5d),
-                        entity.getEyeY() + random.nextDouble(-0.5d, 0.5d),
-                        entity.getZ() + random.nextDouble(-0.5d, 0.5d),
-                        (int) amount*2, 0, 0, 0, random.nextDouble(0.5d));
-        }
+        if (entity.level instanceof ServerLevel level)
+            level.sendParticles(
+                    new DustParticleOptions(new Vector3f(0.25f, 0.25f, 0.25f), 0.7f),
+                    entity.getX() + random.nextDouble(-0.5d, 0.5d),
+                    entity.getEyeY() + random.nextDouble(-0.5d, 0.5d),
+                    entity.getZ() + random.nextDouble(-0.5d, 0.5d),
+                    (int) amount*2, 0, 0, 0, random.nextDouble(0.5d));
     }
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {

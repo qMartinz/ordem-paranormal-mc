@@ -89,6 +89,25 @@ public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
         add(OPSounds.ABERRACAO_DEATH, soundDefinition("aberracao/death")
                 .subtitle("subtitles.ordemparanormal.aberracao.death"));
 
+        add(OPSounds.TITA_HURT, soundDefinition("blood/hurt_1")
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "blood/hurt_2")))
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "blood/hurt_3")))
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "blood/hurt_4")))
+                .subtitle("subtitles.ordemparanormal.tita.hurt"));
+        add(OPSounds.TITA_IDLE, soundDefinition("tita_sangue/idle")
+                .subtitle("subtitles.ordemparanormal.tita.idle"));
+        add(OPSounds.TITA_STEP, soundDefinition("tita_sangue/step1")
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "tita_sangue/step2")))
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "tita_sangue/step3")))
+                .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "tita_sangue/step4")))
+                .subtitle("subtitles.ordemparanormal.tita.step"));
+        add(OPSounds.TITA_ATTACK, soundDefinition("tita_sangue/attack")
+                .subtitle("subtitles.ordemparanormal.tita.attack"));
+        add(OPSounds.TITA_BITE, soundDefinition("tita_sangue/bite")
+                .subtitle("subtitles.ordemparanormal.tita.bite"));
+        add(OPSounds.TITA_DEATH, soundDefinition("tita_sangue/death")
+                .subtitle("subtitles.ordemparanormal.tita.death"));
+
         add(OPSounds.BIDENTE_HIT, soundDefinition("bidente/hit1")
                 .with(sound(new ResourceLocation(OrdemParanormal.MOD_ID, "bidente/hit2")))
                 .subtitle("subtitles.ordemparanormal.bidente.hit"));

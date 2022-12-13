@@ -41,6 +41,12 @@ public class ModPtBrProvider extends ModLangProvider {
 		addSubtitle("aberracao.step", "Aberração de carne caminha");
 		addSubtitle("aberracao.attack", "Aberração de carne ataca");
 		addSubtitle("aberracao.abocanhar", "Aberração de carne abocanha");
+		addSubtitle("tita.death", "Titã de Sangue morre");
+		addSubtitle("tita.hurt", "Titã de Sangue é ferido");
+		addSubtitle("tita.idle", "Titã de Sangue grunhe");
+		addSubtitle("tita.step", "Titã de Sangue caminha");
+		addSubtitle("tita.attack", "Titã de Sangue ataca");
+		addSubtitle("tita.bite", "Titã de Sangue morde");
 		addSubtitle("bidente.hit", "Bidente perfura");
 		addSubtitle("bidente.riptide", "Bidente zumbindo");
 
@@ -103,6 +109,7 @@ public class ModPtBrProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Ovo gerador de zumbi de Sangue seco");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Ovo gerador de zumbi de Sangue espinhento");
 			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
+			add(OPItems.TITA_SANGUE_OVO.get(), "Ovo gerador de titã de Sangue");
 
 		// -------------------------------------------------------------
 
@@ -113,6 +120,7 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEntities.ZUMBI_SECO.get(), "Zumbi de Sangue seco");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
 		add(OPEntities.ABERRACAO_CARNE.get(), "Aberração de carne");
+		add(OPEntities.TITA_SANGUE.get(), "Titã de Sangue");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Ocultista de Sangue");

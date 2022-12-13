@@ -1,6 +1,7 @@
 package com.guga.ordemparanormal.common.entity;
 
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPSounds;
@@ -16,6 +17,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -146,6 +148,7 @@ public class ThrownBidente extends AbstractArrow {
                 }
 
                 this.doPostHurtEffects(livingentity1);
+                livingentity1.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 100, 0, false, false));
             }
         }
         this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));

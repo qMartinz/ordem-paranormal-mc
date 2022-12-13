@@ -197,6 +197,48 @@
       "ordemparanormal:aberracao/death"
     ]
   },
+  "tita.hurt": {
+    "subtitle": "subtitles.ordemparanormal.tita.hurt",
+    "sounds": [
+      "ordemparanormal:blood/hurt_1",
+      "ordemparanormal:blood/hurt_2",
+      "ordemparanormal:blood/hurt_3",
+      "ordemparanormal:blood/hurt_4"
+    ]
+  },
+  "tita.idle": {
+    "subtitle": "subtitles.ordemparanormal.tita.idle",
+    "sounds": [
+      "ordemparanormal:tita_sangue/idle"
+    ]
+  },
+  "tita.step": {
+    "subtitle": "subtitles.ordemparanormal.tita.step",
+    "sounds": [
+      "ordemparanormal:tita_sangue/step1",
+      "ordemparanormal:tita_sangue/step2",
+      "ordemparanormal:tita_sangue/step3",
+      "ordemparanormal:tita_sangue/step4"
+    ]
+  },
+  "tita.attack": {
+    "subtitle": "subtitles.ordemparanormal.tita.attack",
+    "sounds": [
+      "ordemparanormal:tita_sangue/attack"
+    ]
+  },
+  "tita.bite": {
+    "subtitle": "subtitles.ordemparanormal.tita.bite",
+    "sounds": [
+      "ordemparanormal:tita_sangue/bite"
+    ]
+  },
+  "tita.death": {
+    "subtitle": "subtitles.ordemparanormal.tita.death",
+    "sounds": [
+      "ordemparanormal:tita_sangue/death"
+    ]
+  },
   "bidente.hit": {
     "subtitle": "subtitles.ordemparanormal.bidente.hit",
     "sounds": [

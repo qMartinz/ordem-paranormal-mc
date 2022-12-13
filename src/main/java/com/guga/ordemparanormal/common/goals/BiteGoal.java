@@ -1,7 +1,7 @@
 package com.guga.ordemparanormal.common.goals;
 
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
-import com.guga.ordemparanormal.common.entity.AberracaoCarne;
+import com.guga.ordemparanormal.common.entity.zumbissangue.TitaSangue;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPEndimations;
 import com.guga.ordemparanormal.core.registry.OPSounds;
@@ -9,12 +9,12 @@ import com.teamabnormals.blueprint.core.endimator.entity.EndimatedGoal;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 
-public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
+public class BiteGoal extends EndimatedGoal<TitaSangue> {
     private int ticksUntilNextAttack;
-    private final int attackInterval = 650;
+    private final int attackInterval = 300;
 
-    public AbocanharGoal(AberracaoCarne entity) {
-        super(entity, OPEndimations.ABERRACAO_ABOCANHAR);
+    public BiteGoal(TitaSangue entity) {
+        super(entity, OPEndimations.TITA_BITE);
     }
 
     @Override
@@ -32,11 +32,10 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
         this.ticksUntilNextAttack = 0;
     }
 
-    protected void performGrab(LivingEntity pEnemy, double pDistToEnemySqr) {
+    protected void performBite(LivingEntity pEnemy, double pDistToEnemySqr) {
         double d0 = this.getAttackReach(pEnemy);
         if (pDistToEnemySqr <= d0 && this.isTimeToAttack()) {
             this.resetAttackCooldown();
-            // Grab
             this.playEndimation();
         }
     }
@@ -51,21 +50,13 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
                 this.entity.setDeltaMovement(0, this.entity.getDeltaMovement().y, 0);
             }
 
-            if (this.isEndimationPastOrAtTick(5) && this.getAttackReach(livingentity) >= d0) {
-                double motionX = (this.entity.getX() - livingentity.getX());
-                double motionZ = (this.entity.getZ() - livingentity.getZ());
-                livingentity.setDeltaMovement(motionX, 0d, motionZ);
+            if (this.isEndimationAtTick(10) && this.getAttackReach(livingentity) >= d0) {
+                livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 20f);
+                livingentity.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 200, 0, false, false));
+                this.entity.playSound(OPSounds.TITA_BITE.get(), 1.0f, 1.0f);
             }
 
-            if (this.isEndimationAtTick(10) && this.getAttackReach(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ())) {
-                livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 25f);
-                if (!this.entity.level.isClientSide()) {
-                    livingentity.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 200, 1, false, false));
-                }
-                this.entity.playSound(OPSounds.ABERRACAO_ABOCANHAR.get(), 1.0f, 1.0f);
-            }
-
-            this.performGrab(livingentity, d0);
+            this.performBite(livingentity, d0);
         }
     }
 

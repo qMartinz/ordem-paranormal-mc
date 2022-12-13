@@ -41,6 +41,12 @@ public class ModEnUsProvider extends ModLangProvider {
 		addSubtitle("aberracao.step", "Flesh aberration walking");
 		addSubtitle("aberracao.attack", "Flesh aberration attacks");
 		addSubtitle("aberracao.abocanhar", "Flesh aberration bites");
+		addSubtitle("tita.death", "Blood titan dies");
+		addSubtitle("tita.hurt", "Blood titan is hurt");
+		addSubtitle("tita.idle", "Blood titan growls");
+		addSubtitle("tita.step", "Blood titan walking");
+		addSubtitle("tita.attack", "Blood titan attacks");
+		addSubtitle("tita.bite", "Blood titan bites");
 		addSubtitle("bidente.hit", "Bident stabs");
 		addSubtitle("bidente.riptide", "Bident zooms");
 
@@ -103,6 +109,7 @@ public class ModEnUsProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_SECO_OVO.get(), "Skeletal Blood zombie spawn egg");
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
 			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
+			add(OPItems.TITA_SANGUE_OVO.get(), "Blood titan spawn egg");
 
 		// -------------------------------------------------------------
 
@@ -113,6 +120,7 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEntities.ZUMBI_SECO.get(), "Skeletal Blood zombie");
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Spiky Blood zombie");
 		add(OPEntities.ABERRACAO_CARNE.get(), "Flesh aberration");
+		add(OPEntities.TITA_SANGUE.get(), "Blood titan");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Blood Occultist");

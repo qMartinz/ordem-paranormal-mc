@@ -45,4 +45,10 @@ public final class OPSounds {
     public static final RegistryObject<SoundEvent> BIDENTE_RIPTIDE_1 = HELPER.createSoundEvent("bidente.riptide_1");
     public static final RegistryObject<SoundEvent> BIDENTE_RIPTIDE_2 = HELPER.createSoundEvent("bidente.riptide_2");
     public static final RegistryObject<SoundEvent> BIDENTE_RIPTIDE_3 = HELPER.createSoundEvent("bidente.riptide_3");
+    public static final RegistryObject<SoundEvent> TITA_IDLE = HELPER.createSoundEvent("tita.idle");
+    public static final RegistryObject<SoundEvent> TITA_STEP = HELPER.createSoundEvent("tita.step");
+    public static final RegistryObject<SoundEvent> TITA_ATTACK = HELPER.createSoundEvent("tita.attack");
+    public static final RegistryObject<SoundEvent> TITA_BITE = HELPER.createSoundEvent("tita.bite");
+    public static final RegistryObject<SoundEvent> TITA_HURT = HELPER.createSoundEvent("tita.hurt");
+    public static final RegistryObject<SoundEvent> TITA_DEATH = HELPER.createSoundEvent("tita.death");
 }
