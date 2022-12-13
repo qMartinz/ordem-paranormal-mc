@@ -1,5 +1,5 @@
 {
-	"length": 1,
+	"length": 2,
 	"parts": {
 		"rightleg": {
 			"rotation": [
@@ -11,14 +11,14 @@
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [45, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-22.4146, -14.9854, -0.65428],
 					"interpolation": {
 						"type": "catmullrom"
@@ -36,21 +36,21 @@
 					}
 				},
 				{
-					"time": 0.25,
+					"time": 0.5,
 					"transform": [-33.87834, -0.12153, -0.89337],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-2.5, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-40, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -68,28 +68,28 @@
 					}
 				},
 				{
-					"time": 0.25,
+					"time": 0.5,
 					"transform": [20.97495, 0.25406, 0.86506],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-10, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.75,
+					"time": 1.5,
 					"transform": [6, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -105,21 +105,7 @@
 					}
 				},
 				{
-					"time": 0.25,
-					"transform": [0, 1, 0],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
 					"time": 0.5,
-					"transform": [0, 0, 0],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
-					"time": 0.75,
 					"transform": [0, 1, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -127,6 +113,20 @@
 				},
 				{
 					"time": 1,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1.5,
+					"transform": [0, 1, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -144,14 +144,14 @@
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-22.46192, 9.99039, 0.4373],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [45, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -169,21 +169,21 @@
 					}
 				},
 				{
-					"time": 0.25,
+					"time": 0.5,
 					"transform": [-11.09468, -0.09494, 0.10979],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-40, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-2.5, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -201,28 +201,28 @@
 					}
 				},
 				{
-					"time": 0.25,
+					"time": 0.5,
 					"transform": [11.00049, 0.01805, -0.08531],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.75,
+					"time": 1.5,
 					"transform": [18.5, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-10, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -238,21 +238,7 @@
 					}
 				},
 				{
-					"time": 0.25,
-					"transform": [0, 1, 0],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
 					"time": 0.5,
-					"transform": [0, 0, 0],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
-					"time": 0.75,
 					"transform": [0, 1, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -260,6 +246,20 @@
 				},
 				{
 					"time": 1,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1.5,
+					"transform": [0, 1, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -277,21 +277,7 @@
 					}
 				},
 				{
-					"time": 0.25,
-					"transform": [12.5, 0, 0.50781],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
 					"time": 0.5,
-					"transform": [12.5, 0, 2.33941],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
-					"time": 0.75,
 					"transform": [12.5, 0, 0.50781],
 					"interpolation": {
 						"type": "catmullrom"
@@ -299,6 +285,20 @@
 				},
 				{
 					"time": 1,
+					"transform": [12.5, 0, 2.33941],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1.5,
+					"transform": [12.5, 0, 0.50781],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
 					"transform": [12.5, 0, -2.5],
 					"interpolation": {
 						"type": "catmullrom"
@@ -316,21 +316,7 @@
 					}
 				},
 				{
-					"time": 0.25,
-					"transform": [4.98729, 0.55763, -0.2486],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
 					"time": 0.5,
-					"transform": [12.4875, 0.52241, -0.15233],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
-					"time": 0.75,
 					"transform": [4.98729, 0.55763, -0.2486],
 					"interpolation": {
 						"type": "catmullrom"
@@ -338,6 +324,20 @@
 				},
 				{
 					"time": 1,
+					"transform": [12.4875, 0.52241, -0.15233],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1.5,
+					"transform": [4.98729, 0.55763, -0.2486],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
 					"transform": [12.4875, 0.52241, -0.15233],
 					"interpolation": {
 						"type": "catmullrom"
@@ -355,7 +355,7 @@
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-9.99131, -0.35688, 0.24985],
 					"interpolation": {
 						"type": "catmullrom"
@@ -373,28 +373,28 @@
 					}
 				},
 				{
-					"time": 0.2083,
+					"time": 0.4167,
 					"transform": [4.99917, -0.09082, -0.01484],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.7917,
+					"time": 1.5833,
 					"transform": [4.64477, -0.08449, -0.01323],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -410,28 +410,28 @@
 					}
 				},
 				{
-					"time": 0.2083,
+					"time": 0.4167,
 					"transform": [0, 0, -1],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 0.7917,
+					"time": 1.5833,
 					"transform": [0, 0, -0.95],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -449,21 +449,7 @@
 					}
 				},
 				{
-					"time": 0.2083,
-					"transform": [14.99902, -0.15999, -0.0868],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
-					"time": 0.5,
-					"transform": [0, 0, 0],
-					"interpolation": {
-						"type": "catmullrom"
-					}
-				},
-				{
-					"time": 0.7917,
+					"time": 0.4167,
 					"transform": [14.99902, -0.15999, -0.0868],
 					"interpolation": {
 						"type": "catmullrom"
@@ -471,6 +457,20 @@
 				},
 				{
 					"time": 1,
+					"transform": [0, 0, 0],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 1.5833,
+					"transform": [14.99902, -0.15999, -0.0868],
+					"interpolation": {
+						"type": "catmullrom"
+					}
+				},
+				{
+					"time": 2,
 					"transform": [0, 0, 0],
 					"interpolation": {
 						"type": "catmullrom"
@@ -488,14 +488,14 @@
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [19.99564, -0.05226, -0.29688],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-22.44634, 2.37081, -2.44374],
 					"interpolation": {
 						"type": "catmullrom"
@@ -513,14 +513,14 @@
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-7.49912, 0.02697, 0.11028],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-19.96395, 0.83103, -0.47708],
 					"interpolation": {
 						"type": "catmullrom"
@@ -538,14 +538,14 @@
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-22.44634, 2.37081, -2.44374],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [19.99564, -0.05226, -0.29688],
 					"interpolation": {
 						"type": "catmullrom"
@@ -563,14 +563,14 @@
 					}
 				},
 				{
-					"time": 0.5,
+					"time": 1,
 					"transform": [-19.96395, 0.83103, -0.47708],
 					"interpolation": {
 						"type": "catmullrom"
 					}
 				},
 				{
-					"time": 1,
+					"time": 2,
 					"transform": [-7.49912, 0.02697, 0.11028],
 					"interpolation": {
 						"type": "catmullrom"

@@ -25,7 +25,7 @@ public final class OPEntities {
 	public static final RegistryObject<EntityType<Bestial>> BESTIAL = HELPER.createLivingEntity(
 			"zumbi_bestial", Bestial::new, MobCategory.MONSTER, 1.8F, 1.3F);
 	public static final RegistryObject<EntityType<ZumbiSeco>> ZUMBI_SECO = HELPER.createLivingEntity(
-			"zumbi_seco", ZumbiSeco::new, MobCategory.MONSTER, 0.6F, 1.6F);
+			"zumbi_seco", ZumbiSeco::new, MobCategory.MONSTER, 0.6F, 2.0F);
 
 	public static final RegistryObject<EntityType<ZumbiEspinhento>> ZUMBI_ESPINHENTO = HELPER.createLivingEntity(
 			"zumbi_espinhento", ZumbiEspinhento::new, MobCategory.MONSTER, 0.6F, 1.6F);
@@ -36,7 +36,7 @@ public final class OPEntities {
 	public static final RegistryObject<EntityType<AberracaoCarne>> ABERRACAO_CARNE = HELPER.createLivingEntity(
 			"aberracao_carne", AberracaoCarne::new, MobCategory.MONSTER, 2f, 3f);
 	public static final RegistryObject<EntityType<TitaSangue>> TITA_SANGUE = HELPER.createLivingEntity(
-			"tita_sangue", TitaSangue::new, MobCategory.MONSTER, 2f, 3f);
+			"tita_sangue", TitaSangue::new, MobCategory.MONSTER, 2.2f, 3.2f);
 	public static final RegistryObject<EntityType<ThrownBidente>> BIDENTE = HELPER.getDeferredRegister().register("bidente",
 			() -> EntityType.Builder.<ThrownBidente>of(ThrownBidente::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("bidente"));
 	
