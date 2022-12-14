@@ -1,0 +1,19 @@
+{
+  "name": "Blood Crypt",
+  "icon": "ordemparanormal:colar_sangue",
+  "category": "ordemparanormal:estruturas_category",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Maybe you've heard of an ancient cult to the \"Devil\", right? Very well, that cult commonly inhabited ancient crypts constructed centuries ago by unknown builders. In them, the occultists kept their valuables with care. Many bloody treasures are kept in those crypts till this day."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/cripta.png"
+      ],
+      "border": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Cripta de Sangue",
+  "icon": "ordemparanormal:colar_sangue",
+  "category": "ordemparanormal:estruturas_category",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Talvez você tenha ouvido sobre um culto antigo ao \"Diabo\", certo? Pois bem, esse culto comumente habitava criptas antigas construídas há milênios por construtores desconhecidos. Nelas, os ocultistas mantinham suas preciosidades com cuidado. Muitos tesouros sangrentos estão mantidos nessas criptas até hoje."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/cripta.png"
+      ],
+      "border": true
+    }
+  ]
+}

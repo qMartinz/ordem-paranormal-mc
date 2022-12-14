@@ -1,0 +1,17 @@
+{
+  "name": "Blood titan",
+  "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
+  "advancement": "ordemparanormal:paranormal_creatures/tita_sangue",
+  "category": "ordemparanormal:criaturas_category",
+  "pages": [
+    {
+      "type": "patchouli:entity",
+      "entity": "ordemparanormal:tita_sangue",
+      "text": "An extremely powerful and strong Blood Zombie."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A $(sangue)Blood/$ creature.$(br2)It's hard to say if they are transformations of a common Blood zombie or if they are more powerful variants of a Blood zombie, but what is known is that these beings are terribly powerful and can easily destroy an unprepared explorer."
+    }
+  ]
+}

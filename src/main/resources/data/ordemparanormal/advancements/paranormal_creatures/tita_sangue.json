@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "tita_sangue": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "ordemparanormal:tita_sangue"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tita_sangue"
+    ]
+  ]
+}

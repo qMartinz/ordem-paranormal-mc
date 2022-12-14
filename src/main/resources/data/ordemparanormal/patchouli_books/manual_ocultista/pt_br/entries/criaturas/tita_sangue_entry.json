@@ -1,0 +1,17 @@
+{
+  "name": "Titã de Sangue",
+  "icon": "ordemparanormal:textures/gui/entries/sangue_icon.png",
+  "advancement": "ordemparanormal:paranormal_creatures/tita_sangue",
+  "category": "ordemparanormal:criaturas_category",
+  "pages": [
+    {
+      "type": "patchouli:entity",
+      "entity": "ordemparanormal:tita_sangue",
+      "text": "Um zumbi de Sangue extremamente poderoso e forte."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Uma criatura de $(sangue)Sangue/$.$(br2)É difícil dizer se são transformações de um zumbi de Sangue comum ou se são variantes mais poderosas de um zumbi de Sangue, mas o que se sabe é que esses seres são terrivelmente poderosos e conseguem facilmente destruir um explorador despreparado."
+    }
+  ]
+}
