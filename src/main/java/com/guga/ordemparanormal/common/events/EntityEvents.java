@@ -11,6 +11,7 @@ import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.common.goals.AreaRitualGoal;
+import com.guga.ordemparanormal.common.goals.TargetCharismaticGoal;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.*;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -283,6 +285,10 @@ public class EntityEvents {
 			villager.targetSelector.addGoal(2, new HurtByTargetGoal(villager));
 			villager.goalSelector.addGoal(3, new AreaRitualGoal(villager, 1d, false));
 			villager.goalSelector.addGoal(4, new AvoidEntityGoal<>(villager, ParanormalCreature.class, 10f, 1d, 1d));
+		}
+
+		if (event.getEntity() instanceof Monster monster && !(monster instanceof ParanormalCreature)){
+			monster.targetSelector.addGoal(0, new TargetCharismaticGoal(monster, false));
 		}
 	}
 }

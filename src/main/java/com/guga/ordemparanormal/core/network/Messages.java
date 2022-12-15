@@ -49,11 +49,9 @@ public class Messages {
                 Packets.ReceivePowerTrigger::new,
                 Packets.ReceivePowerTrigger::handle);
     }
-
     public static <MSG> void sendToServer(MSG message) {
         INSTANCE.sendToServer(message);
     }
-
     public static void sendToPlayer(Object msg, Player player) {
         if (EffectiveSide.get() == LogicalSide.SERVER) {
             INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player), msg);

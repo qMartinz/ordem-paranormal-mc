@@ -285,6 +285,18 @@ public class ModEnUsProvider extends ModLangProvider {
 				"Expands your mind to supernatural levels, increasing the amount of rituals that you can learn.");
 		add(OPPowers.CONHECIMENTO_AMPLIADO_2, "Amplified Knowledge II",
 				"Expands your mind to even higher levels, increasing the amount of rituals that you can learn.");
+		add(OPPowers.PRESENCA_AVASSALADORA, "Overwhelming Presence",
+				"Corrodes the mind of your target, leaving them vulnerable to Knowledge damage. Paranormal creatures and players don't seem to feel the effects of this power...");
+		add(OPPowers.PRESENCA_AVASSALADORA_2, "Overwhelming Presence II",
+				"Corrodes the mind of the beings around you in a radius of 6 blocks, leaving them vulnerable to Knowledge damage. Paranormal creatures and players don't seem to feel the effects of this power...");
+		add(OPPowers.SABEDORIA, "Wisdom",
+				"Your mind absorbs and retains more knowledge. You receive 25% more experience than normal and loses 25% less levels when you use them to enchant something.");
+		add(OPPowers.SABEDORIA_2, "Wisdom II",
+				"Your mind absorbs and retains knowledge with even more potency. You receive 50% more experience than normal and loses 50% less levels when you use them to enchant something.");
+		add(OPPowers.CARISMATICO, "Charismatic",
+				"Your presence confuses hostile beings, making them indiferent to you. When using this power, hostile mobs with the same or less maximum health than you stop attacking you for 10 seconds.");
+		add(OPPowers.CARISMATICO_2, "Charismatic II",
+				"Your presence becomes so magnificent that it overwhelms inferior beings, making them indiferent to you. Hostile mobs with the same or less maximum health than half of yours do not attack you.");
 
 		// Maldições
 		add(OPCurses.ATROZ, "Atrocious");
@@ -320,6 +332,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEffects.DISTORTED_GRAVITY.get(), "Distorted Gravity");
 		add(OPEffects.TANGIBLE_FEAR.get(), "Tangible Fear");
 		add(OPEffects.DISTURBED.get(), "Disturbed");
+		add(OPEffects.WEAKENED_MIND.get(), "Weakened Mind");
+		add(OPEffects.CHARISMATIC.get(), "Charismatic");
 		add(OPEffects.ZERO_ENTROPY.get(), "Zero Entropy");
 
 		// -------------------------------------------------------------

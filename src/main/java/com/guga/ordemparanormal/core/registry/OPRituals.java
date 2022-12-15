@@ -117,6 +117,8 @@ public class OPRituals {
                 // Medo
                 registerRitual(MEDO_TANGIVEL);
                 registerRitual(LAMINA_MEDO);
+                registerRitual(CINERARIA);
+                registerRitual(REJEITAR_NEVOA);
         }
 
         public static void registerRitual(AbstractRitual ritual) {

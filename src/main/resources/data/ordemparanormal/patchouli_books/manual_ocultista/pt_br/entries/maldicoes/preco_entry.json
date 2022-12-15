@@ -1,0 +1,15 @@
+{
+  "name": "Preços da Maldiçao",
+  "icon": "ordemparanormal:mesa_conhecimento",
+  "category": "ordemparanormal:maldicoes_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Ter itens amaldiçoados em seu inventário tem um preço. Estes preços são mais poderosos quando está empunhando o item."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Maldições de $(sangue)Sangue/$ diminuem a eficiência de efeitos que te curam.$(br)Maldições de $(conhecimento)Conhecimento/$ diminuem a eficiência em que você cura pontos de esforço com o tempo.$(br)Maldições de $(energia)Energia/$ diminuem a eficiência em que você quebra blocos.$(br)Maldições de $(morte)Morte/$ aumentam todo o dano que você recebe."
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.common.power.Afinidade;
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -60,7 +61,9 @@ public class ParanormalDamageSource extends DamageSource {
 
         // se não for um dos dois
         } else {
-            return false;
+            if (damage.element == ParanormalElement.CONHECIMENTO){
+                return entity.hasEffect(OPEffects.WEAKENED_MIND.get());
+            } else return false;
         }
     }
     public static ParanormalDamageSource paranormalCreatureAttack(ParanormalCreature creature) {

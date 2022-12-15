@@ -1,0 +1,43 @@
+{
+  "name": "Amaldiçoando um Item",
+  "icon": "ordemparanormal:mesa_morte",
+  "category": "ordemparanormal:maldicoes_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Os métodos para amaldiçoar um item ainda são desconhecidos. Alguns dizem que o item deve ser exposto à uma fonte específica de medo, ou que ele deve passar por um ritual para que receba uma maldição. O que se sabe é que você pode facilmente transferir a maldição de um item para outro."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Mesa de Sangue",
+      "item": "ordemparanormal:mesa_sangue",
+      "text": "Para transferir uma maldição de Sangue de um item para o outro, você pode utilizar uma mesa de maldição de Sangue. Para faze-lo, você precisará de ingredientes relacionados ao seu elemento.$(br)Uma mesa de maldição de Sangue usa qualquer Carne Crua ou os Órgãos de um aldeão."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Mesa de Energia",
+      "item": "ordemparanormal:mesa_energia",
+      "text": "Para transferir uma maldição de Energia de um item para o outro, você pode utilizar uma mesa de maldição de Energia. Para faze-lo, você precisará de ingredientes relacionados ao seu elemento.$(br)Uma mesa de maldição de Energia usa Lapis Lazuli, Fragmentos de Ametista, Pedaços de Prismarino, Quartzo ou Esmeraldas."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Mesa de Conhecimento",
+      "item": "ordemparanormal:mesa_conhecimento",
+      "text": "Para transferir uma maldição de Conhecimento de um item para o outro, você pode utilizar uma mesa de maldição de Conhecimento. Para faze-lo, você precisará de ingredientes relacionados ao seu elemento.$(br)Uma mesa de maldição de Conhecimento usa Vidro, Barras de Ouro, Pó de Pedra Luminosa, Papel ou Velas."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Mesa de Morte",
+      "item": "ordemparanormal:mesa_morte",
+      "text": "Para transferir uma maldição de Morte de um item para o outro, você pode utilizar uma mesa de maldição de Morte. Para faze-lo, você precisará de ingredientes relacionados ao seu elemento.$(br)Uma mesa de maldição de Morte usa Ossos, Areia, Cascalho ou as Cinzas de um aldeão."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/mesa_maldicao.png"
+      ],
+      "border": true,
+      "text": "Coloque o item amaldiçoado sobre o ingrediente. No meio, o item para qual a maldição será transferida."
+    }
+  ]
+}

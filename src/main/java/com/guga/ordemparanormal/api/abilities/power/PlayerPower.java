@@ -106,7 +106,7 @@ public class PlayerPower {
 
             boolean use = cap.getCurrentEffort() >= this.getEffortCost() && canUse(player) && cap.getPowerCooldown() == 0 && this != EMPTY;
 
-            if (use && event.isCanceled()) {
+            if (use && !event.isCanceled()) {
                 cap.setCurrentEffort(cap.getCurrentEffort() - this.getEffortCost());
 
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), this.getSound(), SoundSource.PLAYERS, 1f, 1f);
@@ -248,5 +248,25 @@ public class PlayerPower {
      */
     public int onBlockBreak(Player player, LevelAccessor level, BlockPos pos, BlockState state, int exp){
         return exp;
+    }
+    /**
+     * Chamado quando o usuário recebe exp
+     *
+     * @param player quem recebeu o exp
+     * @param exp o exp ganho
+     * @return o exp ganho após o poder ser ativo
+     */
+    public int onXPChange(Player player, int exp){
+        return exp;
+    }
+    /**
+     * Chamado quando o usuário recebe levels
+     *
+     * @param player quem recebeu os levels
+     * @param levels os levels ganho
+     * @return os levels ganho após o poder ser ativo
+     */
+    public int onXPLevelChange(Player player, int levels){
+        return levels;
     }
 }

@@ -3,12 +3,12 @@ loaderVersion="[40,)"
 license="Apache License Version 2.0"
 [[mods]]
 modId="ordemparanormal"
-version="20221122indev"
+version="20221214indev"
 displayName="Ordem Paranormal"
 logoFile="ordemparanormal.png"
 credits="Obrigado Rafael Lange por criar o universo de Ordem Paranormal e à equipe do OP Mod por tornar esse projeto algo real."
 authors="Guga, Japa, e toda a equipe OP Mod"
-description='''O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...'''
+description="\"O Paranormal não vem para a nossa realidade facilmente, ou pelo menos deveria ser assim...\""
 [[dependencies.ordemparanormal]]
     modId="forge"
     mandatory=true

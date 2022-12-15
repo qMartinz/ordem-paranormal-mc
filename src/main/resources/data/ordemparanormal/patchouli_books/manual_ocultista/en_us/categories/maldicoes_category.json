@@ -1,0 +1,6 @@
+{
+    "name": "Cursed Items",
+    "description": "Items under the Paranormal's influence don't always become objects haunted by rituals. Sometimes, the entity decides to curse the item, making it more powerful and giving it unique properties.",
+    "icon": "minecraft:diamond_sword{Curses:{curse_0:{id:\"ordemparanormal:sanguinaria\"}}}",
+    "sortnum": 2
+}

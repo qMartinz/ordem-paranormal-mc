@@ -1,0 +1,39 @@
+{
+  "name": "Cursing an Item",
+  "icon": "ordemparanormal:mesa_morte",
+  "category": "ordemparanormal:maldicoes_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The methods of cursing an Item are still unknown. Some say the item has to be exposed directly to a specific source of fear, or that it has to go through a ritual to receive a curse. But, what is known is that you can easily transfer curses between items."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ordemparanormal:mesa_sangue",
+      "text": "To transfer a Blood curse from an item to another, you can use a Blood curse table. To do it, you'll need ingredients relating to it's element.$(br)A Blood curse table uses any Raw Meat or villager's Organs."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ordemparanormal:mesa_energia",
+      "text": "To transfer an Energy curse from an item to another, you can use an Energy curse table. To do it, you'll need ingredients relating to it's element.$(br)An Energy curse table uses Lapis Lazuli, Amethyst Shards, Prismarine Shards, Quartz or Emeralds."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ordemparanormal:mesa_conhecimento",
+      "text": "To transfer a Knowledge curse from an item to another, you can use a Knowledge curse table. To do it, you'll need ingredients relating to it's element.$(br)A Knowledge curse table uses Glass, Gold Ingots, Glowstone Dust, Paper or Candles."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ordemparanormal:mesa_morte",
+      "text": "To transfer a Death curse from an item to another, you can use a Death curse table. To do it, you'll need ingredients relating to it's element.$(br)A Death curse table uses Bones, Sand, Gravel or villager's Ashes."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "ordemparanormal:textures/gui/entries/mesa_maldicao.png"
+      ],
+      "border": true,
+      "text": "Put the cursed item on top of the ingredient. In the middle, the item which the curse will be transfered into."
+    }
+  ]
+}

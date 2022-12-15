@@ -285,7 +285,18 @@ public class ModPtBrProvider extends ModLangProvider {
 				"Expande a sua mente para níveis sobrenaturais, aumentando a quantidade de rituais que você se torna capaz de aprender.");
 		add(OPPowers.CONHECIMENTO_AMPLIADO_2, "Conhecimento Ampliado II",
 				"Expande a sua mente para níveis ainda maiores, aumentando a quantidade de rituais que você se torna capaz de aprender.");
-
+		add(OPPowers.PRESENCA_AVASSALADORA, "Presença Avassaladora",
+				"Corrói a mente do alvo, tornando-o vulnerável à danos de Conhecimento. Criaturas paranormais e jogadores não parecem sentir os efeitos desse poder...");
+		add(OPPowers.PRESENCA_AVASSALADORA_2, "Presença Avassaladora II",
+				"Corrói a mente dos seres em um raio de 6 blocos, tornando-os vulneráveis à danos de Conhecimento. Criaturas paranormais e jogadores não parecem sentir os efeitos desse poder...");
+		add(OPPowers.SABEDORIA, "Sabedoria",
+				"Sua mente absorve e retém conhecimento com mais facilidade. Você recebe 25% mais experiência do que o normal e perde 25% de níveis a menos quando os utiliza ao encantar algo.");
+		add(OPPowers.SABEDORIA_2, "Sabedoria II",
+				"Sua mente absorve e retém conhecimento com ainda mais potência. Você recebe 50% mais experiência do que o normal e perde 50% de níveis a menos quando os utiliza ao encantar algo.");
+		add(OPPowers.CARISMATICO, "Carismático",
+				"Sua presença confunde seres hostís, tornando-os indiferentes à você. Ao utilizar esse poder, mobs hostís com a mesma vida máxima ou menor que você param de te atacar por 10 segundos.");
+		add(OPPowers.CARISMATICO_2, "Carismático II",
+				"Sua presença se torna tão magnífica que oprime a hostilidade de seres inferiores, tornando-os indiferentes à você. Mobs hostís com vida máxima igual ou menor que metade da sua não se tornam hostís contra você.");
 
 		// Maldições
 		add(OPCurses.ATROZ, "Atroz");
@@ -321,6 +332,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEffects.DISTORTED_GRAVITY.get(), "Gravidade Distorcida");
 		add(OPEffects.TANGIBLE_FEAR.get(), "Medo Tangível");
 		add(OPEffects.DISTURBED.get(), "Perturbado");
+		add(OPEffects.WEAKENED_MIND.get(), "Mente Enfraquecida");
+		add(OPEffects.CHARISMATIC.get(), "Carismático");
 		add(OPEffects.ZERO_ENTROPY.get(), "Entropia Zerada");
 
 		// -------------------------------------------------------------

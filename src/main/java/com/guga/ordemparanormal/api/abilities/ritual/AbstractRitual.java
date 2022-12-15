@@ -120,7 +120,7 @@ public abstract class AbstractRitual{
             RitualUsedEvent event = new RitualUsedEvent(caster, this, rayTraceResult);
             MinecraftForge.EVENT_BUS.post(event);
 
-            if (canCast && event.isCanceled()){
+            if (canCast && !event.isCanceled()){
                 ItemStack ritualItem;
                 InteractionHand hand;
 

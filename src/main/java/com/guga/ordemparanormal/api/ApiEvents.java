@@ -24,6 +24,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -153,14 +154,14 @@ public class ApiEvents {
         if (event.getEntityLiving() instanceof Player player) {
             for (ItemStack item : player.getInventory().items) {
                 energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
-                                !curse.getCurse().isTemporary() &&
+                                curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                         curse.getCurse().getElement() == ParanormalElement.ENERGIA)
                         .toList().size();
             }
         }
         for (ItemStack item : event.getEntityLiving().getAllSlots()) {
             energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
-                            !curse.getCurse().isTemporary() &&
+                            curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.ENERGIA)
                     .toList().size();
         }
@@ -220,14 +221,14 @@ public class ApiEvents {
         if (event.getEntityLiving() instanceof Player player) {
             for (ItemStack item : player.getInventory().items) {
                 deathCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
-                                !curse.getCurse().isTemporary() &&
+                                curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                         curse.getCurse().getElement() == ParanormalElement.MORTE)
                         .toList().size();
             }
         }
         for (ItemStack item : event.getEntityLiving().getAllSlots()) {
             deathCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
-                            !curse.getCurse().isTemporary() &&
+                            curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.MORTE)
                     .toList().size();
         }
@@ -288,7 +289,7 @@ public class ApiEvents {
 
             List<Component> curseComponents = new ArrayList<>();
             for (CurseInstance curse : CurseHelper.getCurses(event.getItemStack())) {
-                curseComponents.add(curse.getCurse().getDisplayName());
+                if (curse.getCurse() != null) curseComponents.add(curse.getCurse().getDisplayName());
             }
             curseComponents.sort(Comparator.comparing(Component::getString));
 
@@ -299,7 +300,7 @@ public class ApiEvents {
     public static void onCalculateItemAttributes(ItemAttributeModifierEvent event){
         if (!CurseHelper.getCurses(event.getItemStack()).isEmpty() && CurseHelper.getCurses(event.getItemStack()).stream().noneMatch(Objects::isNull)){
             for (CurseInstance curse : CurseHelper.getCurses(event.getItemStack())){
-                curse.getCurse().getAttributeModifiers().forEach((modifier, attribute) -> {
+                if (curse.getCurse() != null) curse.getCurse().getAttributeModifiers().forEach((modifier, attribute) -> {
                     if (Arrays.stream(curse.getCurse().getSlots()).anyMatch(slot -> slot == event.getSlotType())) event.addModifier(attribute, modifier);
                 });
             }
@@ -311,17 +312,27 @@ public class ApiEvents {
         if (event.getEntityLiving() instanceof Player player) {
             for (ItemStack item : player.getInventory().items) {
                 bloodCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
-                                !curse.getCurse().isTemporary() &&
+                            curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                         curse.getCurse().getElement() == ParanormalElement.SANGUE)
                         .toList().size();
             }
         }
         for (ItemStack item : event.getEntityLiving().getAllSlots()) {
             bloodCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
-                            !curse.getCurse().isTemporary() &&
+                            curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.SANGUE)
                     .toList().size();
         }
         event.setAmount(event.getAmount() / bloodCursePenalty);
+    }
+    @SubscribeEvent
+    public static void onPlayerXPChange(PlayerXpEvent.XpChange event){
+        event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                playerAbilities.getPowers().forEach(power -> event.setAmount(power.onXPChange(event.getPlayer(), event.getAmount()))));
+    }
+    @SubscribeEvent
+    public static void onPlayerXPLevelChange(PlayerXpEvent.LevelChange event){
+        event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                playerAbilities.getPowers().forEach(power -> event.setLevels(power.onXPLevelChange(event.getPlayer(), event.getLevels()))));
     }
 }

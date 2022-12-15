@@ -1,0 +1,15 @@
+{
+  "name": "Prices of a Curse",
+  "icon": "ordemparanormal:mesa_conhecimento",
+  "category": "ordemparanormal:maldicoes_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Having cursed items in your inventory has its prices. These prices are even more powerful if you're handling that item."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(sangue)Blood/$ curses lower the efficiency of any effect that heals you.$(br)$(conhecimento)Knowledge/$ curses lower the efficiency of time healing your effort points.$(br)$(energia)Energy/$ lowers the efficiency in which you break blocks.$(br)$(morte)Death/$ increases every damage you take."
+    }
+  ]
+}

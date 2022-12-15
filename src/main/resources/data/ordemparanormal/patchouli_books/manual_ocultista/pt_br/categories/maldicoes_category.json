@@ -1,0 +1,6 @@
+{
+    "name": "Itens Amaldiçoados",
+    "description": "Itens sob a influência do Paranormal nem sempre se tornam objetos assombrados por rituais. Algumas vezes, a entidade decide amaldiçoar o item, tornando-o mais poderoso e com propriedades únicas.",
+    "icon": "minecraft:diamond_sword{Curses:{curse_0:{id:\"ordemparanormal:sanguinaria\"}}}",
+    "sortnum": 2
+}

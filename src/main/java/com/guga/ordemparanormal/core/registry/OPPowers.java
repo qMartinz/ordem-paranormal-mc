@@ -55,7 +55,12 @@ public class OPPowers {
     public static final PlayerPower CASUALIDADE_FORTUITA = new CasualidadeFortuita(new ResourceLocation(MOD_ID, "casualidade_fortuita"), ParanormalElement.ENERGIA, 3, new int[]{0, 0, 2});
     public static final PlayerPower CONHECIMENTO_AMPLIADO = new ConhecimentoAmpliado(new ResourceLocation(MOD_ID, "conhecimento_ampliado"), ParanormalElement.CONHECIMENTO, 1, new int[]{0, 0, 1});
     public static final PlayerPower CONHECIMENTO_AMPLIADO_2 = new ConhecimentoAmpliado(new ResourceLocation(MOD_ID, "conhecimento_ampliado_2"), ParanormalElement.CONHECIMENTO, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, CONHECIMENTO_AMPLIADO);
-
+    public static final PlayerPower PRESENCA_AVASSALADORA = new PresencaAvassaladora(new ResourceLocation(MOD_ID, "presenca_avassaladora"), ParanormalElement.CONHECIMENTO, 4, 3, new int[]{0, 0, 2});
+    public static final PlayerPower PRESENCA_AVASSALADORA_2 = new PresencaAvassaladora2(new ResourceLocation(MOD_ID, "presenca_avassaladora_2"), ParanormalElement.CONHECIMENTO, 6, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, PRESENCA_AVASSALADORA);
+    public static final PlayerPower SABEDORIA = new Sabedoria(new ResourceLocation(MOD_ID, "sabedoria"), ParanormalElement.CONHECIMENTO, 3, new int[]{0, 0, 2});
+    public static final PlayerPower SABEDORIA_2 = new PlayerPower(new ResourceLocation(MOD_ID, "sabedoria_2"), false, ParanormalElement.CONHECIMENTO, 0, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, SABEDORIA);
+    public static final PlayerPower CARISMATICO = new Carismatico(new ResourceLocation(MOD_ID, "carismatico"), ParanormalElement.CONHECIMENTO, 3, 1, new int[]{0, 0, 1});
+    public static final PlayerPower CARISMATICO_2 = new PlayerPower(new ResourceLocation(MOD_ID, "carismatico_2"), false, ParanormalElement.CONHECIMENTO, 0, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, CARISMATICO);
     /**
      * Registra os poderes
      */
@@ -80,7 +85,6 @@ public class OPPowers {
         registerPower(DIETA_ADAPTADA_2);
         registerPower(VAMPIRISMO);
         registerPower(VAMPIRISMO_2);
-        registerPower(MEDO_TANGIVEL);
 
         // Energia
         registerPower(CAMPO_PROTETOR);
@@ -98,15 +102,22 @@ public class OPPowers {
         registerPower(ESCAPAR_MORTE);
         registerPower(SURTO_TEMPORAL);
         registerPower(PERIMETRO_ESPIRAL);
-        registerPower(LAMINA_MEDO);
         registerPower(ABSORVER_ENTROPIA);
         registerPower(LEMBRAR_DA_MORTE);
 
         // Conhecimento
         registerPower(CONHECIMENTO_AMPLIADO);
         registerPower(CONHECIMENTO_AMPLIADO_2);
+        registerPower(PRESENCA_AVASSALADORA);
+        registerPower(PRESENCA_AVASSALADORA_2);
+        registerPower(SABEDORIA);
+        registerPower(SABEDORIA_2);
+        registerPower(CARISMATICO);
+        registerPower(CARISMATICO_2);
 
         // Medo
+        registerPower(MEDO_TANGIVEL);
+        registerPower(LAMINA_MEDO);
     }
     public static void registerPower(PlayerPower power){
         OrdemParanormalAPI.getInstance().registerPower(power.getId(), power);

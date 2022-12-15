@@ -45,8 +45,12 @@ public final class OPEffects {
             () -> new ZeroEntropyEffect(MobEffectCategory.HARMFUL, 0x121212)
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID.randomUUID().toString(), -50, AttributeModifier.Operation.ADDITION));
     public static final RegistryObject<MobEffect> DISTURBED = MOB_EFFECTS.register("disturbed",
-            () -> new DisturbedEffect(MobEffectCategory.HARMFUL, 0x121212)
+            () -> new DisturbedEffect(MobEffectCategory.HARMFUL, 0xF8D321)
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID.randomUUID().toString(), -50, AttributeModifier.Operation.ADDITION));
+    public static final RegistryObject<MobEffect> WEAKENED_MIND = MOB_EFFECTS.register("weakened_mind",
+            () -> new ParanormalEffect(MobEffectCategory.HARMFUL, 0xF8D321));
+    public static final RegistryObject<MobEffect> CHARISMATIC = MOB_EFFECTS.register("charismatic",
+            () -> new ParanormalEffect(MobEffectCategory.BENEFICIAL, 0xF8D321));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }

@@ -42,13 +42,13 @@ public class CapManager extends SavedData {
                     float knowledgeCursePenalty = 1f;
                     for (ItemStack item : player.getInventory().items) {
                         knowledgeCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
-                                        !curse.getCurse().isTemporary() &&
+                                        curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                                 curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO)
                                 .toList().size();
                     }
                     for (ItemStack item : player.getAllSlots()) {
                         knowledgeCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
-                                        !curse.getCurse().isTemporary() &&
+                                        curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                                 curse.getCurse().getElement() == ParanormalElement.CONHECIMENTO)
                                 .toList().size();
                     }

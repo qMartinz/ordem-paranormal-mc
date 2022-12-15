@@ -14,7 +14,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Itens amaldiçoados/$ são objetos possuidos pela entidade de um ritual específico. Eles te permitem aprender um ritual, caso esteja apto para aprendê-lo. Com um desses itens em mãos, clique com o botão direito sobre um altar de transcendência. Se cumprir os requisitos, você aprenderá o ritual. Seu ritual novo pode ser visto na mesma tela em que se encontram os atributos."
+      "text": "$(l)Itens assombrados/$ são objetos possuidos pela entidade de um ritual específico. Eles te permitem aprender um ritual, caso esteja apto para aprendê-lo. Com um desses itens em mãos, clique com o botão direito sobre um altar de transcendência. Se cumprir os requisitos, você aprenderá o ritual. Seu ritual novo pode ser visto na mesma tela em que se encontram os atributos."
     },
     {
       "type": "patchouli:text",

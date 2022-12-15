@@ -14,7 +14,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Cursed items/$ are objects possessed by the entity of a specific ritual. They allow you to learn a ritual, if you're fit to learn it. With one of these items in hand, right click an altar of transcendance. If you meet it's requirements, you'll learn the ritual. Your rituals can be seen in the same screen as your attributes."
+      "text": "$(l)Haunted items/$ are objects possessed by the entity of a specific ritual. They allow you to learn a ritual, if you're fit to learn it. With one of these items in hand, right click an altar of transcendance. If you meet it's requirements, you'll learn the ritual. Your rituals can be seen in the same screen as your attributes."
     },
     {
       "type": "patchouli:text",
