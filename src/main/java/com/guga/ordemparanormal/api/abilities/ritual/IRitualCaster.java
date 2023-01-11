@@ -3,6 +3,8 @@ package com.guga.ordemparanormal.api.abilities.ritual;
 import com.guga.ordemparanormal.api.util.PowerUtils;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -34,10 +36,10 @@ public interface IRitualCaster {
     default AbstractRitual getRitual(Level world, Player playerEntity, InteractionHand hand, IRitualCaster caster){
         return caster.getRitual();
     }
-    default InteractionResultHolder<ItemStack> castRitual(Level world, Player player, ItemStack stack, @Nonnull AbstractRitual ritual){
-        HitResult result = PowerUtils.rayTrace(player, ritual.getRange(), 0, false);
+    default InteractionResultHolder<ItemStack> castRitual(Level world, LivingEntity entity, ItemStack stack, @Nonnull AbstractRitual ritual){
+        HitResult result = PowerUtils.rayTrace(entity, ritual.getRange(), 0, false);
         if (!world.isClientSide) {
-            ritual.onUse(result, world, player);
+            ritual.onUse(result, world, entity);
             return InteractionResultHolder.consume(stack);
         } else {
             return InteractionResultHolder.pass(stack);

@@ -21,44 +21,47 @@ public class Teleporte extends AbstractRitual {
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
             InteractionHand hand) {
-        boolean crouch = caster.isCrouching();
-        if (crouch) {
-            CompoundTag pos = new CompoundTag();
-            pos.putDouble("teleport.coordsX", caster.getX());
-            pos.putDouble("teleport.coordsY", caster.getY());
-            pos.putDouble("teleport.coordsZ", caster.getZ());
+        if (ritualItem != null) {
+            boolean crouch = caster.isCrouching();
+            if (crouch) {
+                CompoundTag pos = new CompoundTag();
+                pos.putDouble("teleport.coordsX", caster.getX());
+                pos.putDouble("teleport.coordsY", caster.getY());
+                pos.putDouble("teleport.coordsZ", caster.getZ());
 
-            ritualItem.getOrCreateTag().put("teleport.coords", pos);
+                ritualItem.getOrCreateTag().put("teleport.coords", pos);
 
-        } else if (crouch == false
-                && ritualItem.getOrCreateTag().contains("teleport.coords")) {
-            CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
+            } else if (crouch == false
+                    && ritualItem.getOrCreateTag().contains("teleport.coords")) {
+                CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
-            Vec3 position = new Vec3(
-                    pos.getDouble("teleport.coordsX"),
-                    pos.getDouble("teleport.coordsY"),
-                    pos.getDouble("teleport.coordsZ"));
+                Vec3 position = new Vec3(
+                        pos.getDouble("teleport.coordsX"),
+                        pos.getDouble("teleport.coordsY"),
+                        pos.getDouble("teleport.coordsZ"));
 
-            caster.moveTo(position);
+                caster.moveTo(position);
+            }
         }
     }
 
     @Override
     public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem,
             InteractionHand hand) {
+        if (ritualItem != null) {
+            boolean crouch = caster.isCrouching();
+            LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
 
-        boolean crouch = caster.isCrouching();
-        LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
+            if (crouch == false && ritualItem.getOrCreateTag().contains("teleport.coords")) {
+                CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
-        if (crouch == false && ritualItem.getOrCreateTag().contains("teleport.coords")) {
-            CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
+                Vec3 position = new Vec3(
+                        pos.getDouble("teleport.coordsX"),
+                        pos.getDouble("teleport.coordsY"),
+                        pos.getDouble("teleport.coordsZ"));
 
-            Vec3 position = new Vec3(
-                    pos.getDouble("teleport.coordsX"),
-                    pos.getDouble("teleport.coordsY"),
-                    pos.getDouble("teleport.coordsZ"));
-
-            target.moveTo(position);
+                target.moveTo(position);
+            }
         }
     }
 }

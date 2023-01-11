@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,7 +17,7 @@ public class PotencialReaproveitado extends PlayerPower {
         super(id, false, element, 0, nex, attributes, powers);
     }
     @Override
-    public float onHurt(Player player, float amount, @Nullable Entity attacker, DamageSource source) {
+    public float onAttack(Player player, float amount, LivingEntity target, DamageSource source) {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
             Random rand = new Random();
             if (rand.nextInt(1, 20) <= 8){

@@ -78,6 +78,9 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 		event.registerEntityRenderer(OPEntities.BIDENTE.get(), BidenteRenderer::new);
+		event.registerEntityRenderer(OPEntities.TRANSTORNADO.get(), IllagerOcultistaRenderers.TranstornadoRenderer::new);
+		event.registerEntityRenderer(OPEntities.SADICO.get(), IllagerOcultistaRenderers.SadicoRenderer::new);
+		event.registerEntityRenderer(OPEntities.PADRE_DIABO.get(), IllagerOcultistaRenderers.PadreDiaboRenderer::new);
 	}
 	public void apiSetup(final FMLCommonSetupEvent event){
 		OPCurses.setup();
@@ -98,6 +101,7 @@ public class OrdemParanormal {
 		Overlay.registerOverlays();
 
 		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ_BLOCK.get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(OPBlocks.ALTAR_TRANSCENDER.get(), RenderType.cutout());
 
 		MenuScreens.register(OPMenuTypes.BLOOD_TABLE_MENU.get(), BloodTableScreen::new);
 		MenuScreens.register(OPMenuTypes.ENERGY_TABLE_MENU.get(), EnergyTableScreen::new);

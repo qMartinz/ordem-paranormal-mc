@@ -59,10 +59,6 @@ public class ApiEvents {
         Player oldPlayer = event.getOriginal();
         oldPlayer.revive();
 
-        oldPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(oldNex -> event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(newNex -> {
-            newNex.copyFrom(oldNex);
-        }));
-
         if (!event.isWasDeath()){
             oldPlayer.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(oldEffects ->
                     event.getPlayer().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(newEffects -> newEffects.copyFrom(oldEffects)));
@@ -76,6 +72,10 @@ public class ApiEvents {
                 syncPlayerPowers(event.getPlayer());
             }
         });
+
+        oldPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(oldNex -> event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(newNex -> {
+            newNex.copyFrom(oldNex);
+        }));
 
         event.getOriginal().invalidateCaps();
     }

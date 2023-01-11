@@ -265,7 +265,7 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPPowers.PUTREFATO_2,"Putrefato II",
 				"Seus golpes desarmados passam a causar apodrecimento com mais frequência.");
 		add(OPPowers.POTENCIAL_REAPROVEITADO, "Potencial Reaproveitado",
-				"Você se aproveita de momentos perdidos ao receber danos, podendo recuperar pontos de esforço ao ser atingido.");
+				"Você se aproveita de momentos perdidos ao causar danos, podendo recuperar pontos de esforço ao atingir algo.");
 		add(OPPowers.ESCAPAR_MORTE, "Escapar da Morte",
 				"Seu corpo consegue utilizar momentos perdidos para impedir que você perca os seus, te salvando de ataques fatais. Porém, não funciona caso já esteja prestes a morrer...");
 		add(OPPowers.SURTO_TEMPORAL, "Surto Temporal",
@@ -278,6 +278,14 @@ public class ModPtBrProvider extends ModLangProvider {
 				"A Morte consome tudo. Ao matar algum ser, você ganha uma quantidade de corações dependentes da força de tal ser.");
 		add(OPPowers.LAMINA_MEDO, "Lâmina do Medo",
 				"Você aprende o ritual Lâmina do Medo, que pode conjurar utilizando esse poder.");
+		add(OPPowers.CONSUMIR, "Consumir",
+				"Você consome a energia potencial do ser orgânico que uma vez existiu, mas que agora você está consumindo como alimento. Ao comer qualquer tipo de alimento, recupera PE equivalente à um quarto do valor nutricional do alimento.");
+		add(OPPowers.CONSUMIR_2, "Consumir II",
+				"Você consome a energia potencial com mais eficiência. Ao comer qualquer tipo de alimento, recupera PE equivalente à metade do valor nutricional do alimento.");
+		add(OPPowers.SACRIFICAR_ENTROPIA, "Sacrificar Entropia",
+				"Você sacrifica seus próprios momentos, em troca de pontos de esforço. Quando recebe dano de morte, recupera um quarto do dano em PE.");
+		add(OPPowers.SACRIFICAR_ENTROPIA_2, "Sacrificar Entropia II",
+				"Você sacrifica seus próprios momentos, em troca de pontos de esforço. Quando recebe dano de morte, recupera todo o dano em PE.");
 
 		add(OPPowers.AFINIDADE_CONHECIMENTO, "Afinidade com Conhecimento",
 				"Você se conecta à entidade de Conhecimento, descartando a necessidade de ingredientes de Conhecimento e te tornando resistente a efeitos de Conhecimento, mas você se torna fraco a efeitos de Sangue.");
@@ -403,6 +411,8 @@ public class ModPtBrProvider extends ModLangProvider {
 		add("ordemparanormal.commands.nex.rituals.slots.remove.success", "Slots de ritual removidos com sucesso.");
 		add("ordemparanormal.commands.nex.rituals.add.success", "%1$s adicionado com sucesso.");
 		add("ordemparanormal.commands.nex.rituals.remove.success", "%1$s removido com sucesso.");
+		add("ordemparanormal.commands.nex.powers.unknown_id", "%1$s não é o ID válido de um poder.");
+		add("ordemparanormal.commands.nex.rituals.unknown_id", "%1$s não é o ID válido de um ritual.");
 
 		// -------------------------------------------------------------
 

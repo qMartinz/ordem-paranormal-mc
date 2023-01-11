@@ -45,8 +45,14 @@ public class OPCreativeTabs {
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ANTI_SANGUE));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.ENERGETICA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_SWORD), OPCurses.CONSUMIDORA));
-            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_BOOTS), OPCurses.LEPIDA));
-            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_CHESTPLATE), OPCurses.VOLTAICA));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_BOOTS), OPCurses.CONHECES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_LEGGINGS), OPCurses.CONHECES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_CHESTPLATE), OPCurses.CONHECES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_HELMET), OPCurses.CONHECES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_BOOTS), OPCurses.MORTES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_LEGGINGS), OPCurses.MORTES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_CHESTPLATE), OPCurses.MORTES));
+            pItems.add(CurseHelper.addCurse(new ItemStack(Items.LEATHER_HELMET), OPCurses.MORTES));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.ARDENTE));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.SORTUDA));
             pItems.add(CurseHelper.addCurse(new ItemStack(Items.WOODEN_PICKAXE), OPCurses.EROSIVA));

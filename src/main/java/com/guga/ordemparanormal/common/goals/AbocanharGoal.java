@@ -11,7 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
     private int ticksUntilNextAttack;
-    private final int attackInterval = 650;
+    private final int attackInterval = 450;
 
     public AbocanharGoal(AberracaoCarne entity) {
         super(entity, OPEndimations.ABERRACAO_ABOCANHAR);
@@ -58,7 +58,7 @@ public class AbocanharGoal extends EndimatedGoal<AberracaoCarne> {
             }
 
             if (this.isEndimationAtTick(10) && this.getAttackReach(livingentity) >= this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ())) {
-                livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 25f);
+                livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 28f);
                 if (!this.entity.level.isClientSide()) {
                     livingentity.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 200, 1, false, false));
                 }

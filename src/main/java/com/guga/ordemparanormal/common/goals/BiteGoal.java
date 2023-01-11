@@ -51,7 +51,7 @@ public class BiteGoal extends EndimatedGoal<TitaSangue> {
             }
 
             if (this.isEndimationAtTick(10) && this.getAttackReach(livingentity) >= d0) {
-                livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 20f);
+                livingentity.hurt(ParanormalDamageSource.paranormalCreatureAttack(this.entity), 22f);
                 livingentity.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 200, 0, false, false));
                 this.entity.playSound(OPSounds.TITA_BITE.get(), 1.0f, 1.0f);
             }

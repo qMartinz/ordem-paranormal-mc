@@ -1,6 +1,8 @@
 package com.guga.ordemparanormal.common.commands;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -21,7 +23,10 @@ public class AddXpCommand implements Command<CommandSourceStack> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> playerNex.addNexXp(amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.addNexXp(amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         return 1;
     }

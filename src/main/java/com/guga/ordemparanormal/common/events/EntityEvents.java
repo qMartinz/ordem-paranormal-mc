@@ -8,6 +8,9 @@ import com.guga.ordemparanormal.common.entity.Nevoa;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.guga.ordemparanormal.common.entity.corpos.CorpoEntity;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
+import com.guga.ordemparanormal.common.entity.illagers.PadreDiabo;
+import com.guga.ordemparanormal.common.entity.illagers.Sadico;
+import com.guga.ordemparanormal.common.entity.illagers.Transtornado;
 import com.guga.ordemparanormal.common.entity.zumbissangue.Bestial;
 import com.guga.ordemparanormal.common.entity.zumbissangue.ZumbiSangue;
 import com.guga.ordemparanormal.common.goals.AreaRitualGoal;
@@ -280,11 +283,14 @@ public class EntityEvents {
 	}
 	@SubscribeEvent
 	public static void onEntityRegisterGoals(EntityJoinWorldEvent event){
-		if (event.getEntity() instanceof Villager villager){
+		if (event.getEntity() instanceof AbstractVillager villager){
 			villager.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(villager, ParanormalCreature.class, true));
 			villager.targetSelector.addGoal(2, new HurtByTargetGoal(villager));
 			villager.goalSelector.addGoal(3, new AreaRitualGoal(villager, 1d, false));
 			villager.goalSelector.addGoal(4, new AvoidEntityGoal<>(villager, ParanormalCreature.class, 10f, 1d, 1d));
+			villager.goalSelector.addGoal(5, new AvoidEntityGoal<>(villager, Sadico.class, 10f, 1d, 1d));
+			villager.goalSelector.addGoal(5, new AvoidEntityGoal<>(villager, Transtornado.class, 10f, 1d, 1d));
+			villager.goalSelector.addGoal(5, new AvoidEntityGoal<>(villager, PadreDiabo.class, 10f, 1d, 1d));
 		}
 
 		if (event.getEntity() instanceof Monster monster && !(monster instanceof ParanormalCreature)){

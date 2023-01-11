@@ -190,6 +190,33 @@ public abstract class AbstractRitual{
                     player.level.playSound(null, player.getX(), player.getY(), player.getZ(), comp.getUsedSound(), SoundSource.PLAYERS, 1f, 1f);
                 }
             }
+        } else {
+            RitualUsedEvent event = new RitualUsedEvent(caster, this, rayTraceResult);
+            MinecraftForge.EVENT_BUS.post(event);
+
+            if (!event.isCanceled()) {
+                if (rayTraceResult instanceof BlockHitResult blockHitResult) {
+                    if (hasEntityTarget()) {
+                        onUseSelf(rayTraceResult, world, caster, null, null);
+                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
+                    } else {
+                        onUseBlock(blockHitResult, world, caster, null, null);
+                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
+                    }
+                } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
+                    if (this.range > 0d) {
+                        onUseEntity(entityHitResult, world, caster, null, null);
+                    } else {
+                        onUseSelf(rayTraceResult, world, caster, null, null);
+                    }
+                    if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
+                } else {
+                    onUseSelf(rayTraceResult, world, caster, null, null);
+                    if (world instanceof ServerLevel level) usedParticles(level, caster, null);
+                }
+
+                caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), OPSounds.RITUAL_USED.get(), SoundSource.PLAYERS, 1f, 1f);
+            }
         }
     }
     private void usedParticles(ServerLevel level, LivingEntity caster, @Nullable Entity entityTarget){

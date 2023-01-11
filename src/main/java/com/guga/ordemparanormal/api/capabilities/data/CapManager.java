@@ -61,6 +61,7 @@ public class CapManager extends SavedData {
                     }
                     if (nex.getPowerCooldown() > 0) nex.setPowerCooldown(nex.getPowerCooldown() - 1);
 
+                    nex.syncEffortMods();
                     Messages.sendToPlayer(new Packets.SyncNexToClient(nex.serializeNBT()), serverPlayer);
                     Messages.sendToPlayer(new Packets.SyncEffects(effects.serializeNBT()), serverPlayer);
                 }

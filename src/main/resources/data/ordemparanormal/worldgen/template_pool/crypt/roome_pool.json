@@ -4,15 +4,6 @@
 
   "elements": [
     {
-      "weight": 1,
-      "element": {
-        "location": "ordemparanormal:crypt/main_room",
-        "processors": "ordemparanormal:waterlogging_fix",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
       "weight": 2,
       "element": {
         "location": "ordemparanormal:crypt/room5",

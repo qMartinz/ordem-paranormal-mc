@@ -42,20 +42,28 @@ public class RitualCommand {
         ResourceLocation ritual = ResourceLocation.tryParse(StringArgumentType.getString(context, "ritual"));
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
-        player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                playerAbilities.learnRitual(api.getRitual(ritual)));
-        ApiEvents.syncPlayerPowers(player);
+        if (api.getRitual(ritual) != null) {
+            player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                    playerAbilities.learnRitual(api.getRitual(ritual)));
+            ApiEvents.syncPlayerPowers(player);
 
-        context.getSource().sendSuccess(
-                new TranslatableComponent("ordemparanormal.commands.nex.rituals.add.success",
-                        api.getRitual(ritual).getDisplayName()), true);
-        return 1;
+            context.getSource().sendSuccess(
+                    new TranslatableComponent("ordemparanormal.commands.nex.rituals.add.success",
+                            api.getRitual(ritual).getDisplayName()), true);
+            return 1;
+        } else {
+            context.getSource().sendFailure(
+                    new TranslatableComponent("ordemparanormal.commands.nex.rituals.unknown_id",
+                            ritual.toString()));
+            return 1;
+        }
     };
     private static final Command<CommandSourceStack> REMOVE_RITUAL = context -> {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         ResourceLocation ritual = ResourceLocation.tryParse(StringArgumentType.getString(context, "ritual"));
         OrdemParanormalAPI api = OrdemParanormalAPI.getInstance();
 
+        if (api.getRitual(ritual) != null) {
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
                 playerAbilities.forgetRitual(api.getRitual(ritual)));
         ApiEvents.syncPlayerPowers(player);
@@ -64,6 +72,12 @@ public class RitualCommand {
                 new TranslatableComponent("ordemparanormal.commands.nex.rituals.remove.success",
                         api.getRitual(ritual).getDisplayName()), true);
         return 1;
+        } else {
+            context.getSource().sendFailure(
+                    new TranslatableComponent("ordemparanormal.commands.nex.rituals.unknown_id",
+                            ritual.toString()));
+            return 1;
+        }
     };
     public static ArgumentBuilder<CommandSourceStack, ?> register(){
         return Commands.literal("rituals")

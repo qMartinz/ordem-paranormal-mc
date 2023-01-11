@@ -158,6 +158,25 @@ public class PlayerNex implements INexCap{
 
         setMaxEffort(d1);
     }
+    public void syncEffortMods(){
+        double d0 = 4 + attributes[ParanormalAttribute.PRESENCE.index];
+
+        for(AttributeModifier attributemodifier : this.effortModifiers.values().stream().filter(m -> m.getOperation() == AttributeModifier.Operation.ADDITION).toList()) {
+            d0 += attributemodifier.getAmount();
+        }
+
+        double d1 = d0;
+
+        for(AttributeModifier attributemodifier1 : this.effortModifiers.values().stream().filter(m -> m.getOperation() == AttributeModifier.Operation.MULTIPLY_BASE).toList()) {
+            d1 += d0 * attributemodifier1.getAmount();
+        }
+
+        for(AttributeModifier attributemodifier2 : this.effortModifiers.values().stream().filter(m -> m.getOperation() == AttributeModifier.Operation.MULTIPLY_TOTAL).toList()) {
+            d1 *= 1.0D + attributemodifier2.getAmount();
+        }
+
+        setMaxEffort(d1);
+    }
     public void setRitualSlots(int ritualSlots) {
         this.ritualSlots = ritualSlots;
     }
@@ -198,7 +217,11 @@ public class PlayerNex implements INexCap{
         effortTag.putDouble("max_effort", maxEffort);
         effortTag.putDouble("current_effort", currentEffort);
         CompoundTag effortModifiersTag = new CompoundTag();
-        effortModifiers.values().forEach(effortMod -> effortModifiersTag.put("modifier_" + effortModifiers.values().stream().toList().indexOf(effortMod), effortMod.save()));
+
+        for (int i = 0; i < effortModifiers.size(); i++){
+            effortModifiersTag.put("modifier_" + i, effortModifiers.values().stream().toList().get(i).save());
+        }
+
         effortTag.put("modifiers", effortModifiersTag);
         nbt.put("effort", effortTag);
 
@@ -223,7 +246,7 @@ public class PlayerNex implements INexCap{
         maxEffort = effortTag.getDouble("max_effort");
         currentEffort = effortTag.getDouble("current_effort");
         CompoundTag effortModifiersTag = nbt.getCompound("modifiers");
-        effortModifiers.clear();
+
         for (int i = 0; i < effortModifiersTag.size(); i++){
             CompoundTag modifierTag = effortModifiersTag.getCompound("modifier_" + i);
 

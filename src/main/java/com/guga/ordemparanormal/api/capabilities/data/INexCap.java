@@ -24,21 +24,17 @@ public interface INexCap extends INBTSerializable<CompoundTag> {
     double getCurrentEffort();
     void setCurrentEffort(double currentEffort);
     void addEffortModifier(AttributeModifier modifier);
-
     void removeEffortModifier(AttributeModifier modifier);
-
     void removeEffortModifier(UUID uuid);
     void clearEffortModifiers();
-
     boolean hasEffortModifier(UUID uuid);
-
     boolean hasEffortModifier(AttributeModifier modifier);
-
     int[] getAttributes();
     void setAttributes(int[] attributes);
     int getAttribute(ParanormalAttribute paranormalAttribute);
     void setAttribute(ParanormalAttribute paranormalAttribute, int level);
     void syncAttributeMods(Player player);
+    void syncEffortMods();
     void setRitualSlots(int ritualSlots);
     int getRitualSlots();
     void setPowerCooldown(int ticks);

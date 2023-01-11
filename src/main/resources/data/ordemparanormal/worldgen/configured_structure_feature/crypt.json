@@ -4,7 +4,7 @@
   "config": {
     "start_pool": "ordemparanormal:crypt/start_pool",
 
-    "size": 7
+    "size": 9
   },
 
   "biomes": "#ordemparanormal:has_structure/crypt",
@@ -12,34 +12,5 @@
   "adapt_noise": false,
 
   "spawn_overrides": {
-    "monster": {
-      "bounding_box": "piece",
-      "spawns": [
-        {
-          "type": "ordemparanormal:zumbi_sangue",
-          "weight": 3,
-          "maxCount": 3,
-          "minCount": 1
-        },
-        {
-          "type": "ordemparanormal:zumbi_seco",
-          "weight": 3,
-          "maxCount": 2,
-          "minCount": 1
-        },
-        {
-          "type": "ordemparanormal:zumbi_espinhento",
-          "weight": 3,
-          "maxCount": 2,
-          "minCount": 1
-        },
-        {
-          "type": "ordemparanormal:zumbi_bestial",
-          "weight": 1,
-          "maxCount": 1,
-          "minCount": 0
-        }
-      ]
-    }
   }
 }

@@ -1,6 +1,8 @@
 package com.guga.ordemparanormal.common.commands;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -27,8 +29,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttributePoints(playerNex.getAttributePoints() - amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttributePoints(playerNex.getAttributePoints() - amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.points.remove.success"), true);
         return 1;
@@ -37,8 +41,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttribute(VIGOR, playerNex.getAttribute(VIGOR) + amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttribute(VIGOR, playerNex.getAttribute(VIGOR) + amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.vigor.add.success"), true);
         return 1;
@@ -47,8 +53,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttribute(VIGOR, playerNex.getAttribute(VIGOR) - amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttribute(VIGOR, playerNex.getAttribute(VIGOR) - amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.vigor.remove.success"), true);
         return 1;
@@ -57,8 +65,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttribute(STRENGTH, playerNex.getAttribute(STRENGTH) + amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttribute(STRENGTH, playerNex.getAttribute(STRENGTH) + amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.strength.add.success"), true);
         return 1;
@@ -67,8 +77,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttribute(STRENGTH, playerNex.getAttribute(STRENGTH) - amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttribute(STRENGTH, playerNex.getAttribute(STRENGTH) - amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.strength.remove.success"), true);
         return 1;
@@ -77,8 +89,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttribute(PRESENCE, playerNex.getAttribute(PRESENCE) + amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttribute(PRESENCE, playerNex.getAttribute(PRESENCE) + amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.presence.add.success"), true);
         return 1;
@@ -87,8 +101,10 @@ public class AttributeCommand {
         ServerPlayer player = EntityArgument.getPlayer(context, "player");
         int amount = IntegerArgumentType.getInteger(context, "amount");
 
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
-                playerNex.setAttribute(PRESENCE, playerNex.getAttribute(PRESENCE) - amount));
+        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex -> {
+            playerNex.setAttribute(PRESENCE, playerNex.getAttribute(PRESENCE) - amount);
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
+        });
 
         context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.presence.remove.success"), true);
         return 1;

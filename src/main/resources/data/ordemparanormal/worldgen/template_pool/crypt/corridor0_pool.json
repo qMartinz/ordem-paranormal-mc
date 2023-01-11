@@ -1,0 +1,16 @@
+{
+  "name": "ordemparanormal:crypt/corridor0_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ordemparanormal:crypt/corridor0",
+        "processors": "ordemparanormal:waterlogging_fix",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

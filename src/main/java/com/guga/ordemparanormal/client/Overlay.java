@@ -15,6 +15,8 @@ import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
 import net.minecraftforge.client.gui.OverlayRegistry;
 
+import java.util.Random;
+
 public class Overlay {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/overlay.png");
     public static final IIngameOverlay HUD_NEX = (gui, poseStack, partialTicks, width, height) -> {
@@ -99,6 +101,7 @@ public class Overlay {
 
                 int x = width / 2 - 91;
                 int y = height - 39;
+
                 int i3 = Mth.ceil(max / 2.0F / 10.0F);
                 int j2 = Math.max(10 - (i3 - 2), 3);
                 int j4 = -1;

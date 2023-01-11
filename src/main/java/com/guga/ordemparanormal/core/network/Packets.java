@@ -91,7 +91,9 @@ public class Packets {
         public void handle(Supplier<NetworkEvent.Context> context){
             context.get().enqueueWork(() -> {
                if (OrdemParanormal.proxy.getPlayer() == null) return;
-               OrdemParanormal.proxy.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> nex.deserializeNBT(tag));
+               OrdemParanormal.proxy.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(nex -> {
+                   nex.deserializeNBT(tag);
+               });
             });
             context.get().setPacketHandled(true);
         }

@@ -265,7 +265,7 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPPowers.PUTREFATO_2,"Foul II",
 				"Your strikes cause decay more frequently.");
 		add(OPPowers.POTENCIAL_REAPROVEITADO, "Reused Potential",
-				"You take advantage of lost moments when receiving damage, being able to recover effort points when getting hurt.");
+				"You take advantage of lost moments when dealing damage, being able to recover effort points when hurting something else.");
 		add(OPPowers.ESCAPAR_MORTE, "Swerve Death",
 				"Your body can utilize lost moments to stop you from losing yours, saving you from fatal blows. But, it doesn't save you if you're already near death...");
 		add(OPPowers.SURTO_TEMPORAL, "Temporal Surge",
@@ -278,6 +278,14 @@ public class ModEnUsProvider extends ModLangProvider {
 				"Death consumes all. When killing any being, you get an amount of hearts depending on the strength of that being.");
 		add(OPPowers.LAMINA_MEDO, "Fear's Blade",
 				"You learn the ritual Fear's Blade, which you can cast by using this power.");
+		add(OPPowers.CONSUMIR, "Consume",
+				"You consume the potential energy of the being that once existed, but that you are now consuming as food. When eating any kind of food, you heal EP equal to one fourth of the nutritional value of that food.");
+		add(OPPowers.CONSUMIR_2, "Consume II",
+				"You consume potential energy more efficiently. When eating any kind of food, you heal EP equal to half of the nutritional value of that food.");
+		add(OPPowers.SACRIFICAR_ENTROPIA, "Sacrifice Entropy",
+				"You sacrifice your own moments, in exchange of effort points. When you receive damage, you heal one fourth of the damage in EP.");
+		add(OPPowers.SACRIFICAR_ENTROPIA_2, "Sacrifice Entropy II",
+				"You sacrifice your own moments, in exchange of effort points. When you receive damage, you heal the entire damage in EP");
 
 		add(OPPowers.AFINIDADE_CONHECIMENTO, "Affinity with Knowledge",
 				"You're connected with the entity of Knowledge, discarding the need for Knowledge ingredients and making you resistant to Knowledge effects, but also weak to Blood effects.");
@@ -403,6 +411,8 @@ public class ModEnUsProvider extends ModLangProvider {
 		add("ordemparanormal.commands.nex.rituals.slots.remove.success", "Ritual slots successfully removed.");
 		add("ordemparanormal.commands.nex.rituals.add.success", "%1$s successfully added.");
 		add("ordemparanormal.commands.nex.rituals.remove.success", "%1$s successfully removed.");
+		add("ordemparanormal.commands.nex.powers.unknown_id", "%1$s is not a valid ID for a power.");
+		add("ordemparanormal.commands.nex.rituals.unknown_id", "%1$s is not a valid ID for a ritual.");
 
 		// -------------------------------------------------------------
 

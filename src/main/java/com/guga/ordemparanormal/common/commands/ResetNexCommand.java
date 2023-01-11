@@ -3,6 +3,8 @@ package com.guga.ordemparanormal.common.commands;
 import com.guga.ordemparanormal.api.ApiEvents;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.core.network.Messages;
+import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -31,6 +33,7 @@ public class ResetNexCommand implements Command<CommandSourceStack> {
             playerNex.setAttributes(new int[]{0, 0, 0});
             playerNex.setRitualSlots(0);
             playerNex.setCurrentEffort(playerNex.getMaxEffort());
+            Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
         player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities -> {
             playerAbilities.clearPowers();

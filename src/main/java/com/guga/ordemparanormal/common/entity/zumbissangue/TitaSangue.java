@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 public class TitaSangue extends Bestial{
     public TitaSangue(EntityType<? extends Bestial> type, Level level) {
         super(type, level);
+        this.rewardedXP = 80;
     }
     // AI e comportamento
     @Override
@@ -43,10 +44,10 @@ public class TitaSangue extends Bestial{
     // Atributos
     public static AttributeSupplier.Builder createTitaSangueAttributes() {
         return ZumbiSangue.createZumbiSangueAttributes()
-                .add(Attributes.MAX_HEALTH, 94.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.ATTACK_DAMAGE, 15.0D)
-                .add(Attributes.ARMOR, 3.5D)
+                .add(Attributes.MAX_HEALTH, 98.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.27D)
+                .add(Attributes.ATTACK_DAMAGE, 18.0D)
+                .add(Attributes.ARMOR, 5.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.75D);
     }
     @Override

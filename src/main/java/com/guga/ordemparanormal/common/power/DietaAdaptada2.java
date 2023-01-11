@@ -12,7 +12,6 @@ public class DietaAdaptada2 extends PlayerPower {
     public DietaAdaptada2(ResourceLocation id, ParanormalElement element, int nex, int[] attributes, PlayerPower... powers) {
         super(id, false, element, 0, nex, attributes, powers);
     }
-
     @Override
     public ItemStack onFinishUseItem(Player player, ItemStack item, ItemStack result, int duration) {
         if (item.getFoodProperties(player).getEffects().stream().anyMatch(pair -> pair.getFirst().getEffect() == MobEffects.HUNGER)){
