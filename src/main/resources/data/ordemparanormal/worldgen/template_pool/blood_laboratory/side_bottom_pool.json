@@ -1,0 +1,16 @@
+{
+  "name": "ordemparanormal:blood_laboratory/side_bottom_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ordemparanormal:blood_laboratory/bottom_half_2",
+        "processors": "ordemparanormal:waterlogging_fix",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

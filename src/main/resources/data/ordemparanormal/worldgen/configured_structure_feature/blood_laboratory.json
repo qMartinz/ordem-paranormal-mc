@@ -1,0 +1,16 @@
+{
+  "type": "ordemparanormal:blood_laboratory",
+
+  "config": {
+    "start_pool": "ordemparanormal:blood_laboratory/start_pool",
+
+    "size": 9
+  },
+
+  "biomes": "#ordemparanormal:has_structure/blood_laboratory",
+
+  "adapt_noise": true,
+
+  "spawn_overrides": {
+  }
+}
