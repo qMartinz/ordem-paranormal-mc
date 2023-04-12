@@ -284,7 +284,7 @@ public class EntityEvents {
 	@SubscribeEvent
 	public static void onEntityRegisterGoals(EntityJoinWorldEvent event){
 		if (event.getEntity() instanceof AbstractVillager villager){
-			villager.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(villager, ParanormalCreature.class, true));
+			villager.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(villager, Monster.class, true));
 			villager.targetSelector.addGoal(2, new HurtByTargetGoal(villager));
 			villager.goalSelector.addGoal(3, new AreaRitualGoal(villager, 1d, false));
 			villager.goalSelector.addGoal(4, new AvoidEntityGoal<>(villager, ParanormalCreature.class, 10f, 1d, 1d));
@@ -292,9 +292,8 @@ public class EntityEvents {
 			villager.goalSelector.addGoal(5, new AvoidEntityGoal<>(villager, Transtornado.class, 10f, 1d, 1d));
 			villager.goalSelector.addGoal(5, new AvoidEntityGoal<>(villager, PadreDiabo.class, 10f, 1d, 1d));
 		}
-
-		if (event.getEntity() instanceof Monster monster && !(monster instanceof ParanormalCreature)){
-			monster.targetSelector.addGoal(0, new TargetCharismaticGoal(monster, false));
+		if (event.getEntity() instanceof Mob mob && !(mob instanceof ParanormalCreature)){
+			mob.targetSelector.addGoal(0, new TargetCharismaticGoal(mob, false));
 		}
 	}
 }

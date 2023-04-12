@@ -78,6 +78,7 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.NEVOA.get(), NevoaRenderer::new);
 		event.registerEntityRenderer(OPEntities.VILLAGER_CORPO.get(), VillagerCorpoRenderer::new);
 		event.registerEntityRenderer(OPEntities.BIDENTE.get(), BidenteRenderer::new);
+		event.registerEntityRenderer(OPEntities.RITUAL_PROJECTILE.get(), RitualProjectileRenderer::new);
 		event.registerEntityRenderer(OPEntities.TRANSTORNADO.get(), IllagerOcultistaRenderers.TranstornadoRenderer::new);
 		event.registerEntityRenderer(OPEntities.SADICO.get(), IllagerOcultistaRenderers.SadicoRenderer::new);
 		event.registerEntityRenderer(OPEntities.PADRE_DIABO.get(), IllagerOcultistaRenderers.PadreDiaboRenderer::new);

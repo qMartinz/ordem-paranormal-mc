@@ -5,9 +5,14 @@ import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.OffensiveRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.UtilityRitual;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
+import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -119,9 +124,9 @@ public class RitualProjectile extends AbstractArrow {
         }
 
         if (ritual != AbstractRitual.EMPTY){
-            if (Math.abs(iX - getX()) > this.ritual.getRange() ||
-                    Math.abs(iY - getY()) > this.ritual.getRange() ||
-                    Math.abs(iZ - getZ()) > this.ritual.getRange()) {
+            if (Math.abs(iX - getX()) > this.getRange() ||
+                    Math.abs(iY - getY()) > this.getRange() ||
+                    Math.abs(iZ - getZ()) > this.getRange()) {
                 this.discard();
 
                 if (getOwner() instanceof LivingEntity owner && level.getBlockState(new BlockPos(position())).isAir()) {
@@ -219,5 +224,13 @@ public class RitualProjectile extends AbstractArrow {
     }
     public ResourceLocation getTextureLocation() {
         return TEXTURE_BY_ELEMENT.getOrDefault(this.getElement(), TEXTURE_BY_ELEMENT.get(0));
+    }
+    private double getRange(){
+        IAbilitiesCap abilities = getOwner().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        if (abilities == null) return ritual.getRange();
+
+        double length = ritual.getRange();
+        if (abilities.hasPower(OPPowers.AMPLIAR_RITUAL) && length > 0d) length += 3.5d;
+        return length;
     }
 }

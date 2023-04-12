@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.common.entity.AberracaoCarne;
 import com.guga.ordemparanormal.common.entity.Nevoa;
+import com.guga.ordemparanormal.common.entity.RitualProjectile;
 import com.guga.ordemparanormal.common.entity.ThrownBidente;
 import com.guga.ordemparanormal.common.entity.corpos.VillagerCorpo;
 import com.guga.ordemparanormal.common.entity.illagers.PadreDiabo;
@@ -46,6 +47,8 @@ public final class OPEntities {
 			"padre_diabo", PadreDiabo::new, MobCategory.MONSTER, 0.6F, 1.95F);
 	public static final RegistryObject<EntityType<Sadico>> SADICO = HELPER.createLivingEntity(
 			"sadico", Sadico::new, MobCategory.MONSTER, 0.6F, 1.95F);
+	public static final RegistryObject<EntityType<RitualProjectile>> RITUAL_PROJECTILE = HELPER.getDeferredRegister().register("ritual_projectile",
+			() -> EntityType.Builder.<RitualProjectile>of(RitualProjectile::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("ritual_projectile"));
 	
 	// Registrar Atributos
 	@SubscribeEvent

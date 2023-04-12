@@ -18,16 +18,17 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import java.util.Optional;
 
 public class BloodLaboratory extends StructureFeature<JigsawConfiguration> {
-    public static final Codec<JigsawConfiguration> CODEC = RecordCodecBuilder.create((codec) -> codec.group(
-            StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(JigsawConfiguration::startPool),
-            Codec.intRange(0, 30).fieldOf("size").forGetter(JigsawConfiguration::maxDepth)
-    ).apply(codec, JigsawConfiguration::new));
+    public static final Codec<JigsawConfiguration> CODEC = RecordCodecBuilder.create((codec) ->
+            codec.group(StructureTemplatePool.CODEC.fieldOf("start_pool")
+                    .forGetter(JigsawConfiguration::startPool), Codec.intRange(0, 7)
+                    .fieldOf("size").forGetter(JigsawConfiguration::maxDepth))
+                    .apply(codec, JigsawConfiguration::new));
     public BloodLaboratory() {
         super(CODEC, BloodLaboratory::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
+        return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         ChunkPos chunkpos = context.chunkPos();
@@ -41,6 +42,6 @@ public class BloodLaboratory extends StructureFeature<JigsawConfiguration> {
 
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
 
-        return JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, true, true);
+        return JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
     }
 }

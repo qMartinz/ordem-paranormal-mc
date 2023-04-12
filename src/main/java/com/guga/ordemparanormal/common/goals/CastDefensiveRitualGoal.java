@@ -2,7 +2,12 @@ package com.guga.ordemparanormal.common.goals;
 
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
+import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,7 +41,12 @@ public class CastDefensiveRitualGoal extends Goal {
 
     @Override
     public void start() {
-        defensiveRitual.onUseSelf(PowerUtils.rayTrace(this.mob, ritual.getRange(), 0f, false),
+        IAbilitiesCap abilities = mob.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        if (abilities == null) return;
+        double length = ritual.getRange();
+        if (abilities.hasPower(OPPowers.AMPLIAR_RITUAL) && length > 0d) length += 3.5d;
+
+        defensiveRitual.onUseSelf(PowerUtils.rayTrace(this.mob, length, 0f, false),
                 this.mob.level, this.mob, null, null);
         ritual.ritualSuccess((ServerLevel) this.mob.level, this.mob);
         System.out.println("y");

@@ -1,5 +1,7 @@
-package com.guga.ordemparanormal.api.abilities.ritual;
+package com.guga.ordemparanormal.common.ritual;
 
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
 import net.minecraft.resources.ResourceLocation;
@@ -10,10 +12,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class CurseRitual extends AbstractRitual{
+public class CurseRitual extends AbstractRitual implements DefensiveRitual {
     private final AbstractCurse curse;
     public CurseRitual(ResourceLocation id, AbstractCurse curse, int tier, int effortCost) {
-        super(id, curse.element, tier, effortCost, true, 0, false);
+        super(id, curse.element, tier, effortCost, 0, false);
         this.curse = curse;
     }
     @Override
@@ -28,6 +30,8 @@ public class CurseRitual extends AbstractRitual{
         } else if (curse.getCategory().canCurse(mainHand.getItem()) &&
                 CurseHelper.getCurses(mainHand).stream().allMatch(curse -> curse.getCurse().getElement().isCompatible(this.getElement()))){
             super.onUse(rayTraceResult, world, caster);
+        } else {
+            ritualFail(caster);
         }
     }
     @Override

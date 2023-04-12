@@ -1,14 +1,23 @@
 package com.guga.ordemparanormal.common.entity.illagers;
 
+import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
-import com.guga.ordemparanormal.common.goals.UseRitualGoal;
+import com.guga.ordemparanormal.api.util.PowerUtils;
+import com.guga.ordemparanormal.common.entity.RitualCasterMob;
+import com.guga.ordemparanormal.common.entity.RitualProjectile;
+import com.guga.ordemparanormal.common.goals.CastDefensiveRitualGoal;
+import com.guga.ordemparanormal.common.goals.CastRitualGoal;
 import com.guga.ordemparanormal.core.registry.OPCurses;
+import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPRituals;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,10 +26,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.monster.AbstractIllager;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Ravager;
-import net.minecraft.world.entity.monster.Vindicator;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raider;
@@ -44,9 +50,8 @@ public class Sadico extends AbstractIllager {
         this.goalSelector.addGoal(1, new Sadico.SadicoBreakDoorGoal(this));
         this.goalSelector.addGoal(2, new AbstractIllager.RaiderOpenDoorGoal(this));
         this.goalSelector.addGoal(3, new Raider.HoldGroundAttackGoal(this, 10.0F));
-        this.goalSelector.addGoal(4, new UseRitualGoal(this, OPRituals.HEMOFAGIA, 500));
-        this.goalSelector.addGoal(5, new UseRitualGoal(this, OPRituals.ARMADURA_SANGUE, 1900));
-        this.goalSelector.addGoal(6, new Sadico.SadicoMeleeAttackGoal(this));
+        this.goalSelector.addGoal(4, new CastDefensiveRitualGoal(this, 1250, OPRituals.APRIMORAMENTO_FISICO));
+        this.goalSelector.addGoal(5, new Sadico.SadicoMeleeAttackGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, Raider.class)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
@@ -84,7 +89,7 @@ public class Sadico extends AbstractIllager {
      * Gives armor or weapon for entity based on given DifficultyInstance
      */
     protected void populateDefaultEquipmentSlots(DifficultyInstance pDifficulty) {
-        this.setItemSlot(EquipmentSlot.MAINHAND, CurseHelper.addCurse(new ItemStack(Items.IRON_AXE), OPCurses.SANGUINARIA));
+        this.setItemSlot(EquipmentSlot.MAINHAND, CurseHelper.addCurse(new ItemStack(Items.IRON_AXE), OPCurses.SADICA));
     }
     protected static class SadicoBreakDoorGoal extends BreakDoorGoal {
         public SadicoBreakDoorGoal(Mob p_34112_) {
@@ -121,11 +126,10 @@ public class Sadico extends AbstractIllager {
         public SadicoMeleeAttackGoal(Sadico p_34123_) {
             super(p_34123_, 1.0D, false);
         }
-
         protected double getAttackReachSqr(LivingEntity pAttackTarget) {
             if (this.mob.getVehicle() instanceof Ravager) {
                 float f = this.mob.getVehicle().getBbWidth() - 0.1F;
-                return (double)(f * 2.0F * f * 2.0F + pAttackTarget.getBbWidth());
+                return f * 2.0F * f * 2.0F + pAttackTarget.getBbWidth();
             } else {
                 return super.getAttackReachSqr(pAttackTarget);
             }

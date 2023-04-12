@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
+import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.HitResult;
@@ -30,14 +31,18 @@ public class RitualPower extends PlayerPower{
     }
     @Override
     public void use(Player player) {
-        player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(cap -> {
-            if (canUse(player) && cap.getPowerCooldown() == 0) {
-                HitResult result = PowerUtils.rayTrace(player, ritual.getRange(), 0, false);
-                ritual.onUse(result, player.level, player);
+        IAbilitiesCap abilities = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        INexCap nex = player.getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        if (abilities == null || nex == null) return;
 
-                cap.setPowerCooldown(15);
-                this.onUse(player);
-            }
-        });
+        if (canUse(player) && nex.getPowerCooldown() == 0) {
+            double length = ritual.getRange();
+            if (abilities.hasPower(OPPowers.AMPLIAR_RITUAL) && length > 0d) length += 3.5d;
+            HitResult result = PowerUtils.rayTrace(player, length, 0, false);
+            ritual.onUse(result, player.level, player);
+
+            nex.setPowerCooldown(15);
+            this.onUse(player);
+        }
     }
 }

@@ -110,6 +110,9 @@ public class ModPtBrProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Ovo gerador de zumbi de Sangue espinhento");
 			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Ovo gerador de aberração de carne");
 			add(OPItems.TITA_SANGUE_OVO.get(), "Ovo gerador de titã de Sangue");
+			add(OPItems.SADICO_OVO.get(), "Ovo gerador de Sádico");
+			add(OPItems.PADRE_DIABO_OVO.get(), "Ovo gerador de Sacerdote de Sangue");
+			add(OPItems.TRANSTORNADO_OVO.get(), "Ovo gerador de Transtornado");
 
 		// -------------------------------------------------------------
 
@@ -121,6 +124,9 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Zumbi de Sangue espinhento");
 		add(OPEntities.ABERRACAO_CARNE.get(), "Aberração de carne");
 		add(OPEntities.TITA_SANGUE.get(), "Titã de Sangue");
+		add(OPEntities.SADICO.get(), "Sádico");
+		add(OPEntities.PADRE_DIABO.get(), "Sacerdote de Sangue");
+		add(OPEntities.TRANSTORNADO.get(), "Transtornado");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Ocultista de Sangue");
@@ -253,6 +259,8 @@ public class ModPtBrProvider extends ModLangProvider {
 				"Diminui a sua gravidade ainda mais quando utilizado, por um período mais longo de tempo.");
 		add(OPPowers.CASUALIDADE_FORTUITA, "Casualidade Fortuita",
 				"Quando minerar, haverá a chance de você encontrar minerais raros que você antes não conseguia encontrar.");
+		add(OPPowers.SOBRECARGA, "Sobrecarga",
+				"Ao levar 1/3 de sua vida máxima em dano, libera uma explosão que causa dano nas criaturas ao redor.");
 
 		add(OPPowers.AFINIDADE_MORTE, "Afinidade com Morte",
 				"Você se conecta à entidade de Morte, descartando a necessidade de ingredientes de Morte e te tornando resistente a efeitos de Morte, mas você se torna fraco a efeitos de Energia.");
@@ -305,6 +313,8 @@ public class ModPtBrProvider extends ModLangProvider {
 				"Sua presença confunde seres hostís, tornando-os indiferentes à você. Ao utilizar esse poder, mobs hostís com a mesma vida máxima ou menor que você param de te atacar por 10 segundos.");
 		add(OPPowers.CARISMATICO_2, "Carismático II",
 				"Sua presença se torna tão magnífica que oprime a hostilidade de seres inferiores, tornando-os indiferentes à você. Mobs hostís com vida máxima igual ou menor que metade da sua não se tornam hostís contra você.");
+		add(OPPowers.AMPLIAR_RITUAL, "Ampliar Ritual",
+				"Aumenta o alcance de todos os seus rituais por 3 blocos e meio.");
 
 		// Maldições
 		add(OPCurses.ATROZ, "Atroz");
@@ -369,10 +379,15 @@ public class ModPtBrProvider extends ModLangProvider {
 
 		// Mensagem de mortes
 		addDeath("paranormalBlood", "%1$s foi dilacerado pela intensidade do Sangue");
+		addDeathEnemy("paranormalBlood", "%1$s foi dilacerado pela intensidade do Sangue convocada por %2$s");
 		addDeath("paranomalDeath", "%1$s foi consumido pela espiral da Morte");
+		addDeathEnemy("paranormalDeath", "%1$s foi consumido pela espiral da Morte convocada por %2$s");
 		addDeath("paranormalEnergy", "%1$s foi fritado pelo caos da Energia");
+		addDeathEnemy("paranormalEnergy", "%1$s foi fritado pelo caos da Energia convocado por %2$s");
 		addDeath("paranormalKnowledge", "%1$s foi esquecido pela imensidade do Conhecimento");
+		addDeathEnemy("paranormalKnowledge", "%1$s foi esquecido pela imensidão do Conhecimento convocada por %2$s");
 		addDeath("paranormalFear", "%1$s descobriu o impossível");
+		addDeathEnemy("paranormalFear", "%1$s descobriu o impossível convocado por %2$s");
 		addDeath("medoCreature", "%2$s mostrou o impossível para %1$s");
 		addDeath("sangueCreature", "%1$s foi dilacerado por %2$s");
 		addDeath("conhecimentoCreature", "%1$s foi apagado da realidade por %2$s");

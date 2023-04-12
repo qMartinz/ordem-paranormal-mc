@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
@@ -15,16 +16,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.HitResult;
 
-public class AprimoramentoFisico extends AbstractRitual {
+public class AprimoramentoFisico extends AbstractRitual implements DefensiveRitual {
 
-    public AprimoramentoFisico(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
-        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
+    public AprimoramentoFisico(ResourceLocation id, ParanormalElement element, int tier, int effortCost, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, range, mustHoldIngredient);
     }
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
-        MobEffectInstance resistance = new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 1, false,
+        MobEffectInstance resistance = new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 1, false,
                 false);
-        MobEffectInstance strength = new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 1, false,
+        MobEffectInstance strength = new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 1, false,
                 false);
 
         caster.addEffect(resistance);

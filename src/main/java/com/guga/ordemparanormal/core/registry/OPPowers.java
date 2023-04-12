@@ -43,7 +43,7 @@ public class OPPowers {
     public static final PlayerPower PUTREFATO_2 = new PlayerPower(new ResourceLocation(MOD_ID, "putrefato_2"), false, MORTE, 0, 10, new int[]{4, 0, 0}, PUTREFATO, AFINIDADE_MORTE);
     public static final PlayerPower POTENCIAL_REAPROVEITADO = new PotencialReaproveitado(new ResourceLocation(MOD_ID, "potencial_reaproveitado"), MORTE, 3, new int[]{2, 0, 0}, PUTREFATO);
     public static final PlayerPower SACRIFICAR_ENTROPIA = new SacrificarEntropia(new ResourceLocation(MOD_ID, "sacrificar_entropia"), MORTE, 5, new int[]{0, 1, 0}, POTENCIAL_REAPROVEITADO);
-    public static final PlayerPower SACRIFICAR_ENTROPIA_2 = new PlayerPower(new ResourceLocation(MOD_ID, "sacrificar_entropia_2"), false, MORTE, 0, 5, new int[]{0, 2, 0}, SACRIFICAR_ENTROPIA, AFINIDADE_MORTE);
+    public static final PlayerPower SACRIFICAR_ENTROPIA_2 = new PlayerPower(new ResourceLocation(MOD_ID, "sacrificar_entropia_2"), false, MORTE, 0, 10, new int[]{0, 2, 0}, SACRIFICAR_ENTROPIA, AFINIDADE_MORTE);
     public static final PlayerPower ESCAPAR_MORTE = new EscaparMorte(new ResourceLocation(MOD_ID, "escapar_morte"), true, MORTE, 3, 3, new int[]{0, 1, 0}, POTENCIAL_APRIMORADO);
     public static final PlayerPower CONSUMIR = new Consumir(new ResourceLocation(MOD_ID, "consumir"), MORTE, 5, new int[]{0, 3, 0}, ESCAPAR_MORTE);
     public static final PlayerPower CONSUMIR_2 = new PlayerPower(new ResourceLocation(MOD_ID, "consumir_2"), false, MORTE, 0, 10, new int[]{0, 4, 0}, CONSUMIR, AFINIDADE_MORTE);
@@ -65,6 +65,7 @@ public class OPPowers {
     public static final PlayerPower SABEDORIA_2 = new PlayerPower(new ResourceLocation(MOD_ID, "sabedoria_2"), false, CONHECIMENTO, 0, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, SABEDORIA);
     public static final PlayerPower CARISMATICO = new Carismatico(new ResourceLocation(MOD_ID, "carismatico"), CONHECIMENTO, 3, 1, new int[]{0, 0, 1});
     public static final PlayerPower CARISMATICO_2 = new PlayerPower(new ResourceLocation(MOD_ID, "carismatico_2"), false, CONHECIMENTO, 0, 10, new int[]{0, 0, 4}, AFINIDADE_CONHECIMENTO, CARISMATICO);
+    public static final PlayerPower AMPLIAR_RITUAL = new PlayerPower(new ResourceLocation(MOD_ID, "ampliar_ritual"), false, CONHECIMENTO, 0, 5, new int[]{0, 0, 2}, PRESENCA_AVASSALADORA, CONHECIMENTO_AMPLIADO);
     public static final PlayerPower SOBRECARGA = new Sobrecarga(new ResourceLocation(MOD_ID, "sobrecarga"), ENERGIA, 1, new int[]{0, 0, 0});
     /**
      * Registra os poderes
@@ -124,6 +125,7 @@ public class OPPowers {
         registerPower(SABEDORIA_2);
         registerPower(CARISMATICO);
         registerPower(CARISMATICO_2);
+        registerPower(AMPLIAR_RITUAL);
 
         // Medo
         registerPower(MEDO_TANGIVEL);

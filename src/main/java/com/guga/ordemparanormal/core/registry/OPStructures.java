@@ -1,9 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
-import com.guga.ordemparanormal.common.worldgen.structures.Crypt;
-import com.guga.ordemparanormal.common.worldgen.structures.CultistCabin;
-import com.guga.ordemparanormal.common.worldgen.structures.DevilChurch;
-import com.guga.ordemparanormal.common.worldgen.structures.Mansion;
+import com.guga.ordemparanormal.common.worldgen.structures.*;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,4 +14,5 @@ public final class OPStructures {
     public static final RegistryObject<StructureFeature<?>> MANSION = STRUCTURE_FEATURES.register("mansion", Mansion::new);
     public static final RegistryObject<StructureFeature<?>> CULTIST_CABIN = STRUCTURE_FEATURES.register("cultist_cabin", CultistCabin::new);
     public static final RegistryObject<StructureFeature<?>> CRYPT = STRUCTURE_FEATURES.register("crypt", Crypt::new);
+    public static final RegistryObject<StructureFeature<?>> BLOOD_LABORATORY = STRUCTURE_FEATURES.register("blood_laboratory", BloodLaboratory::new);
 }

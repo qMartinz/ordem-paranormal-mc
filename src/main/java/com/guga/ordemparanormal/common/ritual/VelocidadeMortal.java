@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
@@ -15,16 +16,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.HitResult;
 
-public class VelocidadeMortal extends AbstractRitual {
-    public VelocidadeMortal(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
-        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
+public class VelocidadeMortal extends AbstractRitual implements DefensiveRitual {
+    public VelocidadeMortal(ResourceLocation id, ParanormalElement element, int tier, int effortCost, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, range, mustHoldIngredient);
     }
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {
-        MobEffectInstance velocity = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2400, 1, false, false);
+        MobEffectInstance velocity = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 1, false, false);
         caster.addEffect(velocity);
 
-        MobEffectInstance haste = new MobEffectInstance(MobEffects.DIG_SPEED, 2400, 1, false, false);
+        MobEffectInstance haste = new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 1, false, false);
         caster.addEffect(haste);
 
         ServerLevel level = (ServerLevel) world;

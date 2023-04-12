@@ -6,9 +6,11 @@ import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.common.entity.RitualProjectile;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.common.power.Afinidade;
+import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
@@ -35,19 +37,18 @@ import net.minecraftforge.common.MinecraftForge;
 import javax.annotation.Nullable;
 
 public abstract class AbstractRitual{
+    public static final AbstractRitual EMPTY = new AbstractRitual(new ResourceLocation(OrdemParanormal.MOD_ID, "empty"), ParanormalElement.NONE, 1,  0, 0, true) {};
     private final ResourceLocation id;
     private final ParanormalElement element;
     private final int tier;
     private final int effortCost;
-    private final boolean hasEntityTarget;
     private final double range;
     private final boolean mustHoldIngredient;
-    public AbstractRitual(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
+    public AbstractRitual(ResourceLocation id, ParanormalElement element, int tier, int effortCost, double range, boolean mustHoldIngredient) {
         this.id = id;
         this.element = element;
         this.tier = Mth.clamp(tier, 1, 4);
         this.effortCost = effortCost;
-        this.hasEntityTarget = hasEntityTarget;
         this.range = range;
         this.mustHoldIngredient = mustHoldIngredient;
     }
@@ -74,9 +75,6 @@ public abstract class AbstractRitual{
         };
     }
     public int getEffortCost() { return effortCost; }
-    public boolean hasEntityTarget() {
-        return hasEntityTarget;
-    }
     public double getRange() {
         return range;
     }
@@ -135,91 +133,26 @@ public abstract class AbstractRitual{
                     hand = null;
                 }
 
-                if (!player.isCreative()){
-                    nex.setCurrentEffort(nex.getCurrentEffort() - getEffortCost());
-                    if (useIngredient){
-                        ItemStack ingredient = mustHoldIngredient() ? player.getOffhandItem() :
-                                player.getInventory().items.stream().filter(stack -> stack.getItem() instanceof RitualComponent comp &&
-                                        comp.element == element).findFirst().get();
-
-                        if (ingredient.getDamageValue() + 1 >= ingredient.getMaxDamage()){
-                            if (mustHoldIngredient) {
-                                player.getOffhandItem().shrink(1);
-                                player.setItemSlot(EquipmentSlot.OFFHAND, OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
-                            } else {
-                                player.getInventory().setItem(player.getInventory().items.indexOf(ingredient),
-                                        OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
-                            }
-                        } else ingredient.setDamageValue(ingredient.getDamageValue() + 1);
-
-                        if (ingredient.getItem() instanceof RitualComponent comp && comp.getUsedSound() != null) {
-                            player.level.playSound(null, player.getX(), player.getY(), player.getZ(), comp.getUsedSound(), SoundSource.PLAYERS, 1f, 1f);
-                        }
-                    }
-                }
-
-                if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                    if (hasEntityTarget()){
-                        onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
-                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
-                    } else {
-                        onUseBlock(blockHitResult, world, caster, ritualItem, hand);
-                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
-                    }
-                } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                    if (this.range > 0d) {
-                        onUseEntity(entityHitResult, world, caster, ritualItem, hand);
-                    } else {
-                        onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
-                    }
-                    if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
+                if ((this instanceof OffensiveRitual || this instanceof UtilityRitual) && !caster.isCrouching()){
+                    RitualProjectile projectile = new RitualProjectile(world, caster, this);
+                    projectile.shootFromRotation(caster, caster.getXRot(), caster.getYRot(), 0.0f, 1.5f, 0.0f);
+                    world.addFreshEntity(projectile);
+                    projectile.setElement(this.element.index);
+                    ritualSuccess((ServerLevel) world, caster);
+                } else if (this instanceof DefensiveRitual ritual && caster.isCrouching()) {
+                    ritual.onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
+                    ritualSuccess((ServerLevel) world, caster);
                 } else {
-                    onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
-                    if (world instanceof ServerLevel level) usedParticles(level, caster, null);
+                    ritualFail(caster);
                 }
 
-                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), OPSounds.RITUAL_USED.get(), SoundSource.PLAYERS, 1f, 1f);
-            } else {
-                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), OPSounds.RITUAL_FAILED.get(), SoundSource.PLAYERS, 1f, 1f);
+                if (!player.isCreative()) useResources(useIngredient, nex, player);
 
-                ItemStack ingredient = mustHoldIngredient() ? player.getOffhandItem() :
-                        player.getInventory().items.stream().filter(stack -> stack.getItem() instanceof RitualComponent comp &&
-                                comp.element == element).findFirst().get();
-
-                if (ingredient.getItem() instanceof RitualComponent comp && comp.getUsedSound() != null) {
-                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(), comp.getUsedSound(), SoundSource.PLAYERS, 1f, 1f);
-                }
-            }
-        } else {
-            RitualUsedEvent event = new RitualUsedEvent(caster, this, rayTraceResult);
-            MinecraftForge.EVENT_BUS.post(event);
-
-            if (!event.isCanceled()) {
-                if (rayTraceResult instanceof BlockHitResult blockHitResult) {
-                    if (hasEntityTarget()) {
-                        onUseSelf(rayTraceResult, world, caster, null, null);
-                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
-                    } else {
-                        onUseBlock(blockHitResult, world, caster, null, null);
-                        if (world instanceof ServerLevel level) usedParticles(level, caster, null);
-                    }
-                } else if (rayTraceResult instanceof EntityHitResult entityHitResult) {
-                    if (this.range > 0d) {
-                        onUseEntity(entityHitResult, world, caster, null, null);
-                    } else {
-                        onUseSelf(rayTraceResult, world, caster, null, null);
-                    }
-                    if (world instanceof ServerLevel level) usedParticles(level, caster, entityHitResult.getEntity());
-                } else {
-                    onUseSelf(rayTraceResult, world, caster, null, null);
-                    if (world instanceof ServerLevel level) usedParticles(level, caster, null);
-                }
-
-                caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), OPSounds.RITUAL_USED.get(), SoundSource.PLAYERS, 1f, 1f);
-            }
-        }
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), OPSounds.RITUAL_USED.get(),  caster.getSoundSource(), 1f, 1f);
+            } else ritualFail(caster);
+        } else ritualFail(caster);
     }
-    private void usedParticles(ServerLevel level, LivingEntity caster, @Nullable Entity entityTarget){
+    public void ritualSuccess(ServerLevel level, LivingEntity caster){
         for (int i = 0; i < 360; i++){
             if (i % 20 == 0){
                 for (int i2 = 1; i2 < 4; i2++){
@@ -234,34 +167,46 @@ public abstract class AbstractRitual{
             }
         }
 
-        if (entityTarget != null) {
-            level.sendParticles(new DustParticleOptions(this.element.getParticleVec3fColor(), 0.7f),
-                    entityTarget.getX(), entityTarget.getY() + entityTarget.getEyeHeight() / 2d, entityTarget.getZ(),
-                    5, 0.3d, 0.3d, 0.3d, 1d);
+        caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), OPSounds.RITUAL_USED.get(), caster.getSoundSource(), 1f, 1f);
+    }
+    protected void ritualFail(LivingEntity caster){
+        caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), OPSounds.RITUAL_FAILED.get(),  caster.getSoundSource(), 1f, 1f);
+
+        ItemStack ingredient;
+        if (caster instanceof Player player) {
+            ingredient = mustHoldIngredient() ? caster.getOffhandItem() :
+                    player.getInventory().items.stream().filter(stack -> stack.getItem() instanceof RitualComponent comp &&
+                    comp.element == element).findFirst().orElse(null);
+        } else {
+            ingredient = caster.getOffhandItem();
+        }
+
+        if (ingredient.getItem() instanceof RitualComponent comp && comp.getUsedSound() != null) {
+            caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), comp.getUsedSound(),  caster.getSoundSource(), 1f, 1f);
         }
     }
-    /**
-     * Chamado quando o ritual é utilizado em uma entidade como alvo
-     *
-     * @param rayTraceResult a entidade que foi atingido
-     * @param world o level em que o ritual foi utilizado
-     * @param caster a entidade que utilizou o ritual
-     */
-    public void onUseEntity(EntityHitResult rayTraceResult, Level world, LivingEntity caster, @Nullable ItemStack ritualItem, @Nullable InteractionHand hand){}
-    /**
-     * Chamado quando o ritual é utilizado em um bloco como alvo
-     *
-     * @param rayTraceResult o bloco que foi atingido
-     * @param world o level em que o ritual foi utilizado
-     * @param caster a entidade que utilizou o ritual
-     */
-    public void onUseBlock(BlockHitResult rayTraceResult, Level world, LivingEntity caster, @Nullable ItemStack ritualItem, @Nullable InteractionHand hand){}
+    protected void useResources(boolean useIngredient, INexCap nex, Player player){
+        nex.setCurrentEffort(nex.getCurrentEffort() - getEffortCost());
+        if (useIngredient){
+            ItemStack ingredient = mustHoldIngredient() ? player.getOffhandItem() :
+                    player.getInventory().items.stream().filter(stack -> stack.getItem() instanceof RitualComponent comp &&
+                            comp.element == element).findFirst().orElse(ItemStack.EMPTY);
 
-    /**
-     * Chamado quando o ritual não possui alvo específico (não é uma entidade ou um bloco)
-     *
-     * @param world o level em que o ritual foi utilizado
-     * @param caster a entidade que utilizou o ritual
-     */
-    public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, @Nullable ItemStack ritualItem, @Nullable InteractionHand hand){}
+            if (ingredient.getItem() instanceof RitualComponent) {
+                if (ingredient.getDamageValue() + 1 >= ingredient.getMaxDamage()) {
+                    if (mustHoldIngredient) {
+                        player.getOffhandItem().shrink(1);
+                        player.setItemSlot(EquipmentSlot.OFFHAND, OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
+                    } else {
+                        player.getInventory().setItem(player.getInventory().items.indexOf(ingredient),
+                                OPItems.COMPONENTE_VAZIO.get().getDefaultInstance());
+                    }
+                } else ingredient.setDamageValue(ingredient.getDamageValue() + 1);
+            }
+
+            if (ingredient.getItem() instanceof RitualComponent comp && comp.getUsedSound() != null) {
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(), comp.getUsedSound(), SoundSource.PLAYERS, 1f, 1f);
+            }
+        }
+    }
 }

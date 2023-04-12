@@ -110,6 +110,9 @@ public class ModEnUsProvider extends ModLangProvider {
 			add(OPItems.ZUMBI_ESPINHENTO_OVO.get(), "Spiky Blood zombie spawn egg");
 			add(OPItems.ABERRACAO_CARNE_OVO.get(), "Flesh aberration spawn egg");
 			add(OPItems.TITA_SANGUE_OVO.get(), "Blood titan spawn egg");
+			add(OPItems.SADICO_OVO.get(), "Sadist spawn egg");
+			add(OPItems.PADRE_DIABO_OVO.get(), "Blood Priest spawn egg");
+			add(OPItems.TRANSTORNADO_OVO.get(), "Distraught spawn egg");
 
 		// -------------------------------------------------------------
 
@@ -121,6 +124,9 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEntities.ZUMBI_ESPINHENTO.get(), "Spiky Blood zombie");
 		add(OPEntities.ABERRACAO_CARNE.get(), "Flesh aberration");
 		add(OPEntities.TITA_SANGUE.get(), "Blood titan");
+		add(OPEntities.SADICO.get(), "Sadist");
+		add(OPEntities.PADRE_DIABO.get(), "Blood Priest");
+		add(OPEntities.TRANSTORNADO.get(), "Distraught");
 
 			// Profissões de Villagers
 			add(OPProfessions.OCULTISTA_SANGUE.get(), "Blood Occultist");
@@ -253,6 +259,8 @@ public class ModEnUsProvider extends ModLangProvider {
 				"Lowers your gravity even more when used, and for a longer period of time.");
 		add(OPPowers.CASUALIDADE_FORTUITA, "Fortuitous Chance",
 				"When mining, there is a chance you might find rare minerals that you couldn't find before.");
+		add(OPPowers.SOBRECARGA, "Overcharge",
+				"When taking 1/3 of your maximum health in damage, releases an explosion that hurts creatures around you.");
 
 		add(OPPowers.AFINIDADE_MORTE, "Affinity with Death",
 				"You're connected with the entity of Death, discarding the need for Death ingredients and making you resistant to Death effects, but also weak to Energy effects.");
@@ -305,6 +313,8 @@ public class ModEnUsProvider extends ModLangProvider {
 				"Your presence confuses hostile beings, making them indiferent to you. When using this power, hostile mobs with the same or less maximum health than you stop attacking you for 10 seconds.");
 		add(OPPowers.CARISMATICO_2, "Charismatic II",
 				"Your presence becomes so magnificent that it overwhelms inferior beings, making them indiferent to you. Hostile mobs with the same or less maximum health than half of yours do not attack you.");
+		add(OPPowers.AMPLIAR_RITUAL, "Amplify Ritual",
+				"Increases the range of your rituals by 3 blocks and a half.");
 
 		// Maldições
 		add(OPCurses.ATROZ, "Atrocious");
@@ -369,10 +379,15 @@ public class ModEnUsProvider extends ModLangProvider {
 
 		// Mensagem de mortes
 		addDeath("paranormalBlood", "%1$s was torn apart by the intensity of Blood");
+		addDeathEnemy("paranormalBlood", "%1$s was torn apart by the intensity of Blood summoned by %2$s");
 		addDeath("paranomalDeath", "%1$s was consumed by the spiral of Death");
+		addDeathEnemy("paranomalDeath", "%1$s was consumed by the spiral of Death summoned by %2$s");
 		addDeath("paranormalEnergy", "%1$s was fried by the chaos of Energy");
+		addDeathEnemy("paranormalEnergy", "%1$s was fried by the chaos of Energy summoned by %2$s");
 		addDeath("paranormalKnowledge", "%1$s was forgotten by the immensity of Knowledge");
+		addDeathEnemy("paranormalKnowledge", "%1$s was forgotten by the immensity of Knowledge summoned by %2$s");
 		addDeath("paranormalFear", "%1$s discovered the impossible");
+		addDeathEnemy("paranormalFear", "%1$s discovered the impossible summoned by %2$s");
 		addDeath("medoCreature", "%2$s showed the impossible to %1$s");
 		addDeath("sangueCreature", "%1$s was torn apart by %2$s");
 		addDeath("conhecimentoCreature", "%1$s was erased from reality by %2$s");

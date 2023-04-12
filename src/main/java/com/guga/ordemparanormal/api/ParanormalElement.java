@@ -68,6 +68,14 @@ public enum ParanormalElement implements StringRepresentable {
         }
         return NONE;
     }
+    public static ParanormalElement byIndex(int index) {
+        for (ParanormalElement paranormalElement : values()) {
+            if (paranormalElement.index == index) {
+                return paranormalElement;
+            }
+        }
+        return NONE;
+    }
     public boolean isCompatible(ParanormalElement other){
         boolean result = true;
 

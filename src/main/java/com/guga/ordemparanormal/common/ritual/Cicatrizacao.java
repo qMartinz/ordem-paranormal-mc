@@ -2,6 +2,8 @@ package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.OffensiveRitual;
 import com.guga.ordemparanormal.common.entity.ParanormalCreature;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -15,9 +17,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class Cicatrizacao extends AbstractRitual {
-    public Cicatrizacao(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget, double range, boolean mustHoldIngredient) {
-        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
+public class Cicatrizacao extends AbstractRitual implements OffensiveRitual, DefensiveRitual {
+    public Cicatrizacao(ResourceLocation id, ParanormalElement element, int tier, int effortCost, double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, range, mustHoldIngredient);
     }
     @Override
     public void onUseSelf(HitResult rayTraceResult, Level world, LivingEntity caster, ItemStack ritualItem, InteractionHand hand) {

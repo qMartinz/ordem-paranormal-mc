@@ -2,6 +2,8 @@ package com.guga.ordemparanormal.common.ritual;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
+import com.guga.ordemparanormal.api.abilities.ritual.OffensiveRitual;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -12,10 +14,10 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class Teleporte extends AbstractRitual {
-    public Teleporte(ResourceLocation id, ParanormalElement element, int tier, int effortCost, boolean hasEntityTarget,
-            double range, boolean mustHoldIngredient) {
-        super(id, element, tier, effortCost, hasEntityTarget, range, mustHoldIngredient);
+public class Teleporte extends AbstractRitual implements OffensiveRitual, DefensiveRitual {
+    public Teleporte(ResourceLocation id, ParanormalElement element, int tier, int effortCost,
+                     double range, boolean mustHoldIngredient) {
+        super(id, element, tier, effortCost, range, mustHoldIngredient);
     }
 
     @Override

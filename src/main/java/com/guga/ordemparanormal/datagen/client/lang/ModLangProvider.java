@@ -29,6 +29,9 @@ public class ModLangProvider extends LanguageProvider {
     public void addDeath(String key, String translation){
         add("death.attack." + key, translation);
     }
+    public void addDeathEnemy(String key, String translation){
+        add("death.attack." + key + ".player", translation);
+    }
     public void addAdvancement(String id, String title, String description){
         add("ordemparanormal.advancement." + id + ".title", title);
         add("ordemparanormal.advancement." + id + ".description", description);
