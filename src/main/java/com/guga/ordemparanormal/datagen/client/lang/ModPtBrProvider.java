@@ -69,8 +69,9 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPBlocks.MESA_CONHECIMENTO.get(), "Mesa de maldições de Conhecimento");
 		add(OPItems.BIDENTE.get(), "Bidente");
 		add(OPEntities.BIDENTE.get(), "Bidente");
+		add(OPItems.PEROLA_SANGUE.get(), "Pérola de Sangue");
 
-			// Grupo de itens
+		// Grupo de itens
 			add("itemGroup.ordemparanormal", "Ordem Paranormal");
 			add("itemGroup.ordemparanormal.rituals", "Rituais");
 			add("itemGroup.ordemparanormal.mobs", "Criaturas Paranormais");
@@ -353,6 +354,7 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEffects.WEAKENED_MIND.get(), "Mente Enfraquecida");
 		add(OPEffects.CHARISMATIC.get(), "Carismático");
 		add(OPEffects.ZERO_ENTROPY.get(), "Entropia Zerada");
+		add(OPEffects.ADRENALINE.get(), "Adrenalina");
 
 		// -------------------------------------------------------------
 

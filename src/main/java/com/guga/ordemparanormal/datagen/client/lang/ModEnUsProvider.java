@@ -69,6 +69,7 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPBlocks.MESA_CONHECIMENTO.get(), "Knowledge curse table");
 		add(OPItems.BIDENTE.get(), "Bident");
 		add(OPEntities.BIDENTE.get(), "Bident");
+		add(OPItems.PEROLA_SANGUE.get(), "Blood Pearl");
 
 			// Grupo de itens
 			add("itemGroup.ordemparanormal", "Paranormal Order");
@@ -353,6 +354,7 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEffects.WEAKENED_MIND.get(), "Weakened Mind");
 		add(OPEffects.CHARISMATIC.get(), "Charismatic");
 		add(OPEffects.ZERO_ENTROPY.get(), "Zero Entropy");
+		add(OPEffects.ADRENALINE.get(), "Adrenaline");
 
 		// -------------------------------------------------------------
 

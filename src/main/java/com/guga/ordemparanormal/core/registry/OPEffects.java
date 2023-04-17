@@ -51,6 +51,10 @@ public final class OPEffects {
             () -> new ParanormalEffect(MobEffectCategory.HARMFUL, 0xF8D321));
     public static final RegistryObject<MobEffect> CHARISMATIC = MOB_EFFECTS.register("charismatic",
             () -> new ParanormalEffect(MobEffectCategory.BENEFICIAL, 0xF8D321));
+    public static final RegistryObject<MobEffect> ADRENALINE = MOB_EFFECTS.register("adrenaline",
+            () -> new AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x720000)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID.randomUUID().toString(), 0.6F, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                    .addAttributeModifier(Attributes.ATTACK_DAMAGE, UUID.randomUUID().toString(), 1.0D, AttributeModifier.Operation.ADDITION));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }

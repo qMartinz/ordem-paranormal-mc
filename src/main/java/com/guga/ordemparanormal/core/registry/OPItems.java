@@ -29,6 +29,7 @@ public final class OPItems {
 	public static final RegistryObject<Item> PERGAMINHO_ANTIGO = HELPER.createPergaminhoAntigo();
 	// public static final RegistryObject<Item> GIZ = HELPER.createGiz();
 	public static final RegistryObject<Bidente> BIDENTE = HELPER.createBidente();
+	public static final RegistryObject<PerolaSangue> PEROLA_SANGUE = HELPER.createPerolaSangue();
 
 	// Itens de rituais
 	public static final RegistryObject<RitualItem> RITUAL_DESCARNAR = HELPER.createRItem("livro_amaldicoado",
@@ -169,7 +170,13 @@ public final class OPItems {
 			return this.deferredRegister
 					.register("bidente",
 							() -> new Bidente(new Item.Properties().durability(250)
-									.tab(OPCreativeTabs.OP_TAB)));
+									.tab(OPCreativeTabs.OP_TAB).rarity(Rarity.RARE)));
+		}
+
+		private RegistryObject<PerolaSangue> createPerolaSangue(){
+			return this.deferredRegister
+					.register("perola_sangue", () -> new PerolaSangue(new Item.Properties()
+							.tab(OPCreativeTabs.OP_TAB).stacksTo(8).rarity(Rarity.RARE)));
 		}
 	}
 }
