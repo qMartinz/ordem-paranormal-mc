@@ -7,11 +7,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.TextComponent;
 
 public class PowerScreenButton extends AbstractButton {
     public PowerScreenButton(int x, int y, int width, int height) {
-        super(x, y, width, height, TextComponent.EMPTY);
+        super(x, y, width, height, CommonComponents.EMPTY);
     }
     @Override
     public void onPress() {

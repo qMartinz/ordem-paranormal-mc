@@ -52,7 +52,7 @@ public class BidenteRiptideLayer<T extends LivingEntity> extends RenderLayer<T, 
                 pMatrixStack.mulPose(Vector3f.YP.rotationDegrees(f));
                 float f1 = 0.75F * (float)i;
                 pMatrixStack.scale(f1, f1, f1);
-                pMatrixStack.translate(0.0D, (double)(-0.2F + 0.6F * (float)i), 0.0D);
+                pMatrixStack.translate(0.0D, -0.2F + 0.6F * (float)i, 0.0D);
                 this.box.render(pMatrixStack, vertexconsumer, pPackedLight, OverlayTexture.NO_OVERLAY);
                 pMatrixStack.popPose();
             }

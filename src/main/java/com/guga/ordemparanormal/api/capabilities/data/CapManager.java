@@ -2,13 +2,11 @@ package com.guga.ordemparanormal.api.capabilities.data;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
-import com.guga.ordemparanormal.api.curses.CurseInstance;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.Packets;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;

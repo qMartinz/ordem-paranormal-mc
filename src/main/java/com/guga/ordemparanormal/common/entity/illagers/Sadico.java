@@ -1,23 +1,14 @@
 package com.guga.ordemparanormal.common.entity.illagers;
 
-import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
-import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
 import com.guga.ordemparanormal.api.curses.CurseHelper;
-import com.guga.ordemparanormal.api.util.PowerUtils;
-import com.guga.ordemparanormal.common.entity.RitualCasterMob;
-import com.guga.ordemparanormal.common.entity.RitualProjectile;
 import com.guga.ordemparanormal.common.goals.CastDefensiveRitualGoal;
-import com.guga.ordemparanormal.common.goals.CastRitualGoal;
 import com.guga.ordemparanormal.core.registry.OPCurses;
-import com.guga.ordemparanormal.core.registry.OPEffects;
 import com.guga.ordemparanormal.core.registry.OPRituals;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;

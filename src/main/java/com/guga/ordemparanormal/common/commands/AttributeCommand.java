@@ -9,7 +9,7 @@ import com.mojang.brigadier.builder.ArgumentBuilder;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.server.level.ServerPlayer;
 
 import static com.guga.ordemparanormal.api.attributes.ParanormalAttribute.*;
@@ -22,7 +22,7 @@ public class AttributeCommand {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
                 playerNex.setAttributePoints(playerNex.getAttributePoints() + amount));
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.points.add.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.points.add.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> REMOVE_POINTS = context -> {
@@ -34,7 +34,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.points.remove.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.points.remove.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> ADD_VIGOR = context -> {
@@ -46,7 +46,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.vigor.add.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.vigor.add.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> REMOVE_VIGOR = context -> {
@@ -58,7 +58,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.vigor.remove.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.vigor.remove.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> ADD_STRENGTH = context -> {
@@ -70,7 +70,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.strength.add.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.strength.add.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> REMOVE_STRENGTH = context -> {
@@ -82,7 +82,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.strength.remove.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.strength.remove.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> ADD_PRESENCE = context -> {
@@ -94,7 +94,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.presence.add.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.presence.add.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> REMOVE_PRESENCE = context -> {
@@ -106,7 +106,7 @@ public class AttributeCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.attributes.presence.remove.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.attributes.presence.remove.success"), true);
         return 1;
     };
     public static ArgumentBuilder<CommandSourceStack, ?> register(){

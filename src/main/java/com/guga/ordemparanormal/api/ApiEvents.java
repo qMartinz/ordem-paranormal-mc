@@ -25,7 +25,7 @@ import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -61,19 +61,19 @@ public class ApiEvents {
 
         if (!event.isWasDeath()){
             oldPlayer.getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(oldEffects ->
-                    event.getPlayer().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(newEffects -> newEffects.copyFrom(oldEffects)));
+                    event.getEntity().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).ifPresent(newEffects -> newEffects.copyFrom(oldEffects)));
         }
 
         oldPlayer.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(oldPowers ->{
-            IAbilitiesCap newAbilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
+            IAbilitiesCap newAbilities = event.getEntity().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(new PlayerAbilities());
             CompoundTag tag = oldPowers.serializeNBT();
             newAbilities.deserializeNBT(tag);
-            if (event.getPlayer() instanceof ServerPlayer){
-                syncPlayerPowers(event.getPlayer());
+            if (event.getEntity() instanceof ServerPlayer){
+                syncPlayerPowers(event.getEntity());
             }
         });
 
-        oldPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(oldNex -> event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(newNex -> {
+        oldPlayer.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(oldNex -> event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(newNex -> {
             newNex.copyFrom(oldNex);
         }));
 
@@ -81,39 +81,39 @@ public class ApiEvents {
     }
     @SubscribeEvent
     public static void onPlayerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        syncPlayerPowers(event.getPlayer());
+        syncPlayerPowers(event.getEntity());
 
-        INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-        IAbilitiesCap abilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        INexCap nex = event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        IAbilitiesCap abilities = event.getEntity().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
         if (nex == null || abilities == null) return;
-        abilities.syncAttributeMods(event.getPlayer());
-        nex.syncAttributeMods(event.getPlayer());
+        abilities.syncAttributeMods(event.getEntity());
+        nex.syncAttributeMods(event.getEntity());
     }
     @SubscribeEvent
     public static void respawnEvent(PlayerEvent.PlayerRespawnEvent event) {
-        syncPlayerPowers(event.getPlayer());
+        syncPlayerPowers(event.getEntity());
         if (!event.isEndConquered()){
-            INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-            IAbilitiesCap abilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+            INexCap nex = event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+            IAbilitiesCap abilities = event.getEntity().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
             if (nex == null || abilities == null) return;
-            nex.syncAttributeMods(event.getPlayer());
-            abilities.syncAttributeMods(event.getPlayer());
+            nex.syncAttributeMods(event.getEntity());
+            abilities.syncAttributeMods(event.getEntity());
             nex.setCurrentEffort(nex.getMaxEffort());
         }
     }
     @SubscribeEvent
     public static void onPlayerStartTrackingEvent(PlayerEvent.StartTracking event) {
-        syncPlayerPowers(event.getPlayer());
+        syncPlayerPowers(event.getEntity());
     }
     @SubscribeEvent
     public static void onPlayerDimChangedEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
-        syncPlayerPowers(event.getPlayer());
+        syncPlayerPowers(event.getEntity());
 
-        INexCap nex = event.getPlayer().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
-        IAbilitiesCap abilities = event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
+        INexCap nex = event.getEntity().getCapability(PlayerNexProvider.PLAYER_NEX).orElse(null);
+        IAbilitiesCap abilities = event.getEntity().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
         if (nex == null || abilities == null) return;
-        abilities.syncAttributeMods(event.getPlayer());
-        nex.syncAttributeMods(event.getPlayer());
+        abilities.syncAttributeMods(event.getEntity());
+        nex.syncAttributeMods(event.getEntity());
     }
     public static void syncPlayerPowers(Player player){
         if (player instanceof ServerPlayer) {
@@ -124,15 +124,15 @@ public class ApiEvents {
         }
     }
     @SubscribeEvent
-    public static void onWorldTick(TickEvent.WorldTickEvent event){
-        if (event.world.isClientSide){
+    public static void onWorldTick(TickEvent.LevelTickEvent event){
+        if (event.level.isClientSide){
             return;
         }
         if (event.phase == TickEvent.Phase.START){
             return;
         }
-        CapManager manager = CapManager.get(event.world);
-        manager.tick(event.world);
+        CapManager manager = CapManager.get(event.level);
+        manager.tick(event.level);
     }
     @SubscribeEvent
     public static void breakSpeedBonus(PlayerEvent.BreakSpeed event){
@@ -144,22 +144,21 @@ public class ApiEvents {
             speed += speedBonus;
         }
 
-        for (ItemStack stack : event.getEntityLiving().getAllSlots()) {
+        for (ItemStack stack : event.getEntity().getAllSlots()) {
             for (CurseInstance instance : CurseHelper.getCurses(stack)){
                 speed += instance.getCurse().getBreakSpeedBonus();
             }
         }
 
         float energyCursePenalty = 1f;
-        if (event.getEntityLiving() instanceof Player player) {
-            for (ItemStack item : player.getInventory().items) {
-                energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
-                                curse.getCurse() != null && !curse.getCurse().isTemporary() &&
-                                        curse.getCurse().getElement() == ParanormalElement.ENERGIA)
-                        .toList().size();
-            }
+        for (ItemStack item : event.getEntity().getInventory().items) {
+            energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
+                            curse.getCurse() != null && !curse.getCurse().isTemporary() &&
+                                    curse.getCurse().getElement() == ParanormalElement.ENERGIA)
+                    .toList().size();
         }
-        for (ItemStack item : event.getEntityLiving().getAllSlots()) {
+
+        for (ItemStack item : event.getEntity().getAllSlots()) {
             energyCursePenalty += 0.5f * CurseHelper.getCurses(item).stream().filter(curse ->
                             curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.ENERGIA)
@@ -179,29 +178,29 @@ public class ApiEvents {
         }
     }
     @SubscribeEvent
-    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event){
-        if (event.getEntityLiving() instanceof Player player){
+    public static void onLivingUpdate(LivingEvent.LivingTickEvent event){
+        if (event.getEntity() instanceof Player player){
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                    playerAbilities.getPowers().forEach(power -> power.onTick(player, event.getEntityLiving().tickCount)));
+                    playerAbilities.getPowers().forEach(power -> power.onTick(player, event.getEntity().tickCount)));
         }
 
-        CurseHelper.doTickEffects(event.getEntityLiving());
+        CurseHelper.doTickEffects(event.getEntity());
     }
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityHurt(LivingHurtEvent event){
         float amount = event.getAmount();
 
         if (event.getSource().getEntity() instanceof LivingEntity living) {
-            amount = CurseHelper.doPostAttackEffects(living, event.getEntityLiving(), amount, event.getSource());
+            amount = CurseHelper.doPostAttackEffects(living, event.getEntity(), amount, event.getSource());
         }
 
-        amount = CurseHelper.doPostHurtEffects(event.getEntityLiving(), event.getSource().getEntity(), amount, event.getSource());
+        amount = CurseHelper.doPostHurtEffects(event.getEntity(), event.getSource().getEntity(), amount, event.getSource());
 
         event.setAmount(amount);
 
         if (event.getSource().getEntity() instanceof Player player) {
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                    playerAbilities.getPowers().forEach(power -> event.setAmount(power.onAttack(player, event.getAmount(), event.getEntityLiving(), event.getSource()))));
+                    playerAbilities.getPowers().forEach(power -> event.setAmount(power.onAttack(player, event.getAmount(), event.getEntity(), event.getSource()))));
         }
 
         if (event.getEntity() instanceof Player player) {
@@ -214,11 +213,11 @@ public class ApiEvents {
         float amount = event.getAmount();
 
         // pega a capability com efeitos paranormais
-        IEffectsCap targetEffects = event.getEntityLiving().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
+        IEffectsCap targetEffects = event.getEntity().getCapability(ParanormalEffectsProvider.PARANORMAL_EFFECTS).orElse(null);
         if (targetEffects == null) return;
 
         float deathCursePenalty = 1f;
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             for (ItemStack item : player.getInventory().items) {
                 deathCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
                                 curse.getCurse() != null && !curse.getCurse().isTemporary() &&
@@ -226,7 +225,7 @@ public class ApiEvents {
                         .toList().size();
             }
         }
-        for (ItemStack item : event.getEntityLiving().getAllSlots()) {
+        for (ItemStack item : event.getEntity().getAllSlots()) {
             deathCursePenalty += 0.3f * CurseHelper.getCurses(item).stream().filter(curse ->
                             curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.MORTE)
@@ -241,7 +240,7 @@ public class ApiEvents {
                 Math.max(amount - targetEffects.getBloodArmorPoints()/2f, 1) : amount;
 
         float deathHealthApplied = Math.max(amount - targetEffects.getDeathHealthPoints(), 0);
-        targetEffects.setDeathHealthPoints(targetEffects.getDeathHealthPoints() - (int) Math.min(targetEffects.getDeathHealthPoints(), amount), event.getEntityLiving().getMaxHealth());
+        targetEffects.setDeathHealthPoints(targetEffects.getDeathHealthPoints() - (int) Math.min(targetEffects.getDeathHealthPoints(), amount), event.getEntity().getMaxHealth());
         amount = deathHealthApplied;
 
         event.setAmount(amount);
@@ -260,7 +259,7 @@ public class ApiEvents {
     public static void onShieldBlock(ShieldBlockEvent event){
         if (event.getDamageSource().getEntity() instanceof Player player)
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                    playerAbilities.getPowers().forEach(power -> event.setBlockedDamage(power.onAttackBlocked(player, event.getEntityLiving(), event.getDamageSource(), event.getOriginalBlockedDamage(), event.getBlockedDamage()))));
+                    playerAbilities.getPowers().forEach(power -> event.setBlockedDamage(power.onAttackBlocked(player, event.getEntity(), event.getDamageSource(), event.getOriginalBlockedDamage(), event.getBlockedDamage()))));
 
         if (event.getEntity() instanceof Player player)
             player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
@@ -269,18 +268,18 @@ public class ApiEvents {
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event){
         event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                playerAbilities.getPowers().forEach(power -> event.setExpToDrop(power.onBlockBreak(event.getPlayer(), event.getWorld(), event.getPos(), event.getState(), event.getExpToDrop()))));
+                playerAbilities.getPowers().forEach(power -> event.setExpToDrop(power.onBlockBreak(event.getPlayer(), event.getLevel(), event.getPos(), event.getState(), event.getExpToDrop()))));
 
         event.setExpToDrop(CurseHelper.doBlockBreakEffects(event.getPlayer(), event.getExpToDrop(), event.getPos(), event.getState()));
     }
     @SubscribeEvent
     public static void onRitualUsed(RitualUsedEvent event){
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             event.setCanceled(CurseHelper.isRitualCasterEffects(player, event.getRitual(), event.isCanceled()));
         }
 
         if (event.getHitResult() instanceof EntityHitResult hitresult && hitresult.getEntity() instanceof Player target){
-            event.setCanceled(CurseHelper.isRitualTargetEffects(target, event.getRitual(), event.getEntityLiving(), event.isCanceled()));
+            event.setCanceled(CurseHelper.isRitualTargetEffects(target, event.getRitual(), event.getEntity(), event.isCanceled()));
         }
     }
     @SubscribeEvent
@@ -309,7 +308,7 @@ public class ApiEvents {
     @SubscribeEvent
     public static void onLivingHeal(LivingHealEvent event){
         float bloodCursePenalty = 1f;
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             for (ItemStack item : player.getInventory().items) {
                 bloodCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
                             curse.getCurse() != null && !curse.getCurse().isTemporary() &&
@@ -317,7 +316,7 @@ public class ApiEvents {
                         .toList().size();
             }
         }
-        for (ItemStack item : event.getEntityLiving().getAllSlots()) {
+        for (ItemStack item : event.getEntity().getAllSlots()) {
             bloodCursePenalty += 0.4f * CurseHelper.getCurses(item).stream().filter(curse ->
                             curse.getCurse() != null && !curse.getCurse().isTemporary() &&
                                     curse.getCurse().getElement() == ParanormalElement.SANGUE)
@@ -327,12 +326,12 @@ public class ApiEvents {
     }
     @SubscribeEvent
     public static void onPlayerXPChange(PlayerXpEvent.XpChange event){
-        event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                playerAbilities.getPowers().forEach(power -> event.setAmount(power.onXPChange(event.getPlayer(), event.getAmount()))));
+        event.getEntity().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                playerAbilities.getPowers().forEach(power -> event.setAmount(power.onXPChange(event.getEntity(), event.getAmount()))));
     }
     @SubscribeEvent
     public static void onPlayerXPLevelChange(PlayerXpEvent.LevelChange event){
-        event.getPlayer().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
-                playerAbilities.getPowers().forEach(power -> event.setLevels(power.onXPLevelChange(event.getPlayer(), event.getLevels()))));
+        event.getEntity().getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).ifPresent(playerAbilities ->
+                playerAbilities.getPowers().forEach(power -> event.setLevels(power.onXPLevelChange(event.getEntity(), event.getLevels()))));
     }
 }

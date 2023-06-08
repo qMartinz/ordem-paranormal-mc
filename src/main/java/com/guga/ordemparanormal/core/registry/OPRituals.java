@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.core.registry;
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
-import com.guga.ordemparanormal.common.ritual.CurseRitual;
 import com.guga.ordemparanormal.common.ritual.*;
 import net.minecraft.resources.ResourceLocation;
 

@@ -11,7 +11,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -73,9 +72,9 @@ public class PlayerPower {
     public String getTranslationKey(){
         return getId().getNamespace() + ".power." + getId().getPath();
     }
-    public Component getDisplayName(){ return new TranslatableComponent(getTranslationKey()); }
+    public Component getDisplayName(){ return Component.translatable(getTranslationKey()); }
     public FormattedText getDescription(){
-        return new TranslatableComponent(this.getTranslationKey() + ".description").withStyle(ChatFormatting.WHITE);
+        return Component.translatable(this.getTranslationKey() + ".description").withStyle(ChatFormatting.WHITE);
     }
     /**
      * Utilizado para checar se o jogador pode colocar este poder em um slot de poder ativo.
@@ -147,7 +146,7 @@ public class PlayerPower {
      * Chamado a cada tick
      *
      * @param player    o jogador que possui o poder
-     * @param tickCount
+     * @param tickCount quantidade de ticks
      */
     public void onTick(Player player, int tickCount){}
     /**

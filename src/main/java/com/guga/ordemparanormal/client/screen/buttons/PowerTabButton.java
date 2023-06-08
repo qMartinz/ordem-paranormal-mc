@@ -11,13 +11,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.TextComponent;
 
 public class PowerTabButton extends AbstractButton {
     public final ParanormalElement element;
     public final boolean selected;
     public PowerTabButton(int x, int y, int width, int height, ParanormalElement element, boolean selected) {
-        super(x, y, width, height, TextComponent.EMPTY);
+        super(x, y, width, height, CommonComponents.EMPTY);
         this.element = element;
         this.selected = selected;
     }

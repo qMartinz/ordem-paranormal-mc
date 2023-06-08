@@ -4,7 +4,6 @@ import com.guga.ordemparanormal.api.abilities.ritual.IRitualCaster;
 import com.guga.ordemparanormal.api.abilities.ritual.RitualCaster;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -29,7 +28,8 @@ public class RitualBook extends Item {
             if (i < 0) return;
 
             IAbilitiesCap abilities = player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
-            if (abilities == null) return;
+            if (abilities == null) {
+            }
         }
     }
     @Override

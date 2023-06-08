@@ -1,8 +1,6 @@
 package com.guga.ordemparanormal.core;
 
 import com.guga.ordemparanormal.client.ClientEvents;
-import com.guga.ordemparanormal.client.Keybind;
-import com.guga.ordemparanormal.client.Overlay;
 import com.guga.ordemparanormal.client.renderer.*;
 import com.guga.ordemparanormal.client.screen.BloodTableScreen;
 import com.guga.ordemparanormal.client.screen.DeathTableScreen;
@@ -48,14 +46,14 @@ public class OrdemParanormal {
 
 		bus.addListener(this::apiSetup);
 		OPParticles.PARTICLE_TYPES.register(bus);
-		OPStructures.STRUCTURE_FEATURES.register(bus);
+		OPStructures.STRUCTURE_TYPES.register(bus);
 		OPEffects.register(bus);
 		OPPois.register(bus);
 		OPProfessions.register(bus);
 		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
 		OPLootFunctions.LOOT_FUNCTIONS.register(bus);
 		OPLootItemConditions.LOOT_CONDITIONS.register(bus);
-		OPLootModifiers.LOOT_MODIFIERS.register(bus);
+		OPLootModifiers.register(bus);
 		OPTriggers.init();
 		OPCreativeTabs.init();
 		OPMenuTypes.MENUS.register(bus);
@@ -96,11 +94,6 @@ public class OrdemParanormal {
 		});
 	}
 	public void clientSetup(final FMLClientSetupEvent event){
-		MinecraftForge.EVENT_BUS.register(new Overlay());
-		MinecraftForge.EVENT_BUS.register(new Keybind());
-
-		Overlay.registerOverlays();
-
 		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ_BLOCK.get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(OPBlocks.ALTAR_TRANSCENDER.get(), RenderType.cutout());
 

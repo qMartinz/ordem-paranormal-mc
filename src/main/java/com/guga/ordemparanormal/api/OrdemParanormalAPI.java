@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class OrdemParanormalAPI {
-    private ConcurrentHashMap<ResourceLocation, AbstractRitual> ritualMap = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<ResourceLocation, PlayerPower> powerMap = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<ResourceLocation, AbstractCurse> curseMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<ResourceLocation, AbstractRitual> ritualMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<ResourceLocation, PlayerPower> powerMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<ResourceLocation, AbstractCurse> curseMap = new ConcurrentHashMap<>();
     public AbstractRitual registerRitual(ResourceLocation id, AbstractRitual ritual){
         return ritualMap.put(id, ritual);
     }

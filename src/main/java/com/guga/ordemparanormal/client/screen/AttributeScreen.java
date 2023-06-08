@@ -10,15 +10,15 @@ import com.guga.ordemparanormal.client.screen.buttons.AttributeButton;
 import com.guga.ordemparanormal.client.screen.buttons.PowerScreenButton;
 import com.guga.ordemparanormal.client.screen.buttons.SelectedRitualButtons;
 import com.guga.ordemparanormal.client.screen.widgets.SelectedRitual;
-import com.guga.ordemparanormal.common.CommonComponents;
+import com.guga.ordemparanormal.common.OPCommonComponents;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class AttributeScreen extends Screen {
     public static final ResourceLocation TEXTURES = new ResourceLocation(OrdemParanormal.MOD_ID, "textures/gui/nexscreen.png");
     private final int screenHeight = 217;
     public AttributeScreen() {
-        super(TextComponent.EMPTY);
+        super(CommonComponents.EMPTY);
     }
     @Override
     protected void init(){
@@ -67,7 +67,7 @@ public class AttributeScreen extends Screen {
 
         blit(stack, screenX, screenY, 0, 0, 98, this.screenHeight);
 
-        String label = CommonComponents.ATTRIBUTE_POINTS.getString();
+        String label = OPCommonComponents.ATTRIBUTE_POINTS.getString();
         String value = String.valueOf(playerNex.getAttributePoints());
         font.draw(stack, label, screenX + 98/2f - font.width(label)/2f, screenY - 2 - font.lineHeight*2, 0xFFFFFF);
         font.draw(stack, value, screenX + 98/2f - font.width(value)/2f, screenY - 1 - font.lineHeight, 0xFFFFFF);

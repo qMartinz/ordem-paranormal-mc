@@ -17,20 +17,16 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -57,13 +53,13 @@ public abstract class AbstractRitual{
         return getId().getNamespace() + ".ritual." + getId().getPath();
     }
     public Component getDisplayName(){
-        return new TranslatableComponent(getTranslationKey());
+        return  Component.translatable(getTranslationKey());
     }
     public ParanormalElement getElement() {
         return element;
     }
     public Component getDescription(){
-        return new TranslatableComponent(this.getTranslationKey() + ".description").withStyle(ChatFormatting.WHITE);
+        return Component.translatable(this.getTranslationKey() + ".description").withStyle(ChatFormatting.WHITE);
     }
     public int getTier() { return tier; }
     public int getPresenceRequired(){

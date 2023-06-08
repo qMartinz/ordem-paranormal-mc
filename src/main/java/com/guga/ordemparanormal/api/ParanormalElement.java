@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.api;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.mojang.math.Vector3f;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.StringRepresentable;
 
 import javax.annotation.Nonnull;
@@ -58,7 +57,7 @@ public enum ParanormalElement implements StringRepresentable {
         return "ordemparanormal.element." + getSerializedName();
     }
     public Component getDisplayName() {
-        return new TranslatableComponent(getTranslationKey());
+        return Component.translatable(getTranslationKey());
     }
     public static ParanormalElement byName(String name) {
         for (ParanormalElement paranormalElement : values()) {

@@ -7,10 +7,11 @@ import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.api.util.ResourceUtil;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.client.screen.buttons.PowerSlotButton;
 import com.guga.ordemparanormal.client.screen.buttons.PowerTabButton;
-import com.guga.ordemparanormal.common.CommonComponents;
+import com.guga.ordemparanormal.common.OPCommonComponents;
 import com.guga.ordemparanormal.common.power.Afinidade;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -35,7 +36,7 @@ public class PowerScreen extends Screen {
     public double yOffset;
     public int selectedSlot = 6;
     protected PowerScreen(ParanormalElement element) {
-        super(TextComponent.EMPTY);
+        super(CommonComponents.EMPTY);
         this.element = element;
     }
     @Override
@@ -49,16 +50,16 @@ public class PowerScreen extends Screen {
         powerIcons.forEach(button -> iconsY.put(button, button.y));
         powerIcons.forEach(this::addWidget);
 
-        this.addWidget(new Button(37, (int) (this.height/2f - 7/2f), 7, 7, TextComponent.EMPTY, button -> {
+        this.addWidget(new Button(37, (int) (this.height/2f - 7/2f), 7, 7, CommonComponents.EMPTY, button -> {
             if (xOffset < -350) xOffset = 0;
         }));
-        this.addWidget(new Button(this.width - 13, (int) (this.height/2f - 7/2f), 7, 7, TextComponent.EMPTY, button -> {
+        this.addWidget(new Button(this.width - 13, (int) (this.height/2f - 7/2f), 7, 7, CommonComponents.EMPTY, button -> {
             if (xOffset > 350) xOffset = 0;
         }));
-        this.addWidget(new Button((int) (tabWidth/2f - 7/2f) + 37, 6, 7, 7, TextComponent.EMPTY, button -> {
+        this.addWidget(new Button((int) (tabWidth/2f - 7/2f) + 37, 6, 7, 7, CommonComponents.EMPTY, button -> {
             if (yOffset < -200) yOffset = 0;
         }));
-        this.addWidget(new Button((int) (tabWidth/2f - 7/2f) + 37, this.height - 13, 7, 7, TextComponent.EMPTY, button -> {
+        this.addWidget(new Button((int) (tabWidth/2f - 7/2f) + 37, this.height - 13, 7, 7, CommonComponents.EMPTY, button -> {
             if (yOffset > 200) yOffset = 0;
         }));
 
@@ -92,7 +93,7 @@ public class PowerScreen extends Screen {
         if (yOffset < -200) blit(stack, (int) (tabWidth/2f - 7/2f) + 37, 6, 0, 7, 7, 7);
         if (yOffset > 200) blit(stack, (int) (tabWidth/2f - 7/2f) + 37, this.height - 13, 7, 0, 7, 7);
 
-        Component label = CommonComponents.POWER_POINTS;
+        Component label = OPCommonComponents.POWER_POINTS;
         String value = String.valueOf(playerNex.getPowerPoints());
         font.draw(stack, label, tabWidth/2f - font.width(label)/2f + 37, 15, 0xFFFFFF);
         font.draw(stack, value, tabWidth/2f - font.width(value)/2f + 37, 16 + font.lineHeight, 0xFFFFFF);
@@ -180,7 +181,7 @@ public class PowerScreen extends Screen {
                 blit(stack, tabWidth / 2 - 35 + 26 * i, height - 45, 20 * playerPowers.getActivePower(i).getElement().index, 84, 20, 20);
 
                 ResourceLocation icon = new ResourceLocation(playerPowers.getActivePower(i).getId().getNamespace(), "textures/paranormal_power/" + playerPowers.getActivePower(i).getId().getPath() + ".png");
-                if (minecraft.getResourceManager().hasResource(icon)) {
+                if (ResourceUtil.hasResource(minecraft, icon)) {
                     RenderSystem.setShaderTexture(0, icon);
                     blit(stack, tabWidth / 2 - 33 + 26 * i, height - 43, 0, 0, 16, 16, 16, 16);
                 }
@@ -200,7 +201,7 @@ public class PowerScreen extends Screen {
 
                 if (power.getNexRequired() != 0) {
                     int nex = power.getNexRequired() * 5 - (power.getNexRequired() == 20 ? 1 : 0);
-                    requisites.add(CommonComponents.NEX_ABBREVIATION.plainCopy().append(" " + nex + "%"));
+                    requisites.add(OPCommonComponents.NEX_ABBREVIATION.plainCopy().append(" " + nex + "%"));
                 }
                 if (power.getAttributesRequired()[ParanormalAttribute.STRENGTH.index] != 0)
                     requisites.add(ParanormalAttribute.STRENGTH.getDisplayName().plainCopy().append(" " + power.getAttributesRequired()[ParanormalAttribute.STRENGTH.index]));
@@ -212,10 +213,10 @@ public class PowerScreen extends Screen {
                     requisites.add(ParanormalAttribute.PRESENCE.getDisplayName().plainCopy().append(" " + power.getAttributesRequired()[ParanormalAttribute.PRESENCE.index]));
 
                 Iterator<MutableComponent> iterator = requisites.iterator();
-                MutableComponent requisitesComponent = CommonComponents.REQUISITES.plainCopy().append(": ").append(iterator.next());
+                MutableComponent requisitesComponent = OPCommonComponents.REQUISITES.plainCopy().append(": ").append(iterator.next());
                 iterator.forEachRemaining(req -> requisitesComponent.append(", " + req.getString()));
 
-                splitLines.add(TextComponent.EMPTY);
+                splitLines.add(CommonComponents.EMPTY);
                 splitLines.addAll(font.getSplitter().splitLines(requisitesComponent, 122, Style.EMPTY.applyFormat(ChatFormatting.WHITE)));
             }
 

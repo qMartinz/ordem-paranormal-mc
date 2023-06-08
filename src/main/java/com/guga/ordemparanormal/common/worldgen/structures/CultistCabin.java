@@ -1,50 +1,78 @@
 package com.guga.ordemparanormal.common.worldgen.structures;
 
+import com.guga.ordemparanormal.core.registry.OPStructures;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.StructureSets;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
-import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
-import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
-import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
-import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 import java.util.Optional;
 
-public class CultistCabin extends StructureFeature<JigsawConfiguration> {
-    public static final Codec<JigsawConfiguration> CODEC = RecordCodecBuilder.create((codec) -> codec.group(
-            StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(JigsawConfiguration::startPool),
-            Codec.intRange(0, 30).fieldOf("size").forGetter(JigsawConfiguration::maxDepth)
-    ).apply(codec, JigsawConfiguration::new));
+;
 
-    public CultistCabin() {
-        super(CODEC, CultistCabin::createPiecesGenerator, PostPlacementProcessor.NONE);
+public class CultistCabin extends Structure {
+    public static final Codec<CultistCabin> CODEC = RecordCodecBuilder.<CultistCabin>mapCodec(instance ->
+            instance.group(CultistCabin.settingsCodec(instance),
+                    StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
+                    ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
+                    Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
+                    HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
+                    Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
+                    Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
+            ).apply(instance, CultistCabin::new)).codec();
+    private final Holder<StructureTemplatePool> startPool;
+    private final Optional<ResourceLocation> startJigsawName;
+    private final int size;
+    private final HeightProvider startHeight;
+    private final Optional<Heightmap.Types> projectStartToHeightmap;
+    private final int maxDistanceFromCenter;
+    public CultistCabin(StructureSettings config, Holder<StructureTemplatePool> startPool,
+                        Optional<ResourceLocation> startJigsawName, int size, HeightProvider startHeight,
+                        Optional<Heightmap.Types> projectStartToHeightmap, int maxDistanceFromCenter) {
+        super(config);
+        this.startPool = startPool;
+        this.startJigsawName = startJigsawName;
+        this.size = size;
+        this.startHeight = startHeight;
+        this.projectStartToHeightmap = projectStartToHeightmap;
+        this.maxDistanceFromCenter = maxDistanceFromCenter;
     }
-    @Override
-    public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
-    }
-
-    private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
+    private static boolean extraSpawningChecks(GenerationContext context) {
         ChunkPos chunkpos = context.chunkPos();
 
-        return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.VILLAGES, context.seed(), chunkpos.x, chunkpos.z, 3);
-    }
-    public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
+        boolean flag1 = context.chunkGenerator().hasStructureChunkInRange(StructureSets.VILLAGES, context.randomState(),
+                context.seed(), chunkpos.x, chunkpos.z, 3);
 
-        if (!CultistCabin.isFeatureChunk(context)) {
+        return flag1;
+    }
+    @Override
+    public Optional<GenerationStub> findGenerationPoint(GenerationContext context) {
+        if (!CultistCabin.extraSpawningChecks(context)) {
             return Optional.empty();
         }
 
-        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
-        blockpos.above();
+        int startY = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
 
-        return JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
+        ChunkPos chunkPos = context.chunkPos();
+        BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), startY, chunkPos.getMinBlockZ());
+
+        Optional<GenerationStub> structurePiecesGenerator =
+                JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockPos,
+                        false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+        return structurePiecesGenerator;
+    }
+    @Override
+    public StructureType<?> type() {
+        return OPStructures.CULTIST_CABIN.get();
     }
 }

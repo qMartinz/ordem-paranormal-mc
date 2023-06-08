@@ -6,9 +6,7 @@ import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.OffensiveRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.UtilityRitual;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
-import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
@@ -46,9 +44,9 @@ public class RitualProjectile extends AbstractArrow {
     });
     public AbstractRitual ritual;
     private LivingEntity target;
-    private double iX;
-    private double iY;
-    private double iZ;
+    private final double iX;
+    private final double iY;
+    private final double iZ;
     public RitualProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_) {
         super(p_36721_, p_36722_);
         if (ritual == null) ritual = AbstractRitual.EMPTY;

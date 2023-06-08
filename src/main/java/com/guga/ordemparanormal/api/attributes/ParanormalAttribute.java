@@ -1,9 +1,7 @@
 package com.guga.ordemparanormal.api.attributes;
 
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +17,13 @@ public enum ParanormalAttribute {
         this.name = name;
     }
     public Component getDisplayName(){
-        return new TranslatableComponent(name);
+        return Component.translatable(name);
     }
     public List<Component> getDescription() {
         List<Component> lines = new ArrayList<>();
         for (int i = 1; i < 4; i++){
-            lines.add(new TranslatableComponent(name + ".description.line_" + i));
-            if (i == 1) lines.add(TextComponent.EMPTY);
+            lines.add(Component.translatable(name + ".description.line_" + i));
+            if (i == 1) lines.add(CommonComponents.EMPTY);
         }
 
         return lines;

@@ -1,13 +1,11 @@
 package com.guga.ordemparanormal.client.renderer;
 
 import com.guga.ordemparanormal.client.model.BidenteModel;
-import com.guga.ordemparanormal.client.model.NevoaModel;
 import com.guga.ordemparanormal.common.entity.ThrownBidente;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

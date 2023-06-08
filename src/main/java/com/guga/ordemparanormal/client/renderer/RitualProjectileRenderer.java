@@ -1,9 +1,7 @@
 package com.guga.ordemparanormal.client.renderer;
 
-import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.client.model.RitualProjectileModel;
 import com.guga.ordemparanormal.common.entity.RitualProjectile;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;

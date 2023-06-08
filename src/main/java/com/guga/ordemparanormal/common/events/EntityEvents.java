@@ -27,7 +27,6 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -36,7 +35,7 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -94,22 +93,22 @@ public class EntityEvents {
 		float amount = event.getAmount();
 
 		// Aumenta ou diminui o dano para certos danos elementais
-		if (event.getEntity() instanceof LivingEntity entity && event.getSource() instanceof ParanormalDamageSource source) {
-			if (ParanormalDamageSource.isEntityWeakTo(entity, source)) amount = amount * 2;
-			if (ParanormalDamageSource.isEntityResistant(entity, source)) amount = amount / 2;
+		if (event.getSource() instanceof ParanormalDamageSource source) {
+			if (ParanormalDamageSource.isEntityWeakTo(event.getEntity(), source)) amount = amount * 2;
+			if (ParanormalDamageSource.isEntityResistant(event.getEntity(), source)) amount = amount / 2;
 		}
 
 		if (event.getSource().getEntity() instanceof LivingEntity living) {
 			for (MobEffectInstance effect : living.getActiveEffects()){
 				if (effect.getEffect() instanceof OPEffects.ParanormalEffect opeffect) {
-					amount = opeffect.onAttack(living, event.getEntityLiving(), amount, event.getSource());
+					amount = opeffect.onAttack(living, event.getEntity(), amount, event.getSource());
 				}
 			}
 		}
 
-		for (MobEffectInstance effect : event.getEntityLiving().getActiveEffects()){
+		for (MobEffectInstance effect : event.getEntity().getActiveEffects()){
 			if (effect.getEffect() instanceof OPEffects.ParanormalEffect opeffect) {
-				amount = opeffect.onHurt(event.getEntityLiving(), event.getEntityLiving(), amount, event.getSource());
+				amount = opeffect.onHurt(event.getEntity(), event.getEntity(), amount, event.getSource());
 			}
 		}
 
@@ -282,7 +281,7 @@ public class EntityEvents {
 		}
 	}
 	@SubscribeEvent
-	public static void onEntityRegisterGoals(EntityJoinWorldEvent event){
+	public static void onEntityRegisterGoals(EntityJoinLevelEvent event){
 		if (event.getEntity() instanceof AbstractVillager villager){
 			villager.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(villager, Monster.class, true));
 			villager.targetSelector.addGoal(2, new HurtByTargetGoal(villager));

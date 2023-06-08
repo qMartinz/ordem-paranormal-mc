@@ -36,7 +36,7 @@ public class MesaSangue extends MesaMaldicao{
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof BloodTableBlockEntity e && !e.isOpen()) {
-                NetworkHooks.openGui(((ServerPlayer)pPlayer), (BloodTableBlockEntity)entity, pPos);
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (BloodTableBlockEntity)entity, pPos);
             } else {
                 throw new IllegalStateException("Container provider is missing.");
             }

@@ -12,7 +12,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -24,7 +24,7 @@ public class RitualCommand {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
                 playerNex.setRitualSlots(playerNex.getRitualSlots() + amount));
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.rituals.slots.add.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.rituals.slots.add.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> REMOVE_SLOTS = context -> {
@@ -34,7 +34,7 @@ public class RitualCommand {
         player.getCapability(PlayerNexProvider.PLAYER_NEX).ifPresent(playerNex ->
                 playerNex.setRitualSlots(playerNex.getRitualSlots() - amount));
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.rituals.slots.remove.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.rituals.slots.remove.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> ADD_RITUAL = context -> {
@@ -48,12 +48,12 @@ public class RitualCommand {
             ApiEvents.syncPlayerPowers(player);
 
             context.getSource().sendSuccess(
-                    new TranslatableComponent("ordemparanormal.commands.nex.rituals.add.success",
+                    Component.translatable("ordemparanormal.commands.nex.rituals.add.success",
                             api.getRitual(ritual).getDisplayName()), true);
             return 1;
         } else {
             context.getSource().sendFailure(
-                    new TranslatableComponent("ordemparanormal.commands.nex.rituals.unknown_id",
+                    Component.translatable("ordemparanormal.commands.nex.rituals.unknown_id",
                             ritual.toString()));
             return 1;
         }
@@ -69,12 +69,12 @@ public class RitualCommand {
         ApiEvents.syncPlayerPowers(player);
 
         context.getSource().sendSuccess(
-                new TranslatableComponent("ordemparanormal.commands.nex.rituals.remove.success",
+                Component.translatable("ordemparanormal.commands.nex.rituals.remove.success",
                         api.getRitual(ritual).getDisplayName()), true);
         return 1;
         } else {
             context.getSource().sendFailure(
-                    new TranslatableComponent("ordemparanormal.commands.nex.rituals.unknown_id",
+                    Component.translatable("ordemparanormal.commands.nex.rituals.unknown_id",
                             ritual.toString()));
             return 1;
         }

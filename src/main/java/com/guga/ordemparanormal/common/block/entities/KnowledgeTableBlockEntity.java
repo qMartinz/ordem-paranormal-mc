@@ -10,7 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -123,6 +123,6 @@ public class KnowledgeTableBlockEntity extends BlockEntity implements MenuProvid
     }
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("ordemparanormal.block.block_entity.curse_table");
+        return Component.translatable("ordemparanormal.block.block_entity.curse_table");
     }
 }

@@ -1,12 +1,10 @@
 package com.guga.ordemparanormal.common.entity.illagers;
 
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
-import com.guga.ordemparanormal.api.curses.CurseHelper;
 import com.guga.ordemparanormal.common.entity.RitualCasterMob;
 import com.guga.ordemparanormal.common.entity.RitualProjectile;
 import com.guga.ordemparanormal.common.goals.CastDefensiveRitualGoal;
 import com.guga.ordemparanormal.common.goals.CastRitualGoal;
-import com.guga.ordemparanormal.core.registry.OPCurses;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPRituals;
 import net.minecraft.nbt.CompoundTag;
@@ -20,7 +18,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -32,7 +29,6 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 

@@ -6,9 +6,9 @@ import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.util.MathUtils;
+import com.guga.ordemparanormal.api.util.ResourceUtil;
 import com.guga.ordemparanormal.client.screen.PowerScreen;
 import com.guga.ordemparanormal.common.power.Afinidade;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.Packets;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -16,14 +16,14 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.ResourceLocation;
 
 public class PowerButton extends AbstractButton {
     private final PlayerPower power;
     private final Minecraft minecraft = Minecraft.getInstance();
     public PowerButton(int x, int y, PlayerPower power) {
-        super(x, y, 20, 20, TextComponent.EMPTY);
+        super(x, y, 20, 20, CommonComponents.EMPTY);
         this.power = power;
     }
     public void render(PoseStack stack, int pMouseX, int pMouseY, float pPartialTick) {
@@ -76,7 +76,7 @@ public class PowerButton extends AbstractButton {
         blit(stack, x, y, 20 * power.getElement().index, power.isActivePower() ? 84 : 64, 20, 20);
 
         ResourceLocation icon = new ResourceLocation(this.power.getId().getNamespace(), "textures/paranormal_power/" + this.power.getId().getPath() + ".png");
-        if (minecraft.getResourceManager().hasResource(icon)) {
+        if (ResourceUtil.hasResource(minecraft, icon)) {
             RenderSystem.setShaderTexture(0, icon);
             blit(stack, x + 2, y + 2, 0, 0, 16, 16, 16, 16);
         }

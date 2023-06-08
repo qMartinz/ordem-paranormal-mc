@@ -92,7 +92,7 @@ public class AltarTranscender extends HorizontalBlock {
 
                         if (pPlayer instanceof ServerPlayer serverPlayer) {
                             OPTriggers.LEARN_RITUAL.trigger(serverPlayer);
-                        };
+                        }
 
                         return InteractionResult.CONSUME;
                     }

@@ -33,7 +33,7 @@ public class Teleporte extends AbstractRitual implements OffensiveRitual, Defens
 
                 ritualItem.getOrCreateTag().put("teleport.coords", pos);
 
-            } else if (crouch == false
+            } else if (!crouch
                     && ritualItem.getOrCreateTag().contains("teleport.coords")) {
                 CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
@@ -54,7 +54,7 @@ public class Teleporte extends AbstractRitual implements OffensiveRitual, Defens
             boolean crouch = caster.isCrouching();
             LivingEntity target = (LivingEntity) rayTraceResult.getEntity();
 
-            if (crouch == false && ritualItem.getOrCreateTag().contains("teleport.coords")) {
+            if (!crouch && ritualItem.getOrCreateTag().contains("teleport.coords")) {
                 CompoundTag pos = ritualItem.getOrCreateTag().getCompound("teleport.coords");
 
                 Vec3 position = new Vec3(

@@ -82,6 +82,6 @@ public class CurseArmorLayer<T extends LivingEntity, M extends HumanoidModel<T>,
         return pSlot == EquipmentSlot.LEGS;
     }
     private A getArmorModel(EquipmentSlot p_117079_) {
-        return (A)(this.usesInnerModel(p_117079_) ? this.innerModel : this.outerModel);
+        return this.usesInnerModel(p_117079_) ? this.innerModel : this.outerModel;
     }
 }

@@ -2,19 +2,23 @@ package com.guga.ordemparanormal.client.screen.widgets;
 
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
-import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.api.util.ResourceUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraftforge.common.data.ExistingFileHelper;
+
+import java.util.stream.Collectors;
 
 public class SelectedRitual extends AbstractWidget {
     private int ritualIndex = 0;
     public SelectedRitual(int pX, int pY) {
-        super(pX, pY, 64, 64, TextComponent.EMPTY);
+        super(pX, pY, 64, 64, CommonComponents.EMPTY);
     }
     public void setRitualIndex(int ritualIndex) {
         this.ritualIndex = ritualIndex;
@@ -32,7 +36,7 @@ public class SelectedRitual extends AbstractWidget {
                 ResourceLocation symbol = new ResourceLocation(ritual.getId().getNamespace(),
                         "textures/ritual_symbol/" + ritual.getId().getPath() + ".png");
 
-                if (minecraft.getResourceManager().hasResource(symbol)) {
+                if (ResourceUtil.hasResource(minecraft, symbol)) {
                     RenderSystem.enableBlend();
                     RenderSystem.disableDepthTest();
                     RenderSystem.depthMask(false);

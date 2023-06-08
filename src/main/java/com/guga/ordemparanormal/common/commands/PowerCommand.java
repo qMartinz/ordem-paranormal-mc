@@ -14,7 +14,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -28,7 +28,7 @@ public class PowerCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.powers.points.add.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.powers.points.add.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> REMOVE_POINTS = context -> {
@@ -40,7 +40,7 @@ public class PowerCommand {
             Messages.sendToPlayer(new Packets.SyncNexToClient(playerNex.serializeNBT()), player);
         });
 
-        context.getSource().sendSuccess(new TranslatableComponent("ordemparanormal.commands.nex.powers.points.remove.success"), true);
+        context.getSource().sendSuccess(Component.translatable("ordemparanormal.commands.nex.powers.points.remove.success"), true);
         return 1;
     };
     private static final Command<CommandSourceStack> ADD_POWER = context -> {
@@ -58,12 +58,12 @@ public class PowerCommand {
             });
 
             context.getSource().sendSuccess(
-                    new TranslatableComponent("ordemparanormal.commands.nex.powers.add.success",
+                    Component.translatable("ordemparanormal.commands.nex.powers.add.success",
                             api.getPower(power).getDisplayName()), true);
             return 1;
         } else {
             context.getSource().sendFailure(
-                    new TranslatableComponent("ordemparanormal.commands.nex.powers.unknown_id",
+                    Component.translatable("ordemparanormal.commands.nex.powers.unknown_id",
                             power.toString()));
             return 1;
         }
@@ -83,12 +83,12 @@ public class PowerCommand {
             });
 
             context.getSource().sendSuccess(
-                    new TranslatableComponent("ordemparanormal.commands.nex.powers.remove.success",
+                    Component.translatable("ordemparanormal.commands.nex.powers.remove.success",
                             api.getPower(power).getDisplayName()), true);
             return 1;
         } else {
             context.getSource().sendFailure(
-                    new TranslatableComponent("ordemparanormal.commands.nex.powers.unknown_id",
+                    Component.translatable("ordemparanormal.commands.nex.powers.unknown_id",
                             power.toString()));
             return 1;
         }

@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
-import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.curses.AbstractCurse;
 import com.guga.ordemparanormal.common.curses.*;
 import net.minecraft.resources.ResourceLocation;

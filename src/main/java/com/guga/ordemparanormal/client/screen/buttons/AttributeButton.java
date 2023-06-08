@@ -10,7 +10,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.player.Player;
 
 public class AttributeButton extends AbstractButton {
@@ -18,7 +17,7 @@ public class AttributeButton extends AbstractButton {
     private final Minecraft minecraft = Minecraft.getInstance();
     private final Player player = minecraft.player;
     public AttributeButton(int pX, int pY, ParanormalAttribute attribute) {
-        super(pX, pY, 32, 32, TextComponent.EMPTY);
+        super(pX, pY, 32, 32, CommonComponents.EMPTY);
 
         this.attribute = attribute;
     }

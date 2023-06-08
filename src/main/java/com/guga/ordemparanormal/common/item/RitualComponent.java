@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.common.item;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.sounds.SoundEvent;

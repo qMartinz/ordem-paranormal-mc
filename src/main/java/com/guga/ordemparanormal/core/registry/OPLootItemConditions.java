@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.core.registry;
 import com.guga.ordemparanormal.common.loot.loot_conditions.CurseCondition;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.Serializer;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;

@@ -12,24 +12,24 @@ description="\"O Paranormal não vem para a nossa realidade facilmente, ou pelo 
 [[dependencies.ordemparanormal]]
     modId="forge"
     mandatory=true
-    versionRange="[40.1.51,)"
+    versionRange="[43.2.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.ordemparanormal]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,1.19)"
+    versionRange="[1.19.2]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.ordemparanormal]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[5.4.0,)"
+    versionRange = "[6.1.2,)"
     ordering = "BEFORE"
     side = "BOTH"
 [[dependencies.ordemparanormal]]
 modId = "patchouli"
 mandatory = true
-versionRange = "[1.18.2-71,)"
+versionRange = "[1.19.2-77,)"
 ordering = "BEFORE"
 side = "BOTH"

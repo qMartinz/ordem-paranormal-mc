@@ -6,7 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -62,7 +62,7 @@ public abstract class AbstractCurse {
         return this.getId().getNamespace() + ".curse." + this.getId().getPath();
     }
     public Component getDisplayName() {
-        MutableComponent name = new TranslatableComponent(getTranslationKey());
+        MutableComponent name = Component.translatable(getTranslationKey());
         switch (element){
             case SANGUE -> name.withStyle(ChatFormatting.DARK_RED);
             case CONHECIMENTO -> name.withStyle(ChatFormatting.GOLD);

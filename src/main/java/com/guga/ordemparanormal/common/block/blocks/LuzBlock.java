@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.common.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -28,14 +29,14 @@ public class LuzBlock extends Block {
         return Shapes.empty();
     }
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRandom) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         super.animateTick(pState, pLevel, pPos, pRandom);
 
         for (int i = 0; i < 3; i++){
             pLevel.addParticle(ParticleTypes.ELECTRIC_SPARK,
-                    pPos.getX() + 0.5d + pRandom.nextDouble(-0.15d, 0.15d),
-                    pPos.getY() + 0.5d + pRandom.nextDouble(-0.15d, 0.15d),
-                    pPos.getZ() + 0.5d + pRandom.nextDouble(-0.15d, 0.15d),
+                    pPos.getX() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
+                    pPos.getY() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
+                    pPos.getZ() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
                     0d, 0.3d, 0d);
         }
     }

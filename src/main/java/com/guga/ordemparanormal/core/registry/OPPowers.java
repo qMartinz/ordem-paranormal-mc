@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
 import com.guga.ordemparanormal.api.OrdemParanormalAPI;
-import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.AttributeModPower;
 import com.guga.ordemparanormal.api.abilities.power.EffortModPower;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;

@@ -8,12 +8,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.TextComponent;
 
 public class SelectedRitualButtons {
     public static class Forward extends AbstractButton{
         public Forward(int x, int y, int width, int height) {
-            super(x, y, width, height, TextComponent.EMPTY);
+            super(x, y, width, height, CommonComponents.EMPTY);
         }
         @Override
         public void onPress() {
@@ -41,7 +40,7 @@ public class SelectedRitualButtons {
     }
     public static class Backward extends AbstractButton{
         public Backward(int x, int y, int width, int height) {
-            super(x, y, width, height, TextComponent.EMPTY);
+            super(x, y, width, height, CommonComponents.EMPTY);
         }
         @Override
         public void onPress() {

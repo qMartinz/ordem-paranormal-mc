@@ -8,7 +8,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
 
 public class Ardente extends AbstractCurse {
     public Ardente(ResourceLocation id, ParanormalElement element, CurseCategory category, EquipmentSlot... slots) {

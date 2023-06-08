@@ -7,8 +7,7 @@ import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
-import com.guga.ordemparanormal.common.CommonComponents;
-import com.guga.ordemparanormal.core.OrdemParanormal;
+import com.guga.ordemparanormal.common.OPCommonComponents;
 import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
@@ -83,7 +82,7 @@ public class RitualItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if (pStack.getOrCreateTag().getBoolean("ritualLearned")){
-            pTooltipComponents.add(CommonComponents.RITUAL_LEARNED);
+            pTooltipComponents.add(OPCommonComponents.RITUAL_LEARNED);
 
             ChatFormatting formatting = ChatFormatting.WHITE;
             switch (ritual.getElement()){
@@ -96,11 +95,11 @@ public class RitualItem extends Item {
             }
 
             Component ritual = this.getRitual().getDisplayName().plainCopy().withStyle(formatting);
-            pTooltipComponents.add(CommonComponents.CURSED_WITH.plainCopy().append(ritual));
+            pTooltipComponents.add(OPCommonComponents.CURSED_WITH.plainCopy().append(ritual));
         } else {
-            pTooltipComponents.add(CommonComponents.RITUAL_UNKNOWN);
+            pTooltipComponents.add(OPCommonComponents.RITUAL_UNKNOWN);
             if (ritual.getPresenceRequired() > 0)
-                pTooltipComponents.add(CommonComponents.RITUAL_REQUIRES.copy()
+                pTooltipComponents.add(OPCommonComponents.RITUAL_REQUIRES.copy()
                     .append(ParanormalAttribute.PRESENCE.getDisplayName().getString() + " " + ritual.getPresenceRequired()));
         }
     }

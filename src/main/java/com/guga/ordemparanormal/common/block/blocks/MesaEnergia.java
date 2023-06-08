@@ -36,7 +36,7 @@ public class MesaEnergia extends MesaMaldicao{
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof EnergyTableBlockEntity e && !e.isOpen()) {
-                NetworkHooks.openGui(((ServerPlayer)pPlayer), (EnergyTableBlockEntity)entity, pPos);
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (EnergyTableBlockEntity)entity, pPos);
             } else {
                 throw new IllegalStateException("Container provider is missing.");
             }
