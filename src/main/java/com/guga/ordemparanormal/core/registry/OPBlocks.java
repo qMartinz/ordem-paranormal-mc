@@ -6,6 +6,8 @@ import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -24,4 +26,6 @@ public final class OPBlocks {
             MesaMorte::new, Rarity.RARE, OPCreativeTabs.CURSES_TAB);
     public static final RegistryObject<Block> LUZ_BLOCK = HELPER.createBlock("luz_block",
             LuzBlock::new, (CreativeModeTab) null);
+    public static final RegistryObject<Block> PURGATORIO_BLOCK = HELPER.createBlock("purgatorio_block",
+            PurgatorioBlock::new, (CreativeModeTab) null);
 }

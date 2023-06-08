@@ -207,6 +207,8 @@ public class ModPtBrProvider extends ModLangProvider {
 				"Confunde a mente do alvo, impedindo-o de se mover.");
 		add(OPRituals.ALTERAR_MEMORIA, "Alterar Memória",
 				"Altera as memórias do alvo. Villagers se tornam mais amigáveis e diminuem seus preços.");
+		add(OPRituals.PURGATORIO, "Purgatório",
+				"Faz brotar uma poça de sangue pegajoso na área afetada. Seres na área são enfraquecidos. Um ser que tente sair da área é acometido de uma dor terrível");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Pontos de Poder");
@@ -355,6 +357,7 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEffects.CHARISMATIC.get(), "Carismático");
 		add(OPEffects.ZERO_ENTROPY.get(), "Entropia Zerada");
 		add(OPEffects.ADRENALINE.get(), "Adrenalina");
+		add(OPEffects.PURGATORY.get(), "Purgatório");
 
 		// -------------------------------------------------------------
 

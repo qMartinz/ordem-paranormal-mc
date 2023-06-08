@@ -1,0 +1,25 @@
+{
+  "name": "ordemparanormal:labyrinth/wall_w_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ordemparanormal:labyrinth/wall_h_dw",
+        "processors": "ordemparanormal:waterlogging_fix",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "ordemparanormal:labyrinth/wall_h_cw",
+        "processors": "ordemparanormal:waterlogging_fix",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -142,7 +142,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 		simpleBlockItem(OPBlocks.MESA_CONHECIMENTO.get().asItem());
 		simpleBlockItem(OPBlocks.MESA_MORTE.get().asItem());
 		simpleBlockItem(OPBlocks.LUZ_BLOCK.get().asItem());
-
+		getBuilder(OPBlocks.PURGATORIO_BLOCK.get().getRegistryName().toString())
+				.parent(getExistingFile(mcLoc("block/carpet")));
 	}
 
 }

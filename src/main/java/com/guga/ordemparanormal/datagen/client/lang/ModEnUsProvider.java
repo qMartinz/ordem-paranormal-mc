@@ -207,6 +207,8 @@ public class ModEnUsProvider extends ModLangProvider {
 				"Confunses the mind of your target, making it impossible for them to move.");
 		add(OPRituals.ALTERAR_MEMORIA, "Alter Memories",
 				"Distorts the memories of your target. Villagers are more friendly towards you, lowering their prices.");
+		add(OPRituals.PURGATORIO, "Purgatory",
+				"Creates a puddle of sticky blood in the affected area. Beings in the area are weakened. A being that tries to leave the area is stricken by a terrible pain.");
 
 		// Poderes
 		add("ordemparanormal.nex.power_points", "Power Points");
@@ -354,7 +356,7 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEffects.WEAKENED_MIND.get(), "Weakened Mind");
 		add(OPEffects.CHARISMATIC.get(), "Charismatic");
 		add(OPEffects.ZERO_ENTROPY.get(), "Zero Entropy");
-		add(OPEffects.ADRENALINE.get(), "Adrenaline");
+		add(OPEffects.PURGATORY.get(), "Purgatory");
 
 		// -------------------------------------------------------------
 

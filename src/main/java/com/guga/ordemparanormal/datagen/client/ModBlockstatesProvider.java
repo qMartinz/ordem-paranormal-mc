@@ -2,8 +2,10 @@ package com.guga.ordemparanormal.datagen.client;
 
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPBlocks;
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -33,6 +35,10 @@ public class ModBlockstatesProvider extends BlockStateProvider {
         simpleBlock(OPBlocks.LUZ_BLOCK.get(),
                 new ModelFile.ExistingModelFile(
                         new ResourceLocation(OrdemParanormal.MOD_ID, "block/luz_block"),
+                        models().existingFileHelper));
+        simpleBlock(OPBlocks.PURGATORIO_BLOCK.get(),
+                new ModelFile.ExistingModelFile(
+                        new ResourceLocation("block/carpet"),
                         models().existingFileHelper));
     }
 }

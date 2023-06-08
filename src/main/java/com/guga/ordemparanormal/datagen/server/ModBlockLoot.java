@@ -14,6 +14,7 @@ public class ModBlockLoot extends BlockLoot {
         dropSelf(OPBlocks.MESA_ENERGIA.get());
         dropSelf(OPBlocks.MESA_MORTE.get());
         add(OPBlocks.LUZ_BLOCK.get(), noDrop());
+        add(OPBlocks.PURGATORIO_BLOCK.get(), noDrop());
     }
     @Override
     protected Iterable<Block> getKnownBlocks() {
