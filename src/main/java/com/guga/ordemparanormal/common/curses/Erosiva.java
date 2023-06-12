@@ -31,7 +31,7 @@ public class Erosiva extends AbstractCurse {
 
                 int fortuneLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, entity.getMainHandItem());
                 int silkTouchLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, entity.getMainHandItem());
-                int xp = state.getExpDrop(level, pos, fortuneLevel, silkTouchLevel);
+                int xp = state.getExpDrop(level, entity.getRandom(), pos, fortuneLevel, silkTouchLevel);
 
                 if (otherState.onDestroyedByPlayer((Level) level, otherPos, entity, true, otherState.getFluidState())){
                     otherState.getBlock().destroy(level, otherPos, state);

@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,7 +23,7 @@ public final class OPParticles {
 	public static final RegistryObject<SimpleParticleType> SIGILOS_PARTICLE = PARTICLE_TYPES.register("sigilos_particle",
 			() -> new SimpleParticleType(true));
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public static void registerParticleTypes(ParticleFactoryRegisterEvent event) {
+	public static void registerParticleTypes(RegisterParticleProvidersEvent event) {
 		ParticleEngine manager = Minecraft.getInstance().particleEngine;
 
 		manager.register(NEVOA_PARTICLE.get(), NevoaParticle.Provider::new);

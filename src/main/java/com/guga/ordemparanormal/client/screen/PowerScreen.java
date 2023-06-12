@@ -34,7 +34,7 @@ public class PowerScreen extends Screen {
     public final ParanormalElement element;
     public double xOffset;
     public double yOffset;
-    public int selectedSlot = 6;
+    public int selectedSlot = 5;
     protected PowerScreen(ParanormalElement element) {
         super(CommonComponents.EMPTY);
         this.element = element;
@@ -102,7 +102,7 @@ public class PowerScreen extends Screen {
         blit(stack, tabWidth/2 - 41, height - 55, 0, 164, 136, 40);
         drawActivePowerSlots(stack, playerAbilities);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        if (selectedSlot < 6) blit(stack, tabWidth/2 - 38 + 26*selectedSlot, height - 50, 0, 134, 26, 30);
+        if (selectedSlot < 5) blit(stack, tabWidth/2 - 38 + 26*selectedSlot, height - 50, 0, 134, 26, 30);
 
         super.render(stack, pMouseX, pMouseY, pPartialTick);
 

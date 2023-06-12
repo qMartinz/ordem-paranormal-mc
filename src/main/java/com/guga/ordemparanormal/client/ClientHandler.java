@@ -27,17 +27,9 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.function.Function;
 
-@Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, value = Dist.CLIENT)
-public class ClientEvents {
-    @SubscribeEvent
-    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event){
-        if (event.getEntity().level.getBlockState(event.getHitVec().getBlockPos()).getBlock() instanceof AltarTranscender){
-            if (event.getSide() == LogicalSide.CLIENT && !(event.getItemStack().getItem() instanceof RitualItem)) {
-                Minecraft.getInstance().setScreen(new AttributeScreen());
-            }
-            event.setUseItem(Event.Result.DENY);
-        }
-    }
+@Mod.EventBusSubscriber(modid = OrdemParanormal.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@OnlyIn(Dist.CLIENT)
+public class ClientHandler {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @OnlyIn(Dist.CLIENT)
     public static void onAddLayers(EntityRenderersEvent.AddLayers event) {

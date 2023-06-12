@@ -23,6 +23,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -31,6 +32,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
+import java.util.List;
 import java.util.Map;
 
 public class RitualProjectile extends AbstractArrow {
@@ -109,18 +111,18 @@ public class RitualProjectile extends AbstractArrow {
             level1.sendParticles(new DustParticleOptions(ParanormalElement.byIndex(this.getElement()).getParticleVec3fColor(), 0.9f),
                     this.getX(), this.getY(), this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.3d);
         }
-
         if (target == null || !target.isAlive()){
             target = level.getNearestEntity(LivingEntity.class, TargetingConditions.DEFAULT,
                     null, getX(), getY(), getZ(), getBoundingBox().inflate(1.5d));
+            if (getOwner() instanceof Mob mob && target != mob.getTarget()) {
+                target = null;
+            }
         }
-
         if (target != null && target != getOwner() && target.isAlive()) {
             this.setDeltaMovement(target.position().add(0d, target.getEyeHeight(), 0d).subtract(position()).scale(0.005d).normalize());
         } else {
             target = null;
         }
-
         if (ritual != AbstractRitual.EMPTY){
             if (Math.abs(iX - getX()) > this.getRange() ||
                     Math.abs(iY - getY()) > this.getRange() ||

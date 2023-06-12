@@ -5,6 +5,7 @@
 		"0": "ordemparanormal:block/altar_transcender",
 		"particle": "ordemparanormal:block/altar_transcender"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [4, 3, 4],

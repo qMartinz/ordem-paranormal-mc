@@ -73,7 +73,7 @@ public class Sadico extends AbstractIllager {
         SpawnGroupData spawngroupdata = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
         ((GroundPathNavigation)this.getNavigation()).setCanOpenDoors(true);
         this.populateDefaultEquipmentSlots(pDifficulty);
-        this.populateDefaultEquipmentEnchantments(pDifficulty);
+        this.populateDefaultEquipmentEnchantments(random, pDifficulty);
         return spawngroupdata;
     }
     /**

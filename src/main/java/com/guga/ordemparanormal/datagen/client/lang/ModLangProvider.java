@@ -24,7 +24,7 @@ public class ModLangProvider extends LanguageProvider {
         add(curse.getTranslationKey(), name);
     }
     public void add(VillagerProfession key, String name) {
-        super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.getName(), name);
+        super.add("entity.minecraft.villager." + OrdemParanormal.MOD_ID + "." + key.name(), name);
     }
     public void addDeath(String key, String translation){
         add("death.attack." + key, translation);

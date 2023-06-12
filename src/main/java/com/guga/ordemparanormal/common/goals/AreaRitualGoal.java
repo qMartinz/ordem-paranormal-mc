@@ -3,7 +3,7 @@ package com.guga.ordemparanormal.common.goals;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
 import com.guga.ordemparanormal.core.registry.OPItems;
-import com.guga.ordemparanormal.core.registry.OPProfessions;
+import com.guga.ordemparanormal.core.registry.OPVillagers;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -26,10 +26,10 @@ public class AreaRitualGoal extends MeleeAttackGoal {
     @Override
     public boolean canUse() {
         if (mob instanceof Villager villager &&
-                (villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_SANGUE.get() ||
-                        villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_ENERGIA.get() ||
-                        villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_CONHECIMENTO.get() ||
-                        villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_MORTE.get())) {
+                (villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_SANGUE.get() ||
+                        villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_ENERGIA.get() ||
+                        villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_CONHECIMENTO.get() ||
+                        villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_MORTE.get())) {
             return super.canUse();
         } else return false;
     }
@@ -87,13 +87,13 @@ public class AreaRitualGoal extends MeleeAttackGoal {
         }
     }
     private ParanormalElement getElement(){
-        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_SANGUE.get())
+        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_SANGUE.get())
             return ParanormalElement.SANGUE;
-        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_MORTE.get())
+        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_MORTE.get())
             return ParanormalElement.MORTE;
-        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_ENERGIA.get())
+        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_ENERGIA.get())
             return ParanormalElement.ENERGIA;
-        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPProfessions.OCULTISTA_CONHECIMENTO.get())
+        if (mob instanceof Villager villager && villager.getVillagerData().getProfession() == OPVillagers.OCULTISTA_CONHECIMENTO.get())
             return ParanormalElement.CONHECIMENTO;
 
         return ParanormalElement.NONE;

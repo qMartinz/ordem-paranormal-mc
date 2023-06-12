@@ -4,6 +4,7 @@
 		"0": "ordemparanormal:block/luz_block",
 		"particle": "ordemparanormal:block/luz_block"
 	},
+	"render_type": "translucent",
 	"elements": [
 		{
 			"from": [6, 6, 6],

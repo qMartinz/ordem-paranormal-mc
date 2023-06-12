@@ -11,6 +11,7 @@ import com.guga.ordemparanormal.core.registry.OPLootFunctions;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
@@ -33,7 +34,7 @@ public class CurseRandomlyFunction extends LootItemConditionalFunction {
     }
     @Override
     protected ItemStack run(ItemStack pStack, LootContext pContext) {
-        Random random = pContext.getRandom();
+        RandomSource random = pContext.getRandom();
         AbstractCurse curse;
         if (this.curses.isEmpty()) {
             List<AbstractCurse> list = OrdemParanormalAPI.getInstance().getCurseMap().values().stream().filter(c -> c.canCurse(pStack) && !c.isTemporary()).toList();

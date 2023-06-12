@@ -1,15 +1,21 @@
 {
   "type": "ordemparanormal:cultist_cabin",
 
-  "config": {
-    "start_pool": "ordemparanormal:cultist_cabin/start_pool",
+  "start_pool": "ordemparanormal:cultist_cabin/start_pool",
 
-    "size": 2
-  },
+  "size": 2,
+
+  "max_distance_from_center": 80,
 
   "biomes": "#ordemparanormal:has_structure/cultist_cabin",
 
-  "adapt_noise": true,
+  "step": "surface_structures",
+
+  "start_height": {
+    "absolute": 0
+  },
+
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
 
   "spawn_overrides": {
     "monster": {

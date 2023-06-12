@@ -130,10 +130,10 @@ public class ModPtBrProvider extends ModLangProvider {
 		add(OPEntities.TRANSTORNADO.get(), "Transtornado");
 
 			// Profissões de Villagers
-			add(OPProfessions.OCULTISTA_SANGUE.get(), "Ocultista de Sangue");
-			add(OPProfessions.OCULTISTA_CONHECIMENTO.get(), "Ocultista de Conhecimento");
-			add(OPProfessions.OCULTISTA_ENERGIA.get(), "Ocultista de Energia");
-			add(OPProfessions.OCULTISTA_MORTE.get(), "Ocultista de Morte");
+			add(OPVillagers.OCULTISTA_SANGUE.get(), "Ocultista de Sangue");
+			add(OPVillagers.OCULTISTA_CONHECIMENTO.get(), "Ocultista de Conhecimento");
+			add(OPVillagers.OCULTISTA_ENERGIA.get(), "Ocultista de Energia");
+			add(OPVillagers.OCULTISTA_MORTE.get(), "Ocultista de Morte");
 
 			// Entidades de Blocos
 			add("ordemparanormal.block.block_entity.curse_table", "Maldições");

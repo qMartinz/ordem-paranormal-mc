@@ -24,12 +24,9 @@ import java.util.function.Supplier;
 
 public class ArdenteModifier extends LootModifier {
     public static final Supplier<Codec<ArdenteModifier>> CODEC = Suppliers.memoize(()
-            -> RecordCodecBuilder.create(inst -> codecStart(inst).and(ForgeRegistries.ITEMS.getCodec()
-            .fieldOf("item").forGetter(m -> m.item)).apply(inst, ArdenteModifier::new)));
-    private final Item item;
-    protected ArdenteModifier(LootItemCondition[] conditionsIn, Item item) {
+            -> RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, ArdenteModifier::new)));
+    protected ArdenteModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
-        this.item = item;
     }
 
     @Override

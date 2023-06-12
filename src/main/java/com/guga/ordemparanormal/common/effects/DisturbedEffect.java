@@ -22,8 +22,7 @@ public class DisturbedEffect extends OPEffects.ParanormalEffect {
     }
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-        Random random = new Random();
-        float rot = Mth.nextFloat(random, 0, 360);
+        float rot = Mth.nextFloat(pLivingEntity.getRandom(), 0, 360);
         pLivingEntity.setYRot(rot);
         pLivingEntity.setYHeadRot(rot);
     }

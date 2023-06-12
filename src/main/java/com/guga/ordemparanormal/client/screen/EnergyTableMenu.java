@@ -14,7 +14,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class EnergyTableMenu extends AbstractContainerMenu {
@@ -33,7 +33,7 @@ public class EnergyTableMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(cap -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(cap -> {
             this.addSlot(new SlotItemHandler(cap, 0, 39, 40));
             this.addSlot(new SlotItemHandler(cap, 1, 67, 28));
             this.addSlot(new SlotItemHandler(cap, 2, 39, 16));

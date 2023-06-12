@@ -1,6 +1,6 @@
 package com.guga.ordemparanormal.core;
 
-import com.guga.ordemparanormal.client.ClientEvents;
+import com.guga.ordemparanormal.client.ClientHandler;
 import com.guga.ordemparanormal.client.renderer.*;
 import com.guga.ordemparanormal.client.screen.BloodTableScreen;
 import com.guga.ordemparanormal.client.screen.DeathTableScreen;
@@ -14,8 +14,6 @@ import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -44,12 +42,11 @@ public class OrdemParanormal {
 
 		REGISTRY_HELPER.register(bus);
 
-		bus.addListener(this::apiSetup);
+		bus.addListener(this::setup);
 		OPParticles.PARTICLE_TYPES.register(bus);
 		OPStructures.STRUCTURE_TYPES.register(bus);
 		OPEffects.register(bus);
-		OPPois.register(bus);
-		OPProfessions.register(bus);
+		OPVillagers.register(bus);
 		OPProcessors.STRUCTURE_PROCESSORS.register(bus);
 		OPLootFunctions.LOOT_FUNCTIONS.register(bus);
 		OPLootItemConditions.LOOT_CONDITIONS.register(bus);
@@ -59,9 +56,8 @@ public class OrdemParanormal {
 		OPMenuTypes.MENUS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(ClientEvents::onAddLayers));
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(ClientHandler::onAddLayers));
 
-		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -81,22 +77,17 @@ public class OrdemParanormal {
 		event.registerEntityRenderer(OPEntities.SADICO.get(), IllagerOcultistaRenderers.SadicoRenderer::new);
 		event.registerEntityRenderer(OPEntities.PADRE_DIABO.get(), IllagerOcultistaRenderers.PadreDiaboRenderer::new);
 	}
-	public void apiSetup(final FMLCommonSetupEvent event){
+	public void setup(final FMLCommonSetupEvent event){
+		Messages.register();
 		OPCurses.setup();
 		OPRituals.setup();
 		OPPowers.setup();
-	}
-	public void setup(final FMLCommonSetupEvent event){
-		Messages.register();
 
 		event.enqueueWork(() -> {
-			OPPois.registerPOIs();
+			OPVillagers.registerPois();
 		});
 	}
 	public void clientSetup(final FMLClientSetupEvent event){
-		ItemBlockRenderTypes.setRenderLayer(OPBlocks.LUZ_BLOCK.get(), RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(OPBlocks.ALTAR_TRANSCENDER.get(), RenderType.cutout());
-
 		MenuScreens.register(OPMenuTypes.BLOOD_TABLE_MENU.get(), BloodTableScreen::new);
 		MenuScreens.register(OPMenuTypes.ENERGY_TABLE_MENU.get(), EnergyTableScreen::new);
 		MenuScreens.register(OPMenuTypes.DEATH_TABLE_MENU.get(), DeathTableScreen::new);

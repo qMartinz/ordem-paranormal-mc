@@ -53,7 +53,7 @@ public class PowerButton extends AbstractButton {
 
             if (!playerAbilities.getActivePowers().containsValue(this.power)){
                 if (this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){
-                    if (pScreen.selectedSlot < 6) {
+                    if (pScreen.selectedSlot < 5) {
                         RenderSystem.setShaderColor(1f, 1f, 1f, 0.5f);
                         blit(stack, x - 4, y - 4, 76, 104, 28, 28);
                     }
@@ -68,7 +68,7 @@ public class PowerButton extends AbstractButton {
         RenderSystem.setShaderColor(1f, 1f, 1f, alpha);
 
         if (playerAbilities.hasPower(power) && this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){
-            if (pScreen.selectedSlot < 6) {
+            if (pScreen.selectedSlot < 5) {
                 RenderSystem.setShaderColor(1.15f, 1.15f, 1.15f, 1f);
             }
         }
@@ -118,9 +118,9 @@ public class PowerButton extends AbstractButton {
         }
 
         if (playerAbilities.hasPower(this.power) && this.power.isActivePower() && this.power.canEquip(minecraft.player) && minecraft.screen instanceof PowerScreen pScreen){
-            if (pScreen.selectedSlot < 6) {
+            if (pScreen.selectedSlot < 5) {
                 playerAbilities.setActivePower(this.power, pScreen.selectedSlot);
-                pScreen.selectedSlot = 6;
+                pScreen.selectedSlot = 5;
             }
         }
 

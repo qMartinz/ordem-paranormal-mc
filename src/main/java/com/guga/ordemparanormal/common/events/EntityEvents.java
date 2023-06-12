@@ -117,7 +117,7 @@ public class EntityEvents {
 	@SubscribeEvent
 	public static void addTrades(VillagerTradesEvent event){
 		// SANGUE
-		if (event.getType() == OPProfessions.OCULTISTA_SANGUE.get()){
+		if (event.getType() == OPVillagers.OCULTISTA_SANGUE.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
 			trades.get(1).add((trader, rand) -> new MerchantOffer(
@@ -160,7 +160,7 @@ public class EntityEvents {
 		}
 
 		// MORTE
-		if (event.getType() == OPProfessions.OCULTISTA_MORTE.get()){
+		if (event.getType() == OPVillagers.OCULTISTA_MORTE.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
 			trades.get(1).add((trader, rand) -> new MerchantOffer(
@@ -199,7 +199,7 @@ public class EntityEvents {
 		}
 
 		// ENERGIA
-		if (event.getType() == OPProfessions.OCULTISTA_ENERGIA.get()){
+		if (event.getType() == OPVillagers.OCULTISTA_ENERGIA.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
 			trades.get(1).add((trader, rand) -> new MerchantOffer(
@@ -236,7 +236,7 @@ public class EntityEvents {
 		}
 
 		// CONHECIMENTO
-		if (event.getType() == OPProfessions.OCULTISTA_CONHECIMENTO.get()){
+		if (event.getType() == OPVillagers.OCULTISTA_CONHECIMENTO.get()){
 			Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
 			trades.get(1).add((trader, rand) -> new MerchantOffer(

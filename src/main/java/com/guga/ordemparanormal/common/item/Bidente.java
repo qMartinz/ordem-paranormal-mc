@@ -103,7 +103,6 @@ public class Bidente extends TridentItem {
             return InteractionResultHolder.consume(itemstack);
         }
     }
-
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         pTarget.addEffect(new MobEffectInstance(OPEffects.BLEED.get(), 140, 0, false, false));

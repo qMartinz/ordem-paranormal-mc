@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class OPMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(ForgeRegistries.CONTAINERS, OrdemParanormal.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.MENU_TYPES, OrdemParanormal.MOD_ID);
     public static final RegistryObject<MenuType<BloodTableMenu>> BLOOD_TABLE_MENU = registerMenuType(BloodTableMenu::new, "blood_table_menu");
     public static final RegistryObject<MenuType<EnergyTableMenu>> ENERGY_TABLE_MENU = registerMenuType(EnergyTableMenu::new, "energy_table_menu");
     public static final RegistryObject<MenuType<DeathTableMenu>> DEATH_TABLE_MENU = registerMenuType(DeathTableMenu::new, "death_table_menu");

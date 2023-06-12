@@ -130,10 +130,10 @@ public class ModEnUsProvider extends ModLangProvider {
 		add(OPEntities.TRANSTORNADO.get(), "Distraught");
 
 			// Profissões de Villagers
-			add(OPProfessions.OCULTISTA_SANGUE.get(), "Blood Occultist");
-			add(OPProfessions.OCULTISTA_ENERGIA.get(), "Energy Occultist");
-			add(OPProfessions.OCULTISTA_CONHECIMENTO.get(), "Knowledge Occultist");
-			add(OPProfessions.OCULTISTA_MORTE.get(), "Death Occultist");
+			add(OPVillagers.OCULTISTA_SANGUE.get(), "Blood Occultist");
+			add(OPVillagers.OCULTISTA_ENERGIA.get(), "Energy Occultist");
+			add(OPVillagers.OCULTISTA_CONHECIMENTO.get(), "Knowledge Occultist");
+			add(OPVillagers.OCULTISTA_MORTE.get(), "Death Occultist");
 
 			// Entidades de Blocos
 			add("ordemparanormal.block.block_entity.curse_table", "Curses");

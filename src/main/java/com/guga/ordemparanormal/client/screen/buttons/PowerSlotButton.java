@@ -6,11 +6,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.network.chat.Component;
 
 public class PowerSlotButton extends AbstractButton {
     private final int slot;
     public PowerSlotButton(int x, int y, int width, int height, int slot) {
-        super(x, y, width, height, new TextComponent("slot_" + slot));
+        super(x, y, width, height, Component.literal("slot_" + slot));
         this.slot = slot;
     }
 

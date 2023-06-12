@@ -27,20 +27,20 @@ public class OPDataGeneration {
 		
 		if (event.includeClient()) {
 			// Geração de Data do Cliente
-			generator.addProvider(new ModItemModelProvider(generator, helper));
-			generator.addProvider(new ModSoundDefinitionsProvider(generator, helper));
-			generator.addProvider(new ModPtBrProvider(generator));
-			generator.addProvider(new ModEnUsProvider(generator));
-			generator.addProvider(new ModBlockstatesProvider(generator, helper));
+			generator.addProvider(true, new ModItemModelProvider(generator, helper));
+			generator.addProvider(true, new ModSoundDefinitionsProvider(generator, helper));
+			generator.addProvider(true, new ModPtBrProvider(generator));
+			generator.addProvider(true, new ModEnUsProvider(generator));
+			generator.addProvider(true, new ModBlockstatesProvider(generator, helper));
 		}
 		
 		if (event.includeServer()) {
 			// Geração de Data do Server
-			generator.addProvider(new ModLootTableProvider(generator));
-			generator.addProvider(new ModRecipeProvider(generator));
+			generator.addProvider(true, new ModLootTableProvider(generator));
+			generator.addProvider(true, new ModRecipeProvider(generator));
 			ModBlockTagsProvider blocktags = new ModBlockTagsProvider(generator, helper);
-			generator.addProvider(blocktags);
-			generator.addProvider(new ModItemTagsProvider(generator, blocktags, helper));
+			generator.addProvider(true, blocktags);
+			generator.addProvider(true, new ModItemTagsProvider(generator, blocktags, helper));
 		}	
 	}
 }

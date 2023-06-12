@@ -20,6 +20,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
@@ -86,7 +87,6 @@ public class Nevoa extends Entity {
 		return this.getEntityData().get(DATA_LIFE);
 	}
 	private void spawnNevoaParticles() {
-		Random random = new Random();
 		double radius = this.getRadius();
 		AABB area = this.getBoundingBox().inflate(radius);
 		for (int i = 1; i <= Math.pow(this.getIntensity(), 3) + radius - (5 * this.getIntensity()); i++) {
