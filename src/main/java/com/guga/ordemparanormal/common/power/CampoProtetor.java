@@ -3,8 +3,8 @@ package com.guga.ordemparanormal.common.power;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.core.registry.OPPowers;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,7 +26,7 @@ public class CampoProtetor extends PlayerPower {
                 for (int i = 0; i < 360; i++) {
                     if (i % 20 == 0) {
                         if (player.level instanceof ServerLevel level) level.sendParticles(
-                                new DustParticleOptions(this.getElement().getParticleVec3fColor(), 0.7f),
+                                AbilitiesParticleOptions.createData(getElement().getParticleColor(), getElement() != ParanormalElement.MORTE),
                                 player.getX() + Math.cos(i),
                                 player.getY() + player.getEyeHeight() / 2f,
                                 player.getZ() + Math.sin(i),

@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.core.registry;
 
-import com.guga.ordemparanormal.client.particles.NevoaParticle;
-import com.guga.ordemparanormal.client.particles.SigilosParticle;
+import com.guga.ordemparanormal.client.particles.*;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEngine;
@@ -22,11 +21,17 @@ public final class OPParticles {
 			() -> new SimpleParticleType(true));
 	public static final RegistryObject<SimpleParticleType> SIGILOS_PARTICLE = PARTICLE_TYPES.register("sigilos_particle",
 			() -> new SimpleParticleType(true));
+	public static final RegistryObject<SimpleParticleType> PURGATORIO_PARTICLE = PARTICLE_TYPES.register("purgatorio_particle",
+			() -> new SimpleParticleType(true));
+	public static final RegistryObject<ParticleType<ColoredParticleOptions>> ABILITIES_PARTICLE =
+			PARTICLE_TYPES.register(AbilitiesParticleOptions.NAME, AbilitiesParticleType::new);
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleTypes(RegisterParticleProvidersEvent event) {
 		ParticleEngine manager = Minecraft.getInstance().particleEngine;
 
 		manager.register(NEVOA_PARTICLE.get(), NevoaParticle.Provider::new);
 		manager.register(SIGILOS_PARTICLE.get(), SigilosParticle.Provider::new);
+		manager.register(PURGATORIO_PARTICLE.get(), PurgatorioParticle.Provider::new);
+		manager.register(ABILITIES_PARTICLE.get(), AbilitiesParticleOptions::new);
 	}
 }

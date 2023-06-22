@@ -16,7 +16,7 @@ public class PurgatoryEffect extends OPEffects.ParanormalEffect {
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         super.applyEffectTick(pLivingEntity, pAmplifier);
-        pLivingEntity.hurt(ParanormalDamageSource.DANO_SANGUE, 10);
+        pLivingEntity.hurt(ParanormalDamageSource.DANO_SANGUE, 18);
 
         if (pLivingEntity.level instanceof ServerLevel level)
             level.sendParticles(
@@ -26,6 +26,6 @@ public class PurgatoryEffect extends OPEffects.ParanormalEffect {
     }
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
-        return pDuration <= 0;
+        return pDuration <= 1;
     }
 }

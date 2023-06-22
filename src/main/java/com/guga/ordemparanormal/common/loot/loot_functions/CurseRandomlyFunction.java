@@ -22,7 +22,6 @@ import org.slf4j.Logger;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class CurseRandomlyFunction extends LootItemConditionalFunction {

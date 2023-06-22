@@ -1,7 +1,6 @@
 package com.guga.ordemparanormal.client.gui;
 
 import com.guga.ordemparanormal.api.capabilities.data.ParanormalEffectsProvider;
-import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;

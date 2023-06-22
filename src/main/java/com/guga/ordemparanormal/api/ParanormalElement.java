@@ -1,11 +1,11 @@
 package com.guga.ordemparanormal.api;
 
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
-import com.mojang.math.Vector3f;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.StringRepresentable;
 
 import javax.annotation.Nonnull;
+import java.awt.*;
 
 public enum ParanormalElement implements StringRepresentable {
     MEDO("medo", 0),
@@ -39,13 +39,14 @@ public enum ParanormalElement implements StringRepresentable {
             case ENERGIA -> CONHECIMENTO;
         };
     }
-    public Vector3f getParticleVec3fColor(){
+
+    public Color getParticleColor(){
         return switch (this){
-            case MEDO, NONE -> new Vector3f(1f, 1f, 1f);
-            case SANGUE -> new Vector3f(0.9f, 0f, 0f);
-            case CONHECIMENTO -> new Vector3f(1f, 0.9f, 0f);
-            case MORTE -> new Vector3f(0f, 0f, 0f);
-            case ENERGIA -> new Vector3f(0.7f, 0.1f, 1f);
+            case MEDO, NONE -> new Color(255, 255, 255);
+            case SANGUE -> new Color(255, 0, 27);
+            case CONHECIMENTO -> new Color(255, 166, 0);
+            case MORTE -> new Color(0, 0, 0);
+            case ENERGIA -> new Color(64, 0, 255);
         };
     }
     @Nonnull

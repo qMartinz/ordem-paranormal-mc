@@ -1,14 +1,12 @@
 package com.guga.ordemparanormal.client.gui;
 
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
-import com.guga.ordemparanormal.api.util.MathUtils;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.gui.overlay.ForgeGui;

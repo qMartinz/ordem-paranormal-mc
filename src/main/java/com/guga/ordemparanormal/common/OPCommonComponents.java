@@ -3,7 +3,6 @@ package com.guga.ordemparanormal.common;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 
-
 import java.util.Arrays;
 import java.util.Collection;
 

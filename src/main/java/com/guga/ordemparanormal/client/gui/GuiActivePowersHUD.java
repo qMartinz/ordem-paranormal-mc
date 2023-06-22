@@ -1,7 +1,10 @@
 package com.guga.ordemparanormal.client.gui;
 
 import com.guga.ordemparanormal.api.abilities.power.PlayerPower;
-import com.guga.ordemparanormal.api.capabilities.data.*;
+import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
+import com.guga.ordemparanormal.api.capabilities.data.INexCap;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
 import com.guga.ordemparanormal.api.util.ResourceUtil;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.mojang.blaze3d.systems.RenderSystem;

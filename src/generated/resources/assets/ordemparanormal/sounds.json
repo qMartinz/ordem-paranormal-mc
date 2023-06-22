@@ -1,93 +1,124 @@
 {
-  "zumbi_bestial.growl": {
-    "subtitle": "subtitles.ordemparanormal.zumbi_bestial.growl",
+  "aberracao.abocanhar": {
     "sounds": [
-      "ordemparanormal:bestial/growl"
-    ]
+      "ordemparanormal:aberracao/abocanhar"
+    ],
+    "subtitle": "subtitles.ordemparanormal.aberracao.abocanhar"
   },
-  "zumbi_sangue.growl": {
-    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.growl",
+  "aberracao.attack": {
     "sounds": [
-      "ordemparanormal:zumbi_sangue/growl"
-    ]
+      "ordemparanormal:aberracao/attack"
+    ],
+    "subtitle": "subtitles.ordemparanormal.aberracao.attack"
   },
-  "zombie_convert": {
-    "subtitle": "subtitles.ordemparanormal.zombie.convert",
+  "aberracao.death": {
     "sounds": [
-      "ordemparanormal:zombie_convert"
-    ]
+      "ordemparanormal:aberracao/death"
+    ],
+    "subtitle": "subtitles.ordemparanormal.aberracao.death"
   },
-  "skeleton_convert": {
-    "subtitle": "subtitles.ordemparanormal.skeleton.convert",
+  "aberracao.hurt": {
     "sounds": [
-      "ordemparanormal:skeleton_convert"
-    ]
+      "ordemparanormal:blood/hurt_1",
+      "ordemparanormal:blood/hurt_2",
+      "ordemparanormal:blood/hurt_3",
+      "ordemparanormal:blood/hurt_4"
+    ],
+    "subtitle": "subtitles.ordemparanormal.aberracao.hurt"
   },
-  "corpse.death": {
-    "subtitle": "subtitles.ordemparanormal.corpse.death",
+  "aberracao.idle": {
     "sounds": [
-      "ordemparanormal:corpse_death"
-    ]
+      "ordemparanormal:aberracao/idle1",
+      "ordemparanormal:aberracao/idle2",
+      "ordemparanormal:aberracao/idle3",
+      "ordemparanormal:aberracao/idle4"
+    ],
+    "subtitle": "subtitles.ordemparanormal.aberracao.idle"
   },
-  "zumbi_sangue.death": {
-    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.death",
+  "aberracao.step": {
     "sounds": [
-      "ordemparanormal:corpse_death"
-    ]
+      "ordemparanormal:aberracao/step1",
+      "ordemparanormal:aberracao/step2",
+      "ordemparanormal:aberracao/step3",
+      "ordemparanormal:aberracao/step4"
+    ],
+    "subtitle": "subtitles.ordemparanormal.aberracao.step"
+  },
+  "bidente.hit": {
+    "sounds": [
+      "ordemparanormal:bidente/hit1",
+      "ordemparanormal:bidente/hit2"
+    ],
+    "subtitle": "subtitles.ordemparanormal.bidente.hit"
+  },
+  "bidente.riptide_1": {
+    "sounds": [
+      "ordemparanormal:bidente/riptide1"
+    ],
+    "subtitle": "subtitles.ordemparanormal.bidente.riptide"
+  },
+  "bidente.riptide_2": {
+    "sounds": [
+      "ordemparanormal:bidente/riptide2"
+    ],
+    "subtitle": "subtitles.ordemparanormal.bidente.riptide"
+  },
+  "bidente.riptide_3": {
+    "sounds": [
+      "ordemparanormal:bidente/riptide3"
+    ],
+    "subtitle": "subtitles.ordemparanormal.bidente.riptide"
+  },
+  "blood_power_used": {
+    "sounds": [
+      "ordemparanormal:blood/power_used",
+      "ordemparanormal:blood/power_used_2",
+      "ordemparanormal:blood/power_used_3"
+    ],
+    "subtitle": "subtitles.ordemparanormal.blood_power_used"
   },
   "corpse.convert": {
-    "subtitle": "subtitles.ordemparanormal.corpse.convert",
     "sounds": [
       "ordemparanormal:corpse_death"
-    ]
+    ],
+    "subtitle": "subtitles.ordemparanormal.corpse.convert"
   },
-  "zumbi_sangue.convert": {
-    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.convert",
+  "corpse.death": {
     "sounds": [
       "ordemparanormal:corpse_death"
-    ]
-  },
-  "ritual.learned": {
-    "subtitle": "subtitles.ordemparanormal.ritual_learned",
-    "sounds": [
-      "ordemparanormal:ritual/learned"
-    ]
-  },
-  "ritual.forgotten": {
-    "subtitle": "subtitles.ordemparanormal.ritual_forgotten",
-    "sounds": [
-      "ordemparanormal:ritual/forgotten"
-    ]
+    ],
+    "subtitle": "subtitles.ordemparanormal.corpse.death"
   },
   "corpse.hurt": {
-    "subtitle": "subtitles.ordemparanormal.corpse.hurt",
     "sounds": [
       "ordemparanormal:blood/hurt_1",
       "ordemparanormal:blood/hurt_2",
       "ordemparanormal:blood/hurt_3",
       "ordemparanormal:blood/hurt_4"
-    ]
+    ],
+    "subtitle": "subtitles.ordemparanormal.corpse.hurt"
   },
-  "zumbi_sangue.hurt": {
-    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.hurt",
+  "death_power_used": {
     "sounds": [
-      "ordemparanormal:blood/hurt_1",
-      "ordemparanormal:blood/hurt_2",
-      "ordemparanormal:blood/hurt_3",
-      "ordemparanormal:blood/hurt_4"
-    ]
+      "ordemparanormal:death/power_used",
+      "ordemparanormal:death/power_used_2",
+      "ordemparanormal:death/power_used_3"
+    ],
+    "subtitle": "subtitles.ordemparanormal.death/power_used"
   },
-  "ritual.used": {
-    "subtitle": "subtitles.ordemparanormal.ritual.used",
+  "energy_power_used": {
     "sounds": [
-      "ordemparanormal:ritual/used"
-    ]
+      "ordemparanormal:energy/power_used",
+      "ordemparanormal:energy/power_used_2",
+      "ordemparanormal:energy/power_used_3"
+    ],
+    "subtitle": "subtitles.ordemparanormal.energy_power_used"
   },
-  "ritual.failed": {
-    "subtitle": "subtitles.ordemparanormal.ritual.failed",
+  "fear_power_used": {
     "sounds": [
-      "ordemparanormal:ritual/failed"
-    ]
+      "ordemparanormal:fear/power_used"
+    ],
+    "subtitle": "subtitles.ordemparanormal.fear_power_used"
   },
   "ingredient_blood": {
     "sounds": [
@@ -109,159 +140,128 @@
       "ordemparanormal:ingredient/knowledge"
     ]
   },
-  "blood_power_used": {
-    "subtitle": "subtitles.ordemparanormal.blood_power_used",
-    "sounds": [
-      "ordemparanormal:blood/power_used",
-      "ordemparanormal:blood/power_used_2",
-      "ordemparanormal:blood/power_used_3"
-    ]
-  },
-  "energy_power_used": {
-    "subtitle": "subtitles.ordemparanormal.energy_power_used",
-    "sounds": [
-      "ordemparanormal:energy/power_used",
-      "ordemparanormal:energy/power_used_2",
-      "ordemparanormal:energy/power_used_3"
-    ]
-  },
-  "death_power_used": {
-    "subtitle": "subtitles.ordemparanormal.death/power_used",
-    "sounds": [
-      "ordemparanormal:death/power_used",
-      "ordemparanormal:death/power_used_2",
-      "ordemparanormal:death/power_used_3"
-    ]
-  },
   "knowledge_power_used": {
-    "subtitle": "subtitles.ordemparanormal.knowledge_power_used",
     "sounds": [
       "ordemparanormal:knowledge/power_used",
       "ordemparanormal:knowledge/power_used_2",
       "ordemparanormal:knowledge/power_used_3"
-    ]
+    ],
+    "subtitle": "subtitles.ordemparanormal.knowledge_power_used"
   },
-  "fear_power_used": {
-    "subtitle": "subtitles.ordemparanormal.fear_power_used",
+  "ritual.failed": {
     "sounds": [
-      "ordemparanormal:fear/power_used"
-    ]
+      "ordemparanormal:ritual/failed"
+    ],
+    "subtitle": "subtitles.ordemparanormal.ritual.failed"
+  },
+  "ritual.forgotten": {
+    "sounds": [
+      "ordemparanormal:ritual/forgotten"
+    ],
+    "subtitle": "subtitles.ordemparanormal.ritual_forgotten"
+  },
+  "ritual.learned": {
+    "sounds": [
+      "ordemparanormal:ritual/learned"
+    ],
+    "subtitle": "subtitles.ordemparanormal.ritual_learned"
+  },
+  "ritual.used": {
+    "sounds": [
+      "ordemparanormal:ritual/used"
+    ],
+    "subtitle": "subtitles.ordemparanormal.ritual.used"
+  },
+  "skeleton_convert": {
+    "sounds": [
+      "ordemparanormal:skeleton_convert"
+    ],
+    "subtitle": "subtitles.ordemparanormal.skeleton.convert"
+  },
+  "tita.attack": {
+    "sounds": [
+      "ordemparanormal:tita_sangue/attack"
+    ],
+    "subtitle": "subtitles.ordemparanormal.tita.attack"
+  },
+  "tita.bite": {
+    "sounds": [
+      "ordemparanormal:tita_sangue/bite"
+    ],
+    "subtitle": "subtitles.ordemparanormal.tita.bite"
+  },
+  "tita.death": {
+    "sounds": [
+      "ordemparanormal:tita_sangue/death"
+    ],
+    "subtitle": "subtitles.ordemparanormal.tita.death"
+  },
+  "tita.hurt": {
+    "sounds": [
+      "ordemparanormal:blood/hurt_1",
+      "ordemparanormal:blood/hurt_2",
+      "ordemparanormal:blood/hurt_3",
+      "ordemparanormal:blood/hurt_4"
+    ],
+    "subtitle": "subtitles.ordemparanormal.tita.hurt"
+  },
+  "tita.idle": {
+    "sounds": [
+      "ordemparanormal:tita_sangue/idle"
+    ],
+    "subtitle": "subtitles.ordemparanormal.tita.idle"
+  },
+  "tita.step": {
+    "sounds": [
+      "ordemparanormal:tita_sangue/step1",
+      "ordemparanormal:tita_sangue/step2",
+      "ordemparanormal:tita_sangue/step3",
+      "ordemparanormal:tita_sangue/step4"
+    ],
+    "subtitle": "subtitles.ordemparanormal.tita.step"
   },
   "vampirismo_used": {
     "sounds": [
       "ordemparanormal:power/vampirismo_used"
     ]
   },
-  "aberracao.hurt": {
-    "subtitle": "subtitles.ordemparanormal.aberracao.hurt",
+  "zombie_convert": {
+    "sounds": [
+      "ordemparanormal:zombie_convert"
+    ],
+    "subtitle": "subtitles.ordemparanormal.zombie.convert"
+  },
+  "zumbi_bestial.growl": {
+    "sounds": [
+      "ordemparanormal:bestial/growl"
+    ],
+    "subtitle": "subtitles.ordemparanormal.zumbi_bestial.growl"
+  },
+  "zumbi_sangue.convert": {
+    "sounds": [
+      "ordemparanormal:corpse_death"
+    ],
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.convert"
+  },
+  "zumbi_sangue.death": {
+    "sounds": [
+      "ordemparanormal:corpse_death"
+    ],
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.death"
+  },
+  "zumbi_sangue.growl": {
+    "sounds": [
+      "ordemparanormal:zumbi_sangue/growl"
+    ],
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.growl"
+  },
+  "zumbi_sangue.hurt": {
     "sounds": [
       "ordemparanormal:blood/hurt_1",
       "ordemparanormal:blood/hurt_2",
       "ordemparanormal:blood/hurt_3",
       "ordemparanormal:blood/hurt_4"
-    ]
-  },
-  "aberracao.idle": {
-    "subtitle": "subtitles.ordemparanormal.aberracao.idle",
-    "sounds": [
-      "ordemparanormal:aberracao/idle1",
-      "ordemparanormal:aberracao/idle2",
-      "ordemparanormal:aberracao/idle3",
-      "ordemparanormal:aberracao/idle4"
-    ]
-  },
-  "aberracao.step": {
-    "subtitle": "subtitles.ordemparanormal.aberracao.step",
-    "sounds": [
-      "ordemparanormal:aberracao/step1",
-      "ordemparanormal:aberracao/step2",
-      "ordemparanormal:aberracao/step3",
-      "ordemparanormal:aberracao/step4"
-    ]
-  },
-  "aberracao.attack": {
-    "subtitle": "subtitles.ordemparanormal.aberracao.attack",
-    "sounds": [
-      "ordemparanormal:aberracao/attack"
-    ]
-  },
-  "aberracao.abocanhar": {
-    "subtitle": "subtitles.ordemparanormal.aberracao.abocanhar",
-    "sounds": [
-      "ordemparanormal:aberracao/abocanhar"
-    ]
-  },
-  "aberracao.death": {
-    "subtitle": "subtitles.ordemparanormal.aberracao.death",
-    "sounds": [
-      "ordemparanormal:aberracao/death"
-    ]
-  },
-  "tita.hurt": {
-    "subtitle": "subtitles.ordemparanormal.tita.hurt",
-    "sounds": [
-      "ordemparanormal:blood/hurt_1",
-      "ordemparanormal:blood/hurt_2",
-      "ordemparanormal:blood/hurt_3",
-      "ordemparanormal:blood/hurt_4"
-    ]
-  },
-  "tita.idle": {
-    "subtitle": "subtitles.ordemparanormal.tita.idle",
-    "sounds": [
-      "ordemparanormal:tita_sangue/idle"
-    ]
-  },
-  "tita.step": {
-    "subtitle": "subtitles.ordemparanormal.tita.step",
-    "sounds": [
-      "ordemparanormal:tita_sangue/step1",
-      "ordemparanormal:tita_sangue/step2",
-      "ordemparanormal:tita_sangue/step3",
-      "ordemparanormal:tita_sangue/step4"
-    ]
-  },
-  "tita.attack": {
-    "subtitle": "subtitles.ordemparanormal.tita.attack",
-    "sounds": [
-      "ordemparanormal:tita_sangue/attack"
-    ]
-  },
-  "tita.bite": {
-    "subtitle": "subtitles.ordemparanormal.tita.bite",
-    "sounds": [
-      "ordemparanormal:tita_sangue/bite"
-    ]
-  },
-  "tita.death": {
-    "subtitle": "subtitles.ordemparanormal.tita.death",
-    "sounds": [
-      "ordemparanormal:tita_sangue/death"
-    ]
-  },
-  "bidente.hit": {
-    "subtitle": "subtitles.ordemparanormal.bidente.hit",
-    "sounds": [
-      "ordemparanormal:bidente/hit1",
-      "ordemparanormal:bidente/hit2"
-    ]
-  },
-  "bidente.riptide_1": {
-    "subtitle": "subtitles.ordemparanormal.bidente.riptide",
-    "sounds": [
-      "ordemparanormal:bidente/riptide1"
-    ]
-  },
-  "bidente.riptide_2": {
-    "subtitle": "subtitles.ordemparanormal.bidente.riptide",
-    "sounds": [
-      "ordemparanormal:bidente/riptide2"
-    ]
-  },
-  "bidente.riptide_3": {
-    "subtitle": "subtitles.ordemparanormal.bidente.riptide",
-    "sounds": [
-      "ordemparanormal:bidente/riptide3"
-    ]
+    ],
+    "subtitle": "subtitles.ordemparanormal.zumbi_sangue.hurt"
   }
 }

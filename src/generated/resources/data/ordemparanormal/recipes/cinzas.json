@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 250,
+  "experience": 0.35,
   "ingredient": {
     "item": "ordemparanormal:orgao"
   },
-  "result": "ordemparanormal:cinzas",
-  "experience": 0.35,
-  "cookingtime": 250
+  "result": "ordemparanormal:cinzas"
 }

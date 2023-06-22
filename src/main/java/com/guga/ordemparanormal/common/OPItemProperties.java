@@ -10,7 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 
 public class OPItemProperties {
     public static void register(){

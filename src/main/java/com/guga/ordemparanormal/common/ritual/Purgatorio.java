@@ -10,8 +10,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,12 +24,13 @@ public class Purgatorio extends AbstractRitual implements UtilityRitual {
         BlockPos blockPos = rayTraceResult.getBlockPos().relative(rayTraceResult.getDirection());
         BlockState purgatorio = OPBlocks.PURGATORIO_BLOCK.get().defaultBlockState();
 
-        AABB area = new AABB(blockPos).inflate(2);
-        // TODO not working
-        for (BlockPos pos : BlockPos.betweenClosedStream(area).toList()){
-            if (purgatorio.canSurvive(world, pos)) {
-                world.setBlockAndUpdate(pos, purgatorio);
-            }
-        }
+        BlockPos.betweenClosed(
+                        new BlockPos(blockPos).offset(1, 1, 1),
+                        new BlockPos(blockPos).offset(-1, -1, -1))
+                .forEach(otherPos -> {
+                    if (purgatorio.canSurvive(world, otherPos) && world.getBlockState(otherPos).is(Blocks.AIR)) {
+                        world.setBlockAndUpdate(otherPos, purgatorio);
+                    }
+                });
     }
 }

@@ -6,6 +6,7 @@ import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.INexCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.common.entity.RitualProjectile;
 import com.guga.ordemparanormal.common.item.RitualComponent;
 import com.guga.ordemparanormal.common.item.RitualItem;
@@ -14,8 +15,6 @@ import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -31,6 +30,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.MinecraftForge;
 
 import javax.annotation.Nullable;
+import java.awt.*;
 
 public abstract class AbstractRitual{
     public static final AbstractRitual EMPTY = new AbstractRitual(new ResourceLocation(OrdemParanormal.MOD_ID, "empty"), ParanormalElement.NONE, 1,  0, 0, true) {};
@@ -148,18 +148,23 @@ public abstract class AbstractRitual{
             } else ritualFail(caster);
         } else ritualFail(caster);
     }
+    //TODO particula
     public void ritualSuccess(ServerLevel level, LivingEntity caster){
         for (int i = 0; i < 360; i++){
             if (i % 20 == 0){
-                for (int i2 = 1; i2 < 4; i2++){
-                    level.sendParticles(new DustParticleOptions(this.element.getParticleVec3fColor(), 0.7f),
-                            caster.getX() + Math.cos(i) * i2/4d, caster.getY() + 0.1d, caster.getZ() + Math.sin(i) * i2/4d,
-                            0, 0d, 0d, 0d, 1d);
-                }
-
-                level.sendParticles(ParticleTypes.INSTANT_EFFECT,
-                        caster.getX() + Math.cos(i) * 0.3d, caster.getY() + 0.2d, caster.getZ() + Math.sin(i) * 0.3d,
+                level.sendParticles(AbilitiesParticleOptions.createData(getElement().getParticleColor(), getElement() != ParanormalElement.MORTE),
+                        caster.getX() + Math.cos(i) * 0.4d, caster.getY() + 0.1d, caster.getZ() + Math.sin(i) * 0.4d,
                         0, 0d, 0d, 0d, 1d);
+                level.sendParticles(AbilitiesParticleOptions.createData(getElement().getParticleColor(), getElement() != ParanormalElement.MORTE),
+                        caster.getX() + Math.cos(i) * 0.6d, caster.getY() + 0.1d, caster.getZ() + Math.sin(i) * 0.6d,
+                        0, 0d, 0d, 0d, 1d);
+
+                Color color = getElement().getParticleColor().brighter().brighter().brighter();
+                if (getElement() == ParanormalElement.MEDO) color = new Color(195, 249, 255);
+
+                level.sendParticles(AbilitiesParticleOptions.createData(color, getElement() != ParanormalElement.MORTE),
+                        caster.getX() + Math.cos(i) * 0.3d, caster.getY() + 0.2d, caster.getZ() + Math.sin(i) * 0.3d,
+                        0, 0d, 0.08d, 0d, 1d);
             }
         }
 

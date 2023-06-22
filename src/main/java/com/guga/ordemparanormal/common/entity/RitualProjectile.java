@@ -7,13 +7,13 @@ import com.guga.ordemparanormal.api.abilities.ritual.OffensiveRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.UtilityRitual;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.common.item.RitualItem;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPEntities;
 import com.guga.ordemparanormal.core.registry.OPPowers;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -32,7 +32,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-import java.util.List;
 import java.util.Map;
 
 public class RitualProjectile extends AbstractArrow {
@@ -107,9 +106,9 @@ public class RitualProjectile extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-        if (this.level instanceof ServerLevel level1 && tickCount % 2 == 0){
-            level1.sendParticles(new DustParticleOptions(ParanormalElement.byIndex(this.getElement()).getParticleVec3fColor(), 0.9f),
-                    this.getX(), this.getY(), this.getZ(), 2, 0.3d, 0.3d, 0.3d, 0.3d);
+        if (this.level instanceof ServerLevel level1){
+            level1.sendParticles(AbilitiesParticleOptions.createData(ritual.getElement().getParticleColor(), ritual.getElement() != ParanormalElement.MORTE),
+                    this.getX(), this.getY(), this.getZ(), 3, 0.05d, 0.05d, 0.05d, 0d);
         }
         if (target == null || !target.isAlive()){
             target = level.getNearestEntity(LivingEntity.class, TargetingConditions.DEFAULT,

@@ -1,5 +1,9 @@
 {
   "variants": {
+    "facing=east": {
+      "model": "ordemparanormal:block/mesa_energia",
+      "y": 180
+    },
     "facing=north": {
       "model": "ordemparanormal:block/mesa_energia",
       "y": 90
@@ -10,10 +14,6 @@
     },
     "facing=west": {
       "model": "ordemparanormal:block/mesa_energia"
-    },
-    "facing=east": {
-      "model": "ordemparanormal:block/mesa_energia",
-      "y": 180
     }
   }
 }

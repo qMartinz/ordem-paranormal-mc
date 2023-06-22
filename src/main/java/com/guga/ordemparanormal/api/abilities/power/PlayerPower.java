@@ -3,12 +3,12 @@ package com.guga.ordemparanormal.api.abilities.power;
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.power.events.PowerUsedEvent;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerNexProvider;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.client.screen.buttons.PowerButton;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
@@ -109,7 +109,7 @@ public class PlayerPower {
                 cap.setCurrentEffort(cap.getCurrentEffort() - this.getEffortCost());
 
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(), this.getSound(), SoundSource.PLAYERS, 1f, 1f);
-                if (player.level instanceof ServerLevel level) usedParticles(level, player);
+                if (player.level instanceof ServerLevel level) usedParticles(level, player.getX(), player.getY(), player.getZ());
 
                 cap.setPowerCooldown(15);
                 onUse(player);
@@ -125,13 +125,14 @@ public class PlayerPower {
             case ENERGIA -> OPSounds.ENERGY_POWER_USED.get();
         };
     }
-    private void usedParticles(ServerLevel level, Player player){
+    //TODO particula
+    private void usedParticles(ServerLevel level, double x, double y, double z){
         for (int i = 0; i < 360; i++){
             if (i % 20 == 0){
                 for (int i2 = 1; i2 < 4; i2++){
-                    level.sendParticles(new DustParticleOptions(this.element.getParticleVec3fColor(), 0.7f),
-                            player.getX() + Math.cos(i) * i2/4d, player.getY() + 0.1d, player.getZ() + Math.sin(i) * i2/4d,
-                            0, 0d, 0d, 0d, 1d);
+                    level.sendParticles(AbilitiesParticleOptions.createData(element.getParticleColor(), element != ParanormalElement.MORTE),
+                            x + Math.cos(i) * i2/4d, y + 0.1d, z + Math.sin(i) * i2/4d,
+                            1, 0d, 0d, 0d, 1d);
                 }
             }
         }

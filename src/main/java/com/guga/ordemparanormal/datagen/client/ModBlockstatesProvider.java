@@ -36,7 +36,7 @@ public class ModBlockstatesProvider extends BlockStateProvider {
                         models().existingFileHelper));
         simpleBlock(OPBlocks.PURGATORIO_BLOCK.get(),
                 new ModelFile.ExistingModelFile(
-                        new ResourceLocation("block/carpet"),
+                        new ResourceLocation(OrdemParanormal.MOD_ID, "block/purgatorio_block"),
                         models().existingFileHelper));
     }
 }

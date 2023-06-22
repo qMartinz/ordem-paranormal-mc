@@ -1,11 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "Z Y",
-    "SXS",
-    "LLL"
-  ],
   "key": {
+    "L": {
+      "tag": "forge:leather"
+    },
+    "S": {
+      "tag": "forge:string"
+    },
     "X": {
       "item": "minecraft:soul_torch"
     },
@@ -14,14 +15,13 @@
     },
     "Z": {
       "item": "minecraft:raw_copper"
-    },
-    "S": {
-      "tag": "forge:string"
-    },
-    "L": {
-      "tag": "forge:leather"
     }
   },
+  "pattern": [
+    "Z Y",
+    "SXS",
+    "LLL"
+  ],
   "result": {
     "item": "ordemparanormal:componente_energia"
   }

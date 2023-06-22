@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:ink_sac"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "tag": "forge:stone"
+    }
+  },
   "pattern": [
     " I ",
     " P ",
     " S "
   ],
-  "key": {
-    "S": {
-      "tag": "forge:stone"
-    },
-    "P": {
-      "item": "minecraft:paper"
-    },
-    "I": {
-      "item": "minecraft:ink_sac"
-    }
-  },
   "result": {
     "item": "ordemparanormal:altar_transcender"
   }

@@ -1,7 +1,8 @@
 package com.guga.ordemparanormal.common.block.blocks;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -12,8 +13,6 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 public class LuzBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(6D, 6D, 6D, 10D, 10D, 10D);
@@ -32,12 +31,12 @@ public class LuzBlock extends Block {
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         super.animateTick(pState, pLevel, pPos, pRandom);
 
-        for (int i = 0; i < 3; i++){
-            pLevel.addParticle(ParticleTypes.ELECTRIC_SPARK,
+        for (int i = 0; i < 5; i++){
+            pLevel.addParticle(AbilitiesParticleOptions.createData(ParanormalElement.ENERGIA.getParticleColor(), true),
                     pPos.getX() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
                     pPos.getY() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
                     pPos.getZ() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
-                    0d, 0.3d, 0d);
+                    0d, 0.02d, 0d);
         }
     }
 }

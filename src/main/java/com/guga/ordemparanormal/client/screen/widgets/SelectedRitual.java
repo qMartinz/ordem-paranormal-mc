@@ -10,10 +10,6 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.PackType;
-import net.minecraftforge.common.data.ExistingFileHelper;
-
-import java.util.stream.Collectors;
 
 public class SelectedRitual extends AbstractWidget {
     private int ritualIndex = 0;

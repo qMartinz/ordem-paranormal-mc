@@ -2,10 +2,9 @@ package com.guga.ordemparanormal.common.goals;
 
 import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.paranormaldamage.ParanormalDamageSource;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.core.registry.OPItems;
 import com.guga.ordemparanormal.core.registry.OPVillagers;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 
+import java.awt.*;
 import java.util.List;
 
 public class AreaRitualGoal extends MeleeAttackGoal {
@@ -60,15 +60,19 @@ public class AreaRitualGoal extends MeleeAttackGoal {
             if (this.mob.level instanceof ServerLevel level) {
                 for (int i = 0; i < 360; i++){
                     if (i % 20 == 0){
-                        level.sendParticles(new DustParticleOptions(getElement().getParticleVec3fColor(), 2f),
-                                this.mob.getX() + Math.cos(i) * 3d, this.mob.getY() + 0.1d, this.mob.getZ() + Math.sin(i) * 3d,
+                        level.sendParticles(AbilitiesParticleOptions.createData(getElement().getParticleColor(), getElement() != ParanormalElement.MORTE),
+                                mob.getX() + Math.cos(i) * 0.4d, mob.getY() + 0.1d, mob.getZ() + Math.sin(i) * 0.4d,
                                 0, 0d, 0d, 0d, 1d);
-                        level.sendParticles(new DustParticleOptions(getElement().getParticleVec3fColor(), 1f),
-                                this.mob.getX() + Math.cos(i) * 1.5, this.mob.getY() + 0.1d, this.mob.getZ() + Math.sin(i) * 1.5d,
+                        level.sendParticles(AbilitiesParticleOptions.createData(getElement().getParticleColor(), getElement() != ParanormalElement.MORTE),
+                                mob.getX() + Math.cos(i) * 0.6d, mob.getY() + 0.1d, mob.getZ() + Math.sin(i) * 0.6d,
                                 0, 0d, 0d, 0d, 1d);
-                        level.sendParticles(ParticleTypes.INSTANT_EFFECT,
-                                this.mob.getX(), this.mob.getY() + 0.1d, this.mob.getZ(),
-                                0, Math.cos(i) * 3d, 0d, Math.sin(i) * 3d, 1d);
+
+                        Color color = getElement().getParticleColor().brighter().brighter().brighter();
+                        if (getElement() == ParanormalElement.MEDO) color = new Color(195, 249, 255);
+
+                        level.sendParticles(AbilitiesParticleOptions.createData(color, getElement() != ParanormalElement.MORTE),
+                                mob.getX() + Math.cos(i) * 0.3d, mob.getY() + 0.2d, mob.getZ() + Math.sin(i) * 0.3d,
+                                0, 0d, 0.08d, 0d, 1d);
                     }
                 }
             }

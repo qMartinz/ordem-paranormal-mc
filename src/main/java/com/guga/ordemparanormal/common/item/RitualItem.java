@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.item;
 
+import com.guga.ordemparanormal.api.ParanormalElement;
 import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.IRitualCaster;
 import com.guga.ordemparanormal.api.abilities.ritual.RitualCaster;
@@ -7,10 +8,10 @@ import com.guga.ordemparanormal.api.attributes.ParanormalAttribute;
 import com.guga.ordemparanormal.api.capabilities.data.IAbilitiesCap;
 import com.guga.ordemparanormal.api.capabilities.data.PlayerAbilitiesProvider;
 import com.guga.ordemparanormal.api.util.PowerUtils;
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.common.OPCommonComponents;
 import com.guga.ordemparanormal.core.registry.OPCreativeTabs;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -108,9 +109,11 @@ public class RitualItem extends Item {
         if (player.level instanceof ServerLevel level){
             for (int i = 0; i < 360; i++){
                 if (i % 20 == 0 && count % 20 == 0){
-                    level.sendParticles(ParticleTypes.INSTANT_EFFECT,
+                    level.sendParticles(AbilitiesParticleOptions.createData(
+                            ritual.getElement().getParticleColor().brighter().brighter().brighter(),
+                                    ritual.getElement() != ParanormalElement.MORTE),
                             player.getX(), player.getY() + 0.1d, player.getZ(),
-                            0, Math.cos(i) + 0.25d, 0d, Math.sin(i) + 0.25d, 1d);
+                            0, Math.cos(i) / 12d, 0.06d, Math.sin(i) / 12d, 1d);
                 }
             }
         }

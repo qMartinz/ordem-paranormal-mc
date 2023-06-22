@@ -2,6 +2,7 @@ package com.guga.ordemparanormal.api.attributes;
 
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 

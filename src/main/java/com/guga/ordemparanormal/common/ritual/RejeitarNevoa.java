@@ -5,7 +5,6 @@ import com.guga.ordemparanormal.api.abilities.ritual.AbstractRitual;
 import com.guga.ordemparanormal.api.abilities.ritual.DefensiveRitual;
 import com.guga.ordemparanormal.api.util.EntityUtil;
 import com.guga.ordemparanormal.common.entity.Nevoa;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;

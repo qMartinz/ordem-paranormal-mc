@@ -3,16 +3,13 @@ package com.guga.ordemparanormal.datagen.client;
 import com.guga.ordemparanormal.core.OrdemParanormal;
 import com.guga.ordemparanormal.core.registry.OPBlocks;
 import com.guga.ordemparanormal.core.registry.OPItems;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-
-import java.util.Objects;
 
 public class ModItemModelProvider extends ItemModelProvider {
 	public ModItemModelProvider(DataGenerator generator, ExistingFileHelper helper) {
@@ -29,7 +26,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 	}
 
 	protected void oneLayerItem(Item item) {
-		oneLayerItem(item, Objects.requireNonNull(ResourceLocation.tryParse(item.getDescriptionId())));
+		oneLayerItem(item, Registry.ITEM.getKey(item));
 	}
 
 	protected void oneLayerHandHeldItem(Item item, ResourceLocation texture) {
@@ -43,7 +40,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 	}
 
 	protected void oneLayerHandHeldItem(Item item) {
-		oneLayerHandHeldItem(item, Objects.requireNonNull(ResourceLocation.tryParse(item.getDescriptionId())));
+		oneLayerHandHeldItem(item, Registry.ITEM.getKey(item));
 	}
 
 	protected void multipleLayerItem(Item item, ResourceLocation... textures) {
