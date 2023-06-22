@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.19.2-0.1.0alpha'
+version = '1.19.2-0.1.1alpha'
 group = 'com.guga.ordemparanormal'
 archivesBaseName = 'ordemparanormal'
 
