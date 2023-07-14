@@ -4,29 +4,5 @@
 		"0": "ordemparanormal:block/luz_block",
 		"particle": "ordemparanormal:block/luz_block"
 	},
-	"render_type": "translucent",
-	"elements": [
-		{
-			"from": [6, 6, 6],
-			"to": [10, 10, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 10.5, 7.5]},
-			"shade": false,
-			"faces": {
-				"north": {"uv": [0, 0, 4, 4], "texture": "#0"},
-				"east": {"uv": [0, 4, 4, 8], "texture": "#0"},
-				"south": {"uv": [4, 0, 8, 4], "texture": "#0"},
-				"west": {"uv": [4, 4, 8, 8], "texture": "#0"},
-				"up": {"uv": [4, 12, 0, 8], "texture": "#0"},
-				"down": {"uv": [12, 0, 8, 4], "texture": "#0"}
-			}
-		}
-	],
-	"groups": [
-		{
-			"name": "luz",
-			"origin": [8, 8, 8],
-			"color": 0,
-			"children": [0]
-		}
-	]
+	"elements": []
 }

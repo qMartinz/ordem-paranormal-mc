@@ -113,7 +113,7 @@ public class RitualItem extends Item {
                             ritual.getElement().getParticleColor().brighter().brighter().brighter(),
                                     ritual.getElement() != ParanormalElement.MORTE),
                             player.getX(), player.getY() + 0.1d, player.getZ(),
-                            0, Math.cos(i) / 12d, 0.06d, Math.sin(i) / 12d, 1d);
+                            0, Math.cos(i), 0.1d, Math.sin(i), 0.06d);
                 }
             }
         }

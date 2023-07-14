@@ -129,18 +129,27 @@ public abstract class AbstractRitual{
                     hand = null;
                 }
 
-                if ((this instanceof OffensiveRitual || this instanceof UtilityRitual) && !caster.isCrouching()){
+                if ((this instanceof OffensiveRitual || this instanceof UtilityRitual) && this instanceof DefensiveRitual){
+                    if (!caster.isCrouching()){
+                        RitualProjectile projectile = new RitualProjectile(world, caster, this);
+                        projectile.shootFromRotation(caster, caster.getXRot(), caster.getYRot(), 0.0f, 1.5f, 0.0f);
+                        world.addFreshEntity(projectile);
+                        projectile.setElement(this.element.index);
+                        ritualSuccess((ServerLevel) world, caster);
+                    } else {
+                        ((DefensiveRitual) this).onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
+                        ritualSuccess((ServerLevel) world, caster);
+                    }
+                } else if ((this instanceof OffensiveRitual || this instanceof UtilityRitual)){
                     RitualProjectile projectile = new RitualProjectile(world, caster, this);
                     projectile.shootFromRotation(caster, caster.getXRot(), caster.getYRot(), 0.0f, 1.5f, 0.0f);
                     world.addFreshEntity(projectile);
                     projectile.setElement(this.element.index);
                     ritualSuccess((ServerLevel) world, caster);
-                } else if (this instanceof DefensiveRitual ritual && caster.isCrouching()) {
+                } else if (this instanceof DefensiveRitual ritual){
                     ritual.onUseSelf(rayTraceResult, world, caster, ritualItem, hand);
                     ritualSuccess((ServerLevel) world, caster);
-                } else {
-                    ritualFail(caster);
-                }
+                } else ritualFail(caster);
 
                 if (!player.isCreative()) useResources(useIngredient, nex, player);
 
@@ -170,7 +179,7 @@ public abstract class AbstractRitual{
 
         caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), OPSounds.RITUAL_USED.get(), caster.getSoundSource(), 1f, 1f);
     }
-    protected void ritualFail(LivingEntity caster){
+    public void ritualFail(LivingEntity caster){
         caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), OPSounds.RITUAL_FAILED.get(),  caster.getSoundSource(), 1f, 1f);
 
         ItemStack ingredient;
@@ -186,7 +195,7 @@ public abstract class AbstractRitual{
             caster.level.playSound(null, caster.getX(), caster.getY(), caster.getZ(), comp.getUsedSound(),  caster.getSoundSource(), 1f, 1f);
         }
     }
-    protected void useResources(boolean useIngredient, INexCap nex, Player player){
+    public void useResources(boolean useIngredient, INexCap nex, Player player){
         nex.setCurrentEffort(nex.getCurrentEffort() - getEffortCost());
         if (useIngredient){
             ItemStack ingredient = mustHoldIngredient() ? player.getOffhandItem() :

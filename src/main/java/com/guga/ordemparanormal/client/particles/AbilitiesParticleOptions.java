@@ -12,7 +12,6 @@ import java.awt.*;
 
 public class AbilitiesParticleOptions implements ParticleProvider<ColoredParticleOptions> {
     private final SpriteSet spriteSet;
-    public static final String NAME = "glow";
     public AbilitiesParticleOptions(SpriteSet sprite) {
         this.spriteSet = sprite;
     }

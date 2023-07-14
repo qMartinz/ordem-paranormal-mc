@@ -1,20 +1,26 @@
 package com.guga.ordemparanormal.common.block.blocks;
 
-import com.guga.ordemparanormal.api.ParanormalElement;
-import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
+import com.guga.ordemparanormal.common.block.entities.LuzBlockEntity;
+import com.guga.ordemparanormal.core.registry.OPBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
-public class LuzBlock extends Block {
+import java.awt.*;
+
+public class LuzBlock extends Block implements EntityBlock {
     protected static final VoxelShape SHAPE = Block.box(6D, 6D, 6D, 10D, 10D, 10D);
     public LuzBlock() {
         super(Properties.of((new Material.Builder(MaterialColor.COLOR_PURPLE).build())).lightLevel((emission) -> 12).instabreak());
@@ -27,16 +33,19 @@ public class LuzBlock extends Block {
     public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return Shapes.empty();
     }
+    @Nullable
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        super.animateTick(pState, pLevel, pPos, pRandom);
-
-        for (int i = 0; i < 5; i++){
-            pLevel.addParticle(AbilitiesParticleOptions.createData(ParanormalElement.ENERGIA.getParticleColor(), true),
-                    pPos.getX() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
-                    pPos.getY() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
-                    pPos.getZ() + 0.5d + (pRandom.nextInt(-15, 15)/100d),
-                    0d, 0.02d, 0d);
-        }
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return new LuzBlockEntity(pPos, pState);
+    }
+    @javax.annotation.Nullable
+    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> pServerType, BlockEntityType<E> pClientType, BlockEntityTicker<? super E> pTicker) {
+        return pClientType == pServerType ? (BlockEntityTicker<A>)pTicker : null;
+    }
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        return createTickerHelper(pBlockEntityType, OPBlockEntities.LUZ_ENTITY.get(),
+                LuzBlockEntity::tick);
     }
 }

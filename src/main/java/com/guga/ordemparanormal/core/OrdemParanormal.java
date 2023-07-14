@@ -1,11 +1,8 @@
 package com.guga.ordemparanormal.core;
 
 import com.guga.ordemparanormal.client.ClientHandler;
-import com.guga.ordemparanormal.client.renderer.*;
-import com.guga.ordemparanormal.client.screen.BloodTableScreen;
-import com.guga.ordemparanormal.client.screen.DeathTableScreen;
-import com.guga.ordemparanormal.client.screen.EnergyTableScreen;
-import com.guga.ordemparanormal.client.screen.KnowledgeTableScreen;
+import com.guga.ordemparanormal.client.renderer.blockentity.MesaMaldicaoRenderer;
+import com.guga.ordemparanormal.client.renderer.entity.*;
 import com.guga.ordemparanormal.common.OPItemProperties;
 import com.guga.ordemparanormal.core.network.ClientProxy;
 import com.guga.ordemparanormal.core.network.IProxy;
@@ -13,7 +10,6 @@ import com.guga.ordemparanormal.core.network.Messages;
 import com.guga.ordemparanormal.core.network.ServerProxy;
 import com.guga.ordemparanormal.core.registry.*;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -53,7 +49,6 @@ public class OrdemParanormal {
 		OPLootModifiers.register(bus);
 		OPTriggers.init();
 		OPCreativeTabs.init();
-		OPMenuTypes.MENUS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(this::rendererSetup));
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(ClientHandler::onAddLayers));
@@ -62,7 +57,12 @@ public class OrdemParanormal {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	@OnlyIn(Dist.CLIENT)
-	public void rendererSetup(EntityRenderersEvent.RegisterRenderers event) {
+	public void rendererSetup(final EntityRenderersEvent.RegisterRenderers event) {
+		event.registerBlockEntityRenderer(OPBlockEntities.BLOOD_CURSE_TABLE_BLOCK_ENTITY.get(), MesaMaldicaoRenderer::new);
+		event.registerBlockEntityRenderer(OPBlockEntities.DEATH_CURSE_TABLE_BLOCK_ENTITY.get(), MesaMaldicaoRenderer::new);
+		event.registerBlockEntityRenderer(OPBlockEntities.KNOWLEDGE_CURSE_TABLE_BLOCK_ENTITY.get(), MesaMaldicaoRenderer::new);
+		event.registerBlockEntityRenderer(OPBlockEntities.ENERGY_CURSE_TABLE_BLOCK_ENTITY.get(), MesaMaldicaoRenderer::new);
+
 		event.registerEntityRenderer(OPEntities.BESTIAL.get(), BestialRenderer::new);
 		event.registerEntityRenderer(OPEntities.ZUMBI_SANGUE.get(), ZumbiSangueRenderer::new);
 		event.registerEntityRenderer(OPEntities.ZUMBI_SECO.get(), ZumbiSecoRenderer::new);
@@ -88,11 +88,6 @@ public class OrdemParanormal {
 		});
 	}
 	public void clientSetup(final FMLClientSetupEvent event){
-		MenuScreens.register(OPMenuTypes.BLOOD_TABLE_MENU.get(), BloodTableScreen::new);
-		MenuScreens.register(OPMenuTypes.ENERGY_TABLE_MENU.get(), EnergyTableScreen::new);
-		MenuScreens.register(OPMenuTypes.DEATH_TABLE_MENU.get(), DeathTableScreen::new);
-		MenuScreens.register(OPMenuTypes.KNOWLEDGE_TABLE_MENU.get(), KnowledgeTableScreen::new);
-
 		event.enqueueWork(OPItemProperties::register);
 	}
 }

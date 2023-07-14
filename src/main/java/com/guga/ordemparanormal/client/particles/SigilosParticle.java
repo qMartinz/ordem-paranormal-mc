@@ -36,7 +36,7 @@ public class SigilosParticle extends TextureSheetParticle {
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+        return ParticleRenderTypes.GLOW_RENDER;
     }
 
     @Override

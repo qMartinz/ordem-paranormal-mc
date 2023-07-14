@@ -22,7 +22,7 @@ public class KeyHandler {
         if(MINECRAFT.screen == null){
             for (int i = 0; i < Keybinds.QuickPower.KEYS.length; i++) {
                 KeyMapping binding = Keybinds.QuickPower.KEYS[i].key();
-                if (event.getKey() == binding.getKey().getValue()) {
+                if (binding.consumeClick()) {
                     IAbilitiesCap cap = MINECRAFT.player.getCapability(PlayerAbilitiesProvider.PLAYER_ABILITIES).orElse(null);
                     if (cap == null) return;
                     Messages.sendToServer(new Packets.RequestPowerUse(i));

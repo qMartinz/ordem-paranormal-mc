@@ -56,8 +56,7 @@ public final class OPEffects {
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID.randomUUID().toString(), 0.6F, AttributeModifier.Operation.MULTIPLY_TOTAL)
                     .addAttributeModifier(Attributes.ATTACK_DAMAGE, UUID.randomUUID().toString(), 1.0D, AttributeModifier.Operation.ADDITION));
     public static final RegistryObject<MobEffect> PURGATORY = MOB_EFFECTS.register("purgatory",
-            () -> new PurgatoryEffect(MobEffectCategory.HARMFUL, 0x720000)
-                    .addAttributeModifier(Attributes.ATTACK_DAMAGE, UUID.randomUUID().toString(), -0.4D, AttributeModifier.Operation.ADDITION));
+            () -> new PurgatoryEffect(MobEffectCategory.HARMFUL, 0x720000));
     public static void register(IEventBus bus){
         MOB_EFFECTS.register(bus);
     }

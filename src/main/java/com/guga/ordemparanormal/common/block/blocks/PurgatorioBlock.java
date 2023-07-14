@@ -1,5 +1,6 @@
 package com.guga.ordemparanormal.common.block.blocks;
 
+import com.guga.ordemparanormal.client.particles.AbilitiesParticleOptions;
 import com.guga.ordemparanormal.core.registry.OPEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -20,6 +21,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.awt.*;
 import java.util.List;
 
 public class PurgatorioBlock extends Block {
@@ -48,8 +50,16 @@ public class PurgatorioBlock extends Block {
                         OPEffects.PURGATORY.get(), 20, 0, false, false));
             }
             if (pLevel instanceof ServerLevel level){
-                //level.sendParticles(OPParticles.PURGATORIO_PARTICLE.get(), pEntity.getX(), pEntity.getY() - 1f, pEntity.getZ(),
-               //         3, 0.1f, 0.05f, 0.1f, 0d);
+                List<Color> colors = List.of(
+                        new Color(0x7C0B40),
+                        new Color(0xE30531),
+                        new Color(0xAE002F),
+                        new Color(0x9E004A));
+
+                level.sendParticles(AbilitiesParticleOptions.createData(
+                        colors.get(level.random.nextInt(0, colors.size())), false),
+                        pEntity.getX(), pEntity.getY() - 0.08f, pEntity.getZ(),
+                        4, 0.2f, 0.05f, 0.2f, 0d);
             }
         }
 

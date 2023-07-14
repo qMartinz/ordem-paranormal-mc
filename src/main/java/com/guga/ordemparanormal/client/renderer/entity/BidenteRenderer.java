@@ -1,4 +1,4 @@
-package com.guga.ordemparanormal.client.renderer;
+package com.guga.ordemparanormal.client.renderer.entity;
 
 import com.guga.ordemparanormal.client.model.BidenteModel;
 import com.guga.ordemparanormal.common.entity.ThrownBidente;

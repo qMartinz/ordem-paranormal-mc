@@ -17,6 +17,7 @@ import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.function.Function;
 
@@ -24,7 +25,6 @@ import java.util.function.Function;
 @OnlyIn(Dist.CLIENT)
 public class ClientHandler {
     @SuppressWarnings({"rawtypes", "unchecked"})
-    @OnlyIn(Dist.CLIENT)
     public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
         addCurseArmorLayers(event, ParanormalElement.SANGUE);
         addCurseArmorLayers(event, ParanormalElement.CONHECIMENTO);
